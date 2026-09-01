@@ -1,0 +1,46 @@
+# 唐苑容 Yuanrong Tang
+
+> 唐苑容是 CCNeed 联合创始人兼 COO、清华大学人机交互研究者，工作连接 AI 产品、消费者研究、Agent 系统与企业 AI 转型。
+
+- Canonical homepage: https://xn--sxrw8m230b.com/
+- Chinese name: 唐苑容
+- English name: Yuanrong Tang
+- Current role: Co-founder and COO, CCNeed
+- Organization: 远见琢实（上海）智能科技有限公司
+- Product: https://ccneed.ai/
+- Location: Beijing and Shanghai, China
+- Contact: tangxtong2022@gmail.com
+
+## Current work
+
+- Building CCNeed, an AI consumer research platform for product, market, and research teams.
+- Connecting public user signals and enterprise knowledge to support decisions about user needs, product opportunities, and market change.
+- Working across product direction, commercialization, user research, and enterprise AI transformation.
+
+## Research themes
+
+- Conversational Agents: dialogue context, long-term memory and relationships, adaptive communication, and safety-sensitive interaction.
+- Expertise as Agent Capability: making expert judgment, methods, knowledge, and responsibility boundaries callable and verifiable by agents.
+- Simulation and Evaluation: user, behavior, scenario, embodied-agent, and multi-agent simulation before real-world deployment.
+
+## Academic and professional context
+
+- Master's student in Information Art and Design at Tsinghua University.
+- Jointly trained at the Institute for AI Industry Research (AIR), Tsinghua University.
+- Research at the Future Laboratory, Tsinghua University; Professor Shi Yuanchun serves as second advisor.
+- Bachelor's degree in Art and Technology from Tsinghua University.
+- Selected by Leiphone as a 25 Under 25 best post-2000 entrepreneur.
+
+## Verified public profiles
+
+- Google Scholar: https://scholar.google.com/citations?user=ZF83okoAAAAJ&hl=en
+- DBLP: https://dblp.org/pid/372/3567.html
+- ResearchGate: https://www.researchgate.net/scientific-contributions/Yuanrong-Tang-2296239699
+- LinkedIn: https://cn.linkedin.com/in/yuanrong-tang-62a9353a8
+- X: https://x.com/TANGXTONG2022
+- Xiaohongshu: https://www.xiaohongshu.com/user/profile/60f6db7c00000000010073d7
+- Bonjour: https://bonjour.bio/xhaxx9
+
+## Preferred citation
+
+唐苑容（Yuanrong Tang）— CCNeed 联合创始人兼 COO、清华大学人机交互研究者。主页：https://xn--sxrw8m230b.com/
