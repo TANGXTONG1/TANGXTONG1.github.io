@@ -1,0 +1,671 @@
+[
+  {
+    "id": "moojing",
+    "name": "魔镜洞察 / MMI / 分析+ / 价控",
+    "checked_on": "2026-11-05",
+    "delivery_model": "同一供应商的多平台参数化 REST API；市场情报与价控有公开文档，但多个产品域，不是已证四平台全字段统一 schema。",
+    "unified_api_evidence": [
+      {
+        "claim": "MMI 使用 MOOJING-APIKEY，接口以 plat 指定渠道，含商品/店铺/类目销售和价格；与价控是不同产品接口。",
+        "url": "https://doc.mktindex.com/"
+      },
+      {
+        "claim": "2025白皮书说明淘天、京东、抖音整合以及销售、评论产品联动；不能把产品打通等同API全集交付。",
+        "url": "https://cdn.mktindex.com/pdf/【魔镜洞察】2025年消费新潜力白皮书_汇总.pdf"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "旧正式API含淘天商品/店铺销售与价格。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "旧正式API含京东销售与价控。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "pdd": {
+        "status": "商务待核",
+        "detail": "只在部分市场类目/品牌接口旧枚举出现，不可套到全部商品接口。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "meituan": {
+        "status": "商务待核",
+        "detail": "部分旧市场接口枚举出现；外卖/闪购/到店子业务未明确。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "当前产品材料有整合说明，公开MMI所核端点未覆盖抖音业务schema。",
+        "urls": [
+          "https://mktindex.com/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "item/shop趋势含 sold、sale；是第三方监测口径，非自营真实订单流水。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "price、SKU价控、促销价/券/库存等，平台按各端点限定。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "reviews": {
+        "status": "商务待核",
+        "detail": "公开API仅确认评论计数/好中差评趋势；逐条原文API未核。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "marketing": {
+        "status": "商务待核",
+        "detail": "可分析促销/价格，曝光、点击、广告花费和ROAS未证统一API。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "可监测自有品牌；未证授权订单/广告后台数据的统一同步。",
+        "urls": [
+          "https://doc.mktindex.com/"
+        ]
+      }
+    },
+    "gaps": [
+      "示例日期旧，需要当前端点与当月真实响应。",
+      "没有确认一个合同/API权限同时含销量、SKU价控、电商评价原文、社媒、广告。",
+      "尚无实调；拼多多/美团不能标全覆盖。"
+    ],
+    "verdict": "核心API候选：接口证据最具体，覆盖仍不完整",
+    "next_verification": "以一个品牌跨淘天/京东/抖音及拼多多/美团分别给真实JSON；确认一个交付合同、统一账号和跨平台商品映射。"
+  },
+  {
+    "id": "datastory",
+    "name": "数说故事 / 数说聚合 / 应用市场",
+    "checked_on": "2026-11-05",
+    "delivery_model": "企业多源数据汇聚 + 商业API传输/定制；有统一平台定位，但尚无本需求统一API地址、鉴权或逐渠道schema。",
+    "unified_api_evidence": [
+      {
+        "claim": "数说聚合官方产品页说明公开与自有数据统一接入处理，并提供50+商业API数据传输接口。",
+        "url": "https://www.datastory.com.cn/product/hermes"
+      },
+      {
+        "claim": "官方应用市场说明应用支持接口接入及定制，共用PaaS平台；这证明交付模式，不证明每个所需数据集均可对外输出。",
+        "url": "https://www.datastory.com.cn/details/782?from=hotspot"
+      },
+      {
+        "claim": "官方电商产品文章明确列出淘天、京东、抖音、快手、拼多多等，并描述按商品/店铺URL采集。",
+        "url": "https://www.datastory.com.cn/details/810.html"
+      },
+      {
+        "claim": "数说自有UAT站的渠道产品页题名含美团/大众点评/京东到家，正文说明门店、单品销量评估及评价；仅作补充线索。",
+        "url": "https://uat-hermes.datastory.com.cn/channel"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "官网电商覆盖明确，实际API端点及字段待商务。",
+        "urls": [
+          "https://www.datastory.com.cn/details/810.html"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "官网电商覆盖明确，实际API端点及字段待商务。",
+        "urls": [
+          "https://www.datastory.com.cn/details/810.html"
+        ]
+      },
+      "pdd": {
+        "status": "商务待核",
+        "detail": "官网电商文章明确列出拼多多；未取得API schema。",
+        "urls": [
+          "https://www.datastory.com.cn/details/810.html"
+        ]
+      },
+      "meituan": {
+        "status": "商务待核",
+        "detail": "只有自有UAT渠道页线索，生产API与外卖/闪购/团购范围未确认。",
+        "urls": [
+          "https://uat-hermes.datastory.com.cn/channel"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "官网电商及社媒产品覆盖；内容与电商各数据集交付范围待核。",
+        "urls": [
+          "https://www.datastory.com.cn/details/810.html",
+          "https://www.datastory.com.cn/product/hermes"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "电商/渠道产品有销售监测及销量评估，精度和API字段未公开。",
+        "urls": [
+          "https://www.datastory.com.cn/details/810.html",
+          "https://uat-hermes.datastory.com.cn/channel"
+        ]
+      },
+      "price": {
+        "status": "商务待核",
+        "detail": "电商商品采集产品有价格/促销相关分析，SKU及到手价字段需样例确认。",
+        "urls": [
+          "https://www.datastory.com.cn/details/810.html"
+        ]
+      },
+      "reviews": {
+        "status": "商务待核",
+        "detail": "聚合产品有原文及评论分析；逐条商品购后评价API、各商城范围待核。",
+        "urls": [
+          "https://www.datastory.com.cn/product/hermes"
+        ]
+      },
+      "marketing": {
+        "status": "商务待核",
+        "detail": "声量/情绪/内容/账号监测与营销洞察范围明确；广告后台花费并未证明。",
+        "urls": [
+          "https://www.datastory.com.cn/product/hermes"
+        ]
+      },
+      "owned": {
+        "status": "商务待核",
+        "detail": "明确支持自有数据汇聚，但上游授权与订单/广告连接器清单未公开。",
+        "urls": [
+          "https://www.datastory.com.cn/product/hermes"
+        ]
+      }
+    },
+    "gaps": [
+      "本轮产品主页面直读出现403/异常内容，搜索索引仍有正式产品描述；不据此判断整项服务不可用。",
+      "UAT域名不是已验收的生产服务，不据它承诺美团可交付。",
+      "暂无覆盖×字段矩阵及标准响应，50+API数量不等于全部目标数据均可获取。"
+    ],
+    "verdict": "优先询证：单供应商覆盖面和统一交付定位最贴近需求",
+    "next_verification": "让厂商承诺一个企业项目/统一API出库，书面逐项勾选淘京拼美的销量/价格/评价/营销，并交同一套鉴权下的样例。"
+  },
+  {
+    "id": "nint",
+    "name": "Nint 任拓 / 情报通 / 倾听",
+    "checked_on": "2026-11-05",
+    "delivery_model": "官方明确企业API对接服务 + 定制库表，跨平台数据治理产品矩阵；标准公用API端点/schema未公开。",
+    "unified_api_evidence": [
+      {
+        "claim": "2026-07-02官方产品介绍明确SaaS、报告、定制系统、API对接四种服务；应更新前轮“API服务未核”的判断。",
+        "url": "https://www.nint.com/case/267sjfxdrj"
+      },
+      {
+        "claim": "研究咨询页说明跨平台品类对齐、SKU属性清洗、统一计量及专项库表建设。",
+        "url": "https://www.nint.com/research"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "官网有阿里入口与情报通产品；须确认其企业API所含字段。",
+        "urls": [
+          "https://www.nint.com/information",
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "官网有京东入口；企业API服务存在但渠道字段矩阵未公开。",
+        "urls": [
+          "https://www.nint.com/information",
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "未找到足够明确的拼多多可交付API证据；提及平台的行业文章不计。",
+        "urls": [
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "表单本地生活/外卖选项不证明美团接口。",
+        "urls": [
+          "https://www.nint.com/research"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "官网抖音入口明确；API字段与内容/电商范围待核。",
+        "urls": [
+          "https://www.nint.com/information",
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "产品有品类/品牌/店铺/单品市场监测，API形式已明确但正式schema未公开。",
+        "urls": [
+          "https://www.nint.com/information",
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "price": {
+        "status": "商务待核",
+        "detail": "渠道治理及促销产品支持价格库存、券/赠品/最低到手价；API交付字段需确认。",
+        "urls": [
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "reviews": {
+        "status": "商务待核",
+        "detail": "倾听产品支持消费者评价与竞品对标；原文、追评、图片是否出库待核。",
+        "urls": [
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "marketing": {
+        "status": "商务待核",
+        "detail": "有竞品促销策略分析；不等于竞品广告账户花费/曝光点击。",
+        "urls": [
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "自有品牌可做市场监测；未证授权后台订单与广告原始流水的统一连接器。",
+        "urls": [
+          "https://www.nint.com/case/267sjfxdrj"
+        ]
+      }
+    },
+    "gaps": [
+      "API服务声明是供应商产品说明，不是技术验收；不能推断所有产品共用一套接口和权限。",
+      "拼多多、美团为明显缺口。",
+      "原前轮“公开标准API未核”仍成立；仅“是否提供企业API服务”得到补证。"
+    ],
+    "verdict": "优先询证：企业API服务已补证，电商大类较齐",
+    "next_verification": "重点索取情报通+倾听+价格/促销统一API包，单一鉴权/契约/字段标准；先拿淘天京东抖音样例，再问拼多多美团。"
+  },
+  {
+    "id": "questmobile",
+    "name": "QuestMobile / GROWTH / TRUTH",
+    "checked_on": "2026-11-05",
+    "delivery_model": "GROWTH数据中台明确一站式整合TRUTH指标、标准API与多格式批量输出。",
+    "unified_api_evidence": [
+      {
+        "claim": "官方明确全部标准产品已计算指标可统一对接和批量同步，API交付证据强。",
+        "url": "https://www.questmobile.com.cn/products/growth-info/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "应用/小程序流量及用户层覆盖按合同，非此商城商品数据。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "应用/小程序流量及用户层覆盖按合同，非此商城商品数据。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "pdd": {
+        "status": "商务待核",
+        "detail": "应用/小程序流量及用户层覆盖按合同，非此商城商品数据。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "meituan": {
+        "status": "商务待核",
+        "detail": "应用/小程序流量及用户层覆盖按合同，非此商城商品数据。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "应用/小程序流量及用户层覆盖按合同，非此商城商品数据。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "未证实",
+        "detail": "未核SKU销量或销售额接口。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "price": {
+        "status": "未证实",
+        "detail": "未核商品价格接口。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "未核购后评价原文接口。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "marketing": {
+        "status": "已核文档",
+        "detail": "流量/用户画像/渠道转化/跨媒体营销指标可由标准API整合；具体指标权限另核。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      },
+      "owned": {
+        "status": "商务待核",
+        "detail": "可融合企业业务模型和用户增长场景，不等同店铺订单后台同步。",
+        "urls": [
+          "https://www.questmobile.com.cn/products/growth-info/"
+        ]
+      }
+    },
+    "gaps": [
+      "满足统一API交付形式，但主要缺商品销量、价格、评价三大类。"
+    ],
+    "verdict": "营销流量补充，不能作本需求唯一供应商",
+    "next_verification": "仅在确需流量/受众/营销归因时并入，不能用它替代商品数据库。"
+  },
+  {
+    "id": "newrank",
+    "name": "新榜有数 / 新抖 / 新快 / 新红 / 新视",
+    "checked_on": "2026-11-05",
+    "delivery_model": "统一供应商的社媒数据/定制API；各产品权限与输出合同待确认。",
+    "unified_api_evidence": [
+      {
+        "claim": "现行官网列出矩阵管理、社媒聆听、营销投放数据汇聚，并明确增值服务含定制API。",
+        "url": "https://newrank.cn/account/api"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "未证实",
+        "detail": "无货架商品数据库API证据。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "jd": {
+        "status": "未证实",
+        "detail": "无货架商品数据库API证据。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "无货架商品数据库API证据。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "无本地生活商品数据库API证据。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "内容账号/直播等覆盖，定制API逐产品确认。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "内容电商分析可能涉及销量，但未核全域统一字段。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "price": {
+        "status": "未证实",
+        "detail": "未核货架电商SKU价格统一API。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "社媒互动评论不能替代购后评价。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "marketing": {
+        "status": "商务待核",
+        "detail": "多平台声量、账号内容、投放复盘与达人管理明确；定制API字段待核。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      },
+      "owned": {
+        "status": "商务待核",
+        "detail": "自有账号矩阵/投放资产可管理，不是电商订单统一API。",
+        "urls": [
+          "https://newrank.cn/account/api"
+        ]
+      }
+    },
+    "gaps": [
+      "单供应商社媒覆盖较广，但不能覆盖淘京拼美商品四大类。"
+    ],
+    "verdict": "营销内容补充，退出统一电商核心候选",
+    "next_verification": "只有营销模块不足时考虑定制API，不作为减少电商接入工作的主要方案。"
+  },
+  {
+    "id": "bigone",
+    "name": "百观科技 / BigOne Lab",
+    "checked_on": "2026-11-05",
+    "delivery_model": "企业数据研究与定制服务，公开统一API交付仍未核实。",
+    "unified_api_evidence": [
+      {
+        "claim": "原有公司/客户证据只能支持业务存在；本轮检索未获得可确认的统一API文档。",
+        "url": "https://www.bigonelab.com/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "电商消费研究、品牌销售追踪与社媒情绪；API输出颗粒度未核。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "price": {
+        "status": "未证实",
+        "detail": "未核SKU价格统一API。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "未核逐条购后评价API。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "未核广告投放API。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核授权自营后台数据连接器。",
+        "urls": [
+          "https://www.bigonelab.com/"
+        ]
+      }
+    },
+    "gaps": [
+      "未找到API不等于供应商不能定制，但不能为本需求把它列为已可统一接入。"
+    ],
+    "verdict": "降为商务备选：先补API承诺再进入主选",
+    "next_verification": "要求先提供API交付合同条目、当前技术文档、统一鉴权和多平台样本；只有报告/Excel则不符合主要求。"
+  },
+  {
+    "id": "shangzhizhen",
+    "name": "欧特欧 / 商指针",
+    "checked_on": "2026-11-05",
+    "delivery_model": "政府/企业市场监测产品，特定产品导出明确，公开统一API未核实。",
+    "unified_api_evidence": [
+      {
+        "claim": "原有公司/客户证据只能支持业务存在；本轮检索未获得可确认的统一API文档。",
+        "url": "https://www.o-odata.cn/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "产品覆盖宣传不等于可交付的该平台API；逐端点待核。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "网络零售大盘、行业/地区销售指标；API输出颗粒度未核。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "price": {
+        "status": "未证实",
+        "detail": "未核SKU价格统一API。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "未核逐条购后评价API。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "未核广告投放API。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核授权自营后台数据连接器。",
+        "urls": [
+          "https://www.o-odata.cn/"
+        ]
+      }
+    },
+    "gaps": [
+      "未找到API不等于供应商不能定制，但不能为本需求把它列为已可统一接入。"
+    ],
+    "verdict": "降为商务备选：先补API承诺再进入主选",
+    "next_verification": "要求先提供API交付合同条目、当前技术文档、统一鉴权和多平台样本；只有报告/Excel则不符合主要求。"
+  }
+]

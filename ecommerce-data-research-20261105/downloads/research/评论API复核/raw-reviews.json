@@ -1,0 +1,439 @@
+[
+  {
+    "id": "qovia",
+    "name": "Qovia",
+    "checked_on": "2026-11-06",
+    "verdict": "逐条评论的优先小样验证候选；主体/客户和真实可用性仍待验",
+    "summary": "同一Key可调用淘天、京东与抖音商品评价；本轮已读现行OpenAPI和分页规则，未做鉴权业务调用。拼多多/美团未发现现行评论端点。",
+    "delivery": "https://api.qovia.ai；Bearer或x-api-key；统一request_id/data/meta信封。原始V2和标准化V1字段并不相同。",
+    "coverage": {
+      "taobao_tmall": "2个现行文档端点；未实调",
+      "jd": "1个现行文档端点；未实调",
+      "pdd": "未在当前公开OpenAPI找到评论端点",
+      "meituan": "未在当前公开OpenAPI找到评论端点",
+      "douyin": "目录含商品评价及V2；需要与视频评论区分，详细字段未在本组复核"
+    },
+    "endpoints": [
+      {
+        "platform": "淘宝/天猫",
+        "method": "GET",
+        "endpoint": "https://api.qovia.ai/v1/raw/taobao/comments",
+        "status": "Live Beta（供应商标注）",
+        "request_fields": [
+          "item_id:string",
+          "page:integer 1..500，默认1",
+          "skip_default_reviews:boolean，默认true"
+        ],
+        "response_fields": [
+          "data.items[].id",
+          "cid",
+          "text",
+          "rating_level",
+          "likes",
+          "created_at",
+          "sku",
+          "user_name",
+          "user_level",
+          "anonymous",
+          "images[]",
+          "videos[]",
+          "shop_reply",
+          "followup.text",
+          "followup.days_after_receipt",
+          "followup.images[]",
+          "followup.videos[]",
+          "followup.shop_reply",
+          "data.page",
+          "has_more",
+          "total",
+          "total_exact",
+          "prov"
+        ],
+        "pagination": {
+          "page_size": 20,
+          "request_max_page": 500,
+          "actual_max_depth": "未承诺可达500页；has_more=false即停止；total_exact=false时总数不精确。",
+          "ordering": "文档称最新优先；仍需样本验收",
+          "all_reviews": "不保证全量；默认跳过无文本默认好评但保留有追评者。skip_default_reviews=false只是取消该过滤，不保证突破上游可见范围。"
+        },
+        "features": {
+          "text": "文档示例已核",
+          "followup": "已列text/图片/视频/商家回复",
+          "images": "images[]",
+          "video": "videos[]",
+          "sku": "sku",
+          "rating": "rating_level好/中/差等级，不能当1–5星",
+          "shop_reply": "已列"
+        },
+        "source": "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+        "business_call_succeeded": false
+      },
+      {
+        "platform": "淘宝/天猫",
+        "method": "GET",
+        "endpoint": "https://api.qovia.ai/v1/raw/taobao/comments_v2",
+        "status": "Live Beta（供应商标注）",
+        "request_fields": [
+          "item_id:string",
+          "page:integer 1..500，默认1"
+        ],
+        "response_fields": [
+          "data.comments[].content",
+          "date",
+          "rateId",
+          "rate",
+          "propertiesAvg",
+          "photos[]",
+          "video",
+          "auction.sku",
+          "auction.aucNumId",
+          "reply",
+          "append",
+          "appendList[]",
+          "likeCount",
+          "user.nick",
+          "user.anony",
+          "data.currentPageNum",
+          "maxPage",
+          "total",
+          "totalFuzzy",
+          "hasNextPage",
+          "keywords[]"
+        ],
+        "pagination": {
+          "page_size": 20,
+          "request_max_page": 500,
+          "actual_max_depth": "依响应maxPage与hasNextPage；示例maxPage=50不是通用上限。",
+          "all_reviews": "原样响应路线，无全量承诺。"
+        },
+        "features": {
+          "text": "content",
+          "followup": "append/appendList结构需真实响应补验",
+          "images": "photos[]",
+          "video": "video",
+          "sku": "auction.sku",
+          "rating": "rate/propertiesAvg为原始字段，不自动统一评分",
+          "shop_reply": "reply"
+        },
+        "source": "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+        "business_call_succeeded": false
+      },
+      {
+        "platform": "京东",
+        "method": "GET",
+        "endpoint": "https://api.qovia.ai/v1/raw/jd/comments",
+        "status": "Live Beta（供应商标注）",
+        "request_fields": [
+          "sku_id:string",
+          "page:integer 1..100，默认1",
+          "only_this_sku:boolean，默认true"
+        ],
+        "response_fields": [
+          "data.items[].id",
+          "cid",
+          "text",
+          "rating",
+          "likes",
+          "created_at",
+          "sku",
+          "sku_id",
+          "user_name",
+          "anonymous",
+          "ip_location",
+          "images[]",
+          "shop_reply",
+          "data.page",
+          "has_more",
+          "max_page",
+          "total",
+          "prov"
+        ],
+        "pagination": {
+          "page_size": 10,
+          "request_max_page": 100,
+          "actual_max_depth": "不得超过上一页max_page；has_more=false停止。官方明确可读页数常远少于total。",
+          "ordering": "最新优先",
+          "all_reviews": "不保证全量；样例total=20000且max_page=2只是目录示例，不能据此固定说每商品仅20条。"
+        },
+        "features": {
+          "text": "已列text",
+          "followup": "当前JD示例与字段未明确追评",
+          "images": "原图images[]",
+          "video": "当前JD未明确",
+          "sku": "sku/sku_id；only_this_sku=false包含同商品其他规格",
+          "rating": "1–5星rating",
+          "shop_reply": "已列"
+        },
+        "source": "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+        "business_call_succeeded": false
+      }
+    ],
+    "trial": {
+      "gate": "注册/登录创建Key，须对应raw:taobao或raw:jd scope；本轮未注册。",
+      "allowance": "当前公开OpenAPI声明新账户50次成功非空试用；未实测发放或接口权限。",
+      "source": "https://qovia.ai/openapi.json"
+    },
+    "maintenance": {
+      "evidence": [
+        {
+          "claim": "2026-10-21更新日志宣布淘天/JD商品评价上线；最近可见日志为2026-10-22。",
+          "url": "https://qovia.ai/changelog/",
+          "source_type": "供应商更新日志"
+        },
+        {
+          "claim": "2026-11-06匿名读取现行OpenAPI成功；Live/Beta为供应商状态标签，不是独立可用率监测。",
+          "url": "https://qovia.ai/openapi.json",
+          "source_type": "官方技术文档"
+        }
+      ],
+      "last_review_specific_date": "2026-10-21",
+      "live_success_proven": false
+    },
+    "credibility": {
+      "status": "仍待主体/具名客户补证",
+      "notes": [
+        "已有接口说明和明确分页限制，比泛营销页面更可验证；仍缺独立企业客户证据。",
+        "2026-11-05复核官网GitHub链接未能核验；不能据目录站收录认定行业影响力。"
+      ],
+      "sources": [
+        "https://qovia.ai/terms/",
+        "https://qovia.ai/about/",
+        "https://qovia.ai/contact/"
+      ]
+    },
+    "limitations": [
+      "所有具体评论字段来自官方文档/目录示例，未取得本轮真实业务评论响应。",
+      "不可把HTTP200或页面Live单独视为业务成功。",
+      "淘天标准化V1与原样V2不能无条件混用字段。"
+    ],
+    "next_test": "同一Key取淘天/JD各3个不同类目商品，跨首末页核验正文、时间、重复率、SKU、追评和可翻页上限；保存真实响应并与公开页面逐条抽查。"
+  },
+  {
+    "id": "just-one-api",
+    "name": "Just One API",
+    "checked_on": "2026-11-06",
+    "verdict": "有现行评论端点，但正文schema/页深未证实；排在可直接核字段的候选之后",
+    "summary": "淘天V3、JD V1在现行官方目录中；JD V2被列为已移出常规目录的历史接口。当前没有PDD/美团评论端点证据。",
+    "delivery": "单域名https://api.justoneapi.com，query token；公共code/message/data信封，code=0为业务成功。",
+    "coverage": {
+      "taobao_tmall": "现行V3端点，业务字段未核",
+      "jd": "现行V1端点；V2已移出常规目录",
+      "pdd": "当前目录未见评论端点",
+      "meituan": "当前目录未见评论端点",
+      "douyin": "官方目录有商品评论；本组未深入该端点"
+    },
+    "endpoints": [
+      {
+        "platform": "淘宝/天猫",
+        "method": "GET",
+        "endpoint": "https://api.justoneapi.com/api/taobao/get-item-comment/v3",
+        "status": "现行目录有端点；未实调",
+        "request_fields": [
+          "token:string 必填",
+          "itemId:string 必填",
+          "orderType:feedbackdate/general，默认feedbackdate",
+          "page:integer，默认1"
+        ],
+        "response_fields": [
+          "公共封装code/message/data/recordTime/requestId/reason；本轮未核到data内具体评论键名"
+        ],
+        "pagination": {
+          "page_size": null,
+          "request_max_page": null,
+          "actual_max_depth": "未公开明确",
+          "ordering": "feedbackdate/general",
+          "all_reviews": "无可核全量承诺"
+        },
+        "features": {
+          "text": "未核具体响应字段",
+          "followup": "未核具体响应字段",
+          "images": "未核具体响应字段",
+          "video": "未核具体响应字段",
+          "sku": "未核具体响应字段",
+          "rating": "未核具体响应字段",
+          "shop_reply": "未核具体响应字段"
+        },
+        "source": "https://docs.justoneapi.com/zh/api/taobao-and-tmall/product-reviews-v3",
+        "business_call_succeeded": false
+      },
+      {
+        "platform": "京东",
+        "method": "GET",
+        "endpoint": "https://api.justoneapi.com/api/jd/get-item-comments/v1",
+        "status": "现行目录有端点；未实调",
+        "request_fields": [
+          "token:string 必填",
+          "itemId:string 必填",
+          "page:string 可选"
+        ],
+        "response_fields": [
+          "code",
+          "message",
+          "data（OpenAPI为空schema对象{}）",
+          "recordTime",
+          "requestId",
+          "reason"
+        ],
+        "pagination": {
+          "page_size": null,
+          "request_max_page": null,
+          "actual_max_depth": "未公开明确",
+          "all_reviews": "无可核全量承诺"
+        },
+        "features": {
+          "text": "未核具体响应字段",
+          "followup": "未核具体响应字段",
+          "images": "未核具体响应字段",
+          "video": "未核具体响应字段",
+          "sku": "未核具体响应字段",
+          "rating": "未核具体响应字段",
+          "shop_reply": "未核具体响应字段"
+        },
+        "source": "https://docs.justoneapi.com/openapi/jdcom/product-comments-v1-zh.json",
+        "business_call_succeeded": false
+      }
+    ],
+    "trial": {
+      "gate": "注册邮箱/密码/验证码后领取访问token；本轮未注册。",
+      "allowance": "FAQ确认免费试用，具体配额/价格需登录；本轮未核每评论接口可用额度。",
+      "source": "https://justoneapi.com/zh/faq"
+    },
+    "maintenance": {
+      "evidence": [
+        {
+          "claim": "JD目录将V1列可用端点、V2列已移除接口，供应商称历史接口仍可使用但建议迁移。",
+          "url": "https://docs.justoneapi.com/zh/api/jdcom/",
+          "source_type": "官方技术文档"
+        },
+        {
+          "claim": "端点页有动态健康状态区；静态页面同时包含多种状态文本且显示刷新中，不能据此断言健康。",
+          "url": "https://docs.justoneapi.com/zh/api/jdcom/product-comments-v1",
+          "source_type": "官方技术文档"
+        }
+      ],
+      "last_review_specific_date": null,
+      "live_success_proven": false,
+      "note": "未找到可核的评论端点维护日期。搜索引擎抓取日期不是产品更新日期。"
+    },
+    "credibility": {
+      "status": "仍待主体/客户补证",
+      "notes": [
+        "2026-11-05当前官网关联Python SDK与MCP仓库网页分别11/6 stars，仅客户端关注量。",
+        "本轮未重新查询star；不能把SDK提交或星数当后端评论服务可用性。"
+      ],
+      "sources": [
+        "https://github.com/justoneapi-official/justoneapi-python",
+        "https://github.com/justoneapi-official/justoneapi-mcp",
+        "https://justoneapi.com/en/terms"
+      ]
+    },
+    "limitations": [
+      "端点存在不证明正文、图片、追评、SKU、评分均返回。",
+      "本轮urllib读取两个OpenAPI文件遇403；网页工具能读JD OpenAPI且data为空schema，淘系文件未读到。",
+      "没有鉴权业务调用，不声称真实评论已取得。"
+    ],
+    "next_test": "先取得两端点的完整真实响应与分页终止规则；缺data业务schema前，不宜按已验证评论字段签采购。"
+  },
+  {
+    "id": "tmapi",
+    "name": "TMAPI",
+    "checked_on": "2026-11-06",
+    "verdict": "淘系评论官方标维护中；本轮不列现行评论API候选",
+    "summary": "淘宝评论旧文档有详细原文字段，但当前官方页面明确under maintenance；不能用历史样例证明可用。未核到京东/PDD/美团评论正文端点。",
+    "delivery": "apikey请求头；历史GET http://api.tmapi.top/taobao/advanced/item/rate_list；生产HTTPS支持需另核。",
+    "coverage": {
+      "taobao_tmall": "评论rate_list维护中；天猫适用范围需另核",
+      "jd": "当前公开目录仅核到商品详情，未确认评论正文API",
+      "pdd": "详情有comment_count，不是评论原文",
+      "meituan": "未发现标准评论端点"
+    },
+    "endpoints": [
+      {
+        "platform": "淘宝（天猫适用范围待核）",
+        "method": "GET",
+        "endpoint": "http://api.tmapi.top/taobao/advanced/item/rate_list",
+        "status": "官方明示维护中",
+        "request_fields": [
+          "item_id 必填",
+          "page 默认1",
+          "rate_type 2追评/3图视频/空为不筛选类型",
+          "sort_type default/date"
+        ],
+        "response_fields": [
+          "data.list[].id",
+          "feedback",
+          "feedback_imgs[]",
+          "feedback_video",
+          "reply",
+          "feedback_date",
+          "appended.feedback",
+          "appended.feedback_imgs[]",
+          "appended.feedback_video",
+          "appended.reply",
+          "appended.feedback_date",
+          "sku_map",
+          "rate_type",
+          "user_nick",
+          "like_count",
+          "data.page",
+          "page_size",
+          "total",
+          "total_page"
+        ],
+        "pagination": {
+          "page_size": "历史样例10，非当前承诺",
+          "request_max_page": null,
+          "actual_max_depth": "未核；历史total_page不是现行可读页数保证。",
+          "all_reviews": "rate_type为空仅不筛选评论类型，不能解释成可取全部历史评论。"
+        },
+        "features": {
+          "text": "历史feedback",
+          "followup": "历史appended",
+          "images": "历史feedback_imgs",
+          "video": "历史feedback_video",
+          "sku": "历史sku_map",
+          "rating": "未核1–5星字段；rate_type不能直接当星级",
+          "shop_reply": "历史reply"
+        },
+        "source": "https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-ratelist-by-id-v2.html",
+        "business_call_succeeded": false
+      }
+    ],
+    "trial": {
+      "gate": "注册控制台生成apikey；评论端点维护中，不能承诺试用可成功。",
+      "allowance": "本轮未核评论专用免费额度。",
+      "source": "https://tmapi.top/docs/start.html"
+    },
+    "maintenance": {
+      "evidence": [
+        {
+          "claim": "当前官方淘宝评论页明示 This API is under maintenance。",
+          "url": "https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-ratelist-by-id-v2.html",
+          "source_type": "官方技术文档"
+        },
+        {
+          "claim": "同页最后更新时间标2023-11-03；目录文件时间2026不能替代端点维护记录。",
+          "url": "https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-ratelist-by-id-v2.html",
+          "source_type": "官方技术文档"
+        }
+      ],
+      "last_review_specific_date": "2023-11-03",
+      "live_success_proven": false
+    },
+    "credibility": {
+      "status": "主体/具名客户仍待补证",
+      "notes": [
+        "官网页脚CyberData LLC是供应商自述，不是企业登记核验。",
+        "未核到官方关联开源项目可支持评论服务成熟度。"
+      ],
+      "sources": [
+        "https://tmapi.top/zh-cn/"
+      ]
+    },
+    "limitations": [
+      "历史字段与示例仅用于说明曾有接口结构，不能宣称现行可用。",
+      "PDD comment_count不能替代逐条评价正文。"
+    ],
+    "next_test": "除非供应商提供已恢复的正式文档和真实成功样本，否则不进入评论API试点名单。"
+  }
+]

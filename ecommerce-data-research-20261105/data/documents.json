@@ -1,0 +1,690 @@
+[
+  {
+    "title": "github-page-snapshot",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 1355,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/github-page-snapshot.json",
+    "read_url": null
+  },
+  {
+    "title": "github-snapshot",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 949,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/github-snapshot.json",
+    "read_url": null
+  },
+  {
+    "title": "local",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 23710,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/local.json",
+    "read_url": null
+  },
+  {
+    "title": "market",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 34279,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/market.json",
+    "read_url": null
+  },
+  {
+    "title": "owned",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 26291,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/owned.json",
+    "read_url": null
+  },
+  {
+    "title": "raw",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 9768,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/raw.json",
+    "read_url": null
+  },
+  {
+    "title": "国内电商数据平台：严格筛选复核",
+    "group": "信誉复核",
+    "format": "md",
+    "bytes": 82073,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/%E4%B8%A5%E6%A0%BC%E7%AD%9B%E9%80%89%E4%B8%8E%E8%AF%81%E6%8D%AE-2026-11-05.md",
+    "read_url": "docs/document-07.html"
+  },
+  {
+    "title": "全量复核",
+    "group": "信誉复核",
+    "format": "json",
+    "bytes": 102015,
+    "download_url": "downloads/research/%E4%BF%A1%E8%AA%89%E5%A4%8D%E6%A0%B8/%E5%85%A8%E9%87%8F%E5%A4%8D%E6%A0%B8.json",
+    "read_url": null
+  },
+  {
+    "title": "EveryInfra-Qovia-对比",
+    "group": "双平台试用对比",
+    "format": "xlsx",
+    "bytes": 24521,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/EveryInfra-Qovia-%E5%AF%B9%E6%AF%94.xlsx",
+    "read_url": null
+  },
+  {
+    "title": "EveryInfra 与 Qovia 试用及报价对比",
+    "group": "双平台试用对比",
+    "format": "md",
+    "bytes": 29878,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/EveryInfra%E4%B8%8EQovia%E8%AF%95%E7%94%A8%E5%8F%8A%E6%8A%A5%E4%BB%B7%E5%AF%B9%E6%AF%94-2026-11-06.md",
+    "read_url": "docs/document-10.html"
+  },
+  {
+    "title": "comparison",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 385025,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/comparison.json",
+    "read_url": null
+  },
+  {
+    "title": "everyinfra-all-prices",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 426455,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/everyinfra-all-prices.json",
+    "read_url": null
+  },
+  {
+    "title": "everyinfra-catalog-current",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 1390671,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/everyinfra-catalog-current.json",
+    "read_url": null
+  },
+  {
+    "title": "everyinfra",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 426276,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/everyinfra.json",
+    "read_url": null
+  },
+  {
+    "title": "qovia-all-prices",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 95932,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/qovia-all-prices.json",
+    "read_url": null
+  },
+  {
+    "title": "qovia-openapi-current",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 1343935,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/qovia-openapi-current.json",
+    "read_url": null
+  },
+  {
+    "title": "qovia",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 101666,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/qovia.json",
+    "read_url": null
+  },
+  {
+    "title": "terms-http-checks",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 736,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/terms-http-checks.json",
+    "read_url": null
+  },
+  {
+    "title": "terms",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 8416,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/terms.json",
+    "read_url": null
+  },
+  {
+    "title": "真实API试调记录-2026-11-06",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 122318,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/%E7%9C%9F%E5%AE%9EAPI%E8%AF%95%E8%B0%83%E8%AE%B0%E5%BD%95-2026-11-06.json",
+    "read_url": null
+  },
+  {
+    "title": "试用申请进度",
+    "group": "双平台试用对比",
+    "format": "json",
+    "bytes": 1161,
+    "download_url": "downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/%E8%AF%95%E7%94%A8%E7%94%B3%E8%AF%B7%E8%BF%9B%E5%BA%A6.json",
+    "read_url": null
+  },
+  {
+    "title": "国内电商数据平台调研",
+    "group": "总表与研究记录",
+    "format": "md",
+    "bytes": 34304,
+    "download_url": "downloads/research/%E5%9B%BD%E5%86%85%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%B0%83%E7%A0%94-2026-11-05.md",
+    "read_url": "docs/document-22.html"
+  },
+  {
+    "title": "Actor复验-20261113",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 18122,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/Actor%E5%A4%8D%E9%AA%8C-20261113.json",
+    "read_url": null
+  },
+  {
+    "title": "Actor实测-20261113",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 12853,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/Actor%E5%AE%9E%E6%B5%8B-20261113.json",
+    "read_url": null
+  },
+  {
+    "title": "Actor补齐-Temu",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 16007,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/Actor%E8%A1%A5%E9%BD%90-Temu.json",
+    "read_url": null
+  },
+  {
+    "title": "Actor补齐-eBay",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 18668,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/Actor%E8%A1%A5%E9%BD%90-eBay.json",
+    "read_url": null
+  },
+  {
+    "title": "历史测试口径核对-20261114",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 2407,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E5%8E%86%E5%8F%B2%E6%B5%8B%E8%AF%95%E5%8F%A3%E5%BE%84%E6%A0%B8%E5%AF%B9-20261114.json",
+    "read_url": null
+  },
+  {
+    "title": "国内-Qovia",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 49902,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E5%9B%BD%E5%86%85-Qovia.json",
+    "read_url": null
+  },
+  {
+    "title": "字段覆盖-20261113",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 51730,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E5%AD%97%E6%AE%B5%E8%A6%86%E7%9B%96-20261113.json",
+    "read_url": null
+  },
+  {
+    "title": "海外-Apify-Temu-TikTok",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 22527,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E6%B5%B7%E5%A4%96-Apify-Temu-TikTok.json",
+    "read_url": null
+  },
+  {
+    "title": "海外-Apify-核心",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 41373,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E6%B5%B7%E5%A4%96-Apify-%E6%A0%B8%E5%BF%83.json",
+    "read_url": null
+  },
+  {
+    "title": "补验-Qovia-20261113-第二轮",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 25401,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E8%A1%A5%E9%AA%8C-Qovia-20261113-%E7%AC%AC%E4%BA%8C%E8%BD%AE.json",
+    "read_url": null
+  },
+  {
+    "title": "补验-Qovia-20261113",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 3950,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E8%A1%A5%E9%AA%8C-Qovia-20261113.json",
+    "read_url": null
+  },
+  {
+    "title": "需求字段-飞书-20261113",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 2304,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E9%9C%80%E6%B1%82%E5%AD%97%E6%AE%B5-%E9%A3%9E%E4%B9%A6-20261113.json",
+    "read_url": null
+  },
+  {
+    "title": "ui-observed-excerpts",
+    "group": "样本",
+    "format": "json",
+    "bytes": 2626,
+    "download_url": "downloads/research/%E6%A0%B7%E6%9C%AC/ui-observed-excerpts.json",
+    "read_url": null
+  },
+  {
+    "title": "好单库公开活动商品响应：实际获取记录与质量观察",
+    "group": "样本",
+    "format": "md",
+    "bytes": 3321,
+    "download_url": "downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%93%8D%E5%BA%94%E6%A0%B7%E6%9C%AC%E8%AF%B4%E6%98%8E.md",
+    "read_url": "docs/document-24.html"
+  },
+  {
+    "title": "好单库-公开活动商品响应-2026-11-05",
+    "group": "样本",
+    "format": "json",
+    "bytes": 5415,
+    "download_url": "downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json",
+    "read_url": null
+  },
+  {
+    "title": "好单库-公开活动商品响应-验证记录",
+    "group": "样本",
+    "format": "json",
+    "bytes": 1911,
+    "download_url": "downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json",
+    "read_url": null
+  },
+  {
+    "title": "样本下载说明",
+    "group": "样本",
+    "format": "md",
+    "bytes": 2342,
+    "download_url": "downloads/research/%E6%A0%B7%E6%9C%AC/%E6%A0%B7%E6%9C%AC%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E.md",
+    "read_url": "docs/document-27.html"
+  },
+  {
+    "title": "国内电商数据平台浏览器试用核验",
+    "group": "总表与研究记录",
+    "format": "md",
+    "bytes": 24139,
+    "download_url": "downloads/research/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%95%E7%94%A8%E6%A0%B8%E9%AA%8C.md",
+    "read_url": "docs/document-28.html"
+  },
+  {
+    "title": "浏览器试用记录",
+    "group": "总表与研究记录",
+    "format": "json",
+    "bytes": 15335,
+    "download_url": "downloads/research/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95.json",
+    "read_url": null
+  },
+  {
+    "title": "apify-scraping",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 34840,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/apify-scraping.json",
+    "read_url": null
+  },
+  {
+    "title": "bright-oxylabs",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 59842,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/bright-oxylabs.json",
+    "read_url": null
+  },
+  {
+    "title": "brightdata-current-catalog",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 270988,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/brightdata-current-catalog.json",
+    "read_url": null
+  },
+  {
+    "title": "everyinfra-current",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 1356202,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/everyinfra-current.json",
+    "read_url": null
+  },
+  {
+    "title": "magpie-current-openapi",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 335701,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/magpie-current-openapi.json",
+    "read_url": null
+  },
+  {
+    "title": "qovia-current",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 1243190,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/qovia-current.json",
+    "read_url": null
+  },
+  {
+    "title": "sellerapp-public-collection",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 5987,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/sellerapp-public-collection.json",
+    "read_url": null
+  },
+  {
+    "title": "specialists",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 13080,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/specialists.json",
+    "read_url": null
+  },
+  {
+    "title": "terms-notes",
+    "group": "海外电商API",
+    "format": "json",
+    "bytes": 3325,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/terms-notes.json",
+    "read_url": null
+  },
+  {
+    "title": "海外电商评论 API：平台覆盖、价格与筛选结果",
+    "group": "海外电商API",
+    "format": "md",
+    "bytes": 24000,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E8%AF%84%E8%AE%BAAPI%E7%AD%9B%E9%80%89-2026-11-12.md",
+    "read_url": "docs/document-39.html"
+  },
+  {
+    "title": "apify-tests",
+    "group": "海外电商实测",
+    "format": "json",
+    "bytes": 33507,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/apify-tests.json",
+    "read_url": null
+  },
+  {
+    "title": "authenticated-trials",
+    "group": "海外电商实测",
+    "format": "json",
+    "bytes": 15455,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/authenticated-trials.json",
+    "read_url": null
+  },
+  {
+    "title": "bright-oxy-tests",
+    "group": "海外电商实测",
+    "format": "json",
+    "bytes": 58407,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/bright-oxy-tests.json",
+    "read_url": null
+  },
+  {
+    "title": "browser-tests",
+    "group": "海外电商实测",
+    "format": "json",
+    "bytes": 3975,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/browser-tests.json",
+    "read_url": null
+  },
+  {
+    "title": "demo-samples",
+    "group": "海外电商实测",
+    "format": "json",
+    "bytes": 1668,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/demo-samples.json",
+    "read_url": null
+  },
+  {
+    "title": "specialist-tests",
+    "group": "海外电商实测",
+    "format": "json",
+    "bytes": 43489,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/specialist-tests.json",
+    "read_url": null
+  },
+  {
+    "title": "海外电商接口测试说明",
+    "group": "海外电商实测",
+    "format": "md",
+    "bytes": 14679,
+    "download_url": "downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%AF%B4%E6%98%8E-2026-11-13.md",
+    "read_url": "docs/document-46.html"
+  },
+  {
+    "title": "TikHub排除说明",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 407,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/TikHub%E6%8E%92%E9%99%A4%E8%AF%B4%E6%98%8E.json",
+    "read_url": null
+  },
+  {
+    "title": "enterprise",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 24027,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/enterprise.json",
+    "read_url": null
+  },
+  {
+    "title": "everyinfra-public-catalog",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 161842,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/everyinfra-public-catalog.json",
+    "read_url": null
+  },
+  {
+    "title": "owned",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 22844,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/owned.json",
+    "read_url": null
+  },
+  {
+    "title": "qovia-public-catalog",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 138868,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/qovia-public-catalog.json",
+    "read_url": null
+  },
+  {
+    "title": "raw",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 22291,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/raw.json",
+    "read_url": null
+  },
+  {
+    "title": "EveryInfra-公开能力目录响应",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 979943,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E6%A0%B7%E6%9C%AC/EveryInfra-%E5%85%AC%E5%BC%80%E8%83%BD%E5%8A%9B%E7%9B%AE%E5%BD%95%E5%93%8D%E5%BA%94.json",
+    "read_url": null
+  },
+  {
+    "title": "EveryInfra-公开能力目录验证记录",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 1368,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E6%A0%B7%E6%9C%AC/EveryInfra-%E5%85%AC%E5%BC%80%E8%83%BD%E5%8A%9B%E7%9B%AE%E5%BD%95%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json",
+    "read_url": null
+  },
+  {
+    "title": "EveryInfra 公开能力目录：真实响应，但不是业务样本",
+    "group": "统一API复核",
+    "format": "md",
+    "bytes": 1238,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E6%A0%B7%E6%9C%AC/EveryInfra-%E8%83%BD%E5%8A%9B%E7%9B%AE%E5%BD%95%E8%AF%B4%E6%98%8E.md",
+    "read_url": "docs/document-55.html"
+  },
+  {
+    "title": "国内电商数据：以统一 API 交付为主的选型",
+    "group": "统一API复核",
+    "format": "md",
+    "bytes": 53100,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E7%BB%9F%E4%B8%80API%E4%BA%A4%E4%BB%98%E4%BC%98%E5%85%88%E6%B8%85%E5%8D%95-2026-11-05.md",
+    "read_url": "docs/document-56.html"
+  },
+  {
+    "title": "统一API选型",
+    "group": "统一API复核",
+    "format": "json",
+    "bytes": 81246,
+    "download_url": "downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E7%BB%9F%E4%B8%80API%E9%80%89%E5%9E%8B.json",
+    "read_url": null
+  },
+  {
+    "title": "平台字段字典",
+    "group": "证据附录",
+    "format": "json",
+    "bytes": 127387,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E5%B9%B3%E5%8F%B0%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.json",
+    "read_url": null
+  },
+  {
+    "title": "国内电商数据平台字段字典",
+    "group": "证据附录",
+    "format": "md",
+    "bytes": 117252,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E5%B9%B3%E5%8F%B0%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.md",
+    "read_url": "docs/document-59.html"
+  },
+  {
+    "title": "本地生活与内容电商数据接入调研（供主报告合并）",
+    "group": "证据附录",
+    "format": "md",
+    "bytes": 14882,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E5%B9%B3%E5%8F%B0%E4%B8%8E%E6%8E%A5%E5%8F%A3.md",
+    "read_url": "docs/document-60.html"
+  },
+  {
+    "title": "官方权限边界与自营多渠道集成调研",
+    "group": "证据附录",
+    "format": "md",
+    "bytes": 16652,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%87%AA%E8%90%A5ERP%E4%B8%8E%E5%AE%98%E6%96%B9%E6%9D%83%E9%99%90.md",
+    "read_url": "docs/document-61.html"
+  },
+  {
+    "title": "自营集成接口字段结构",
+    "group": "证据附录",
+    "format": "json",
+    "bytes": 216502,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%87%AA%E8%90%A5%E9%9B%86%E6%88%90%E6%8E%A5%E5%8F%A3%E5%AD%97%E6%AE%B5%E7%BB%93%E6%9E%84.json",
+    "read_url": null
+  },
+  {
+    "title": "自营集成平台字段补证",
+    "group": "证据附录",
+    "format": "md",
+    "bytes": 89212,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%87%AA%E8%90%A5%E9%9B%86%E6%88%90%E8%AF%A6%E7%BB%86%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.md",
+    "read_url": "docs/document-63.html"
+  },
+  {
+    "title": "国内电商第三方数据平台调研补充",
+    "group": "证据附录",
+    "format": "md",
+    "bytes": 15411,
+    "download_url": "downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%A1%8C%E4%B8%9A%E4%B8%8E%E7%AB%9E%E5%93%81%E5%B9%B3%E5%8F%B0.md",
+    "read_url": "docs/document-64.html"
+  },
+  {
+    "title": "alternatives",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 11798,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/alternatives.json",
+    "read_url": null
+  },
+  {
+    "title": "everyinfra-current-catalog",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 1317469,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/everyinfra-current-catalog.json",
+    "read_url": null
+  },
+  {
+    "title": "http-document-checks",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 10720,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/http-document-checks.json",
+    "read_url": null
+  },
+  {
+    "title": "other-raw",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 15267,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/other-raw.json",
+    "read_url": null
+  },
+  {
+    "title": "qovia-openapi",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 54283,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/qovia-openapi.json",
+    "read_url": null
+  },
+  {
+    "title": "raw-reviews",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 17442,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/raw-reviews.json",
+    "read_url": null
+  },
+  {
+    "title": "文档示例摘录",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 619,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E6%96%87%E6%A1%A3%E7%A4%BA%E4%BE%8B%E6%91%98%E5%BD%95.json",
+    "read_url": null
+  },
+  {
+    "title": "浏览器复核记录",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 735,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%8D%E6%A0%B8%E8%AE%B0%E5%BD%95.json",
+    "read_url": null
+  },
+  {
+    "title": "评论API选型",
+    "group": "评论API复核",
+    "format": "json",
+    "bytes": 115780,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E8%AF%84%E8%AE%BAAPI%E9%80%89%E5%9E%8B.json",
+    "read_url": null
+  },
+  {
+    "title": "国内电商评论原文 API 复核",
+    "group": "评论API复核",
+    "format": "md",
+    "bytes": 22557,
+    "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E8%AF%84%E8%AE%BA%E5%8E%9F%E6%96%87API%E5%A4%8D%E6%A0%B8-2026-11-06.md",
+    "read_url": "docs/document-74.html"
+  }
+]

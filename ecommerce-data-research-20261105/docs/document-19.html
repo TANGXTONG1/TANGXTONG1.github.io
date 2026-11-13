@@ -1,0 +1,208 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>本地生活与内容电商数据接入调研（供主报告合并）</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E5%B9%B3%E5%8F%B0%E4%B8%8E%E6%8E%A5%E5%8F%A3.md" download>下载原始 Markdown</a></header><article><h1 id="_1">本地生活与内容电商数据接入调研（供主报告合并）</h1>
+<p>核验日期：2026-11-05。仅做公开资料核验，未开通付费账户或实测付费API。证据分级：A=供应商公开接口/使用文档；B=供应商产品/解决方案页宣称；C=仅网页查询产品、接入未核验。以下“营销”须区分促销/优惠券数据与广告账户消耗、曝光、转化数据；评价数/评分不等于评价原文。</p>
+<h2 id="_2">第三方集成/数据服务优先清单</h2>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>覆盖与对象</th>
+<th>已核验数据</th>
+<th>输出接入</th>
+<th>证据/费用</th>
+<th>关键限制与建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>九数云 BI（帆软）</td>
+<td>自有授权店铺；美团外卖、团购/点评、到店广告、美团管家；产品目录还列饿了么、淘宝、抖店、巨量千川及ERP</td>
+<td>美团外卖订单详情/费率/评价/评分；团购点评/结算/已验券；CPC门店分日报告；美团管家菜品、订单、价格、营业分析</td>
+<td>官方连接器同步至BI；公开API可导出分析表为CSV/Excel；另支持人工Excel导出</td>
+<td><strong>A，最贴合“自己店铺的营销+销量+评价汇集”</strong>。软件/数据源基本费另询；同步点数100元=1万点起购</td>
+<td>美团首次默认只回溯5天。团购单系统授权、外卖非接单/到店广告可多系统；团购/到店广告仅支持餐饮门店。API只导出分析表，原始数据源表须先形成分析表。美团闪购并未由这份连接器文档明确支持</td>
+</tr>
+<tr>
+<td>餐道 Candao</td>
+<td>连锁餐饮/新零售的自有多门店；美团、饿了么、抖音、快手、自营小程序等</td>
+<td>多渠道订单、餐单、价格、库存、团购核销、经营报表；客户咨询/售后服务</td>
+<td>COMS/CDBI系统；官网列开放API、开发者门户及沙箱，公开开放平台入口可访问</td>
+<td><strong>B（产品能力明确，具体API字段未公开核到）</strong>；商务报价</td>
+<td>适合自营多门店经营中台，不是竞争对手销售数据源。UAG AI投手等功能在产品页标注“规划中”，不能作为已上线广告API。评价咨询服务不等于评价数据接口</td>
+</tr>
+<tr>
+<td>鼎点数据（杭州鼎点网络科技）</td>
+<td>竞品/品牌控价；淘宝、天猫、京东、拼多多、抖音、快手；美团、饿了么；B2B药师帮等</td>
+<td>官网明确SKU到手价、券后价、优惠、销量监控；产品/型号/库存；行业品类竞品</td>
+<td>官网明确提供API及定制服务，但未找到公开接口路径/返回样例</td>
+<td><strong>B（2024-11-06价格监控方案，官网仍展示）</strong>；商务报价</td>
+<td>美团仅笼统列O2O，未分别确认外卖/闪购/团购。评论正文、广告账户消耗未确认；销量口径、实时性和“5分钟”SLA应以试采合同确认</td>
+</tr>
+<tr>
+<td>极致了数据（jzl.com / dajiala.com）</td>
+<td>社媒+电商；供应商文章宣称美团、饿了么竞品数据</td>
+<td>宣称商品详情、前台销量、价格、评价；明确销量为前台展示口径</td>
+<td>供应商宣称API/JSON、飞书多维表格插件、定制数据表</td>
+<td><strong>B（供应商营销文章，不是美团接口技术文档）</strong>；本地生活API价格未公开核实</td>
+<td>美团/饿了么的实际API路径、分页、评论字段样例、闪购/团购范围均未核验。飞书插件首页主要列社媒，不能把文章宣称视为美团已通过验收</td>
+</tr>
+<tr>
+<td>富泰科</td>
+<td>竞品公开页面数据；美团外卖、淘宝闪购/饿了么、京东外卖；美团闪购商超和药店单独版本；点评代采</td>
+<td>外卖单平台版列商家/商品月售、价格、折扣、评分；餐饮商品列评论数、好评度、评价标签；商超/药店版本列价格原价、优惠、销量、部分条码库存</td>
+<td><strong>Excel导出/代采为主</strong>；另有定制API开发，公开页面未给标准API路径</td>
+<td><strong>B</strong>。餐饮助手499–999元/月；商超/药店定制版示例5000元定制费+999元/月，或200元/2000条；API定制页面写2000元起</td>
+<td>聚合版默认仅商家基础信息，不包含全部销量字段。美团销量版本需要登录态、仅Windows。评论原文不应由“评价标签”推定。接口连续性需试采；“无限版”仍有额度定义</td>
+</tr>
+<tr>
+<td>云飞API（来客核销）</td>
+<td>自有授权到店门店；美团/抖音/快手团购（页面说明与参数覆盖有差异）</td>
+<td>门店团购信息；团购ID、平台、门店与商品信息；相关核销/订单接口目录</td>
+<td>公开POST <code>/wspace-openapi/partner/tuangou/queryshopdeal</code>；Token；经营宝扫码授权</td>
+<td><strong>A</strong>。该商品查询接口标免费，其余商务规则另核</td>
+<td>适合聚合自营团购业务，不是竞品市场数据。首次同步约10秒、不适合实时逐次调用；美团餐饮与到综商品更新参数规则不同；没有核到广告/评价接口</td>
+</tr>
+<tr>
+<td>无限聚核</td>
+<td>自有授权到店门店；美团、抖音、大众点评</td>
+<td>门店授权、验券/核销/撤销、团购，部分体育场馆预订商品库存</td>
+<td>公开API文档入口；服务零售/到店餐饮单独能力</td>
+<td><strong>A/B</strong>（公开文档入口+产品说明）；官网宣称免接入费，具体核销费需后台/商务确认</td>
+<td>交易与核销连接器，不提供全网销量、用户评价和竞品广告。美团与点评来源字段要逐接口辨别，聚合<code>platform</code>通常把点评归美团</td>
+</tr>
+<tr>
+<td>窄门餐眼</td>
+<td>餐饮行业与竞品研究；品牌、门店、品类、城市、供应链</td>
+<td>门店分布、开关店、品牌客单价/产品、商圈选址、行业报告</td>
+<td>小程序/APP/报告；本次未核到通用公开API或整库CSV导出</td>
+<td><strong>C</strong>。官网选址报告示例200元/点位，其他按会员/项目</td>
+<td>是补充行业洞察来源；不能把门店规模、客单价或热度当成交销量，不能声称有任意门店订单数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">第三方证据链接与判断</h3>
+<ol>
+<li><strong>九数云美团连接器</strong>：https://help.fanruan.com/jiushuyun/doc-view-604.html （更新2025-09-19）。明确外卖/团购/到店广告三类数据表、授权、5天回溯和费用。简道云帮助中心也有同文镜像：https://hc.jiandaoyun.com/doc/24247 ，不建议把同一能力重复计入独立供应商。</li>
+<li><strong>九数云读取分析表API</strong>：https://help.fanruan.com/jiushuyun/doc-view-149.html 。<code>POST https://work.jiushuyun.com/decision/api/v2/export</code>，默认CSV、<code>format=excel</code>为Excel；返回文件下载地址；需临时令牌；只支持分析表。</li>
+<li><strong>九数云人工Excel导出</strong>：https://help.fanruan.com/jiushuyun/doc-view-64.html 。超过1万行可能耗费导出次数；API导出另有规则。</li>
+<li><strong>九数云同步点数</strong>：https://help.fanruan.com/jiushuyun/doc-view-699.html （更新2026-09-20）。现列美团、饿了么订单/评论、拼多多商品/订单、淘宝评论、抖音商品/视频评论、小红书评论；同步失败也可能扣点，不同接口单价不同。</li>
+<li><strong>九数云当前数据连接产品</strong>：https://www.jiushuyun.com/connection 。列巨量千川、淘宝、抖店、美团、饿了么、ERP；最高更新频次写每小时。</li>
+<li><strong>九数云美团管家/美团数据业务说明</strong>：https://www.jiushuyun.com/blog/catering/58192.html 。列管家菜品/套餐售价、堂食外卖订单、营业分析。不要将管家POS数据与美团竞品市场数据混淆。</li>
+<li><strong>九数云评论证据变动</strong>：2024上线公告 https://www.jiushuyun.com/update/11654.html 仍在；对应淘宝/小红书/抖音评论文档 https://help.fanruan.com/jiushuyun/doc-view-605.html 、https://help.fanruan.com/jiushuyun/doc-view-606.html 、https://help.fanruan.com/jiushuyun/doc-view-603.html 本次均显示暂不支持查看。不过2026-09同步计费表仍列此类能力，应标需确认可开通和字段权限。</li>
+<li><strong>九数云竞品智析</strong>（root补充）：https://www.jiushuyun.com/compete-product-analysis 。有多电商竞品销量/价格方案宣称，原始来源与标准API待核，不能认为普通商家连接器就有竞品投放消耗/ROI。</li>
+<li><strong>餐道官网</strong>：https://www.can-dao.com/ ，产品 https://www.can-dao.com/product.html ，开放平台 https://open-api.can-dao.com/ 。具体API页无法从公开文本提取到字段定义；官网的AI投手等标规划中。</li>
+<li><strong>鼎点数据价格监控方案</strong>：https://www.dingdiankj.cn/contents/44/522.html 。这是供应商公司动态/方案页，明确多平台及API服务，但不是API技术文档。</li>
+<li><strong>极致了美团销量文章</strong>：https://www.jzl.com/news/meituan-data-api-2 ，说明前台展示销量、API/飞书/定制三种形式；另 https://www.jzl.com/news/meituan-data-13 。产品主页 https://www.dajiala.com/ 。应索要真实美团请求/响应样例后再认定为A级。</li>
+<li><strong>富泰科当前产品分型</strong>：https://www.futaike.net/meituan-ele-waimai-data-get 。注意美团外卖/月售版、三平台基础商家聚合版、闪购商超/药店版分别计价与授权。</li>
+<li><strong>富泰科字段明细</strong>：https://www.futaike.net/meituan-ele-data-solution 。商超版本与餐饮版本字段不同；列评分/评价标签但未证明全文评价。</li>
+<li><strong>富泰科API定制费和基础商家版</strong>：https://www.futaike.net/product_service/11272.html 。API为定制项2000元起，并非现成公共接口。</li>
+<li><strong>云飞API文档</strong>：https://doc.yunfeiapi.com/9034922m0 。已读具体接口，免费门店团购查询，需授权。</li>
+<li><strong>无限聚核</strong>：https://www.elys.cn/ ，文档入口 https://doc.elys.cn/ 。官方自述聚合团购核销，不应扩张为市场数据API。</li>
+<li><strong>窄门餐眼</strong>：https://www.canyandata.com/ ，https://www.canyandata.com/about/ 。行业查询与选址，通用API未核。</li>
+</ol>
+<h2 id="_4">美团细分业务对照（对采购至关重要）</h2>
+<table>
+<thead>
+<tr>
+<th>业务</th>
+<th>合理字段与口径</th>
+<th>已确认第三方方向</th>
+<th>本次没有确认的部分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>餐饮外卖</td>
+<td>自营订单金额/数量/退款；竞品商品月售展示、菜单价、满减、店铺评分/评价</td>
+<td>自营：九数云、餐道；竞品：富泰科外卖版，鼎点/极致了待试采</td>
+<td>竞品精确日订单和广告消耗不由公开月售推出</td>
+</tr>
+<tr>
+<td>美团闪购/商超便利</td>
+<td>门店SKU、条码/规格、库存、价格/优惠、商品月售展示</td>
+<td>富泰科闪购商超专用版；ERP平台支持由其他组核验</td>
+<td>九数云美团餐饮连接器不能直接算支持闪购；鼎点/极致了未分场景承诺</td>
+</tr>
+<tr>
+<td>美团买药/药店</td>
+<td>药品SKU、价格、原价、优惠、商品月售、门店信息</td>
+<td>富泰科药店定制版；鼎点药品控价方向</td>
+<td>药品条码、规格、门店区域覆盖需样本验证；无全网成交净额证明</td>
+</tr>
+<tr>
+<td>到店团购/点评</td>
+<td>团购商品、售券/核销/退款/结算；门店评价/星级；到店广告CPC日报</td>
+<td>自营：九数云（餐饮）、云飞API、无限聚核、餐道</td>
+<td>团购券累计销量不等于到店消费；API是否覆盖非餐饮到综要分授权</td>
+</tr>
+<tr>
+<td>美团联盟</td>
+<td>可推广券/商品、价格、佣金、联盟展示销量、推广归因订单</td>
+<td>联盟聚合商另由root负责</td>
+<td>官方saleVolume是联盟销量档位，不是美团全站销量；未发现评价原文</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">官方能力边界（用作第三方宣称校验，不作为用户主清单）</h2>
+<table>
+<thead>
+<tr>
+<th>官方平台</th>
+<th>能力与接入边界</th>
+<th>直接来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>美团技术服务合作中心/外卖</td>
+<td>门店授权后商品/订单/评价/营销活动API。官网明确批量查外卖评价及回复，支持粉丝券及效果查询；经营数据属于授权商家</td>
+<td>https://developer.meituan.com/ability-center/list ，https://developer.meituan.com/isv/waimai?location=foodManagement</td>
+</tr>
+<tr>
+<td>美团服务零售/大众点评</td>
+<td>门店评价详情/总评、星级；团购核销、商品/订单、经营消费数据；不等于任意竞品评论开放库</td>
+<td>https://open.dianping.com/ ，https://developer.meituan.com/docs/biz/biz_jmcard_a09c0b08-2958-4bab-9ca7-48e7ea16aa22</td>
+</tr>
+<tr>
+<td>美团联盟</td>
+<td>商品查询返回原价、售价、佣金、价格标签和saleVolume。该销量明确仅联盟销量且如100+/1000+</td>
+<td>https://page.meituan.net/html/1701831807616_1db0df/index.html</td>
+</tr>
+<tr>
+<td>淘宝闪购服务商平台（原饿了么）</td>
+<td>订单/商品/店铺/配送；生意参谋和CRM属于特权接口，需审批，服务商有等保或聚石塔条件</td>
+<td>https://open.shop.ele.me/openapi/interface-billing/index ，https://open.shop.ele.me/openapi/documents/privilegeapi</td>
+</tr>
+<tr>
+<td>抖店开放平台</td>
+<td>商品/SKU/库存/订单/售后；订单列表须店铺授权，当前文档限定近90天。不要把抖音小程序评价接口混同为全抖店评论接口</td>
+<td>https://op.jinritemai.com/home ，https://op.jinritemai.com/docs/api-docs/15/521</td>
+</tr>
+<tr>
+<td>巨量引擎/千川/本地推</td>
+<td>授权广告账户计划/直播间/商品报表，广告与素材管理；有MCP报表查询。只返回授权账户，不给竞品真实消耗</td>
+<td>https://open.oceanengine.com/mui/doc/v2/1776463843653639 ，https://open.oceanengine.com/mcp?app_id=1837698859935771</td>
+</tr>
+<tr>
+<td>快手电商开放平台</td>
+<td>商品/SKU/库存、订单、退款、物流、分销、客服；用户OAuth授权后访问；评价正文未在本次公开电商文档核到</td>
+<td>https://open.kwaixiaodian.com/?cateId=all ，https://open.kwaixiaodian.com/docs/dev?pageSign=8cca5d25ba0015e5045a7ebec6383b741614263875756</td>
+</tr>
+<tr>
+<td>快手磁力引擎</td>
+<td>授权广告主实时/离线多维报表、计划/创意、人群/素材；某程序化创意报告只查最近7天</td>
+<td>https://developers.e.kuaishou.com/ ，https://developers.e.kuaishou.com/docs?docType=DSP&amp;documentId=2610&amp;menuId=3334</td>
+</tr>
+<tr>
+<td>小红书商家开放平台</td>
+<td>订单/商品/库存存在官方文档；本次未验证全网笔记/全网竞品商品评价的官方开放接口</td>
+<td>https://school.xiaohongshu.com/en/open/index.html ，https://school.xiaohongshu.com/en/open/product/summary.html</td>
+</tr>
+</tbody>
+</table>
+<p>注意最近字段回收：美团公告明确2026-02-05起，对“打印出餐”“聚合配送”场景的部分服务商不再透出拼好饭订单价格/商品价格/优惠。即使同为订单API，不同应用场景也会有不同字段。来源：https://developer.meituan.com/isv/announcement/detail?dockey=anno-platform-rule&amp;id=announcement-6248 。</p>
+<h2 id="_6">发现的常见虚假/过度概括风险</h2>
+<ul>
+<li>QVeris一篇介绍TikHub的文章声称覆盖淘宝、京东、拼多多、美团/点评，但TikHub自己的当前API目录没有核到美团/点评，FAQ还明确没有抖音店铺/商品API。不能据聚合渠道文章把TikHub列为国内全电商交易数据源。官方校验：https://tikhub.io/zh/faq ，https://api.tikhub.io/ 。TikHub仍可作为社媒营销内容/口碑补充；小红书商品评论总览有公开接口：https://docs.tikhub.io/420136404e0 。</li>
+<li>切勿将快手小程序团购“mock数据接口”当成快手电商真实平台API；抖音小程序订单评价也不能替代抖店商品评论。</li>
+<li>品牌声称支持“美团”时，应让对方分别勾选：餐饮外卖、闪购商超、买药、到店餐饮、服务零售/点评；API、Excel版本、是否需要自有店铺授权、展示月售与真实订单，必须拆开验收。</li>
+</ul></article></body></html>

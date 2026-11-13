@@ -1,0 +1,3718 @@
+{
+  "checkedOn": "2026-11-13",
+  "domesticTestDate": "2026-11-06",
+  "overseasTestDate": "2026-11-13",
+  "scope": "10平台；海外美国站；商品买家原文评论",
+  "budgetUnit": "每平台每月有效非空、去重、剔除默认好评的正文；样本外推不是产能保证",
+  "rows": [
+    {
+      "id": "taobao",
+      "group": "domestic",
+      "priority": 1,
+      "platform": "淘宝",
+      "status": "check",
+      "statusLabel": "暂缓",
+      "decision": "换商品、间隔重试仍502/503",
+      "identifier": "/v1/raw/taobao/comments",
+      "url": "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+      "evidence": "第二轮5次请求均失败；含换商品、最小参数和冷却重试。",
+      "price": "$0.0135 / 成功非空请求",
+      "priceNote": "v2 $0.01691/次；有效评论成本未知",
+      "summary": "换商品、间隔重试仍502/503",
+      "briefChoice": "taobao/comments + comments_v2",
+      "briefDecision": "暂缓",
+      "briefNote": "换商品、间隔重试仍502/503"
+    },
+    {
+      "id": "tmall",
+      "group": "domestic",
+      "priority": 2,
+      "platform": "天猫",
+      "status": "check",
+      "statusLabel": "暂缓",
+      "decision": "独立天猫商品仍502/503",
+      "identifier": "/v1/raw/taobao/comments",
+      "url": "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+      "evidence": "独立天猫商品第二轮3次请求均失败。",
+      "price": "$0.0135 / 成功非空请求",
+      "priceNote": "与淘宝共用端点；不代表一次调用覆盖两站",
+      "summary": "独立天猫商品仍502/503",
+      "briefChoice": "taobao/comments + comments_v2",
+      "briefDecision": "暂缓",
+      "briefNote": "独立天猫商品仍502/503"
+    },
+    {
+      "id": "douyin_shop",
+      "group": "domestic",
+      "priority": 3,
+      "platform": "抖音商城",
+      "status": "go",
+      "statusLabel": "排开发",
+      "decision": "已取到正文；过滤空文本",
+      "identifier": "/v1/raw/douyin/goods_comments",
+      "url": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments/",
+      "evidence": "第二轮1次成功：20行、8条正文；sku均为默认占位值。",
+      "price": "$0.0005 / 成功非空请求",
+      "priceNote": "v1；v2贵33.82倍，不能自动回退",
+      "summary": "已取到正文；过滤空文本",
+      "briefChoice": "douyin/goods_comments v1",
+      "briefDecision": "排开发",
+      "briefNote": "已取到正文；过滤空文本"
+    },
+    {
+      "id": "pinduoduo",
+      "group": "domestic",
+      "priority": 4,
+      "platform": "拼多多",
+      "status": "hold",
+      "statusLabel": "暂缓",
+      "decision": "Qovia 尚无对应接口",
+      "identifier": "—",
+      "url": "https://qovia.ai/openapi.json",
+      "evidence": "公开OpenAPI166条路径无拼多多端点。",
+      "price": "无端点 · 无报价",
+      "priceNote": "不进入预算合计",
+      "summary": "Qovia 尚无对应接口",
+      "briefChoice": "暂无公开端点",
+      "briefDecision": "暂缓",
+      "briefNote": "Qovia 尚无对应接口"
+    },
+    {
+      "id": "jd",
+      "group": "domestic",
+      "priority": 5,
+      "platform": "京东",
+      "status": "go",
+      "statusLabel": "排开发",
+      "decision": "已取到正文；历史深度待验",
+      "identifier": "/v1/raw/jd/comments",
+      "url": "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+      "evidence": "第二轮1次成功：10行10条正文、9条附图；shop_reply全空。",
+      "price": "$0.0195 / 成功非空请求",
+      "priceNote": "每页最多10条；完整历史未验证",
+      "summary": "已取到正文；历史深度待验",
+      "briefChoice": "jd/comments",
+      "briefDecision": "排开发",
+      "briefNote": "已取到正文；历史深度待验"
+    },
+    {
+      "id": "amazon",
+      "group": "overseas",
+      "priority": 1,
+      "platform": "Amazon",
+      "status": "go",
+      "statusLabel": "选它接入",
+      "decision": "保留主选；2个商品均通过，Free每次最多5条，商品详情选项尚未验成。",
+      "identifier": "junglee/amazon-reviews-scraper",
+      "url": "https://apify.com/junglee/amazon-reviews-scraper",
+      "evidence": "原选Actor本轮2/2次通过，10条正文。Console启动＋API读取。",
+      "price": "Starter $5 / 千条计费评论",
+      "priceNote": "已实测计费单位；批量成本按计划单价估算",
+      "summary": "2个商品通过；Free 单次最多5条",
+      "briefChoice": "junglee/amazon-reviews-scraper",
+      "briefDecision": "选它接入",
+      "briefNote": "2个商品通过；Free 单次最多5条",
+      "chosenActor": "junglee/amazon-reviews-scraper",
+      "chosenActorUrl": "https://apify.com/junglee/amazon-reviews-scraper",
+      "trial": {
+        "id": "amazon",
+        "platform": "Amazon",
+        "actor": "junglee/amazon-reviews-scraper",
+        "actorUrl": "https://apify.com/junglee/amazon-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.1.367",
+        "finishedAt": "2026-11-13T15:03:23.646Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "B0CWXNS552",
+        "input": {
+          "deduplicateRedirectedAsins": true,
+          "filterByRatings": [
+            "allStars"
+          ],
+          "includeGdprSensitive": false,
+          "maxReviews": 5,
+          "productUrls": [
+            {
+              "url": "https://www.amazon.com/dp/B0CWXNS552"
+            }
+          ],
+          "reviewsAlwaysSaveCategoryData": false,
+          "reviewsUseProductVariantFilter": false,
+          "scrapeProductDetails": false,
+          "sort": "helpful"
+        },
+        "usageUsd": 0.03,
+        "chargedEvents": {
+          "result": 5,
+          "dateFilterNewerThan": 0
+        },
+        "runtimeSeconds": 11.36,
+        "memoryMb": 4096,
+        "timeoutSeconds": 180,
+        "earliestReviewDate": "2025-12-12",
+        "latestReviewDate": "2026-10-16",
+        "priorSampleOverlap": 5,
+        "observedFields": [
+          "reviewTitle",
+          "reviewDescription",
+          "ratingScore",
+          "reviewImages",
+          "reviewId",
+          "date",
+          "reviewedIn",
+          "reviewUrl",
+          "reviewReaction",
+          "isVerified",
+          "isAmazonVine",
+          "variant",
+          "variantAttributes",
+          "userProfileLink",
+          "userId",
+          "position",
+          "totalCategoryRatings",
+          "totalCategoryReviews",
+          "reviewCategoryUrl",
+          "filterByRating",
+          "filterByKeyword",
+          "productAsin",
+          "productOriginalAsin",
+          "variantAsin",
+          "product",
+          "input",
+          "country",
+          "countryCode"
+        ],
+        "fieldMapping": {
+          "body": "reviewDescription",
+          "reviewId": "reviewId",
+          "rating": "ratingScore",
+          "date": "date",
+          "productId": "productAsin"
+        },
+        "example": {
+          "bodyExcerpt": "I found the Apple AirTag very practical. It is small, easy to…",
+          "rating": 5,
+          "date": "2026-08-13",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "Free 单次最多5条；本次复跑与此前5条全部重合，不能算新增10条。",
+          "生产需要付费套餐；日期筛选另按事件计费，本次未启用。"
+        ]
+      }
+    },
+    {
+      "id": "temu",
+      "group": "overseas",
+      "priority": 2,
+      "platform": "Temu",
+      "status": "check",
+      "statusLabel": "仅预览备选",
+      "decision": "原选omkar不通过跨商品复验；cliqtomedia同两商品各得4条，限详情和评论预览；批量评论暂缓。",
+      "identifier": "cliqtomedia/temu-scraper",
+      "url": "https://apify.com/cliqtomedia/temu-scraper",
+      "evidence": "原选omkar 1/3通过；替代cliqtomedia 2商品各4条预览，均成功。",
+      "price": "Free $0.0162 / 商品详情页 + $0.00005 / 启动",
+      "priceNote": "按商品页计费；仅公开评论预览，不纳入批量评论预算",
+      "summary": "2商品各4条；批量评论暂缓",
+      "briefChoice": "cliqtomedia/temu-scraper",
+      "briefDecision": "仅预览备选",
+      "briefNote": "2商品各4条；批量评论暂缓",
+      "chosenActor": "cliqtomedia/temu-scraper",
+      "chosenActorUrl": "https://apify.com/cliqtomedia/temu-scraper",
+      "historicalTrial": {
+        "id": "temu",
+        "platform": "Temu",
+        "actor": "omkar-cloud/temu-reviews-scraper",
+        "actorUrl": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.3",
+        "finishedAt": "2026-11-13T14:58:24.907Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "601099537773480",
+        "input": {
+          "country": "us",
+          "maxResults": 5,
+          "maxReviewsPerProduct": 5,
+          "products": [
+            "https://www.temu.com/goods.html?goods_id=601099537773480"
+          ],
+          "withPhotosOnly": false
+        },
+        "usageUsd": 0.01005,
+        "chargedEvents": {
+          "apify-actor-start": 1,
+          "apify-default-dataset-item": 5
+        },
+        "runtimeSeconds": 1.949,
+        "memoryMb": 256,
+        "timeoutSeconds": 600,
+        "earliestReviewDate": "2024-05-04",
+        "latestReviewDate": "2025-04-19",
+        "priorSampleOverlap": null,
+        "observedFields": [
+          "input",
+          "source",
+          "position",
+          "country",
+          "review_id",
+          "rating",
+          "text",
+          "translated_text",
+          "date",
+          "author",
+          "author_country",
+          "variant",
+          "fit",
+          "images",
+          "videos",
+          "product_id",
+          "product_name",
+          "product_link",
+          "product_image",
+          "store_id",
+          "store_link",
+          "overall_rating",
+          "overall_review_count",
+          "five_star_percent",
+          "one_star_percent"
+        ],
+        "fieldMapping": {
+          "body": "text",
+          "reviewId": "review_id",
+          "rating": "rating",
+          "date": "date",
+          "productId": "product_id"
+        },
+        "example": {
+          "bodyExcerpt": "love these pearl bracelets. so cute & stylish. will definitely buy more…",
+          "rating": 5,
+          "date": "2025-04-19",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "最多100条/商品；本轮返回2024–2025年评价，非时间排序。",
+          "采用度低；本次成功不等于能完整覆盖历史或稳定增量。"
+        ]
+      },
+      "trial": {
+        "actor": "cliqtomedia/temu-scraper",
+        "url": "https://apify.com/cliqtomedia/temu-scraper",
+        "decision": "详情与公开评论预览备选；不作为批量评论主选",
+        "trials": [
+          {
+            "test": "temu-alt-powerstrip",
+            "actor": "cliqtomedia/temu-scraper",
+            "productId": "601100577974046",
+            "status": "SUCCEEDED",
+            "productRows": 1,
+            "reviewPreviews": 4,
+            "validTexts": 4,
+            "uniqueReviewIds": 4,
+            "usageUsd": 0.01625,
+            "runtimeSeconds": 6.206,
+            "build": "0.1.70",
+            "input": {
+              "excludeAds": false,
+              "excludeAdultProducts": false,
+              "maxItems": 1,
+              "onlyNew": false,
+              "resetState": false,
+              "startUrls": [
+                "https://www.temu.com/goods.html?goods_id=601100577974046"
+              ],
+              "country": "US",
+              "mode": "auto",
+              "dataLevel": "auto",
+              "stateName": "default"
+            },
+            "fields": [
+              "rowType",
+              "status",
+              "detailLevel",
+              "goodsId",
+              "title",
+              "price",
+              "priceText",
+              "currency",
+              "originalPrice",
+              "discountPercent",
+              "minPrice",
+              "maxPrice",
+              "sales",
+              "salesText",
+              "salesIsLowerBound",
+              "rating",
+              "reviewCount",
+              "url",
+              "images",
+              "videoUrl",
+              "skuId",
+              "sellerId",
+              "sellerName",
+              "sellerUrl",
+              "categoryId",
+              "categoryPath",
+              "description",
+              "specifications",
+              "skus",
+              "reviews",
+              "inStock",
+              "shippingText",
+              "returnPolicy",
+              "isAdultProduct",
+              "isAd",
+              "tags",
+              "country",
+              "rank",
+              "source",
+              "sourceUrl",
+              "fetchedAt",
+              "changeType",
+              "changedFields"
+            ],
+            "reviewFields": [
+              "reviewId",
+              "rating",
+              "text",
+              "reviewedAt",
+              "images",
+              "videoUrls"
+            ],
+            "billing": {
+              "apify-actor-start": 1,
+              "catalog-page": 0,
+              "product": 0,
+              "product-details": 1
+            }
+          },
+          {
+            "test": "temu-alt-containers",
+            "actor": "cliqtomedia/temu-scraper",
+            "productId": "601099684111165",
+            "status": "SUCCEEDED",
+            "productRows": 1,
+            "reviewPreviews": 4,
+            "validTexts": 4,
+            "uniqueReviewIds": 4,
+            "usageUsd": 0.01625,
+            "runtimeSeconds": 6.805,
+            "build": "0.1.70",
+            "input": {
+              "excludeAds": false,
+              "excludeAdultProducts": false,
+              "maxItems": 1,
+              "onlyNew": false,
+              "resetState": false,
+              "startUrls": [
+                "https://www.temu.com/goods.html?goods_id=601099684111165"
+              ],
+              "country": "US",
+              "mode": "auto",
+              "dataLevel": "auto",
+              "stateName": "default"
+            },
+            "fields": [
+              "rowType",
+              "status",
+              "detailLevel",
+              "goodsId",
+              "title",
+              "price",
+              "priceText",
+              "currency",
+              "originalPrice",
+              "discountPercent",
+              "minPrice",
+              "maxPrice",
+              "sales",
+              "salesText",
+              "salesIsLowerBound",
+              "rating",
+              "reviewCount",
+              "url",
+              "images",
+              "videoUrl",
+              "skuId",
+              "sellerId",
+              "sellerName",
+              "sellerUrl",
+              "categoryId",
+              "categoryPath",
+              "description",
+              "specifications",
+              "skus",
+              "reviews",
+              "inStock",
+              "shippingText",
+              "returnPolicy",
+              "isAdultProduct",
+              "isAd",
+              "tags",
+              "country",
+              "rank",
+              "source",
+              "sourceUrl",
+              "fetchedAt",
+              "changeType",
+              "changedFields"
+            ],
+            "reviewFields": [
+              "reviewId",
+              "rating",
+              "text",
+              "reviewedAt",
+              "images",
+              "videoUrls"
+            ],
+            "billing": {
+              "apify-actor-start": 1,
+              "catalog-page": 0,
+              "product": 0,
+              "product-details": 1
+            }
+          }
+        ],
+        "limitation": "两个商品各4条；无评论分页或数量参数，不能推算完整历史。每Dataset行是一个商品，评论嵌在reviews数组。",
+        "adoption": {
+          "users": 7,
+          "monthlyUsers": 2,
+          "reviews": 0,
+          "checkedOn": "2026-11-13"
+        },
+        "pricePerProductDetailUsd": {
+          "Free": 0.0162,
+          "Starter": 0.01458,
+          "Scale": 0.01296,
+          "Business": 0.01134
+        },
+        "startUsd": 5e-05,
+        "billingNote": "按商品详情页计费，不是按评论条数；成功抓到详情但过滤未输出仍可收详情事件费。最低每次费用上限设置$0.05并非最低消费。",
+        "source": "https://apify.com/cliqtomedia/temu-scraper/pricing"
+      }
+    },
+    {
+      "id": "tiktok_shop",
+      "group": "overseas",
+      "priority": 3,
+      "platform": "TikTok Shop",
+      "status": "go",
+      "statusLabel": "选它接入",
+      "decision": "保留主选；新商品15条跨2页通过，product_id有值而productId为空，映射须修正。",
+      "identifier": "vistics/tiktok-shop-product-reviews",
+      "url": "https://apify.com/vistics/tiktok-shop-product-reviews",
+      "evidence": "原选Actor本轮2/2次通过，20条正文。Console启动＋API读取。",
+      "price": "$2 / 千个 Dataset items",
+      "priceNote": "已实测计费单位；批量成本按计划单价估算",
+      "summary": "2个商品通过；已验2页15条",
+      "briefChoice": "vistics/tiktok-shop-product-reviews",
+      "briefDecision": "选它接入",
+      "briefNote": "2个商品通过；已验2页15条",
+      "chosenActor": "vistics/tiktok-shop-product-reviews",
+      "chosenActorUrl": "https://apify.com/vistics/tiktok-shop-product-reviews",
+      "trial": {
+        "id": "tiktok_shop",
+        "platform": "TikTok Shop",
+        "actor": "vistics/tiktok-shop-product-reviews",
+        "actorUrl": "https://apify.com/vistics/tiktok-shop-product-reviews",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.35",
+        "finishedAt": "2026-11-13T15:01:03.346Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "1731578642912612516",
+        "input": {
+          "maxReviews": 5,
+          "region": "US",
+          "startUrls": [
+            "https://www.tiktok.com/shop/pdp/cat-nail-clipper-by-potaroma-adjustable-sizes-built-in-file-safe-for-kittens-cats/1731578642912612516"
+          ]
+        },
+        "usageUsd": 0.02,
+        "chargedEvents": {
+          "apify-default-dataset-item": 5,
+          "apify-actor-start": 1
+        },
+        "runtimeSeconds": 4.879,
+        "memoryMb": 512,
+        "timeoutSeconds": 300,
+        "earliestReviewDate": "2026-02-21",
+        "latestReviewDate": "2026-09-23",
+        "priorSampleOverlap": null,
+        "observedFields": [
+          "productUrl",
+          "productId",
+          "region",
+          "totalReviews",
+          "review_id",
+          "product_id",
+          "reviewer_id",
+          "review_rating",
+          "review_time",
+          "is_verified_purchase",
+          "is_incentivized_review",
+          "product_name",
+          "reviewer_name",
+          "reviewer_avatar_url",
+          "review_text",
+          "display_image_url",
+          "review_images",
+          "sku_specification",
+          "review_country"
+        ],
+        "fieldMapping": {
+          "body": "review_text",
+          "reviewId": "review_id",
+          "rating": "review_rating",
+          "date": "review_time",
+          "productId": "product_id"
+        },
+        "example": {
+          "bodyExcerpt": "These are the best nail clippers I’ve found for cats. I was…",
+          "rating": 5,
+          "date": "2026-09-21",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "本次确认一条评论对应一个Dataset计费行；另收$0.01启动事件。",
+          "商品名称字段为空；返回评论非时间排序，不能承诺最新评论。"
+        ]
+      }
+    },
+    {
+      "id": "ebay",
+      "group": "overseas",
+      "priority": 4,
+      "platform": "eBay",
+      "status": "check",
+      "statusLabel": "限范围接入",
+      "decision": "限商品目录场景接入；2商品通过，不能当作单店铺评价；采用度低。",
+      "identifier": "apt_marble/ebay-product-reviews-scraper",
+      "url": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+      "evidence": "原选Actor本轮2/2次通过，20条正文。Console启动＋API读取。",
+      "price": "候选 $1 / 千条评论",
+      "priceNote": "已实测计费单位；批量成本按计划单价估算",
+      "summary": "2个商品通过；目录评价跨卖家",
+      "briefChoice": "apt_marble/ebay-product-reviews-scraper",
+      "briefDecision": "限范围接入",
+      "briefNote": "2个商品通过；目录评价跨卖家",
+      "chosenActor": "apt_marble/ebay-product-reviews-scraper",
+      "chosenActorUrl": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+      "trial": {
+        "id": "ebay",
+        "platform": "eBay",
+        "actor": "apt_marble/ebay-product-reviews-scraper",
+        "actorUrl": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.2",
+        "finishedAt": "2026-11-13T15:02:31.625Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "22054478105",
+        "input": {
+          "includeProductSummary": false,
+          "marketplace": "US",
+          "maxConcurrency": 1,
+          "maxReviewsPerProduct": 5,
+          "products": [
+            "https://www.ebay.com/p/22054478105"
+          ],
+          "sort": "newest"
+        },
+        "usageUsd": 0.005,
+        "chargedEvents": {
+          "apify-default-dataset-item": 5,
+          "product-review-summary": 0
+        },
+        "runtimeSeconds": 4.17,
+        "memoryMb": 512,
+        "timeoutSeconds": 300,
+        "earliestReviewDate": "2026-10-09",
+        "latestReviewDate": "2026-11-04",
+        "priorSampleOverlap": null,
+        "observedFields": [
+          "rowType",
+          "epid",
+          "reviewId",
+          "author",
+          "authorProfileUrl",
+          "rating",
+          "title",
+          "body",
+          "dateText",
+          "dateIso",
+          "helpfulVotes",
+          "unhelpfulVotes",
+          "verifiedPurchase",
+          "conditionPurchased",
+          "soldBySeller",
+          "position",
+          "sortOrder",
+          "url",
+          "requestedInput",
+          "resolvedFromItemId",
+          "marketplace",
+          "scrapedAt"
+        ],
+        "fieldMapping": {
+          "body": "body",
+          "reviewId": "reviewId",
+          "rating": "rating",
+          "date": "dateIso",
+          "productId": "epid"
+        },
+        "example": {
+          "bodyExcerpt": "Bass is distorted at high volume. Using audio jack cable produces low…",
+          "rating": 2,
+          "date": "2026-11-04",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "返回rowType=review和1–5星商品评价，未混入卖家交易反馈。",
+          "ePID是商品目录；评论可能跨卖家汇总，不等于某一店铺独享。",
+          "采用度低；小样本通过后仍需跨商品验收。"
+        ]
+      }
+    },
+    {
+      "id": "walmart",
+      "group": "overseas",
+      "priority": 5,
+      "platform": "Walmart",
+      "status": "go",
+      "statusLabel": "选它接入",
+      "decision": "保留主选；2商品成功，但必须完整商品URL，短链接空结果仍计为失败。",
+      "identifier": "e-commerce/walmart-reviews-scraper",
+      "url": "https://apify.com/e-commerce/walmart-reviews-scraper",
+      "evidence": "原选Actor本轮2/3次通过，20条正文。Console启动＋API读取。",
+      "price": "Starter $2 / 千条计费评论",
+      "priceNote": "已实测计费单位；批量成本按计划单价估算",
+      "summary": "须完整商品URL；短链接空结果",
+      "briefChoice": "e-commerce/walmart-reviews-scraper",
+      "briefDecision": "选它接入",
+      "briefNote": "须完整商品URL；短链接空结果",
+      "chosenActor": "e-commerce/walmart-reviews-scraper",
+      "chosenActorUrl": "https://apify.com/e-commerce/walmart-reviews-scraper",
+      "trial": {
+        "id": "walmart",
+        "platform": "Walmart",
+        "actor": "e-commerce/walmart-reviews-scraper",
+        "actorUrl": "https://apify.com/e-commerce/walmart-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.84",
+        "finishedAt": "2026-11-13T15:04:17.230Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "771934678",
+        "input": {
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 5,
+          "reviewsSortType": "submission-desc",
+          "startUrls": [
+            {
+              "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+            }
+          ]
+        },
+        "usageUsd": 0.0251,
+        "chargedEvents": {
+          "start": 1,
+          "push-product-reviews": 5
+        },
+        "runtimeSeconds": 9.034,
+        "memoryMb": 256,
+        "timeoutSeconds": 180,
+        "earliestReviewDate": "2026-10-06",
+        "latestReviewDate": "2026-11-01",
+        "priorSampleOverlap": 5,
+        "observedFields": [
+          "itemType",
+          "reviewId",
+          "productId",
+          "productUrl",
+          "productName",
+          "authorId",
+          "submissionTime",
+          "rating",
+          "text",
+          "title",
+          "badges",
+          "negativeFeedback",
+          "positiveFeedback",
+          "recommended",
+          "userNickname",
+          "syndicationSource",
+          "externalSource",
+          "photos"
+        ],
+        "fieldMapping": {
+          "body": "text",
+          "reviewId": "reviewId",
+          "rating": "rating",
+          "date": "submissionTime",
+          "productId": "productId"
+        },
+        "example": {
+          "bodyExcerpt": "I have 1 kid with sensitive skin so i have been using…",
+          "rating": 5,
+          "date": "2026-11-01",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "本次5条均带bazaarvoice及转载来源，若只要Walmart原生评价，需另外筛选并复测产出率。",
+          "Full permissions 已获用户授权；应隔离采集账号。"
+        ]
+      }
+    }
+  ],
+  "budgetRows": [
+    {
+      "id": "douyin_shop",
+      "name": "抖音商城",
+      "provider": "Qovia",
+      "included": true,
+      "requestPrice": 0.0005,
+      "source": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments/",
+      "conditional": false,
+      "yield": 5.0
+    },
+    {
+      "id": "jd",
+      "name": "京东",
+      "provider": "Qovia",
+      "included": true,
+      "requestPrice": 0.0195,
+      "source": "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+      "conditional": false,
+      "yield": 9.666666666666666
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "provider": "Apify",
+      "included": true,
+      "validPercent": 100,
+      "prices": {
+        "Free": 6.0,
+        "Starter": 5.0,
+        "Scale": 4.0,
+        "Business": 3.0
+      },
+      "starts": {
+        "Free": 0,
+        "Starter": 0,
+        "Scale": 0,
+        "Business": 0
+      },
+      "source": "https://apify.com/junglee/amazon-reviews-scraper/pricing",
+      "conditional": false
+    },
+    {
+      "id": "tiktok_shop",
+      "name": "TikTok Shop",
+      "provider": "Apify",
+      "included": true,
+      "validPercent": 100,
+      "prices": {
+        "Free": 2,
+        "Starter": 2,
+        "Scale": 2,
+        "Business": 2
+      },
+      "starts": {
+        "Free": 0.01,
+        "Starter": 0.01,
+        "Scale": 0.01,
+        "Business": 0.01
+      },
+      "source": "https://apify.com/vistics/tiktok-shop-product-reviews/pricing",
+      "conditional": false
+    },
+    {
+      "id": "ebay",
+      "name": "eBay",
+      "provider": "Apify",
+      "included": true,
+      "validPercent": 100,
+      "prices": {
+        "Free": 1,
+        "Starter": 1,
+        "Scale": 1,
+        "Business": 1
+      },
+      "starts": {
+        "Free": 0,
+        "Starter": 0,
+        "Scale": 0,
+        "Business": 0
+      },
+      "conditional": false,
+      "source": "https://apify.com/apt_marble/ebay-product-reviews-scraper/pricing"
+    },
+    {
+      "id": "walmart",
+      "name": "Walmart",
+      "provider": "Apify",
+      "included": true,
+      "validPercent": 100,
+      "prices": {
+        "Free": 5.0,
+        "Starter": 2.0,
+        "Scale": 1.5,
+        "Business": 1.0
+      },
+      "starts": {
+        "Free": 0.0001,
+        "Starter": 9e-05,
+        "Scale": 8e-05,
+        "Business": 7e-05
+      },
+      "source": "https://apify.com/e-commerce/walmart-reviews-scraper/pricing",
+      "conditional": false
+    }
+  ],
+  "sourceFiles": [
+    "国内-Qovia.json",
+    "海外-Apify-核心.json",
+    "海外-Apify-Temu-TikTok.json",
+    "补验-Qovia-20261113.json",
+    "Actor补齐-Temu.json",
+    "Actor补齐-eBay.json",
+    "Actor实测-20261113.json",
+    "Actor复验-20261113.json",
+    "字段覆盖-20261113.json",
+    "需求字段-飞书-20261113.json",
+    "补验-Qovia-20261113-第二轮.json",
+    "历史测试口径核对-20261114.json"
+  ],
+  "newAuthenticatedTestsThisRound": 14,
+  "latestActorTrials": {
+    "checkedOn": "2026-11-13",
+    "scope": "美国站；五个选定Actor，每个1商品、目标5条评论",
+    "trials": [
+      {
+        "id": "amazon",
+        "platform": "Amazon",
+        "actor": "junglee/amazon-reviews-scraper",
+        "actorUrl": "https://apify.com/junglee/amazon-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.1.367",
+        "finishedAt": "2026-11-13T15:03:23.646Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "B0CWXNS552",
+        "input": {
+          "deduplicateRedirectedAsins": true,
+          "filterByRatings": [
+            "allStars"
+          ],
+          "includeGdprSensitive": false,
+          "maxReviews": 5,
+          "productUrls": [
+            {
+              "url": "https://www.amazon.com/dp/B0CWXNS552"
+            }
+          ],
+          "reviewsAlwaysSaveCategoryData": false,
+          "reviewsUseProductVariantFilter": false,
+          "scrapeProductDetails": false,
+          "sort": "helpful"
+        },
+        "usageUsd": 0.03,
+        "chargedEvents": {
+          "result": 5,
+          "dateFilterNewerThan": 0
+        },
+        "runtimeSeconds": 11.36,
+        "memoryMb": 4096,
+        "timeoutSeconds": 180,
+        "earliestReviewDate": "2025-12-12",
+        "latestReviewDate": "2026-10-16",
+        "priorSampleOverlap": 5,
+        "observedFields": [
+          "reviewTitle",
+          "reviewDescription",
+          "ratingScore",
+          "reviewImages",
+          "reviewId",
+          "date",
+          "reviewedIn",
+          "reviewUrl",
+          "reviewReaction",
+          "isVerified",
+          "isAmazonVine",
+          "variant",
+          "variantAttributes",
+          "userProfileLink",
+          "userId",
+          "position",
+          "totalCategoryRatings",
+          "totalCategoryReviews",
+          "reviewCategoryUrl",
+          "filterByRating",
+          "filterByKeyword",
+          "productAsin",
+          "productOriginalAsin",
+          "variantAsin",
+          "product",
+          "input",
+          "country",
+          "countryCode"
+        ],
+        "fieldMapping": {
+          "body": "reviewDescription",
+          "reviewId": "reviewId",
+          "rating": "ratingScore",
+          "date": "date",
+          "productId": "productAsin"
+        },
+        "example": {
+          "bodyExcerpt": "I found the Apple AirTag very practical. It is small, easy to…",
+          "rating": 5,
+          "date": "2026-08-13",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "Free 单次最多5条；本次复跑与此前5条全部重合，不能算新增10条。",
+          "生产需要付费套餐；日期筛选另按事件计费，本次未启用。"
+        ]
+      },
+      {
+        "id": "temu",
+        "platform": "Temu",
+        "actor": "omkar-cloud/temu-reviews-scraper",
+        "actorUrl": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.3",
+        "finishedAt": "2026-11-13T14:58:24.907Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "601099537773480",
+        "input": {
+          "country": "us",
+          "maxResults": 5,
+          "maxReviewsPerProduct": 5,
+          "products": [
+            "https://www.temu.com/goods.html?goods_id=601099537773480"
+          ],
+          "withPhotosOnly": false
+        },
+        "usageUsd": 0.01005,
+        "chargedEvents": {
+          "apify-actor-start": 1,
+          "apify-default-dataset-item": 5
+        },
+        "runtimeSeconds": 1.949,
+        "memoryMb": 256,
+        "timeoutSeconds": 600,
+        "earliestReviewDate": "2024-05-04",
+        "latestReviewDate": "2025-04-19",
+        "priorSampleOverlap": null,
+        "observedFields": [
+          "input",
+          "source",
+          "position",
+          "country",
+          "review_id",
+          "rating",
+          "text",
+          "translated_text",
+          "date",
+          "author",
+          "author_country",
+          "variant",
+          "fit",
+          "images",
+          "videos",
+          "product_id",
+          "product_name",
+          "product_link",
+          "product_image",
+          "store_id",
+          "store_link",
+          "overall_rating",
+          "overall_review_count",
+          "five_star_percent",
+          "one_star_percent"
+        ],
+        "fieldMapping": {
+          "body": "text",
+          "reviewId": "review_id",
+          "rating": "rating",
+          "date": "date",
+          "productId": "product_id"
+        },
+        "example": {
+          "bodyExcerpt": "love these pearl bracelets. so cute & stylish. will definitely buy more…",
+          "rating": 5,
+          "date": "2025-04-19",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "最多100条/商品；本轮返回2024–2025年评价，非时间排序。",
+          "采用度低；本次成功不等于能完整覆盖历史或稳定增量。"
+        ]
+      },
+      {
+        "id": "tiktok_shop",
+        "platform": "TikTok Shop",
+        "actor": "vistics/tiktok-shop-product-reviews",
+        "actorUrl": "https://apify.com/vistics/tiktok-shop-product-reviews",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.35",
+        "finishedAt": "2026-11-13T15:01:03.346Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "1731578642912612516",
+        "input": {
+          "maxReviews": 5,
+          "region": "US",
+          "startUrls": [
+            "https://www.tiktok.com/shop/pdp/cat-nail-clipper-by-potaroma-adjustable-sizes-built-in-file-safe-for-kittens-cats/1731578642912612516"
+          ]
+        },
+        "usageUsd": 0.02,
+        "chargedEvents": {
+          "apify-default-dataset-item": 5,
+          "apify-actor-start": 1
+        },
+        "runtimeSeconds": 4.879,
+        "memoryMb": 512,
+        "timeoutSeconds": 300,
+        "earliestReviewDate": "2026-02-21",
+        "latestReviewDate": "2026-09-23",
+        "priorSampleOverlap": null,
+        "observedFields": [
+          "productUrl",
+          "productId",
+          "region",
+          "totalReviews",
+          "review_id",
+          "product_id",
+          "reviewer_id",
+          "review_rating",
+          "review_time",
+          "is_verified_purchase",
+          "is_incentivized_review",
+          "product_name",
+          "reviewer_name",
+          "reviewer_avatar_url",
+          "review_text",
+          "display_image_url",
+          "review_images",
+          "sku_specification",
+          "review_country"
+        ],
+        "fieldMapping": {
+          "body": "review_text",
+          "reviewId": "review_id",
+          "rating": "review_rating",
+          "date": "review_time",
+          "productId": "product_id"
+        },
+        "example": {
+          "bodyExcerpt": "These are the best nail clippers I’ve found for cats. I was…",
+          "rating": 5,
+          "date": "2026-09-21",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "本次确认一条评论对应一个Dataset计费行；另收$0.01启动事件。",
+          "商品名称字段为空；返回评论非时间排序，不能承诺最新评论。"
+        ]
+      },
+      {
+        "id": "ebay",
+        "platform": "eBay",
+        "actor": "apt_marble/ebay-product-reviews-scraper",
+        "actorUrl": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.2",
+        "finishedAt": "2026-11-13T15:02:31.625Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "22054478105",
+        "input": {
+          "includeProductSummary": false,
+          "marketplace": "US",
+          "maxConcurrency": 1,
+          "maxReviewsPerProduct": 5,
+          "products": [
+            "https://www.ebay.com/p/22054478105"
+          ],
+          "sort": "newest"
+        },
+        "usageUsd": 0.005,
+        "chargedEvents": {
+          "apify-default-dataset-item": 5,
+          "product-review-summary": 0
+        },
+        "runtimeSeconds": 4.17,
+        "memoryMb": 512,
+        "timeoutSeconds": 300,
+        "earliestReviewDate": "2026-10-09",
+        "latestReviewDate": "2026-11-04",
+        "priorSampleOverlap": null,
+        "observedFields": [
+          "rowType",
+          "epid",
+          "reviewId",
+          "author",
+          "authorProfileUrl",
+          "rating",
+          "title",
+          "body",
+          "dateText",
+          "dateIso",
+          "helpfulVotes",
+          "unhelpfulVotes",
+          "verifiedPurchase",
+          "conditionPurchased",
+          "soldBySeller",
+          "position",
+          "sortOrder",
+          "url",
+          "requestedInput",
+          "resolvedFromItemId",
+          "marketplace",
+          "scrapedAt"
+        ],
+        "fieldMapping": {
+          "body": "body",
+          "reviewId": "reviewId",
+          "rating": "rating",
+          "date": "dateIso",
+          "productId": "epid"
+        },
+        "example": {
+          "bodyExcerpt": "Bass is distorted at high volume. Using audio jack cable produces low…",
+          "rating": 2,
+          "date": "2026-11-04",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "返回rowType=review和1–5星商品评价，未混入卖家交易反馈。",
+          "ePID是商品目录；评论可能跨卖家汇总，不等于某一店铺独享。",
+          "采用度低；小样本通过后仍需跨商品验收。"
+        ]
+      },
+      {
+        "id": "walmart",
+        "platform": "Walmart",
+        "actor": "e-commerce/walmart-reviews-scraper",
+        "actorUrl": "https://apify.com/e-commerce/walmart-reviews-scraper",
+        "result": "小样本通过",
+        "runStatus": "SUCCEEDED",
+        "build": "0.0.84",
+        "finishedAt": "2026-11-13T15:04:17.230Z",
+        "launchMethod": "Apify Console",
+        "apiStartTested": false,
+        "apiReadHttpStatus": 200,
+        "requestedReviews": 5,
+        "datasetRows": 5,
+        "validReviewTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "productId": "771934678",
+        "input": {
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 5,
+          "reviewsSortType": "submission-desc",
+          "startUrls": [
+            {
+              "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+            }
+          ]
+        },
+        "usageUsd": 0.0251,
+        "chargedEvents": {
+          "start": 1,
+          "push-product-reviews": 5
+        },
+        "runtimeSeconds": 9.034,
+        "memoryMb": 256,
+        "timeoutSeconds": 180,
+        "earliestReviewDate": "2026-10-06",
+        "latestReviewDate": "2026-11-01",
+        "priorSampleOverlap": 5,
+        "observedFields": [
+          "itemType",
+          "reviewId",
+          "productId",
+          "productUrl",
+          "productName",
+          "authorId",
+          "submissionTime",
+          "rating",
+          "text",
+          "title",
+          "badges",
+          "negativeFeedback",
+          "positiveFeedback",
+          "recommended",
+          "userNickname",
+          "syndicationSource",
+          "externalSource",
+          "photos"
+        ],
+        "fieldMapping": {
+          "body": "text",
+          "reviewId": "reviewId",
+          "rating": "rating",
+          "date": "submissionTime",
+          "productId": "productId"
+        },
+        "example": {
+          "bodyExcerpt": "I have 1 kid with sensitive skin so i have been using…",
+          "rating": 5,
+          "date": "2026-11-01",
+          "excerptIsPartial": true
+        },
+        "limitations": [
+          "本次5条均带bazaarvoice及转载来源，若只要Walmart原生评价，需另外筛选并复测产出率。",
+          "Full permissions 已获用户授权；应隔离采集账号。"
+        ]
+      }
+    ],
+    "totals": {
+      "attemptedRuns": 5,
+      "succeededRuns": 5,
+      "returnedRows": 25,
+      "validReviewTexts": 25,
+      "usageUsd": 0.09015
+    },
+    "interpretation": "5/5只指本轮五个任务成功；每个Actor仅测一个商品，不能推算生产成功率、限流或全历史覆盖。",
+    "apiBoundary": "本轮均由Console启动，随后通过正式Run、Dataset、INPUT API读取真实响应；本地POST启动尚未验证。",
+    "costBoundary": "费用为当前Free套餐运行用量，抵扣现有免费额度；没有充值或购买套餐。API下载和存储可能产生额外账户用量。",
+    "redaction": "未公开账号、密钥、运行/存储ID、作者信息、头像或完整评论原文。"
+  },
+  "latestActorRechecks": {
+    "checkedOn": "2026-11-13",
+    "scope": "美国站；保留空结果和超时，不以SUCCEEDED标签直接判定通过",
+    "runs": [
+      {
+        "platformId": "amazon",
+        "test": "amazon",
+        "actor": "junglee/amazon-reviews-scraper",
+        "productId": "B0CWXNS552",
+        "note": "初始样本",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 5,
+        "rows": 5,
+        "validTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "usageUsd": 0.03,
+        "runtimeSeconds": 11.36,
+        "build": "0.1.367",
+        "timeoutSeconds": 180,
+        "input": {
+          "deduplicateRedirectedAsins": true,
+          "filterByRatings": [
+            "allStars"
+          ],
+          "includeGdprSensitive": false,
+          "maxReviews": 5,
+          "productUrls": [
+            {
+              "url": "https://www.amazon.com/dp/B0CWXNS552"
+            }
+          ],
+          "reviewsAlwaysSaveCategoryData": false,
+          "reviewsUseProductVariantFilter": false,
+          "scrapeProductDetails": false,
+          "sort": "helpful"
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "temu",
+        "test": "temu",
+        "actor": "omkar-cloud/temu-reviews-scraper",
+        "productId": "601099537773480",
+        "note": "Actor 默认商品",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 5,
+        "rows": 5,
+        "validTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "usageUsd": 0.01005,
+        "runtimeSeconds": 1.949,
+        "build": "0.0.3",
+        "timeoutSeconds": 600,
+        "input": {
+          "country": "us",
+          "maxResults": 5,
+          "maxReviewsPerProduct": 5,
+          "products": [
+            "https://www.temu.com/goods.html?goods_id=601099537773480"
+          ],
+          "withPhotosOnly": false
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "tiktok_shop",
+        "test": "tiktok",
+        "actor": "vistics/tiktok-shop-product-reviews",
+        "productId": "1731578642912612516",
+        "note": "Actor 默认商品",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 5,
+        "rows": 5,
+        "validTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "usageUsd": 0.02,
+        "runtimeSeconds": 4.879,
+        "build": "0.0.35",
+        "timeoutSeconds": 300,
+        "input": {
+          "maxReviews": 5,
+          "region": "US",
+          "startUrls": [
+            "https://www.tiktok.com/shop/pdp/cat-nail-clipper-by-potaroma-adjustable-sizes-built-in-file-safe-for-kittens-cats/1731578642912612516"
+          ]
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "ebay",
+        "test": "ebay",
+        "actor": "apt_marble/ebay-product-reviews-scraper",
+        "productId": "22054478105",
+        "note": "Actor 默认商品",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 5,
+        "rows": 5,
+        "validTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "usageUsd": 0.005,
+        "runtimeSeconds": 4.17,
+        "build": "0.0.2",
+        "timeoutSeconds": 300,
+        "input": {
+          "includeProductSummary": false,
+          "marketplace": "US",
+          "maxConcurrency": 1,
+          "maxReviewsPerProduct": 5,
+          "products": [
+            "https://www.ebay.com/p/22054478105"
+          ],
+          "sort": "newest"
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "walmart",
+        "test": "walmart",
+        "actor": "e-commerce/walmart-reviews-scraper",
+        "productId": "771934678",
+        "note": "初始样本",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 5,
+        "rows": 5,
+        "validTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "usageUsd": 0.0251,
+        "runtimeSeconds": 9.034,
+        "build": "0.0.84",
+        "timeoutSeconds": 180,
+        "input": {
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 5,
+          "reviewsSortType": "submission-desc",
+          "startUrls": [
+            {
+              "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+            }
+          ]
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "tiktok_shop",
+        "test": "tiktok-hydrojug",
+        "actor": "vistics/tiktok-shop-product-reviews",
+        "productId": "1729553368065741562",
+        "note": "官方商品页选取的新商品，翻到第2页",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 15,
+        "rows": 15,
+        "validTexts": 15,
+        "uniqueReviewIds": 15,
+        "productMatches": 15,
+        "usageUsd": 0.04,
+        "runtimeSeconds": 5.069,
+        "build": "0.0.35",
+        "timeoutSeconds": 300,
+        "input": {
+          "maxReviews": 15,
+          "region": "US",
+          "startUrls": [
+            "https://shop.tiktok.com/us/pdp/hydrojug-traveler-leak-proof-insulated-tumbler-with-flip-straw/1729553368065741562"
+          ]
+        },
+        "failure": "",
+        "pagesVerified": 2
+      },
+      {
+        "platformId": "ebay",
+        "test": "ebay-switch",
+        "actor": "apt_marble/ebay-product-reviews-scraper",
+        "productId": "23024812516",
+        "note": "官方商品页选取的新目录商品",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 15,
+        "rows": 15,
+        "validTexts": 15,
+        "uniqueReviewIds": 15,
+        "productMatches": 15,
+        "usageUsd": 0.015,
+        "runtimeSeconds": 4.533,
+        "build": "0.0.2",
+        "timeoutSeconds": 300,
+        "input": {
+          "includeProductSummary": false,
+          "marketplace": "US",
+          "maxConcurrency": 1,
+          "maxReviewsPerProduct": 15,
+          "products": [
+            "https://www.ebay.com/p/23024812516"
+          ],
+          "sort": "newest"
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "amazon",
+        "test": "amazon-cerave",
+        "actor": "junglee/amazon-reviews-scraper",
+        "productId": "B08CQDF382",
+        "note": "官方商品页选取的新商品",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 5,
+        "rows": 5,
+        "validTexts": 5,
+        "uniqueReviewIds": 5,
+        "productMatches": 5,
+        "usageUsd": 0.03,
+        "runtimeSeconds": 15.583,
+        "build": "0.1.367",
+        "timeoutSeconds": 180,
+        "input": {
+          "deduplicateRedirectedAsins": true,
+          "filterByRatings": [
+            "allStars"
+          ],
+          "includeGdprSensitive": false,
+          "maxReviews": 5,
+          "productUrls": [
+            {
+              "url": "https://www.amazon.com/dp/B08CQDF382"
+            }
+          ],
+          "reviewsAlwaysSaveCategoryData": false,
+          "reviewsUseProductVariantFilter": false,
+          "scrapeProductDetails": false,
+          "sort": "helpful"
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "walmart",
+        "test": "walmart-cerave",
+        "actor": "e-commerce/walmart-reviews-scraper",
+        "productId": "627154369",
+        "note": "新商品短链接，触发搜索后空结果",
+        "status": "SUCCEEDED",
+        "passed": false,
+        "requested": 15,
+        "rows": 0,
+        "validTexts": 0,
+        "uniqueReviewIds": 0,
+        "productMatches": 0,
+        "usageUsd": 0.0001,
+        "runtimeSeconds": 44.541,
+        "build": "0.0.84",
+        "timeoutSeconds": 180,
+        "input": {
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 15,
+          "reviewsSortType": "submission-desc",
+          "startUrls": [
+            {
+              "url": "https://www.walmart.com/ip/627154369"
+            }
+          ]
+        },
+        "failure": "SUCCEEDED但0条：短URL进入商品搜索，搜索连续验证码失败；完整商品链接重试成功。",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "walmart",
+        "test": "walmart-cerave-full",
+        "actor": "e-commerce/walmart-reviews-scraper",
+        "productId": "627154369",
+        "note": "同商品完整规范链接重试",
+        "status": "SUCCEEDED",
+        "passed": true,
+        "requested": 15,
+        "rows": 15,
+        "validTexts": 15,
+        "uniqueReviewIds": 15,
+        "productMatches": 15,
+        "usageUsd": 0.0751,
+        "runtimeSeconds": 6.199,
+        "build": "0.0.84",
+        "timeoutSeconds": 180,
+        "input": {
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 15,
+          "reviewsSortType": "submission-desc",
+          "startUrls": [
+            {
+              "url": "https://www.walmart.com/ip/CeraVe-Hydrating-Cream-to-Foam-Cleanser-Makeup-Remover-and-Face-Wash-With-Hyaluronic-Acid-Fragrance-Free-19-Ounce/627154369"
+            }
+          ]
+        },
+        "failure": "",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "temu",
+        "test": "temu-containers",
+        "actor": "omkar-cloud/temu-reviews-scraper",
+        "productId": "601099684111165",
+        "note": "官方索引商品：玻璃饭盒；当前在售状态未独立确认",
+        "status": "TIMED-OUT",
+        "passed": false,
+        "requested": 15,
+        "rows": 0,
+        "validTexts": 0,
+        "uniqueReviewIds": 0,
+        "productMatches": 0,
+        "usageUsd": 5e-05,
+        "runtimeSeconds": 599.852,
+        "build": "0.0.3",
+        "timeoutSeconds": 600,
+        "input": {
+          "country": "us",
+          "maxResults": 15,
+          "maxReviewsPerProduct": 15,
+          "products": [
+            "https://www.temu.com/20-pack-22oz-glass-meal-prep-containers-10-containers-10-lids-airtight-food-storage-containers-with-lids-pantry-kitchen-storage-containers-for-lunch-food-storage-glass-lunch-bento-boxes-g-601099684111165.html"
+          ],
+          "withPhotosOnly": false
+        },
+        "failure": "达到超时上限仍0条；日志只有启动信息，不能确定是商品不可用还是上游故障。",
+        "pagesVerified": null
+      },
+      {
+        "platformId": "temu",
+        "test": "temu-powerstrip",
+        "actor": "omkar-cloud/temu-reviews-scraper",
+        "productId": "601100577974046",
+        "note": "官方索引商品：插排；goods.html 标准URL",
+        "status": "TIMED-OUT",
+        "passed": false,
+        "requested": 15,
+        "rows": 0,
+        "validTexts": 0,
+        "uniqueReviewIds": 0,
+        "productMatches": 0,
+        "usageUsd": 5e-05,
+        "runtimeSeconds": 179.869,
+        "build": "0.0.3",
+        "timeoutSeconds": 180,
+        "input": {
+          "country": "us",
+          "maxResults": 15,
+          "maxReviewsPerProduct": 15,
+          "products": [
+            "https://www.temu.com/goods.html?goods_id=601100577974046"
+          ],
+          "withPhotosOnly": false
+        },
+        "failure": "达到超时上限仍0条；日志只有启动信息，不能确定是商品不可用还是上游故障。",
+        "pagesVerified": null
+      }
+    ],
+    "platforms": [
+      {
+        "id": "amazon",
+        "runs": 2,
+        "passed": 2,
+        "distinctProducts": 2,
+        "validTexts": 10,
+        "usageUsd": 0.06,
+        "maxPagesVerified": 0
+      },
+      {
+        "id": "temu",
+        "runs": 3,
+        "passed": 1,
+        "distinctProducts": 3,
+        "validTexts": 5,
+        "usageUsd": 0.01015,
+        "maxPagesVerified": 0
+      },
+      {
+        "id": "tiktok_shop",
+        "runs": 2,
+        "passed": 2,
+        "distinctProducts": 2,
+        "validTexts": 20,
+        "usageUsd": 0.06,
+        "maxPagesVerified": 2
+      },
+      {
+        "id": "ebay",
+        "runs": 2,
+        "passed": 2,
+        "distinctProducts": 2,
+        "validTexts": 20,
+        "usageUsd": 0.02,
+        "maxPagesVerified": 0
+      },
+      {
+        "id": "walmart",
+        "runs": 3,
+        "passed": 2,
+        "distinctProducts": 2,
+        "validTexts": 20,
+        "usageUsd": 0.1003,
+        "maxPagesVerified": 0
+      }
+    ],
+    "totals": {
+      "runs": 12,
+      "passed": 9,
+      "validTexts": 75,
+      "usageUsd": 0.25045
+    },
+    "conclusions": {
+      "amazon": "保留主选；2个商品均通过，Free每次最多5条，商品详情选项尚未验成。",
+      "temu": "原选omkar不通过跨商品复验；cliqtomedia同两商品各得4条，限详情和评论预览；批量评论暂缓。",
+      "tiktok_shop": "保留主选；新商品15条跨2页通过，product_id有值而productId为空，映射须修正。",
+      "ebay": "限商品目录场景接入；2商品通过，不能当作单店铺评价；采用度低。",
+      "walmart": "保留主选；2商品成功，但必须完整商品URL，短链接空结果仍计为失败。"
+    },
+    "apiBoundary": "本轮均由Console启动，随后通过正式Run、Dataset、INPUT API读取真实响应；本地POST启动尚未验证。",
+    "statisticalBoundary": "这是小样本回归结果，不是生产成功率。不同商品、时段、国家及深分页仍可能不同。",
+    "redaction": "未公开账号、密钥、运行/存储ID、作者信息、头像或完整评论原文。",
+    "temuFallback": {
+      "actor": "cliqtomedia/temu-scraper",
+      "url": "https://apify.com/cliqtomedia/temu-scraper",
+      "decision": "详情与公开评论预览备选；不作为批量评论主选",
+      "trials": [
+        {
+          "test": "temu-alt-powerstrip",
+          "actor": "cliqtomedia/temu-scraper",
+          "productId": "601100577974046",
+          "status": "SUCCEEDED",
+          "productRows": 1,
+          "reviewPreviews": 4,
+          "validTexts": 4,
+          "uniqueReviewIds": 4,
+          "usageUsd": 0.01625,
+          "runtimeSeconds": 6.206,
+          "build": "0.1.70",
+          "input": {
+            "excludeAds": false,
+            "excludeAdultProducts": false,
+            "maxItems": 1,
+            "onlyNew": false,
+            "resetState": false,
+            "startUrls": [
+              "https://www.temu.com/goods.html?goods_id=601100577974046"
+            ],
+            "country": "US",
+            "mode": "auto",
+            "dataLevel": "auto",
+            "stateName": "default"
+          },
+          "fields": [
+            "rowType",
+            "status",
+            "detailLevel",
+            "goodsId",
+            "title",
+            "price",
+            "priceText",
+            "currency",
+            "originalPrice",
+            "discountPercent",
+            "minPrice",
+            "maxPrice",
+            "sales",
+            "salesText",
+            "salesIsLowerBound",
+            "rating",
+            "reviewCount",
+            "url",
+            "images",
+            "videoUrl",
+            "skuId",
+            "sellerId",
+            "sellerName",
+            "sellerUrl",
+            "categoryId",
+            "categoryPath",
+            "description",
+            "specifications",
+            "skus",
+            "reviews",
+            "inStock",
+            "shippingText",
+            "returnPolicy",
+            "isAdultProduct",
+            "isAd",
+            "tags",
+            "country",
+            "rank",
+            "source",
+            "sourceUrl",
+            "fetchedAt",
+            "changeType",
+            "changedFields"
+          ],
+          "reviewFields": [
+            "reviewId",
+            "rating",
+            "text",
+            "reviewedAt",
+            "images",
+            "videoUrls"
+          ],
+          "billing": {
+            "apify-actor-start": 1,
+            "catalog-page": 0,
+            "product": 0,
+            "product-details": 1
+          }
+        },
+        {
+          "test": "temu-alt-containers",
+          "actor": "cliqtomedia/temu-scraper",
+          "productId": "601099684111165",
+          "status": "SUCCEEDED",
+          "productRows": 1,
+          "reviewPreviews": 4,
+          "validTexts": 4,
+          "uniqueReviewIds": 4,
+          "usageUsd": 0.01625,
+          "runtimeSeconds": 6.805,
+          "build": "0.1.70",
+          "input": {
+            "excludeAds": false,
+            "excludeAdultProducts": false,
+            "maxItems": 1,
+            "onlyNew": false,
+            "resetState": false,
+            "startUrls": [
+              "https://www.temu.com/goods.html?goods_id=601099684111165"
+            ],
+            "country": "US",
+            "mode": "auto",
+            "dataLevel": "auto",
+            "stateName": "default"
+          },
+          "fields": [
+            "rowType",
+            "status",
+            "detailLevel",
+            "goodsId",
+            "title",
+            "price",
+            "priceText",
+            "currency",
+            "originalPrice",
+            "discountPercent",
+            "minPrice",
+            "maxPrice",
+            "sales",
+            "salesText",
+            "salesIsLowerBound",
+            "rating",
+            "reviewCount",
+            "url",
+            "images",
+            "videoUrl",
+            "skuId",
+            "sellerId",
+            "sellerName",
+            "sellerUrl",
+            "categoryId",
+            "categoryPath",
+            "description",
+            "specifications",
+            "skus",
+            "reviews",
+            "inStock",
+            "shippingText",
+            "returnPolicy",
+            "isAdultProduct",
+            "isAd",
+            "tags",
+            "country",
+            "rank",
+            "source",
+            "sourceUrl",
+            "fetchedAt",
+            "changeType",
+            "changedFields"
+          ],
+          "reviewFields": [
+            "reviewId",
+            "rating",
+            "text",
+            "reviewedAt",
+            "images",
+            "videoUrls"
+          ],
+          "billing": {
+            "apify-actor-start": 1,
+            "catalog-page": 0,
+            "product": 0,
+            "product-details": 1
+          }
+        }
+      ],
+      "limitation": "两个商品各4条；无评论分页或数量参数，不能推算完整历史。每Dataset行是一个商品，评论嵌在reviews数组。",
+      "adoption": {
+        "users": 7,
+        "monthlyUsers": 2,
+        "reviews": 0,
+        "checkedOn": "2026-11-13"
+      },
+      "pricePerProductDetailUsd": {
+        "Free": 0.0162,
+        "Starter": 0.01458,
+        "Scale": 0.01296,
+        "Business": 0.01134
+      },
+      "startUsd": 5e-05,
+      "billingNote": "按商品详情页计费，不是按评论条数；成功抓到详情但过滤未输出仍可收详情事件费。最低每次费用上限设置$0.05并非最低消费。",
+      "source": "https://apify.com/cliqtomedia/temu-scraper/pricing"
+    },
+    "allTestTotals": {
+      "runs": 14,
+      "validTexts": 83,
+      "usageUsd": 0.28295,
+      "note": "含12次原选Actor运行和2次Temu预览备选；83条为返回正文数，非累计新增唯一评论总量。"
+    }
+  },
+  "fieldCoverage": {
+    "checkedOn": "2026-11-13",
+    "requirements": {
+      "source": "https://icnuvcafo3b9.feishu.cn/wiki/QQYpwhtnFifypikXtNrcklzGnjb",
+      "sourceTitle": "电商平台数据比较中",
+      "readMethod": "用户已登录的飞书页面，经可见UI读取统一数据字段规范",
+      "checkedOn": "2026-11-13",
+      "productFields": [
+        {
+          "name": "platform",
+          "meaning": "平台名称"
+        },
+        {
+          "name": "product_id",
+          "meaning": "平台商品唯一 ID"
+        },
+        {
+          "name": "title",
+          "meaning": "商品名称"
+        },
+        {
+          "name": "product_url",
+          "meaning": "商品链接"
+        },
+        {
+          "name": "image_url",
+          "meaning": "商品主图"
+        },
+        {
+          "name": "brand",
+          "meaning": "品牌"
+        },
+        {
+          "name": "category",
+          "meaning": "商品类目"
+        },
+        {
+          "name": "currency",
+          "meaning": "币种"
+        },
+        {
+          "name": "list_price",
+          "meaning": "标价／划线价"
+        },
+        {
+          "name": "sale_price",
+          "meaning": "当前售价"
+        },
+        {
+          "name": "sold_count",
+          "meaning": "标准化销量数字"
+        },
+        {
+          "name": "sold_text",
+          "meaning": "平台展示的原始销量文本，如1万+已售"
+        },
+        {
+          "name": "rating",
+          "meaning": "商品评分或好评率"
+        },
+        {
+          "name": "review_count",
+          "meaning": "评价数量"
+        },
+        {
+          "name": "shop_name",
+          "meaning": "店铺名称"
+        },
+        {
+          "name": "keyword",
+          "meaning": "搜索该商品时使用的关键词"
+        },
+        {
+          "name": "search_rank",
+          "meaning": "商品在该关键词搜索结果中的排名"
+        },
+        {
+          "name": "scraped_at",
+          "meaning": "采集时间"
+        }
+      ],
+      "reviewFields": [
+        {
+          "name": "review_id",
+          "meaning": "评价唯一 ID"
+        },
+        {
+          "name": "product_id",
+          "meaning": "所属商品 ID"
+        },
+        {
+          "name": "review_text",
+          "meaning": "评价正文"
+        },
+        {
+          "name": "rating",
+          "meaning": "评价星级"
+        },
+        {
+          "name": "created_at",
+          "meaning": "评价时间"
+        },
+        {
+          "name": "purchased_sku",
+          "meaning": "购买的商品规格"
+        },
+        {
+          "name": "image_urls",
+          "meaning": "评价图片"
+        },
+        {
+          "name": "seller_reply",
+          "meaning": "商家回复"
+        }
+      ],
+      "mappingRules": [
+        "商品rating与单条评论rating是不同实体字段，不能混填。",
+        "评论附图不能替代商品主图。",
+        "评价数量、销量数字、原始销量文本必须分别验证，不能互相推算。",
+        "URL输入和采集任务时间等系统补充字段单列，不冒充供应商实测返回。",
+        "keyword与search_rank需要关键词搜索流程；链接输入评论任务不产生真实搜索排名。",
+        "字段存在但样本全空，与实际非空返回分别标记。"
+      ]
+    },
+    "statusLabels": {
+      "actual": "有值",
+      "empty": "空值",
+      "system": "系统补",
+      "missing": "缺失",
+      "unverified": "未验成",
+      "partial": "口径待验"
+    },
+    "platforms": [
+      {
+        "id": "taobao",
+        "platform": "淘宝",
+        "sampleRows": 0,
+        "productSampleRows": 0,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "product_id": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "title": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "product_url": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "image_url": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "brand": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "category": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "currency": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "list_price": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "sale_price": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "sold_count": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "sold_text": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "rating": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "review_count": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "shop_name": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "keyword": {
+              "status": "unverified",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "unverified",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "product_id": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "review_text": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "rating": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "created_at": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "purchased_sku": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "image_urls": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "seller_reply": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 0,
+            "empty": 0,
+            "system": 0,
+            "missing": 0,
+            "unverified": 18,
+            "partial": 0
+          },
+          "review": {
+            "actual": 0,
+            "empty": 0,
+            "system": 0,
+            "missing": 0,
+            "unverified": 8,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "tmall",
+        "platform": "天猫",
+        "sampleRows": 0,
+        "productSampleRows": 0,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "product_id": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "title": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "product_url": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "image_url": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "brand": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "category": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "currency": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "list_price": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "sale_price": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "sold_count": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "sold_text": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "rating": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "review_count": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "shop_name": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "keyword": {
+              "status": "unverified",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "unverified",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "product_id": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "review_text": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "rating": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "created_at": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "purchased_sku": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "image_urls": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            },
+            "seller_reply": {
+              "status": "unverified",
+              "note": "端点本轮失败，未取得数据"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 0,
+            "empty": 0,
+            "system": 0,
+            "missing": 0,
+            "unverified": 18,
+            "partial": 0
+          },
+          "review": {
+            "actual": 0,
+            "empty": 0,
+            "system": 0,
+            "missing": 0,
+            "unverified": 8,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "douyin_shop",
+        "platform": "抖音商城",
+        "sampleRows": 20,
+        "productSampleRows": 20,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "system",
+              "note": "从goods_id输入关联；评论行没有商品ID"
+            },
+            "title": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "product_url": {
+              "status": "system",
+              "note": "绑定本次商品URL输入，不是产品详情采集"
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "list_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sale_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "review_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "cid",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "product_id": {
+              "status": "system",
+              "note": "从goods_id输入关联；评论行没有商品ID"
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "text",
+              "present": 20,
+              "nonempty": 8,
+              "rows": 20
+            },
+            "rating": {
+              "status": "actual",
+              "path": "rating",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "created_at",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "purchased_sku": {
+              "status": "partial",
+              "path": "sku",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20,
+              "note": "本轮20条sku均为“默认”占位值，未证明取到真实购买规格"
+            },
+            "image_urls": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "seller_reply": {
+              "status": "actual",
+              "path": "shop_reply",
+              "present": 20,
+              "nonempty": 18,
+              "rows": 20
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 0,
+            "empty": 0,
+            "system": 4,
+            "missing": 14,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 5,
+            "empty": 0,
+            "system": 1,
+            "missing": 1,
+            "unverified": 0,
+            "partial": 1
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "pinduoduo",
+        "platform": "拼多多",
+        "sampleRows": 0,
+        "productSampleRows": 0,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "product_id": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "title": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "product_url": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "list_price": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "sale_price": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "review_count": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "product_id": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "review_text": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "created_at": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "purchased_sku": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "image_urls": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            },
+            "seller_reply": {
+              "status": "missing",
+              "note": "当前无公开端点"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 0,
+            "empty": 0,
+            "system": 0,
+            "missing": 18,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 0,
+            "empty": 0,
+            "system": 0,
+            "missing": 8,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "jd",
+        "platform": "京东",
+        "sampleRows": 10,
+        "productSampleRows": 10,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "sku_id",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "title": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "product_url": {
+              "status": "system",
+              "note": "绑定本次商品URL输入，不是产品详情采集"
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "list_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sale_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "review_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "id",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "sku_id",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "text",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "rating": {
+              "status": "actual",
+              "path": "rating",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "created_at",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "purchased_sku": {
+              "status": "actual",
+              "path": "sku",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "image_urls": {
+              "status": "actual",
+              "path": "images",
+              "present": 10,
+              "nonempty": 9,
+              "rows": 10
+            },
+            "seller_reply": {
+              "status": "empty",
+              "path": "shop_reply",
+              "present": 10,
+              "nonempty": 0,
+              "rows": 10
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 1,
+            "empty": 0,
+            "system": 3,
+            "missing": 14,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 7,
+            "empty": 1,
+            "system": 0,
+            "missing": 0,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "amazon",
+        "platform": "Amazon",
+        "sampleRows": 10,
+        "productSampleRows": 10,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "productAsin",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "title": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "product_url": {
+              "status": "system",
+              "note": "绑定本次商品URL输入，不是产品详情采集"
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "list_price": {
+              "status": "empty",
+              "path": "product.listPrice",
+              "present": 10,
+              "nonempty": 0,
+              "rows": 10
+            },
+            "sale_price": {
+              "status": "empty",
+              "path": "product.price",
+              "present": 10,
+              "nonempty": 0,
+              "rows": 10
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "review_count": {
+              "status": "partial",
+              "path": "totalCategoryReviews",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10,
+              "note": "totalCategoryReviews为当前筛选分类计数；需验证是否等同商品总评论数"
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "reviewId",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "productAsin",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "reviewDescription",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "rating": {
+              "status": "actual",
+              "path": "ratingScore",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "date",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "purchased_sku": {
+              "status": "actual",
+              "path": "variant",
+              "present": 10,
+              "nonempty": 10,
+              "rows": 10
+            },
+            "image_urls": {
+              "status": "actual",
+              "path": "reviewImages",
+              "present": 10,
+              "nonempty": 2,
+              "rows": 10
+            },
+            "seller_reply": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 1,
+            "empty": 2,
+            "system": 3,
+            "missing": 11,
+            "unverified": 0,
+            "partial": 1
+          },
+          "review": {
+            "actual": 7,
+            "empty": 0,
+            "system": 0,
+            "missing": 1,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "temu",
+        "platform": "Temu",
+        "sampleRows": 8,
+        "productSampleRows": 2,
+        "actor": "cliqtomedia/temu-scraper",
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "goodsId",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "title": {
+              "status": "actual",
+              "path": "title",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "product_url": {
+              "status": "actual",
+              "path": "url",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "image_url": {
+              "status": "actual",
+              "path": "images",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2,
+              "note": "images为商品图片数组；统一主图需取首张并保留原数组"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "empty",
+              "path": "categoryPath",
+              "present": 2,
+              "nonempty": 0,
+              "rows": 2
+            },
+            "currency": {
+              "status": "actual",
+              "path": "currency",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "list_price": {
+              "status": "empty",
+              "path": "originalPrice",
+              "present": 2,
+              "nonempty": 0,
+              "rows": 2
+            },
+            "sale_price": {
+              "status": "actual",
+              "path": "price",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "sold_count": {
+              "status": "actual",
+              "path": "sales",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2,
+              "note": "sales是平台400K+等展示量的下界，必须连同salesIsLowerBound保留；不是精确销量"
+            },
+            "sold_text": {
+              "status": "actual",
+              "path": "salesText",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "rating": {
+              "status": "actual",
+              "path": "rating",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "review_count": {
+              "status": "actual",
+              "path": "reviewCount",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "shop_name": {
+              "status": "actual",
+              "path": "sellerName",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "actual",
+              "path": "fetchedAt",
+              "present": 2,
+              "nonempty": 2,
+              "rows": 2
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "reviewId",
+              "present": 8,
+              "nonempty": 8,
+              "rows": 8
+            },
+            "product_id": {
+              "status": "system",
+              "note": "从父商品goodsId关联；reviews数组内没有商品ID"
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "text",
+              "present": 8,
+              "nonempty": 8,
+              "rows": 8
+            },
+            "rating": {
+              "status": "actual",
+              "path": "rating",
+              "present": 8,
+              "nonempty": 8,
+              "rows": 8
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "reviewedAt",
+              "present": 8,
+              "nonempty": 8,
+              "rows": 8
+            },
+            "purchased_sku": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "image_urls": {
+              "status": "empty",
+              "path": "images",
+              "present": 8,
+              "nonempty": 0,
+              "rows": 8
+            },
+            "seller_reply": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 12,
+            "empty": 2,
+            "system": 1,
+            "missing": 3,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 4,
+            "empty": 1,
+            "system": 1,
+            "missing": 2,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "tiktok_shop",
+        "platform": "TikTok Shop",
+        "sampleRows": 20,
+        "productSampleRows": 20,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "product_id",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20,
+              "note": "优先product_id；新商品15条中camelCase productId全部为空"
+            },
+            "title": {
+              "status": "empty",
+              "path": "product_name",
+              "present": 20,
+              "nonempty": 0,
+              "rows": 20
+            },
+            "product_url": {
+              "status": "actual",
+              "path": "productUrl",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "list_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sale_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "review_count": {
+              "status": "actual",
+              "path": "totalReviews",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "review_id",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "product_id",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20,
+              "note": "优先product_id；新商品15条中camelCase productId全部为空"
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "review_text",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "rating": {
+              "status": "actual",
+              "path": "review_rating",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "review_time",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "purchased_sku": {
+              "status": "actual",
+              "path": "sku_specification",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "image_urls": {
+              "status": "actual",
+              "path": "review_images",
+              "present": 20,
+              "nonempty": 14,
+              "rows": 20
+            },
+            "seller_reply": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 3,
+            "empty": 1,
+            "system": 2,
+            "missing": 12,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 7,
+            "empty": 0,
+            "system": 0,
+            "missing": 1,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "ebay",
+        "platform": "eBay",
+        "sampleRows": 20,
+        "productSampleRows": 20,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "epid",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "title": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "product_url": {
+              "status": "system",
+              "note": "绑定本次商品URL输入，不是产品详情采集"
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "list_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sale_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "review_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "soldBySeller是该条评价关联卖家，不是商品固定店铺"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "actual",
+              "path": "scrapedAt",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "reviewId",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "epid",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "body",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "rating": {
+              "status": "actual",
+              "path": "rating",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "dateIso",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "purchased_sku": {
+              "status": "missing",
+              "note": "conditionPurchased是新旧成色，不等同购买SKU"
+            },
+            "image_urls": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "seller_reply": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 2,
+            "empty": 0,
+            "system": 2,
+            "missing": 14,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 5,
+            "empty": 0,
+            "system": 0,
+            "missing": 3,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      },
+      {
+        "id": "walmart",
+        "platform": "Walmart",
+        "sampleRows": 20,
+        "productSampleRows": 20,
+        "actor": null,
+        "fields": {
+          "product": {
+            "platform": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "productId",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "title": {
+              "status": "empty",
+              "path": "productName",
+              "present": 20,
+              "nonempty": 0,
+              "rows": 20
+            },
+            "product_url": {
+              "status": "actual",
+              "path": "productUrl",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "image_url": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "brand": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "category": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "currency": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "list_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sale_price": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "sold_text": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "rating": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "review_count": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "shop_name": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "keyword": {
+              "status": "missing",
+              "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+            },
+            "search_rank": {
+              "status": "missing",
+              "note": "需要搜索接口结果次序，不能用评论position替代"
+            },
+            "scraped_at": {
+              "status": "system",
+              "note": "由本系统任务元数据记录，不是供应商返回"
+            }
+          },
+          "review": {
+            "review_id": {
+              "status": "actual",
+              "path": "reviewId",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "product_id": {
+              "status": "actual",
+              "path": "productId",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "review_text": {
+              "status": "actual",
+              "path": "text",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "rating": {
+              "status": "actual",
+              "path": "rating",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "created_at": {
+              "status": "actual",
+              "path": "submissionTime",
+              "present": 20,
+              "nonempty": 20,
+              "rows": 20
+            },
+            "purchased_sku": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            },
+            "image_urls": {
+              "status": "empty",
+              "path": "photos",
+              "present": 20,
+              "nonempty": 0,
+              "rows": 20
+            },
+            "seller_reply": {
+              "status": "missing",
+              "note": "当前评论接口响应未提供；不由评分/评论数反推"
+            }
+          }
+        },
+        "counts": {
+          "product": {
+            "actual": 2,
+            "empty": 1,
+            "system": 2,
+            "missing": 13,
+            "unverified": 0,
+            "partial": 0
+          },
+          "review": {
+            "actual": 5,
+            "empty": 1,
+            "system": 0,
+            "missing": 2,
+            "unverified": 0,
+            "partial": 0
+          }
+        },
+        "all26Satisfied": false
+      }
+    ],
+    "conclusion": "当前选定接口能覆盖一部分评论字段，尚无任一平台满足飞书全部18个商品核心字段＋8个评论字段。商品详情与关键词搜索需额外采集能力及独立预算。",
+    "rules": [
+      "商品rating与单条评论rating是不同实体字段，不能混填。",
+      "评论附图不能替代商品主图。",
+      "评价数量、销量数字、原始销量文本必须分别验证，不能互相推算。",
+      "URL输入和采集任务时间等系统补充字段单列，不冒充供应商实测返回。",
+      "keyword与search_rank需要关键词搜索流程；链接输入评论任务不产生真实搜索排名。",
+      "字段存在但样本全空，与实际非空返回分别标记。",
+      "有值仅表示至少一条实测样本非空；不代表每个商品每条记录完整。",
+      "空值表示实际字段存在但本轮样本没有值，不计为已满足。",
+      "预算目前仅含评论链路，未含补齐商品/搜索字段的成本。"
+    ]
+  }
+}

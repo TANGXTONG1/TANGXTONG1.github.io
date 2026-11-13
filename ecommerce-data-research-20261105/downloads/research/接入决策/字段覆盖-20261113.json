@@ -1,0 +1,1729 @@
+{
+  "checkedOn": "2026-11-13",
+  "requirements": {
+    "source": "https://icnuvcafo3b9.feishu.cn/wiki/QQYpwhtnFifypikXtNrcklzGnjb",
+    "sourceTitle": "电商平台数据比较中",
+    "readMethod": "用户已登录的飞书页面，经可见UI读取统一数据字段规范",
+    "checkedOn": "2026-11-13",
+    "productFields": [
+      {
+        "name": "platform",
+        "meaning": "平台名称"
+      },
+      {
+        "name": "product_id",
+        "meaning": "平台商品唯一 ID"
+      },
+      {
+        "name": "title",
+        "meaning": "商品名称"
+      },
+      {
+        "name": "product_url",
+        "meaning": "商品链接"
+      },
+      {
+        "name": "image_url",
+        "meaning": "商品主图"
+      },
+      {
+        "name": "brand",
+        "meaning": "品牌"
+      },
+      {
+        "name": "category",
+        "meaning": "商品类目"
+      },
+      {
+        "name": "currency",
+        "meaning": "币种"
+      },
+      {
+        "name": "list_price",
+        "meaning": "标价／划线价"
+      },
+      {
+        "name": "sale_price",
+        "meaning": "当前售价"
+      },
+      {
+        "name": "sold_count",
+        "meaning": "标准化销量数字"
+      },
+      {
+        "name": "sold_text",
+        "meaning": "平台展示的原始销量文本，如1万+已售"
+      },
+      {
+        "name": "rating",
+        "meaning": "商品评分或好评率"
+      },
+      {
+        "name": "review_count",
+        "meaning": "评价数量"
+      },
+      {
+        "name": "shop_name",
+        "meaning": "店铺名称"
+      },
+      {
+        "name": "keyword",
+        "meaning": "搜索该商品时使用的关键词"
+      },
+      {
+        "name": "search_rank",
+        "meaning": "商品在该关键词搜索结果中的排名"
+      },
+      {
+        "name": "scraped_at",
+        "meaning": "采集时间"
+      }
+    ],
+    "reviewFields": [
+      {
+        "name": "review_id",
+        "meaning": "评价唯一 ID"
+      },
+      {
+        "name": "product_id",
+        "meaning": "所属商品 ID"
+      },
+      {
+        "name": "review_text",
+        "meaning": "评价正文"
+      },
+      {
+        "name": "rating",
+        "meaning": "评价星级"
+      },
+      {
+        "name": "created_at",
+        "meaning": "评价时间"
+      },
+      {
+        "name": "purchased_sku",
+        "meaning": "购买的商品规格"
+      },
+      {
+        "name": "image_urls",
+        "meaning": "评价图片"
+      },
+      {
+        "name": "seller_reply",
+        "meaning": "商家回复"
+      }
+    ],
+    "mappingRules": [
+      "商品rating与单条评论rating是不同实体字段，不能混填。",
+      "评论附图不能替代商品主图。",
+      "评价数量、销量数字、原始销量文本必须分别验证，不能互相推算。",
+      "URL输入和采集任务时间等系统补充字段单列，不冒充供应商实测返回。",
+      "keyword与search_rank需要关键词搜索流程；链接输入评论任务不产生真实搜索排名。",
+      "字段存在但样本全空，与实际非空返回分别标记。"
+    ]
+  },
+  "statusLabels": {
+    "actual": "有值",
+    "empty": "空值",
+    "system": "系统补",
+    "missing": "缺失",
+    "unverified": "未验成",
+    "partial": "口径待验"
+  },
+  "platforms": [
+    {
+      "id": "taobao",
+      "platform": "淘宝",
+      "sampleRows": 0,
+      "productSampleRows": 0,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "product_id": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "title": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "product_url": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "image_url": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "brand": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "category": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "currency": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "list_price": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "sale_price": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "sold_count": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "sold_text": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "rating": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "review_count": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "shop_name": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "keyword": {
+            "status": "unverified",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "unverified",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "product_id": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "review_text": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "rating": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "created_at": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "purchased_sku": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "image_urls": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "seller_reply": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 0,
+          "empty": 0,
+          "system": 0,
+          "missing": 0,
+          "unverified": 18,
+          "partial": 0
+        },
+        "review": {
+          "actual": 0,
+          "empty": 0,
+          "system": 0,
+          "missing": 0,
+          "unverified": 8,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "tmall",
+      "platform": "天猫",
+      "sampleRows": 0,
+      "productSampleRows": 0,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "product_id": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "title": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "product_url": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "image_url": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "brand": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "category": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "currency": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "list_price": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "sale_price": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "sold_count": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "sold_text": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "rating": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "review_count": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "shop_name": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "keyword": {
+            "status": "unverified",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "unverified",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "product_id": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "review_text": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "rating": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "created_at": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "purchased_sku": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "image_urls": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          },
+          "seller_reply": {
+            "status": "unverified",
+            "note": "端点本轮失败，未取得数据"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 0,
+          "empty": 0,
+          "system": 0,
+          "missing": 0,
+          "unverified": 18,
+          "partial": 0
+        },
+        "review": {
+          "actual": 0,
+          "empty": 0,
+          "system": 0,
+          "missing": 0,
+          "unverified": 8,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "douyin_shop",
+      "platform": "抖音商城",
+      "sampleRows": 20,
+      "productSampleRows": 20,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "system",
+            "note": "从goods_id输入关联；评论行没有商品ID"
+          },
+          "title": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "product_url": {
+            "status": "system",
+            "note": "绑定本次商品URL输入，不是产品详情采集"
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "list_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sale_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "review_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "cid",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "product_id": {
+            "status": "system",
+            "note": "从goods_id输入关联；评论行没有商品ID"
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "text",
+            "present": 20,
+            "nonempty": 8,
+            "rows": 20
+          },
+          "rating": {
+            "status": "actual",
+            "path": "rating",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "created_at",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "purchased_sku": {
+            "status": "partial",
+            "path": "sku",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20,
+            "note": "本轮20条sku均为“默认”占位值，未证明取到真实购买规格"
+          },
+          "image_urls": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "seller_reply": {
+            "status": "actual",
+            "path": "shop_reply",
+            "present": 20,
+            "nonempty": 18,
+            "rows": 20
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 0,
+          "empty": 0,
+          "system": 4,
+          "missing": 14,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 5,
+          "empty": 0,
+          "system": 1,
+          "missing": 1,
+          "unverified": 0,
+          "partial": 1
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "pinduoduo",
+      "platform": "拼多多",
+      "sampleRows": 0,
+      "productSampleRows": 0,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "product_id": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "title": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "product_url": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "list_price": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "sale_price": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "review_count": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "product_id": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "review_text": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "created_at": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "purchased_sku": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "image_urls": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          },
+          "seller_reply": {
+            "status": "missing",
+            "note": "当前无公开端点"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 0,
+          "empty": 0,
+          "system": 0,
+          "missing": 18,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 0,
+          "empty": 0,
+          "system": 0,
+          "missing": 8,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "jd",
+      "platform": "京东",
+      "sampleRows": 10,
+      "productSampleRows": 10,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "sku_id",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "title": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "product_url": {
+            "status": "system",
+            "note": "绑定本次商品URL输入，不是产品详情采集"
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "list_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sale_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "review_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "id",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "sku_id",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "text",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "rating": {
+            "status": "actual",
+            "path": "rating",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "created_at",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "purchased_sku": {
+            "status": "actual",
+            "path": "sku",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "image_urls": {
+            "status": "actual",
+            "path": "images",
+            "present": 10,
+            "nonempty": 9,
+            "rows": 10
+          },
+          "seller_reply": {
+            "status": "empty",
+            "path": "shop_reply",
+            "present": 10,
+            "nonempty": 0,
+            "rows": 10
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 1,
+          "empty": 0,
+          "system": 3,
+          "missing": 14,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 7,
+          "empty": 1,
+          "system": 0,
+          "missing": 0,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "amazon",
+      "platform": "Amazon",
+      "sampleRows": 10,
+      "productSampleRows": 10,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "productAsin",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "title": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "product_url": {
+            "status": "system",
+            "note": "绑定本次商品URL输入，不是产品详情采集"
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "list_price": {
+            "status": "empty",
+            "path": "product.listPrice",
+            "present": 10,
+            "nonempty": 0,
+            "rows": 10
+          },
+          "sale_price": {
+            "status": "empty",
+            "path": "product.price",
+            "present": 10,
+            "nonempty": 0,
+            "rows": 10
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "review_count": {
+            "status": "partial",
+            "path": "totalCategoryReviews",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10,
+            "note": "totalCategoryReviews为当前筛选分类计数；需验证是否等同商品总评论数"
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "reviewId",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "productAsin",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "reviewDescription",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "rating": {
+            "status": "actual",
+            "path": "ratingScore",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "date",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "purchased_sku": {
+            "status": "actual",
+            "path": "variant",
+            "present": 10,
+            "nonempty": 10,
+            "rows": 10
+          },
+          "image_urls": {
+            "status": "actual",
+            "path": "reviewImages",
+            "present": 10,
+            "nonempty": 2,
+            "rows": 10
+          },
+          "seller_reply": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 1,
+          "empty": 2,
+          "system": 3,
+          "missing": 11,
+          "unverified": 0,
+          "partial": 1
+        },
+        "review": {
+          "actual": 7,
+          "empty": 0,
+          "system": 0,
+          "missing": 1,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "temu",
+      "platform": "Temu",
+      "sampleRows": 8,
+      "productSampleRows": 2,
+      "actor": "cliqtomedia/temu-scraper",
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "goodsId",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "title": {
+            "status": "actual",
+            "path": "title",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "product_url": {
+            "status": "actual",
+            "path": "url",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "image_url": {
+            "status": "actual",
+            "path": "images",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2,
+            "note": "images为商品图片数组；统一主图需取首张并保留原数组"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "empty",
+            "path": "categoryPath",
+            "present": 2,
+            "nonempty": 0,
+            "rows": 2
+          },
+          "currency": {
+            "status": "actual",
+            "path": "currency",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "list_price": {
+            "status": "empty",
+            "path": "originalPrice",
+            "present": 2,
+            "nonempty": 0,
+            "rows": 2
+          },
+          "sale_price": {
+            "status": "actual",
+            "path": "price",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "sold_count": {
+            "status": "actual",
+            "path": "sales",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2,
+            "note": "sales是平台400K+等展示量的下界，必须连同salesIsLowerBound保留；不是精确销量"
+          },
+          "sold_text": {
+            "status": "actual",
+            "path": "salesText",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "rating": {
+            "status": "actual",
+            "path": "rating",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "review_count": {
+            "status": "actual",
+            "path": "reviewCount",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "shop_name": {
+            "status": "actual",
+            "path": "sellerName",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "actual",
+            "path": "fetchedAt",
+            "present": 2,
+            "nonempty": 2,
+            "rows": 2
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "reviewId",
+            "present": 8,
+            "nonempty": 8,
+            "rows": 8
+          },
+          "product_id": {
+            "status": "system",
+            "note": "从父商品goodsId关联；reviews数组内没有商品ID"
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "text",
+            "present": 8,
+            "nonempty": 8,
+            "rows": 8
+          },
+          "rating": {
+            "status": "actual",
+            "path": "rating",
+            "present": 8,
+            "nonempty": 8,
+            "rows": 8
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "reviewedAt",
+            "present": 8,
+            "nonempty": 8,
+            "rows": 8
+          },
+          "purchased_sku": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "image_urls": {
+            "status": "empty",
+            "path": "images",
+            "present": 8,
+            "nonempty": 0,
+            "rows": 8
+          },
+          "seller_reply": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 12,
+          "empty": 2,
+          "system": 1,
+          "missing": 3,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 4,
+          "empty": 1,
+          "system": 1,
+          "missing": 2,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "tiktok_shop",
+      "platform": "TikTok Shop",
+      "sampleRows": 20,
+      "productSampleRows": 20,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "product_id",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20,
+            "note": "优先product_id；新商品15条中camelCase productId全部为空"
+          },
+          "title": {
+            "status": "empty",
+            "path": "product_name",
+            "present": 20,
+            "nonempty": 0,
+            "rows": 20
+          },
+          "product_url": {
+            "status": "actual",
+            "path": "productUrl",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "list_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sale_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "review_count": {
+            "status": "actual",
+            "path": "totalReviews",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "review_id",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "product_id",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20,
+            "note": "优先product_id；新商品15条中camelCase productId全部为空"
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "review_text",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "rating": {
+            "status": "actual",
+            "path": "review_rating",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "review_time",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "purchased_sku": {
+            "status": "actual",
+            "path": "sku_specification",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "image_urls": {
+            "status": "actual",
+            "path": "review_images",
+            "present": 20,
+            "nonempty": 14,
+            "rows": 20
+          },
+          "seller_reply": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 3,
+          "empty": 1,
+          "system": 2,
+          "missing": 12,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 7,
+          "empty": 0,
+          "system": 0,
+          "missing": 1,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "ebay",
+      "platform": "eBay",
+      "sampleRows": 20,
+      "productSampleRows": 20,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "epid",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "title": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "product_url": {
+            "status": "system",
+            "note": "绑定本次商品URL输入，不是产品详情采集"
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "list_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sale_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "review_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "soldBySeller是该条评价关联卖家，不是商品固定店铺"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "actual",
+            "path": "scrapedAt",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "reviewId",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "epid",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "body",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "rating": {
+            "status": "actual",
+            "path": "rating",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "dateIso",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "purchased_sku": {
+            "status": "missing",
+            "note": "conditionPurchased是新旧成色，不等同购买SKU"
+          },
+          "image_urls": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "seller_reply": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 2,
+          "empty": 0,
+          "system": 2,
+          "missing": 14,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 5,
+          "empty": 0,
+          "system": 0,
+          "missing": 3,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    },
+    {
+      "id": "walmart",
+      "platform": "Walmart",
+      "sampleRows": 20,
+      "productSampleRows": 20,
+      "actor": null,
+      "fields": {
+        "product": {
+          "platform": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "productId",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "title": {
+            "status": "empty",
+            "path": "productName",
+            "present": 20,
+            "nonempty": 0,
+            "rows": 20
+          },
+          "product_url": {
+            "status": "actual",
+            "path": "productUrl",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "image_url": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "brand": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "category": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "currency": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "list_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sale_price": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "sold_text": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "rating": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "review_count": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "shop_name": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "keyword": {
+            "status": "missing",
+            "note": "当前为商品链接采集，无关键词搜索；后续搜索任务才可回填"
+          },
+          "search_rank": {
+            "status": "missing",
+            "note": "需要搜索接口结果次序，不能用评论position替代"
+          },
+          "scraped_at": {
+            "status": "system",
+            "note": "由本系统任务元数据记录，不是供应商返回"
+          }
+        },
+        "review": {
+          "review_id": {
+            "status": "actual",
+            "path": "reviewId",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "product_id": {
+            "status": "actual",
+            "path": "productId",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "review_text": {
+            "status": "actual",
+            "path": "text",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "rating": {
+            "status": "actual",
+            "path": "rating",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "created_at": {
+            "status": "actual",
+            "path": "submissionTime",
+            "present": 20,
+            "nonempty": 20,
+            "rows": 20
+          },
+          "purchased_sku": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          },
+          "image_urls": {
+            "status": "empty",
+            "path": "photos",
+            "present": 20,
+            "nonempty": 0,
+            "rows": 20
+          },
+          "seller_reply": {
+            "status": "missing",
+            "note": "当前评论接口响应未提供；不由评分/评论数反推"
+          }
+        }
+      },
+      "counts": {
+        "product": {
+          "actual": 2,
+          "empty": 1,
+          "system": 2,
+          "missing": 13,
+          "unverified": 0,
+          "partial": 0
+        },
+        "review": {
+          "actual": 5,
+          "empty": 1,
+          "system": 0,
+          "missing": 2,
+          "unverified": 0,
+          "partial": 0
+        }
+      },
+      "all26Satisfied": false
+    }
+  ],
+  "conclusion": "当前选定接口能覆盖一部分评论字段，尚无任一平台满足飞书全部18个商品核心字段＋8个评论字段。商品详情与关键词搜索需额外采集能力及独立预算。",
+  "rules": [
+    "商品rating与单条评论rating是不同实体字段，不能混填。",
+    "评论附图不能替代商品主图。",
+    "评价数量、销量数字、原始销量文本必须分别验证，不能互相推算。",
+    "URL输入和采集任务时间等系统补充字段单列，不冒充供应商实测返回。",
+    "keyword与search_rank需要关键词搜索流程；链接输入评论任务不产生真实搜索排名。",
+    "字段存在但样本全空，与实际非空返回分别标记。",
+    "有值仅表示至少一条实测样本非空；不代表每个商品每条记录完整。",
+    "空值表示实际字段存在但本轮样本没有值，不计为已满足。",
+    "预算目前仅含评论链路，未含补齐商品/搜索字段的成本。"
+  ]
+}

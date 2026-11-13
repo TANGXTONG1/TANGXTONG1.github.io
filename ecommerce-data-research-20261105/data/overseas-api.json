@@ -1,0 +1,274 @@
+{
+  "checked_on": "2026-11-12",
+  "live_data_api_tested": false,
+  "method": "公开官网、技术文档、机器目录和 Actor 元数据核验；未运行实际采集。",
+  "recommendation": "优先 Bright Data；Apify 补覆盖；Shopee/Lazada 另评 Magpie。没有一家通过九站完整历史验收。",
+  "comparisons": [
+    {
+      "title": "优先候选与成本",
+      "rows": [
+        {
+          "候选": "Bright Data Scraper API",
+          "与需求的匹配": "独立评论采集器：Amazon、Walmart、Lazada、Best Buy；另有多站商品接口附带评论",
+          "公开价格或计费参考": "PAYG $1.50 / 千条交付记录 ；账户每月 5,000 免费 credits，Scraper API 每条记录消耗 1 credit，额度与其他适用产品共享。Scale $499/月含 384,000 记录、超量 $1.30/千",
+          "接入与主要限制": "同一 API / 账号，以 dataset_id 区分站点，字段仍需映射。商品结果中的评论数组不能直接套用独立评论记录单价",
+          "筛选结论": "第一批试用 ；优先验 Amazon 历史深度、Walmart 翻页和 Lazada 地区"
+        },
+        {
+          "候选": "Apify",
+          "与需求的匹配": "九站均能找到候选 Actor，但维护者、成熟度不同；Temu 不通过本轮成熟度筛选",
+          "公开价格或计费参考": "月费 Free $0 含 $5 额度；Starter $19 含 $19；Scale $199 含 $199；Business $999 含 $999。Actor 按自身规则消耗额度，付费档超额另付；例如 Amazon Free 档 $6/千评论，Walmart Free 档 $5/千，另有适用事件费",
+          "接入与主要限制": "统一调用、账户和账单；不是统一字段、统一维护团队。社区 Actor 需逐个验收。高档 Actor 单价伴随平台月费",
+          "筛选结论": "第二批试用 ；先选 Apify 自维护及有实际使用量的 Actor"
+        },
+        {
+          "候选": "Magpie Scraping API",
+          "与需求的匹配": "明确的 Lazada 评论、Shopee 商品/App 评价流程，适合东南亚",
+          "公开价格或计费参考": "Lazada 6 credits/请求；Shopee product-ratings 8 credits/页；App ratings 10 credits/成功页。按其 Tier 1 参考 $0.00125/credit，约 $7.50 / $10 / $12.50 每千相应计费单位",
+          "接入与主要限制": "一个 key 与钱包，多端点；Shopee App ratings 需工作日审核。product-ratings 文档包含维护期 503 说明；公开计费文字存在差异",
+          "筛选结论": "东南亚条件候选 ；先核维护状态、失败计费和处理时效"
+        },
+        {
+          "候选": "Oxylabs Web API",
+          "与需求的匹配": "成熟采集供应商；本轮原文评论字段证据来自 Classic 的 Amazon 商品页示例，新 Web API 未核实评论样本",
+          "公开价格或计费参考": "新 Web API Starter $15/月 ，$5 欢迎额度；该档 Amazon 非 JS $0.50/千结果 ，其他目标从 $1/千，自定义域名 JS 抓取 $1.50/千；AI parsing 列 $3/千解析页，需按实际功能组合核价",
+          "接入与主要限制": "按页面/结果计费，不是单条评论；官方教程称未登录商品页通常露出 8–13 条精选。新 API 与 Classic 并存，不能直接套用彼此的样本与套餐",
+          "筛选结论": "适合商品/价格及少量评论； 不作为完整评论库首选"
+        },
+        {
+          "候选": "DataWeave",
+          "与需求的匹配": "企业 Data Collection API 明确包含评论、JSON/CSV及云交付",
+          "公开价格或计费参考": "询价；没有公开可核逐站评论单价",
+          "接入与主要限制": "需商务确认平台、国家、字段、历史深度、刷新频率及交付 SLA",
+          "筛选结论": "适合要求供应商承担整合维护的企业项目， 先询样再定"
+        },
+        {
+          "候选": "SellerApp Data API",
+          "与需求的匹配": "Amazon 明确有 reviews、评论采集任务和结果接口；Walmart/Lazada/Shopee 有商品 API",
+          "公开价格或计费参考": "数据 API 按月和调用量定制；旧入口宣传 100 免费 tokens，需确认当前账户能否领取",
+          "接入与主要限制": "client-id + token；其余三站“ratings & reviews”宣传尚不能证明逐条原文交付",
+          "筛选结论": "可作 Amazon + 商品/关键词/销量估计的备选，不算四站评论已覆盖"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "title": "逐平台评论覆盖",
+      "rows": [
+        {
+          "目标平台": "Amazon",
+          "Bright Data": "独立评论采集器",
+          "Apify 候选": "Apify 维护；文档约最多 500 条/商品",
+          "Magpie": "本轮仅核到商品/搜索，未核独立评论",
+          "关键验收点": "登录墙、精选与全评论区别、最早日期、变体合并"
+        },
+        {
+          "目标平台": "Walmart",
+          "Bright Data": "独立评论采集器",
+          "Apify 候选": "Apify 维护",
+          "Magpie": "未核",
+          "关键验收点": "翻页、转载/同步评论去重、商家回复"
+        },
+        {
+          "目标平台": "eBay",
+          "Bright Data": "商品附带评论",
+          "Apify 候选": "Apify 维护；含卖家交易反馈场景",
+          "Magpie": "未核",
+          "关键验收点": "商品评分与卖家反馈必须分开"
+        },
+        {
+          "目标平台": "Etsy",
+          "Bright Data": "商品附带评论",
+          "Apify 候选": "社区；listing 与 shop 输入",
+          "Magpie": "未核",
+          "关键验收点": "商品评论与店铺全部评论分开"
+        },
+        {
+          "目标平台": "AliExpress",
+          "Bright Data": "商品附带评论",
+          "Apify 候选": "社区；有原文/译文、追评字段",
+          "Magpie": "未核",
+          "关键验收点": "原文和译文、SKU、追评、重复"
+        },
+        {
+          "目标平台": "Temu",
+          "Bright Data": "当前公开目录未见现成对应项",
+          "Apify 候选": "找到新社区 Actor，但用户量过低，本轮不通过",
+          "Magpie": "未核",
+          "关键验收点": "正文是否被删减；不能以星级/日期冒充评论正文"
+        },
+        {
+          "目标平台": "Shopee",
+          "Bright Data": "当前公开目录未见现成对应项",
+          "Apify 候选": "社区；部分旧 Actor 维护中",
+          "Magpie": "独立 product-ratings / App ratings；App schema 列 8 地区",
+          "关键验收点": "部分按店铺流匹配商品；Magpie 审核窗口和维护状态"
+        },
+        {
+          "目标平台": "Lazada",
+          "Bright Data": "独立评论；目录代表域为马来西亚",
+          "Apify 候选": "社区；作者列东南亚六国",
+          "Magpie": "独立评论；文档列东南亚六国",
+          "关键验收点": "Bright 其余国家不能由马来西亚目录推断；正文、分页、回复"
+        },
+        {
+          "目标平台": "TikTok Shop",
+          "Bright Data": "商品附带评论",
+          "Apify 候选": "社区；本轮主要候选明确只接受 US",
+          "Magpie": "只核到商品，未核独立评论",
+          "关键验收点": "商品买家评价与 TikTok 视频评论分开"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "title": "字段与接入",
+      "rows": [
+        {
+          "产品 / 端点": "Bright Amazon gd_le8e811kzy4ggddlq",
+          "已见字段证据": "正文、星级、日期、ASIN、变体、验证购买、图片/视频；未列商家回复",
+          "翻页 / 历史 / 操作边界": "有 max_reviews、排除已知 ID、变体筛选；不代表全部历史可达"
+        },
+        {
+          "产品 / 端点": "Bright Walmart gd_mpql1v8g2o8o6l1wzd",
+          "已见字段证据": "正文、评分、日期、商品 ID、媒体、reply",
+          "翻页 / 历史 / 操作边界": "需测试页间去重、最新评论与最早日期"
+        },
+        {
+          "产品 / 端点": "Bright Lazada gd_lub6mys21lzcklkq1z",
+          "已见字段证据": "正文、评分、日期、SKU、媒体、replies",
+          "翻页 / 历史 / 操作边界": "首先验马来西亚；其他地区需样本确认"
+        },
+        {
+          "产品 / 端点": "Bright Best Buy gd_mv3s5qosodai3txro",
+          "已见字段证据": "正文、评分、日期、SKU、图片、brand_response",
+          "翻页 / 历史 / 操作边界": "评论总数不等于有正文的可达评论数量"
+        },
+        {
+          "产品 / 端点": "Apify Amazon",
+          "已见字段证据": "reviewDescription、ratingScore、reviewTitle、reviewedIn、isVerified、variant、reviewImages",
+          "翻页 / 历史 / 操作边界": "文档每星最多 100、理想情况商品最多 500；日期筛选另有 dateFilterNewerThan 计费事件，不能只按评论条数预算"
+        },
+        {
+          "产品 / 端点": "Apify AliExpress 社区候选",
+          "已见字段证据": "text、text_translated、rating、sku_info、images、follow_up_text、review_date",
+          "翻页 / 历史 / 操作边界": "作者支持 onlyNewReviews；输入 0 表示尝试所有可达记录，不保证全历史"
+        },
+        {
+          "产品 / 端点": "Magpie Lazada",
+          "已见字段证据": "评论正文、星级、时间、变体；V2 增加筛选与分页数据",
+          "翻页 / 历史 / 操作边界": "使用含 itemId 的 review-list URL / V2 请求体，需提交任务再取结果，不是直接传任意商品 URL 就完成"
+        },
+        {
+          "产品 / 端点": "Magpie Shopee App ratings",
+          "已见字段证据": "官方示例含 cmtid、rating_star、comment、images；返回分页原始结构",
+          "翻页 / 历史 / 操作边界": "固定 50 ratings/页；min_pages/max_pages 范围 1–100；Mon–Fri 08:00–17:00 Asia/Jakarta 工作时间审核；上限是参数允许值，非保证采满"
+        },
+        {
+          "产品 / 端点": "Oxylabs Classic amazon_product",
+          "已见字段证据": "官方教程的 reviews 数组含 content、rating、timestamp、is_verified 等；本轮未实调",
+          "翻页 / 历史 / 操作边界": "教程称未登录商品页通常露出 8–13 条精选；不代表 API 每次保证返回该数量，也未据此确认完整历史或新 Web API 的同等字段"
+        }
+      ],
+      "sources": []
+    },
+    {
+      "title": "保留与排除",
+      "rows": [
+        {
+          "供应商 / 产品": "Scrapingdog",
+          "官方证据与结论": "Amazon Reviews 因登录墙标为 temporarily unavailable； Walmart Reviews 有正文",
+          "价格 / 重要边界": "Walmart 5 credits/成功请求；文档只列 reviews URL，未明确独立分页参数与历史深度。 Lite $40/月含 20 万 credits、5 并发；免费 100 credits 。请求数不等于评论条数；不作为广覆盖评论主方案"
+        },
+        {
+          "供应商 / 产品": "ScraperAPI",
+          "官方证据与结论": "Amazon 原评论入口指向 Product API ，只能确认商品页公开评论； 旧官方评论文档 明确不可用。 Walmart 有 page、评分及验证购买筛选",
+          "价格 / 重要边界": "Hobby $49/月含 10 万 credits、20 并发；7 天试用 5,000 credits 。按请求消耗 credits，非按评论；Walmart review 精确请求成本本轮未核。可作 Walmart 专项候选，不列为 Amazon 完整历史来源"
+        },
+        {
+          "供应商 / 产品": "DataForSEO",
+          "官方证据与结论": "Amazon reviews/task_post 官方明确暂不可用",
+          "价格 / 重要边界": "暂撤出评论主候选；有公司级信誉不能覆盖端点停用事实"
+        },
+        {
+          "供应商 / 产品": "Traject / Rainforest",
+          "官方证据与结论": "官方更新 说明 reviews_v2 停用，退回 product.top_reviews",
+          "价格 / 重要边界": "多个官方价格入口有差异；不以历史套餐推算当前评论成本"
+        },
+        {
+          "供应商 / 产品": "Traject / BlueCart",
+          "官方证据与结论": "Walmart reviews 支持美国，明确不支持 walmart.ca",
+          "价格 / 重要边界": "年付折合 $18/月含 500 请求、$66/月含 10,000；100 请求免卡试用"
+        },
+        {
+          "供应商 / 产品": "Traject / Countdown",
+          "官方证据与结论": "eBay reviews 是商品评价，EPID/GTIN 查询、10 条/页",
+          "价格 / 重要边界": "年付折合 $18/月含 500 请求、$66/月含 10,000；100 请求免卡试用。同集团仍为不同 API，不等同一家统一接口"
+        },
+        {
+          "供应商 / 产品": "Diffbot",
+          "官方证据与结论": "Discussion API 有正文、日期、图片、回复关系，但本轮未核逐条星级和九站可达性",
+          "价格 / 重要边界": "通用提取工具，需要自行解决更多目标页与覆盖问题，非现成评论主选"
+        },
+        {
+          "供应商 / 产品": "Unwrangle",
+          "官方证据与结论": "Amazon 文档 自行标为 legacy/high-risk，提示不要建立新的生产依赖；更多评论涉及 Amazon cookie",
+          "价格 / 重要边界": "当前不选为 Amazon 主方案；美国零售商可另行专项验收"
+        },
+        {
+          "供应商 / 产品": "Zyte",
+          "官方证据与结论": "现行自动提取目录 未列 productReviews；2020 年 AutoExtract 评论 beta 文章不能证明当前 API 可用",
+          "价格 / 重要边界": "成熟通用抓取/定制供应商；评论交付需重新确认"
+        },
+        {
+          "供应商 / 产品": "Decodo",
+          "官方证据与结论": "有 评论抓取宣传页 ，但本轮未核足当前逐站评论端点、分页和原文样本",
+          "价格 / 重要边界": "待补证；不按营销覆盖宣称列入已支持"
+        }
+      ],
+      "sources": [
+        "https://www.scrapingdog.com/documentation/amazon-reviews-api/",
+        "https://www.scrapingdog.com/documentation/walmart-reviews-scraper/",
+        "https://www.scrapingdog.com/pricing/",
+        "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+        "https://docs.scraperapi.com/php/making-requests-or-php/async-structured-data-collection-method-or-php/amazon-reviews-api-async-or-php",
+        "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+        "https://www.scraperapi.com/pricing/",
+        "https://docs.dataforseo.com/v3/merchant-amazon-reviews-task_post/",
+        "https://docs.trajectdata.com/rainforestapi/product-updates",
+        "https://docs.trajectdata.com/bluecartapi/walmart-product-data-api/parameters/reviews",
+        "https://docs.trajectdata.com/countdownapi/ebay-product-data-api/results/reviews",
+        "https://www.diffbot.com/docs/extract/discussion",
+        "https://docs.unwrangle.com/amazon-product-reviews-api/",
+        "https://docs.zyte.com/zyte-api/usage/extract",
+        "https://decodo.com/scraping/web/reviews"
+      ]
+    },
+    {
+      "title": "条款对照",
+      "rows": [
+        {
+          "项目": "数据与第三方权利",
+          "Bright Data": "标准许可 §3.9 禁止用数据提供相似或竞争产品；§3.5/10.2 涉及第三方权利与授权责任",
+          "Apify": "通用条款 §5.8 在法律允许范围内保留客户既有数据权利；§6.2 涉及使用责任，不是授予所有被采评论的版权"
+        },
+        {
+          "项目": "投诉 / 停用",
+          "Bright Data": "§2 允许在潜在责任、违法或违约等情形暂停服务",
+          "Apify": "有侵权举报机制；Actor 条款 §9.5 允许删除或禁用严重违规的社区 Actor"
+        },
+        {
+          "项目": "完整性 / 可用性",
+          "Bright Data": "§6 默认不保证持续无中断、无错误或数据完整准确；具体 SLA 另核",
+          "Apify": "通用条款 §10 有类似免责；官方维护 Actor 有有限的描述符合保证和合理修正努力"
+        },
+        {
+          "项目": "社区作者责任",
+          "Bright Data": "需要看具体服务合同",
+          "Apify": "Actor 条款 §8–9：社区作者默认没有持续维护、更新或支持义务；统一平台账户不消除这一差异"
+        }
+      ],
+      "sources": []
+    }
+  ]
+}

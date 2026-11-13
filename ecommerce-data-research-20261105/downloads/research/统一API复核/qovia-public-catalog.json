@@ -1,0 +1,3361 @@
+{
+  "source": "https://qovia.ai/openapi.json",
+  "checked_on": "2026-11-05",
+  "data": {
+    "info": {
+      "title": "Qovia API",
+      "version": "0.1.0",
+      "summary": "Public web data API for AI: 164 endpoints, one key, one JSON envelope.",
+      "description": "Public web data for AI agents and developers: social, e-commerce and web platforms behind one API key and one JSON envelope.\n\n- **Base URL:** `https://api.qovia.ai`\n- **Auth:** `Authorization: Bearer <API key>` (or `x-api-key: <API key>`). Create keys at https://qovia.ai/console/?tab=keys.\n- **Requests:** GET endpoints take query parameters, POST endpoints a JSON object body. Unknown parameters are rejected with 400 `invalid_params`.\n- **Responses:** HTTP 200 with `{\"request_id\", \"data\", \"meta\"}`. An empty result is still 200, with `meta.empty: true` and `data` empty or null. Errors are `{\"error\": {\"code\", \"message\", \"request_id\", \"support\"}}`; branch on `code`.\n- **Billing (USD):** a new account gets 50 trial calls on any endpoint (`meta.trial_calls_remaining` counts down); after that, a prepaid balance. Only successful, non-empty results are charged or counted, and errors and empty results are not.\n- **Rate limits:** 60 requests per minute per account (600 after the first top-up); some endpoints also have a global per-second cap (429 `endpoint_busy`). Honour `Retry-After`.\n- `/v1` only takes GET and POST: other methods (e.g. PUT, DELETE) get a framework 405 `{\"detail\": \"Method Not Allowed\"}`, and an unexpected server error may be a plain-text 500. Neither is charged.\n\nDocs: https://qovia.ai/docs/ · API reference: https://qovia.ai/docs/api-reference/ · Chinese: https://qovia.ai/zh/docs/"
+    },
+    "servers": [
+      {
+        "url": "https://api.qovia.ai"
+      }
+    ],
+    "security": [
+      {
+        "bearerAuth": []
+      },
+      {
+        "apiKeyHeader": []
+      }
+    ],
+    "paths": {
+      "/v1/raw/xingtu/author": {
+        "get": {
+          "operationId": "raw_xingtu_author",
+          "summary": "Douyin Xingtu creator profile",
+          "description": "Xingtu creator profile: nickname, followers, gender, location, the matching Douyin uid / sec_uid / handle, MCN, content labels, Xingtu and e-commerce status. Unknown author ids answer 404 and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "channel",
+              "in": "query",
+              "required": false,
+              "description": "1 short video, 10 live streaming",
+              "x-qovia-description-zh": "1 短视频，10 直播",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "1",
+                  "10"
+                ],
+                "default": "1"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_a890182a3d8f",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "nickname": "犟种兄弟",
+                      "avatar_url": "https://p11.douyinpic.com/aweme/1080x1080/aweme-avatar/tos-cn-avt-0015_b5cd790831737f84254c5a5cb4ca0fd6.jpeg",
+                      "followers": 2737562,
+                      "gender": "male",
+                      "location": {
+                        "province": "辽宁省",
+                        "city": "沈阳市"
+                      },
+                      "douyin": {
+                        "uid": "2422960710762380",
+                        "sec_uid": "MS4wLjABAAAATBkQ-V3vn_LrvOI7cYOZ7pDNihy7fSR0HZTF8dzJcomEi9X3YQCfyb4BzUO8W8aD",
+                        "unique_id": "Xiaomengzaizhene",
+                        "short_id": "3040643096"
+                      },
+                      "mcn": {
+                        "id": "7091111787000496139",
+                        "name": "忠新影视"
+                      },
+                      "content_labels": [
+                        "搞笑剧情",
+                        "剧情反转",
+                        "陈翔短剧"
+                      ],
+                      "tags": [
+                        {
+                          "tag": "剧情搞笑",
+                          "subtags": [
+                            "剧情"
+                          ]
+                        }
+                      ],
+                      "is_star": true,
+                      "ecommerce_enabled": true,
+                      "channels": [
+                        1
+                      ],
+                      "joined_at": "2020-02-06T10:41:05+08:00",
+                      "prov": {
+                        "hash": "0x751265002a285a8c",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.001000",
+                      "balance_usd": "9.999000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author",
+          "x-qovia-title-zh": "抖音星图达人资料",
+          "x-qovia-description-zh": "星图达人主页基本信息：昵称、粉丝数、性别、地区、对应的抖音 uid / sec_uid / 抖音号、MCN、内容标签、 是否星图达人、是否开通电商。作者 ID 不存在时返回 404，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author/"
+        }
+      },
+      "/v1/raw/xingtu/author_videos": {
+        "get": {
+          "operationId": "raw_xingtu_author_videos",
+          "summary": "Douyin Xingtu creator recent videos",
+          "description": "A creator's latest personal and Xingtu (sponsored) videos, up to 15 each, with plays, likes, comments and shares, plus a summary of recent interaction rate, median plays and view rate against peers (keys ending in _enrollment cover Xingtu videos). Unknown authors answer 404 and creators without videos answer empty; neither is charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "only_assign",
+              "in": "query",
+              "required": false,
+              "description": "When true, Xingtu videos cover assigned orders only",
+              "x-qovia-description-zh": "true 时星图视频只看指派订单",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "items": [
+                        {
+                          "id": "soc_xin_892124ba9175",
+                          "src": "social",
+                          "platform": "xingtu",
+                          "lang": "zh-CN",
+                          "text": "蒙哥，老师以后跟你各论各的",
+                          "author": {
+                            "author_id": "6790158034132795406",
+                            "douyin_uid": "2422960710762380",
+                            "name": null,
+                            "followers": null
+                          },
+                          "metrics": {
+                            "plays": 5000740,
+                            "likes": 200204,
+                            "comments": 1329,
+                            "shares": 14800
+                          },
+                          "extra": {
+                            "source_id": "7674181083131054406",
+                            "published_at": "2026-08-15T17:02:03+08:00",
+                            "duration_s": 249,
+                            "is_hot": false,
+                            "is_star_video": false,
+                            "url": "https://www.douyin.com/video/7674181083131054406"
+                          },
+                          "prov": {
+                            "hash": "0xf46ca3820c6362d2",
+                            "ts": "2026-10-20T12:00:00+08:00",
+                            "source": "live"
+                          }
+                        }
+                      ],
+                      "cursor": null,
+                      "has_more": false,
+                      "author_id": "6790158034132795406",
+                      "summary": {
+                        "interaction": {
+                          "rate": 0.0768,
+                          "compare_avg": 0.0239,
+                          "compare_author": 0.81
+                        },
+                        "interaction_enrollment": {
+                          "rate": 0.0601,
+                          "compare_avg": -0.0205,
+                          "compare_author": 0.59
+                        },
+                        "play_medium": {
+                          "rate": 409298,
+                          "compare_avg": 25.8,
+                          "compare_author": 0.98
+                        },
+                        "play_medium_enrollment": {
+                          "rate": 1790337,
+                          "compare_avg": 40.3,
+                          "compare_author": 0.98
+                        },
+                        "video_view_rate": {
+                          "rate": 0.2339,
+                          "compare_avg": 0.0834,
+                          "compare_author": 0.83
+                        },
+                        "video_view_rate_enrollment": {
+                          "rate": 0.2167,
+                          "compare_avg": 0.0953,
+                          "compare_author": 0.85
+                        }
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.001000",
+                      "balance_usd": "9.999000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_videos",
+          "x-qovia-title-zh": "抖音星图达人近期作品",
+          "x-qovia-description-zh": "达人最近的个人视频和星图（商单）视频，各最多 15 条，含播放、点赞、评论、分享，以及近期互动率、播放中位数、 完播率与同类达人的对比（summary，enrollment 结尾的是星图视频）。作者不存在时返回 404，没有作品时返回空结果， 均不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_videos/"
+        }
+      },
+      "/v1/raw/xingtu/author_spread": {
+        "get": {
+          "operationId": "raw_xingtu_author_spread",
+          "summary": "Douyin Xingtu creator reach overview",
+          "description": "Reach overview for the last 30 or 90 days: video count, average likes/comments/shares, interaction rate, completion rate, median plays and the share of peers beaten, plus CPM/CPE estimates. Rates are Xingtu's basis-point integers (528 = 5.28%); expect_cpm, expect_cpe and sales_expect_cpm are in CNY cents. A window without videos answers empty (estimates only) and is not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "video_type",
+              "in": "query",
+              "required": false,
+              "description": "1 personal videos, 2 Xingtu (sponsored) videos",
+              "x-qovia-description-zh": "1 个人视频，2 星图视频",
+              "schema": {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2
+                ],
+                "default": 1
+              }
+            },
+            {
+              "name": "range",
+              "in": "query",
+              "required": false,
+              "description": "2 last 30 days, 3 last 90 days",
+              "x-qovia-description-zh": "2 近 30 天，3 近 90 天",
+              "schema": {
+                "type": "integer",
+                "enum": [
+                  2,
+                  3
+                ],
+                "default": 2
+              }
+            },
+            {
+              "name": "only_assign",
+              "in": "query",
+              "required": false,
+              "description": "Only with video_type=2: assigned orders only",
+              "x-qovia-description-zh": "仅 video_type=2 时生效：只看指派订单",
+              "schema": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            {
+              "name": "flow_type",
+              "in": "query",
+              "required": false,
+              "description": "Only with video_type=2: 1 excludes ad traffic",
+              "x-qovia-description-zh": "仅 video_type=2 时生效：1 排除广告流量",
+              "schema": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ],
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_7d90c97f0782",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "videos": 7,
+                      "avg_duration": 25556,
+                      "avg_likes": 54259,
+                      "avg_comments": 310,
+                      "avg_shares": 11408,
+                      "interact_rate": {
+                        "value": 528,
+                        "overtake": 8620
+                      },
+                      "play_over_rate": {
+                        "value": 1055,
+                        "overtake": 6673
+                      },
+                      "play_median": {
+                        "value": 1311912,
+                        "overtake": 9003
+                      },
+                      "play_stability": null,
+                      "expect_cpm": {
+                        "cpm_21_60": 1192,
+                        "cpm_60": 1315
+                      },
+                      "expect_cpe": {
+                        "cpe_21_60": 28,
+                        "cpe_60": 31
+                      },
+                      "sales_expect_cpm": {
+                        "cpm_21_60": 1546,
+                        "cpm_60": 1705
+                      },
+                      "prov": {
+                        "hash": "0x3e8e11d0cd112e6c",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.001000",
+                      "balance_usd": "9.999000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_spread",
+          "x-qovia-title-zh": "抖音星图达人传播表现",
+          "x-qovia-description-zh": "近 30 或 90 天的视频传播概览：作品数、平均点赞/评论/分享、互动率、完播率、播放中位数及超过同类达人的比例， 外加预估 CPM/CPE。比率类字段按星图原值输出（万分比整数，528 表示 5.28%）；expect_cpm、expect_cpe、 sales_expect_cpm 的单位是分。窗口内没有作品时返回空结果（只剩报价预估），不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_spread/"
+        }
+      },
+      "/v1/raw/xingtu/author_pricing": {
+        "get": {
+          "operationId": "raw_xingtu_author_pricing",
+          "summary": "Douyin Xingtu creator rate card",
+          "description": "A creator's Xingtu rate card (integrated video, custom video and so on, in CNY, with list price, settlement type and whether it is open) and industry tags. Creators without any price answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "channel",
+              "in": "query",
+              "required": false,
+              "description": "1 short video, 10 live streaming",
+              "x-qovia-description-zh": "1 短视频，10 直播",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "1",
+                  "10"
+                ],
+                "default": "1"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_e273f03d7b93",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "prices": [
+                        {
+                          "field": "long_video_price",
+                          "desc": "植入视频",
+                          "price": 87000,
+                          "origin_price": 87000,
+                          "settlement_desc": "固定价格",
+                          "video_type": 2,
+                          "is_open": true
+                        },
+                        {
+                          "field": "price",
+                          "desc": "定制视频",
+                          "price": 96000,
+                          "origin_price": 96000,
+                          "settlement_desc": "固定价格",
+                          "video_type": 71,
+                          "is_open": true
+                        }
+                      ],
+                      "industry_tags": [
+                        "生活服务-二手交易",
+                        "互联网电商服务-综合电商平台"
+                      ],
+                      "prov": {
+                        "hash": "0x8b8d66b574df7754",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_pricing",
+          "x-qovia-title-zh": "抖音星图达人报价",
+          "x-qovia-description-zh": "达人在星图上的合作报价（植入视频、定制视频等，单位人民币元，含原价、结算方式、是否开放）和行业标签。 没有任何报价时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_pricing/"
+        }
+      },
+      "/v1/raw/xingtu/author_audience": {
+        "get": {
+          "operationId": "raw_xingtu_author_audience",
+          "summary": "Douyin Xingtu creator viewer profile",
+          "description": "Who watches the creator's videos: distributions by device brand, city tier, age, city, province, gender, consumer segment and interest, each with Xingtu's one-line summary and per-bucket counts. Creators without a profile answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_5cbca277db81",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "dimensions": [
+                        {
+                          "type": 2,
+                          "name": "年龄分布",
+                          "summary": "18到23岁居多,占比46%",
+                          "buckets": [
+                            {
+                              "key": "18-23",
+                              "value": 506224
+                            },
+                            {
+                              "key": "24-30",
+                              "value": 178006
+                            }
+                          ]
+                        },
+                        {
+                          "type": 32,
+                          "name": "城市等级分布",
+                          "summary": "一线居多,占比24%",
+                          "buckets": [
+                            {
+                              "key": "一线",
+                              "value": 421298
+                            },
+                            {
+                              "key": "三线",
+                              "value": 414508
+                            }
+                          ]
+                        }
+                      ],
+                      "updated_at": "2026-10-20T12:11:12+08:00",
+                      "prov": {
+                        "hash": "0x781dafa0a4b1ecaf",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_audience",
+          "x-qovia-title-zh": "抖音星图达人观众画像",
+          "x-qovia-description-zh": "观看过达人视频的观众画像：设备品牌、城市等级、年龄、城市、省份、性别、八大人群、兴趣等分布，每个维度给出 星图的一句话结论和各分桶人数。没有画像数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_audience/"
+        }
+      },
+      "/v1/raw/xingtu/author_fans": {
+        "get": {
+          "operationId": "raw_xingtu_author_fans",
+          "summary": "Douyin Xingtu creator follower profile",
+          "description": "Profile of a creator's followers (or fan club, or loyal fans): age, gender, consumer segment, device brand, interests and more, in the same shape as the viewer profile. Creators without a profile answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "crowd",
+              "in": "query",
+              "required": false,
+              "description": "1 followers, 2 fan club members, 5 loyal fans",
+              "x-qovia-description-zh": "1 粉丝，2 粉丝团，5 铁粉",
+              "schema": {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2,
+                  5
+                ],
+                "default": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_219d1e8dee5d",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "dimensions": [
+                        {
+                          "type": 1,
+                          "name": "性别分布",
+                          "summary": "男性居多,占比74%",
+                          "buckets": [
+                            {
+                              "key": "female",
+                              "value": 709830
+                            },
+                            {
+                              "key": "male",
+                              "value": 2024415
+                            }
+                          ]
+                        }
+                      ],
+                      "updated_at": "2026-10-20T12:11:18+08:00",
+                      "prov": {
+                        "hash": "0x4d248318aefe3f95",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_fans",
+          "x-qovia-title-zh": "抖音星图达人粉丝画像",
+          "x-qovia-description-zh": "达人粉丝（或粉丝团、铁粉）的画像：年龄、性别、八大人群、设备品牌、兴趣等分布，结构与观众画像相同。 没有画像数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_fans/"
+        }
+      },
+      "/v1/raw/xingtu/author_seeding": {
+        "get": {
+          "operationId": "raw_xingtu_author_seeding",
+          "summary": "Douyin Xingtu creator search lift",
+          "description": "Search lift after viewers watch the creator: average searches after viewing, search-after-view rate and search-term CTR. Xingtu only publishes display values (such as \"<10\" or \"1%\"), returned as strings. Creators without data answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "range",
+              "in": "query",
+              "required": false,
+              "description": "Window: the last 30 or 90 days",
+              "x-qovia-description-zh": "统计窗口：近 30 或 90 天",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "30",
+                  "90"
+                ],
+                "default": "30"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_60f93f1bf1ec",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "search_after_view_count": "<10",
+                      "search_after_view_rate": "<0.02%",
+                      "search_word_ctr": "1%",
+                      "updated_at": "2026-10-19T13:25:27+08:00",
+                      "prov": {
+                        "hash": "0xefabc428dcb28200",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_seeding",
+          "x-qovia-title-zh": "抖音星图达人种草价值",
+          "x-qovia-description-zh": "种草价值：看过达人视频后的平均搜索次数、看后搜索率和搜索词点击率。星图只给展示值（如\"<10\"、\"1%\"）， 原样以字符串输出。没有数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_seeding/"
+        }
+      },
+      "/v1/raw/xingtu/author_cpm": {
+        "get": {
+          "operationId": "raw_xingtu_author_cpm",
+          "summary": "Douyin Xingtu creator CPM and CPE",
+          "description": "Cost per thousand plays (CPM) and per engagement (CPE) at the current rate card, for 20-60 s and 60 s+ videos, in CNY; cpm_20_60_rank_percent is the peer percentile, views the expected plays, and sn_ fields are Xingtu's alternative basis. Creators without data answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_6cfc4e263819",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "cpm_20_60": 11.924,
+                      "cpm_60": 13.1576,
+                      "cpe_20_60": 0.2819,
+                      "cpe_60": 0.3111,
+                      "cpm_20_60_rank_percent": 0.0406,
+                      "sn_cpm_20_60": 11.924,
+                      "sn_cpm_60": 13.1576,
+                      "sn_cpe_20_60": 0.2831,
+                      "sn_cpe_60": 0.3124,
+                      "views": 7296186,
+                      "sn_views": 7296186,
+                      "updated_at": "2026-10-19T22:34:11+08:00",
+                      "prov": {
+                        "hash": "0x3b23a176cfd0e8a3",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_cpm",
+          "x-qovia-title-zh": "抖音星图达人 CPM/CPE",
+          "x-qovia-description-zh": "按当前报价估算的千次播放成本（CPM）和单次互动成本（CPE），分 20-60 秒与 60 秒以上视频，单位人民币元； cpm_20_60_rank_percent 为同类排名百分位，views 为预估播放量，sn_ 前缀为星图给出的另一口径。 没有数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_cpm/"
+        }
+      },
+      "/v1/raw/xingtu/author_indices": {
+        "get": {
+          "operationId": "raw_xingtu_author_indices",
+          "summary": "Douyin Xingtu creator business indices",
+          "description": "Xingtu's business indices (cooperation, cost-performance, conversion, shopping, spread and star), each with score, peer average, rank, rank percentile and period-over-period change. Creators without data answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "industry_tag",
+              "in": "query",
+              "required": false,
+              "description": "Industry tag ID; 0 for all industries",
+              "x-qovia-description-zh": "行业标签 ID，0 为全部行业",
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_06c43a95c3b9",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "indices": {
+                        "cooperate_index": {
+                          "value": 75.64,
+                          "avg_value": 75.55,
+                          "rank": 147221,
+                          "rank_percent": 0.0674,
+                          "relative_ratio": 0
+                        },
+                        "cp_index": {
+                          "value": 69.97,
+                          "avg_value": 64.09,
+                          "rank": 27040,
+                          "rank_percent": 0.0124,
+                          "relative_ratio": 0
+                        },
+                        "link_convert_index": {
+                          "value": 61.51,
+                          "avg_value": 55.24,
+                          "rank": 174328,
+                          "rank_percent": 0.0798,
+                          "relative_ratio": -0.0956
+                        },
+                        "link_shopping_index": {
+                          "value": 71.76,
+                          "avg_value": 53.24,
+                          "rank": 68468,
+                          "rank_percent": 0.0313,
+                          "relative_ratio": 0.1617
+                        },
+                        "link_spread_index": {
+                          "value": 71.62,
+                          "avg_value": 53.09,
+                          "rank": 69171,
+                          "rank_percent": 0.0317,
+                          "relative_ratio": 0.15
+                        },
+                        "link_star_index": {
+                          "value": 70.1,
+                          "avg_value": 56.19,
+                          "rank": 51681,
+                          "rank_percent": 0.0236,
+                          "relative_ratio": 0.0381
+                        }
+                      },
+                      "prov": {
+                        "hash": "0x3efa5d92ce5c7227",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_indices",
+          "x-qovia-title-zh": "抖音星图达人商业指数",
+          "x-qovia-description-zh": "星图商业能力指数：合作指数、性价比指数、转化指数、种草指数、传播指数、星图指数，每项给出分值、同类均值、 排名、排名百分位和环比。没有数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_indices/"
+        }
+      },
+      "/v1/raw/xingtu/author_conversion": {
+        "get": {
+          "operationId": "raw_xingtu_author_conversion",
+          "summary": "Douyin Xingtu creator conversion",
+          "description": "Conversion value of the creator's Xingtu videos: median plays, related video count, and display ranges for cost per click, component clicks, component click rate, average sales, GPM and recommended product price (null when Xingtu has none). Creators without any data answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "range",
+              "in": "query",
+              "required": false,
+              "description": "1 last 7 days, 2 last 30 days, 3 last 90 days",
+              "x-qovia-description-zh": "1 近 7 天，2 近 30 天，3 近 90 天",
+              "schema": {
+                "type": "integer",
+                "enum": [
+                  1,
+                  2,
+                  3
+                ],
+                "default": 2
+              }
+            },
+            {
+              "name": "industry_id",
+              "in": "query",
+              "required": false,
+              "description": "Industry ID; 0 for all industries",
+              "x-qovia-description-zh": "行业 ID，0 为全部行业",
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_3fe1366eef66",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "video_plays_median": 771476,
+                      "related_videos": 2,
+                      "related_cpc_range": "16-18",
+                      "component_click_count_range": "500以下",
+                      "component_click_rate_range": "2%以下",
+                      "avg_sales_amount_range": null,
+                      "gpm_range": null,
+                      "product_price_range": null,
+                      "prov": {
+                        "hash": "0x1932de56b52bf9b7",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_conversion",
+          "x-qovia-title-zh": "抖音星图达人转化能力",
+          "x-qovia-description-zh": "星图短视频的转化价值：播放中位数、关联视频数，以及单次点击成本、组件点击量、组件点击率、平均销售额、GPM、 推荐商品价格等区间（星图只给展示区间，无数据为 null）。没有任何数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_conversion/"
+        }
+      },
+      "/v1/raw/xingtu/author_content_keywords": {
+        "get": {
+          "operationId": "raw_xingtu_author_content_keywords",
+          "summary": "Douyin Xingtu creator content keywords",
+          "description": "The most frequent words in a creator's recent videos (about 20), sorted by count; videos is the number of videos containing the word (null when Xingtu does not say). Creators without keywords answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_a016353f7ecf",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "keywords": [
+                        {
+                          "word": "学校",
+                          "count": 10,
+                          "videos": 5
+                        },
+                        {
+                          "word": "老师",
+                          "count": 6,
+                          "videos": 6
+                        },
+                        {
+                          "word": "便宜",
+                          "count": 4,
+                          "videos": null
+                        }
+                      ],
+                      "prov": {
+                        "hash": "0x78cdb1180c725388",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.000500",
+                      "balance_usd": "9.999500",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_content_keywords",
+          "x-qovia-title-zh": "抖音星图达人内容热词",
+          "x-qovia-description-zh": "达人近期作品内容中的高频词（约 20 个），按出现次数从高到低排列，videos 为包含该词的作品数（星图未给出时为 null）。没有热词时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 500,
+            "usd_per_call": "0.000500",
+            "usd_per_1k": "0.5"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_content_keywords/"
+        }
+      },
+      "/v1/raw/xingtu/author_comment_keywords": {
+        "get": {
+          "operationId": "raw_xingtu_author_comment_keywords",
+          "summary": "Douyin Xingtu creator comment keywords",
+          "description": "Hot words in the comments under a Xingtu creator's videos, with Xingtu's hot_rate passed through as is. No keywords answers an empty result and is not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_738d17898c68",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "author_id": "6790158034132795406",
+                      "keywords": [
+                        {
+                          "word": "老师",
+                          "hot_rate": 1107
+                        },
+                        {
+                          "word": "学校",
+                          "hot_rate": 521
+                        },
+                        {
+                          "word": "时候",
+                          "hot_rate": 505
+                        }
+                      ],
+                      "prov": {
+                        "hash": "0x8053a5a59be79c94",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.000500",
+                      "balance_usd": "9.999500",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_comment_keywords",
+          "x-qovia-title-zh": "抖音星图达人评论热词",
+          "x-qovia-description-zh": "星图统计的达人视频评论区热词及其热度值（hot_rate，按星图原值透传）。没有热词时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 500,
+            "usd_per_call": "0.000500",
+            "usd_per_1k": "0.5"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_comment_keywords/"
+        }
+      },
+      "/v1/raw/xingtu/video_report": {
+        "get": {
+          "operationId": "raw_xingtu_video_report",
+          "summary": "Douyin Xingtu video report",
+          "description": "Xingtu's report for one Douyin video: plays, likes, comments, shares, saves, interactions, interaction rate, completion rate, content labels and music, plus the author's Xingtu id, Douyin uid, name and followers. Videos Xingtu does not know answer 404 and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Douyin video ID (aweme_id)",
+              "x-qovia-description-zh": "抖音作品 ID（aweme_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "7674181083131054406"
+                ]
+              },
+              "example": "7674181083131054406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_892124ba9175",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "lang": "zh-CN",
+                      "text": "蒙哥，老师以后跟你各论各的",
+                      "author": {
+                        "author_id": "6790158034132795406",
+                        "douyin_uid": "2422960710762380",
+                        "name": "犟种兄弟",
+                        "followers": 2737562
+                      },
+                      "metrics": {
+                        "plays": 5000740,
+                        "likes": 200204,
+                        "comments": 1329,
+                        "shares": 14800,
+                        "saves": 6054,
+                        "interactions": 216333,
+                        "interact_rate": 0.0432,
+                        "finish_rate": 0.0882
+                      },
+                      "extra": {
+                        "source_id": "7674181083131054406",
+                        "published_at": "2026-08-15T17:02:03+08:00",
+                        "duration_s": 249.915,
+                        "labels": [
+                          "陈翔短剧",
+                          "搞笑剧情",
+                          "青春期烦恼"
+                        ],
+                        "music": {
+                          "id": "7674181093137992502",
+                          "title": "@犟种兄弟创作的原声"
+                        },
+                        "url": "https://www.douyin.com/video/7674181083131054406"
+                      },
+                      "prov": {
+                        "hash": "0x6fb2ea24c0fd500c",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.video_report",
+          "x-qovia-title-zh": "抖音星图视频数据",
+          "x-qovia-description-zh": "单个抖音视频在星图里的数据：播放、点赞、评论、分享、收藏、互动数、互动率、完播率、内容标签、背景音乐， 以及作者的星图 ID、抖音 uid、昵称和粉丝数。星图里没有这个视频时返回 404，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.video_report/"
+        }
+      },
+      "/v1/raw/xingtu/video_trend": {
+        "get": {
+          "operationId": "raw_xingtu_video_trend",
+          "summary": "Douyin Xingtu video daily trend",
+          "description": "Daily series for about 30 days after a video was posted: plays, valid plays, likes, comments, shares, saves, interactions, interaction rate, completion rate and heat, in date order. Rates are Xingtu's basis-point integers (548 = 5.48%). Videos without a trend answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Douyin video ID (aweme_id)",
+              "x-qovia-description-zh": "抖音作品 ID（aweme_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "7674181083131054406"
+                ]
+              },
+              "example": "7674181083131054406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_8281ea03739f",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "item_id": "7674181083131054406",
+                      "series": {
+                        "plays": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 939414
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 745262
+                          }
+                        ],
+                        "valid_plays": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 872988
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 681942
+                          }
+                        ],
+                        "likes": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 47684
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 35140
+                          }
+                        ],
+                        "comments": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 318
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 174
+                          }
+                        ],
+                        "shares": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 3566
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 2446
+                          }
+                        ],
+                        "saves": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 1696
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 1026
+                          }
+                        ],
+                        "interactions": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 51568
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 37760
+                          }
+                        ],
+                        "interact_rate": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 548
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 506
+                          }
+                        ],
+                        "finish_rate": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 876
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 1060
+                          }
+                        ],
+                        "hot_score": [
+                          {
+                            "date": "2026-08-15",
+                            "value": 1742806
+                          },
+                          {
+                            "date": "2026-08-16",
+                            "value": 1362534
+                          }
+                        ]
+                      },
+                      "prov": {
+                        "hash": "0x52c9e0b7a1f3d684",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.video_trend",
+          "x-qovia-title-zh": "抖音星图视频每日趋势",
+          "x-qovia-description-zh": "单个视频发布后约 30 天的每日数据：播放、有效播放、点赞、评论、分享、收藏、互动、互动率、完播率、热度， 按日期升序。互动率和完播率是星图的万分比整数（548 表示 5.48%）。没有趋势数据时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.video_trend/"
+        }
+      },
+      "/v1/raw/xingtu/video_transcript": {
+        "get": {
+          "operationId": "raw_xingtu_video_transcript",
+          "summary": "Douyin Xingtu video transcript",
+          "description": "Subtitles or speech transcript of a video, as timed segments (milliseconds) plus the joined full text. Slow (about 8 s). Videos without speech or subtitles answer empty and are not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Douyin video ID (aweme_id)",
+              "x-qovia-description-zh": "抖音作品 ID（aweme_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "7674181083131054406"
+                ]
+              },
+              "example": "7674181083131054406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "id": "soc_xin_7e16cf83eb7d",
+                      "src": "social",
+                      "platform": "xingtu",
+                      "item_id": "7674181083131054406",
+                      "lang": "zh-CN",
+                      "text": "你家孩子假期上烧烤店打工去了，他说他想体验体验。\n不是，你看你这家长，眼瞅开学高三了…",
+                      "segments": [
+                        {
+                          "start_ms": 0,
+                          "end_ms": 3000,
+                          "text": "你家孩子假期上烧烤店打工去了，他说他想体验体验。"
+                        },
+                        {
+                          "start_ms": 3000,
+                          "end_ms": 9000,
+                          "text": "不是，你看你这家长，眼瞅开学高三了…"
+                        }
+                      ],
+                      "prov": {
+                        "hash": "0x77854123a4ee6355",
+                        "ts": "2026-10-20T12:00:00+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.video_transcript",
+          "x-qovia-title-zh": "抖音星图视频字幕文本",
+          "x-qovia-description-zh": "视频的字幕或语音转写文本，按时间分段（毫秒）并给出拼接好的全文。较慢（约 8 秒）。没有字幕的视频返回空结果， 不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.video_transcript/"
+        }
+      },
+      "/v1/raw/xingtu/videos": {
+        "get": {
+          "operationId": "raw_xingtu_videos",
+          "summary": "Douyin Xingtu videos in bulk",
+          "description": "Title, posting time, duration, plays, likes, comments, shares, saves and interaction rate for up to 20 Douyin videos per call. Order may differ from the request and unknown ids are simply missing; charged per call, and a call where none is found answers empty and is not charged.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "item_ids",
+              "in": "query",
+              "required": true,
+              "description": "Douyin video IDs, comma-separated, up to 20",
+              "x-qovia-description-zh": "抖音作品 ID，英文逗号分隔，最多 20 个",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}(,[0-9]{15,20}){0,19}$",
+                "examples": [
+                  "7674181083131054406,7694234405623846756"
+                ]
+              },
+              "example": "7674181083131054406,7694234405623846756"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "items": [
+                        {
+                          "id": "soc_xin_395a33e12d11",
+                          "src": "social",
+                          "platform": "xingtu",
+                          "lang": "zh-CN",
+                          "text": "老许：都是为了孩子…",
+                          "author": {
+                            "author_id": null,
+                            "douyin_uid": "2422960710762380",
+                            "name": null,
+                            "followers": null
+                          },
+                          "metrics": {
+                            "plays": 1233342,
+                            "likes": 50594,
+                            "comments": 177,
+                            "shares": 2577,
+                            "saves": 2003,
+                            "interact_rate": 0.0432
+                          },
+                          "extra": {
+                            "source_id": "7694234405623846756",
+                            "published_at": "2026-10-08T18:49:28+08:00",
+                            "duration_s": 298.143,
+                            "url": "https://www.douyin.com/video/7694234405623846756"
+                          },
+                          "prov": {
+                            "hash": "0xa7819a80f0ef02e5",
+                            "ts": "2026-10-20T12:00:00+08:00",
+                            "source": "live"
+                          }
+                        }
+                      ],
+                      "cursor": null,
+                      "has_more": false
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.010000",
+                      "balance_usd": "9.990000",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.videos",
+          "x-qovia-title-zh": "抖音星图视频批量指标",
+          "x-qovia-description-zh": "一次查询最多 20 个抖音视频的标题、发布时间、时长、播放、点赞、评论、分享、收藏和互动率。返回顺序不保证与 请求一致，查不到的 ID 直接缺席；按次计费，全部查不到时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 10000,
+            "usd_per_call": "0.010000",
+            "usd_per_1k": "10"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.videos/"
+        }
+      },
+      "/v1/raw/xingtu/author_seeding_v2": {
+        "get": {
+          "operationId": "raw_xingtu_author_seeding_v2",
+          "summary": "Douyin Xingtu creator search lift V2",
+          "description": "Xingtu's search lift for a creator, returned as Xingtu answers: the average searches after viewing personal_avg_search_after_view_cnt with its peer percentile personal_avg_search_after_view_cnt_rank_percent, the search-after-view rate personal_avg_search_after_view_rate and the search-term CTR personal_search_word_ctr, plus modify_time and base_resp. Xingtu only publishes display values (such as \"100 - 1,000\" or \"<0.02%\"), returned as strings; the window is Xingtu's default and cannot be chosen. Fast: usually about 2 seconds. A creator without data (those fields missing, or only base_resp) answers empty. Only an answer with data is charged; an empty answer or an error is not.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "base_resp": {
+                        "status_code": 0,
+                        "status_message": ""
+                      },
+                      "modify_time": "1793335293",
+                      "personal_avg_search_after_view_cnt": "100 - 1,000",
+                      "personal_avg_search_after_view_cnt_rank_percent": "0.9",
+                      "personal_avg_search_after_view_rate": "<0.02%",
+                      "personal_search_word_ctr": "1% - 1.5%"
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.025360",
+                      "balance_usd": "9.974640",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_seeding_v2",
+          "x-qovia-title-zh": "抖音星图达人种草价值 V2",
+          "x-qovia-description-zh": "星图给出的达人种草价值（原样 JSON）：看过达人视频后的平均搜索次数 personal_avg_search_after_view_cnt 及同类排名百分位 personal_avg_search_after_view_cnt_rank_percent、看后搜索率 personal_avg_search_after_view_rate、搜索词点击率 personal_search_word_ctr，以及 modify_time、base_resp。 星图只给展示值（如\"100 - 1,000\"、\"<0.02%\"），按字符串原样输出；统计窗口为星图的默认窗口，不可选。响应较快，通常约 2 秒。 没有数据（缺少这些字段或只有 base_resp）时返回空结果。只对有数据的结果计费，空结果和出错都不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 25360,
+            "usd_per_call": "0.025360",
+            "usd_per_1k": "25.36"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_seeding_v2/"
+        }
+      },
+      "/v1/raw/xingtu/author_videos_v3": {
+        "get": {
+          "operationId": "raw_xingtu_author_videos_v3",
+          "summary": "Douyin Xingtu creator homepage videos V3",
+          "description": "The video list on a Xingtu creator's homepage, returned as Xingtu answers: each entry in items holds item_id, video_id, title, create_time, duration, plays watch_cnt, likes like_cnt, comments comment_cnt, interact_rate, finish_rate, content_theme_labels, cover and link, plus pagination (page, limit, total_count, has_more) and base_resp. Optional page (default 1; continue while has_more is true). Fast: usually about 3 seconds. A creator without videos (items missing or empty, or only base_resp) answers empty. Only an answer with data is charged; an empty answer or an error is not.",
+          "tags": [
+            "Douyin Xingtu"
+          ],
+          "parameters": [
+            {
+              "name": "author_id",
+              "in": "query",
+              "required": true,
+              "description": "Xingtu creator ID (o_author_id)",
+              "x-qovia-description-zh": "星图作者 ID（o_author_id）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "6790158034132795406"
+                ]
+              },
+              "example": "6790158034132795406"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, 1 for the first page",
+              "x-qovia-description-zh": "页码，第一页为 1",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
+                "default": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "base_resp": {
+                        "status_code": 0,
+                        "status_message": ""
+                      },
+                      "items": [
+                        {
+                          "comment_cnt": "106",
+                          "content_theme_labels": [
+                            "恋爱演绎",
+                            "剧情反转",
+                            "有趣剧情创作"
+                          ],
+                          "create_time": "1792663299",
+                          "duration": 198.088,
+                          "finish_rate": 0.149649,
+                          "interact_rate": 0.023986,
+                          "item_id": "7699430238710864758",
+                          "like_cnt": "20010",
+                          "title": "涛声依旧了…",
+                          "video_id": "v0d00fg10000dbctsa7og65it4iqncfg",
+                          "watch_cnt": "886249"
+                        }
+                      ],
+                      "pagination": {
+                        "has_more": false,
+                        "limit": 20,
+                        "page": 1,
+                        "total_count": 19
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.084510",
+                      "balance_usd": "9.915490",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.xingtu.author_videos_v3",
+          "x-qovia-title-zh": "抖音星图达人主页视频 V3",
+          "x-qovia-description-zh": "星图达人主页的视频列表（原样 JSON）：items 中每条含 item_id、video_id、title、create_time、duration、播放数 watch_cnt、点赞数 like_cnt、评论数 comment_cnt、互动率 interact_rate、完播率 finish_rate、内容主题标签 content_theme_labels、封面和链接，另有 pagination（page、limit、total_count、has_more）和 base_resp。 可选 page（默认 1，has_more 为 true 时继续翻页）。响应较快，通常约 3 秒。 没有视频（items 缺失或为空，或只有 base_resp）时返回空结果。只对有数据的结果计费，空结果和出错都不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:xingtu",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 84510,
+            "usd_per_call": "0.084510",
+            "usd_per_1k": "84.51"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.xingtu.author_videos_v3/"
+        }
+      },
+      "/v1/raw/taobao/comments": {
+        "get": {
+          "operationId": "raw_taobao_comments",
+          "summary": "Taobao & Tmall product reviews",
+          "description": "Buyer reviews of a Taobao or Tmall item, newest first, 20 per page: text and time, positive / neutral / negative rating, SKU, the buyer's nickname (masked by Taobao) and member level, photos and videos, the follow-up review and shop replies. item_id takes Taobao and Tmall item IDs alike. Default positive reviews without text are skipped unless they carry a follow-up. Stop paging when has_more is false. An item without reviews, or one that does not exist, answers empty and is not charged.",
+          "tags": [
+            "Taobao & Tmall"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Taobao or Tmall item ID (the id= in the item URL)",
+              "x-qovia-description-zh": "淘宝或天猫商品 ID（商品链接里的 id=）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{5,19}$",
+                "examples": [
+                  "611261922146"
+                ]
+              },
+              "example": "611261922146"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, from 1; stop when has_more is false",
+              "x-qovia-description-zh": "页码，从 1 开始；has_more 为 false 时停止",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              }
+            },
+            {
+              "name": "skip_default_reviews",
+              "in": "query",
+              "required": false,
+              "description": "true (default) skips default positive reviews without text (those with a follow-up stay); false returns every review",
+              "x-qovia-description-zh": "true（默认）跳过没有内容的默认好评（带追评的仍保留）；false 返回全部评价",
+              "schema": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "items": [
+                        {
+                          "id": "eco_tao_e35d27d45024",
+                          "cid": "1316054905552",
+                          "text": "其实线上买药很方便也很优惠很好，",
+                          "rating_level": "good",
+                          "likes": 0,
+                          "created_at": "2026-10-03T21:27:00+08:00",
+                          "sku": "套餐类型:1盒装[基础体验【欧洲原研进口】]",
+                          "user_name": "刘***7",
+                          "user_level": 0,
+                          "anonymous": true,
+                          "images": [
+                            "https://img.alicdn.com/imgextra/i4/4611686018427385600/O1CN01bZPUiKO6BBJ1SdaC_!!4611686018427385600-0-rate.jpg_400x400.jpg"
+                          ],
+                          "videos": [],
+                          "shop_reply": null,
+                          "followup": {
+                            "text": "相信",
+                            "days_after_receipt": 16,
+                            "images": [
+                              "https://img.alicdn.com/imgextra/i1/4611686018427385600/O1CN01L74IopdbT1I1SdaC_!!4611686018427385600-0-rate.jpg_400x400.jpg"
+                            ],
+                            "videos": [],
+                            "shop_reply": "感谢您的认可，也谢谢您的晒图和追评。能让您买药更方便、享受到实惠，我们很高兴。…"
+                          }
+                        },
+                        {
+                          "id": "eco_tao_9b5c72573494",
+                          "cid": "1316866273768",
+                          "text": "我觉得性价比一般，有点贵。效果还可以",
+                          "rating_level": "good",
+                          "likes": 0,
+                          "created_at": "2026-10-14T21:08:00+08:00",
+                          "sku": "套餐类型:1盒装[基础体验【欧洲原研进口】]",
+                          "user_name": "欣***笑",
+                          "user_level": 0,
+                          "anonymous": false,
+                          "images": [
+                            "https://img.alicdn.com/imgextra/i3/4611686018427380977/O1CN01mo211OzAnAF2BxNI_!!4611686018427380977-0-rate.jpg_400x400.jpg"
+                          ],
+                          "videos": [],
+                          "shop_reply": null,
+                          "followup": null
+                        }
+                      ],
+                      "page": 1,
+                      "has_more": true,
+                      "total": 400,
+                      "total_exact": false,
+                      "prov": {
+                        "hash": "0x7b921e36e8cf1b4c",
+                        "ts": "2026-10-21T19:59:04+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.013500",
+                      "balance_usd": "9.986500",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.taobao.comments",
+          "x-qovia-title-zh": "淘宝/天猫商品评价",
+          "x-qovia-description-zh": "淘宝和天猫商品的买家评价，从新到旧，每页 20 条：评价内容和时间、好评/中评/差评、SKU、买家昵称（平台已打码）和会员等级、晒图和视频、追评和商家回复。 item_id 填淘宝或天猫的商品 ID 均可。默认跳过没有内容的默认好评（带追评的仍保留）。 has_more 为 false 时停止翻页。商品没有评价或不存在时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:taobao",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 13500,
+            "usd_per_call": "0.013500",
+            "usd_per_1k": "13.5"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.taobao.comments/"
+        }
+      },
+      "/v1/raw/taobao/comments_v2": {
+        "get": {
+          "operationId": "raw_taobao_comments_v2",
+          "summary": "Taobao & Tmall product reviews V2",
+          "description": "Buyer reviews of a Taobao or Tmall item, returned as the platform answers in JSON: the comments list (20 per page, each with text and time, rating, SKU, the buyer's nickname, photos and videos, follow-up review, shop reply, likes), plus the review total, maxPage, the popular review keywords (first page only) and hasNextPage. item_id takes Taobao and Tmall item IDs alike; page starts at 1; stop paging when hasNextPage is false. It usually answers in about 3 seconds. Only an answer with data is charged; an item without reviews, or an error, is not.",
+          "tags": [
+            "Taobao & Tmall"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Taobao or Tmall item ID (the id= in the item URL)",
+              "x-qovia-description-zh": "淘宝或天猫商品 ID（商品链接里的 id=）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{5,19}$",
+                "examples": [
+                  "611261922146"
+                ]
+              },
+              "example": "611261922146"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, from 1; stop when hasNextPage is false",
+              "x-qovia-description-zh": "页码，从 1 开始；hasNextPage 为 false 时停止",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "qnaDisabled": true,
+                      "watershed": 100,
+                      "total": 4000,
+                      "totalFuzzy": "4000+",
+                      "comments": [
+                        {
+                          "date": "2026年10月31日 00:29",
+                          "shareInfo": {
+                            "lastReplyTime": "",
+                            "share": false,
+                            "pic": 0,
+                            "reply": 0,
+                            "userNumIdBase64": ""
+                          },
+                          "showDepositIcon": false,
+                          "o2oRate": null,
+                          "mainTradeId": 0,
+                          "raterType": 0,
+                          "validscore": 1,
+                          "video": null,
+                          "photos": [],
+                          "content": "该用户觉得商品非常好，给出5星好评",
+                          "rateId": 2914289593649150,
+                          "spuRatting": [],
+                          "auction": {
+                            "thumbnail": "",
+                            "link": "//item.taobao.com/auction/item_detail.htm?item_num_id=611261922146",
+                            "auctionPic": "",
+                            "sku": "套餐类型:2盒装[疗程周期【缓解多种过敏症状】]",
+                            "title": "",
+                            "aucNumId": "611261922146"
+                          },
+                          "award": "",
+                          "rate": "1",
+                          "creditFraudRule": 0,
+                          "appendCanExplainable": false,
+                          "from": "h5",
+                          "tag": "",
+                          "propertiesAvg": "5",
+                          "reply": null,
+                          "dayAfterConfirm": 0,
+                          "lastModifyFrom": 0,
+                          "bidPriceMoney": null,
+                          "noQna": true,
+                          "promotionType": "",
+                          "vicious": "",
+                          "enableSNS": false,
+                          "appendList": [],
+                          "buyAmount": 0,
+                          "showCuIcon": false,
+                          "serviceRate": null,
+                          "useful": 0,
+                          "likeCount": 0,
+                          "user": {
+                            "nick": "爱***娘",
+                            "vipLevel": 0,
+                            "displayRatePic": "",
+                            "nickUrl": "",
+                            "creditPic": "",
+                            "anony": true,
+                            "rank": 0,
+                            "avatar": "https://gw.alicdn.com/imgextra/i3/O1CN01YXMxVW1ng5k8sZ6L3_!!6000000005118-0-tps-160-160.jpg_Q75.jpg_.webp",
+                            "vip": "",
+                            "userId": "",
+                            "rankUrl": ""
+                          },
+                          "append": null,
+                          "status": 0
+                        }
+                      ],
+                      "currentPageNum": 1,
+                      "maxPage": 50,
+                      "keywords": [
+                        {
+                          "count": "25",
+                          "labelId": "2093864846-11",
+                          "type": "1",
+                          "word": "价格便宜"
+                        },
+                        {
+                          "count": "14",
+                          "labelId": "2030868717-11",
+                          "type": "1",
+                          "word": "使用体验很好"
+                        }
+                      ],
+                      "hasMediaCount": 100,
+                      "hasAppendCount": 17,
+                      "hasNextPage": true
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.016910",
+                      "balance_usd": "9.983090",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.taobao.comments_v2",
+          "x-qovia-title-zh": "淘宝/天猫商品评价 V2",
+          "x-qovia-description-zh": "淘宝和天猫商品的买家评价（按平台的原样 JSON 返回）：comments 列表（每页 20 条，含评价内容和时间、评分、SKU、买家昵称、晒图和视频、追评、商家回复、点赞数），以及评价总数 total、总页数 maxPage、热门评价词 keywords（仅第一页）和是否有下一页 hasNextPage。 item_id 填淘宝或天猫的商品 ID 均可，page 从 1 开始，hasNextPage 为 false 时停止翻页。一般 3 秒左右返回。 只对有数据的结果计费，没有评价或出错都不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:taobao",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 16910,
+            "usd_per_call": "0.016910",
+            "usd_per_1k": "16.91"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/"
+        }
+      },
+      "/v1/raw/jd/comments": {
+        "get": {
+          "operationId": "raw_jd_comments",
+          "summary": "JD.com product reviews",
+          "description": "Buyer reviews of a JD.com product, newest first, 10 per page: text and time, 1-5 star rating, variant and SKU ID, the buyer's nickname (mostly masked by JD), anonymity, IP location, full-size photos, helpful votes and the shop's reply. By default only this SKU's reviews; with only_this_sku false, every variant of the product. max_page tells how far paging goes (often far fewer pages than the review total); stop when has_more is false. A SKU without reviews, or one that does not exist, answers empty and is not charged.",
+          "tags": [
+            "JD.com"
+          ],
+          "parameters": [
+            {
+              "name": "sku_id",
+              "in": "query",
+              "required": true,
+              "description": "JD.com SKU ID (the number in item.jd.com/<SKU>.html)",
+              "x-qovia-description-zh": "京东商品 SKU ID（商品链接 item.jd.com/<SKU>.html 里的数字）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{3,19}$",
+                "examples": [
+                  "100006271091"
+                ]
+              },
+              "example": "100006271091"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, from 1, up to the max_page of the previous answer; stop when has_more is false",
+              "x-qovia-description-zh": "页码，从 1 开始，不超过上一页返回的 max_page；has_more 为 false 时停止",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
+                "default": 1
+              }
+            },
+            {
+              "name": "only_this_sku",
+              "in": "query",
+              "required": false,
+              "description": "true (default) returns this SKU's reviews only; false returns the reviews of every variant (colour, size, ...) of the product",
+              "x-qovia-description-zh": "true（默认）只看这个 SKU 的评价；false 返回同一商品所有规格（颜色、尺码等）的评价",
+              "schema": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "items": [
+                        {
+                          "id": "eco_jd_43a365a0aaef",
+                          "cid": "106314560218561793",
+                          "text": "还可以吧，唯一的缺点就是颗粒太大了，吞咽的时候有点不舒服",
+                          "rating": 5,
+                          "likes": 0,
+                          "created_at": "2026-10-20T19:45:27+08:00",
+                          "sku": "规格:【60片*1盒】院线同款-60天用量",
+                          "sku_id": "100006271091",
+                          "user_name": "j***i",
+                          "anonymous": false,
+                          "ip_location": "广东",
+                          "images": [],
+                          "shop_reply": "非常感谢您的反馈！我们注意到您对颗粒大小的反馈，这可能给您带来了些许不适。我们会努力改进产品。…"
+                        },
+                        {
+                          "id": "eco_jd_001042af4786",
+                          "cid": "106191920223780233",
+                          "text": "一直喝的这个，每天一个，挺好的，一家人都在喝。",
+                          "rating": 5,
+                          "likes": 0,
+                          "created_at": "2026-10-18T18:55:50+08:00",
+                          "sku": "规格:【60片*1盒】院线同款-60天用量",
+                          "sku_id": "100006271091",
+                          "user_name": "赵***g",
+                          "anonymous": false,
+                          "ip_location": "河北",
+                          "images": [
+                            "https://img30.360buyimg.com/shaidan/jfs/t1/549256/12/1897/1368430/6ad4a5b5Fc881e4a1/00a9c00000e872a7.jpg"
+                          ],
+                          "shop_reply": "嘿，看到您一直钟爱我们的善存多维元素片，真是倍感荣幸！…"
+                        }
+                      ],
+                      "page": 1,
+                      "has_more": true,
+                      "max_page": 2,
+                      "total": 20000,
+                      "prov": {
+                        "hash": "0x494e4995216cc2cc",
+                        "ts": "2026-10-21T20:03:12+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.019500",
+                      "balance_usd": "9.980500",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.jd.comments",
+          "x-qovia-title-zh": "京东商品评价",
+          "x-qovia-description-zh": "京东商品的买家评价，从新到旧，每页 10 条：评价内容和时间、1–5 星评分、规格和 SKU ID、买家昵称（多数已由京东打码）、匿名标记、IP 属地、晒图（原图）、有用数和商家回复。 默认只看这个 SKU 的评价，only_this_sku 为 false 时返回同一商品所有规格的评价。 可翻页数见 max_page（常远少于评价总数），has_more 为 false 时停止。没有评价或 SKU 不存在时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:jd",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 19500,
+            "usd_per_call": "0.019500",
+            "usd_per_1k": "19.5"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.jd.comments/"
+        }
+      }
+    }
+  }
+}

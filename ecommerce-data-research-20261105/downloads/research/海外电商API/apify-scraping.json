@@ -1,0 +1,1016 @@
+{
+  "researched_at": "2026-11-12T14:41:57.169617+00:00",
+  "live_scraping_tested": false,
+  "method": "Official documentation and read-only public Apify actor metadata, no actor runs/signup/paid requests",
+  "metadata_snapshots": [
+    {
+      "actor": "apify/e-commerce-scraping-tool",
+      "source": "https://api.apify.com/v2/acts/apify~e-commerce-scraping-tool",
+      "modifiedAt": "2026-11-12T14:35:16.628Z",
+      "stats": {
+        "totalBuilds": 648,
+        "totalRuns": 1414677,
+        "totalUsers": 16222,
+        "totalUsers7Days": 322,
+        "totalUsers30Days": 731,
+        "totalUsers90Days": 1413,
+        "lastRunStartedAt": "2026-11-12T14:41:48.772Z",
+        "publicActorRunStats30Days": {
+          "ABORTED": 217,
+          "FAILED": 743,
+          "SUCCEEDED": 107343,
+          "TIMED-OUT": 2006,
+          "TOTAL": 110309
+        },
+        "actorReviewCount": 54,
+        "actorReviewRating": 4.314910698041382,
+        "bookmarkCount": 263
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-10-19T00:00:00.000Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "push-product": {
+          "title": "Product Details",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.006,
+            "BRONZE": 0.0015,
+            "SILVER": 0.00125,
+            "GOLD": 0.001,
+            "PLATINUM": 0.00075,
+            "DIAMOND": 0.0005
+          }
+        },
+        "start-actor": {
+          "title": "Actor Start",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0001,
+            "BRONZE": 9e-05,
+            "SILVER": 8e-05,
+            "GOLD": 7e-05,
+            "PLATINUM": 6e-05,
+            "DIAMOND": 5e-05
+          }
+        },
+        "product-search": {
+          "title": "Product Listing",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0005,
+            "BRONZE": 0.00042,
+            "SILVER": 0.00034,
+            "GOLD": 0.00026,
+            "PLATINUM": 0.00022,
+            "DIAMOND": 0.00019
+          }
+        },
+        "residential-proxy-per-product": {
+          "title": "Residential Proxy per Product",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.003,
+            "BRONZE": 0.001,
+            "SILVER": 0.0009,
+            "GOLD": 0.0008,
+            "PLATINUM": 0.0007,
+            "DIAMOND": 0.0006
+          }
+        },
+        "browser-rendering-per-product": {
+          "title": "Browser Rendering per Product",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0006,
+            "BRONZE": 0.00057,
+            "SILVER": 0.00054,
+            "GOLD": 0.00051,
+            "PLATINUM": 0.00045,
+            "DIAMOND": 0.000375
+          }
+        },
+        "push-review": {
+          "title": "Review Details",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.002,
+            "BRONZE": 0.001,
+            "SILVER": 0.00085,
+            "GOLD": 0.0007,
+            "PLATINUM": 0.00056,
+            "DIAMOND": 0.0004
+          }
+        },
+        "push-seller": {
+          "title": "Seller Details",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.003,
+            "BRONZE": 0.002,
+            "SILVER": 0.00125,
+            "GOLD": 0.001,
+            "PLATINUM": 0.0008,
+            "DIAMOND": 0.0005
+          }
+        },
+        "ai-summary": {
+          "title": "AI Summary",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0075,
+            "BRONZE": 0.004,
+            "SILVER": 0.0035,
+            "GOLD": 0.00275,
+            "PLATINUM": 0.00225,
+            "DIAMOND": 0.002
+          }
+        },
+        "push-influencer-post": {
+          "title": "Influencer post details",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.002,
+            "BRONZE": 0.001,
+            "SILVER": 0.00085,
+            "GOLD": 0.0007,
+            "PLATINUM": 0.00055,
+            "DIAMOND": 0.0005
+          }
+        },
+        "unblocker-proxy-per-product": {
+          "title": "Unblocker Proxy",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0015,
+            "BRONZE": 0.0015,
+            "SILVER": 0.00125,
+            "GOLD": 0.001,
+            "PLATINUM": 0.00085,
+            "DIAMOND": 0.00075
+          }
+        }
+      }
+    },
+    {
+      "actor": "junglee/amazon-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper",
+      "modifiedAt": "2026-11-12T14:38:28.318Z",
+      "stats": {
+        "totalBuilds": 1587,
+        "totalRuns": 1177003,
+        "totalUsers": 17747,
+        "totalUsers7Days": 871,
+        "totalUsers30Days": 2436,
+        "totalUsers90Days": 4445,
+        "lastRunStartedAt": "2026-11-12T14:41:57.327Z",
+        "publicActorRunStats30Days": {
+          "ABORTED": 1816,
+          "FAILED": 757,
+          "SUCCEEDED": 139779,
+          "TIMED-OUT": 3502,
+          "TOTAL": 145854
+        },
+        "actorReviewCount": 46,
+        "actorReviewRating": 2.7023787734136033,
+        "bookmarkCount": 165
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-07-28T08:49:09.570Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "result": {
+          "title": "Review",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.006,
+            "BRONZE": 0.005,
+            "SILVER": 0.004,
+            "GOLD": 0.003,
+            "PLATINUM": 0.002,
+            "DIAMOND": 0.001
+          }
+        },
+        "dateFilterNewerThan": {
+          "title": "Date filter",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0013,
+            "BRONZE": 0.001,
+            "SILVER": 0.0008,
+            "GOLD": 0.0006,
+            "PLATINUM": 0.0003,
+            "DIAMOND": 0.00017
+          }
+        }
+      }
+    },
+    {
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper",
+      "modifiedAt": "2026-11-05T11:38:57.340Z",
+      "stats": {
+        "totalBuilds": 86,
+        "totalRuns": 198574,
+        "totalUsers": 593,
+        "totalUsers7Days": 13,
+        "totalUsers30Days": 25,
+        "totalUsers90Days": 47,
+        "lastRunStartedAt": "2026-11-12T03:16:02.085Z",
+        "publicActorRunStats30Days": {
+          "ABORTED": 14,
+          "FAILED": 6,
+          "SUCCEEDED": 3822,
+          "TIMED-OUT": 15,
+          "TOTAL": 3857
+        },
+        "actorReviewCount": 3,
+        "actorReviewRating": 4.997466091422782,
+        "bookmarkCount": 11
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-08-17T09:33:00.794Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "start": {
+          "title": "Actor Start",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0001,
+            "BRONZE": 9e-05,
+            "SILVER": 8e-05,
+            "GOLD": 7e-05,
+            "PLATINUM": 6e-05,
+            "DIAMOND": 5e-05
+          }
+        },
+        "push-product-reviews": {
+          "title": "Review",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.005,
+            "BRONZE": 0.002,
+            "SILVER": 0.0015,
+            "GOLD": 0.001,
+            "PLATINUM": 0.0007,
+            "DIAMOND": 0.0005
+          }
+        }
+      }
+    },
+    {
+      "actor": "e-commerce/store-ebay",
+      "source": "https://api.apify.com/v2/acts/e-commerce~store-ebay",
+      "modifiedAt": "2026-10-26T13:55:28.916Z",
+      "stats": {
+        "totalBuilds": 74,
+        "totalRuns": 3278,
+        "totalUsers": 222,
+        "totalUsers7Days": 5,
+        "totalUsers30Days": 11,
+        "totalUsers90Days": 17,
+        "lastRunStartedAt": "2026-11-12T02:10:19.680Z",
+        "publicActorRunStats30Days": {
+          "ABORTED": 0,
+          "FAILED": 0,
+          "SUCCEEDED": 66,
+          "TIMED-OUT": 0,
+          "TOTAL": 66
+        },
+        "actorReviewCount": 5,
+        "actorReviewRating": 4.982506438923987,
+        "bookmarkCount": 9
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-08-16T07:11:21.564Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "start": {
+          "title": "Actor Start",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0001,
+            "BRONZE": 9e-05,
+            "SILVER": 8e-05,
+            "GOLD": 7e-05,
+            "PLATINUM": 6e-05,
+            "DIAMOND": 5e-05
+          }
+        },
+        "result": {
+          "title": "Result",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.005,
+            "BRONZE": 0.004,
+            "SILVER": 0.003,
+            "GOLD": 0.002,
+            "PLATINUM": 0.00175,
+            "DIAMOND": 0.0015
+          }
+        }
+      }
+    },
+    {
+      "actor": "themineworks/etsy-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/themineworks~etsy-reviews-scraper",
+      "modifiedAt": "2026-11-04T12:42:21.022Z",
+      "stats": {
+        "totalBuilds": 5,
+        "totalRuns": 103,
+        "totalUsers": 18,
+        "totalUsers7Days": 2,
+        "totalUsers30Days": 11,
+        "totalUsers90Days": 11,
+        "lastRunStartedAt": "2026-11-12T09:13:49.246Z",
+        "actorReviewCount": 0,
+        "actorReviewRating": 0,
+        "bookmarkCount": 0,
+        "publicActorRunStats30Days": {
+          "ABORTED": 0,
+          "FAILED": 0,
+          "SUCCEEDED": 54,
+          "TIMED-OUT": 0,
+          "TOTAL": 54
+        }
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-10-13T18:26:42.000Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "review-scraped": {
+          "title": "Review",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.00299,
+            "BRONZE": 0.00249,
+            "SILVER": 0.00199,
+            "GOLD": 0.00159,
+            "PLATINUM": 0.00159,
+            "DIAMOND": 0.00159
+          }
+        },
+        "run-start": {
+          "title": "Run start",
+          "usd": 0.005,
+          "tiers": {}
+        }
+      }
+    },
+    {
+      "actor": "kestrel/aliexpress-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/kestrel~aliexpress-reviews-scraper",
+      "modifiedAt": "2026-11-06T09:48:21.978Z",
+      "stats": {
+        "totalBuilds": 13,
+        "totalRuns": 29379,
+        "totalUsers": 85,
+        "totalUsers7Days": 21,
+        "totalUsers30Days": 53,
+        "totalUsers90Days": 65,
+        "lastRunStartedAt": "2026-11-12T14:40:25.551Z",
+        "actorReviewCount": 0,
+        "actorReviewRating": 0,
+        "bookmarkCount": 0,
+        "publicActorRunStats30Days": {
+          "ABORTED": 10,
+          "FAILED": 25,
+          "SUCCEEDED": 12033,
+          "TIMED-OUT": 0,
+          "TOTAL": 12068
+        }
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-11-06T09:24:36.065Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "review": {
+          "title": "Review row",
+          "usd": 0.003,
+          "tiers": {}
+        }
+      }
+    },
+    {
+      "actor": "omkar-cloud/temu-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/omkar-cloud~temu-reviews-scraper",
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>"
+    },
+    {
+      "actor": "memo23/shopee-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/memo23~shopee-reviews-scraper",
+      "modifiedAt": "2026-11-12T11:34:27.807Z",
+      "stats": {
+        "totalBuilds": 17,
+        "totalRuns": 1499,
+        "totalUsers": 174,
+        "totalUsers7Days": 31,
+        "totalUsers30Days": 105,
+        "totalUsers90Days": 110,
+        "lastRunStartedAt": "2026-11-12T12:40:31.782Z",
+        "actorReviewCount": 0,
+        "actorReviewRating": 0,
+        "bookmarkCount": 1,
+        "publicActorRunStats30Days": {
+          "ABORTED": 7,
+          "FAILED": 4,
+          "SUCCEEDED": 1346,
+          "TIMED-OUT": 9,
+          "TOTAL": 1366
+        }
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-10-07T10:58:33.000Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "apify-actor-start": {
+          "title": "Actor Start",
+          "usd": 0.005,
+          "tiers": {}
+        },
+        "review": {
+          "title": "Review",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.0035,
+            "BRONZE": 0.0032,
+            "SILVER": 0.0029,
+            "GOLD": 0.0025,
+            "PLATINUM": 0.0025,
+            "DIAMOND": 0.0025
+          }
+        }
+      }
+    },
+    {
+      "actor": "zen-studio/lazada-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/zen-studio~lazada-reviews-scraper",
+      "error": "<urlopen error EOF occurred in violation of protocol (_ssl.c:1129)>"
+    },
+    {
+      "actor": "vistics/tiktok-shop-product-reviews",
+      "source": "https://api.apify.com/v2/acts/vistics~tiktok-shop-product-reviews",
+      "modifiedAt": "2026-11-05T21:10:18.946Z",
+      "stats": {
+        "totalBuilds": 35,
+        "totalRuns": 8329,
+        "totalUsers": 379,
+        "totalUsers7Days": 29,
+        "totalUsers30Days": 78,
+        "totalUsers90Days": 215,
+        "lastRunStartedAt": "2026-11-12T08:00:18.498Z",
+        "actorReviewCount": 11,
+        "actorReviewRating": 5,
+        "bookmarkCount": 9,
+        "publicActorRunStats30Days": {
+          "ABORTED": 8,
+          "FAILED": 9,
+          "SUCCEEDED": 1642,
+          "TIMED-OUT": 8,
+          "TOTAL": 1667
+        }
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-10-28T16:00:31.772Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "apify-default-dataset-item": {
+          "title": "result",
+          "usd": 0.002,
+          "tiers": {}
+        },
+        "apify-actor-start": {
+          "title": "Actor Start",
+          "usd": 0.01,
+          "tiers": {}
+        }
+      }
+    },
+    {
+      "actor": "parsebird/tiktok-shop-reviews-scraper",
+      "source": "https://api.apify.com/v2/acts/parsebird~tiktok-shop-reviews-scraper",
+      "modifiedAt": "2026-11-04T14:01:50.628Z",
+      "stats": {
+        "totalBuilds": 11,
+        "totalRuns": 68,
+        "totalUsers": 3,
+        "totalUsers7Days": 0,
+        "totalUsers30Days": 1,
+        "totalUsers90Days": 1,
+        "lastRunStartedAt": "2026-11-11T01:56:26.888Z",
+        "actorReviewCount": 0,
+        "actorReviewRating": 0,
+        "bookmarkCount": 1,
+        "publicActorRunStats30Days": {
+          "ABORTED": 0,
+          "FAILED": 3,
+          "SUCCEEDED": 29,
+          "TIMED-OUT": 0,
+          "TOTAL": 32
+        }
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-09-28T15:06:55.673Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "apify-actor-start": {
+          "title": "Actor Start",
+          "usd": 5e-05,
+          "tiers": {}
+        },
+        "review-scraped": {
+          "title": "Review",
+          "usd": null,
+          "tiers": {
+            "FREE": 0.00199,
+            "BRONZE": 0.00179,
+            "SILVER": 0.00159,
+            "GOLD": 0.00139,
+            "PLATINUM": 0.00139,
+            "DIAMOND": 0.00139
+          }
+        }
+      }
+    },
+    {
+      "actor": "omnipotent_stairway/ecommerce-product-scraper",
+      "source": "https://api.apify.com/v2/acts/omnipotent_stairway~ecommerce-product-scraper",
+      "modifiedAt": "2026-11-06T02:58:00.003Z",
+      "stats": {
+        "totalBuilds": 18,
+        "totalRuns": 25,
+        "totalUsers": 1,
+        "totalUsers7Days": 1,
+        "totalUsers30Days": 1,
+        "totalUsers90Days": 1,
+        "lastRunStartedAt": "2026-11-10T22:20:33.397Z",
+        "actorReviewCount": 1,
+        "actorReviewRating": 5,
+        "bookmarkCount": 0,
+        "publicActorRunStats30Days": {
+          "ABORTED": 0,
+          "FAILED": 0,
+          "SUCCEEDED": 22,
+          "TIMED-OUT": 0,
+          "TOTAL": 22
+        }
+      },
+      "deprecated": false,
+      "pricingEffectiveAt": "2026-10-30T21:57:16.557Z",
+      "pricingModel": "PAY_PER_EVENT",
+      "events": {
+        "product-amazon": {
+          "title": "Amazon product",
+          "usd": 0.006,
+          "tiers": {}
+        },
+        "product-walmart": {
+          "title": "Walmart product",
+          "usd": 0.004,
+          "tiers": {}
+        },
+        "product-ebay": {
+          "title": "eBay product",
+          "usd": 0.008,
+          "tiers": {}
+        },
+        "product-tiktok-gb": {
+          "title": "TikTok Shop UK product",
+          "usd": 0.01,
+          "tiers": {}
+        },
+        "product-shein": {
+          "title": "Shein product",
+          "usd": 0.03,
+          "tiers": {}
+        },
+        "product-etsy": {
+          "title": "Etsy product",
+          "usd": 0.035,
+          "tiers": {}
+        },
+        "product-shopee": {
+          "title": "Shopee product",
+          "usd": 0.035,
+          "tiers": {}
+        },
+        "product-lazada": {
+          "title": "Lazada product",
+          "usd": 0.035,
+          "tiers": {}
+        },
+        "product-aliexpress": {
+          "title": "AliExpress product",
+          "usd": 0.09,
+          "tiers": {}
+        },
+        "product-temu": {
+          "title": "Temu product",
+          "usd": 0.1,
+          "tiers": {}
+        },
+        "product-tiktok": {
+          "title": "TikTok Shop product",
+          "usd": 0.1,
+          "tiers": {}
+        }
+      }
+    }
+  ],
+  "scope": [
+    "Amazon",
+    "Walmart",
+    "eBay",
+    "Etsy",
+    "AliExpress",
+    "Temu",
+    "Shopee",
+    "Lazada",
+    "TikTok Shop"
+  ],
+  "main_conclusions": [
+    "Apify 最接近一账号、一付款入口、一套执行 API；完整九站评论应视为多个 Actor 组合，schema、作者和数据深度并不统一。",
+    "Scrapingdog Amazon Reviews 官方文档明确暂不可用，不能因为导航和营销页面仍在就列为可用。Walmart 评论端点可作为较窄备选。",
+    "ScraperAPI Amazon Reviews 官方旧文档声明不可用，原同步 URL 重定向 Product API，后者仅承诺公开商品页可见评论；不能等同完整历史评论。",
+    "Temu 社区新 Actor 虽宣称正文，但页面仅 2 total users/1 monthly active，缺少成熟证据，暂不列为已验证生产覆盖。",
+    "研究仅核对官方文档、Actor 作者在 Apify 的页面和公开只读元数据；未注册、未运行采集、未付费、未验证实际响应。"
+  ],
+  "evidence_interpretation": {
+    "process_success_not_data_quality": "publicActorRunStats30Days 的 SUCCEEDED 是执行状态，不保证有评论、不保证正文完整、不代表目标 ASIN/国家成功率。",
+    "rating_not_sla": "用户评分、用户数、最近更新只是维护/采用证据，不是 SLA 或稳定性实测。",
+    "metadata_vs_cached_pages": "网页抓取和搜索缓存中的用户数/价格可滞后；metadata_snapshots 保留本次直连官方公开 API 的时间戳与最新有效计价。",
+    "review_not_rating": "ratings 总数可含无文字评分；评论文字数量通常小于星级总数。eBay 商品评论与 seller feedback 应分表或至少保留类型。",
+    "one_endpoint_limit": "Apify 统一的是执行接口；不同 Actor 的输入、输出、价格和分页语义仍不同。"
+  },
+  "apify_platform": {
+    "ownership_source": "https://docs.apify.com/actors/running/store/actor-developers",
+    "ownership": "Maintained by Apify 由 Apify 维护；Community/Partner 仍是独立开发者负责。认证身份、合作伙伴标记不等于该 Actor 的输出质量保证。",
+    "api_template": "POST https://api.apify.com/v2/actors/{owner}~{actor}/run-sync-get-dataset-items",
+    "async_template": "POST https://api.apify.com/v2/actors/{owner}~{actor}/runs; then retrieve dataset items",
+    "api_source": "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+    "api_limits": "同步接口超过 300 秒返回 408；大批量应启动异步 run，再读取结果，避免把 HTTP 超时当作采集结束。",
+    "pricing_source": "https://apify.com/pricing",
+    "monthly_plans_usd": [
+      {
+        "name": "Free",
+        "fee": 0,
+        "included_credit": 5,
+        "max_concurrent_runs": 5
+      },
+      {
+        "name": "Starter",
+        "fee": 19,
+        "included_credit": 19,
+        "max_concurrent_runs": 32
+      },
+      {
+        "name": "Scale",
+        "fee": 199,
+        "included_credit": 199,
+        "max_concurrent_runs": 128
+      },
+      {
+        "name": "Business",
+        "fee": 999,
+        "included_credit": 999,
+        "max_concurrent_runs": 256
+      }
+    ],
+    "pricing_notes": "Free 每月 $5，无需信用卡。付费档是月费含同额额度加超量费，不是无限调用。Actor 可按事件、资源或两者计费；from 起价常为高档套餐。并发 run 数不是每秒请求数。"
+  },
+  "apify_review_coverage": [
+    {
+      "market": "Amazon",
+      "actor": "junglee/amazon-reviews-scraper",
+      "maintenance": "Apify",
+      "url": "https://apify.com/junglee/amazon-reviews-scraper",
+      "review_fields": [
+        "productAsin",
+        "ratingScore",
+        "reviewTitle",
+        "reviewUrl",
+        "reviewReaction",
+        "reviewedIn",
+        "reviewDescription",
+        "isVerified",
+        "variant",
+        "reviewImages"
+      ],
+      "limit": "文档称每个星级最多100条，理想情况每商品500条；数量会受站点/位置/输入影响，非全部历史保证。",
+      "price": "最新官方元数据：Free $6/千评论；Starter/Bronze $5；Scale/Silver $4；Business/Gold $3。日期过滤事件另计；本次最新计价无启动事件。",
+      "status": "可进入小样本评估；非实测通过。"
+    },
+    {
+      "market": "Walmart",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "maintenance": "Apify",
+      "url": "https://apify.com/e-commerce/walmart-reviews-scraper",
+      "review_fields": [
+        "reviewId",
+        "productId",
+        "productUrl",
+        "rating",
+        "title",
+        "text",
+        "submissionTime",
+        "userNickname",
+        "recommended",
+        "positiveFeedback",
+        "negativeFeedback",
+        "photos",
+        "externalSource",
+        "syndicationSource"
+      ],
+      "limit": "商品/搜索/类目 URL；maxProductsPerStartUrl、maxReviewsPerProduct 默认10；日期过滤须 newest-first；未见统一硬上限。",
+      "price": "Free $5/千；Starter $2/千；Business $1/千；另有极小启动费。",
+      "status": "可进入小样本评估。"
+    },
+    {
+      "market": "eBay",
+      "actor": "e-commerce/store-ebay",
+      "maintenance": "Apify",
+      "url": "https://apify.com/e-commerce/store-ebay",
+      "review_fields": [
+        "text",
+        "rating",
+        "submission time",
+        "position",
+        "reviewer",
+        "seller reply",
+        "item name",
+        "item id",
+        "price/currency"
+      ],
+      "limit": "item URL 或 seller feedback URL；maxItemsPerStartUrl；必须在验收时区分商品评分与卖家交易反馈，不能混为同一评价指标。",
+      "price": "Free $5/千结果；Starter $4/千；Business $2/千；另有极小启动费。",
+      "status": "可进入小样本评估，评论类型须确认。"
+    },
+    {
+      "market": "Etsy",
+      "actor": "themineworks/etsy-reviews-scraper",
+      "maintenance": "Community",
+      "url": "https://apify.com/themineworks/etsy-reviews-scraper",
+      "review_fields": [
+        "stars",
+        "text",
+        "buyer name",
+        "date",
+        "photos",
+        "purchased item",
+        "seller reply",
+        "listing/shop rating and count"
+      ],
+      "limit": "作者称每 listing/shop 每次最多10000，8条/源请求；listing 评论与 shop 全部商品评论不同。",
+      "price": "Free $2.99/千；Starter $2.49；Business $1.59，另 $0.005/run。",
+      "status": "社区候选；本次官方 metadata 仅11个30日用户，0用户评分。"
+    },
+    {
+      "market": "AliExpress",
+      "actor": "kestrel/aliexpress-reviews-scraper",
+      "maintenance": "Community",
+      "url": "https://apify.com/kestrel/aliexpress-reviews-scraper",
+      "review_fields": [
+        "review_id",
+        "rating",
+        "text",
+        "text_translated",
+        "buyer_country",
+        "sku_info",
+        "images",
+        "logistics",
+        "follow_up_text",
+        "helpful_votes",
+        "review_date"
+      ],
+      "limit": "支持URL/ID、星级/日期/文字过滤和onlyNewReviews；0表示尝试所有可达评论，不能由此保证全部历史。",
+      "price": "最新 metadata 2026-11-06 起 $3/千 review rows；无启动费；老 README/搜索结果 $2 已过期。",
+      "status": "社区候选；53个30日用户，0用户评分；需验证重复/截断和原文与译文。"
+    },
+    {
+      "market": "Temu",
+      "actor": "omkar-cloud/temu-reviews-scraper",
+      "maintenance": "Community",
+      "url": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+      "review_fields": [
+        "review_id",
+        "rating",
+        "text",
+        "date",
+        "author_country",
+        "variant",
+        "images",
+        "videos",
+        "fit",
+        "product/store context"
+      ],
+      "limit": "作者称US/UK/CA，商品最多100条（10条/页），店铺仅公开首10条，更多需登录。",
+      "price": "页面 $2/千，无启动费；2500免费来自共用的Apify月度$5额度，并非额外赠送。",
+      "status": "不合格生产覆盖：仅2 total users、1 monthly active、0评分；公开metadata获取发生SSL错误；未运行。",
+      "negative_control": "https://apify.com/hypebridge/temu-scraper 明确 reviews 只有rating/date，reviewTextRedacted=true，不能算原文评论。"
+    },
+    {
+      "market": "Shopee",
+      "actor": "memo23/shopee-reviews-scraper",
+      "maintenance": "Community",
+      "url": "https://apify.com/memo23/shopee-reviews-scraper",
+      "review_fields": [
+        "stars",
+        "text",
+        "product",
+        "variation",
+        "quality/service/delivery subratings",
+        "photos",
+        "video",
+        "seller reply"
+      ],
+      "limit": "作者称SG/MY/PH/TH/VN/BR/TW/MX；依靠店铺评论流，再按商品匹配。须确认商品与shop取数深度、日期顺序；非官方Shopee授权接口。",
+      "price": "Free $3.50/千；Starter $3.20；Business $2.50；启动 $0.005/GB，最少一次。",
+      "status": "社区候选。作者称2026-09商品评论流变更；zen-studio/shopee-product-reviews-scraper 页面显示Under maintenance，不应推荐其Full History文案为可用事实。"
+    },
+    {
+      "market": "Lazada",
+      "actor": "zen-studio/lazada-reviews-scraper",
+      "maintenance": "Community",
+      "url": "https://apify.com/zen-studio/lazada-reviews-scraper",
+      "review_fields": [
+        "text",
+        "stars",
+        "product/seller/delivery subratings",
+        "review/purchase dates",
+        "photos/videos",
+        "variant/SKU",
+        "verified purchase",
+        "helpful votes",
+        "seller reply"
+      ],
+      "limit": "作者称TH/SG/MY/ID/PH/VN；默认500/商品，重评论商品约2300可达；公开rating总数与有内容评论数不同。",
+      "price": "页面Free $1.49/千，Starter $1.29、Scale $1.09、Business $0.99，代理含；作者免费试用10次总计、20行/次。",
+      "status": "社区候选；页面52 total users/22 monthly users/0评分；metadata获取SSL错误。",
+      "secondary_source": "https://apify.com/zen-studio/lazada-reviews-scraper/input-schema"
+    },
+    {
+      "market": "TikTok Shop",
+      "actor": "vistics/tiktok-shop-product-reviews",
+      "maintenance": "Community",
+      "url": "https://apify.com/vistics/tiktok-shop-product-reviews",
+      "review_fields": [
+        "review_id",
+        "product_id",
+        "review_rating",
+        "review_text",
+        "review_time",
+        "review_images",
+        "is_verified_purchase",
+        "is_incentivized_review",
+        "sku_specification",
+        "review_country"
+      ],
+      "limit": "文档region目前只接受US；10条/页自动翻页，maxReviews默认10；不可扩张成TikTok所有市场覆盖。",
+      "price": "最新metadata $0.002/default-dataset-item，启动 $0.01/GB（至少一次）；文档样例为每商品嵌套reviews数组，必须实测确认收费result究竟对应商品行还是评论行，不能直接写$2/千评论。",
+      "status": "社区候选，78个30日用户/11评分/5.0；仍非实测通过。",
+      "conflicting_candidate": "https://apify.com/parsebird/tiktok-shop-reviews-scraper 虽标题写10 storefronts，但FAQ说公开页主要US、最多20条；不能把标题当全量覆盖。"
+    }
+  ],
+  "apify_unified_actor_caution": {
+    "official": "https://apify.com/apify/e-commerce-scraping-tool",
+    "official_analysis": "官方维护，提供Products/Reviews/Sellers模式且每次仅选一个；有review逐行输出与reviews费用。FAQ广泛站点声明主要针对商品公开页，未找到九站逐条评论的明晰覆盖保证，不能据此把九站评论全部标支持。",
+    "community": "https://apify.com/omnipotent_stairway/ecommerce-product-scraper",
+    "community_analysis": "一站式宣传但原覆盖表Walmart/Etsy/Temu只有rating/count、eBay无评论；正文又出现2026-11-14新功能，晚于本次2026-11-12，且与FAQ冲突。不能将未来/矛盾文案当本日已交付能力；metadata仅1个30日用户。"
+  },
+  "scrapingdog": {
+    "verdict": "不适合作为九站统一原始评论主方案；可评估Walmart单站。",
+    "amazon": {
+      "source": "https://www.scrapingdog.com/documentation/amazon-reviews-api/",
+      "endpoint": "GET https://api.scrapingdog.com/amazon/reviews",
+      "status": "官方明确temporarily unavailable，原因Amazon评论登录墙。",
+      "documented_inputs": [
+        "asin",
+        "domain",
+        "page",
+        "sort_by",
+        "filter_by_star",
+        "reviewer_type",
+        "media_type",
+        "format_type"
+      ],
+      "documented_fields": [
+        "user",
+        "title",
+        "date",
+        "rating",
+        "review"
+      ],
+      "cost": "文档5 credits/成功请求、建议单并发；这是保留的接口定义，不是可用性证据。"
+    },
+    "walmart": {
+      "source": "https://www.scrapingdog.com/documentation/walmart-reviews-scraper/",
+      "endpoint": "GET https://api.scrapingdog.com/walmart/reviews",
+      "input": "api_key + Walmart reviews page URL",
+      "fields": [
+        "title",
+        "text",
+        "rating",
+        "review_submission_time",
+        "user_nickname",
+        "customer_type",
+        "rating distribution",
+        "top_positive",
+        "top_negative"
+      ],
+      "cost_credits": 5,
+      "pagination": "只明列url；未给独立page参数/全量上限，必须测试或向供应商确认URL分页。"
+    },
+    "coverage": "官方文档目录未核实Etsy/AliExpress/Temu/Shopee/Lazada/TikTok Shop逐条商品评论专用端点；eBay有Product/Search不等于Reviews；TikTok Profile/Post不等于TikTok Shop。通用HTML代理需自己开发解析。",
+    "documentation_source": "https://www.scrapingdog.com/documentation/",
+    "pricing_source": "https://www.scrapingdog.com/pricing/",
+    "plans_monthly_usd": [
+      {
+        "name": "Free",
+        "price": 0,
+        "credits": 100,
+        "concurrency": 1
+      },
+      {
+        "name": "Lite",
+        "price": 40,
+        "credits": 200000,
+        "concurrency": 5
+      },
+      {
+        "name": "Standard",
+        "price": 90,
+        "credits": 1000000,
+        "concurrency": 50
+      },
+      {
+        "name": "Pro",
+        "price": 200,
+        "credits": 3000000,
+        "concurrency": 100
+      }
+    ],
+    "pricing_notes": "无卡试用，失败请求不计费。5-credit Walmart请求下，Lite额度理论40000请求/月，不能换算成40000条评论；每请求返回量与分页另验。所有套餐可用API的宣传不覆盖端点暂时停用。"
+  },
+  "scraperapi": {
+    "verdict": "不是九站评论主方案；Walmart接口分页定义较清楚，可作窄范围候选。Amazon须降级为公开商品页样本。",
+    "amazon_unavailable_source": "https://docs.scraperapi.com/php/making-requests-or-php/async-structured-data-collection-method-or-php/amazon-reviews-api-async-or-php",
+    "amazon_current_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+    "amazon_status": "旧官方异步review文档明确不可用；原同步review URL重定向Product API，只承诺商品页公开可见评论，不保证全历史。",
+    "amazon_endpoint": "GET https://api.scraperapi.com/structured/amazon/product",
+    "walmart": {
+      "source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+      "endpoint": "GET https://api.scraperapi.com/structured/walmart/review",
+      "inputs": [
+        "product_id",
+        "tld=com/ca",
+        "country_code",
+        "page",
+        "sort",
+        "ratings",
+        "verified_purchase",
+        "output_format"
+      ],
+      "fields": [
+        "title",
+        "text",
+        "author",
+        "date_published",
+        "rating",
+        "positive_feedback",
+        "negative_feedback",
+        "badges"
+      ],
+      "hard_cap": "未核实明确硬上限。"
+    },
+    "pricing_source": "https://www.scraperapi.com/pricing/",
+    "trial": "7天5000 credits，无需信用卡。",
+    "plans_monthly_usd": [
+      {
+        "name": "Hobby",
+        "price": 49,
+        "credits": 100000,
+        "concurrent_threads": 20
+      },
+      {
+        "name": "Startup",
+        "price": 149,
+        "credits": 1000000,
+        "concurrent_threads": 50
+      },
+      {
+        "name": "Business",
+        "price": 299,
+        "credits": 3000000,
+        "concurrent_threads": 100
+      }
+    ],
+    "pricing_notes": "按请求credits，不按评论；官网FAQ称普通页面1、Amazon5，具体域/反爬参数可增加费用，Walmart review请求精确成本本次未核实。"
+  },
+  "recommended_acceptance": [
+    "按目标国家为每站选3-5个商品，含低/高评论量与多变体。",
+    "核验review_id、原文text、rating、date、product_id/URL；对照片、变体、verified标识空值分别统计。",
+    "至少抓两页/跨一次游标，验证重复率、采集条数与可见文本评论数，不能比较总rating数。",
+    "记录run成功但空数据/部分返回；重跑新评论验证去重和增量；保留官方源URL/抓取时刻。",
+    "把每次run实际费用换算为每1000条唯一有正文评论成本，不用起价或request数量直接替代。"
+  ]
+}

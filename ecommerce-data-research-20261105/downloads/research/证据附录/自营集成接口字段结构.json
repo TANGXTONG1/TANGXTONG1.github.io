@@ -1,0 +1,7733 @@
+[
+  {
+    "name": "旺店通",
+    "endpoint": "vip_api_trade_query.php",
+    "source": "https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php",
+    "request_fields": [
+      {
+        "field": "sid",
+        "type": "String",
+        "meaning": "卖家账号",
+        "required": "是"
+      },
+      {
+        "field": "appkey",
+        "type": "String",
+        "meaning": "接口账号",
+        "required": "是"
+      },
+      {
+        "field": "timestamp",
+        "type": "int",
+        "meaning": "时间戳",
+        "required": "是"
+      },
+      {
+        "field": "sign",
+        "type": "String",
+        "meaning": "签名",
+        "required": "是"
+      },
+      {
+        "field": "tid",
+        "type": "varchar",
+        "meaning": "原始单号",
+        "required": "否"
+      },
+      {
+        "field": "platform_id",
+        "type": "tinyint",
+        "meaning": "平台id",
+        "required": "否"
+      },
+      {
+        "field": "shop_no",
+        "type": "varchar",
+        "meaning": "店铺编号",
+        "required": "否"
+      },
+      {
+        "field": "start_time",
+        "type": "datetime",
+        "meaning": "开始时间",
+        "required": "是"
+      },
+      {
+        "field": "end_time",
+        "type": "datetime",
+        "meaning": "结束时间",
+        "required": "是"
+      },
+      {
+        "field": "page_no",
+        "type": "int",
+        "meaning": "页号",
+        "required": "是"
+      },
+      {
+        "field": "page_size",
+        "type": "int",
+        "meaning": "分页大小",
+        "required": "是"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "code",
+        "type": "int",
+        "meaning": "错误码",
+        "required": "是"
+      },
+      {
+        "field": "message",
+        "type": "varchar",
+        "meaning": "错误描述",
+        "required": "是"
+      },
+      {
+        "field": "total_count",
+        "type": "varchar",
+        "meaning": "条数",
+        "required": "是"
+      },
+      {
+        "field": "trade_list",
+        "type": "data[]",
+        "meaning": "原始单节点",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].platform_id",
+        "type": "smallint",
+        "meaning": "平台",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].shop_no",
+        "type": "varchar",
+        "meaning": "店铺编号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].tid",
+        "type": "varchar",
+        "meaning": "原始单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].trade_status",
+        "type": "tinyint",
+        "meaning": "平台状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].guarantee_mode",
+        "type": "tinyint",
+        "meaning": "担保方式",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].pay_status",
+        "type": "tinyint",
+        "meaning": "支付状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].delivery_term",
+        "type": "tinyint",
+        "meaning": "发货条件",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].pay_method",
+        "type": "tinyint",
+        "meaning": "支付方式",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].refund_status",
+        "type": "tinyint",
+        "meaning": "退款状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].process_status",
+        "type": "tinyint",
+        "meaning": "系统状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].trade_time",
+        "type": "datetime",
+        "meaning": "下单时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].pay_time",
+        "type": "datetime",
+        "meaning": "支付时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].buyer_message",
+        "type": "varchar",
+        "meaning": "买家留言",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].remark",
+        "type": "varchar",
+        "meaning": "客服备注",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_amount",
+        "type": "decimal",
+        "meaning": "货款",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].post_amount",
+        "type": "decimal",
+        "meaning": "邮费",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].other_amount",
+        "type": "decimal",
+        "meaning": "其他费用",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount",
+        "type": "decimal",
+        "meaning": "优惠",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].paid",
+        "type": "decimal",
+        "meaning": "已付金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].platform_cost",
+        "type": "decimal",
+        "meaning": "平台费用",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].received",
+        "type": "decimal",
+        "meaning": "已收金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receivable",
+        "type": "decimal",
+        "meaning": "应收金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].dap_amount",
+        "type": "decimal",
+        "meaning": "款到发货金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].cod_amount",
+        "type": "decimal",
+        "meaning": "货到付款金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].refund_amount",
+        "type": "decimal",
+        "meaning": "退款金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].logistics_type",
+        "type": "int",
+        "meaning": "物流方式",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].invoice_type",
+        "type": "tinyint",
+        "meaning": "发票类别",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].invoice_title",
+        "type": "varchar",
+        "meaning": "发票抬头",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].invoice_content",
+        "type": "varchar",
+        "meaning": "发票内容",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].end_time",
+        "type": "datetime",
+        "meaning": "结束时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].fenxiao_type",
+        "type": "tinyint",
+        "meaning": "分销方式",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].trade_from",
+        "type": "tinyint",
+        "meaning": "订单来源",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].modified",
+        "type": "datetime",
+        "meaning": "修改时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].created",
+        "type": "datetime",
+        "meaning": "创建时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].trade_mask",
+        "type": "varchar",
+        "meaning": "订单标记位",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].openid",
+        "type": "varchar",
+        "meaning": "买家ID",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].currency",
+        "type": "varchar",
+        "meaning": "币种",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].score",
+        "type": "int",
+        "meaning": "积分",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].to_deliver_time",
+        "type": "varchar",
+        "meaning": "交货时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].pi_amount",
+        "type": "decimal",
+        "meaning": "分期付款金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].rec_id",
+        "type": "bigint",
+        "meaning": "增量id",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].shop_id",
+        "type": "smallint",
+        "meaning": "店铺id",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].order_count",
+        "type": "smallint",
+        "meaning": "子订单个数",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_count",
+        "type": "decimal",
+        "meaning": "货品数量",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].buyer_nick",
+        "type": "varchar",
+        "meaning": "客户网名",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].buyer_area",
+        "type": "varchar",
+        "meaning": "买家区域",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].customer_no",
+        "type": "varchar",
+        "meaning": "客户编号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_name",
+        "type": "varchar",
+        "meaning": "收件人姓名",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_country",
+        "type": "smallint",
+        "meaning": "收件人国家",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_province",
+        "type": "int",
+        "meaning": "收件人省份",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_city",
+        "type": "int",
+        "meaning": "收件人城市",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_district",
+        "type": "int",
+        "meaning": "收件人地址",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_mobile",
+        "type": "varchar",
+        "meaning": "收件人手机",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_telno",
+        "type": "varchar",
+        "meaning": "收件人电话",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_province_name",
+        "type": "varchar",
+        "meaning": "收件人省份名称",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_city_name",
+        "type": "varchar",
+        "meaning": "收件人城市名称",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_district_name",
+        "type": "varchar",
+        "meaning": "收件人区县名称",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_area",
+        "type": "varchar",
+        "meaning": "收件人省市区地址",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].receiver_address",
+        "type": "varchar",
+        "meaning": "收件人详细地址",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].remark_flag",
+        "type": "varchar",
+        "meaning": "标旗",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].pay_id",
+        "type": "varchar",
+        "meaning": "平台支付订单id",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].invoice_consumer_amount",
+        "type": "decimal",
+        "meaning": "应对消费者开票金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].invoice_platform_amount",
+        "type": "decimal",
+        "meaning": "应对平台开票金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].is_auto_wms",
+        "type": "tinyint",
+        "meaning": "主单自动流转wms",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].actual_paid",
+        "type": "decimal",
+        "meaning": "买家实付",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list",
+        "type": "data[ ]",
+        "meaning": "货品明细",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list",
+        "type": "data[ ]",
+        "meaning": "优惠明细",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].platform_id",
+        "type": "smallint",
+        "meaning": "平台",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].tid",
+        "type": "varchar",
+        "meaning": "子单原始单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].oid",
+        "type": "varchar",
+        "meaning": "原始子单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].status",
+        "type": "tinyint",
+        "meaning": "状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].process_status",
+        "type": "tinyint",
+        "meaning": "系统状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].refund_status",
+        "type": "tinyint",
+        "meaning": "退款状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].order_type",
+        "type": "tinyint",
+        "meaning": "子订单类型",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].goods_id",
+        "type": "varchar",
+        "meaning": "平台货品ID",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].spec_id",
+        "type": "varchar",
+        "meaning": "平台规格ID",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].goods_no",
+        "type": "varchar",
+        "meaning": "平台货品编码",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].spec_no",
+        "type": "varchar",
+        "meaning": "平台规格编码",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].goods_name",
+        "type": "varchar",
+        "meaning": "平台货品名称",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].spec_name",
+        "type": "varchar",
+        "meaning": "平台规格名称",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].num",
+        "type": "decimal",
+        "meaning": "数量",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].price",
+        "type": "decimal",
+        "meaning": "单价",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].adjust_amount",
+        "type": "decimal",
+        "meaning": "调整金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].discount",
+        "type": "decimal",
+        "meaning": "优惠",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].total_amount",
+        "type": "decimal",
+        "meaning": "总价",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].share_discount",
+        "type": "decimal",
+        "meaning": "分摊优惠",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].share_amount",
+        "type": "decimal",
+        "meaning": "分摊后总价",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].share_post",
+        "type": "decimal",
+        "meaning": "分摊邮资",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].paid",
+        "type": "decimal",
+        "meaning": "已付金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].invoice_type",
+        "type": "tinyint",
+        "meaning": "发票类别",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].invoice_content",
+        "type": "varchar",
+        "meaning": "发票内容",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].bind_oid",
+        "type": "varchar",
+        "meaning": "关联子订单",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].refund_id",
+        "type": "varchar",
+        "meaning": "退款单编号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].refund_amount",
+        "type": "decimal",
+        "meaning": "退款单金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].r emark",
+        "type": "varchar",
+        "meaning": "备注",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].daifa_logistics_no",
+        "type": "varchar",
+        "meaning": "物流单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].daifa_logistics_type",
+        "type": "smallint",
+        "meaning": "物流类型",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].daifa_consign_time",
+        "type": "datetime",
+        "meaning": "发货时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].daifa_end_time",
+        "type": "datetime",
+        "meaning": "订单完成时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].modified",
+        "type": "datetime",
+        "meaning": "修改时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].created",
+        "type": "datetime",
+        "meaning": "创建时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].end_time",
+        "type": "datetime",
+        "meaning": "子单完成时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].rec_id",
+        "type": "bigint",
+        "meaning": "增量id",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].process_refund_status",
+        "type": "tinyint",
+        "meaning": "处理退款状态",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].spec_code",
+        "type": "varchar",
+        "meaning": "平台规格码",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].commission",
+        "type": "decimal",
+        "meaning": "佣金",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].stockout_no",
+        "type": "datetime",
+        "meaning": "结束时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].logistics_no",
+        "type": "varchar",
+        "meaning": "物流单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].is_auto_wms",
+        "type": "tinyint",
+        "meaning": "自动流转wms",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].cid",
+        "type": "int",
+        "meaning": "类目id",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].goods_list[].actual_paid",
+        "type": "decimal",
+        "meaning": "买家实付",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].platform_id",
+        "type": "smallint",
+        "meaning": "平台",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].tid",
+        "type": "varchar",
+        "meaning": "原始单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].oid",
+        "type": "varchar",
+        "meaning": "原始子单号",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].rec_id",
+        "type": "btigin",
+        "meaning": "明细主键",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].type",
+        "type": "varchar",
+        "meaning": "优惠类别",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].is_bonus",
+        "type": "tinyint",
+        "meaning": "是否优惠券",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].created",
+        "type": "datetime",
+        "meaning": "创建时间",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].name",
+        "type": "varchar",
+        "meaning": "优惠名称",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].detail",
+        "type": "varchar",
+        "meaning": "优惠详情",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].amount",
+        "type": "decimal",
+        "meaning": "优惠金额",
+        "required": "是"
+      },
+      {
+        "field": "trade_list[].discount_list[].sn",
+        "type": "varchar",
+        "meaning": "平台唯一标识",
+        "required": "是"
+      }
+    ],
+    "note": "企业版V2.4.5.0以上；不含淘系、拼多多、系统供销订单。隐私字段存在于schema不代表会有值。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "oms.trade.fullinfoget",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "tradeNo",
+        "type": "string",
+        "meaning": "订单编号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单编号（多个用,隔开;注意是英文逗号）"
+      },
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "页码（从0开始）",
+        "required": 0,
+        "default": "0",
+        "enabled": 1,
+        "description": "页码（从0开始）"
+      },
+      {
+        "field": "fields",
+        "type": "string",
+        "meaning": "需要返回的字段",
+        "required": 1,
+        "default": "tradeNo,tradeStatus,goodsDetail.goodsNo,goodsDetail.goodsName,shopName,goodsDetail.sellTotal,sourceTradeNo,goodsDetail:sellCount,warehouseName,goodsDetail.sellPrice,mainPostid,goodsDetail.specName,goodsDetail.unit,payment,goodsDetail.barcode",
+        "enabled": 0,
+        "description": "需要返回的字段"
+      },
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "页大小（最大限制为10）",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "页大小（最大限制为10）"
+      },
+      {
+        "field": "startConsignTime",
+        "type": "string",
+        "meaning": "发货时间（起始）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "发货时间（起始）（精确到秒）"
+      },
+      {
+        "field": "endConsignTime",
+        "type": "string",
+        "meaning": "发货时间（截止）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "发货时间（截止）（精确到秒）"
+      },
+      {
+        "field": "startAuditTime",
+        "type": "string",
+        "meaning": "审核时间（起始）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "审核时间（起始）精确到秒"
+      },
+      {
+        "field": "endAuditTime",
+        "type": "string",
+        "meaning": "审核时间（截止）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "审核时间（截止）精确到秒"
+      },
+      {
+        "field": "shopIds",
+        "type": "list",
+        "meaning": "店铺Id",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "店铺Id（多个用英文逗号,隔开）"
+      },
+      {
+        "field": "warehouseIds",
+        "type": "list",
+        "meaning": "仓库Id",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "仓库Id（多个用英文逗号,隔开）"
+      },
+      {
+        "field": "tradeStatus",
+        "type": "string",
+        "meaning": "订单状态",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单状态"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "trades:goodsDetail:goodsNo",
+        "type": "",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品编号"
+      },
+      {
+        "field": "trades:goodsDetail:goodsName",
+        "type": "",
+        "meaning": "货品名称",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品名称"
+      },
+      {
+        "field": "trades:tradeNo",
+        "type": "",
+        "meaning": "销售单号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "销售单号"
+      },
+      {
+        "field": "trades:shopName",
+        "type": "",
+        "meaning": "店铺名称",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "店铺名称"
+      },
+      {
+        "field": "trades:goodsDetail:sellTotal",
+        "type": "",
+        "meaning": "金额",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "金额"
+      },
+      {
+        "field": "trades:sourceTradeNo",
+        "type": "",
+        "meaning": "网店订单号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "网店订单号"
+      },
+      {
+        "field": "trades:goodsDetail:sellCount",
+        "type": "",
+        "meaning": "货品数量",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品数量"
+      },
+      {
+        "field": "trades:warehouseName",
+        "type": "",
+        "meaning": "仓库名称",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "仓库名称"
+      },
+      {
+        "field": "trades:goodsDetail:sellPrice",
+        "type": "",
+        "meaning": "货品单价",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品单价"
+      },
+      {
+        "field": "trades:mainPostid",
+        "type": "",
+        "meaning": "物流单号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "物流单号"
+      },
+      {
+        "field": "trades:goodsDetail:specName",
+        "type": "",
+        "meaning": "规格",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "规格"
+      },
+      {
+        "field": "trades:goodsDetail:unit",
+        "type": "",
+        "meaning": "单位",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "单位"
+      },
+      {
+        "field": "trades:payment",
+        "type": "",
+        "meaning": "应收合计",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "应收合计"
+      },
+      {
+        "field": "trades:goodsDetail:barcode",
+        "type": "",
+        "meaning": "条码",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "条码"
+      },
+      {
+        "field": "trades:tradeStatus",
+        "type": "",
+        "meaning": "订单状态",
+        "required": 0,
+        "default": "9090",
+        "enabled": 0,
+        "description": "销售单状态（1010：待审核；1020：审核中；1030：预售；1050：待复核；2000：备货等待；2010：备货等待等补货；2020：服务等待；2030：备货等待等生产；2040：采购等待；3010：虚拟发货；4110：待发货待递交；4111：待发货递交中；4112：待发货已递交；4113：待发货-递交失败；4121：待发货-取消中；4122：待发货已取消；4123：待发货取消失败；4130：待发货部分发货；4040：代销发货待递交；4041：代销发货已递交；5010：已取消；5020：已取消被合并；5030：已取消被拆分；6000：发货在途；9090：已完成）"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=53",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "erp-goods.pricelist.get",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "页大小",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "页大小（默认为10）"
+      },
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "页码",
+        "required": 0,
+        "default": "0",
+        "enabled": 1,
+        "description": "页码（默认为0）"
+      },
+      {
+        "field": "cols",
+        "type": "string",
+        "meaning": "需要返回的字段",
+        "required": 1,
+        "default": "skuBarcode,skuName,goodsNo,goodsName,currencyCode,currencyName,minPrice,price1,price2,price3,price4,price5",
+        "enabled": 0,
+        "description": "需要返回的字段"
+      },
+      {
+        "field": "skuBarcodes",
+        "type": "string",
+        "meaning": "条码",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "条码（多个用逗号隔开）"
+      },
+      {
+        "field": "goodsNos",
+        "type": "string",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品编号（多个用逗号隔开）"
+      },
+      {
+        "field": "goodsNames",
+        "type": "string",
+        "meaning": "货品名称",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品名称（多个用逗号隔开）"
+      },
+      {
+        "field": "skuNames",
+        "type": "string",
+        "meaning": "规格名称",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "规格名称（多个用逗号隔开）"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "skuName",
+        "type": "",
+        "meaning": "规格名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "规格名称"
+      },
+      {
+        "field": "skuBarcode",
+        "type": "",
+        "meaning": "条码",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "条码"
+      },
+      {
+        "field": "goodsNo",
+        "type": "",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品编号"
+      },
+      {
+        "field": "goodsName",
+        "type": "",
+        "meaning": "货品名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品名称"
+      },
+      {
+        "field": "unitName",
+        "type": "",
+        "meaning": "单位名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "单位名称"
+      },
+      {
+        "field": "currencyCode",
+        "type": "",
+        "meaning": "币种编码",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "币种编码"
+      },
+      {
+        "field": "currencyName",
+        "type": "",
+        "meaning": "币种名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "币种名称"
+      },
+      {
+        "field": "minPrice",
+        "type": "",
+        "meaning": "最低售价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "最低售价"
+      },
+      {
+        "field": "price1",
+        "type": "",
+        "meaning": "零售价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "零售价"
+      },
+      {
+        "field": "price2",
+        "type": "",
+        "meaning": "批发价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "批发价"
+      },
+      {
+        "field": "price3",
+        "type": "",
+        "meaning": "会员价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "会员价"
+      },
+      {
+        "field": "price4",
+        "type": "",
+        "meaning": "自定义价格类型（价格4）",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "自定义价格类型（价格4）"
+      },
+      {
+        "field": "price5",
+        "type": "",
+        "meaning": "自定义价格类型（价格5）",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "自定义价格类型（价格5）"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=63",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "omsapi-business.order.get",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "页码",
+        "required": 0,
+        "default": "0",
+        "enabled": 1,
+        "description": "页码（默认从0开始）"
+      },
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "页大小",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "页大小（默认为10）"
+      },
+      {
+        "field": "shopIds",
+        "type": "string",
+        "meaning": "渠道Id",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "渠道Id（多个用英文逗号,隔开，注意不是渠道编码）"
+      },
+      {
+        "field": "createTimeBegin",
+        "type": "string",
+        "meaning": "创建时间（起始）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "创建时间（起始 精确到秒）"
+      },
+      {
+        "field": "createTimeEnd",
+        "type": "string",
+        "meaning": "创建时间（截止）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "创建时间（截止 精确到秒）"
+      },
+      {
+        "field": "fields",
+        "type": "string",
+        "meaning": "查询返回字段",
+        "required": 1,
+        "default": "tradeOnline.tradeNo,tradeOnline.logisticNo,tradeOnline.shopName,tradeOnline.payment,tradeOnline.payTime,tradeOnline.createTime,tradeOnline.goodsCount,tradeOnlineGoodsList.goodsBarcode,tradeOnlineGoodsList.goodsName,tradeOnlineGoodsList.platGoodsId,tradeOnlineGoodsList.sellCount,tradeOnlineGoodsList.price,tradeOnlineGoodsList.sellTotal,tradeOnline.tradeId,tradeOnline.apiType,tradeOnlineGoodsList.tradeId",
+        "enabled": 0,
+        "description": "查询返回字段"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "tradeNo",
+        "type": "",
+        "meaning": "网店订单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "网店订单号"
+      },
+      {
+        "field": "logisticNo",
+        "type": "",
+        "meaning": "物流单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "物流单号"
+      },
+      {
+        "field": "shopName",
+        "type": "",
+        "meaning": "销售渠道",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "销售渠道"
+      },
+      {
+        "field": "createTime",
+        "type": "",
+        "meaning": "下单时间",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "下单时间"
+      },
+      {
+        "field": "payTime",
+        "type": "",
+        "meaning": "付款时间",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "付款时间"
+      },
+      {
+        "field": "payment",
+        "type": "",
+        "meaning": "应收合计",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "应收合计"
+      },
+      {
+        "field": "goodsCount",
+        "type": "",
+        "meaning": "商品数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "商品数量"
+      },
+      {
+        "field": "goodsDetailList:goodsBarcode",
+        "type": "",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品编号"
+      },
+      {
+        "field": "goodsDetailList:goodsName",
+        "type": "",
+        "meaning": "交易名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "交易名称"
+      },
+      {
+        "field": "goodsDetailList:platGoodsId",
+        "type": "",
+        "meaning": "平台商品ID",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "平台商品ID"
+      },
+      {
+        "field": "goodsDetailList:price",
+        "type": "",
+        "meaning": "单价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "单价"
+      },
+      {
+        "field": "goodsDetailList:sellCount",
+        "type": "",
+        "meaning": "数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "数量"
+      },
+      {
+        "field": "goodsDetailList:sellTotal",
+        "type": "",
+        "meaning": "金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "金额"
+      },
+      {
+        "field": "curStatusExplain",
+        "type": "",
+        "meaning": "处理状态",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "处理状态描述"
+      },
+      {
+        "field": "tradeStatusExplain",
+        "type": "",
+        "meaning": "订单状态",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "订单状态描述"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=64",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "birc.report.needauth.goodsMultiDimensionalAnalysis",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "timeType",
+        "type": "int",
+        "meaning": "统计时间",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "统计时间（必填）。2：按月统计，3：按日统计"
+      },
+      {
+        "field": "filterTimeType",
+        "type": "int",
+        "meaning": "统计时间类型",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "统计时间类型（必填）。1：下单时间，2：发货时间，3：付款时间"
+      },
+      {
+        "field": "finReceiptStatus",
+        "type": "string",
+        "meaning": "收款状态",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "收款状态，查询多个使用英文逗号分隔，不传默认全部。0：未收款，1：已收款，2：部分收款"
+      },
+      {
+        "field": "warehouseIds",
+        "type": "string",
+        "meaning": "仓库id",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "仓库id，查询多个使用英文逗号分隔，不传默认全部"
+      },
+      {
+        "field": "skuIds",
+        "type": "string",
+        "meaning": "规格id",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "规格id，查询多个使用英文逗号分隔，不传默认全部"
+      },
+      {
+        "field": "assemblyDimension",
+        "type": "int",
+        "meaning": "组合装统计维度",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "组合装统计维度（必填），0：按组合装，1：按单品"
+      },
+      {
+        "field": "tradeType",
+        "type": "string",
+        "meaning": "订单类型",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单类型。查询多个使用英文逗号分隔，不传默认全部。1:零售业务,2:代发货(来自分销商),3:预售订单,4:周期性订购,5:代销售(供货商发货),6:现款现货,7:售后发货,8:售后退货,9:批发业务(B2B),10:试销业务,11:错漏调整,12:仅退款,13:销售返利,91:自定义1,92:自定义2,93:自定义3...100:自定义10"
+      },
+      {
+        "field": "tradeFrom",
+        "type": "string",
+        "meaning": "订单来源",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单来源。查询多个使用英文逗号分隔，不传默认全部。0：其他，6：售后"
+      },
+      {
+        "field": "tradeStatus",
+        "type": "string",
+        "meaning": "订单状态",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单状态。查询多个使用英文逗号分隔，不传默认全部。0：未发货，4040：部分发货，6000：已发货"
+      },
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "分页页码",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "分页页码（必填），从0开始"
+      },
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "分页大小",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "分页大小"
+      },
+      {
+        "field": "startTime",
+        "type": "string",
+        "meaning": "查询开始时间",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "查询时间（开始）（必填）按月统计: yyyy-MM，按日统计: yyyy-MM-dd"
+      },
+      {
+        "field": "endTime",
+        "type": "string",
+        "meaning": "查询结束时间",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "查询时间（结束）（必填）。按月统计: yyyy-MM，按日统计: yyyy-MM-dd"
+      },
+      {
+        "field": "startFinReceiptTime",
+        "type": "string",
+        "meaning": "收款开始查询时间",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "收款开始查询时间，按月统计: yyyy-MM，按日统计: yyyy-MM-dd"
+      },
+      {
+        "field": "endFinReceiptTime",
+        "type": "string",
+        "meaning": "收款结束查询时间",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "收款结束查询时间，按月统计: yyyy-MM，按日统计: yyyy-MM-dd"
+      },
+      {
+        "field": "summaryType",
+        "type": "string",
+        "meaning": "汇总方式",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "汇总方式（必填），查询多个使用英文逗号分隔，不传默认全部。time：统计时间，channel：销售渠道，brand：品牌，cate：分类，country：国家及地区，province：省份，city：城市，goods：货品，sku：规格，channelCate：销售渠道，warehouse：发货仓库，logistic：物流公司，seller：业务员，finReceiptTime：收款时间，company：公司，depart：部门"
+      },
+      {
+        "field": "flagIds",
+        "type": "string",
+        "meaning": "货品规格标记",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品（规格）标记，规格id标记，长度限制500"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "goodsNo",
+        "type": "",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 货品编号。仅当汇总方式勾选包含“货品”或“规格”时有值"
+      },
+      {
+        "field": "goodsName",
+        "type": "",
+        "meaning": "货品名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品名称。仅当汇总方式勾选包含“货品”或“规格”时有值"
+      },
+      {
+        "field": "unitName",
+        "type": "",
+        "meaning": "单位",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "单位。仅当汇总方式勾选包含“货品”或“规格”时有值"
+      },
+      {
+        "field": "skuName",
+        "type": "",
+        "meaning": "规格",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 规格。仅当汇总方式勾选包含“规格”时有值"
+      },
+      {
+        "field": "skuNo",
+        "type": "",
+        "meaning": "规格编码",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 规格编码。仅当汇总方式勾选包含“规格”时有值"
+      },
+      {
+        "field": "barcode",
+        "type": "",
+        "meaning": "条码",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 条码。仅当汇总方式勾选包含“规格”时有值"
+      },
+      {
+        "field": "brandName",
+        "type": "",
+        "meaning": "品牌",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 品牌。仅当汇总方式勾选包含“品牌”时有值"
+      },
+      {
+        "field": "cateName",
+        "type": "",
+        "meaning": "分类",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 分类。仅当汇总方式勾选包含“分类”时有值"
+      },
+      {
+        "field": "shopName",
+        "type": "",
+        "meaning": "销售渠道",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 销售渠道。仅当汇总方式勾选包含“销售渠道”时有值"
+      },
+      {
+        "field": "countryName",
+        "type": "",
+        "meaning": "国家及地区",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 国家及地区。仅当汇总方式勾选包含“国家及地区”时有值"
+      },
+      {
+        "field": "provinceName",
+        "type": "",
+        "meaning": "省份",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "省份。仅当汇总方式勾选包含“省份”时有值"
+      },
+      {
+        "field": "cityName",
+        "type": "",
+        "meaning": "城市",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "城市。仅当汇总方式勾选包含“城市”时有值"
+      },
+      {
+        "field": "time",
+        "type": "",
+        "meaning": "时间",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 时间。仅当汇总方式勾选包含“统计时间”时有值"
+      },
+      {
+        "field": "finReceiptTime",
+        "type": "",
+        "meaning": "收款时间",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 收款时间。仅当汇总方式勾选包含“收款时间”时有值"
+      },
+      {
+        "field": "companyName",
+        "type": "",
+        "meaning": "公司名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 公司。仅当汇总方式勾选包含“公司”时有值"
+      },
+      {
+        "field": "departName",
+        "type": "",
+        "meaning": "部门名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 部门。仅当汇总方式勾选包含“部门”时有值"
+      },
+      {
+        "field": "shopCateName",
+        "type": "",
+        "meaning": "渠道分类",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "渠道分类。仅当汇总方式勾选包含“渠道分类”时有值"
+      },
+      {
+        "field": "warehouseName",
+        "type": "",
+        "meaning": "发货仓库",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 发货仓库。仅当汇总方式勾选包含“发货仓库”时有值"
+      },
+      {
+        "field": "logisticName",
+        "type": "",
+        "meaning": "物流公司",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 物流公司。仅当汇总方式勾选包含“物流公司”时有值"
+      },
+      {
+        "field": "sellerName",
+        "type": "",
+        "meaning": "业务员",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 业务员。仅当汇总方式勾选包含“业务员”时有值"
+      },
+      {
+        "field": "goodsQty",
+        "type": "",
+        "meaning": "销售量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "销售量"
+      },
+      {
+        "field": "sellAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 货品金额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 货品金额(本币)"
+      },
+      {
+        "field": "goodsAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 销售额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 销售额(本币)"
+      },
+      {
+        "field": "deductRefundgoodsAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 销售额_扣退(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 销售额_扣退(本币)"
+      },
+      {
+        "field": "refundGoodsAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 退款金额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 退款金额(本币)"
+      },
+      {
+        "field": "cancelGoodsAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 取消金额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 取消金额(本币)"
+      },
+      {
+        "field": "costAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 成本(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 成本(本币)"
+      },
+      {
+        "field": "expenseShareAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 费用分摊(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 费用分摊(本币)"
+      },
+      {
+        "field": "grossProfitCompanyCurrency",
+        "type": "",
+        "meaning": "\t 毛利(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 毛利(本币)"
+      },
+      {
+        "field": "grossProfitRateCompanyCurrencyShow",
+        "type": "",
+        "meaning": "毛利率%(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "毛利率%(本币)"
+      },
+      {
+        "field": "taxAmtCompanyCurrency",
+        "type": "",
+        "meaning": "税额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "税额(本币)"
+      },
+      {
+        "field": "noTaxGoodsAmtCompanyCurrency",
+        "type": "",
+        "meaning": "\t 未税金额(本币)，组合装统计维度按“组合装”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 未税金额(本币)，组合装统计维度按“组合装”时有值"
+      },
+      {
+        "field": "noTaxGrossProfitCompanyCurrency",
+        "type": "",
+        "meaning": "\t 未税毛利(本币)，组合装统计维度按“组合装”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 未税毛利(本币)，组合装统计维度按“组合装”时有值"
+      },
+      {
+        "field": "noTaxGrossProfitRateCompanyCurrencyShow",
+        "type": "",
+        "meaning": "\t 未税毛利率%(本币)，组合装统计维度按“组合装”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 未税毛利率%(本币)，组合装统计维度按“组合装”时有值"
+      },
+      {
+        "field": "returnGoodsRate",
+        "type": "",
+        "meaning": "\t 退货率",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 退货率"
+      },
+      {
+        "field": "deliveryGoodsQty",
+        "type": "",
+        "meaning": "发货量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "发货量"
+      },
+      {
+        "field": "returnGoodsQty",
+        "type": "",
+        "meaning": "退货量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退货量"
+      },
+      {
+        "field": "estimateWeight",
+        "type": "",
+        "meaning": "\t 预估销售重量(g)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 预估销售重量(g)"
+      },
+      {
+        "field": "customerTotal",
+        "type": "",
+        "meaning": "\t 分销终端金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 分销终端金额"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=66",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "birc.report.needauthsalesPerformanceStat",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "timeType",
+        "type": "string",
+        "meaning": "统计时间。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "统计时间。（必填）1：按年统计，2：按月统计，3：按日统计"
+      },
+      {
+        "field": "filterTimeType",
+        "type": "string",
+        "meaning": "统计时间类型。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "统计时间类型。（必填）1：下单时间，2：发货时间，3：付款时间，4：审核时间，5：复核时间，6：创建时间，7：收款时间，9：到货时间"
+      },
+      {
+        "field": "summaryType",
+        "type": "string",
+        "meaning": "汇总方式",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "汇总方式（必填），查询多个使用英文逗号分隔。1：年月(统计时间)，2：按渠道，3：按业务员，4：按地区，5：按跟单员，6：按销售团队，7：按渠道所属平台，8：按仓库，9：按公司，10：按部门，11：按物流公司"
+      },
+      {
+        "field": "startTime",
+        "type": "string",
+        "meaning": "查询时间（开始）。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "查询时间（开始）。（必填）按年统计: yyyy，按月统计: yyyy-MM，按日统计: yyyy-MM-dd"
+      },
+      {
+        "field": "endTime",
+        "type": "string",
+        "meaning": "\t 查询时间（结束）。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "\t 查询时间（结束）。（必填）按年统计: yyyy，按月统计: yyyy-MM，按日统计: yyyy-MM-dd"
+      },
+      {
+        "field": "platformCode",
+        "type": "string",
+        "meaning": "平台编码",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "\t 平台编码，查询多个使用英文逗号分隔，不传默认全部"
+      },
+      {
+        "field": "warehouseIds",
+        "type": "string",
+        "meaning": "发货仓库Id",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "发货仓库id，查询多个使用英文逗号分隔，不传默认全部"
+      },
+      {
+        "field": "tradeOrderTypes",
+        "type": "string",
+        "meaning": "\t 订单类型code。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "\t 订单类型code。查询多个使用英文逗号分隔，不传默认全部。1:零售业务,2:代发货(来自分销商),3:预售订单,4:周期性订购,5:代销售(供货商发货),6:现款现货,7:售后发货,8:售后退货,9:批发业务(B2B),10:试销业务,11:错漏调整,12:仅退款,13:销售返利"
+      },
+      {
+        "field": "tradeFroms",
+        "type": "string",
+        "meaning": "订单来源code。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单来源code。查询多个使用英文逗号分隔，不传默认全部。常见来源有：1:网店下载,2:手工新建,3:订单导入等等"
+      },
+      {
+        "field": "tradeStatus",
+        "type": "string",
+        "meaning": "订单状态code。",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单状态code。查询多个使用英文逗号分隔，不传默认全部。0：未转入销售单的网店订单，4040：代销发货-待递交，4130：部分发货，6000：发货在途，9090：已完成。系统固定排除取消类订单：5010：已取消，5020：已取消-被合并，5030：已取消-被拆分，传入这些状态不会返回数据"
+      },
+      {
+        "field": "excludeFlag",
+        "type": "string",
+        "meaning": "\t 排除有‘特殊单’标记的特殊单。0：不排除，1：排除。不传默认为0",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "\t 排除有‘特殊单’标记的特殊单。0：不排除，1：排除。不传默认为0"
+      },
+      {
+        "field": "filterBlockup",
+        "type": "string",
+        "meaning": "是否过滤已停用业务员。0：不过滤，1：过滤。仅当汇总方式包含“3：按业务员”时生效",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "是否过滤已停用业务员。0：不过滤，1：过滤。仅当汇总方式包含“3：按业务员”时生效"
+      },
+      {
+        "field": "merchandiserFilterBlockup",
+        "type": "string",
+        "meaning": "\t 是否过滤已停用跟单员。0：不过滤，1：过滤。仅当汇总方式包含“5：按跟单员”时生效",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "\t 是否过滤已停用跟单员。0：不过滤，1：过滤。仅当汇总方式包含“5：按跟单员”时生效"
+      },
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "\t 分页页码，从0开始",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "\t 分页页码，从0开始"
+      },
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "分页大小",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "分页大小"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "time",
+        "type": "",
+        "meaning": "\t 时间。仅当汇总方式勾选包含“1：年月(统计时间)”时有值。按年统计格式 yyyy，按月统计格式 yyyy-MM，按日统计格式 yyyy-MM-dd",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 时间。仅当汇总方式勾选包含“1：年月(统计时间)”时有值。按年统计格式 yyyy，按月统计格式 yyyy-MM，按日统计格式 yyyy-MM-dd"
+      },
+      {
+        "field": "channelName",
+        "type": "",
+        "meaning": "\t 销售渠道。仅当汇总方式勾选包含“2：按渠道”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 销售渠道。仅当汇总方式勾选包含“2：按渠道”时有值"
+      },
+      {
+        "field": "channelCateName",
+        "type": "",
+        "meaning": "\t 渠道分类。仅当汇总方式勾选包含“2：按渠道”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 渠道分类。仅当汇总方式勾选包含“2：按渠道”时有值"
+      },
+      {
+        "field": "channelCode",
+        "type": "",
+        "meaning": "\t 渠道编号。仅当汇总方式勾选包含“2：按渠道”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 渠道编号。仅当汇总方式勾选包含“2：按渠道”时有值"
+      },
+      {
+        "field": "userName",
+        "type": "",
+        "meaning": "业务员。仅当汇总方式勾选包含“3：按业务员”时有值。格式：业务员名称(业务员编码)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "业务员。仅当汇总方式勾选包含“3：按业务员”时有值。格式：业务员名称(业务员编码)"
+      },
+      {
+        "field": "mainDepartName",
+        "type": "",
+        "meaning": "业务员主部门。仅当汇总方式勾选包含“3：按业务员”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "业务员主部门。仅当汇总方式勾选包含“3：按业务员”时有值"
+      },
+      {
+        "field": "merchandiser",
+        "type": "",
+        "meaning": "跟单员。仅当汇总方式勾选包含“5：按跟单员”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "跟单员。仅当汇总方式勾选包含“5：按跟单员”时有值"
+      },
+      {
+        "field": "salesTeamName",
+        "type": "",
+        "meaning": "\t 销售团队。仅当汇总方式勾选包含“6：按销售团队”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 销售团队。仅当汇总方式勾选包含“6：按销售团队”时有值"
+      },
+      {
+        "field": "platformName",
+        "type": "",
+        "meaning": "平台。仅当汇总方式勾选包含“7：按渠道所属平台”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "平台。仅当汇总方式勾选包含“7：按渠道所属平台”时有值"
+      },
+      {
+        "field": "warehouseName",
+        "type": "",
+        "meaning": "\t 仓库。仅当汇总方式勾选包含“8：按仓库”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 仓库。仅当汇总方式勾选包含“8：按仓库”时有值"
+      },
+      {
+        "field": "companyName",
+        "type": "",
+        "meaning": "\t 公司。仅当汇总方式勾选包含“9：按公司”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 公司。仅当汇总方式勾选包含“9：按公司”时有值"
+      },
+      {
+        "field": "departName",
+        "type": "",
+        "meaning": "部门。仅当汇总方式勾选包含“10：按部门”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "部门。仅当汇总方式勾选包含“10：按部门”时有值"
+      },
+      {
+        "field": "logisticName",
+        "type": "",
+        "meaning": "\t 物流公司。仅当汇总方式勾选包含“11：按物流公司”时有值",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 物流公司。仅当汇总方式勾选包含“11：按物流公司”时有值"
+      },
+      {
+        "field": "soQtyTotal",
+        "type": "",
+        "meaning": "\t 订单数",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 订单数"
+      },
+      {
+        "field": "sellCountTotal",
+        "type": "",
+        "meaning": "货品数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品数量"
+      },
+      {
+        "field": "sellTotal",
+        "type": "",
+        "meaning": "\t 货款金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 货款金额"
+      },
+      {
+        "field": "afterShareFeeTotal",
+        "type": "",
+        "meaning": "\t 应收合计",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 应收合计"
+      },
+      {
+        "field": "localAfterShareFeeTotal",
+        "type": "",
+        "meaning": "应收合计(本币)，= 应收合计_扣退(本币) - 退款金额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "应收合计(本币)，= 应收合计_扣退(本币) - 退款金额(本币)"
+      },
+      {
+        "field": "deductRefundSoQty",
+        "type": "",
+        "meaning": "\t 订单数_扣退，订单类型不含售后退货、仅退款、错漏调整",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 订单数_扣退，订单类型不含售后退货、仅退款、错漏调整"
+      },
+      {
+        "field": "refundSoQty",
+        "type": "",
+        "meaning": "\t 售后单数，订单类型为售后退货、仅退款、错漏调整",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 售后单数，订单类型为售后退货、仅退款、错漏调整"
+      },
+      {
+        "field": "deductRefundSellCount",
+        "type": "",
+        "meaning": "\t 货品数量_扣退，订单类型不含售后退货",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 货品数量_扣退，订单类型不含售后退货"
+      },
+      {
+        "field": "refundSellCount",
+        "type": "",
+        "meaning": "退货数量，订单类型为售后退货",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退货数量，订单类型为售后退货"
+      },
+      {
+        "field": "deductRefundAfterShareFee",
+        "type": "",
+        "meaning": "应收合计_扣退",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "应收合计_扣退"
+      },
+      {
+        "field": "refundAfterShareFee",
+        "type": "",
+        "meaning": "\t 退款金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 退款金额"
+      },
+      {
+        "field": "deductRefundLocalAfterShareFee",
+        "type": "",
+        "meaning": "应收合计_扣退(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "应收合计_扣退(本币)"
+      },
+      {
+        "field": "refundLocalAfterShareFee",
+        "type": "",
+        "meaning": "\t 退款金额(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 退款金额(本币)"
+      },
+      {
+        "field": "deductCost",
+        "type": "",
+        "meaning": "\t 货品成本_扣退(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 货品成本_扣退(本币)"
+      },
+      {
+        "field": "refundCost",
+        "type": "",
+        "meaning": "退货成本(本币)，订单类型为售后退货、仅退款、错漏调整",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退货成本(本币)，订单类型为售后退货、仅退款、错漏调整"
+      },
+      {
+        "field": "costTotal",
+        "type": "",
+        "meaning": "\t 货品成本(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 货品成本(本币)"
+      },
+      {
+        "field": "localShareSalesExpense",
+        "type": "",
+        "meaning": "销售费用(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "销售费用(本币)"
+      },
+      {
+        "field": "profit",
+        "type": "",
+        "meaning": "毛利(本币)，= 分摊后金额(本币) - 货品成本(本币) - 费用分摊(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "毛利(本币)，= 分摊后金额(本币) - 货品成本(本币) - 费用分摊(本币)"
+      },
+      {
+        "field": "profitTotal",
+        "type": "",
+        "meaning": "毛利",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "毛利"
+      },
+      {
+        "field": "profitRateShow",
+        "type": "",
+        "meaning": "\t 毛利率(本币)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 毛利率(本币)"
+      },
+      {
+        "field": "profitRateTotalShow",
+        "type": "",
+        "meaning": "毛利率",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "毛利率"
+      },
+      {
+        "field": "notTaxedProfit",
+        "type": "",
+        "meaning": "未税毛利",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "未税毛利"
+      },
+      {
+        "field": "notTaxedProfitRateShow",
+        "type": "",
+        "meaning": "未税毛利率",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "未税毛利率"
+      },
+      {
+        "field": "assessmentCost",
+        "type": "",
+        "meaning": "\t 考核成本",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 考核成本"
+      },
+      {
+        "field": "assessmentPrice",
+        "type": "",
+        "meaning": "考核价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "考核价"
+      },
+      {
+        "field": "assessmentProfit",
+        "type": "",
+        "meaning": "考核毛利",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "考核毛利"
+      },
+      {
+        "field": "avgPrice",
+        "type": "",
+        "meaning": "客均单价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "客均单价"
+      },
+      {
+        "field": "goodsTaxAmt",
+        "type": "",
+        "meaning": "货品税额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品税额"
+      },
+      {
+        "field": "receiptAmount",
+        "type": "",
+        "meaning": "\t 收款金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 收款金额"
+      },
+      {
+        "field": "estimateWeight",
+        "type": "",
+        "meaning": "预估重量(g)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "预估重量(g)"
+      },
+      {
+        "field": "discountAmt",
+        "type": "",
+        "meaning": "\t 优惠金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 优惠金额"
+      },
+      {
+        "field": "couponAmt",
+        "type": "",
+        "meaning": "\t 补贴金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 补贴金额"
+      },
+      {
+        "field": "receivablePostAmt",
+        "type": "",
+        "meaning": "\t 应收邮资",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 应收邮资"
+      },
+      {
+        "field": "postAmt",
+        "type": "",
+        "meaning": "预估邮资",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "预估邮资"
+      },
+      {
+        "field": "taxAmt",
+        "type": "",
+        "meaning": "\t 客付税额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 客付税额"
+      },
+      {
+        "field": "packageNum",
+        "type": "",
+        "meaning": "\t 包裹数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 包裹数量"
+      },
+      {
+        "field": "packageWeight",
+        "type": "",
+        "meaning": "\t 包裹重量(g)",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 包裹重量(g)"
+      },
+      {
+        "field": "localWarehouseAmt",
+        "type": "",
+        "meaning": "预估仓库作业费",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "预估仓库作业费"
+      },
+      {
+        "field": "salesContributionRateShow",
+        "type": "",
+        "meaning": "销售额贡献率",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "销售额贡献率"
+      },
+      {
+        "field": "profitContributionRateShow",
+        "type": "",
+        "meaning": "\t 毛利贡献率",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "\t 毛利贡献率"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=68",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "ass-business.returnchange.fullinfoget",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "页大小",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "页大小（默认为10）"
+      },
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "页码",
+        "required": 0,
+        "default": "0",
+        "enabled": 1,
+        "description": "页码（从0开始）"
+      },
+      {
+        "field": "returnChangeNo",
+        "type": "string",
+        "meaning": "退换补发单号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "退换补发单号（多个用,隔开;注意是英文逗号）"
+      },
+      {
+        "field": "tradeNo",
+        "type": "string",
+        "meaning": "订单编号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "订单编号（多个用,隔开;注意是英文逗号）"
+      },
+      {
+        "field": "startGmtCreate",
+        "type": "string",
+        "meaning": "创建时间（起始）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "创建时间（起始）（精确到秒）"
+      },
+      {
+        "field": "endGmtCreate",
+        "type": "string",
+        "meaning": "创建时间（截止）",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "创建时间（截止）（精确到秒）"
+      },
+      {
+        "field": "sourceTradeNo",
+        "type": "string",
+        "meaning": "网店订单号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "网店订单号"
+      },
+      {
+        "field": "sourceTradeAfterNo",
+        "type": "string",
+        "meaning": "网店售后单号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "网店售后单号"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "returnChangeList:returnChangeNo",
+        "type": "",
+        "meaning": "退换补发单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退换补发单号"
+      },
+      {
+        "field": "returnChangeList:tradeNo",
+        "type": "",
+        "meaning": "订单编号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "原销售单号"
+      },
+      {
+        "field": "returnChangeList:sourceTradeNo",
+        "type": "",
+        "meaning": "网店订单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "网店订单号"
+      },
+      {
+        "field": "returnChangeList:sourceTradeAfterNo",
+        "type": "",
+        "meaning": "网店售后单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "网店售后单号"
+      },
+      {
+        "field": "returnChangeList:warehouseName",
+        "type": "",
+        "meaning": "收货仓库",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "收货仓库"
+      },
+      {
+        "field": "returnChangeList:sendWarehouseName",
+        "type": "",
+        "meaning": "发货仓库",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "发货仓库"
+      },
+      {
+        "field": "returnChangeList:shopName",
+        "type": "",
+        "meaning": "销售渠道",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "销售渠道"
+      },
+      {
+        "field": "returnChangeList:companyName",
+        "type": "",
+        "meaning": "公司",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "公司"
+      },
+      {
+        "field": "returnChangeList:sourceShopName",
+        "type": "",
+        "meaning": "原单销售渠道",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "原单销售渠道"
+      },
+      {
+        "field": "returnChangeList:deliveryTime",
+        "type": "",
+        "meaning": "收货时间",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "收货时间"
+      },
+      {
+        "field": "returnChangeList:gmtCreate",
+        "type": "",
+        "meaning": "建单时间",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "建单时间"
+      },
+      {
+        "field": "returnChangeList:returnTradeNo",
+        "type": "",
+        "meaning": "退货销售单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退货销售单号"
+      },
+      {
+        "field": "returnChangeList:sendTradeNo",
+        "type": "",
+        "meaning": "补发销售单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "补发销售单号"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:goodsNo",
+        "type": "",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品编号"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:goodsName",
+        "type": "",
+        "meaning": "货品名称",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品名称"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:barcode",
+        "type": "",
+        "meaning": "货品条码",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品条码"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:unit",
+        "type": "",
+        "meaning": "货品单位",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "货品单位"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:price",
+        "type": "",
+        "meaning": "单价",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "单价"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:sellCount",
+        "type": "",
+        "meaning": "数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "数量"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:returnCount",
+        "type": "",
+        "meaning": "退货数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退货数量"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:returnFee",
+        "type": "",
+        "meaning": "退货金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "退货金额"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:sendCount",
+        "type": "",
+        "meaning": "发货数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "发货数量"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:shouldReturnFee",
+        "type": "",
+        "meaning": "应退金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "应退金额"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:returnChangeList:returnChangeGoodsDetail:deliveryCount",
+        "type": "",
+        "meaning": "实退数量",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "实退数量"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:returnChangeList:returnChangeGoodsDetail:shareReturnFee",
+        "type": "",
+        "meaning": "分摊后退货金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "分摊后退货金额"
+      },
+      {
+        "field": "returnChangeList:returnChangeGoodsDetail:shareShouldReturnFee",
+        "type": "",
+        "meaning": "分摊后应退金额",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "分摊后应退金额"
+      },
+      {
+        "field": "returnChangeList:mainPostid",
+        "type": "",
+        "meaning": "物流单号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "物流单号"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=60",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "吉客云",
+    "endpoint": "erp.storage.goodslist",
+    "source": "https://open.jackyun.com/developer/mcpservice/toolList.html",
+    "request_fields": [
+      {
+        "field": "goodsNo",
+        "type": "string",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品编号"
+      },
+      {
+        "field": "pageIndex",
+        "type": "string",
+        "meaning": "页码（从0开始）",
+        "required": 0,
+        "default": "0",
+        "enabled": 1,
+        "description": "页码（从0开始）"
+      },
+      {
+        "field": "pageSize",
+        "type": "string",
+        "meaning": "分页大小",
+        "required": 1,
+        "default": "10",
+        "enabled": 0,
+        "description": "分页大小"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "goods:goodsName",
+        "type": "",
+        "meaning": "货品名称",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品名称"
+      },
+      {
+        "field": "goods:unitName",
+        "type": "",
+        "meaning": "单位",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "单位"
+      },
+      {
+        "field": "goods:warehouseName",
+        "type": "",
+        "meaning": "默认存放仓库",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "默认存放仓库"
+      },
+      {
+        "field": "goods:skuBarcode",
+        "type": "",
+        "meaning": "条码",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "条码"
+      },
+      {
+        "field": "goods:cateName",
+        "type": "",
+        "meaning": "分类",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "分类"
+      },
+      {
+        "field": "goods:brandName",
+        "type": "",
+        "meaning": "品牌",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "品牌"
+      },
+      {
+        "field": "goods:skuName",
+        "type": "",
+        "meaning": "规格",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "规格"
+      },
+      {
+        "field": "goods:defaultVendName",
+        "type": "",
+        "meaning": "默认供应商",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "默认供应商"
+      },
+      {
+        "field": "goods:ownerName",
+        "type": "",
+        "meaning": "货主",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货主"
+      },
+      {
+        "field": "goods:goodsNo",
+        "type": "",
+        "meaning": "货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 1,
+        "description": "货品编号"
+      },
+      {
+        "field": "goods:skuCode",
+        "type": "",
+        "meaning": "外部货品编号",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "外部货品编号"
+      },
+      {
+        "field": "goods:skuId",
+        "type": "",
+        "meaning": "规格Id",
+        "required": 0,
+        "default": "",
+        "enabled": 0,
+        "description": "规格Id"
+      }
+    ],
+    "note": "MCP典型字段元数据；冒号为官网原始paramCode，不擅自转为JSON路径。enabled=0可能为工具预置参数；required与说明偶有矛盾，以应用正式接口文档为准。文档字段目录地址 /open-platform/mcp/tool/queryToolParam，toolId=52",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "快麦",
+    "endpoint": "erp.trade.list.query",
+    "source": "https://open.kuaimai.com/docs/api/API%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93/%E8%AE%A2%E5%8D%95%E6%9F%A5%E8%AF%A2%E9%9D%9E%E6%B7%98%E7%B3%BB%E6%8B%BC%E5%A4%9A%E5%A4%9A/",
+    "request_fields": [
+      {
+        "field": "method",
+        "type": "string",
+        "meaning": "API接口名称",
+        "required": "是"
+      },
+      {
+        "field": "appKey",
+        "type": "string",
+        "meaning": "分配给应用的AppKey",
+        "required": "是"
+      },
+      {
+        "field": "timestamp",
+        "type": "string",
+        "meaning": "时间戳，时区为GMT+8，例如：2020-09-21 16:58:00。API服务端允许客户端请求最大时间误差为10分钟",
+        "required": "是"
+      },
+      {
+        "field": "format",
+        "type": "string",
+        "meaning": "响应格式。默认为json格式，可选值：json",
+        "required": "否"
+      },
+      {
+        "field": "version",
+        "type": "string",
+        "meaning": "API协议版本 可选值：1.0",
+        "required": "是"
+      },
+      {
+        "field": "sign_method",
+        "type": "string",
+        "meaning": "签名的摘要算法(默认 hmac)，可选值为：hmac，md5，hmac-sha256。",
+        "required": "否"
+      },
+      {
+        "field": "sign",
+        "type": "string",
+        "meaning": "签名",
+        "required": "是"
+      },
+      {
+        "field": "session",
+        "type": "string",
+        "meaning": "授权会话信息 （即access_token，由系统分配）",
+        "required": "是"
+      },
+      {
+        "field": "sid",
+        "type": "string",
+        "meaning": "系统订单号，多个逗号隔开",
+        "required": ""
+      },
+      {
+        "field": "tid",
+        "type": "string",
+        "meaning": "平台订单号，多个逗号隔开",
+        "required": ""
+      },
+      {
+        "field": "timeType",
+        "type": "string",
+        "meaning": "查询的时间类型：[created:下单时间]--[pay_time:付款时间]--[consign_time:发货时间]--[audit_time:审核时间]--[upd_time:修改时间]；与startTime、endTime同时使用，时间跨度建议不超过一天。为空时，默认为修改时间 ，归档订单(queryType参数传1时)不支持audit_time, ",
+        "required": ""
+      },
+      {
+        "field": "startTime",
+        "type": "string",
+        "meaning": "起始时间:格式yyyy-MM-dd HH:mm :ss ，与timeType、endTime同时使用，时间跨度建议不超过一天",
+        "required": ""
+      },
+      {
+        "field": "endTime",
+        "type": "string",
+        "meaning": "截止时间:格式yyyy-MM-dd HH:mm :ss ，与timeType、startTime同时使用，时间跨度建议不超过一天",
+        "required": ""
+      },
+      {
+        "field": "userIds",
+        "type": "string",
+        "meaning": "店铺ID，多个逗号隔开",
+        "required": ""
+      },
+      {
+        "field": "pageSize",
+        "type": "integer",
+        "meaning": "每页多少条，最大支持200，不能小于20",
+        "required": ""
+      },
+      {
+        "field": "pageNo",
+        "type": "integer",
+        "meaning": "页码",
+        "required": ""
+      },
+      {
+        "field": "status",
+        "type": "string",
+        "meaning": "系统状态,对应响应参数的sysStatus订单系统状态(支持多个,逗号隔开).WAIT_BUYER_PAY:待付款,WAIT_AUDIT:待审核,WAIT_FINANCE_AUDIT:待财审,FINISHED_AUDIT:审核完成, WAIT_EXPRESS_PRINT:待打印快递单,WAIT_PACKAGE:待打包,WAIT_WEIGHT:待称重,WAIT",
+        "required": ""
+      },
+      {
+        "field": "tagIds",
+        "type": "string",
+        "meaning": "查询指定标签ID集合,多个逗号隔开,最多支持十组",
+        "required": ""
+      },
+      {
+        "field": "exceptIds",
+        "type": "string",
+        "meaning": "自定义异常标签,多个逗号隔开,最多支持十组",
+        "required": ""
+      },
+      {
+        "field": "exceptionStatus",
+        "type": "string",
+        "meaning": "系统异常标签,多个逗号隔开,最多支持十组",
+        "required": ""
+      },
+      {
+        "field": "types",
+        "type": "string",
+        "meaning": "订单类型,多个逗号隔开 1=货到付款;2=纯平台订单（包含平台单拆出去的手工单）;3=平台订单;4=线下订单;5=纯系统手工单（不包含平台单拆出去的手工单）;6=预售订单;7=合并订单;8=拆分订单;9=加急订单;10=空包订单;11=合单提示;12=门店订单;13=换货订单;14=补发订单;16=海外仓订单;17=Lazada;18=报损单;19=领用单;",
+        "required": ""
+      },
+      {
+        "field": "onlyContain",
+        "type": "string",
+        "meaning": "异常查询状态：1:仅包含 2:排除 3:同时包含",
+        "required": ""
+      },
+      {
+        "field": "consignedType",
+        "type": "integer",
+        "meaning": "发货方式 0.非ERP发货   1.ERP发货",
+        "required": ""
+      },
+      {
+        "field": "buyerNick",
+        "type": "string",
+        "meaning": "买家ID",
+        "required": ""
+      },
+      {
+        "field": "queryType",
+        "type": "integer",
+        "meaning": "订单查询范围类型    0.三个月内订单 1.三个月之前订单",
+        "required": ""
+      },
+      {
+        "field": "outSids",
+        "type": "string",
+        "meaning": "运单号，多个逗号隔开",
+        "required": ""
+      },
+      {
+        "field": "useHasNext",
+        "type": "boolean",
+        "meaning": "传true时不会返回total（不统计总数）, 返回hasNext用以判断是否有下一页数据，传false时按原来逻辑只返回total",
+        "required": ""
+      },
+      {
+        "field": "useCursor",
+        "type": "boolean",
+        "meaning": "传true时开启游标查询 , 仅queryType不为1时有效",
+        "required": ""
+      },
+      {
+        "field": "cursor",
+        "type": "string",
+        "meaning": "useCursor传true时,第一次查询该参数不传，之后的每次查询传上一次接口返回的cursor",
+        "required": ""
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "success",
+        "type": "boolean",
+        "meaning": "示例：true",
+        "required": ""
+      },
+      {
+        "field": "trace_id",
+        "type": "string",
+        "meaning": "示例：3553483395407017",
+        "required": ""
+      },
+      {
+        "field": "list",
+        "type": "array",
+        "meaning": "list",
+        "required": ""
+      },
+      {
+        "field": "list[].paymentDiff",
+        "type": "double",
+        "meaning": "订单差额=系统实付金额-平台实收金额 区间值",
+        "required": ""
+      },
+      {
+        "field": "list[].buyerNick",
+        "type": "string",
+        "meaning": "平台订单上的买家昵称",
+        "required": ""
+      },
+      {
+        "field": "list[].threePlTiming",
+        "type": "integer",
+        "meaning": "3PL有时效订单标，值true 或者 false",
+        "required": ""
+      },
+      {
+        "field": "list[].type",
+        "type": "string",
+        "meaning": "订单类型,多个逗号0=普通订单;1=货到付款;3=平台订单;4=线下订单;6=预售订单;7=合并订单;8=拆分订单;9=加急订单;10=空包订单;11=合单提示;12=门店订单;13=换货订单;14=补发订单;16=海外仓订单;17=Lazada;18=报损单;19=领用单;20=调整单;21=客户订单;22=天猫直送;23=平台预售;24=京东直发;25=",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverCity",
+        "type": "string",
+        "meaning": "收件市",
+        "required": ""
+      },
+      {
+        "field": "list[].invoiceRemark",
+        "type": "string",
+        "meaning": "发票备注",
+        "required": ""
+      },
+      {
+        "field": "list[].poNos",
+        "type": "string",
+        "meaning": "唯品会po单号",
+        "required": ""
+      },
+      {
+        "field": "list[].packmaCost",
+        "type": "double",
+        "meaning": "包材成本",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverPhone",
+        "type": "string",
+        "meaning": "收件人固话",
+        "required": ""
+      },
+      {
+        "field": "list[].expressCode",
+        "type": "string",
+        "meaning": "快递公司的编码",
+        "required": ""
+      },
+      {
+        "field": "list[].payment",
+        "type": "string",
+        "meaning": "应付金额（系统里添加商品会相应增加）",
+        "required": ""
+      },
+      {
+        "field": "list[].payAmount",
+        "type": "string",
+        "meaning": "订单买家已付金额（单位：元）",
+        "required": "必填"
+      },
+      {
+        "field": "list[].adjustFee",
+        "type": "string",
+        "meaning": "手工调整订单价格",
+        "required": ""
+      },
+      {
+        "field": "list[].isExcep",
+        "type": "integer",
+        "meaning": "是否异常订单    1.异常订单   0.否",
+        "required": ""
+      },
+      {
+        "field": "list[].exceptIds",
+        "type": "string",
+        "meaning": "自定义异常标签,多个逗号隔开",
+        "required": ""
+      },
+      {
+        "field": "list[].exceptNames",
+        "type": "array",
+        "meaning": "自定义异常名称列表",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverZip",
+        "type": "string",
+        "meaning": "收件邮编",
+        "required": ""
+      },
+      {
+        "field": "list[].isTmallDelivery",
+        "type": "integer",
+        "meaning": "天猫直送，值true 或者 false",
+        "required": ""
+      },
+      {
+        "field": "list[].buyerTaxNo",
+        "type": "string",
+        "meaning": "买家税号",
+        "required": ""
+      },
+      {
+        "field": "list[].isHalt",
+        "type": "integer",
+        "meaning": "是否挂起订单    1.是   0.否",
+        "required": ""
+      },
+      {
+        "field": "list[].warehouseId",
+        "type": "long",
+        "meaning": "仓库编号",
+        "required": ""
+      },
+      {
+        "field": "list[].isRefund",
+        "type": "long",
+        "meaning": "1.是   0.否  是否存在退款，退款关闭或者退款成功时该数据不返回",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverState",
+        "type": "string",
+        "meaning": "收件省份",
+        "required": ""
+      },
+      {
+        "field": "list[].orders",
+        "type": "array",
+        "meaning": "订单商品明细集合",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysSkuPropertiesName",
+        "type": "string",
+        "meaning": "系统SKU的规格属性名称",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].discountRate",
+        "type": "double",
+        "meaning": "折扣率",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].discountFee",
+        "type": "string",
+        "meaning": "优惠金额",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].payTime",
+        "type": "long",
+        "meaning": "付款时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].numIid",
+        "type": "string",
+        "meaning": "平台商品数字编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].num",
+        "type": "integer",
+        "meaning": "子订单商品数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].source",
+        "type": "string",
+        "meaning": "订单来源 tb,tm,jd,sys",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].shortTitle",
+        "type": "string",
+        "meaning": "商品简称",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysTitle",
+        "type": "string",
+        "meaning": "系统商品的标题",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].type",
+        "type": "integer",
+        "meaning": "0 普通商品 1 赠品 是否是赠品不能根据type来判断，而要根据giftNum>0 来判断 2 套件商品 3 组合商品 4 加工商品",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits",
+        "type": "array",
+        "meaning": "套件明细(每个套件的实付金额、数量)",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].sysSkuPropertiesName",
+        "type": "string",
+        "meaning": "系统SKU的规格属性名称",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].discountRate",
+        "type": "double",
+        "meaning": "折扣率",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].discountFee",
+        "type": "string",
+        "meaning": "优惠金额",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].payTime",
+        "type": "long",
+        "meaning": "付款时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].numIid",
+        "type": "string",
+        "meaning": "平台商品数字编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].num",
+        "type": "integer",
+        "meaning": "子订单商品数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].source",
+        "type": "string",
+        "meaning": "订单来源 tb,tm,jd,sys",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].shortTitle",
+        "type": "string",
+        "meaning": "商品简称",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].sysTitle",
+        "type": "string",
+        "meaning": "系统商品的标题",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].type",
+        "type": "integer",
+        "meaning": "0 普通商品 1 赠品 是否是赠品不能根据type来判断，而要根据giftNum>0 来判断 2 套件商品 3 组合商品 4 加工商品",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].cost",
+        "type": "double",
+        "meaning": "该商品总成本价",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].outerSkuId",
+        "type": "string",
+        "meaning": "外部skuID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].combineId",
+        "type": "long",
+        "meaning": "如果是套件单品,则该字段的值为其所属的套件子订单的id,否则为0",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].payAmount",
+        "type": "string",
+        "meaning": "商品买家实付金额",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].tid",
+        "type": "string",
+        "meaning": "所属订单的平台编号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].consignTime",
+        "type": "long",
+        "meaning": "子订单发货时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].isPresell",
+        "type": "integer",
+        "meaning": "是否为预售订单 0:正常订单，1：是预售；2预售转正常；3：系统预售",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].price",
+        "type": "string",
+        "meaning": "商品销售价",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].updTime",
+        "type": "long",
+        "meaning": "数据更新时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].giftNum",
+        "type": "integer",
+        "meaning": "赠品的order数量",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].stockStatus",
+        "type": "string",
+        "meaning": "当前子订单的库存状态,如库存正常(NORMAL),库存不足(INSUFFICIENT)",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].modified",
+        "type": "long",
+        "meaning": "子订单平台的修改时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].payment",
+        "type": "string",
+        "meaning": "实付金额, 公式: 实付金额 = 应付金额 - 优惠金额",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].id",
+        "type": "long",
+        "meaning": "子订单系统编号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].adjustFee",
+        "type": "string",
+        "meaning": "手工调整金额",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].skuId",
+        "type": "string",
+        "meaning": "平台规格编号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].created",
+        "type": "string",
+        "meaning": "下单时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].insufficientCanceled",
+        "type": "integer",
+        "meaning": "是否取消库存缺货异常（INSUFFICIENT,EMPTY,EXCEP）：0 否，1 是",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].taobaoId",
+        "type": "long",
+        "meaning": "订单店铺的平台ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].sysOuterId",
+        "type": "string",
+        "meaning": "系统商家编码，如果是商品则为商品的商家编码，如果为SKU则为SKU的商家编码",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].saleFee",
+        "type": "string",
+        "meaning": "分销金额",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].picPath",
+        "type": "string",
+        "meaning": "平台商品图片链接",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].volume",
+        "type": "double",
+        "meaning": "单个商品体积",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].sysItemRemark",
+        "type": "string",
+        "meaning": "系统规商品备注",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].companyId",
+        "type": "long",
+        "meaning": "公司编号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].netWeight",
+        "type": "double",
+        "meaning": "单位kg，子订单中单个商品净重",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].unit",
+        "type": "string",
+        "meaning": "系统商品数量单位",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].isVirtual",
+        "type": "integer",
+        "meaning": "是否虚拟商品，虚拟商品不需要申请库存，发货时也不需要消费库存、归还库存",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].status",
+        "type": "string",
+        "meaning": "子订单平台状态",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].sysConsigned",
+        "type": "integer",
+        "meaning": "是否在系统发货  0.否 1.是 2.其他erp发货",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].refundStatus",
+        "type": "string",
+        "meaning": "子订单退款状态",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].oid",
+        "type": "long",
+        "meaning": "子订单平台编号(淘宝有,京东没有)",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].title",
+        "type": "string",
+        "meaning": "商品标题",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].itemSysId",
+        "type": "long",
+        "meaning": "匹配到的系统商品ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].sid",
+        "type": "long",
+        "meaning": "所属主订单的系统编号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].forcePackNum",
+        "type": "integer",
+        "meaning": "强制验货数量",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].sysStatus",
+        "type": "string",
+        "meaning": "订单系统状态",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].divideOrderFee",
+        "type": "string",
+        "meaning": "平台实付(平台分摊之后的实付金额)",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].skuPropertiesName",
+        "type": "string",
+        "meaning": "规格属性名",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].cost",
+        "type": "double",
+        "meaning": "商品成本价",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].isCancel",
+        "type": "integer",
+        "meaning": "是否作废，未发货的子订单与所属的trade保持一致",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].salePrice",
+        "type": "string",
+        "meaning": "分销价格",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].combineId",
+        "type": "long",
+        "meaning": "如果是套件单品,则该字段的值为其所属的套件子订单的id,否则为0",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].ptConsignTime",
+        "type": "long",
+        "meaning": "平台发货时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].totalFee",
+        "type": "string",
+        "meaning": "应付金额, 公式: 应付金额 = 商品数量 * 商品单价 + 手工调整价",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].sysPicPath",
+        "type": "string",
+        "meaning": "系统商品图片链接",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].skuSysId",
+        "type": "long",
+        "meaning": "匹配到的系统规格ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].estimateConTime",
+        "type": "long",
+        "meaning": "预计发货时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].endTime",
+        "type": "long",
+        "meaning": "子订单的交易结束时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].orderStockProducts",
+        "type": "list",
+        "meaning": "生产信息（批次、生产日期）",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].orderStockProducts[].batchNo",
+        "type": "string",
+        "meaning": "批次号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].suits[].orderStockProducts[].productionDate",
+        "type": "long",
+        "meaning": "生产日期",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].orderStockProducts[].expireDate",
+        "type": "long",
+        "meaning": "到期日期",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].suits[].orderStockProducts[].lockNum",
+        "type": "long",
+        "meaning": "锁定数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].tid",
+        "type": "string",
+        "meaning": "所属订单的平台编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].isPresell",
+        "type": "integer",
+        "meaning": "是否为预售订单 0:正常订单，1：是预售；2预售转正常；3：系统预售",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].consignTime",
+        "type": "long",
+        "meaning": "子订单发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].uniqueCode",
+        "type": "string",
+        "meaning": "uniqueCode",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].outerSkuId",
+        "type": "string",
+        "meaning": "outer_sku_id",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysSkuPropertiesAlias",
+        "type": "string",
+        "meaning": "系统SKU规格属性别名",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].price",
+        "type": "string",
+        "meaning": "商品销售价",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].updTime",
+        "type": "long",
+        "meaning": "数据更新时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].giftNum",
+        "type": "string",
+        "meaning": "赠品的order数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].stockNum",
+        "type": "integer",
+        "meaning": "分配的库存数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].stockStatus",
+        "type": "string",
+        "meaning": "当前子订单的库存状态, EMPTY【库存不足】 NORMAL【正常】 UNALLOCATED【商品未分配】 INSUFFICIENT【库存不足】 RELATION_MODIFIED【商品对应关系修改】 EXCEP【库存不足】",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].modified",
+        "type": "long",
+        "meaning": "子订单平台的修改时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].payment",
+        "type": "string",
+        "meaning": "实付金额, 公式: 实付金额 = 应付金额 - 优惠金额",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].id",
+        "type": "long",
+        "meaning": "子订单系统编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].adjustFee",
+        "type": "string",
+        "meaning": "手工调整金额",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].skuId",
+        "type": "string",
+        "meaning": "平台规格编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].created",
+        "type": "long",
+        "meaning": "下单时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].insufficientCanceled",
+        "type": "integer",
+        "meaning": "是否取消库存缺货异常（INSUFFICIENT,EMPTY,EXCEP）：0 否，1 是",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].taobaoId",
+        "type": "string",
+        "meaning": "订单店铺的平台ID",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].diffStockNum",
+        "type": "integer",
+        "meaning": "缺货数量=num-stockNum（不需要持久化）",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysSkuRemark",
+        "type": "string",
+        "meaning": "系统规格备注",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysOuterId",
+        "type": "string",
+        "meaning": "系统商家编码，如果是商品则为商品的商家编码，如果为SKU则为SKU的商家编码",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].saleFee",
+        "type": "string",
+        "meaning": "分销金额",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].exceptions",
+        "type": "string",
+        "meaning": "子订单异常信息",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].volume",
+        "type": "string",
+        "meaning": "单个商品体积",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].picPath",
+        "type": "string",
+        "meaning": "平台商品图片链接",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysItemRemark",
+        "type": "string",
+        "meaning": "系统规商品备注",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].companyId",
+        "type": "long",
+        "meaning": "公司编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].unit",
+        "type": "string",
+        "meaning": "系统商品数量单位",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].netWeight",
+        "type": "string",
+        "meaning": "单位kg，子订单中单个商品净重",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].osGiftCount",
+        "type": "string",
+        "meaning": "前N有礼赠品数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].oldStatus",
+        "type": "string",
+        "meaning": "子订单旧的平台状态，不做持久化，一般用于订单同步更新时的判断比较",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].warehouseId",
+        "type": "string",
+        "meaning": "子订单商品库存操作时的仓库ID,要保证与所属trade中的warehouseId一致",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].isVirtual",
+        "type": "string",
+        "meaning": "是否虚拟商品，虚拟商品不需要申请库存，发货时也不需要消费库存、归还库存",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].status",
+        "type": "string",
+        "meaning": "子订单平台状态",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysConsigned",
+        "type": "integer",
+        "meaning": "是否ERP发货  0：未发货，1：ERP发货，2：其他ERP发货",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].soid",
+        "type": "string",
+        "meaning": "子订单平台编号（由于某些平台的子订单号为字符类型，需要用此字段保存，后续可将oid修改为String类型）",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].refundStatus",
+        "type": "string",
+        "meaning": "子订单退款状态    CLOSED：退款关闭 NO_REFUND：未退款 SELLER_CONTINUE_CONSIGN：卖家已发货退款 SELLER_REFUSE_BUYER：卖家拒绝退款 WAIT_SELLER_AGREE：待卖家同意退款 WAIT_BUYER_RETURN_GOODS：待买家退货 WAIT_SELLER_CONFIRM_GOODS：待卖",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].oid",
+        "type": "long",
+        "meaning": "子订单平台编号(淘宝有,京东没有)",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].itemSysId",
+        "type": "long",
+        "meaning": "匹配到的系统商品ID",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].title",
+        "type": "string",
+        "meaning": "平台商品名称",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sid",
+        "type": "string",
+        "meaning": "所属主订单的系统编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].forcePackNum",
+        "type": "string",
+        "meaning": "强制验货数量",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].acPayment",
+        "type": "string",
+        "meaning": "不变的实付金额, 进来后不变",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysStatus",
+        "type": "string",
+        "meaning": "订单系统状态   WAIT_BUYER_PAY【待付款】 WAIT_AUDIT【待审核】 WAIT_FINANCE_AUDIT【等待财审】 WAIT_MANUAL_AUDIT【等待人工审核】 FINISHED_AUDIT【审核完成】 WAIT_EXPRESS_PRINT【待打印快递单】 SYS_STATUS_WAIT_DELIVERY_PRINT【待打印发货",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysItemOuterId",
+        "type": "string",
+        "meaning": "系统主商家编码",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].osSortNum",
+        "type": "string",
+        "meaning": "前N有礼中奖名次，获得奖品的订单才会有该字段",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].skuPropertiesName",
+        "type": "string",
+        "meaning": "规格属性名",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].skuUnit",
+        "type": "string",
+        "meaning": "系统规格计量单位",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].cost",
+        "type": "double",
+        "meaning": "商品成本价 cost*num 该商品总成本价",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].isCancel",
+        "type": "string",
+        "meaning": "是否作废，未发货的子订单与所属的trade保持一致",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].salePrice",
+        "type": "string",
+        "meaning": "分销价格",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].oldPrice",
+        "type": "string",
+        "meaning": "原商品销售价，在套件转单品去匹配赠品时候使用",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].postFee",
+        "type": "string",
+        "meaning": "单笔订单运费",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].identCode",
+        "type": "string",
+        "meaning": "识别码",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].combineId",
+        "type": "string",
+        "meaning": "如果是套件单品,则该字段的值为其所属的套件子订单的id,否则为0",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].authorId",
+        "type": "long",
+        "meaning": "达人id （废弃）",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].authorNo",
+        "type": "string",
+        "meaning": "达人id",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].authorName",
+        "type": "string",
+        "meaning": "达人名称",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].userId",
+        "type": "long",
+        "meaning": "订单所属店铺用户ID",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].ptConsignTime",
+        "type": "long",
+        "meaning": "平台发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].totalFee",
+        "type": "string",
+        "meaning": "应付金额, 公式: 应付金额 = 商品数量 * 商品单价 + 手工调整价",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].sysPicPath",
+        "type": "string",
+        "meaning": "系统商品图片链接",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].skuSysId",
+        "type": "long",
+        "meaning": "匹配到的系统规格ID",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].outerId",
+        "type": "string",
+        "meaning": "商家编码，不做持久化，仅仅只是为了系统订单添加商品使用",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].endTime",
+        "type": "string",
+        "meaning": "子订单的交易结束时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].estimateConTime",
+        "type": "string",
+        "meaning": "预计发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].refundId",
+        "type": "string",
+        "meaning": "平台退款编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].expressCompanyId",
+        "type": "",
+        "meaning": "快递公司的编号",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderExt",
+        "type": "object",
+        "meaning": "order扩展信息（订单商品备注）",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].orderExt[].orderRemark",
+        "type": "string",
+        "meaning": "订单商品备注",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderExt[].customization",
+        "type": "string",
+        "meaning": "贺卡信息等",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderExt[].originalPrice",
+        "type": "string",
+        "meaning": "商品单价(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderExt[].originalPayment",
+        "type": "string",
+        "meaning": "商品实付(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderExt[].originalOtherFee",
+        "type": "string",
+        "meaning": "商品其他费用(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].payAmount",
+        "type": "string",
+        "meaning": "商品买家已付金额（单位：元）",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].divideOrderFee",
+        "type": "string",
+        "meaning": "平台实付(平台分摊之后的实付金额)（单位：元）",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].orderStockProducts",
+        "type": "list",
+        "meaning": "生产信息",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].orderStockProducts[].batchNo",
+        "type": "string",
+        "meaning": "批次号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].orders[].orderStockProducts[].productionDate",
+        "type": "long",
+        "meaning": "生产日期",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderStockProducts[].expireDate",
+        "type": "long",
+        "meaning": "到期日期",
+        "required": ""
+      },
+      {
+        "field": "list[].orders[].orderStockProducts[].lockNum",
+        "type": "long",
+        "meaning": "锁定数量",
+        "required": ""
+      },
+      {
+        "field": "list[].expressCompanyId",
+        "type": "long",
+        "meaning": "快递公司的编号",
+        "required": ""
+      },
+      {
+        "field": "list[].status",
+        "type": "string",
+        "meaning": "订单的平台状态,详情查看各平台开放平台",
+        "required": ""
+      },
+      {
+        "field": "list[].isUrgent",
+        "type": "integer",
+        "meaning": "是否是加急订单     1.是   0.否",
+        "required": ""
+      },
+      {
+        "field": "list[].theoryPostFee",
+        "type": "double",
+        "meaning": "理论运费",
+        "required": ""
+      },
+      {
+        "field": "list[].warehouseName",
+        "type": "string",
+        "meaning": "仓库名称",
+        "required": ""
+      },
+      {
+        "field": "list[].hasSuit",
+        "type": "boolean",
+        "meaning": "是否含有套件      true.是   false.否",
+        "required": ""
+      },
+      {
+        "field": "list[].itemNum",
+        "type": "integer",
+        "meaning": "订单下的商品数量",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverDistrict",
+        "type": "string",
+        "meaning": "收件区县",
+        "required": ""
+      },
+      {
+        "field": "list[].taxFee",
+        "type": "string",
+        "meaning": "税费",
+        "required": ""
+      },
+      {
+        "field": "list[].isHandlerMessage",
+        "type": "integer",
+        "meaning": "是否处理买家留言： 0：未处理 1：已处理",
+        "required": ""
+      },
+      {
+        "field": "list[].grossProfit",
+        "type": "double",
+        "meaning": "毛利润",
+        "required": ""
+      },
+      {
+        "field": "list[].postFee",
+        "type": "string",
+        "meaning": "邮费：合单的话，取的是主单的邮费",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverMobile",
+        "type": "string",
+        "meaning": "收件人手机号",
+        "required": ""
+      },
+      {
+        "field": "list[].singleItemKindNum",
+        "type": "integer",
+        "meaning": "商品单品种类, 最小粒度",
+        "required": ""
+      },
+      {
+        "field": "list[].userId",
+        "type": "long",
+        "meaning": "店铺用户编号",
+        "required": ""
+      },
+      {
+        "field": "list[].itemKindNum",
+        "type": "integer",
+        "meaning": "订单下的商品种类数",
+        "required": ""
+      },
+      {
+        "field": "list[].exceptMemo",
+        "type": "string",
+        "meaning": "异常备注",
+        "required": ""
+      },
+      {
+        "field": "list[].ptConsignTime",
+        "type": "string",
+        "meaning": "平台发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].buyerMessage",
+        "type": "string",
+        "meaning": "平台订单上的买家留言",
+        "required": ""
+      },
+      {
+        "field": "list[].unifiedStatus",
+        "type": "string",
+        "meaning": "各平台状态映射后的统一状态 待付款：WAIT_BUYER_PAY 待发货：WAIT_SEND_GOODS 卖家部分发货：SELLER_CONSIGNED_PART 卖家已发货 :SELLER_SEND_GOODS 交易完成 :FINISHED 交易关闭 :CLOSED",
+        "required": ""
+      },
+      {
+        "field": "list[].excep",
+        "type": "long",
+        "meaning": "订单级别的系统异常，参考itemExcep 目前不明确供销商”、“分销商反审核”、“分销商未付款“",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeTags",
+        "type": "array",
+        "meaning": "订单自定义标签集合",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeTags[].bgColor",
+        "type": "string",
+        "meaning": "标签背景颜色",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeTags[].remark",
+        "type": "string",
+        "meaning": "标签备注",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeTags[].id",
+        "type": "long",
+        "meaning": "标签id",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeTags[].tagName",
+        "type": "string",
+        "meaning": "标签名称",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeTags[].fontColor",
+        "type": "string",
+        "meaning": "标签前景颜色",
+        "required": ""
+      },
+      {
+        "field": "list[].shortId",
+        "type": "long",
+        "meaning": "订单短号",
+        "required": ""
+      },
+      {
+        "field": "list[].discountFee",
+        "type": "string",
+        "meaning": "优惠",
+        "required": ""
+      },
+      {
+        "field": "list[].sellerFlagString",
+        "type": "string",
+        "meaning": "匹配规则用，用逗号分开",
+        "required": ""
+      },
+      {
+        "field": "list[].payTime",
+        "type": "long",
+        "meaning": "付款时间",
+        "required": ""
+      },
+      {
+        "field": "list[].mobileTail",
+        "type": "string",
+        "meaning": "手机后四位尾号",
+        "required": ""
+      },
+      {
+        "field": "list[].source",
+        "type": "string",
+        "meaning": "订单来自哪个平台，例如 tb(淘宝或者天猫平台),jd(京东平台),sys(系统手工订单)",
+        "required": ""
+      },
+      {
+        "field": "list[].tid",
+        "type": "string",
+        "meaning": "平台订单号",
+        "required": ""
+      },
+      {
+        "field": "list[].consignTime",
+        "type": "long",
+        "meaning": "发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].isPresell",
+        "type": "integer",
+        "meaning": "是否为预售订单：0:正常订单，1：是预售；2预售转正常；3：系统预售",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverCountry",
+        "type": "string",
+        "meaning": "收件国家，跨境订单使用",
+        "required": ""
+      },
+      {
+        "field": "list[].updTime",
+        "type": "long",
+        "meaning": "数据库最后更新时间",
+        "required": ""
+      },
+      {
+        "field": "list[].stockStatus",
+        "type": "string",
+        "meaning": "库存状态   EMPTY【库存不足】 NORMAL【正常】 UNALLOCATED【商品未分配】 INSUFFICIENT【库存不足】 RELATION_MODIFIED【商品对应关系修改】 EXCEP【库存不足】",
+        "required": ""
+      },
+      {
+        "field": "list[].modified",
+        "type": "long",
+        "meaning": "订单在平台上的修改时间",
+        "required": ""
+      },
+      {
+        "field": "list[].created",
+        "type": "long",
+        "meaning": "下单时间",
+        "required": ""
+      },
+      {
+        "field": "list[].taobaoId",
+        "type": "long",
+        "meaning": "平台的卖家账户",
+        "required": ""
+      },
+      {
+        "field": "list[].weight",
+        "type": "double",
+        "meaning": "重量",
+        "required": ""
+      },
+      {
+        "field": "list[].auditMatchRule",
+        "type": "integer",
+        "meaning": "智能审核规则匹配结果",
+        "required": ""
+      },
+      {
+        "field": "list[].sysOuterId",
+        "type": "string",
+        "meaning": "返回订单下第一个有匹配关系的商品编码，若都未匹配返回设定值：zzzzzz^随机数字,随机数字",
+        "required": ""
+      },
+      {
+        "field": "list[].saleFee",
+        "type": "string",
+        "meaning": "分销金额",
+        "required": ""
+      },
+      {
+        "field": "list[].exceptions",
+        "type": "string",
+        "meaning": "订单的异常信息,   店铺停用异常状态 :EX_USER_UNACTIVE , 订单挂起 :EX_HALT , 换地址 :EX_CHANGE_ADDRESS , 退款 :EX_REFUND , 部分退款 :EX_PART_REFUND , 商品未匹配异常状态 :EX_UNALLOCATED , 库存不足异常状态 :EX_INSUFFICIENT , 商品对应",
+        "required": ""
+      },
+      {
+        "field": "list[].outSid",
+        "type": "string",
+        "meaning": "运单号",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverAddress",
+        "type": "string",
+        "meaning": "收件详细地址",
+        "required": ""
+      },
+      {
+        "field": "list[].volume",
+        "type": "double",
+        "meaning": "订单体积",
+        "required": ""
+      },
+      {
+        "field": "list[].scalping",
+        "type": "integer",
+        "meaning": "是否空单; 1=是; 0=否",
+        "required": ""
+      },
+      {
+        "field": "list[].companyId",
+        "type": "long",
+        "meaning": "公司编号",
+        "required": ""
+      },
+      {
+        "field": "list[].netWeight",
+        "type": "double",
+        "meaning": "单位kg，订单净重，由子订单综合计算得出，参照Order#netWeight",
+        "required": ""
+      },
+      {
+        "field": "list[].sellerMemo",
+        "type": "string",
+        "meaning": "平台上的卖家备注",
+        "required": ""
+      },
+      {
+        "field": "list[].chSysStatus",
+        "type": "string",
+        "meaning": "订单系统状态的中文说明",
+        "required": ""
+      },
+      {
+        "field": "list[].subSource",
+        "type": "string",
+        "meaning": "次来源地 jd 保存订单来源",
+        "required": ""
+      },
+      {
+        "field": "list[].sysMemo",
+        "type": "string",
+        "meaning": "订单系统备注",
+        "required": ""
+      },
+      {
+        "field": "list[].shopName",
+        "type": "string",
+        "meaning": "店铺名称",
+        "required": ""
+      },
+      {
+        "field": "list[].sid",
+        "type": "long",
+        "meaning": "系统订单号",
+        "required": ""
+      },
+      {
+        "field": "list[].cancelFrom",
+        "type": "integer",
+        "meaning": "供销订单使用,分销作废来源 0,取消分销属性 1，分销订单作废",
+        "required": ""
+      },
+      {
+        "field": "list[].acPayment",
+        "type": "string",
+        "meaning": "不变的实付金额",
+        "required": ""
+      },
+      {
+        "field": "list[].sysStatus",
+        "type": "string",
+        "meaning": "订单系统状态   WAIT_BUYER_PAY【待付款】 WAIT_AUDIT【待审核】 WAIT_FINANCE_AUDIT【等待财审】 WAIT_MANUAL_AUDIT【等待人工审核】 FINISHED_AUDIT【审核完成】 WAIT_EXPRESS_PRINT【待打印快递单】 SYS_STATUS_WAIT_DELIVERY_PRINT【待打印发货",
+        "required": ""
+      },
+      {
+        "field": "list[].manualPaymentAmount",
+        "type": "double",
+        "meaning": "手工支付金额",
+        "required": ""
+      },
+      {
+        "field": "list[].fxIsUpload",
+        "type": "integer",
+        "meaning": "分销订单是否在系统上传（供销订单用）  1.是   0.否",
+        "required": ""
+      },
+      {
+        "field": "list[].promiseService",
+        "type": "string",
+        "meaning": "承诺服务类型，会有多个服务值，以英文半角逗号\",\"切割，其中 tmallpromise.arrival.timing 代表到货承诺时效 tmallpromise.consign.timing代表发货承诺时效",
+        "required": ""
+      },
+      {
+        "field": "list[].cost",
+        "type": "double",
+        "meaning": "订单总成本价,所有商品总成本价之和",
+        "required": ""
+      },
+      {
+        "field": "list[].isCancel",
+        "type": "integer",
+        "meaning": "是否为作废订单   1.是   0.否",
+        "required": ""
+      },
+      {
+        "field": "list[].receiverName",
+        "type": "string",
+        "meaning": "收件人姓名",
+        "required": ""
+      },
+      {
+        "field": "list[].timeoutActionTime",
+        "type": "string",
+        "meaning": "承诺时间",
+        "required": ""
+      },
+      {
+        "field": "list[].isHandlerMemo",
+        "type": "integer",
+        "meaning": "是否处理卖家备注： 0：未处理 1：已处理",
+        "required": ""
+      },
+      {
+        "field": "list[].expressCompanyName",
+        "type": "string",
+        "meaning": "快递公司的名称",
+        "required": ""
+      },
+      {
+        "field": "list[].isCancelDistributorAttribute",
+        "type": "integer",
+        "meaning": "是否是取消分销属性触发的订单同步，如果是1，则不需要匹配供应商，因为是取消分销属性",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeFrom",
+        "type": "string",
+        "meaning": "订单来源，例如手机端或者PC端",
+        "required": ""
+      },
+      {
+        "field": "list[].platformPaymentAmount",
+        "type": "double",
+        "meaning": "平台支付金额",
+        "required": ""
+      },
+      {
+        "field": "list[].totalFee",
+        "type": "string",
+        "meaning": "总额",
+        "required": ""
+      },
+      {
+        "field": "list[].wlbTemplateType",
+        "type": "integer",
+        "meaning": "供销订单用",
+        "required": ""
+      },
+      {
+        "field": "list[].timingPromise",
+        "type": "string",
+        "meaning": "服务身份标识",
+        "required": ""
+      },
+      {
+        "field": "list[].actualPostFee",
+        "type": "string",
+        "meaning": "实际运费",
+        "required": ""
+      },
+      {
+        "field": "list[].splitType",
+        "type": "integer",
+        "meaning": "拆单类型 -1:未拆单 1:拆单",
+        "required": ""
+      },
+      {
+        "field": "list[].splitSid",
+        "type": "long",
+        "meaning": "如果splitType等于1。则对应拆单的主单的sid。否则为-1",
+        "required": ""
+      },
+      {
+        "field": "list[].endTime",
+        "type": "string",
+        "meaning": "完结时间",
+        "required": ""
+      },
+      {
+        "field": "list[].templateId",
+        "type": "long",
+        "meaning": "快递模板id",
+        "required": "必填"
+      },
+      {
+        "field": "list[].templateName",
+        "type": "string",
+        "meaning": "快递模板名称",
+        "required": "必填"
+      },
+      {
+        "field": "list[].logisticsCompanyId",
+        "type": "long",
+        "meaning": "用户物流公司ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].logisticsCompanyName",
+        "type": "string",
+        "meaning": "用户物流公司名称",
+        "required": "必填"
+      },
+      {
+        "field": "list[].isPackage",
+        "type": "integer",
+        "meaning": "订单是否打包    0.未打包   1.打包",
+        "required": "必填"
+      },
+      {
+        "field": "list[].sellerFlag",
+        "type": "integer",
+        "meaning": "平台上的卖家旗帜   0:灰, 1:红, 2:黄, 3:绿, 4:蓝, 5:紫, 6:橙, 7:浅蓝, 8:浅粉, 9:深绿, 10:桃红",
+        "required": "必填"
+      },
+      {
+        "field": "list[].salesmanId",
+        "type": "long",
+        "meaning": "业务员ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].salesmanName",
+        "type": "string",
+        "meaning": "业务员名称",
+        "required": "必填"
+      },
+      {
+        "field": "list[].sourceName",
+        "type": "string",
+        "meaning": "订单来源于哪里 分销系统里记为分销商名称",
+        "required": "必填"
+      },
+      {
+        "field": "list[].sourceId",
+        "type": "long",
+        "meaning": "分销商ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].destName",
+        "type": "string",
+        "meaning": "订单归属于哪里 分销系统里记为供销商名称",
+        "required": "必填"
+      },
+      {
+        "field": "list[].destId",
+        "type": "long",
+        "meaning": "供销商ID",
+        "required": "必填"
+      },
+      {
+        "field": "list[].expressPrintTime",
+        "type": "date",
+        "meaning": "快递单打印时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].deliverPrintTime",
+        "type": "date",
+        "meaning": "发货单打印时间",
+        "required": "必填"
+      },
+      {
+        "field": "list[].expressStatus",
+        "type": "int",
+        "meaning": "快递单打印状态  , 0 : 否， 1:是",
+        "required": "必填"
+      },
+      {
+        "field": "list[].deliverStatus",
+        "type": "int",
+        "meaning": "发货单打印状态  , 0 : 否， 1:是",
+        "required": "必填"
+      },
+      {
+        "field": "list[].sellerNick",
+        "type": "string",
+        "meaning": "奇门店铺订单关联的平台店铺名称",
+        "required": "必填"
+      },
+      {
+        "field": "list[].selfBuiltPaymentReceivable",
+        "type": "string",
+        "meaning": "代收金额",
+        "required": ""
+      },
+      {
+        "field": "list[].selfBuiltDepositAmount",
+        "type": "string",
+        "meaning": "定金",
+        "required": ""
+      },
+      {
+        "field": "list[].selfBuiltPayment",
+        "type": "string",
+        "meaning": "货到付款总金额",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeInvoice",
+        "type": "object",
+        "meaning": "订单发票信息",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].invoiceType",
+        "type": "string",
+        "meaning": "发票抬头类型：1个人 2企业",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].invoiceKind",
+        "type": "string",
+        "meaning": "发票类型：1纸质普通 2纸质专票 3电子普通 4电子专票",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].invoiceName",
+        "type": "string",
+        "meaning": "发票抬头",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].buyerTaxNo",
+        "type": "string",
+        "meaning": "买家税号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].invoiceRemark",
+        "type": "string",
+        "meaning": "发票备注",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].buyerAddress",
+        "type": "string",
+        "meaning": "购方地址",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].buyerPhone",
+        "type": "string",
+        "meaning": "购方电话",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].buyerBank",
+        "type": "string",
+        "meaning": "购方开户行",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].buyerBankAccount",
+        "type": "string",
+        "meaning": "购方开户行账号",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].invoiceAmount",
+        "type": "string",
+        "meaning": "开票金额",
+        "required": "必填"
+      },
+      {
+        "field": "list[].tradeInvoice[].email",
+        "type": "",
+        "meaning": "邮箱",
+        "required": "必填"
+      },
+      {
+        "field": "list[].subShop",
+        "type": "object",
+        "meaning": "子店铺信息",
+        "required": ""
+      },
+      {
+        "field": "list[].subShop[].id",
+        "type": "long",
+        "meaning": "子店铺ID",
+        "required": ""
+      },
+      {
+        "field": "list[].subShop[].shopName",
+        "type": "string",
+        "meaning": "店铺名称",
+        "required": ""
+      },
+      {
+        "field": "list[].subShop[].platformCode",
+        "type": "string",
+        "meaning": "所属平台编码",
+        "required": ""
+      },
+      {
+        "field": "list[].subShop[].shopCode",
+        "type": "string",
+        "meaning": "店铺编码",
+        "required": ""
+      },
+      {
+        "field": "list[].subShop[].logisticsCode",
+        "type": "string",
+        "meaning": "物流商编码",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt",
+        "type": "object",
+        "meaning": "订单扩展信息",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].currency",
+        "type": "string",
+        "meaning": "原始货币",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalPayment",
+        "type": "string",
+        "meaning": "订单实付(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalPostFee",
+        "type": "string",
+        "meaning": "订单运费(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalDiscountFee",
+        "type": "string",
+        "meaning": "订单折扣(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalTaxFee",
+        "type": "string",
+        "meaning": "订单税费(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalOtherFeeBuyer",
+        "type": "string",
+        "meaning": "买家其他费用(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalOtherFeeSeller",
+        "type": "string",
+        "meaning": "卖家其他费用(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradeExt[].originalOtherFeeOther",
+        "type": "string",
+        "meaning": "其他方其他费用(原始币种)",
+        "required": ""
+      },
+      {
+        "field": "list[].tradePictureMemoUris",
+        "type": "array",
+        "meaning": "订单文件列表",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos",
+        "type": "array",
+        "meaning": "合单信息",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].sid",
+        "type": "long",
+        "meaning": "系统订单号",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].tid",
+        "type": "string",
+        "meaning": "平台订单号",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].buyerMessage",
+        "type": "string",
+        "meaning": "买家留言",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].sellerMemo",
+        "type": "string",
+        "meaning": "卖家备注",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].sysMemo",
+        "type": "string",
+        "meaning": "系统备注",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].sellerFlag",
+        "type": "long",
+        "meaning": "卖家旗帜",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].payment",
+        "type": "string",
+        "meaning": "实付金额",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].totalFee",
+        "type": "string",
+        "meaning": "总额",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].discountFee",
+        "type": "string",
+        "meaning": "优惠金额",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].postFee",
+        "type": "string",
+        "meaning": "邮费",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].acPayment",
+        "type": "string",
+        "meaning": "不变的实付金额",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].payAmount",
+        "type": "string",
+        "meaning": "订单买家已付金额（单位：元）",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].theoryPostFee",
+        "type": "double",
+        "meaning": "理论运费",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].adjustFee",
+        "type": "string",
+        "meaning": "手工调整订单价格",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].paymentDisplay",
+        "type": "string",
+        "meaning": "支付详情",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].totalDiscountFee",
+        "type": "string",
+        "meaning": "总共优惠的金额",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].created",
+        "type": "date",
+        "meaning": "下单时间",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].payTime",
+        "type": "date",
+        "meaning": "付款时间",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].consignTime",
+        "type": "date",
+        "meaning": "发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].ptConsignTime",
+        "type": "date",
+        "meaning": "平台发货时间",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].taxFee",
+        "type": "string",
+        "meaning": "税费",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].saleFee",
+        "type": "string",
+        "meaning": "分销金额",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].grossProfit",
+        "type": "string",
+        "meaning": "毛利润",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].isHandlerMessage",
+        "type": "integer",
+        "meaning": "是否处理买家留言： 0：未处理 1：已处理",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].isHandlerMemo",
+        "type": "integer",
+        "meaning": "是否处理卖家备注： 0：未处理 1：已处理",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].addressChanged",
+        "type": "integer",
+        "meaning": "是否标识订单地址修改，1标识",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].isMergeMain",
+        "type": "integer",
+        "meaning": "是否标识订单为合单主单，1标识",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].unifiedStatus",
+        "type": "string",
+        "meaning": "统一状态",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].sysConsigned",
+        "type": "integer",
+        "meaning": "是否ERP发货  0：未发货，1：ERP发货，2：其他ERP发货",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].isUpload",
+        "type": "integer",
+        "meaning": "是否上传",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].userId",
+        "type": "long",
+        "meaning": "店铺用户编号",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].sysStatus",
+        "type": "string",
+        "meaning": "订单系统状态",
+        "required": ""
+      },
+      {
+        "field": "list[].messageMemos[].actualPostFee",
+        "type": "string",
+        "meaning": "实际运费",
+        "required": ""
+      },
+      {
+        "field": "list[].distributor",
+        "type": "object",
+        "meaning": "分销员信息",
+        "required": ""
+      },
+      {
+        "field": "list[].distributor[].distributorName",
+        "type": "string",
+        "meaning": "分销员名称",
+        "required": ""
+      },
+      {
+        "field": "list[].distributor[].distributorPhone",
+        "type": "string",
+        "meaning": "分销员手机号",
+        "required": ""
+      },
+      {
+        "field": "list[].vipPickNo",
+        "type": "string",
+        "meaning": "捡货单号",
+        "required": ""
+      },
+      {
+        "field": "list[].vipStorageNo",
+        "type": "string",
+        "meaning": "出仓单ID",
+        "required": ""
+      },
+      {
+        "field": "list[].storageNo",
+        "type": "string",
+        "meaning": "出仓单号",
+        "required": ""
+      },
+      {
+        "field": "total",
+        "type": "long",
+        "meaning": "总数 仅在非归档订单查询（请求参数useHasNext，useCursor都不为true时）第一页返回",
+        "required": ""
+      },
+      {
+        "field": "hasNext",
+        "type": "boolean",
+        "meaning": "是否有下一页",
+        "required": ""
+      },
+      {
+        "field": "cursor",
+        "type": "string",
+        "meaning": "游标",
+        "required": ""
+      }
+    ],
+    "note": "POST https://gw.superboss.cc/router；敏感字段可能不返回或加密；不包含淘系和拼多多订单。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "网店管家",
+    "endpoint": "wdgj.tradenosensitiveinfo.list.get",
+    "source": "https://open.wdgj.com/OpenApiDoc/ApiInfo.html?OpenAPIID=70056&dictID=84",
+    "request_fields": [
+      {
+        "field": "Method",
+        "type": "String",
+        "meaning": "接口名称",
+        "required": "是"
+      },
+      {
+        "field": "Accesstoken",
+        "type": "String",
+        "meaning": "长期有效的授权码，调用OpenApi时需要的主要验证",
+        "required": "是"
+      },
+      {
+        "field": "Appkey",
+        "type": "String",
+        "meaning": "创建应用接入时申请的appkey",
+        "required": "是"
+      },
+      {
+        "field": "Sign",
+        "type": "String",
+        "meaning": "签名",
+        "required": "是"
+      },
+      {
+        "field": "Timestamp",
+        "type": "String",
+        "meaning": "当前时间的Unix时间戳",
+        "required": "是"
+      },
+      {
+        "field": "Format",
+        "type": "String",
+        "meaning": "数据返回值格式xml/json（默认xml）",
+        "required": "是"
+      },
+      {
+        "field": "Versions",
+        "type": "String",
+        "meaning": "协议版本号（1.1）",
+        "required": "是"
+      },
+      {
+        "field": "searchtype",
+        "type": "string",
+        "meaning": "0：未归档订单，1查询已归档订单",
+        "required": "是"
+      },
+      {
+        "field": "begintime",
+        "type": "string",
+        "meaning": "开始时间",
+        "required": "是"
+      },
+      {
+        "field": "endtime",
+        "type": "string",
+        "meaning": "结束时间",
+        "required": "是"
+      },
+      {
+        "field": "pageno",
+        "type": "string",
+        "meaning": "页码",
+        "required": "是"
+      },
+      {
+        "field": "pagesize",
+        "type": "string",
+        "meaning": "每页条数，取值范围 1 ~ 100",
+        "required": "是"
+      },
+      {
+        "field": "timetype",
+        "type": "string",
+        "meaning": "查询时间类型（0：登记时间 1：成交时间(索引字段 可以缩减查询时间) 2：审核时间 3：验货时间 4：发货时间 5：交易结束时间 不填, 按订单成交时间查询）",
+        "required": "否"
+      },
+      {
+        "field": "searchstatus",
+        "type": "string",
+        "meaning": "订单状态 0 被取消 1 等待单(已停用) 2 待审核 3 预订单 4 待结算 5 打单出库 6 生产等待 7 待发货(已停用) 8 发货在途 9 代销发货 10 委外发货 11 已完成",
+        "required": "否"
+      },
+      {
+        "field": "operationtype",
+        "type": "string",
+        "meaning": "订单类型 \"零售业务\",\"批发业务\",\"现款现货\",\"售后换货\",\"代发货\",\"代销售\",\"试销业务\",\"补发货\"",
+        "required": "否"
+      },
+      {
+        "field": "searchno",
+        "type": "string",
+        "meaning": "订单编号",
+        "required": "否"
+      },
+      {
+        "field": "relationno",
+        "type": "string",
+        "meaning": "关联单号（原始单号）",
+        "required": "否"
+      },
+      {
+        "field": "warehouseno",
+        "type": "string",
+        "meaning": "仓库编码",
+        "required": "否"
+      },
+      {
+        "field": "querymarkup",
+        "type": "string",
+        "meaning": "单据查询标记",
+        "required": "否"
+      },
+      {
+        "field": "reservedword",
+        "type": "string",
+        "meaning": "等于1时候，查询出来的 货品会自动关联上拆分前的 原始单单号，解析不到的赋值为空",
+        "required": "否"
+      },
+      {
+        "field": "searchname",
+        "type": "string",
+        "meaning": "店铺名",
+        "required": "否"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "returncode",
+        "type": "string",
+        "meaning": "0 成功 -1 失败 -2系统存在异常",
+        "required": "是"
+      },
+      {
+        "field": "returninfo",
+        "type": "string",
+        "meaning": "成功返条数，失败返回错误信息",
+        "required": "是"
+      },
+      {
+        "field": "datalist",
+        "type": "datainfo[]",
+        "meaning": "订单列表",
+        "required": "否"
+      },
+      {
+        "field": "totalcount",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.keytype",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.type",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradeid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.regtime",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradetime",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradestatus",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradeno",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.shopid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.cardname",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.shoptype",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.shopno",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.shopname",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.warehouseid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.warehouseno",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.warehousename",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.seller",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradetype",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.customerid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.sndto",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.country",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.province",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.city",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.town",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.adr",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.zip",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tel",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.cancelreason",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradefrom",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.tradeno2",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.barcode",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.goodsname",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.goodsno",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.price",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.unit",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.specname",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.remark",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.goodsmoney",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.goodscount",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.recid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.bfit",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.bgift",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.goodsid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.specid",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.sn",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.recno",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.positionsname",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      },
+      {
+        "field": "datalist.datainfo.goodslist.goodsinfo.errmsg",
+        "type": "",
+        "meaning": "公开返回样例中的字段；值与隐私可用性须实调",
+        "required": "",
+        "evidence": "sample_only"
+      }
+    ],
+    "note": "此普通接口不含拼多多销售单；淘系只返回管家订单号和店铺信息。旧样例列sndto/adr/tel等不表示当前能获得明文。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "轻易云",
+    "endpoint": "orders.single.query (轻易云聚水潭适配器v0.1)",
+    "source": "https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208",
+    "request_fields": [
+      {
+        "field": "shop_id",
+        "type": "string",
+        "meaning": "shop_id",
+        "required": "可选",
+        "description": "店铺编号"
+      },
+      {
+        "field": "is_offline_shop",
+        "type": "string",
+        "meaning": "is_offline_shop",
+        "required": "可选",
+        "description": "shop_id为0且is_offline_shop为true查询线下店铺单据"
+      },
+      {
+        "field": "so_ids",
+        "type": "string",
+        "meaning": "so_ids",
+        "required": "可选",
+        "description": "线上单号，最大限制20条"
+      },
+      {
+        "field": "modified_begin",
+        "type": "string",
+        "meaning": "modified_begin",
+        "required": "可选",
+        "description": "修改起始时间，和结束时间必须同时存在，时间间隔不能超过七天，与线上单号不能同时为空"
+      },
+      {
+        "field": "modified_end",
+        "type": "string",
+        "meaning": "modified_end",
+        "required": "可选",
+        "description": "修改结束时间，和起始时间必须同时存在，时间间隔不能超过七天，与线上单号不能同时为空"
+      },
+      {
+        "field": "status",
+        "type": "string",
+        "meaning": "status",
+        "required": "可选",
+        "description": "待付款：WaitPay；发货中：Delivering；被合并：Merged；异常：Question；被拆分：Split；等供销商|外仓发货：WaitOuterSent；已付款待审核：WaitConfirm；已客审待财审：WaitFConfirm；已发货：Sent；取消：Cancelled"
+      },
+      {
+        "field": "page_index",
+        "type": "string",
+        "meaning": "page_index",
+        "required": "可选",
+        "description": "第几页，从1开始"
+      },
+      {
+        "field": "page_size",
+        "type": "string",
+        "meaning": "page_size",
+        "required": "可选",
+        "description": "最每页多少条，最大50条"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "is_cod",
+        "type": "string",
+        "meaning": "is_cod",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "l_id",
+        "type": "string",
+        "meaning": "l_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "send_date",
+        "type": "string",
+        "meaning": "send_date",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "pay_date",
+        "type": "string",
+        "meaning": "pay_date",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "freight",
+        "type": "string",
+        "meaning": "freight",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_address",
+        "type": "string",
+        "meaning": "receiver_address",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_district",
+        "type": "string",
+        "meaning": "receiver_district",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "wms_co_id",
+        "type": "string",
+        "meaning": "wms_co_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "logistics_company",
+        "type": "string",
+        "meaning": "logistics_company",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "free_amount",
+        "type": "string",
+        "meaning": "free_amount",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "shop_name",
+        "type": "string",
+        "meaning": "shop_name",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "question_type",
+        "type": "string",
+        "meaning": "question_type",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "outer_pay_id",
+        "type": "string",
+        "meaning": "outer_pay_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "so_id",
+        "type": "string",
+        "meaning": "so_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "type",
+        "type": "string",
+        "meaning": "type",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "order_from",
+        "type": "string",
+        "meaning": "order_from",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "status",
+        "type": "string",
+        "meaning": "status",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "pay_amount",
+        "type": "string",
+        "meaning": "pay_amount",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "shop_buyer_id",
+        "type": "string",
+        "meaning": "shop_buyer_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "shop_status",
+        "type": "string",
+        "meaning": "shop_status",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_mobile",
+        "type": "string",
+        "meaning": "receiver_mobile",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "order_date",
+        "type": "string",
+        "meaning": "order_date",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "question_desc",
+        "type": "string",
+        "meaning": "question_desc",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_city",
+        "type": "string",
+        "meaning": "receiver_city",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_state",
+        "type": "string",
+        "meaning": "receiver_state",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_name",
+        "type": "string",
+        "meaning": "receiver_name",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "o_id",
+        "type": "string",
+        "meaning": "o_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "shop_id",
+        "type": "string",
+        "meaning": "shop_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "co_id",
+        "type": "string",
+        "meaning": "co_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "pays",
+        "type": "array",
+        "meaning": "pays",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "items",
+        "type": "array",
+        "meaning": "items",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "remark",
+        "type": "string",
+        "meaning": "remark",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "drp_co_id_from",
+        "type": "string",
+        "meaning": "drp_co_id_from",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "modified",
+        "type": "string",
+        "meaning": "modified",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "labels",
+        "type": "string",
+        "meaning": "labels",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "paid_amount",
+        "type": "string",
+        "meaning": "paid_amount",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "currency",
+        "type": "string",
+        "meaning": "currency",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "buyer_message",
+        "type": "string",
+        "meaning": "buyer_message",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "lc_id",
+        "type": "string",
+        "meaning": "lc_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "invoice_title",
+        "type": "string",
+        "meaning": "invoice_title",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "invoice_type",
+        "type": "string",
+        "meaning": "invoice_type",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "buyer_tax_no",
+        "type": "string",
+        "meaning": "buyer_tax_no",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "creator_name",
+        "type": "string",
+        "meaning": "creator_name",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "plan_delivery_date",
+        "type": "string",
+        "meaning": "plan_delivery_date",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "node",
+        "type": "string",
+        "meaning": "node",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "receiver_town",
+        "type": "string",
+        "meaning": "receiver_town",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "drp_co_id_to",
+        "type": "string",
+        "meaning": "drp_co_id_to",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "is_order_pay",
+        "type": "string",
+        "meaning": "is_order_pay",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "buyer_account",
+        "type": "string",
+        "meaning": "buyer_account",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "amount",
+        "type": "string",
+        "meaning": "amount",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "pay_date",
+        "type": "string",
+        "meaning": "pay_date",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "outer_pay_id",
+        "type": "string",
+        "meaning": "outer_pay_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "pay_id",
+        "type": "string",
+        "meaning": "pay_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "payment",
+        "type": "string",
+        "meaning": "payment",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "is_gift",
+        "type": "string",
+        "meaning": "is_gift",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "sku_id",
+        "type": "string",
+        "meaning": "sku_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "name",
+        "type": "string",
+        "meaning": "name",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "refund_status",
+        "type": "string",
+        "meaning": "refund_status",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "refund_id",
+        "type": "string",
+        "meaning": "refund_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "price",
+        "type": "string",
+        "meaning": "price",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "outer_oi_id",
+        "type": "string",
+        "meaning": "outer_oi_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "item_status",
+        "type": "string",
+        "meaning": "item_status",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "i_id",
+        "type": "string",
+        "meaning": "i_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "properties_value",
+        "type": "string",
+        "meaning": "properties_value",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "oi_id",
+        "type": "string",
+        "meaning": "oi_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "amount",
+        "type": "string",
+        "meaning": "amount",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "shop_sku_id",
+        "type": "string",
+        "meaning": "shop_sku_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "raw_so_id",
+        "type": "string",
+        "meaning": "raw_so_id",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "qty",
+        "type": "string",
+        "meaning": "qty",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "is_presale",
+        "type": "string",
+        "meaning": "is_presale",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "base_price",
+        "type": "string",
+        "meaning": "base_price",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "pic",
+        "type": "string",
+        "meaning": "pic",
+        "required": "可选",
+        "description": "111"
+      },
+      {
+        "field": "sku_type",
+        "type": "string",
+        "meaning": "sku_type",
+        "required": "可选",
+        "description": "111"
+      }
+    ],
+    "note": "轻易云自己的适配器目录；聚水潭页更新时间2021，响应说明有111占位且多数字段均标string，不可据此保证当前类型/权限。管易页未公开响应字段。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "轻易云",
+    "endpoint": "gy.erp.trade.get (轻易云管易适配器v1.0)",
+    "source": "https://qeasy.cloud/api/a7127585-62c9-34d1-a91c-8d981692a9cb",
+    "request_fields": [
+      {
+        "field": "page_no",
+        "type": "int",
+        "meaning": "页码",
+        "required": "可选",
+        "description": "默认为1"
+      },
+      {
+        "field": "page_size",
+        "type": "int",
+        "meaning": "每页大小",
+        "required": "可选",
+        "description": "默认为10"
+      },
+      {
+        "field": "start_date",
+        "type": "datetime",
+        "meaning": "开始时间",
+        "required": "可选",
+        "description": "开始时间"
+      },
+      {
+        "field": "end_date",
+        "type": "datetime",
+        "meaning": "结束时间",
+        "required": "可选",
+        "description": "结束时间"
+      },
+      {
+        "field": "date_type",
+        "type": "int",
+        "meaning": "时间类型",
+        "required": "可选",
+        "description": "默认0\n\n0:创建时间\n1:拍单时间\n2:付款时间\n3:修改时间"
+      },
+      {
+        "field": "order_state",
+        "type": "int",
+        "meaning": "订单类型",
+        "required": "可选",
+        "description": "默认00:全部1:未审核2:已审核"
+      },
+      {
+        "field": "warehouse_code",
+        "type": "string",
+        "meaning": "仓库代码",
+        "required": "可选",
+        "description": "仓库代码"
+      },
+      {
+        "field": "shop_code",
+        "type": "string",
+        "meaning": "店铺代码",
+        "required": "可选",
+        "description": "店铺代码"
+      },
+      {
+        "field": "vip_name",
+        "type": "string",
+        "meaning": "会员名称",
+        "required": "可选",
+        "description": "会员名称"
+      },
+      {
+        "field": "platform_code",
+        "type": "string",
+        "meaning": "平台单号",
+        "required": "可选",
+        "description": "平台单号"
+      },
+      {
+        "field": "receiver_mobile",
+        "type": "string",
+        "meaning": "收件手机",
+        "required": "可选",
+        "description": "收件手机"
+      },
+      {
+        "field": "code",
+        "type": "string",
+        "meaning": "单据编号",
+        "required": "可选",
+        "description": "单据编号"
+      },
+      {
+        "field": "has_cancel_data",
+        "type": "bool",
+        "meaning": "是否附带返回已取消与已删除的订单数据",
+        "required": "可选",
+        "description": "alse:不返回\ntrue:返回\n默认false"
+      }
+    ],
+    "response_fields": [],
+    "note": "轻易云自己的适配器目录；聚水潭页更新时间2021，响应说明有111占位且多数字段均标string，不可据此保证当前类型/权限。管易页未公开响应字段。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "聚水潭",
+    "endpoint": "POST /open/orders/single/query",
+    "source": "https://openweb.jushuitan.com/dev-doc?docId=22&docType=4",
+    "request_fields": [
+      {
+        "field": "app_key",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "access_token",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "timestamp",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "charset",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "version",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "sign",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "shop_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "is_offline_shop",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "page_index",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "page_size",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "start_ts",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "is_get_total",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "o_ids",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "order_flds",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "order_item_flds",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "order_types",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "archive",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "code",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "msg",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.page_size",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.page_index",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.data_count",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.page_count",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.has_next",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].is_cod",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].l_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].send_date",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pay_date",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].freight",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].first_freight",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].outerwms_freight",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_address",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_district",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].wms_co_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].logistics_company",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].as_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].free_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shop_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].question_type",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].outer_pay_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].so_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].type",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].order_from",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].status",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pay_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shop_buyer_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].open_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shop_status",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_mobile",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_phone",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].order_date",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].question_desc",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_city",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_state",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].o_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shop_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].co_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].remark",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].package_no",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].warehouse_oid",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].drp_co_id_from",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].modified",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].labels",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].paid_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].platform_free_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pay_free_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].referrer_free_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shop_free_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].currency",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].buyer_message",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].lc_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].cb_total_tax",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].invoice_title",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].invoice_type",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].invoice_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].buyer_tax_no",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].creator_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].plan_delivery_date",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].node",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_town",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].drp_co_id_to",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shop_site",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].un_lid",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].end_time",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_country",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_zip",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].seller_flag",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].receiver_email",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].referrer_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].referrer_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].created",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].skus",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].f_weight",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].weight",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].ts",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].buyer_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].buyer_paid_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].seller_income_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].chosen_channel",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].channel_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].cb_lc_code",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].cb_lc_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].link_o_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].merge_so_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].shipment",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].sign_time",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].is_merge",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].is_split",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].first_freight_tariff",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].f_freight_other_expense",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].service_charge",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].government_free_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].online_origin_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].is_gift",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].sku_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].refund_status",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].refund_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].price",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].outer_oi_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].item_status",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].i_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].properties_value",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].oi_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].shop_sku_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].raw_so_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].qty",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].src_combine_sku_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].is_presale",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].base_price",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].pic",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].sku_type",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].shop_i_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].buyer_paid_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].seller_income_amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].referrer_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].lwh_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].lwh_name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].remark",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].produced_date",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].batch_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].items[].item_ext_data",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].is_order_pay",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].buyer_account",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].amount",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].pay_date",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].outer_pay_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].pay_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].payment",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].status",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].pay_type",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data.orders[].pays[].o_id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      }
+    ],
+    "note": "本轮正文打开超时，字段来自官方页的搜索引擎索引；旧版可访问正文再次确认普通订单API排除淘系和拼多多。不同金额口径：pay_amount应付，pays中is_order_pay=true的amount之和实付；items.price单价×qty为amount。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "九数云",
+    "endpoint": "POST /api/v2/export",
+    "source": "https://help.fanruan.com/jiushuyun/doc-view-149.html",
+    "request_fields": [
+      {
+        "field": "Authorization",
+        "type": "header",
+        "meaning": "临时令牌",
+        "required": "是"
+      },
+      {
+        "field": "tableId",
+        "type": "string",
+        "meaning": "分析表ID",
+        "required": "是"
+      },
+      {
+        "field": "format",
+        "type": "string",
+        "meaning": "省略csv；excel为Excel",
+        "required": "否"
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "success",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "code",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "message",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "errorCode",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "detailErrorMsg",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "errorMsg",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      }
+    ],
+    "note": "data为文件下载链接，非固定订单JSON；只导出分析表。数据源表、仪表板、故事板不支持。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "九数云",
+    "endpoint": "GET /api/v1/corp/oauth/token",
+    "source": "https://help.fanruan.com/jiushuyun/doc-view-140.html",
+    "request_fields": [
+      {
+        "field": "accessKeyId",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "accessKeySecret",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "data",
+        "type": "string",
+        "meaning": "临时令牌",
+        "required": ""
+      }
+    ],
+    "note": "企业版，企业超管取得凭证；10秒仅可获取一次，token有效一小时。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "九数云",
+    "endpoint": "POST /api/v1/folders; POST /api/v1/{folderId}/tables",
+    "source": "https://help.fanruan.com/jiushuyun/doc-view-149.html",
+    "request_fields": [
+      {
+        "field": "Authorization",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "folderId",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "data[].id",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      },
+      {
+        "field": "data[].name",
+        "type": "",
+        "meaning": "",
+        "required": ""
+      }
+    ],
+    "note": "列项目/表名和ID；业务表列需在授权连接选表的查看字段处确认。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  },
+  {
+    "name": "集简云",
+    "endpoint": "抖店连接器：订单详情查询/新订单触发/资金流水下载",
+    "source": "https://www.jijyun.cn/help/detail/756",
+    "request_fields": [
+      {
+        "field": "order_id",
+        "type": "string",
+        "meaning": "查询订单ID",
+        "required": ""
+      }
+    ],
+    "response_fields": [
+      {
+        "field": "p_id",
+        "type": "string",
+        "meaning": "触发样本父订单ID",
+        "required": ""
+      },
+      {
+        "field": "download_id",
+        "type": "string",
+        "meaning": "资金流水下载任务ID",
+        "required": ""
+      }
+    ],
+    "note": "仅这两个动作相关字段获得官方说明；未公开完整业务响应schema。p_id带A时官方教程要求截断。download_id来源 https://www.jijyun.cn/apps/processes/1874 。",
+    "evidence": "仅官方公开文档/公开文档目录元数据，未调用商家业务API",
+    "checked_on": "2026-11-05"
+  }
+]

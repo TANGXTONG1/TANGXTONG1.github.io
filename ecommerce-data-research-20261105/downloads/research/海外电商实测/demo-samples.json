@@ -1,0 +1,61 @@
+[
+  {
+    "provider": "BlueCart API",
+    "sample_kind": "official_demo_not_production",
+    "demo": true,
+    "freshness_verified": false,
+    "parameters": {
+      "type": "reviews",
+      "item_id": "782866746",
+      "sort_by": "most_helpful"
+    },
+    "samples": [
+      {
+        "rating": 5,
+        "date": "10/20/2020",
+        "body_excerpt": "haven't been able to figure out the messages on it…",
+        "verified_purchase": true
+      },
+      {
+        "rating": 5,
+        "date": "12/4/2020",
+        "body_excerpt": "Thus is awesome I love it!…",
+        "verified_purchase": true
+      }
+    ],
+    "notes": "仅前2条的每条10词摘录，去除作者、个人主页、头像和评论ID；不是认证生产采集。"
+  },
+  {
+    "provider": "Countdown API",
+    "sample_kind": "official_demo_not_production",
+    "demo": true,
+    "freshness_verified": false,
+    "parameters": {
+      "type": "reviews",
+      "ebay_domain": "ebay.com",
+      "epid": "1522036563",
+      "sort_by": "most_recent"
+    },
+    "samples": [
+      {
+        "rating": 5,
+        "date": {
+          "raw": "Nov 12, 2023",
+          "utc": "2023-11-12T00:00:00.000Z"
+        },
+        "body_excerpt": "great thanks…",
+        "verified_purchase": true
+      },
+      {
+        "rating": 5,
+        "date": {
+          "raw": "Nov 11, 2022",
+          "utc": "2022-11-11T00:00:00.000Z"
+        },
+        "body_excerpt": "The Kingston 16Gb Class 10 Memory Card Micro SD Card…",
+        "verified_purchase": true
+      }
+    ],
+    "notes": "仅前2条的每条10词摘录，去除作者、个人主页、头像和评论ID；不是认证生产采集。"
+  }
+]

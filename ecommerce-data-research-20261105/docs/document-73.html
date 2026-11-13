@@ -1,0 +1,345 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>国内电商评论原文 API 复核</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E8%AF%84%E8%AE%BA%E5%8E%9F%E6%96%87API%E5%A4%8D%E6%A0%B8-2026-11-06.md" download>下载原始 Markdown</a></header><article><h1 id="api">国内电商评论原文 API 复核</h1>
+<p>核验日期：2026 年 11 月 6 日。目标是由一家供应商通过 API 提供自有及竞品商品的逐条买家评价，并承担各商城的采集和维护。正文、评分、时间、规格、追评、图片和可取历史深度是重点。</p>
+<p><strong>结论：尚无通过完整条件的主供应商。</strong> Qovia、EveryInfra 仅是技术试验对象；两家的主体、客户案例与稳定交付证据仍不足，均未取得登录后的真实评论响应。拼多多、美团评论原文的可靠统一 API 仍是缺口。</p>
+<h2 id="_1">撤下前轮主推荐</h2>
+<p>魔镜、Nint、数说不再作为当前评论 API 主推荐。前轮证据主要是市场与评价分析、企业数据服务或定制交付能力，未证明有现成的逐条商品评论端点与字段。魔镜旧 API 文档的维护情况待核，不能据此认定整个公司或业务停止维护。</p>
+<h2 id="_2">接近需求的技术入口</h2>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>已核评论渠道</th>
+<th>原文字段与分页</th>
+<th>当前判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qovia</td>
+<td>taobao_tmall：2个现行文档端点；未实调；jd：1个现行文档端点；未实调</td>
+<td>淘天V1：text、rating_level、created_at、sku、images/videos、followup、shop_reply；V2是content等原样字段；京东：text、rating、sku_id、images、shop_reply，追评/视频未核。 淘天参数page≤500、每页20，实际依has_more或maxPage/hasNextPage；京东参数page≤100、每页10，实际依max_page；均不保证到达参数上限或取得全量。</td>
+<td>仅技术试验对象，非采购主荐</td>
+</tr>
+<tr>
+<td>EveryInfra / 万有引擎</td>
+<td>taobao_tmall：当前目录确认原文字段，最多100条，未实调；jd：当前目录确认原文字段，最多10条，未实调</td>
+<td>共同text、rating、posted_at、images、review_append；淘天sku/seller_reply，京东item_id/color/size，字段可能缺失。 目录请求limit上限：淘天100、京东10；均未声明page/cursor，不得将limit解释为可持续翻页或全量深度。</td>
+<td>仅有限评论技术试验对象，非采购主荐</td>
+</tr>
+<tr>
+<td>万邦 Onebound</td>
+<td>taobao_tmall：旧文档当前跳转tglobal，现行评论未确认；jd：现行分页原文文档可读，未实调</td>
+<td>京东items.item[].rate_content、rate_date、pics、auction_sku、rate_id、score；add_feedback在字段表解释为商家回复，不能直接当追评。 京东page参数最大100，样例page_size=10，实际可读深度未验；淘宝旧索引50页不可作现行承诺。</td>
+<td>京东局部备选，跨平台评论补证</td>
+</tr>
+<tr>
+<td>Just One API</td>
+<td>taobao_tmall：现行V3端点，业务字段未核；jd：现行V1端点；V2已移出常规目录</td>
+<td>当前只能核公共code/message/data等封装；京东OpenAPI的data为空schema，正文、追评、图片、SKU、评分键名待真实响应。 提供page，未核页大小、最大可读页或历史窗口；淘天有feedbackdate/general排序；参数存在不等于全量。</td>
+<td>先补真实响应与字段契约</td>
+</tr>
+<tr>
+<td>竹简数据</td>
+<td>taobao_tmall：content/append文档明确，需销售开通；jd：公开目录仅商品详情，评论未核</td>
+<td>淘天data.list[].comment_id/content/has_image/append；抖音comment_id/content/like；图片URL、评分和时间未核。 page参数存在，页大小、最大页数、历史范围均未公开。</td>
+<td>商务开通及评论字段补证</td>
+</tr>
+</tbody>
+</table>
+<p>Qovia 有近期评论上线日志，但仍为 Beta。参数可填 page=500 或 page=100，不代表商品真的提供这些页。EveryInfra 的能力目录可匿名取得，不等于评论业务已实调；其淘天最多100条、京东最多10条且无已核分页，适合有限抽样，无法据此规划完整历史库。</p>
+<h2 id="_3">字段验收重点</h2>
+<ul>
+<li>正文与关联：评论 ID、商品及 SKU ID、店铺、正文、评论时间、采集时间。</li>
+<li>评分口径：淘天的好中差等级与京东的1到5星须保留原口径，不能直接当同一评分。</li>
+<li>扩展内容：追评及时间、图片和视频地址、商家回复；没有列出的字段记为未核实。</li>
+<li>深度与增量：每页数量、实际可读页数、最早时间、分页终止条件、重复率、新增与追评更新。</li>
+<li>自营与竞品：按公开商品链接取数不代表能获得商家后台所有评价；每渠道的数据范围须实测。</li>
+</ul>
+<h2 id="_4">这轮实际核验结果</h2>
+<ol>
+<li>Qovia 现行 OpenAPI 与京东评论文档可以读取；通过浏览器点击调试台，仍进入邮箱与验证码注册页面，未取得业务数据。</li>
+<li>EveryInfra 公开能力目录返回 HTTP 200；淘天与京东评论有字段说明，未声明 page/cursor，目录中未列拼多多与美团。</li>
+<li>TMAPI 官方淘宝评论页明确维护中，标注最后更新 2023-11-03；历史字段不能当现行服务。</li>
+<li>Apify 上核到的美团/点评 Actor 明确尚未实现评论正文；另两款淘天/京东 Actor 评论限额分别为20条和10条，不能继承 Apify 平台的信誉成为成熟完整数据源。</li>
+</ol>
+<h2 id="_5">文档示例与实际数据分开</h2>
+<p>Qovia 京东文档的一条评论示例摘录为“唯一的缺点就是颗粒太大了”，rating=5，sku_id=100006271091。同一文档分页示例是 total=20000、max_page=2。它说明总数和可翻页范围可以相差很大；这些数字不是通用上限，也不是本次成功取数。<a href="https://qovia.ai/zh/docs/api-reference/raw.jd.comments/" rel="noopener noreferrer" target="_blank">示例来源</a>。</p>
+<p><a href="../downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E6%96%87%E6%A1%A3%E7%A4%BA%E4%BE%8B%E6%91%98%E5%BD%95.json">文档示例摘录 JSON</a> · <a href="../downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A4%8D%E6%A0%B8%E8%AE%B0%E5%BD%95.json">浏览器复核记录</a> · <a href="../downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E8%AF%84%E8%AE%BAAPI%E9%80%89%E5%9E%8B.json">完整评论接口总表 JSON</a></p>
+<p>原有好单库真实商品响应没有评论正文。公开目录、文档例子和页面预览不计入真实评论样本数；本轮真实评论响应数为0。</p>
+<h2 id="17">17 项详细判断</h2>
+<h3 id="qovia">Qovia</h3>
+<p>仅技术试验对象，非采购主荐</p>
+<p>淘天与京东逐条评价文档最完整，可先验证同一 Key 的真实响应；尚无鉴权验收，拼多多、美团评论覆盖未证实。</p>
+<ul>
+<li>交付：https://api.qovia.ai；Bearer或x-api-key；统一request_id/data/meta信封。原始V2和标准化V1字段并不相同。</li>
+<li>字段：淘天V1：text、rating_level、created_at、sku、images/videos、followup、shop_reply；V2是content等原样字段；京东：text、rating、sku_id、images、shop_reply，追评/视频未核。</li>
+<li>深度：淘天参数page≤500、每页20，实际依has_more或maxPage/hasNextPage；京东参数page≤100、每页10，实际依max_page；均不保证到达参数上限或取得全量。</li>
+<li>维护：2026-10-21日志宣布淘天/JD评价上线；当前标Live Beta，未独立验证成功率。</li>
+<li>
+<p>信誉：独立客户和完整主体仍待补证；明确文档只是技术验证基础，不满足采购验收。</p>
+</li>
+<li>
+<p><a href="https://qovia.ai/docs/api-reference/raw.taobao.comments/" rel="noopener noreferrer" target="_blank">淘天标准化评论文档</a></p>
+</li>
+<li><a href="https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/" rel="noopener noreferrer" target="_blank">淘天原样V2评论文档</a></li>
+<li><a href="https://qovia.ai/docs/api-reference/raw.jd.comments/" rel="noopener noreferrer" target="_blank">京东评论文档</a></li>
+<li><a href="https://qovia.ai/changelog/" rel="noopener noreferrer" target="_blank">产品更新日志</a></li>
+</ul>
+<h3 id="everyinfra">EveryInfra / 万有引擎</h3>
+<p>仅有限评论技术试验对象，非采购主荐</p>
+<p>同一入口提供淘天与京东评论原文字段，但当前数量较少且无已核分页；拼多多、美团与全量历史评价均未证实。</p>
+<ul>
+<li>交付：同一 POST /api/v1/social，按 platform/action/params 选择来源；Bearer key；可异步取 job 结果。</li>
+<li>字段：共同text、rating、posted_at、images、review_append；淘天sku/seller_reply，京东item_id/color/size，字段可能缺失。</li>
+<li>深度：目录请求limit上限：淘天100、京东10；均未声明page/cursor，不得将limit解释为可持续翻页或全量深度。</li>
+<li>维护：2026-11-06公开能力目录HTTP200且标available=true；只是能力声明，不是鉴权业务成功。</li>
+<li>
+<p>信誉：未核独立客户侧案例、合同SLA或真实评论验收；目录可访问不足以成为采购推荐。</p>
+</li>
+<li>
+<p><a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">本日直接 GET 公开能力目录 HTTP 200，taobao/reviews 与 jd/reviews 标记 available=true。仅证明目录与服务声明，不证明业务成功率。</a></p>
+</li>
+<li><a href="https://everyinfra.com/taobao-api/reviews" rel="noopener noreferrer" target="_blank">淘宝评论页展示供应商自报 24 小时健康状态；不是第三方长期可用性验收。</a></li>
+</ul>
+<h3 id="onebound">万邦 Onebound</h3>
+<p>京东局部备选，跨平台评论补证</p>
+<p>京东分页原文文档可读，但淘宝当前文档跳转且拼多多、美团评论存在缺口，不能作为一家多商城已验证方案。</p>
+<ul>
+<li>交付：同一 api-gw.onebound.cn 网关、平台独立路径；key/secret；返回 JSON，需自行统一平台字段。</li>
+<li>字段：京东items.item[].rate_content、rate_date、pics、auction_sku、rate_id、score；add_feedback在字段表解释为商家回复，不能直接当追评。</li>
+<li>深度：京东page参数最大100，样例page_size=10，实际可读深度未验；淘宝旧索引50页不可作现行承诺。</li>
+<li>维护：2026-11-06京东文档仍可读，但样例server_time为2025-11-06；淘宝评论页跳转tglobal。</li>
+<li>
+<p>信誉：主体历史可追溯，仍缺评论接口连续成功率、漏数和重复ID核验；旧公司资历不能替代当前验收。</p>
+</li>
+<li>
+<p><a href="https://open.onebound.cn/help/api/jd.item_review.html" rel="noopener noreferrer" target="_blank">京东评论文档本日 HTTP 200，同 URL；公开样例 server_time 为 2025-11-06，不是本次取数。</a></p>
+</li>
+<li><a href="https://open.onebound.cn/help/api/taobao.item_review.html" rel="noopener noreferrer" target="_blank">淘宝评论文档当前重定向至淘宝海外说明；搜索引擎旧摘要不足以证明接口现行。</a></li>
+<li><a href="https://open.onebound.cn/help/api/pinduoduo.readme.html" rel="noopener noreferrer" target="_blank">拼多多目录可访问，但未列评论专用接口。</a></li>
+<li><a href="https://open.onebound.cn/help/api/tglobal.readme.html" rel="noopener noreferrer" target="_blank">淘宝/天猫评论接口文档</a></li>
+</ul>
+<h3 id="just-one-api">Just One API</h3>
+<p>先补真实响应与字段契约</p>
+<p>现行目录有淘天V3与京东V1评论端点，但业务字段和分页深度仍不明确，尚不能按完整原文交付验收。</p>
+<ul>
+<li>交付：单域名https://api.justoneapi.com，query token；公共code/message/data信封，code=0为业务成功。</li>
+<li>字段：当前只能核公共code/message/data等封装；京东OpenAPI的data为空schema，正文、追评、图片、SKU、评分键名待真实响应。</li>
+<li>深度：提供page，未核页大小、最大可读页或历史窗口；淘天有feedbackdate/general排序；参数存在不等于全量。</li>
+<li>维护：京东V1在现行目录、V2已移出常规目录；动态健康区未独立验证，未核评论维护日期。</li>
+<li>
+<p>信誉：SDK/MCP为客户端项目，2026-11-05记录11/6 stars；客户、主体和业务稳定性仍待补证。</p>
+</li>
+<li>
+<p><a href="https://docs.justoneapi.com/zh/api/taobao-and-tmall/product-reviews-v3" rel="noopener noreferrer" target="_blank">淘天评论V3文档</a></p>
+</li>
+<li><a href="https://docs.justoneapi.com/openapi/jdcom/product-comments-v1-zh.json" rel="noopener noreferrer" target="_blank">京东评论V1 OpenAPI（data为空schema）</a></li>
+<li><a href="https://docs.justoneapi.com/zh/api/jdcom/" rel="noopener noreferrer" target="_blank">京东现行与历史接口目录</a></li>
+<li><a href="https://justoneapi.com/zh/faq" rel="noopener noreferrer" target="_blank">试用FAQ</a></li>
+</ul>
+<h3 id="_6">竹简数据</h3>
+<p>商务开通及评论字段补证</p>
+<p>淘天与抖音商品评论有具体文档，但销售开通、字段较少及京东/拼多多/美团缺口使其暂不进入可靠主选。</p>
+<ul>
+<li>交付：专属接入域名+各平台路径，query token；POST JSON。不是公开可自助调用的统一数据模式。</li>
+<li>字段：淘天data.list[].comment_id/content/has_image/append；抖音comment_id/content/like；图片URL、评分和时间未核。</li>
+<li>深度：page参数存在，页大小、最大页数、历史范围均未公开。</li>
+<li>维护：更新列表最新可见条目2026-06-08；未核近期评论变更，不能据此断言停运。</li>
+<li>
+<p>信誉：独立客户、SLA与生产评论响应尚缺；专属endpoint与token尚未取得。</p>
+</li>
+<li>
+<p><a href="https://marketplace.bamboodatalab.com/zh/changelog" rel="noopener noreferrer" target="_blank">公开更新列表记录 2026-05-28 公测；页面最新条目为 2026-06-08，未找到近期淘宝评论变更。不能由无新公告推断停运。</a></p>
+</li>
+<li><a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1" rel="noopener noreferrer" target="_blank">淘宝/天猫评论接口文档</a></li>
+<li><a href="https://marketplace.bamboodatalab.com/zh/api/douyin-ec/product-comments-v1" rel="noopener noreferrer" target="_blank">抖音电商评论接口文档</a></li>
+</ul>
+<h3 id="tmapi">TMAPI</h3>
+<p>维护中，移出当前可用评论名单</p>
+<p>淘宝评论接口官方明示维护中，历史字段和样例不能支持现行评论API选型。</p>
+<ul>
+<li>交付：apikey请求头；历史GET http://api.tmapi.top/taobao/advanced/item/rate_list；生产HTTPS支持需另核。</li>
+<li>字段：历史feedback、feedback_imgs、feedback_video、reply、appended、sku_map；当前不可用性未恢复验收，rate_type不是星级。</li>
+<li>深度：历史样例每页10、含total_page，未核当前深度；rate_type为空仅不筛评论类型，不保证全部历史评价。</li>
+<li>维护：现行官方页标under maintenance，最后更新2023-11-03。</li>
+<li>
+<p>信誉：页脚CyberData LLC属于供应商自述，独立客户/主体尚未核；与维护问题分别记录。</p>
+</li>
+<li>
+<p><a href="https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-ratelist-by-id-v2.html" rel="noopener noreferrer" target="_blank">淘宝评论维护声明及旧字段</a></p>
+</li>
+<li><a href="https://tmapi.top/docs/start.html" rel="noopener noreferrer" target="_blank">控制台接入流程</a></li>
+</ul>
+<h3 id="apify-memo23-actor">Apify · memo23 淘宝/天猫 Actor</h3>
+<p>有限试样外围，非成熟主选</p>
+<p>Apify统一执行API能运行淘天评论Actor，但每商品最多20条且Actor历史较短，不符合成熟全量聚合交付。</p>
+<ul>
+<li>交付：Apify统一执行/数据集API可调用该Actor；每个Actor输入与输出仍独立，不是统一多商城评论业务API。</li>
+<li>字段：reviewId、itemId、text、rating、variant、postedAt、authorName、usefulCount等评论行。</li>
+<li>深度：README maxReviewsPerProduct范围0–20，最多20条/商品；不是可翻页的全量历史。</li>
+<li>维护：Actor创建2026-10-08、修改2026-11-05；只是元数据时间，未鉴权运行。</li>
+<li>
+<p>信誉：平台公开元数据有使用计数但评论评分数为0；Apify平台声誉不等于社区Actor稳定性。</p>
+</li>
+<li>
+<p><a href="https://apify.com/memo23/taobao-scraper" rel="noopener noreferrer" target="_blank">现行README列评论行字段和maxReviewsPerProduct 0–20。</a></p>
+</li>
+<li><a href="https://apify.com/memo23/taobao-scraper/api" rel="noopener noreferrer" target="_blank">Actor API入口在商店页可见。</a></li>
+<li><a href="https://api.apify.com/v2/acts/memo23~taobao-scraper" rel="noopener noreferrer" target="_blank">公开元数据：3896总用户，1037近30日用户；创建2026-10-08，更新2026-11-05；评论评分数0。</a></li>
+</ul>
+<h3 id="apify-memo23-actor_1">Apify · memo23 京东评论 Actor</h3>
+<p>排除成熟主选</p>
+<p>京东Actor虽列评论字段，但新发布且每商品最多10条，不适合当前成熟评论数据源要求。</p>
+<ul>
+<li>交付：平台API执行Actor并取JSON数据集；并非与淘系同一业务schema。</li>
+<li>字段：reviewId、skuId、text、appendedText、rating、imageUrls、color、size、postedAt。</li>
+<li>深度：最多10条/商品，未证明分页抓取。</li>
+<li>维护：2026-11-05创建；本轮未运行Actor。</li>
+<li>
+<p>信誉：公开元数据仅2用户/2运行，评论评分数0，不能据此认定稳定。</p>
+</li>
+<li>
+<p><a href="https://apify.com/memo23/jd-com-reviews-scraper" rel="noopener noreferrer" target="_blank">README有逐条评论字段并明确10条上限。</a></p>
+</li>
+<li><a href="https://api.apify.com/v2/acts/memo23~jd-com-reviews-scraper" rel="noopener noreferrer" target="_blank">公开元数据给出创建时间、运行/用户计数。</a></li>
+</ul>
+<h3 id="apify-edgy_dock-actor">Apify · edgy_dock 美团/点评 Actor</h3>
+<p>明确排除：评论正文未实现</p>
+<p>当前美团/点评Actor明确未实现评论正文，不能填补本任务的美团原文缺口。</p>
+<ul>
+<li>交付：可通过Apify执行，但现行功能主要为城市/区县/商圈及尽力获取店铺。</li>
+<li>字段：无已实现评论正文；review count不能替代text。</li>
+<li>深度：不适用：原文未实现。</li>
+<li>维护：当前README明确否认评论正文；旧搜索摘要不能覆盖现行说明。</li>
+<li>
+<p>信誉：社区Actor及使用计数只证明项目存在，不能继承平台级交付能力。</p>
+</li>
+<li>
+<p><a href="https://apify.com/edgy_dock/meituan-dianping-scraper" rel="noopener noreferrer" target="_blank">现行README明确 Review text is not implemented，店铺模式需自有Cookie。</a></p>
+</li>
+<li><a href="https://api.apify.com/v2/acts/edgy_dock~meituan-dianping-scraper" rel="noopener noreferrer" target="_blank">公开元数据：27用户、11近30日用户，社区维护。</a></li>
+</ul>
+<h3 id="bright-data">Bright Data</h3>
+<p>保留方案线索，排除现成API主选</p>
+<p>有国内商城评论监测方案宣传，但本轮未核到即用评论dataset_id及输入输出schema，不进入现成接口名单。</p>
+<ul>
+<li>交付：有通用采集基础设施与MCP，淘宝/京东评论Tracker页引导演示/报价；未核到对应即用评论dataset_id、输入/输出schema。</li>
+<li>字段：目标商城逐条评论标准字段未核。</li>
+<li>深度：未核目标商城评论分页或可读深度。</li>
+<li>维护：有现行Tracker/MCP页面，未取得评论端点维护记录或成功样本。</li>
+<li>
+<p>信誉：公司体量不能替代具体商城评论接口证据；本轮无业务实调。</p>
+</li>
+<li>
+<p><a href="https://brightdata.com/products/insights/reviews-tracker/taobao" rel="noopener noreferrer" target="_blank">淘宝Reviews Tracker以看板和演示/报价为主。</a></p>
+</li>
+<li><a href="https://brightdata.com/products/insights/reviews-tracker/jd-com" rel="noopener noreferrer" target="_blank">京东Reviews Tracker描述监测方案，没有本轮可核标准评论schema。</a></li>
+<li><a href="https://brightdata.com/ai/mcp-server/jd" rel="noopener noreferrer" target="_blank">京东MCP落地页列评价能力，但非接口字段规范。</a></li>
+</ul>
+<h3 id="datashake">Datashake</h3>
+<p>目标来源未证实，暂排除</p>
+<p>统一API和schema有官方说明，但淘宝、京东、拼多多、美团目标来源未证实，暂不进入主选。</p>
+<ul>
+<li>交付：官网明确统一API/schema及标准JSON；但旧Review Scraper API路径现重定向主页，本轮没有取得可自助核实的中国目标商城来源清单或专用评论schema。</li>
+<li>字段：未取得目标商城专用评论schema。</li>
+<li>深度：目标来源与深度均未核；150+sources不保证国内商城覆盖。</li>
+<li>维护：旧评论产品路径已重定向主页；不能沿用旧目录承诺。</li>
+<li>
+<p>信誉：不根据未找到材料断言不支持，但统一平台宣传不能替代来源清单。</p>
+</li>
+<li>
+<p><a href="https://www.datashake.com/" rel="noopener noreferrer" target="_blank">当前主页明确One API/One schema；来源只笼统描述。</a></p>
+</li>
+<li><a href="https://www.datashake.com/platform" rel="noopener noreferrer" target="_blank">平台页说明原始内容和统一JSON，新增来源仍需申请。</a></li>
+<li><a href="https://datashake.com/review-scraper-api/scrape-walmart-reviews" rel="noopener noreferrer" target="_blank">旧Walmart评论路径实际跳转当前主页，不能拿旧目录代替现行目标平台清单。</a></li>
+</ul>
+<h3 id="data365">Data365</h3>
+<p>社媒外围，排除交易评价主方案</p>
+<p>当前服务主要交付海外社媒评论，不能替代国内电商购后评价API。</p>
+<ul>
+<li>交付：正式服务是海外社媒API，可返回post/comments；没有核到国内电商评论接口。</li>
+<li>字段：社媒text、comment owner ID、creation date，非本次目标商城评价字段。</li>
+<li>深度：国内商城不适用；未核对应原文API。</li>
+<li>维护：有现行社媒产品与演示，未核国内商城评价接口。</li>
+<li>
+<p>信誉：社媒API的成熟度不能迁移到未证实的电商评论产品。</p>
+</li>
+<li>
+<p><a href="https://data365.co/" rel="noopener noreferrer" target="_blank">官方产品与演示主要列Facebook/Instagram/X/TikTok/Reddit等。</a></p>
+</li>
+<li><a href="https://data365.co/ja/presentation" rel="noopener noreferrer" target="_blank">官方演示有社媒POST更新/GET查询逻辑，数据对象是社媒账号与帖子。</a></li>
+</ul>
+<h3 id="tikhub">TikHub</h3>
+<p>社媒外围，排除核心商城评价</p>
+<p>可作为社媒评论API补充，但未核淘京拼美交易评价端点，不能填补核心商城覆盖。</p>
+<ul>
+<li>交付：同域名 REST API、Bearer token；不同社媒各路径与字段。</li>
+<li>字段：社媒示例content/comment_id/create_time等；不等于购后评价。</li>
+<li>深度：社媒示例使用last_buffer/down_continue，不能外推国内电商评论深度。</li>
+<li>维护：公开OpenAPI标V5.3.2、2026-06-22更新；文档读取通道差异不判作业务故障。</li>
+<li>
+<p>信誉：SDK/组织可追溯但非数据引擎SLA；无目标商城业务实调。</p>
+</li>
+<li>
+<p><a href="https://api.tikhub.io/openapi.json" rel="noopener noreferrer" target="_blank">公开 OpenAPI 自报版本 V5.3.2，更新时间 2026-06-22；通用文档 QPS 10/秒。</a></p>
+</li>
+<li><a href="https://tikhub.io/zh/faq" rel="noopener noreferrer" target="_blank">FAQ 将自身定义为多社媒 API，并要求以 Swagger 支持列表为准。</a></li>
+</ul>
+<h3 id="_7">数说聚合／数说故事</h3>
+<p>撤下现成评论API主推，保留定制线索</p>
+<p>前轮依据是原文分析及商业API能力，尚无已核现成商品评价端点和schema，因此撤下本任务主推。</p>
+<ul>
+<li>交付：公开材料证明原文/评论分析、商业API及接口定制，但未取得可自助核实的逐条商品评价端点及JSON schema。</li>
+<li>字段：产品指标/海量原文查看不等于逐条评论JSON字段，目标端点未核。</li>
+<li>深度：未取得目标商品评价API的分页与历史范围。</li>
+<li>维护：没有评论端点维护证据；不据此断言公司或产品停更。</li>
+<li>
+<p>信誉：已有品牌项目线索支持公司业务存在，但不能替代现成评论API交付证据。</p>
+</li>
+<li>
+<p><a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">聚合产品描述评论与原文、商业API传输。</a></p>
+</li>
+<li><a href="https://www.datastory.com.cn/details/782?from=hotspot" rel="noopener noreferrer" target="_blank">官方应用市场介绍说明接口接入与定制，但没有目标评论字段。</a></li>
+</ul>
+<h3 id="embrace">Embrace／蚁讯（名称未定位）</h3>
+<p>名称待定位，不纳入候选</p>
+<p>尚未锁定Embrace／蚁讯对应的官方产品主体，不能据同名搜索结果加入评论API候选。</p>
+<ul>
+<li>交付：按给定名称检索，未找到可明确归属国内电商评论数据服务的官方域名和文档。</li>
+<li>字段：未核。</li>
+<li>深度：未核。</li>
+<li>维护：产品主体未定位，不评价维护状态。</li>
+<li>信誉：缺官方域名与文档，不擅自映射为其他同名品牌。</li>
+</ul>
+<h3 id="_8">魔镜洞察</h3>
+<p>撤下现成评论API主推</p>
+<p>前轮市场与评价趋势资料未证明逐条评论原文API，撤下本任务的现成接口主推。</p>
+<ul>
+<li>交付：既有市场/价控API与分析产品，不等于评论原文API。</li>
+<li>字段：已核市场/价格和评价趋势指标，逐条正文、追评、图像、SKU评论端点未核。</li>
+<li>深度：评论原文端点、分页及实际可读范围未核。</li>
+<li>维护：本轮没有足够证据评价评论API维护状态，不断言公司停运或停更。</li>
+<li>
+<p>信誉：既有主体、案例或行业引用证据不能代替本任务的评论API交付和鉴权验收。</p>
+</li>
+<li>
+<p><a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">公开接口文档（需按具体端点判断）</a></p>
+</li>
+<li><a href="https://www.mktindex.com/static/fenxi/?f=fenxi" rel="noopener noreferrer" target="_blank">分析产品页</a></li>
+</ul>
+<h3 id="nint">Nint 任拓／情报通／倾听</h3>
+<p>撤下现成评论API主推</p>
+<p>前轮评价洞察和行业使用证据未证明现成逐条评论API，撤下本任务主推。</p>
+<ul>
+<li>交付：企业评价研究/定制产品；公开现成商品评价API与schema未核。</li>
+<li>字段：评价分析产品指标可核，逐条评论原文JSON字段未核。</li>
+<li>深度：评论原文端点、分页及实际可读范围未核。</li>
+<li>维护：本轮没有足够证据评价评论API维护状态，不断言公司停运或停更。</li>
+<li>
+<p>信誉：既有主体、案例或行业引用证据不能代替本任务的评论API交付和鉴权验收。</p>
+</li>
+<li>
+<p><a href="https://www.nint.com/shopper-listening" rel="noopener noreferrer" target="_blank">消费者评价洞察产品</a></p>
+</li>
+<li><a href="https://www.nint.com/research" rel="noopener noreferrer" target="_blank">企业研究服务</a></li>
+</ul></article></body></html>

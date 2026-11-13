@@ -1,0 +1,310 @@
+[
+  {
+    "id": "apify-memo23-taobao",
+    "name": "Apify · memo23 淘宝/天猫 Actor",
+    "checked_on": "2026-11-06",
+    "verdict": "只作有限评论试样；不列成熟全量供应商",
+    "api_delivery": "Apify统一执行/数据集API可调用该Actor；每个Actor输入与输出仍独立，不是统一多商城评论业务API。",
+    "review_platform_coverage": {
+      "taobao_tmall": "README明确逐条评论；includeReviews=true；最新最多20条/商品",
+      "jd": "另一个Actor，不由此继承",
+      "pdd": "未核",
+      "meituan": "未核"
+    },
+    "review_fields": [
+      "type=review",
+      "itemId",
+      "reviewId",
+      "rating",
+      "ratingScale",
+      "text",
+      "variant",
+      "postedAt",
+      "authorName",
+      "usefulCount",
+      "scrapedAt"
+    ],
+    "limitations": [
+      "最多20条是硬覆盖限制，不能当全量历史评论。",
+      "代码由社区开发者Muhamed Didovic维护；平台声誉不等于Actor稳定性。",
+      "创建于2026-10-08，历史短；没有本轮鉴权运行。",
+      "Apify网页不同缓存的用户数不一致，优先采用公开REST元数据快照。"
+    ],
+    "evidence": [
+      {
+        "claim": "现行README列评论行字段和maxReviewsPerProduct 0–20。",
+        "url": "https://apify.com/memo23/taobao-scraper"
+      },
+      {
+        "claim": "Actor API入口在商店页可见。",
+        "url": "https://apify.com/memo23/taobao-scraper/api"
+      },
+      {
+        "claim": "公开元数据：3896总用户，1037近30日用户；创建2026-10-08，更新2026-11-05；评论评分数0。",
+        "url": "https://api.apify.com/v2/acts/memo23~taobao-scraper"
+      }
+    ],
+    "maturity_evidence": [
+      {
+        "source": "Apify公开Actor元数据",
+        "url": "https://api.apify.com/v2/acts/memo23~taobao-scraper",
+        "created_at": "2026-10-08T11:10:01.669Z",
+        "modified_at": "2026-11-05T06:40:08.582Z",
+        "total_users": 3896,
+        "users_30_days": 1037,
+        "total_runs": 42096,
+        "reviews_count": 0,
+        "note": "使用计数不是付费客户或数据准确率；中止运行不可直接归因于抓取失败。"
+      }
+    ],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "apify-memo23-jd",
+    "name": "Apify · memo23 京东评论 Actor",
+    "checked_on": "2026-11-06",
+    "verdict": "排除成熟主选；新发布且最多10条",
+    "api_delivery": "平台API执行Actor并取JSON数据集；并非与淘系同一业务schema。",
+    "review_platform_coverage": {
+      "taobao_tmall": "另一个Actor",
+      "jd": "README明确逐条评价，最多10条/商品",
+      "pdd": "未核",
+      "meituan": "未核"
+    },
+    "review_fields": [
+      "reviewId",
+      "skuId",
+      "rating",
+      "text",
+      "appendedText",
+      "imageUrls",
+      "color",
+      "size",
+      "postedAt",
+      "authorName",
+      "authorIsPlus"
+    ],
+    "limitations": [
+      "2026-11-05才创建；公开元数据仅2用户/2运行，无法支持成熟判断。",
+      "最多10条/商品；不能当翻页全量评论服务。",
+      "本轮仅读取文档与公共元数据，未运行Actor。"
+    ],
+    "evidence": [
+      {
+        "claim": "README有逐条评论字段并明确10条上限。",
+        "url": "https://apify.com/memo23/jd-com-reviews-scraper"
+      },
+      {
+        "claim": "公开元数据给出创建时间、运行/用户计数。",
+        "url": "https://api.apify.com/v2/acts/memo23~jd-com-reviews-scraper"
+      }
+    ],
+    "maturity_evidence": [
+      {
+        "url": "https://api.apify.com/v2/acts/memo23~jd-com-reviews-scraper",
+        "created_at": "2026-11-05T08:31:11.015Z",
+        "modified_at": "2026-11-05T08:42:27.430Z",
+        "total_users": 2,
+        "total_runs": 2,
+        "reviews_count": 0
+      }
+    ],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "apify-edgydock-meituan",
+    "name": "Apify · edgy_dock 美团/点评 Actor",
+    "checked_on": "2026-11-06",
+    "verdict": "明确排除：当前未实现评论正文",
+    "api_delivery": "可通过Apify执行，但现行功能主要为城市/区县/商圈及尽力获取店铺。",
+    "review_platform_coverage": {
+      "taobao_tmall": "不适用",
+      "jd": "不适用",
+      "pdd": "不适用",
+      "meituan": "现行README明确评论正文未实现；店铺模式需自有session cookie"
+    },
+    "review_fields": [],
+    "limitations": [
+      "搜索缓存和旧Issues页曾写shops/deals/reviews，不能覆盖现行README明确否认。",
+      "review count不等于review text。",
+      "无需cookie仅适用于地理数据，不适用于店铺模式。"
+    ],
+    "evidence": [
+      {
+        "claim": "现行README明确 Review text is not implemented，店铺模式需自有Cookie。",
+        "url": "https://apify.com/edgy_dock/meituan-dianping-scraper"
+      },
+      {
+        "claim": "公开元数据：27用户、11近30日用户，社区维护。",
+        "url": "https://api.apify.com/v2/acts/edgy_dock~meituan-dianping-scraper"
+      }
+    ],
+    "maturity_evidence": [
+      {
+        "url": "https://api.apify.com/v2/acts/edgy_dock~meituan-dianping-scraper",
+        "created_at": "2026-10-01T04:36:59.874Z",
+        "modified_at": "2026-11-02T01:45:56.081Z",
+        "total_users": 27,
+        "users_30_days": 11,
+        "reviews_count": 0
+      }
+    ],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "brightdata",
+    "name": "Bright Data",
+    "checked_on": "2026-11-06",
+    "verdict": "不进入现成国内评论API名单：只有营销/方案证据",
+    "api_delivery": "有通用采集基础设施与MCP，淘宝/京东评论Tracker页引导演示/报价；未核到对应即用评论dataset_id、输入/输出schema。",
+    "review_platform_coverage": {
+      "taobao_tmall": "有评论Tracker营销页；逐条原文标准API未核",
+      "jd": "有Tracker/MCP营销页；逐条原文标准API未核",
+      "pdd": "本轮未核到现行评论API",
+      "meituan": "本轮未核到现行评论API"
+    },
+    "review_fields": [],
+    "limitations": [
+      "供应商体量不能替代具体国内评论端点证据。",
+      "通用网页抓取/MCP不等于预置多商城评价接口。",
+      "本轮未调用业务接口。"
+    ],
+    "evidence": [
+      {
+        "claim": "淘宝Reviews Tracker以看板和演示/报价为主。",
+        "url": "https://brightdata.com/products/insights/reviews-tracker/taobao"
+      },
+      {
+        "claim": "京东Reviews Tracker描述监测方案，没有本轮可核标准评论schema。",
+        "url": "https://brightdata.com/products/insights/reviews-tracker/jd-com"
+      },
+      {
+        "claim": "京东MCP落地页列评价能力，但非接口字段规范。",
+        "url": "https://brightdata.com/ai/mcp-server/jd"
+      }
+    ],
+    "maturity_evidence": [],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "datashake",
+    "name": "Datashake",
+    "checked_on": "2026-11-06",
+    "verdict": "排除当前主选：统一API明确，国内目标源未证实",
+    "api_delivery": "官网明确统一API/schema及标准JSON；但旧Review Scraper API路径现重定向主页，本轮没有取得可自助核实的中国目标商城来源清单或专用评论schema。",
+    "review_platform_coverage": {
+      "taobao_tmall": "未证实",
+      "jd": "未证实",
+      "pdd": "未证实",
+      "meituan": "未证实"
+    },
+    "review_fields": [],
+    "limitations": [
+      "150+sources、支持中文、全球覆盖均不能推导支持淘京拼美。",
+      "厂商可添加来源的承诺不算当前可用。",
+      "没有把未找到证据写成绝对不支持。"
+    ],
+    "evidence": [
+      {
+        "claim": "当前主页明确One API/One schema；来源只笼统描述。",
+        "url": "https://www.datashake.com/"
+      },
+      {
+        "claim": "平台页说明原始内容和统一JSON，新增来源仍需申请。",
+        "url": "https://www.datashake.com/platform"
+      },
+      {
+        "claim": "旧Walmart评论路径实际跳转当前主页，不能拿旧目录代替现行目标平台清单。",
+        "url": "https://datashake.com/review-scraper-api/scrape-walmart-reviews"
+      }
+    ],
+    "maturity_evidence": [],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "data365",
+    "name": "Data365",
+    "checked_on": "2026-11-06",
+    "verdict": "排除本需求：社媒评论不是国内电商购后评价",
+    "api_delivery": "正式服务是海外社媒API，可返回post/comments；没有核到国内电商评论接口。",
+    "review_platform_coverage": {
+      "taobao_tmall": "未证实",
+      "jd": "未证实",
+      "pdd": "未证实",
+      "meituan": "未证实"
+    },
+    "review_fields": [
+      "社媒示例评论text",
+      "comment owner ID",
+      "creation date"
+    ],
+    "limitations": [
+      "TikTok不等于国内抖音电商，更不等于淘京拼美。",
+      "通用多平台单连接优势不补足目标商城来源缺口。"
+    ],
+    "evidence": [
+      {
+        "claim": "官方产品与演示主要列Facebook/Instagram/X/TikTok/Reddit等。",
+        "url": "https://data365.co/"
+      },
+      {
+        "claim": "官方演示有社媒POST更新/GET查询逻辑，数据对象是社媒账号与帖子。",
+        "url": "https://data365.co/ja/presentation"
+      }
+    ],
+    "maturity_evidence": [],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "datastory",
+    "name": "数说聚合／数说故事",
+    "checked_on": "2026-11-06",
+    "verdict": "排除当前现成评论API名单；保留定制线索",
+    "api_delivery": "公开材料证明原文/评论分析、商业API及接口定制，但未取得可自助核实的逐条商品评价端点及JSON schema。",
+    "review_platform_coverage": {
+      "taobao_tmall": "产品覆盖线索，不等于评论原文API",
+      "jd": "产品覆盖线索，不等于评论原文API",
+      "pdd": "产品覆盖线索，不等于评论原文API",
+      "meituan": "只有方案/测试站线索，生产评价API未核"
+    },
+    "review_fields": [],
+    "limitations": [
+      "“海量原文查看”不能证明向用户系统逐条API交付。",
+      "产品页/API数量与客户案例不能代替现行评论端点。",
+      "本轮不再将企业定制可能性算作满足现成API要求。"
+    ],
+    "evidence": [
+      {
+        "claim": "聚合产品描述评论与原文、商业API传输。",
+        "url": "https://www.datastory.com.cn/product/hermes"
+      },
+      {
+        "claim": "官方应用市场介绍说明接口接入与定制，但没有目标评论字段。",
+        "url": "https://www.datastory.com.cn/details/782?from=hotspot"
+      }
+    ],
+    "maturity_evidence": [],
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "unresolved-embrace-yixun",
+    "name": "Embrace／蚁讯（名称未定位）",
+    "checked_on": "2026-11-06",
+    "verdict": "不纳入候选：未锁定对应产品主体",
+    "api_delivery": "按给定名称检索，未找到可明确归属国内电商评论数据服务的官方域名和文档。",
+    "review_platform_coverage": {
+      "taobao_tmall": "未证实",
+      "jd": "未证实",
+      "pdd": "未证实",
+      "meituan": "未证实"
+    },
+    "review_fields": [],
+    "limitations": [
+      "同名搜索结果包含Shopify主题、移动工具和无关企业；不能擅自映射为蚁坊、蚁小二或其他品牌。",
+      "缺官方产品链接时不评估可信度，也不推断不存在。"
+    ],
+    "evidence": [],
+    "maturity_evidence": [],
+    "authenticated_business_api_success": false
+  }
+]

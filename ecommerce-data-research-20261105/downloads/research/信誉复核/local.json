@@ -1,0 +1,505 @@
+[
+  {
+    "id": "candao",
+    "name": "餐道",
+    "verdict": "核心保留：自营餐饮门店集成",
+    "reason": "美团官方服务商名录与具体餐饮项目共同支持其实际业务存在；适配自己的外卖门店订单/商品/运营集成，不是美团全网竞品数据商。",
+    "credibility_evidence": [
+      {
+        "claim": "美团技术服务合作中心列出广州餐道信息科技有限公司、中台系统及接入时间2017年7月。",
+        "url": "https://developer.meituan.com/isv/list?bizId=20&stageId=6",
+        "source_type": "平台方官方服务商名录",
+        "date": null,
+        "scope": "历史接入及服务商身份；不代表全部当前接口权限，也不包含竞品访问权"
+      },
+      {
+        "claim": "餐道官网有产品及开放平台入口。",
+        "url": "https://www.can-dao.com/product.html",
+        "source_type": "供应商产品页",
+        "date": null,
+        "scope": "产品存在与自有门店集成定位"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "老乡鸡",
+        "description": "餐道2019-03-15案例披露2018年12月为600余门店上线外卖中台；这是供应商发布的具名项目，未查到客户官网独立确认。",
+        "url": "https://www.can-dao.com/news/1387.html",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "官网开放平台可核；本轮未取得无需登录的完整正式接口字段，需商务确认商家授权、平台范围及出数权限。",
+        "url": "https://open-api.can-dao.com/"
+      }
+    ],
+    "limitations": [
+      "目前较强独立证据是美团平台方名录；具名客户案例仍由供应商发布。",
+      "不能把外卖接入泛化为美团闪购、团购、点评全网数据。",
+      "评价全文、广告明细及对外API字段需授权后逐项验收；未实调鉴权API。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "dingdian",
+    "name": "鼎点科技",
+    "verdict": "降级：仅留待核候选",
+    "reason": "美团/饿了么等数据支持主要来自供应商营销文章，未核到相匹配的公开正式API路径、字段、客户侧案例或平台方认证，不纳入当前可信数据源精选。",
+    "credibility_evidence": [
+      {
+        "claim": "官网文章宣称电商与本地生活数据API能力。",
+        "url": "https://www.dingdiankj.cn/contents/44/522.html",
+        "source_type": "供应商营销文章",
+        "date": "2024-11-06",
+        "scope": "仅证明供应商自述，不验证实际交付"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "当前证据为方案文章；没有确认的公开请求路径、鉴权说明或响应字段。",
+        "url": "https://www.dingdiankj.cn/contents/44/522.html"
+      }
+    ],
+    "limitations": [
+      "未找到可交叉核验的具名客户侧材料；这是证据不足，不是认定企业不可靠。",
+      "美团外卖、闪购与团购未按子业务给出可验证接口。",
+      "须提供实际样本、失败率/时效记录及合同交付范围后再评估。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "jzl-dajiala",
+    "name": "极致了/大家来数据",
+    "verdict": "降级：美团能力待核",
+    "reason": "有网站和多类数据营销内容，但美团部分未核到正式可调用API文档、完整样例或客户侧项目；不能凭覆盖宣称进入可信美团竞品源精选。",
+    "credibility_evidence": [
+      {
+        "claim": "官网发布美团数据API相关介绍。",
+        "url": "https://www.jzl.com/news/meituan-data-api-2",
+        "source_type": "供应商营销文章",
+        "date": null,
+        "scope": "美团能力自述"
+      },
+      {
+        "claim": "大家来提供数据服务入口。",
+        "url": "https://www.dajiala.com/",
+        "source_type": "供应商产品页",
+        "date": null,
+        "scope": "不能自动映射为已验证美团接口"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "美团介绍页不是完整技术文档，未确认端点/字段。",
+        "url": "https://www.jzl.com/news/meituan-data-13"
+      }
+    ],
+    "limitations": [
+      "不将其社媒产品的能力外推至美团外卖、闪购、团购。",
+      "本轮未发现客户侧案例、平台名录或可解析业务响应足以验证美团数据交付。",
+      "证据缺失不等于企业不可靠；暂不作为核心数据供应商推荐。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "futaike",
+    "name": "富泰科",
+    "verdict": "降级：采集软件/定制服务候选",
+    "reason": "可核到采集产品、方案及软件下载，比只有营销口号更具体；但缺少已确认的正式聚合API及可独立验证的具名客户，不按成熟API数据提供商推荐。",
+    "credibility_evidence": [
+      {
+        "claim": "官网列有美团/饿了么采集方案及具体软件产品。",
+        "url": "https://www.futaike.net/meituan-ele-data-solution",
+        "source_type": "供应商产品方案",
+        "date": null,
+        "scope": "软件/定制服务，非已验证标准API"
+      },
+      {
+        "claim": "公开软件下载链接可达；本次仅检查压缩包目录，没有运行程序，也未找到供应商Excel/CSV业务样本。",
+        "url": "https://www.futaike.net/product_service/11272.html",
+        "source_type": "本次HTTP核验及供应商产品页",
+        "date": "2026-11-05",
+        "scope": "软件下载存在，不等于可采集成功"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "产品页描述采集和导出功能，尚无已验证的标准API请求/响应。",
+        "url": "https://www.futaike.net/meituan-ele-waimai-data-get"
+      }
+    ],
+    "limitations": [
+      "官网匿名高校/品牌等案例不足以独立验真。",
+      "外卖页面采集不能推导为美团闪购和团购都可交付。",
+      "评价全文、覆盖率、历史深度和更新频率须实际样本验证。",
+      "未安装软件、未运行采集、未实调业务API。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "yunfei",
+    "name": "云飞API",
+    "verdict": "降级：自有门店团购技术候选",
+    "reason": "有具体授权与团购接口文档，证据强于营销页；但独立客户/平台背书未核实，且能力是授权门店团购，不适配竞品外卖/闪购分析。",
+    "credibility_evidence": [
+      {
+        "claim": "公开文档提供绑定/授权及团购相关接口。",
+        "url": "https://doc.yunfeiapi.com/8949771m0",
+        "source_type": "供应商正式技术文档",
+        "date": null,
+        "scope": "授权门店团购集成"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "团购查询文档有具体请求和响应结构；应按门店授权范围接入。",
+        "url": "https://doc.yunfeiapi.com/9034922m0"
+      }
+    ],
+    "limitations": [
+      "未找到可交叉核验的客户侧案例或美团官方服务商条目。",
+      "团购商品/核销记录不是竞品全网销量，不等于外卖订单或闪购商品。",
+      "接口存在不证明当前账号获权、稳定性和字段真实性；未实调。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "elys",
+    "name": "无限聚核",
+    "verdict": "降级：自有门店核销技术候选",
+    "reason": "正式文档细化了门店授权、验券、核销、撤销，适配范围清楚；但客户案例为供应商自述，未获独立确认，不列作美团竞品数据源。",
+    "credibility_evidence": [
+      {
+        "claim": "官网自述运营方为宁德无限递归网络科技有限公司，业务为门店团购核销接入。",
+        "url": "https://www.elys.cn/",
+        "source_type": "供应商产品页及主体自述",
+        "date": null,
+        "scope": "产品和运营主体声明，非第三方资信认证"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "怪兽健身/省钱兄",
+        "description": "官网客户案例标注省钱兄研发、无限聚核提供核销服务；未核到客户方公开确认。",
+        "url": "https://www.elys.cn/",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "V2文档含授权门店商品与核销接口，使用Bearer及shopId等；V1已停止维护。",
+        "url": "https://doc.elys.cn/#v2-deals"
+      },
+      {
+        "claim": "到店餐饮有独立文档；应与服务零售及体育预订分别验权。",
+        "url": "https://doc.elys.cn/dining"
+      }
+    ],
+    "limitations": [
+      "未验证官方平台合作资质和客户侧案例；不是据此判断供应商不可靠。",
+      "核销接口限授权门店，不能拿到竞争门店订单、评价全文、广告投放。",
+      "公开文档未实调；供应商门店数量等规模宣称未独立核实。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "zhidemai",
+    "name": "值得买消费信息开放平台",
+    "verdict": "外围保留：消费内容、口碑与价格",
+    "reason": "上市公司年报正式披露消费信息服务和海纳MCP，企业及产品证据较强；适合消费内容/价格/推荐场景，不能因品牌强就认定能提供竞品真实销量或投放数据。",
+    "credibility_evidence": [
+      {
+        "claim": "北京值得买科技股份有限公司2025年年报披露证券代码300785及消费信息/海纳MCP业务；MCP包含内容检索、商品推荐、商品口碑、优惠好价、图搜商品。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225162409.PDF",
+        "source_type": "上市公司法定年报",
+        "date": "2026-04-24",
+        "scope": "证明上市主体和所披露业务；不独立保证具体字段质量"
+      },
+      {
+        "claim": "年报列出Kimi、智谱清言、夸克、豆包、腾讯元宝等合作方；属于发行人正式披露，非逐家客户侧确认。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225162409.PDF",
+        "source_type": "上市公司法定年报",
+        "date": "2026-04-24",
+        "scope": "合作及产品商业化证据"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "Kimi等AI产品",
+        "description": "2025年报列举消费信息合作伙伴；本轮未逐家取得客户方确认，不能将名单等同每种API已被使用。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225162409.PDF",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "正式商品检索接口文档公开请求和响应。",
+        "url": "https://openapi.zhidemai.com/pages/aiagent/1.商品检索接口.html"
+      },
+      {
+        "claim": "商品口碑接口与MCP有明确产品入口，口碑总结不等于原始评价全文。",
+        "url": "https://openapi.zhidemai.com/pages/aiagent/2.商品口碑接口.html"
+      },
+      {
+        "claim": "海纳MCP产品页。",
+        "url": "https://ai.zhidemai.com/mcp"
+      }
+    ],
+    "limitations": [
+      "不提供已核实的全市场竞品真实订单/广告消耗。",
+      "老评论查询文档与新AI口碑能力须分别验收，不能混为可导出全量用户评价。",
+      "当前API授权、费用、覆盖SKU与时效需要商务及样本确认；未实调鉴权API。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "dataoke",
+    "name": "大淘客",
+    "verdict": "外围条件保留：联盟选品与优惠价格",
+    "reason": "有公开正式API文档及长期产品资料；同名运营企业可见政府名单。适配联盟选品/优惠券/佣金，不将联盟商品库误作全商品竞品数据库。",
+    "credibility_evidence": [
+      {
+        "claim": "四川省经信厅2024年第八批创新型中小企业名单列出成都大淘客科技有限公司。",
+        "url": "https://jxt.sc.gov.cn/scjxt/qtwj/2024/10/12/eac7a7ad50684110a7aa6eb89f5a2507/files/%E9%99%84%E4%BB%B6%EF%BC%9A%E5%9B%9B%E5%B7%9D%E7%9C%81%E7%AC%AC%E5%85%AB%E6%89%B9%E5%88%9B%E6%96%B0%E5%9E%8B%E4%B8%AD%E5%B0%8F%E4%BC%81%E4%B8%9A%E5%90%8D%E5%8D%95.pdf",
+        "source_type": "政府企业名单",
+        "date": "2024-10-12",
+        "scope": "企业存在/认定；不证明API准确性，域名运营主体链路仍需合同核对"
+      },
+      {
+        "claim": "官网开发平台提供商品列表及历史价格等具体接口文档。",
+        "url": "https://www.dataoke.com/kfpt/",
+        "source_type": "供应商正式开发平台",
+        "date": null,
+        "scope": "可审阅的技术产品"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "商品列表get-goods-list及字段文档公开，含monthSales等统计口径。",
+        "url": "https://www.dataoke.com/kfpt/api-d.html?id=5"
+      },
+      {
+        "claim": "历史价格趋势有独立文档。",
+        "url": "https://www.dataoke.com/kfpt/api-d.html?id=36"
+      }
+    ],
+    "limitations": [
+      "未发现足够具名客户侧案例，政府名单不等于客户验收。",
+      "monthSales等联盟热销字段不是全网精确成交明细；商品覆盖受联盟供给约束。",
+      "竞品广告消耗、用户评价全文未证明支持；未实调鉴权API。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "haodanku",
+    "name": "好单库",
+    "verdict": "外围条件保留：联盟选品；先验价格质量",
+    "reason": "产品、开放文档和实际匿名HTTP响应均可核；比仅营销页更具体。但品牌/奖项主要仍为供应商自述，且实得样本存在价格和券数量口径冲突，不能直接作可信统一价格库。",
+    "credibility_evidence": [
+      {
+        "claim": "官网明确主体为广州市蜂擎信息科技有限公司，列有产品与联盟奖项；奖项仍属于供应商自述，未取得颁奖方交叉确认。",
+        "url": "https://www.haodanku.com/aboutus",
+        "source_type": "供应商主体及产品自述",
+        "date": null,
+        "scope": "主体声明及长期产品线"
+      },
+      {
+        "claim": "2026-11-05匿名HTTP公开活动接口实际返回3条商品、每条41个键；原始JSON已保存。",
+        "url": "https://www.haodanku.com/Activity/get_three_datas",
+        "source_type": "本次匿名HTTP实测",
+        "date": "2026-11-05",
+        "scope": "仅此公开活动响应成功；不是正式鉴权API、真实订单或供应商Excel导出"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "官方AI可读文档及可下载文档包包含开放接口说明。",
+        "url": "https://www.haodanku.com/openapi/ai_docs"
+      },
+      {
+        "claim": "正式商品接口文档可核，接入需APIKEY及按接口所需联盟授权。",
+        "url": "https://www.haodanku.com/openapi/api_detail?id=60"
+      }
+    ],
+    "limitations": [
+      "样本itemid=521027319777：couponnum=10000，couponsurplus=948650与couponreceive=51350合计1000000，数量口径相冲突。",
+      "样本itemid=600558109013：itemendprice=60且couponmoney=0，而推广文案称到手35.17；须区分券后价、叠加价及文案时效。",
+      "联盟选品不代表平台全商品；本地生活联盟链接不代表外卖/闪购竞品数据。",
+      "本轮未实调鉴权API、未做真实交易或当前UI试用；公开响应不能代替长期质量评估。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "zhetaoke",
+    "name": "折淘客/折京客",
+    "verdict": "外围备选：联盟工具，未进核心精选",
+    "reason": "有明确运营主体声明及具体京东联盟字段文档，适合联盟促销/转链用途；未取得客户侧/平台方足够证据，不作为通用竞品数据源主推。",
+    "credibility_evidence": [
+      {
+        "claim": "官网关于页自述由北京科宇畅游信息技术有限公司运营。",
+        "url": "https://www.zhetaoke.com/s/guanyu.html",
+        "source_type": "供应商主体自述",
+        "date": null,
+        "scope": "主体声明，不是工商实查或客户验收"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "京东关键词领券商品文档列出具体字段及鉴权方式。",
+        "url": "https://j.zhetaoke.com/user/extend/extend_lingquan_keywords.aspx"
+      },
+      {
+        "claim": "京东商品详情文档公开；部分销量字段有停用/口径限制，不能简单宣称拿到销量。",
+        "url": "https://j.zhetaoke.com/user/open/open_item_info3.aspx"
+      }
+    ],
+    "limitations": [
+      "未核到可信客户侧具体案例或官方平台资质。",
+      "联盟供给、优惠券、佣金和转链用途，不等于所有SKU的销量/评论源。",
+      "salesCount等字段须检查废弃声明及响应，不能按字段名推断当前有效；未实调。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "manmanbuy",
+    "name": "慢慢买",
+    "verdict": "外围保留品牌；API接入待核",
+    "reason": "价格比较/历史价格产品定位明确，国家信息中心研究曾将其列为价格数据相关网站；但当前标准API文档与交付字段未核实，不能列作已可接入数据源。",
+    "credibility_evidence": [
+      {
+        "claim": "国家信息中心宏观经济监测研究将慢慢买等网站列入商品价格信息相关资源。",
+        "url": "https://www.sic.gov.cn/sic/608/611/0504/9707_pc.html",
+        "source_type": "国家信息中心研究文章",
+        "date": null,
+        "scope": "研究引用其价格网站；不是采购、API验收或服务质量认证"
+      },
+      {
+        "claim": "官方帮助中心描述价格比较/历史价格及开放API历史。",
+        "url": "https://help.manmanbuy.com/",
+        "source_type": "供应商帮助文档",
+        "date": null,
+        "scope": "产品定位；历史开放不等于当前可买可用"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "公开帮助入口可核，但本次未取得当前正式API端点、完整字段与报价。",
+        "url": "https://help.manmanbuy.com/default.aspx?id=144075"
+      }
+    ],
+    "limitations": [
+      "国家机构研究引用不能解释为当前合作关系。",
+      "只列价格用途外围候选，不纳入已验证API主名单。",
+      "跨平台同款匹配、会员/券后价、历史频率和覆盖范围须供应商样本确认。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "bazhuayu",
+    "name": "八爪鱼",
+    "verdict": "外围保留：采集与导出工具",
+    "reason": "客户侧官方采购记录证实产品真实应用，且有正式API/导出文档；但它是采集工具，不是开箱即有国内全平台数据的供应商。",
+    "credibility_evidence": [
+      {
+        "claim": "广东职业技术学院公开2022信息化建设投入清单列明八爪鱼采集器软件采购合同，供应商深圳视界信息技术有限公司，金额57800元。",
+        "url": "https://img.gdpt.edu.cn/uploads/file/20230512/82f70ac425f4e673224103a79a5be605.pdf",
+        "source_type": "客户侧官方采购清单",
+        "date": "2023-05-12",
+        "scope": "证明客户采购该软件；不证明每个电商模板可采或数据完整"
+      },
+      {
+        "claim": "揭阳职业技术学院发布校企研讨会材料，介绍八爪鱼研发应用及软件捐赠。",
+        "url": "https://xinxi.jyc.edu.cn/info/1012/1448.htm",
+        "source_type": "客户侧官方院校文章",
+        "date": "2022-05-20",
+        "scope": "产品实际教育合作；不代表商业数据接口验收"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "广东职业技术学院",
+        "description": "学校公开投入明细有“电子商务专业群大数据采集平台采购合同（八爪鱼采集器软件）”及采购金额。",
+        "url": "https://img.gdpt.edu.cn/uploads/file/20230512/82f70ac425f4e673224103a79a5be605.pdf",
+        "customer_side": true
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "正式OpenAPI文档可用于任务/已采集数据管理。",
+        "url": "https://openapi.bazhuayu.com/zh-CN/"
+      },
+      {
+        "claim": "帮助文档说明Excel/CSV及API导出；云端保留时间、套餐限制需核对。",
+        "url": "https://www.bazhuayu.com/helpcenter/docs/2xF5Mz/eYW3hC"
+      }
+    ],
+    "limitations": [
+      "客户采购不等于淘宝、京东、拼多多、美团所有字段都可持续采集。",
+      "需要用户配置或定制模板、处理页面/账号/验证码变化；导出的是采集任务结果。",
+      "不作为真实竞品成交/广告消耗数据库；本次未运行电商采集任务。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "yunting",
+    "name": "云听CEM",
+    "verdict": "条件保留：评论/VOC专项；待客户与样本复核",
+    "reason": "有具名产品案例、明确MCP原始声量查询与Excel结果机制；适配用户评价分析专项，但独立客户侧确认和实际导出样本尚缺，不能提升为全平台综合数据源。",
+    "credibility_evidence": [
+      {
+        "claim": "数阔官网披露科沃斯客户体验项目及相关活动，属于供应商发布。",
+        "url": "https://www.skieer.com/news/180.html",
+        "source_type": "供应商具名案例/活动",
+        "date": null,
+        "scope": "可追溯具体项目自述，非客户侧证明"
+      },
+      {
+        "claim": "官网有万兴科技客户体验方案案例。",
+        "url": "https://www.skieer.com/3Cshuma/34.html",
+        "source_type": "供应商具名案例",
+        "date": null,
+        "scope": "案例具体但需客户引用或项目证明交叉验证"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "科沃斯",
+        "description": "供应商披露云听合作及客户体验管理案例；本轮未找到科沃斯官网对应确认。",
+        "url": "https://www.skieer.com/news/180.html",
+        "customer_side": false
+      },
+      {
+        "customer": "万兴科技",
+        "description": "数阔官网有具名客户体验方案案例，未取得客户侧独立确认。",
+        "url": "https://www.skieer.com/3Cshuma/34.html",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "MCP文档明确query_project_raw_messages(projectId等)，异步任务返回task_id，后续结果含cosExcelUrl。",
+        "url": "https://www.yuntingai.com/mcp-doc/"
+      },
+      {
+        "claim": "MCP服务使用鉴权key，查询限定配置项目。",
+        "url": "https://www.yuntingai.com/mcp/"
+      }
+    ],
+    "limitations": [
+      "八爪鱼客户侧采购证据不能自动证明同集团云听产品的特定客户案例。",
+      "需建立/授权项目及配置数据源；不是任意输入商品就获取全平台原始评论。",
+      "原始评论与AI摘要必须分开；实际Excel列名、评价分页覆盖、历史深度未取得公开样本。",
+      "不提供已验证的竞争对手精确销量或广告消耗；未实调MCP。"
+    ],
+    "checked_on": "2026-11-05"
+  }
+]

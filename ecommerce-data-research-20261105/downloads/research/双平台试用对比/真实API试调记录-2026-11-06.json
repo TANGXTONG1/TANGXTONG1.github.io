@@ -1,0 +1,4536 @@
+{
+  "checked_on": "2026-11-06",
+  "scope": "少量真实调用与分页抽样，不代表所有商品、全历史覆盖或长期稳定性。",
+  "sample_policy": "公开文件仅保留每次返回的前两条脱敏摘录，正文最多40字，并列原文长度；密钥、邮箱、作者资料、图片URL及分页令牌未发布。完整原始响应保存在本机私有目录。",
+  "everyinfra_trial": {
+    "claimed": true,
+    "initial_credit_usd": 1,
+    "expires_at_display": "2026-11-07 15:08 UTC+8",
+    "business_requests": 15,
+    "spent_usd": 0.060139,
+    "credits_charged": 4330,
+    "latest_balance_usd": 0.93986111
+  },
+  "qovia_trial": {
+    "initial_calls": 50,
+    "business_requests": 14,
+    "nonempty_successes": 9,
+    "latest_account_observation": {
+      "checked_at": "2026-11-06T09:00:01.569722+00:00",
+      "billing": {
+        "balance_usd": "0.000000",
+        "plan": "free",
+        "rpm_limit": 60,
+        "trial_calls_remaining": 41
+      },
+      "rpm_header": "60"
+    }
+  },
+  "cases": [
+    {
+      "vendor": "EveryInfra",
+      "platform": "taobao",
+      "action": "reviews",
+      "requests": 3,
+      "nonempty_requests": 0,
+      "rows_returned": 0,
+      "unique_comment_ids": 0,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        13,
+        17.265,
+        13.445
+      ],
+      "pagination_observations": [
+        null,
+        null,
+        null
+      ],
+      "fields": [],
+      "field_counts": {},
+      "default_text_count": 0,
+      "oldest_date_in_sample": null,
+      "newest_date_in_sample": null,
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        null,
+        200,
+        200
+      ],
+      "run_ids": [
+        "everyinfra-playground-taobao-20261106",
+        "taobao-reviews-20261106T071245Z",
+        "taobao-reviews-20261106T071934Z"
+      ]
+    },
+    {
+      "vendor": "EveryInfra",
+      "platform": "jd",
+      "action": "reviews",
+      "requests": 1,
+      "nonempty_requests": 1,
+      "rows_returned": 10,
+      "unique_comment_ids": 10,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.001389,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        25.211
+      ],
+      "pagination_observations": [
+        null
+      ],
+      "fields": [
+        "author_avatar_url",
+        "author_is_plus",
+        "author_name",
+        "buy_count",
+        "color",
+        "id",
+        "images",
+        "item_id",
+        "platform",
+        "posted_at",
+        "rating",
+        "rating_scale",
+        "text",
+        "useful_count"
+      ],
+      "field_counts": {
+        "item_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_is_plus": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "color": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "buy_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "useful_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "platform": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_name": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_avatar_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "posted_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating_scale": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "default_text_count": 1,
+      "oldest_date_in_sample": "2026-11-04 09:44:17",
+      "newest_date_in_sample": "2026-11-06 07:41:01",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200
+      ],
+      "run_ids": [
+        "jd-reviews-20261106T071409Z"
+      ]
+    },
+    {
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "reviews",
+      "requests": 2,
+      "nonempty_requests": 2,
+      "rows_returned": 40,
+      "unique_comment_ids": 40,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.011111,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        2.864,
+        2.878
+      ],
+      "pagination_observations": [
+        {
+          "page": 1,
+          "has_more": true,
+          "stop_reason": null
+        },
+        {
+          "page": 2,
+          "has_more": true,
+          "stop_reason": null
+        }
+      ],
+      "fields": [
+        "id",
+        "images",
+        "like_count",
+        "logistics_rating",
+        "next_page_token",
+        "platform",
+        "posted_date",
+        "product_id",
+        "rating",
+        "rating_scale",
+        "reply_count",
+        "service_rating",
+        "sku",
+        "tags",
+        "text"
+      ],
+      "field_counts": {
+        "like_count": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "product_id": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "next_page_token": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "logistics_rating": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "posted_date": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "images": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "reply_count": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "sku": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "id": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "platform": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "text": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "service_rating": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "rating": {
+          "present": 40,
+          "nonempty": 40
+        },
+        "tags": {
+          "present": 26,
+          "nonempty": 26
+        },
+        "rating_scale": {
+          "present": 40,
+          "nonempty": 40
+        }
+      },
+      "default_text_count": 0,
+      "oldest_date_in_sample": "2025-11-06",
+      "newest_date_in_sample": "2026-10-29",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200
+      ],
+      "run_ids": [
+        "xiaohongshu-reviews-20261106T071553Z",
+        "xiaohongshu-reviews-20261106T071710Z"
+      ]
+    },
+    {
+      "vendor": "EveryInfra",
+      "platform": "douyin",
+      "action": "comments",
+      "requests": 2,
+      "nonempty_requests": 2,
+      "rows_returned": 27,
+      "unique_comment_ids": 27,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.001111,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        1.813,
+        2.337
+      ],
+      "pagination_observations": [
+        {
+          "page": 1,
+          "has_more": true,
+          "stop_reason": null
+        },
+        {
+          "page": 2,
+          "has_more": true,
+          "stop_reason": null
+        }
+      ],
+      "fields": [
+        "author_avatar_url",
+        "author_id",
+        "author_name",
+        "author_uid",
+        "id",
+        "images",
+        "ip_location",
+        "is_reply",
+        "like_count",
+        "liked_by_author",
+        "next_page_token",
+        "platform",
+        "posted_at",
+        "reply_count",
+        "text",
+        "video_id"
+      ],
+      "field_counts": {
+        "like_count": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "liked_by_author": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "author_uid": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "ip_location": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "video_id": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "next_page_token": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "images": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "author_id": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "is_reply": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "reply_count": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "id": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "platform": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "author_name": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "author_avatar_url": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "posted_at": {
+          "present": 27,
+          "nonempty": 27
+        },
+        "text": {
+          "present": 27,
+          "nonempty": 25
+        }
+      },
+      "default_text_count": 0,
+      "oldest_date_in_sample": "2026-09-20T13:40:18+00:00",
+      "newest_date_in_sample": "2026-11-01T14:32:40+00:00",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200
+      ],
+      "run_ids": [
+        "douyin-comments-20261106T071847Z",
+        "douyin-comments-20261106T073227Z"
+      ]
+    },
+    {
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "comments",
+      "requests": 2,
+      "nonempty_requests": 2,
+      "rows_returned": 25,
+      "unique_comment_ids": 24,
+      "duplicate_ids_across_requests": 1,
+      "charge_usd": 0.011111,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        3.976,
+        2.436
+      ],
+      "pagination_observations": [
+        {
+          "page": 1,
+          "has_more": true,
+          "stop_reason": null
+        },
+        {
+          "page": 2,
+          "has_more": true,
+          "stop_reason": null
+        }
+      ],
+      "fields": [
+        "author_avatar_url",
+        "author_id",
+        "author_is_ai_agent",
+        "author_name",
+        "author_red_id",
+        "comment_tags",
+        "id",
+        "images",
+        "ip_location",
+        "is_author",
+        "like_count",
+        "mentioned_users",
+        "next_page_token",
+        "note_id",
+        "note_url",
+        "platform",
+        "posted_at",
+        "sub_comment_count",
+        "sub_comments",
+        "text"
+      ],
+      "field_counts": {
+        "like_count": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "ip_location": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "note_id": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "author_avatar_url": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "text": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "author_red_id": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "comment_tags": {
+          "present": 25,
+          "nonempty": 0
+        },
+        "next_page_token": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "mentioned_users": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "note_url": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "images": {
+          "present": 25,
+          "nonempty": 0
+        },
+        "id": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "platform": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "author_id": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "author_is_ai_agent": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "posted_at": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "sub_comment_count": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "author_name": {
+          "present": 25,
+          "nonempty": 25
+        },
+        "sub_comments": {
+          "present": 25,
+          "nonempty": 0
+        },
+        "is_author": {
+          "present": 25,
+          "nonempty": 25
+        }
+      },
+      "default_text_count": 0,
+      "oldest_date_in_sample": "2026-10-27T05:56:06+00:00",
+      "newest_date_in_sample": "2026-11-03T09:14:13+00:00",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200
+      ],
+      "run_ids": [
+        "xiaohongshu-comments-20261106T072252Z",
+        "xiaohongshu-comments-20261106T072459Z"
+      ]
+    },
+    {
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments",
+      "requests": 3,
+      "nonempty_requests": 0,
+      "rows_returned": 0,
+      "unique_comment_ids": 0,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        3.134,
+        5.033,
+        4.189
+      ],
+      "pagination_observations": [
+        {},
+        {},
+        {}
+      ],
+      "fields": [],
+      "field_counts": {},
+      "default_text_count": 0,
+      "oldest_date_in_sample": null,
+      "newest_date_in_sample": null,
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        503,
+        503,
+        503
+      ],
+      "run_ids": [
+        "qovia-v1-raw-taobao-comments-20261106T073004Z",
+        "qovia-v1-raw-taobao-comments-20261106T073307Z",
+        "qovia-v1-raw-taobao-comments-20261106T085926Z"
+      ]
+    },
+    {
+      "vendor": "Qovia",
+      "platform": "xiaohongshu",
+      "action": "comments",
+      "requests": 2,
+      "nonempty_requests": 2,
+      "rows_returned": 10,
+      "unique_comment_ids": 10,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 2,
+      "latency_seconds": [
+        5.475,
+        16.449
+      ],
+      "pagination_observations": [
+        {
+          "cursor": "[游标已省略]",
+          "has_more": true,
+          "comment_count": 278
+        },
+        {
+          "cursor": "[游标已省略]",
+          "has_more": true,
+          "comment_count": 278
+        }
+      ],
+      "fields": [
+        "at_users",
+        "comment_type",
+        "content",
+        "id",
+        "ip_location",
+        "like_count",
+        "like_view_count",
+        "liked",
+        "note_id",
+        "status",
+        "sub_comment_count",
+        "sub_comments",
+        "time",
+        "user"
+      ],
+      "field_counts": {
+        "like_view_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "like_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "liked": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "ip_location": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "content": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "at_users": {
+          "present": 10,
+          "nonempty": 3
+        },
+        "note_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "time": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "user": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sub_comment_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sub_comments": {
+          "present": 10,
+          "nonempty": 4
+        },
+        "comment_type": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "status": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "default_text_count": 0,
+      "oldest_date_in_sample": "2026-10-28T09:30:03+00:00",
+      "newest_date_in_sample": "2026-11-03T09:14:13+00:00",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200
+      ],
+      "run_ids": [
+        "qovia-v1-raw-xiaohongshu-comments-20261106T073006Z",
+        "qovia-v1-raw-xiaohongshu-comments-20261106T073150Z"
+      ]
+    },
+    {
+      "vendor": "Qovia",
+      "platform": "jd",
+      "action": "comments",
+      "requests": 3,
+      "nonempty_requests": 3,
+      "rows_returned": 30,
+      "unique_comment_ids": 30,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 3,
+      "latency_seconds": [
+        5.753,
+        16.937,
+        6.208
+      ],
+      "pagination_observations": [
+        {
+          "page": 1,
+          "has_more": true,
+          "max_page": 2,
+          "total": 1000
+        },
+        {
+          "page": 2,
+          "has_more": true,
+          "max_page": 4,
+          "total": 1000
+        },
+        {
+          "page": 3,
+          "has_more": true,
+          "max_page": 6,
+          "total": 1000
+        }
+      ],
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "id",
+        "images",
+        "ip_location",
+        "likes",
+        "rating",
+        "shop_reply",
+        "sku",
+        "sku_id",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "likes": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "ip_location": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "cid": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "shop_reply": {
+          "present": 30,
+          "nonempty": 3
+        },
+        "images": {
+          "present": 30,
+          "nonempty": 27
+        },
+        "created_at": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "sku": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "id": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "text": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "rating": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "sku_id": {
+          "present": 30,
+          "nonempty": 30
+        },
+        "user_name": {
+          "present": 30,
+          "nonempty": 30
+        }
+      },
+      "default_text_count": 1,
+      "oldest_date_in_sample": "2026-11-02T13:00:29+08:00",
+      "newest_date_in_sample": "2026-11-06T07:41:01+08:00",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "run_ids": [
+        "qovia-v1-raw-jd-comments-20261106T073006Z",
+        "qovia-v1-raw-jd-comments-20261106T073150Z",
+        "qovia-v1-raw-jd-comments-20261106T073309Z"
+      ]
+    },
+    {
+      "vendor": "Qovia",
+      "platform": "douyin",
+      "action": "comments",
+      "requests": 2,
+      "nonempty_requests": 2,
+      "rows_returned": 37,
+      "unique_comment_ids": 29,
+      "duplicate_ids_across_requests": 8,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 2,
+      "latency_seconds": [
+        6.857,
+        11.484
+      ],
+      "pagination_observations": [
+        {
+          "cursor": 20,
+          "has_more": true,
+          "total": 447
+        },
+        {
+          "cursor": 40,
+          "has_more": true,
+          "total": 447
+        }
+      ],
+      "fields": [
+        "author",
+        "cid",
+        "created_at",
+        "images",
+        "ip_location",
+        "is_hot",
+        "likes",
+        "reply_count",
+        "text"
+      ],
+      "field_counts": {
+        "likes": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "ip_location": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "cid": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "author": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "is_hot": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "images": {
+          "present": 37,
+          "nonempty": 8
+        },
+        "created_at": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "reply_count": {
+          "present": 37,
+          "nonempty": 37
+        },
+        "text": {
+          "present": 37,
+          "nonempty": 34
+        }
+      },
+      "default_text_count": 0,
+      "oldest_date_in_sample": "2026-09-20T21:40:18+08:00",
+      "newest_date_in_sample": "2026-11-01T22:32:40+08:00",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200
+      ],
+      "run_ids": [
+        "qovia-v1-raw-douyin-comments-20261106T073008Z",
+        "qovia-v1-raw-douyin-comments-20261106T073145Z"
+      ]
+    },
+    {
+      "vendor": "Qovia",
+      "platform": "douyin",
+      "action": "goods_comments",
+      "requests": 2,
+      "nonempty_requests": 2,
+      "rows_returned": 32,
+      "unique_comment_ids": 32,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 2,
+      "latency_seconds": [
+        18.229,
+        6.555
+      ],
+      "pagination_observations": [
+        {
+          "cursor": 1,
+          "has_more": true,
+          "total": 32
+        },
+        {
+          "cursor": null,
+          "has_more": false,
+          "total": 32
+        }
+      ],
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "keywords",
+        "likes",
+        "rating",
+        "ratings",
+        "shop_reply",
+        "sku",
+        "tags",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "keywords": {
+          "present": 32,
+          "nonempty": 13
+        },
+        "likes": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "cid": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "shop_reply": {
+          "present": 32,
+          "nonempty": 30
+        },
+        "created_at": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "sku": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "text": {
+          "present": 32,
+          "nonempty": 10
+        },
+        "ratings": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "rating": {
+          "present": 32,
+          "nonempty": 32
+        },
+        "tags": {
+          "present": 32,
+          "nonempty": 2
+        },
+        "user_name": {
+          "present": 32,
+          "nonempty": 32
+        }
+      },
+      "default_text_count": 0,
+      "oldest_date_in_sample": "2026-07-06T09:14:04+08:00",
+      "newest_date_in_sample": "2026-11-05T12:16:04+08:00",
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        200,
+        200
+      ],
+      "run_ids": [
+        "qovia-v1-raw-douyin-goods_comments-20261106T073152Z",
+        "qovia-v1-raw-douyin-goods_comments-20261106T073309Z"
+      ]
+    },
+    {
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments_v2",
+      "requests": 2,
+      "nonempty_requests": 0,
+      "rows_returned": 0,
+      "unique_comment_ids": 0,
+      "duplicate_ids_across_requests": 0,
+      "charge_usd": 0.0,
+      "trial_calls_consumed": 0,
+      "latency_seconds": [
+        4.156,
+        4.71
+      ],
+      "pagination_observations": [
+        {},
+        {}
+      ],
+      "fields": [],
+      "field_counts": {},
+      "default_text_count": 0,
+      "oldest_date_in_sample": null,
+      "newest_date_in_sample": null,
+      "date_note": "仅本次抽样的返回时间字段；数值时间戳换算为UTC，原有文本时区未推断，不代表历史边界。",
+      "http_statuses": [
+        502,
+        502
+      ],
+      "run_ids": [
+        "qovia-v1-raw-taobao-comments_v2-20261106T073541Z",
+        "qovia-v1-raw-taobao-comments_v2-20261106T085847Z"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "evidence_id": "everyinfra-playground-taobao-20261106",
+      "vendor": "EveryInfra",
+      "platform": "taobao",
+      "action": "reviews",
+      "category": "评论",
+      "checked_at": "2026-11-06T15:11:00+08:00",
+      "time_precision": "approximate_minute",
+      "transport": "official_playground_ui",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://item.taobao.com/item.htm?id=744983869996"
+      },
+      "http_status": null,
+      "elapsed_seconds": 13,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0,
+      "trial_call_consumed": false,
+      "pagination": null,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": "req_b35c582faa454c98",
+      "error": null,
+      "billing_reason": "界面显示空结果、未扣费、余额已恢复",
+      "note": "HTTP 状态未从 UI 独立取得；预置旧示例不计入成功。"
+    },
+    {
+      "evidence_id": "taobao-search-20261106T071213Z",
+      "vendor": "EveryInfra",
+      "platform": "taobao",
+      "action": "search",
+      "category": "搜索",
+      "checked_at": "2026-11-06T07:12:18.126363+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "keyword": "保温杯"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 5.004,
+      "row_count": 18,
+      "cash_or_credit_charge_usd": 0.0135,
+      "trial_call_consumed": false,
+      "pagination": null,
+      "default_text_count": 0,
+      "fields": [
+        "currency",
+        "id",
+        "image_url",
+        "location",
+        "original_price",
+        "platform",
+        "price",
+        "title",
+        "url"
+      ],
+      "field_counts": {
+        "currency": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "id": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "image_url": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "location": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "original_price": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "platform": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "price": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "title": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "url": {
+          "present": 18,
+          "nonempty": 18
+        }
+      },
+      "samples": [
+        {
+          "id": "971645268720",
+          "url": "https://item.taobao.com/item.htm?id=971645268720",
+          "title": "bablov花伴森保温杯女生吸管杯男生大容量水杯学生高颜值儿童杯子",
+          "price": 80.11,
+          "currency": "CNY",
+          "location": "浙江 金华",
+          "image_url": "//img.alicdn.com/bao/uploaded/i4/4288859350/O1CN016Ee7VK2IwMJ2KQnRQ_!!4611686018427382998-0-item_pic.jpg",
+          "original_price": 339.0,
+          "platform": "taobao"
+        },
+        {
+          "id": "965944149071",
+          "url": "https://item.taobao.com/item.htm?id=965944149071",
+          "title": "Vanow保温杯吸管水杯子男生2026新款陶瓷内胆大容量便携带盖礼物",
+          "price": 141.55,
+          "currency": "CNY",
+          "location": "浙江 金华",
+          "image_url": "//img.alicdn.com/bao/uploaded/i2/2177975747/O1CN01vvlmJc1sKBI2RDcpJ_!!4611686018427381187-0-item_pic.jpg",
+          "original_price": 699.0,
+          "platform": "taobao"
+        }
+      ],
+      "request_id": "req_8f4f0b4d26da435f",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 972,
+      "balance_after_usd": 0.9865
+    },
+    {
+      "evidence_id": "taobao-reviews-20261106T071245Z",
+      "vendor": "EveryInfra",
+      "platform": "taobao",
+      "action": "reviews",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:13:02.911697+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://item.taobao.com/item.htm?id=971645268720"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 17.265,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": null,
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": "req_31970fbe7ce8418a",
+      "error": null,
+      "billing_reason": "empty_result_refunded",
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 0,
+      "balance_after_usd": 0.9865
+    },
+    {
+      "evidence_id": "jd-search-20261106T071331Z",
+      "vendor": "EveryInfra",
+      "platform": "jd",
+      "action": "search",
+      "category": "搜索",
+      "checked_at": "2026-11-06T07:13:39.606082+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "keyword": "保温杯"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 7.632,
+      "row_count": 5,
+      "cash_or_credit_charge_usd": 0.00247222,
+      "trial_call_consumed": false,
+      "pagination": null,
+      "default_text_count": 0,
+      "fields": [
+        "category_ids",
+        "currency",
+        "good_rate",
+        "image_url",
+        "is_jd_self",
+        "item_id",
+        "platform",
+        "price",
+        "review_count",
+        "review_count_display",
+        "shop_id",
+        "shop_name",
+        "shop_url",
+        "title",
+        "url"
+      ],
+      "field_counts": {
+        "category_ids": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "currency": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "good_rate": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "image_url": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "is_jd_self": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "item_id": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "platform": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "price": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "review_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "review_count_display": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "shop_id": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "shop_name": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "shop_url": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "title": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "url": {
+          "present": 5,
+          "nonempty": 5
+        }
+      },
+      "samples": [
+        {
+          "item_id": "100428822668",
+          "url": "https://item.jd.com/100428822668.html",
+          "title": "米家钛保温杯 茶水分离版 深空灰500ml 纯钛泡茶杯学生男女大容量水杯",
+          "price": 219,
+          "currency": "CNY",
+          "review_count": 100000,
+          "review_count_display": "10万+",
+          "good_rate": 96,
+          "shop_id": "1000004123",
+          "shop_name": "小米京东自营旗舰店",
+          "shop_url": "https://mall.jd.com/index-1000004123.html",
+          "is_jd_self": true,
+          "category_ids_count": 3,
+          "image_url": "https://img14.360buyimg.com/n0/jfs/t1/552626/20/5574/84972/6ae04649Fda3cd302/0083320320bf2a50.jpg",
+          "platform": "jd"
+        },
+        {
+          "item_id": "10186131773179",
+          "url": "https://item.jd.com/10186131773179.html",
+          "title": "DICAZEE德国纯银水杯子999足银内胆水杯保温杯商务送老师领导长辈伴手礼 999足银-(银白色)高档礼盒380ml",
+          "price": 1926,
+          "currency": "CNY",
+          "review_count": 500,
+          "review_count_display": "500+",
+          "good_rate": 100,
+          "shop_id": "19495646",
+          "shop_name": "DICAZEE曜选专卖店",
+          "shop_url": "https://mall.jd.com/index-19495646.html",
+          "is_jd_self": false,
+          "category_ids_count": 3,
+          "image_url": "https://img14.360buyimg.com/n0/jfs/t1/350134/20/7897/154790/68d73ae3Fcbafe8ac/f54097d73e6d6e0c.jpg",
+          "platform": "jd"
+        }
+      ],
+      "request_id": "req_bc471acc9d24498b",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 178,
+      "balance_after_usd": 0.98402778
+    },
+    {
+      "evidence_id": "jd-reviews-20261106T071409Z",
+      "vendor": "EveryInfra",
+      "platform": "jd",
+      "action": "reviews",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:14:34.710896+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "item_id": "100428822668"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 25.211,
+      "row_count": 10,
+      "cash_or_credit_charge_usd": 0.00138889,
+      "trial_call_consumed": false,
+      "pagination": null,
+      "default_text_count": 1,
+      "fields": [
+        "author_avatar_url",
+        "author_is_plus",
+        "author_name",
+        "buy_count",
+        "color",
+        "id",
+        "images",
+        "item_id",
+        "platform",
+        "posted_at",
+        "rating",
+        "rating_scale",
+        "text",
+        "useful_count"
+      ],
+      "field_counts": {
+        "author_avatar_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_is_plus": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_name": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "buy_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "color": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "item_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "platform": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "posted_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating_scale": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "useful_count": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "samples": [
+        {
+          "id": "106700790241116820",
+          "item_id": "100428822668",
+          "text_excerpt": "杯子做工质感在线，纯钛用着安心，茶水分离功能很好用，不会闷苦茶叶。重量适中便携，",
+          "text_length": 62,
+          "rating": 5,
+          "posted_at": "2026-11-06 07:41:01",
+          "color": "【钛茶水分离版-深空灰】500ml",
+          "useful_count": 0,
+          "images_count": 2,
+          "author_name": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_is_plus": "[作者信息已脱敏]",
+          "buy_count": 24,
+          "platform": "jd",
+          "rating_scale": 5
+        },
+        {
+          "id": "106702440241536200",
+          "item_id": "100428822668",
+          "text_excerpt": "此用户未填写评价内容",
+          "text_length": 10,
+          "rating": 5,
+          "posted_at": "2026-11-05 20:50:17",
+          "color": "【钛茶水分离版-深空灰】500ml",
+          "useful_count": 0,
+          "author_name": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_is_plus": "[作者信息已脱敏]",
+          "buy_count": 7,
+          "platform": "jd",
+          "rating_scale": 5
+        }
+      ],
+      "request_id": "req_f34755e0d2e1433a",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 100,
+      "balance_after_usd": 0.98263889
+    },
+    {
+      "evidence_id": "xiaohongshu-product_search-20261106T071450Z",
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "product_search",
+      "category": "搜索",
+      "checked_at": "2026-11-06T07:14:54.631681+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "keyword": "保温杯"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 3.672,
+      "row_count": 19,
+      "cash_or_credit_charge_usd": 0.00555556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "currency",
+        "id",
+        "image_url",
+        "in_stock",
+        "next_page_token",
+        "original_price",
+        "platform",
+        "price",
+        "shop_id",
+        "shop_name",
+        "sold_count",
+        "title",
+        "url"
+      ],
+      "field_counts": {
+        "currency": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "id": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "image_url": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "in_stock": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "next_page_token": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "original_price": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "platform": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "price": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "shop_id": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "shop_name": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "sold_count": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "title": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "url": {
+          "present": 19,
+          "nonempty": 19
+        }
+      },
+      "samples": [
+        {
+          "id": "6abccfec6996d90001d5eff4",
+          "title": "现货！简约316不锈钢保温杯一盖三饮泡茶水杯女高颜值带盖便携杯",
+          "url": "https://www.xiaohongshu.com/goods-detail/6abccfec6996d90001d5eff4",
+          "price": 37.9,
+          "original_price": 52.8,
+          "currency": "CNY",
+          "image_url": "https://mall-i2.xhscdn.com/arkgoods/104100ao31ocd79f6l826833uvh4l9v8006hciajl80svk",
+          "sold_count": 12535,
+          "in_stock": true,
+          "shop_id": "640c84006fdda10001bc20ee",
+          "shop_name": "大可咕噜噜💦的店",
+          "next_page_token": "[分页令牌已省略]",
+          "platform": "xiaohongshu"
+        },
+        {
+          "id": "6ac899c27e107300010d7e17",
+          "title": "骑士杯304不锈钢保温杯大容量带提绳户外登山壶运动水壶（银色）",
+          "url": "https://www.xiaohongshu.com/goods-detail/6ac899c27e107300010d7e17",
+          "price": 9.9,
+          "original_price": 9.9,
+          "currency": "CNY",
+          "image_url": "https://mall-i2.xhscdn.com/arkgoods/1040g3no32654tk5r580g5psnchu3i3ntecl5l6o",
+          "sold_count": 46,
+          "in_stock": true,
+          "shop_id": "6878941fc588ff00157efb9d",
+          "shop_name": "做外贸的小伙子-罗鹏的店",
+          "next_page_token": "[分页令牌已省略]",
+          "platform": "xiaohongshu"
+        }
+      ],
+      "request_id": "req_78933c167f5e4d59",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 400,
+      "balance_after_usd": 0.97708333
+    },
+    {
+      "evidence_id": "xiaohongshu-reviews-20261106T071553Z",
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "reviews",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:15:55.868418+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "product_id": "6abccfec6996d90001d5eff4"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 2.864,
+      "row_count": 20,
+      "cash_or_credit_charge_usd": 0.00555556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "id",
+        "images",
+        "like_count",
+        "logistics_rating",
+        "next_page_token",
+        "platform",
+        "posted_date",
+        "product_id",
+        "rating",
+        "rating_scale",
+        "reply_count",
+        "service_rating",
+        "sku",
+        "tags",
+        "text"
+      ],
+      "field_counts": {
+        "id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "images": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "like_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "logistics_rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "next_page_token": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "platform": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "posted_date": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "product_id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "rating_scale": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "reply_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "service_rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "sku": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "tags": {
+          "present": 17,
+          "nonempty": 17
+        },
+        "text": {
+          "present": 20,
+          "nonempty": 20
+        }
+      },
+      "samples": [
+        {
+          "id": "563099064605124478",
+          "product_id": "6abccfec6996d90001d5eff4",
+          "text_excerpt": "磨砂质感，颜色很温柔，保温时间很长，双用的一个保温杯，挺实用的",
+          "text_length": 31,
+          "rating": 5,
+          "rating_scale": 5,
+          "service_rating": 5,
+          "logistics_rating": 5,
+          "like_count": 9,
+          "reply_count": 9,
+          "images_count": 3,
+          "tags_count": 4,
+          "sku": "款式: 关注加购赠杯刷；颜色分类: 浅蓝色-470ML",
+          "posted_date": "2025-12-09",
+          "next_page_token": "[分页令牌已省略]",
+          "platform": "xiaohongshu"
+        },
+        {
+          "id": "556576379410113397",
+          "product_id": "6abccfec6996d90001d5eff4",
+          "text_excerpt": "配色很简约的保温杯，拿在手上感觉整个人都精致起来了。保温效果也特别好，晚上睡觉前",
+          "text_length": 80,
+          "rating": 5,
+          "rating_scale": 5,
+          "service_rating": 5,
+          "logistics_rating": 5,
+          "like_count": 4,
+          "reply_count": 0,
+          "images_count": 5,
+          "tags_count": 5,
+          "sku": "款式: 关注加购赠杯刷；颜色分类: 浅蓝色-470ML",
+          "posted_date": "2025-11-21",
+          "next_page_token": "[分页令牌已省略]",
+          "platform": "xiaohongshu"
+        }
+      ],
+      "request_id": "req_63b1c7857633472e",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 400,
+      "balance_after_usd": 0.97152778
+    },
+    {
+      "evidence_id": "xiaohongshu-reviews-20261106T071710Z",
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "reviews",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:17:13.602064+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "product_id": "6abccfec6996d90001d5eff4",
+        "page_token": "[分页令牌已省略]"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 2.878,
+      "row_count": 20,
+      "cash_or_credit_charge_usd": 0.00555556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 2,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "id",
+        "images",
+        "like_count",
+        "logistics_rating",
+        "next_page_token",
+        "platform",
+        "posted_date",
+        "product_id",
+        "rating",
+        "rating_scale",
+        "reply_count",
+        "service_rating",
+        "sku",
+        "tags",
+        "text"
+      ],
+      "field_counts": {
+        "id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "images": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "like_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "logistics_rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "next_page_token": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "platform": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "posted_date": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "product_id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "rating_scale": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "reply_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "service_rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "sku": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "tags": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "text": {
+          "present": 20,
+          "nonempty": 20
+        }
+      },
+      "samples": [
+        {
+          "id": "560210034393273342",
+          "product_id": "6abccfec6996d90001d5eff4",
+          "text_excerpt": "颜色高级！没啥异味，冲洗了一下就用上了，还送了杯刷很方便！有性价比值得买，喜欢！",
+          "text_length": 48,
+          "rating": 5,
+          "rating_scale": 5,
+          "service_rating": 5,
+          "logistics_rating": 5,
+          "like_count": 4,
+          "reply_count": 2,
+          "images_count": 3,
+          "tags_count": 8,
+          "sku": "款式: 关注加购赠杯刷；颜色分类: 浅蓝色-470ML",
+          "posted_date": "2025-12-01",
+          "next_page_token": "[分页令牌已省略]",
+          "platform": "xiaohongshu"
+        },
+        {
+          "id": "551021225464816358",
+          "product_id": "6abccfec6996d90001d5eff4",
+          "text_excerpt": "女儿让我帮忙挑给同学的生日礼物，寻思好看又实用选了这款水杯，同学喜欢的不得了，看",
+          "text_length": 83,
+          "rating": 5,
+          "rating_scale": 5,
+          "service_rating": 5,
+          "logistics_rating": 5,
+          "like_count": 0,
+          "reply_count": 0,
+          "images_count": 5,
+          "tags_count": 7,
+          "sku": "颜色分类: 米白色-470ML；款式: 关注加购有粉丝卷",
+          "posted_date": "2025-11-06",
+          "next_page_token": "[分页令牌已省略]",
+          "platform": "xiaohongshu"
+        }
+      ],
+      "request_id": "req_d03ba7edb4614124",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 400,
+      "balance_after_usd": 0.96597222
+    },
+    {
+      "evidence_id": "douyin-search-20261106T071733Z",
+      "vendor": "EveryInfra",
+      "platform": "douyin",
+      "action": "search",
+      "category": "搜索",
+      "checked_at": "2026-11-06T07:17:51.826165+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "keyword": "保温杯测评"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 18.673,
+      "row_count": 10,
+      "cash_or_credit_charge_usd": 0.00833333,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 1,
+        "has_more": false,
+        "stop_reason": "end_of_list"
+      },
+      "default_text_count": 0,
+      "fields": [
+        "animated_cover_url",
+        "author_avatar_url",
+        "author_bio",
+        "author_douyin_id",
+        "author_follower_count",
+        "author_id",
+        "author_is_verified",
+        "author_name",
+        "author_uid",
+        "collect_count",
+        "comment_count",
+        "cover_image_url",
+        "duration_sec",
+        "duration_seconds",
+        "hashtags",
+        "id",
+        "is_pinned",
+        "like_count",
+        "media_type",
+        "music",
+        "platform",
+        "posted_at",
+        "region",
+        "share_count",
+        "text",
+        "title",
+        "url",
+        "video_height",
+        "video_url",
+        "video_width"
+      ],
+      "field_counts": {
+        "animated_cover_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_avatar_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_bio": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_douyin_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_follower_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_is_verified": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_name": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_uid": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "collect_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "comment_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "cover_image_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "duration_sec": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "duration_seconds": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "hashtags": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "is_pinned": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "like_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "media_type": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "music": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "platform": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "posted_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "region": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "share_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "title": {
+          "present": 7,
+          "nonempty": 7
+        },
+        "url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "video_height": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "video_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "video_width": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "samples": [
+        {
+          "id": "7676082909761466213",
+          "url": "https://www.douyin.com/video/7676082909761466213",
+          "text_excerpt": "自来水分享新买的保温杯！！赚大发了！#保温杯推荐",
+          "text_length": 24,
+          "media_type": "video",
+          "video_url": "https://v5-dy-ov-experiment.zjcdn.com/1953ea553acd1b1a208d3ed1f9162d1a/6aed8d47/video/tos/cn/tos-cn-ve-15c000-ce/ogzbmmwEieBAQnVi3yBOu1LY9DlEeAQRIz9QvK/",
+          "like_count": 6600,
+          "comment_count": 125,
+          "share_count": 1266,
+          "collect_count": 2187,
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "author_douyin_id": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "cover_image_url": "https://p3-sign.douyinpic.com/tos-cn-i-0813c000-ce/oIfeEAZvD5drCAqGg1CvImA7wAiLE1A3QyBnAi~tplv-dy-resize-walign-adapt-aq:540:q75.heic",
+          "author_follower_count": "[作者信息已脱敏]",
+          "region": "CN",
+          "posted_at": "2026-08-20T12:02:05+00:00",
+          "platform": "douyin",
+          "author_uid": "[作者信息已脱敏]",
+          "author_is_verified": "[作者信息已脱敏]",
+          "author_bio": "[作者信息已脱敏]",
+          "music_fields": [
+            "id",
+            "title",
+            "author",
+            "is_original",
+            "duration_sec",
+            "cover_url",
+            "play_url"
+          ],
+          "is_pinned": false,
+          "video_width": 1080,
+          "video_height": 1920,
+          "animated_cover_url": "https://p3-sign.douyinpic.com/obj/tos-cn-i-0813c000-ce/oIfeEAZvD5drCAqGg1CvImA7wAiLE1A3QyBnAi",
+          "duration_sec": 29,
+          "hashtags_count": 1,
+          "duration_seconds": 29
+        },
+        {
+          "id": "7687095872160632090",
+          "url": "https://www.douyin.com/video/7687095872160632090",
+          "text_excerpt": "纯钛保温杯横测，千元和百元的区别在哪里 #测评打假 #天沏钛杯 #这一杯潮极嘉分",
+          "text_length": 52,
+          "media_type": "video",
+          "video_url": "https://v5-dy-ov-experiment.zjcdn.com/7edc0e08a3fd82d050bce4cbc0c1bc21/6aed8da4/video/tos/cn/tos-cn-ve-15/oACDeYLCEmyQE9FgqdUAcmgfly69BvAr1IAKM4/",
+          "like_count": 10076,
+          "comment_count": 447,
+          "share_count": 196,
+          "collect_count": 544,
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "author_douyin_id": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "cover_image_url": "https://p3-sign.douyinpic.com/tos-cn-i-dy/31f02512e7aa4ea3b91bbeefb05d97b6~tplv-dy-resize-walign-adapt-aq:540:q75.heic",
+          "author_follower_count": "[作者信息已脱敏]",
+          "posted_at": "2026-09-19T07:35:06+00:00",
+          "platform": "douyin",
+          "author_uid": "[作者信息已脱敏]",
+          "author_is_verified": "[作者信息已脱敏]",
+          "author_bio": "[作者信息已脱敏]",
+          "title": "纯钛保温杯横测，千元和百元的区别在哪里",
+          "music_fields": [
+            "id",
+            "title",
+            "author",
+            "is_original",
+            "duration_sec",
+            "cover_url",
+            "play_url"
+          ],
+          "is_pinned": false,
+          "video_width": 1080,
+          "video_height": 1920,
+          "animated_cover_url": "https://p3-sign.douyinpic.com/obj/tos-cn-i-dy/31f02512e7aa4ea3b91bbeefb05d97b6",
+          "duration_sec": 122,
+          "hashtags_count": 4,
+          "duration_seconds": 122
+        }
+      ],
+      "request_id": "req_33232960843b4945",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 600,
+      "balance_after_usd": 0.95763889
+    },
+    {
+      "evidence_id": "douyin-comments-20261106T071847Z",
+      "vendor": "EveryInfra",
+      "platform": "douyin",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:18:48.904728+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://www.douyin.com/video/7687095872160632090",
+        "page_token": ""
+      },
+      "http_status": 200,
+      "elapsed_seconds": 1.813,
+      "row_count": 18,
+      "cash_or_credit_charge_usd": 0.00055556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author_avatar_url",
+        "author_id",
+        "author_name",
+        "author_uid",
+        "id",
+        "images",
+        "ip_location",
+        "is_reply",
+        "like_count",
+        "liked_by_author",
+        "next_page_token",
+        "platform",
+        "posted_at",
+        "reply_count",
+        "text",
+        "video_id"
+      ],
+      "field_counts": {
+        "author_avatar_url": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "author_id": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "author_name": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "author_uid": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "id": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "images": {
+          "present": 4,
+          "nonempty": 4
+        },
+        "ip_location": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "is_reply": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "like_count": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "liked_by_author": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "next_page_token": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "platform": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "posted_at": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "reply_count": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "text": {
+          "present": 18,
+          "nonempty": 17
+        },
+        "video_id": {
+          "present": 18,
+          "nonempty": 18
+        }
+      },
+      "samples": [
+        {
+          "next_page_token": "[分页令牌已省略]",
+          "id": "7703210930902221626",
+          "text_excerpt": "山姆的怎么样？",
+          "text_length": 7,
+          "like_count": 0,
+          "reply_count": 0,
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "ip_location": "广东",
+          "liked_by_author": "[作者信息已脱敏]",
+          "is_reply": false,
+          "posted_at": "2026-11-01T14:32:40+00:00",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_uid": "[作者信息已脱敏]",
+          "video_id": "7687095872160632090",
+          "platform": "douyin"
+        },
+        {
+          "next_page_token": "[分页令牌已省略]",
+          "id": "7701118538048750355",
+          "text_excerpt": "正常情况下我们不是冷了才喝吗。谁和那么烫的[捂脸]",
+          "text_length": 25,
+          "like_count": 0,
+          "reply_count": 0,
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "ip_location": "四川",
+          "liked_by_author": "[作者信息已脱敏]",
+          "is_reply": false,
+          "posted_at": "2026-10-26T23:13:08+00:00",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_uid": "[作者信息已脱敏]",
+          "video_id": "7687095872160632090",
+          "platform": "douyin"
+        }
+      ],
+      "request_id": "req_3aa993a516994a13",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": 1,
+      "rows_per_unit": 20,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 40,
+      "balance_after_usd": 0.95708333
+    },
+    {
+      "evidence_id": "taobao-reviews-20261106T071934Z",
+      "vendor": "EveryInfra",
+      "platform": "taobao",
+      "action": "reviews",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:19:47.599839+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://item.taobao.com/item.htm?id=735589694613"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 13.445,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": null,
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": "req_ca749fe0c8a74893",
+      "error": null,
+      "billing_reason": "empty_result_refunded",
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 0,
+      "balance_after_usd": 0.95708333
+    },
+    {
+      "evidence_id": "xiaohongshu-search-20261106T072038Z",
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "search",
+      "category": "搜索",
+      "checked_at": "2026-11-06T07:20:50.379202+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "keyword": "保温杯测评"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 12.162,
+      "row_count": 20,
+      "cash_or_credit_charge_usd": 0.00555556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author_id",
+        "author_is_verified",
+        "author_name",
+        "author_red_id",
+        "author_url",
+        "avatar_url",
+        "collect_count",
+        "comment_count",
+        "duration_sec",
+        "duration_seconds",
+        "id",
+        "image_url",
+        "images",
+        "is_cooperation_note",
+        "is_goods_note",
+        "is_video",
+        "like_count",
+        "next_page_token",
+        "platform",
+        "posted_at",
+        "share_count",
+        "text",
+        "title",
+        "url",
+        "video_url"
+      ],
+      "field_counts": {
+        "author_id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "author_is_verified": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "author_name": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "author_red_id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "author_url": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "avatar_url": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "collect_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "comment_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "duration_sec": {
+          "present": 20,
+          "nonempty": 7
+        },
+        "duration_seconds": {
+          "present": 20,
+          "nonempty": 7
+        },
+        "id": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "image_url": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "images": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "is_cooperation_note": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "is_goods_note": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "is_video": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "like_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "next_page_token": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "platform": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "posted_at": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "share_count": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "text": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "title": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "url": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "video_url": {
+          "present": 20,
+          "nonempty": 7
+        }
+      },
+      "samples": [
+        {
+          "id": "6ae5f2a4000000000e037281",
+          "url": "https://www.xiaohongshu.com/explore/6ae5f2a4000000000e037281",
+          "title": "比砖头还硬的保温杯见过吗？一起来看看",
+          "text_excerpt": "#测评  #避坑  #智商税产品",
+          "text_length": 16,
+          "like_count": 31,
+          "collect_count": 7,
+          "comment_count": 4,
+          "share_count": 0,
+          "posted_at": "2026-11-02T14:47:00+00:00",
+          "image_url": "https://sns-na-i6.xhscdn.com/spectrum/1040g0k032707t5ab6c005phv72c1oofbrj80tm8",
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "avatar_url": "[作者信息已脱敏]",
+          "author_url": "[作者信息已脱敏]",
+          "is_video": true,
+          "next_page_token": "[分页令牌已省略]",
+          "video_url": "http://sns-video-v4.xhscdn.com/stream/1/110/258/01eae5f2a619b23a01037001a1923cd20a_258.mp4",
+          "duration_sec": 113,
+          "platform": "xiaohongshu",
+          "images_count": 1,
+          "is_goods_note": false,
+          "is_cooperation_note": false,
+          "author_is_verified": "[作者信息已脱敏]",
+          "author_red_id": "[作者信息已脱敏]",
+          "duration_seconds": 113
+        },
+        {
+          "id": "6ad743ec000000002a02db4b",
+          "url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b",
+          "title": "天冷了，保温杯到底怎么选？！",
+          "text_excerpt": "#保温杯  #选购攻略  #不锈钢杯  #生活  #阿蕉测评",
+          "text_length": 30,
+          "like_count": 3490,
+          "collect_count": 4386,
+          "comment_count": 271,
+          "share_count": 361,
+          "posted_at": "2026-10-20T10:35:24+00:00",
+          "image_url": "https://sns-na-i6.xhscdn.com/spectrum/1040g0k0326ht74s3l80049kc3hij4lo5dljmqqg",
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "avatar_url": "[作者信息已脱敏]",
+          "author_url": "[作者信息已脱敏]",
+          "is_video": true,
+          "next_page_token": "[分页令牌已省略]",
+          "video_url": "http://sns-video-v4.xhscdn.com/stream/1/110/258/01ead7436624cb9301037001a158e1a920_258.mp4",
+          "duration_sec": 57,
+          "platform": "xiaohongshu",
+          "images_count": 1,
+          "is_goods_note": false,
+          "is_cooperation_note": false,
+          "author_is_verified": "[作者信息已脱敏]",
+          "author_red_id": "[作者信息已脱敏]",
+          "duration_seconds": 57
+        }
+      ],
+      "request_id": "req_52c4a3f6413f4a27",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 400,
+      "balance_after_usd": 0.95152778
+    },
+    {
+      "evidence_id": "xiaohongshu-comments-20261106T072252Z",
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:22:56.714497+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 3.976,
+      "row_count": 10,
+      "cash_or_credit_charge_usd": 0.00555556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author_avatar_url",
+        "author_id",
+        "author_is_ai_agent",
+        "author_name",
+        "author_red_id",
+        "comment_tags",
+        "id",
+        "images",
+        "ip_location",
+        "is_author",
+        "like_count",
+        "mentioned_users",
+        "next_page_token",
+        "note_id",
+        "note_url",
+        "platform",
+        "posted_at",
+        "sub_comment_count",
+        "sub_comments",
+        "text"
+      ],
+      "field_counts": {
+        "author_avatar_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_is_ai_agent": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_name": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "author_red_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "comment_tags": {
+          "present": 10,
+          "nonempty": 0
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 10,
+          "nonempty": 0
+        },
+        "ip_location": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "is_author": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "like_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "mentioned_users": {
+          "present": 2,
+          "nonempty": 2
+        },
+        "next_page_token": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "note_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "note_url": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "platform": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "posted_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sub_comment_count": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sub_comments": {
+          "present": 10,
+          "nonempty": 0
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "samples": [
+        {
+          "id": "6ae284c8000000000a020965",
+          "text_excerpt": "要怎么看执行标准啊？问商家要啊？",
+          "text_length": 16,
+          "like_count": 1,
+          "posted_at": "2026-10-28T23:27:04+00:00",
+          "ip_location": "广东",
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "sub_comment_count": 2,
+          "note_id": "6ad743ec000000002a02db4b",
+          "note_url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b",
+          "next_page_token": "[分页令牌已省略]",
+          "images_count": 0,
+          "is_author": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_red_id": "[作者信息已脱敏]",
+          "author_is_ai_agent": "[作者信息已脱敏]",
+          "comment_tags_count": 0,
+          "sub_comments_count": 0,
+          "platform": "xiaohongshu"
+        },
+        {
+          "id": "6ae04f42000000000100ab9c",
+          "text_excerpt": "以后我搜索保温杯材质，你就定位到这个视频@点点",
+          "text_length": 23,
+          "like_count": 0,
+          "posted_at": "2026-10-27T07:14:11+00:00",
+          "ip_location": "广东",
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "sub_comment_count": 2,
+          "note_id": "6ad743ec000000002a02db4b",
+          "note_url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b",
+          "next_page_token": "[分页令牌已省略]",
+          "images_count": 0,
+          "is_author": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_red_id": "[作者信息已脱敏]",
+          "author_is_ai_agent": "[作者信息已脱敏]",
+          "mentioned_users": "[作者信息已脱敏]",
+          "comment_tags_count": 0,
+          "sub_comments_count": 0,
+          "platform": "xiaohongshu"
+        }
+      ],
+      "request_id": "req_3dfb492ff0404312",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 400,
+      "balance_after_usd": 0.94597222
+    },
+    {
+      "evidence_id": "xiaohongshu-comments-20261106T072459Z",
+      "vendor": "EveryInfra",
+      "platform": "xiaohongshu",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:25:01.961860+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b",
+        "page_token": "[分页令牌已省略]"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 2.436,
+      "row_count": 15,
+      "cash_or_credit_charge_usd": 0.00555556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 2,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author_avatar_url",
+        "author_id",
+        "author_is_ai_agent",
+        "author_name",
+        "author_red_id",
+        "comment_tags",
+        "id",
+        "images",
+        "ip_location",
+        "is_author",
+        "like_count",
+        "mentioned_users",
+        "next_page_token",
+        "note_id",
+        "note_url",
+        "platform",
+        "posted_at",
+        "sub_comment_count",
+        "sub_comments",
+        "text"
+      ],
+      "field_counts": {
+        "author_avatar_url": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "author_id": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "author_is_ai_agent": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "author_name": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "author_red_id": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "comment_tags": {
+          "present": 15,
+          "nonempty": 0
+        },
+        "id": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "images": {
+          "present": 15,
+          "nonempty": 0
+        },
+        "ip_location": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "is_author": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "like_count": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "mentioned_users": {
+          "present": 3,
+          "nonempty": 3
+        },
+        "next_page_token": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "note_id": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "note_url": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "platform": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "posted_at": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "sub_comment_count": {
+          "present": 15,
+          "nonempty": 15
+        },
+        "sub_comments": {
+          "present": 15,
+          "nonempty": 0
+        },
+        "text": {
+          "present": 15,
+          "nonempty": 15
+        }
+      },
+      "samples": [
+        {
+          "id": "6ae9843a000000000b010a2e",
+          "text_excerpt": "@点点 保温杯材质，如果以后有 #水杯材质科学科普[搜索高亮]# 给我推荐",
+          "text_length": 37,
+          "like_count": 0,
+          "posted_at": "2026-11-03T06:50:35+00:00",
+          "ip_location": "福建",
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "sub_comment_count": 0,
+          "note_id": "6ad743ec000000002a02db4b",
+          "note_url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b",
+          "next_page_token": "[分页令牌已省略]",
+          "images_count": 0,
+          "is_author": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_red_id": "[作者信息已脱敏]",
+          "author_is_ai_agent": "[作者信息已脱敏]",
+          "mentioned_users": "[作者信息已脱敏]",
+          "comment_tags_count": 0,
+          "sub_comments_count": 0,
+          "platform": "xiaohongshu"
+        },
+        {
+          "id": "6ae8cfbf000000000b01f927",
+          "text_excerpt": "老百姓谁知道这么多",
+          "text_length": 9,
+          "like_count": 0,
+          "posted_at": "2026-11-02T18:00:32+00:00",
+          "ip_location": "安徽",
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "sub_comment_count": 0,
+          "note_id": "6ad743ec000000002a02db4b",
+          "note_url": "https://www.xiaohongshu.com/explore/6ad743ec000000002a02db4b",
+          "next_page_token": "[分页令牌已省略]",
+          "images_count": 0,
+          "is_author": "[作者信息已脱敏]",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_red_id": "[作者信息已脱敏]",
+          "author_is_ai_agent": "[作者信息已脱敏]",
+          "comment_tags_count": 0,
+          "sub_comments_count": 0,
+          "platform": "xiaohongshu"
+        }
+      ],
+      "request_id": "req_45f44085f6ec4293",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 400,
+      "balance_after_usd": 0.94041667
+    },
+    {
+      "evidence_id": "qovia-v1-raw-taobao-comments-20261106T073004Z",
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:30:04.327659+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "971645268720",
+        "page": 1,
+        "skip_default_reviews": "false"
+      },
+      "http_status": 503,
+      "elapsed_seconds": 3.134,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": {},
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": null,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged",
+        "request_id": "766e7c78-cf88-4218-a173-37c79e265cd1",
+        "support": "https://t.me/scott10081"
+      },
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-xiaohongshu-comments-20261106T073006Z",
+      "vendor": "Qovia",
+      "platform": "xiaohongshu",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:30:06.872458+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/xiaohongshu/comments",
+      "params": {
+        "note_id": "6ad743ec000000002a02db4b",
+        "sort": "default"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 5.475,
+      "row_count": 5,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "cursor": "[游标已省略]",
+        "has_more": true,
+        "comment_count": 278
+      },
+      "default_text_count": 0,
+      "fields": [
+        "at_users",
+        "comment_type",
+        "content",
+        "id",
+        "ip_location",
+        "like_count",
+        "like_view_count",
+        "liked",
+        "note_id",
+        "status",
+        "sub_comment_count",
+        "sub_comments",
+        "time",
+        "user"
+      ],
+      "field_counts": {
+        "at_users": {
+          "present": 5,
+          "nonempty": 3
+        },
+        "comment_type": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "content": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "id": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "ip_location": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "like_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "like_view_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "liked": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "note_id": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "status": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "sub_comment_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "sub_comments": {
+          "present": 5,
+          "nonempty": 4
+        },
+        "time": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "user": {
+          "present": 5,
+          "nonempty": 5
+        }
+      },
+      "samples": [
+        {
+          "at_users": [],
+          "comment_type": 0,
+          "content_excerpt": "要怎么看执行标准啊？问商家要啊？",
+          "content_length": 16,
+          "id": "6ae284c8000000000a020965",
+          "ip_location": "广东",
+          "like_count": 0,
+          "like_view_count": "1",
+          "liked": false,
+          "note_id": "6ad743ec000000002a02db4b",
+          "status": 0,
+          "sub_comment_count": 2,
+          "sub_comments_count": 2,
+          "time": 1793230024000,
+          "user": "[作者信息已脱敏]"
+        },
+        {
+          "at_users": "[作者信息已脱敏]",
+          "comment_type": 0,
+          "content_excerpt": "@点点 保温杯材质，如果以后有水杯材质科学科普给我推荐",
+          "content_length": 27,
+          "id": "6ae9843a000000000b010a2e",
+          "ip_location": "福建",
+          "like_count": 0,
+          "like_view_count": "0",
+          "liked": false,
+          "note_id": "6ad743ec000000002a02db4b",
+          "status": 0,
+          "sub_comment_count": 1,
+          "sub_comments_count": 1,
+          "time": 1793688635000,
+          "user": "[作者信息已脱敏]"
+        }
+      ],
+      "request_id": "6e5a496c-8fc6-43c9-9fce-94029e7d7c9e",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 47,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-jd-comments-20261106T073006Z",
+      "vendor": "Qovia",
+      "platform": "jd",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:30:06.992393+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/jd/comments",
+      "params": {
+        "sku_id": "100428822668",
+        "page": 1,
+        "only_this_sku": "true"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 5.753,
+      "row_count": 10,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "max_page": 2,
+        "total": 1000
+      },
+      "default_text_count": 1,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "id",
+        "images",
+        "ip_location",
+        "likes",
+        "rating",
+        "shop_reply",
+        "sku",
+        "sku_id",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "cid": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "created_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 10,
+          "nonempty": 9
+        },
+        "ip_location": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "likes": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "shop_reply": {
+          "present": 10,
+          "nonempty": 0
+        },
+        "sku": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sku_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "user_name": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "samples": [
+        {
+          "id": "eco_jd_e7e2e8f99b6c",
+          "cid": "106700790241116820",
+          "text_excerpt": "杯子做工质感在线，纯钛用着安心，茶水分离功能很好用，不会闷苦茶叶。重量适中便携，",
+          "text_length": 62,
+          "rating": 5,
+          "likes": 0,
+          "created_at": "2026-11-06T07:41:01+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "sku_id": "100428822668",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "ip_location": "湖北",
+          "images_count": 2,
+          "shop_reply": null
+        },
+        {
+          "id": "eco_jd_2ec573c7f8d6",
+          "cid": "106702440241536200",
+          "text_excerpt": "此用户未填写评价内容",
+          "text_length": 10,
+          "rating": 5,
+          "likes": 0,
+          "created_at": "2026-11-05T20:50:17+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "sku_id": "100428822668",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "ip_location": "河南",
+          "images_count": 0,
+          "shop_reply": null
+        }
+      ],
+      "request_id": "8c1f7586-dbff-4c7c-ac04-3852f39458fb",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 47,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-douyin-comments-20261106T073008Z",
+      "vendor": "Qovia",
+      "platform": "douyin",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:30:08.044652+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/douyin/comments",
+      "params": {
+        "item_id": "7687095872160632090",
+        "cursor": 0,
+        "count": 20
+      },
+      "http_status": 200,
+      "elapsed_seconds": 6.857,
+      "row_count": 19,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "cursor": 20,
+        "has_more": true,
+        "total": 447
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author",
+        "cid",
+        "created_at",
+        "images",
+        "ip_location",
+        "is_hot",
+        "likes",
+        "reply_count",
+        "text"
+      ],
+      "field_counts": {
+        "author": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "cid": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "created_at": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "images": {
+          "present": 19,
+          "nonempty": 4
+        },
+        "ip_location": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "is_hot": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "likes": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "reply_count": {
+          "present": 19,
+          "nonempty": 19
+        },
+        "text": {
+          "present": 19,
+          "nonempty": 18
+        }
+      },
+      "samples": [
+        {
+          "cid": "7703210930902221626",
+          "text_excerpt": "山姆的怎么样？",
+          "text_length": 7,
+          "likes": 0,
+          "ip_location": "广东",
+          "reply_count": 0,
+          "created_at": "2026-11-01T22:32:40+08:00",
+          "is_hot": false,
+          "images_count": 0,
+          "author": "[作者信息已脱敏]"
+        },
+        {
+          "cid": "7701118538048750355",
+          "text_excerpt": "正常情况下我们不是冷了才喝吗。谁和那么烫的[捂脸]",
+          "text_length": 25,
+          "likes": 0,
+          "ip_location": "四川",
+          "reply_count": 0,
+          "created_at": "2026-10-27T07:13:08+08:00",
+          "is_hot": false,
+          "images_count": 0,
+          "author": "[作者信息已脱敏]"
+        }
+      ],
+      "request_id": "b7f37f48-3f86-4050-a51a-3dbc1d711e93",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 47,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-douyin-comments-20261106T073145Z",
+      "vendor": "Qovia",
+      "platform": "douyin",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:31:45.129451+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/douyin/comments",
+      "params": {
+        "item_id": "7687095872160632090",
+        "cursor": 20,
+        "count": 20
+      },
+      "http_status": 200,
+      "elapsed_seconds": 11.484,
+      "row_count": 18,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "cursor": 40,
+        "has_more": true,
+        "total": 447
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author",
+        "cid",
+        "created_at",
+        "images",
+        "ip_location",
+        "is_hot",
+        "likes",
+        "reply_count",
+        "text"
+      ],
+      "field_counts": {
+        "author": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "cid": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "created_at": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "images": {
+          "present": 18,
+          "nonempty": 4
+        },
+        "ip_location": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "is_hot": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "likes": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "reply_count": {
+          "present": 18,
+          "nonempty": 18
+        },
+        "text": {
+          "present": 18,
+          "nonempty": 16
+        }
+      },
+      "samples": [
+        {
+          "cid": "7688663316567212857",
+          "text_excerpt": "[尬笑]",
+          "text_length": 4,
+          "likes": 1,
+          "ip_location": "山东",
+          "reply_count": 0,
+          "created_at": "2026-09-23T17:40:30+08:00",
+          "is_hot": true,
+          "images_count": 1,
+          "author": "[作者信息已脱敏]"
+        },
+        {
+          "cid": "7687615041801421594",
+          "text_excerpt": "真假不好分，只有到正规的店里买才对的",
+          "text_length": 18,
+          "likes": 0,
+          "ip_location": "北京",
+          "reply_count": 0,
+          "created_at": "2026-09-20T21:52:39+08:00",
+          "is_hot": true,
+          "images_count": 0,
+          "author": "[作者信息已脱敏]"
+        }
+      ],
+      "request_id": "40d3f4ed-702b-467c-8687-361bdcaaf0eb",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 44,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-xiaohongshu-comments-20261106T073150Z",
+      "vendor": "Qovia",
+      "platform": "xiaohongshu",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:31:50.229514+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/xiaohongshu/comments",
+      "params": {
+        "note_id": "6ad743ec000000002a02db4b",
+        "sort": "default",
+        "cursor": "[分页令牌已省略]"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 16.449,
+      "row_count": 5,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "cursor": "[游标已省略]",
+        "has_more": true,
+        "comment_count": 278
+      },
+      "default_text_count": 0,
+      "fields": [
+        "at_users",
+        "comment_type",
+        "content",
+        "id",
+        "ip_location",
+        "like_count",
+        "like_view_count",
+        "liked",
+        "note_id",
+        "status",
+        "sub_comment_count",
+        "sub_comments",
+        "time",
+        "user"
+      ],
+      "field_counts": {
+        "at_users": {
+          "present": 5,
+          "nonempty": 0
+        },
+        "comment_type": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "content": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "id": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "ip_location": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "like_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "like_view_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "liked": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "note_id": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "status": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "sub_comment_count": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "sub_comments": {
+          "present": 5,
+          "nonempty": 0
+        },
+        "time": {
+          "present": 5,
+          "nonempty": 5
+        },
+        "user": {
+          "present": 5,
+          "nonempty": 5
+        }
+      },
+      "samples": [
+        {
+          "at_users": [],
+          "comment_type": 0,
+          "content_excerpt": "老百姓谁知道这么多",
+          "content_length": 9,
+          "id": "6ae8cfbf000000000b01f927",
+          "ip_location": "安徽",
+          "like_count": 0,
+          "like_view_count": "0",
+          "liked": false,
+          "note_id": "6ad743ec000000002a02db4b",
+          "status": 0,
+          "sub_comment_count": 0,
+          "sub_comments_count": 0,
+          "time": 1793642432000,
+          "user": "[作者信息已脱敏]"
+        },
+        {
+          "at_users": [],
+          "comment_type": 0,
+          "content_excerpt": "保温杯材质",
+          "content_length": 5,
+          "id": "6ae759a0000000000b016951",
+          "ip_location": "吉林",
+          "like_count": 0,
+          "like_view_count": "0",
+          "liked": false,
+          "note_id": "6ad743ec000000002a02db4b",
+          "status": 0,
+          "sub_comment_count": 0,
+          "sub_comments_count": 0,
+          "time": 1793546656000,
+          "user": "[作者信息已脱敏]"
+        }
+      ],
+      "request_id": "bfac28ce-4b73-4598-8a34-9adc2017279d",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 43,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-jd-comments-20261106T073150Z",
+      "vendor": "Qovia",
+      "platform": "jd",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:31:50.570153+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/jd/comments",
+      "params": {
+        "sku_id": "100428822668",
+        "page": 2,
+        "only_this_sku": "true"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 16.937,
+      "row_count": 10,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "page": 2,
+        "has_more": true,
+        "max_page": 4,
+        "total": 1000
+      },
+      "default_text_count": 0,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "id",
+        "images",
+        "ip_location",
+        "likes",
+        "rating",
+        "shop_reply",
+        "sku",
+        "sku_id",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "cid": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "created_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 10,
+          "nonempty": 9
+        },
+        "ip_location": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "likes": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "shop_reply": {
+          "present": 10,
+          "nonempty": 0
+        },
+        "sku": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sku_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "user_name": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "samples": [
+        {
+          "id": "eco_jd_a7ee456f38b4",
+          "cid": "106711100241817017",
+          "text_excerpt": "入手这款小米钛杯很满意，纯钛内胆不容易残留茶味，泡茶喝咖啡都很安心。翻转茶水分离",
+          "text_length": 102,
+          "rating": 5,
+          "likes": 0,
+          "created_at": "2026-11-03T20:36:05+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "sku_id": "100428822668",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": true,
+          "ip_location": "江苏",
+          "images_count": 3,
+          "shop_reply": null
+        },
+        {
+          "id": "eco_jd_7e971f6b45bf",
+          "cid": "106705010233762997",
+          "text_excerpt": "价格实惠，质量不错，方便好用。",
+          "text_length": 15,
+          "rating": 5,
+          "likes": 0,
+          "created_at": "2026-11-03T19:16:39+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "sku_id": "100428822668",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "ip_location": "云南",
+          "images_count": 0,
+          "shop_reply": null
+        }
+      ],
+      "request_id": "42c4899f-b2d4-41ea-aacb-be35333bd2ed",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 43,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-douyin-goods_comments-20261106T073152Z",
+      "vendor": "Qovia",
+      "platform": "douyin",
+      "action": "goods_comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:31:52.557734+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/douyin/goods_comments",
+      "params": {
+        "goods_id": "3827812353530004447",
+        "cursor": 0
+      },
+      "http_status": 200,
+      "elapsed_seconds": 18.229,
+      "row_count": 20,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "cursor": 1,
+        "has_more": true,
+        "total": 32
+      },
+      "default_text_count": 0,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "keywords",
+        "likes",
+        "rating",
+        "ratings",
+        "shop_reply",
+        "sku",
+        "tags",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "cid": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "created_at": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "keywords": {
+          "present": 20,
+          "nonempty": 6
+        },
+        "likes": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "ratings": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "shop_reply": {
+          "present": 20,
+          "nonempty": 18
+        },
+        "sku": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "tags": {
+          "present": 20,
+          "nonempty": 2
+        },
+        "text": {
+          "present": 20,
+          "nonempty": 8
+        },
+        "user_name": {
+          "present": 20,
+          "nonempty": 20
+        }
+      },
+      "samples": [
+        {
+          "cid": "7755228981389328675",
+          "text_excerpt": "",
+          "text_length": 0,
+          "rating": 4,
+          "ratings_fields": [
+            "product",
+            "logistics",
+            "shop"
+          ],
+          "likes": 0,
+          "created_at": "2026-11-05T12:16:04+08:00",
+          "sku": "默认",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "shop_reply": "亲爱哒，谢谢您对我们品牌的支持，能得到您的满意和认可是我们的荣幸呢！此外建议您关注咱们店铺活动，一定会有新惊喜的哦，希望您能继续支持我们店铺。亲在使用过程中有任何问题都可以直接联系我们店铺客服，期待您的再次光临！",
+          "tags_count": 0,
+          "keywords_count": 0
+        },
+        {
+          "cid": "8196740074969465138",
+          "text_excerpt": "很好用，特别保湿滋润",
+          "text_length": 10,
+          "rating": 5,
+          "ratings_fields": [
+            "product",
+            "logistics",
+            "shop"
+          ],
+          "likes": 0,
+          "created_at": "2026-11-04T08:52:46+08:00",
+          "sku": "默认",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "shop_reply": null,
+          "tags_count": 0,
+          "keywords_count": 0
+        }
+      ],
+      "request_id": "e2731377-35fb-4b98-ac0b-e52013597581",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 43,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "douyin-comments-20261106T073227Z",
+      "vendor": "EveryInfra",
+      "platform": "douyin",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:32:29.709552+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/api/v1/social",
+      "params": {
+        "url": "https://www.douyin.com/video/7687095872160632090",
+        "page_token": "[分页令牌已省略]"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 2.337,
+      "row_count": 9,
+      "cash_or_credit_charge_usd": 0.00055556,
+      "trial_call_consumed": false,
+      "pagination": {
+        "page": 2,
+        "has_more": true,
+        "stop_reason": null
+      },
+      "default_text_count": 0,
+      "fields": [
+        "author_avatar_url",
+        "author_id",
+        "author_name",
+        "author_uid",
+        "id",
+        "images",
+        "ip_location",
+        "is_reply",
+        "like_count",
+        "liked_by_author",
+        "next_page_token",
+        "platform",
+        "posted_at",
+        "reply_count",
+        "text",
+        "video_id"
+      ],
+      "field_counts": {
+        "author_avatar_url": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "author_id": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "author_name": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "author_uid": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "id": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "images": {
+          "present": 1,
+          "nonempty": 1
+        },
+        "ip_location": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "is_reply": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "like_count": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "liked_by_author": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "next_page_token": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "platform": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "posted_at": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "reply_count": {
+          "present": 9,
+          "nonempty": 9
+        },
+        "text": {
+          "present": 9,
+          "nonempty": 8
+        },
+        "video_id": {
+          "present": 9,
+          "nonempty": 9
+        }
+      },
+      "samples": [
+        {
+          "next_page_token": "[分页令牌已省略]",
+          "id": "7693562945821917987",
+          "text_excerpt": "纯钛保温杯确实好",
+          "text_length": 8,
+          "like_count": 0,
+          "reply_count": 0,
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "ip_location": "陕西",
+          "liked_by_author": "[作者信息已脱敏]",
+          "is_reply": false,
+          "posted_at": "2026-10-06T14:33:34+00:00",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_uid": "[作者信息已脱敏]",
+          "video_id": "7687095872160632090",
+          "platform": "douyin"
+        },
+        {
+          "next_page_token": "[分页令牌已省略]",
+          "id": "7692824362101506870",
+          "text_excerpt": "博主能测一下，钢米全304材质的那款蒸锅吗",
+          "text_length": 21,
+          "like_count": 0,
+          "reply_count": 0,
+          "author_name": "[作者信息已脱敏]",
+          "author_id": "[作者信息已脱敏]",
+          "ip_location": "北京",
+          "liked_by_author": "[作者信息已脱敏]",
+          "is_reply": false,
+          "posted_at": "2026-10-04T14:47:28+00:00",
+          "author_avatar_url": "[作者信息已脱敏]",
+          "author_uid": "[作者信息已脱敏]",
+          "video_id": "7687095872160632090",
+          "platform": "douyin"
+        }
+      ],
+      "request_id": "req_48b5a84857bd48ab",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": 1,
+      "rows_per_unit": 20,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": 40,
+      "balance_after_usd": 0.93986111
+    },
+    {
+      "evidence_id": "qovia-v1-raw-taobao-comments-20261106T073307Z",
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:33:07.363912+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "971645268720",
+        "page": 1,
+        "skip_default_reviews": "false"
+      },
+      "http_status": 503,
+      "elapsed_seconds": 5.033,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": {},
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": null,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged",
+        "request_id": "439e7e4d-3e09-4670-9f9b-749907fecd2d",
+        "support": "https://t.me/scott10081"
+      },
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-douyin-goods_comments-20261106T073309Z",
+      "vendor": "Qovia",
+      "platform": "douyin",
+      "action": "goods_comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:33:09.079099+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/douyin/goods_comments",
+      "params": {
+        "goods_id": "3827812353530004447",
+        "cursor": 1
+      },
+      "http_status": 200,
+      "elapsed_seconds": 6.555,
+      "row_count": 12,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "cursor": null,
+        "has_more": false,
+        "total": 32
+      },
+      "default_text_count": 0,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "keywords",
+        "likes",
+        "rating",
+        "ratings",
+        "shop_reply",
+        "sku",
+        "tags",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "cid": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "created_at": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "keywords": {
+          "present": 12,
+          "nonempty": 7
+        },
+        "likes": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "rating": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "ratings": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "shop_reply": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "sku": {
+          "present": 12,
+          "nonempty": 12
+        },
+        "tags": {
+          "present": 12,
+          "nonempty": 0
+        },
+        "text": {
+          "present": 12,
+          "nonempty": 2
+        },
+        "user_name": {
+          "present": 12,
+          "nonempty": 12
+        }
+      },
+      "samples": [
+        {
+          "cid": "4420618020632740136",
+          "text_excerpt": "",
+          "text_length": 0,
+          "rating": 5,
+          "ratings_fields": [
+            "product",
+            "logistics",
+            "shop"
+          ],
+          "likes": 0,
+          "created_at": "2026-08-20T08:42:32+08:00",
+          "sku": "默认",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "shop_reply": "感谢您对我们品牌的认可和产品的肯定，我们始终坚持创新驱动和服务体验，不断引领行业潮流，为您提供领先产品体验感受，期待您的再次光临~",
+          "tags_count": 0,
+          "keywords_count": 1
+        },
+        {
+          "cid": "2561880422288228627",
+          "text_excerpt": "前几天屁屁还有些红红的，用了两天就好了",
+          "text_length": 19,
+          "rating": 5,
+          "ratings_fields": [
+            "product",
+            "logistics",
+            "shop"
+          ],
+          "likes": 0,
+          "created_at": "2026-08-17T17:48:21+08:00",
+          "sku": "默认",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": true,
+          "shop_reply": "尊贵的顾客，您好！感谢您对产品的喜爱与赞赏。水润透亮，细腻健康是对每位贵宾的共同目标。我们犹如大自然的精灵，亲近肌肤，进入内心，让您的美由内而外的绽放。我们将永远陪伴您，呵护您的皮肤，滋润您的心情。",
+          "tags_count": 0,
+          "keywords_count": 0
+        }
+      ],
+      "request_id": "002aa527-fb21-4868-a85f-0a426d124e7f",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 41,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-jd-comments-20261106T073309Z",
+      "vendor": "Qovia",
+      "platform": "jd",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:33:09.384753+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/jd/comments",
+      "params": {
+        "sku_id": "100428822668",
+        "page": 3,
+        "only_this_sku": "true"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 6.208,
+      "row_count": 10,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": true,
+      "pagination": {
+        "page": 3,
+        "has_more": true,
+        "max_page": 6,
+        "total": 1000
+      },
+      "default_text_count": 0,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "id",
+        "images",
+        "ip_location",
+        "likes",
+        "rating",
+        "shop_reply",
+        "sku",
+        "sku_id",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "anonymous": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "cid": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "created_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 10,
+          "nonempty": 9
+        },
+        "ip_location": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "likes": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "shop_reply": {
+          "present": 10,
+          "nonempty": 3
+        },
+        "sku": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sku_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "user_name": {
+          "present": 10,
+          "nonempty": 10
+        }
+      },
+      "samples": [
+        {
+          "id": "eco_jd_5267fec14bd3",
+          "cid": "106673740231527741",
+          "text_excerpt": "茶叶过滤网挡不住茶叶，一喝一嘴茶叶！",
+          "text_length": 18,
+          "rating": 1,
+          "likes": 0,
+          "created_at": "2026-11-02T22:01:09+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "sku_id": "100428822668",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "ip_location": "湖南",
+          "images_count": 1,
+          "shop_reply": "您好，非常抱歉没有达到您预期的效果，我们很重视您的反馈，以后也会不断给大家带来更满意的产品。后续有任何需要您都可以联系小米旗舰店客服，我们一定竭诚为您服务，解决您遇到的问题。"
+        },
+        {
+          "id": "eco_jd_f505cf91fb02",
+          "cid": "106703460232421507",
+          "text_excerpt": "🤓做活动抢到的  价格很实惠  并且做工很精致啊   超级好用   密封胶圈为了",
+          "text_length": 53,
+          "rating": 5,
+          "likes": 0,
+          "created_at": "2026-11-02T21:32:27+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "sku_id": "100428822668",
+          "user_name": "[作者信息已脱敏]",
+          "anonymous": false,
+          "ip_location": "青海",
+          "images_count": 5,
+          "shop_reply": null
+        }
+      ],
+      "request_id": "8c9d3934-c458-46ef-8b90-9a0e75544690",
+      "error": null,
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": 41,
+      "rpm_header": "60",
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-taobao-comments_v2-20261106T073541Z",
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments_v2",
+      "category": "评论",
+      "checked_at": "2026-11-06T07:35:41.972015+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "971645268720",
+        "page": 1
+      },
+      "http_status": 502,
+      "elapsed_seconds": 4.156,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": {},
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": null,
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-taobao-comments_v2-20261106T085847Z",
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments_v2",
+      "category": "评论",
+      "checked_at": "2026-11-06T08:58:47.887172+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "971645268720",
+        "page": 1
+      },
+      "http_status": 502,
+      "elapsed_seconds": 4.71,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": {},
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": null,
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": null,
+      "balance_after_usd": null
+    },
+    {
+      "evidence_id": "qovia-v1-raw-taobao-comments-20261106T085926Z",
+      "vendor": "Qovia",
+      "platform": "taobao",
+      "action": "comments",
+      "category": "评论",
+      "checked_at": "2026-11-06T08:59:26.471060+00:00",
+      "transport": "direct_https_rest",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "611261922146",
+        "page": 1,
+        "skip_default_reviews": false
+      },
+      "http_status": 503,
+      "elapsed_seconds": 4.189,
+      "row_count": 0,
+      "cash_or_credit_charge_usd": 0.0,
+      "trial_call_consumed": false,
+      "pagination": {},
+      "default_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "samples": [],
+      "request_id": null,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged",
+        "request_id": "6b971015-d25e-477d-ba7c-369fc7ca0b35",
+        "support": "https://t.me/scott10081"
+      },
+      "billing_reason": null,
+      "billed_units": null,
+      "rows_per_unit": null,
+      "trial_remaining_in_response": null,
+      "rpm_header": null,
+      "credits_charged": null,
+      "balance_after_usd": null
+    }
+  ]
+}

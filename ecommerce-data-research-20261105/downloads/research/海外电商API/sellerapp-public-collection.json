@@ -1,0 +1,146 @@
+{
+  "source": "https://documenter.gw.postman.com/api/collections/51253368/2sBXqKpLRb?segregateAuth=true&versionTag=latest",
+  "checked_on": "2026-11-12",
+  "requests": [
+    {
+      "name": "Product Details",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/products?product_specifications=1&potential_detail=1&price_detail=1&fee_detail=1&ratings=1&promotions=1&realtime_data=1&geo=us&productIds=B086KY66PJ"
+    },
+    {
+      "name": "Variation Tree",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/get_variation_tree?asin=B0D427RKVS&geo=de&priceDetail=1&feeDetail=1&potentialReq=1&ratingsReq=1&specsReq=1&additionalAttrs=1"
+    },
+    {
+      "name": "Category Tree",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/category_tree?key=12896551&key_type=id&geo=us"
+    },
+    {
+      "name": "Category Products",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/category_products?geo=us&category_id=21571226011&pagenumber=1&extended_response=1"
+    },
+    {
+      "name": "Product Reviews",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/reviews?productId=B07RYP2PGN&geo=us&pagenumber=1&reviewer_type=recent&rating=4&media_type=multimedia&keyword=wonderful&sort=recent&filter_by_current_variant=1"
+    },
+    {
+      "name": "Review Collection Scheduler",
+      "request_method": "POST",
+      "url": "https://api.sellerapp.com/sellmetricsv2/review_collection_scheduler?productId=B0CKBVYC3W&geo=in"
+    },
+    {
+      "name": "Review Collection Report",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/review_collection_report?request_id=3D4nuiRlu3k7d4akIaES7IVu2HB"
+    },
+    {
+      "name": "Product Review Summary",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/review_summary?asin=B071WCV19B&geo=US"
+    },
+    {
+      "name": "Keyword Universe Scheduler",
+      "request_method": "POST",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_universe?asin=B0009STNC4&geo=us"
+    },
+    {
+      "name": "Keyword Universe Report",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_universe_report?request_id=3D4n74cqVLZGmKeESdkrcsvbMsW"
+    },
+    {
+      "name": "Product Offers",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/offers?geo=US&productId=B00449Q4SU"
+    },
+    {
+      "name": "Product Question Answers",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/product_qna?productId=B0C3G9B9X1&isAnswered=true&geo=us&pageNumber=1"
+    },
+    {
+      "name": "Listing Quality Index (LQI)",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/lqi?geo=us&productIds=B01NBNDC1T,B00YCBBCHI,B0DBQSCLTS,B0D9N5BNXN,B00COPF1SK,B0D59BQLZZ,B0DBQRWZ1C,B0D6R6FGDZ,B0D9VMK2LV"
+    },
+    {
+      "name": "Fetch LQI-Report",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/lqi_report?request_id=<request-id>"
+    },
+    {
+      "name": "Product History",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/products/history?geo=US&price=1&bsr=1&rating=1&review_count=1&sellers_count=1&productId=B01N6IKSSZ&days=60"
+    },
+    {
+      "name": "Rufus Queries",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/rufus_queries?geo=us&productId=B0CXG3HMX1&search_query=does%20it%20have%20voice%20control"
+    },
+    {
+      "name": "Profit Calculator",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/profit_calculator?geo=us&product_id=B0BH8WHC8Y&listing_price=36.75"
+    },
+    {
+      "name": "Keyword Search Result",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_search_result?geo=us&search=mobile&pagenumber=1&extended_response=1&sort=low-to-high"
+    },
+    {
+      "name": "Keyword Tracking Schedule",
+      "request_method": "POST",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_tracking_schedule"
+    },
+    {
+      "name": "Fetch Keyword Tracking Report",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_tracking_report?request_id=<request-id>"
+    },
+    {
+      "name": "Keyword Research(Reverse ASIN)",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_research?key=B0009STNC4&type=asin&geo=us&pagenumber=2"
+    },
+    {
+      "name": "Keyword Research(Reverse ASIN) v2 - beta",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetrics/v2/keyword_research?key=B0C666SMJF&type=asin&geo=de&pagenumber=1&additional_details=1&results_count=100&sortBySV=-1"
+    },
+    {
+      "name": "Keyword Research Bulk",
+      "request_method": "POST",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_research_schedule?type=keyword&geo=us"
+    },
+    {
+      "name": "Keyword Research Bulk Report",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_research_report?request_id=<request id>"
+    },
+    {
+      "name": "Keyword Metrics",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/keyword_metrics?geo=us&keyword=cover"
+    },
+    {
+      "name": "Seller Profile",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/seller_profile?geo=in&seller_id=AXOGFIT0PZZ7G"
+    },
+    {
+      "name": "Seller Products",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/seller_products?geo=us&pagenumber=2&seller_id=A294P4X9EWVXLJ&extended_response=1"
+    },
+    {
+      "name": "Token Status",
+      "request_method": "GET",
+      "url": "https://api.sellerapp.com/sellmetricsv2/token_status"
+    }
+  ]
+}

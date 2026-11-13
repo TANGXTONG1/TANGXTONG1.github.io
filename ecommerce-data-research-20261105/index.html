@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="国内 EveryInfra/Qovia 实测，以及海外 Bright Data、Apify、Magpie 等评论 API 的平台覆盖、价格、字段和限制对照。" name="description"/>
+<title>国内与海外电商评论 API｜调研、试用与报价</title>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="app.js"></script>
+<script defer="" src="comparison.js"></script>
+<script defer="" src="overseas-tests.js"></script><link href="overseas-tests.css" rel="stylesheet"/></head>
+<body>
+<a class="skip" href="#main">跳至内容</a>
+<header class="masthead">
+<a class="brand" href="#comparison"><span aria-hidden="true" class="brand-symbol">数</span><span>电商数据研究档案</span></a>
+<div class="header-right"><span>海外接口检查 2026-11-13 · 国内试用 2026-11-06</span><a class="download" download="" href="downloads/ecommerce-research-2026-11-05.zip">下载全部资料 <span aria-hidden="true">↧</span></a></div>
+</header>
+<main id="main">
+<div class="intro">
+<div><h1>电商评论 API：覆盖、试用与成本</h1><p>国内实测与海外文档核验分别呈现；逐平台检查原文评论、取数深度、计费单位和交付限制。</p></div>
+<div class="scope"><span>国内电商</span><span>Amazon / Walmart</span><span>Shopee / Lazada</span><span>其他海外渠道</span></div>
+</div>
+<div aria-label="核验概况" class="evidence-strip">
+<span><b>49</b> 组历史平台资料</span><span><b>29</b> 次试用业务请求</span><span><b>16</b> 次评论非空返回</span><span><b>11</b> 组评论端点实测</span><span><b>0</b> 次付费充值</span>
+</div>
+<nav aria-label="研究内容" class="tabs"><a href="decision.html">十平台接入决策 · 新</a><a data-view="overseas-tests" href="#overseas-tests">海外接口测试总表</a><a data-view="overseas" href="#overseas">海外电商 API</a>
+<a aria-current="page" data-view="comparison" href="#comparison">两家试用与报价</a>
+<a data-view="review-api" href="#review-api">评论原文 API 复核</a>
+<a data-view="integration" href="#integration">企业 API 历史复核</a>
+<a data-view="shortlist" href="#shortlist">信誉历史复核 <span>9</span></a>
+<a data-view="catalog" href="#catalog">全量档案 <span>49</span></a>
+<a data-view="samples" href="#samples">实际样本与观察</a>
+<a data-view="library" href="#library">完整报告与下载</a>
+</nav>
+<section aria-label="海外电商接口实际测试大列表" class="view" hidden="" id="overseas-tests">正在载入官网、接口参数与实际测试结果…</section><section aria-labelledby="overseas-title" class="view" hidden="" id="overseas">
+<div class="section-heading"><h2 id="overseas-title">海外电商：先验证原文评论，再比较价格</h2><p>2026 年 11 月 12 日核验 16 家供应商或产品线，另复核 EveryInfra / Qovia 海外目录。覆盖 Amazon、Walmart、eBay、Etsy、AliExpress、Temu、Shopee、Lazada、TikTok Shop，并补充美国零售商。</p></div>
+<article class="quality"><strong>11 月 13 日新增认证实测：Apify 两站取到正文；Bright Data 的 Walmart 取到正文。</strong><p>Apify：Amazon 5 条 / $0.03、Walmart 5 条 / $0.025，均消耗免费额度；Bright Data：同一 Amazon 商品遇登录拦截，Walmart 直接 API 返回 4 条正文。最新输入、错误、字段和样本见“海外接口测试总表”；小样本不足以排名长期成功率。</p><p>商品页评分、评论总数、少量精选评论与可分页的逐条评论是不同能力。公开目录标“支持”不代表已实测。</p><div class="sample-links"><a href="#overseas-tests">查看最新认证实测 →</a><a class="overseas-report" href="docs/document-39.html" rel="noopener" target="_blank">在线阅读前轮筛选报告 →</a><a download="" href="downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86API/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E8%AF%84%E8%AE%BAAPI%E7%AD%9B%E9%80%89-2026-11-12.md">下载完整 Markdown</a><a download="" href="data/overseas-api.json">下载对照表 JSON</a></div></article>
+<div class="section-heading"><h2>先看候选和成本单位</h2><p>价格为美元公开口径。每千条记录、每千个商品页、每千次请求不能直接比较；实际应算每千条去重有效正文的总扣费。</p></div>
+<div class="comparison-scroll"><table class="comparison-table">
+<thead>
+<tr>
+<th>候选</th>
+<th>与需求的匹配</th>
+<th>公开价格或计费参考</th>
+<th>接入与主要限制</th>
+<th>筛选结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bright Data Scraper API</strong></td>
+<td>独立评论采集器：Amazon、Walmart、Lazada、Best Buy；另有多站商品接口附带评论</td>
+<td>PAYG <strong>$1.50 / 千条交付记录</strong>；账户每月 5,000 免费 credits，Scraper API 每条记录消耗 1 credit，额度与其他适用产品共享。Scale $499/月含 384,000 记录、超量 $1.30/千</td>
+<td>同一 API / 账号，以 dataset_id 区分站点，字段仍需映射。商品结果中的评论数组不能直接套用独立评论记录单价</td>
+<td><strong>已有 Walmart 认证正文样本</strong>；Amazon 本次被拦截。实际扣费待核；继续验历史、翻页和地区。</td>
+</tr>
+<tr>
+<td><strong>Apify</strong></td>
+<td>九站均能找到候选 Actor，但维护者、成熟度不同；Temu 不通过本轮成熟度筛选</td>
+<td>月费 Free $0 含 $5 额度；Starter $19 含 $19；Scale $199 含 $199；Business $999 含 $999。Actor 按自身规则消耗额度，付费档超额另付；例如 Amazon Free 档 $6/千评论，Walmart Free 档 $5/千，另有适用事件费</td>
+<td>统一调用、账户和账单；不是统一字段、统一维护团队。社区 Actor 需逐个验收。高档 Actor 单价伴随平台月费</td>
+<td><strong>Amazon / Walmart 已取到正文</strong>；Amazon 当前免费账号每次最多 5 条，Walmart Actor 要求账号全量读写权限。</td>
+</tr>
+<tr>
+<td><strong>Magpie Scraping API</strong></td>
+<td>明确的 Lazada 评论、Shopee 商品/App 评价流程，适合东南亚</td>
+<td>Lazada 6 credits/请求；Shopee product-ratings 8 credits/页；App ratings 10 credits/成功页。按其 Tier 1 参考 $0.00125/credit，约 $7.50 / $10 / $12.50 每千相应计费单位</td>
+<td>一个 key 与钱包，多端点；Shopee App ratings 需工作日审核。product-ratings 文档包含维护期 503 说明；公开计费文字存在差异</td>
+<td><strong>东南亚条件候选</strong>；先核维护状态、失败计费和处理时效</td>
+</tr>
+<tr>
+<td><strong>Oxylabs Web API</strong></td>
+<td>成熟采集供应商；本轮原文评论字段证据来自 Classic 的 Amazon 商品页示例，新 Web API 未核实评论样本</td>
+<td>新 Web API Starter <strong>$15/月</strong>，$5 欢迎额度；该档 Amazon 非 JS <strong>$0.50/千结果</strong>，其他目标从 $1/千，自定义域名 JS 抓取 $1.50/千；AI parsing 列 $3/千解析页，需按实际功能组合核价</td>
+<td>按页面/结果计费，不是单条评论；官方教程称未登录商品页通常露出 8–13 条精选。新 API 与 Classic 并存，不能直接套用彼此的样本与套餐</td>
+<td>适合商品/价格及少量评论；<strong>不作为完整评论库首选</strong></td>
+</tr>
+<tr>
+<td><strong>DataWeave</strong></td>
+<td>企业 Data Collection API 明确包含评论、JSON/CSV及云交付</td>
+<td>询价；没有公开可核逐站评论单价</td>
+<td>需商务确认平台、国家、字段、历史深度、刷新频率及交付 SLA</td>
+<td>适合要求供应商承担整合维护的企业项目，<strong>先询样再定</strong></td>
+</tr>
+<tr>
+<td><strong>SellerApp Data API</strong></td>
+<td>Amazon 明确有 reviews、评论采集任务和结果接口；Walmart/Lazada/Shopee 有商品 API</td>
+<td>数据 API 按月和调用量定制；旧入口宣传 100 免费 tokens，需确认当前账户能否领取</td>
+<td>client-id + token；其余三站“ratings &amp; reviews”宣传尚不能证明逐条原文交付</td>
+<td>可作 Amazon + 商品/关键词/销量估计的备选，不算四站评论已覆盖</td>
+</tr>
+</tbody>
+</table></div>
+<p class="sample-meta">价格来源：<a href="https://brightdata.com/pricing/web-scraper">Bright Data</a> · <a href="https://apify.com/pricing">Apify</a> · <a href="https://data.magpieiq.com/pricing/api">Magpie</a> · <a href="https://oxylabs.io/products/web-api/scrape/pricing">Oxylabs</a>。完整逐端点证据见报告。</p>
+<div class="section-heading"><h2>九个平台的评论覆盖</h2><p>“独立”仅表示有专用接口文档；“商品附带”只确认商品结果中有评论数组。两者都未通过本轮实测。社区 Actor 的维护者与质量分别评估。</p></div>
+<div class="comparison-scroll"><table class="comparison-table">
+<thead>
+<tr>
+<th>目标平台</th>
+<th>Bright Data</th>
+<th>Apify 候选</th>
+<th>Magpie</th>
+<th>关键验收点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon</td>
+<td>独立评论采集器</td>
+<td>Apify 维护；11 月 13 日实测当前免费账号每次最多 5 条，更多需升级；文档范围不等于免费档可取范围</td>
+<td>本轮仅核到商品/搜索，未核独立评论</td>
+<td>登录墙、精选与全评论区别、最早日期、变体合并</td>
+</tr>
+<tr>
+<td>Walmart</td>
+<td>独立评论采集器</td>
+<td>Apify 维护</td>
+<td>未核</td>
+<td>翻页、转载/同步评论去重、商家回复</td>
+</tr>
+<tr>
+<td>eBay</td>
+<td>商品附带评论</td>
+<td>Apify 维护；含卖家交易反馈场景</td>
+<td>未核</td>
+<td>商品评分与卖家反馈必须分开</td>
+</tr>
+<tr>
+<td>Etsy</td>
+<td>商品附带评论</td>
+<td>社区；listing 与 shop 输入</td>
+<td>未核</td>
+<td>商品评论与店铺全部评论分开</td>
+</tr>
+<tr>
+<td>AliExpress</td>
+<td>商品附带评论</td>
+<td>社区；有原文/译文、追评字段</td>
+<td>未核</td>
+<td>原文和译文、SKU、追评、重复</td>
+</tr>
+<tr>
+<td>Temu</td>
+<td>当前公开目录未见现成对应项</td>
+<td>找到新社区 Actor，但用户量过低，本轮不通过</td>
+<td>未核</td>
+<td>正文是否被删减；不能以星级/日期冒充评论正文</td>
+</tr>
+<tr>
+<td>Shopee</td>
+<td>当前公开目录未见现成对应项</td>
+<td>社区；部分旧 Actor 维护中</td>
+<td>独立 product-ratings / App ratings；App schema 列 8 地区</td>
+<td>部分按店铺流匹配商品；Magpie 审核窗口和维护状态</td>
+</tr>
+<tr>
+<td>Lazada</td>
+<td>独立评论；目录代表域为马来西亚</td>
+<td>社区；作者列东南亚六国</td>
+<td>独立评论；文档列东南亚六国</td>
+<td>Bright 其余国家不能由马来西亚目录推断；正文、分页、回复</td>
+</tr>
+<tr>
+<td>TikTok Shop</td>
+<td>商品附带评论</td>
+<td>社区；本轮主要候选明确只接受 US</td>
+<td>只核到商品，未核独立评论</td>
+<td>商品买家评价与 TikTok 视频评论分开</td>
+</tr>
+</tbody>
+</table></div>
+<p class="sample-meta">来源：<a href="https://docs.brightdata.com/scrapers.json">Bright 当前目录</a> · <a href="https://api.magpieiq.com/scraping/openapi.json">Magpie OpenAPI</a>。Apify 每个 Actor 的官方链接、使用量及价格列于完整报告和详细 JSON。</p>
+<details class="criteria"><summary>展开字段、分页深度与接入限制</summary><div class="comparison-scroll"><table class="comparison-table">
+<thead>
+<tr>
+<th>产品 / 端点</th>
+<th>已见字段证据</th>
+<th>翻页 / 历史 / 操作边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bright Amazon <code>gd_le8e811kzy4ggddlq</code></td>
+<td>正文、星级、日期、ASIN、变体、验证购买、图片/视频；未列商家回复</td>
+<td>有 max_reviews、排除已知 ID、变体筛选；不代表全部历史可达</td>
+</tr>
+<tr>
+<td>Bright Walmart <code>gd_mpql1v8g2o8o6l1wzd</code></td>
+<td>正文、评分、日期、商品 ID、媒体、reply</td>
+<td>需测试页间去重、最新评论与最早日期</td>
+</tr>
+<tr>
+<td>Bright Lazada <code>gd_lub6mys21lzcklkq1z</code></td>
+<td>正文、评分、日期、SKU、媒体、replies</td>
+<td>首先验马来西亚；其他地区需样本确认</td>
+</tr>
+<tr>
+<td>Bright Best Buy <code>gd_mv3s5qosodai3txro</code></td>
+<td>正文、评分、日期、SKU、图片、brand_response</td>
+<td>评论总数不等于有正文的可达评论数量</td>
+</tr>
+<tr>
+<td>Apify Amazon</td>
+<td>reviewDescription、ratingScore、reviewTitle、reviewedIn、isVerified、variant、reviewImages</td>
+<td>文档每星最多 100、理想情况商品最多 500；日期筛选另有 <code>dateFilterNewerThan</code> 计费事件，不能只按评论条数预算</td>
+</tr>
+<tr>
+<td>Apify AliExpress 社区候选</td>
+<td>text、text_translated、rating、sku_info、images、follow_up_text、review_date</td>
+<td>作者支持 onlyNewReviews；输入 0 表示尝试所有可达记录，不保证全历史</td>
+</tr>
+<tr>
+<td>Magpie Lazada</td>
+<td>评论正文、星级、时间、变体；V2 增加筛选与分页数据</td>
+<td>使用含 itemId 的 review-list URL / V2 请求体，需提交任务再取结果，不是直接传任意商品 URL 就完成</td>
+</tr>
+<tr>
+<td>Magpie Shopee App ratings</td>
+<td>官方示例含 cmtid、rating_star、comment、images；返回分页原始结构</td>
+<td>固定 50 ratings/页；min_pages/max_pages 范围 1–100；Mon–Fri 08:00–17:00 Asia/Jakarta 工作时间审核；上限是参数允许值，非保证采满</td>
+</tr>
+<tr>
+<td>Oxylabs Classic <code>amazon_product</code></td>
+<td>官方教程的 reviews 数组含 content、rating、timestamp、is_verified 等；本轮未实调</td>
+<td>教程称未登录商品页通常露出 8–13 条精选；不代表 API 每次保证返回该数量，也未据此确认完整历史或新 Web API 的同等字段</td>
+</tr>
+</tbody>
+</table></div><p>Bright：5,000 个活动任务/快照，结果快照暂存 30 天；这不是客户每日清除评论的规定。Apify：各 Actor 的 schema、价格与维护责任不同。Magpie：部分 Shopee 评论任务需要工作日审核；维护状态及失败扣费待确认。</p></details>
+<details class="criteria"><summary>展开其余候选、暂停接口与降级原因</summary><div class="comparison-scroll"><table class="comparison-table">
+<thead>
+<tr>
+<th>供应商 / 产品</th>
+<th>官方证据与结论</th>
+<th>价格 / 重要边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scrapingdog</td>
+<td><a href="https://www.scrapingdog.com/documentation/amazon-reviews-api/" rel="noopener noreferrer" target="_blank">Amazon Reviews</a> 因登录墙标为 temporarily unavailable；<a href="https://www.scrapingdog.com/documentation/walmart-reviews-scraper/" rel="noopener noreferrer" target="_blank">Walmart Reviews</a> 有正文</td>
+<td>Walmart 5 credits/成功请求；文档只列 reviews URL，未明确独立分页参数与历史深度。<a href="https://www.scrapingdog.com/pricing/" rel="noopener noreferrer" target="_blank">Lite $40/月含 20 万 credits、5 并发；免费 100 credits</a>。请求数不等于评论条数；不作为广覆盖评论主方案</td>
+</tr>
+<tr>
+<td>ScraperAPI</td>
+<td>Amazon 原评论入口指向 <a href="https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api" rel="noopener noreferrer" target="_blank">Product API</a>，只能确认商品页公开评论；<a href="https://docs.scraperapi.com/php/making-requests-or-php/async-structured-data-collection-method-or-php/amazon-reviews-api-async-or-php" rel="noopener noreferrer" target="_blank">旧官方评论文档</a>明确不可用。<a href="https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api" rel="noopener noreferrer" target="_blank">Walmart</a> 有 page、评分及验证购买筛选</td>
+<td><a href="https://www.scraperapi.com/pricing/" rel="noopener noreferrer" target="_blank">Hobby $49/月含 10 万 credits、20 并发；7 天试用 5,000 credits</a>。按请求消耗 credits，非按评论；Walmart review 精确请求成本本轮未核。可作 Walmart 专项候选，不列为 Amazon 完整历史来源</td>
+</tr>
+<tr>
+<td>DataForSEO</td>
+<td><a href="https://docs.dataforseo.com/v3/merchant-amazon-reviews-task_post/" rel="noopener noreferrer" target="_blank">Amazon reviews/task_post</a> 官方明确暂不可用</td>
+<td>暂撤出评论主候选；有公司级信誉不能覆盖端点停用事实</td>
+</tr>
+<tr>
+<td>Traject / Rainforest</td>
+<td><a href="https://docs.trajectdata.com/rainforestapi/product-updates" rel="noopener noreferrer" target="_blank">官方更新</a>说明 reviews_v2 停用，退回 product.top_reviews</td>
+<td>多个官方价格入口有差异；不以历史套餐推算当前评论成本</td>
+</tr>
+<tr>
+<td>Traject / BlueCart</td>
+<td><a href="https://docs.trajectdata.com/bluecartapi/walmart-product-data-api/parameters/reviews" rel="noopener noreferrer" target="_blank">Walmart reviews</a> 支持美国，明确不支持 walmart.ca</td>
+<td>年付折合 $18/月含 500 请求、$66/月含 10,000；100 请求免卡试用</td>
+</tr>
+<tr>
+<td>Traject / Countdown</td>
+<td><a href="https://docs.trajectdata.com/countdownapi/ebay-product-data-api/results/reviews" rel="noopener noreferrer" target="_blank">eBay reviews</a> 是商品评价，EPID/GTIN 查询、10 条/页</td>
+<td>年付折合 $18/月含 500 请求、$66/月含 10,000；100 请求免卡试用。同集团仍为不同 API，不等同一家统一接口</td>
+</tr>
+<tr>
+<td>Diffbot</td>
+<td><a href="https://www.diffbot.com/docs/extract/discussion" rel="noopener noreferrer" target="_blank">Discussion API</a> 有正文、日期、图片、回复关系，但本轮未核逐条星级和九站可达性</td>
+<td>通用提取工具，需要自行解决更多目标页与覆盖问题，非现成评论主选</td>
+</tr>
+<tr>
+<td>Unwrangle</td>
+<td><a href="https://docs.unwrangle.com/amazon-product-reviews-api/" rel="noopener noreferrer" target="_blank">Amazon 文档</a> 自行标为 legacy/high-risk，提示不要建立新的生产依赖；更多评论涉及 Amazon cookie</td>
+<td>当前不选为 Amazon 主方案；美国零售商可另行专项验收</td>
+</tr>
+<tr>
+<td>Zyte</td>
+<td><a href="https://docs.zyte.com/zyte-api/usage/extract" rel="noopener noreferrer" target="_blank">现行自动提取目录</a> 未列 productReviews；2020 年 AutoExtract 评论 beta 文章不能证明当前 API 可用</td>
+<td>成熟通用抓取/定制供应商；评论交付需重新确认</td>
+</tr>
+<tr>
+<td>Decodo</td>
+<td>有<a href="https://decodo.com/scraping/web/reviews" rel="noopener noreferrer" target="_blank">评论抓取宣传页</a>，但本轮未核足当前逐站评论端点、分页和原文样本</td>
+<td>待补证；不按营销覆盖宣称列入已支持</td>
+</tr>
+</tbody>
+</table></div></details>
+<details class="criteria"><summary>展开数据权利、投诉和维护条款差异</summary><div class="comparison-scroll"><table class="comparison-table">
+<thead>
+<tr>
+<th>项目</th>
+<th>Bright Data</th>
+<th>Apify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据与第三方权利</td>
+<td>标准许可 §3.9 禁止用数据提供相似或竞争产品；§3.5/10.2 涉及第三方权利与授权责任</td>
+<td>通用条款 §5.8 在法律允许范围内保留客户既有数据权利；§6.2 涉及使用责任，不是授予所有被采评论的版权</td>
+</tr>
+<tr>
+<td>投诉 / 停用</td>
+<td>§2 允许在潜在责任、违法或违约等情形暂停服务</td>
+<td>有侵权举报机制；Actor 条款 §9.5 允许删除或禁用严重违规的社区 Actor</td>
+</tr>
+<tr>
+<td>完整性 / 可用性</td>
+<td>§6 默认不保证持续无中断、无错误或数据完整准确；具体 SLA 另核</td>
+<td>通用条款 §10 有类似免责；官方维护 Actor 有有限的描述符合保证和合理修正努力</td>
+</tr>
+<tr>
+<td>社区作者责任</td>
+<td>需要看具体服务合同</td>
+<td>Actor 条款 §8–9：社区作者默认没有持续维护、更新或支持义务；统一平台账户不消除这一差异</td>
+</tr>
+</tbody>
+</table></div><p>官方条款：<a href="https://brightdata.com/license">Bright Data</a> · <a href="https://docs.apify.com/legal/general-terms-and-conditions">Apify 通用条款</a> · <a href="https://docs.apify.com/legal/actor-terms-and-conditions">Apify Actor 条款</a>。供应商免责不等于授予评论内容的再分发权，具体用途和 SLA 仍按合同确认。</p></details>
+<article class="review-note"><h3>信誉证据与下一步验收</h3><p>Bright 的 Clootrack 案例涉及评论分析，但使用的是代理基础设施；Oxylabs 的 Conductor 案例是搜索采集。案例可证明公司背景，不能替代评论 API 测试。Apify 的 Amazon Actor 有实际使用量，但当前评分 2.70/5（46 条），仍须验证稳定性；新 Temu 候选用户量过低，本轮不通过。</p><p>建议对同一批商品取首页、后续页和历史页，比较非空正文率、唯一评论数、最早日期、字段完整率、耗时、重试和实扣金额。此后才能判断哪家成本更低、成功率更高。</p><div class="sample-links"><a class="overseas-report" href="docs/document-39.html" rel="noopener" target="_blank">完整报告、来源与证据 →</a><a href="#comparison">回看国内两家已完成的试用</a></div></article>
+</section>
+<section aria-labelledby="comparison-title" class="view" id="comparison">
+<div class="section-heading"><h2 id="comparison-title">先确认覆盖和深度，再比较单价</h2><p id="comparison-conclusion">正在载入两家服务的对比…</p></div>
+<article class="quality"><strong>试用已领取，已完成部分评论 API 实测</strong><p id="comparison-trial-status">EveryInfra 与 Qovia 均已完成注册、创建 API Key 并取得真实评论响应；正在载入额度详情。</p><p>本次共29次业务请求，包括5次搜索、24次评论请求（其中1次由官方调试台发起）；账户查询不计入。仅验证少量目标和分页，尚未验证批量成功率、历史极限或长期稳定性。</p><div class="sample-links"><a download="" href="data/live-trials.json">下载脱敏实测与样本 JSON</a><a download="" href="downloads/research/%E5%8F%8C%E5%B9%B3%E5%8F%B0%E8%AF%95%E7%94%A8%E5%AF%B9%E6%AF%94/EveryInfra-Qovia-%E5%AF%B9%E6%AF%94.xlsx">下载 Excel 对比表</a></div></article>
+<div class="section-heading"><h2>真实调用结果</h2><p>“返回 / 去重”只统计当前抽样的顶层评论 ID，不含嵌套子回复；不等于目标的全部评论。Qovia 使用赠送次数，实扣 $0 不代表接口免费。展开每行可查看字段和脱敏摘录。</p></div>
+<div class="comparison-scroll"><table class="comparison-table trial-results-table"><thead><tr><th>供应商 / 评论类型</th><th>实际结果</th><th>额度与耗时</th><th>字段与返回样本</th></tr></thead><tbody id="comparison-live-rows"><tr><td colspan="4">正在载入实测记录…</td></tr></tbody></table></div>
+<p class="sample-meta">淘宝本次未取得非空成功样本：EveryInfra 三个商品均空，Qovia V1 三次503、V2两次502。失败记录也保留。作者资料、图片地址、密钥和分页令牌不公开，正文仅展示短摘录。</p>
+<div class="section-heading"><h2>重点平台的评论报价与可取范围</h2><p>每千计费单位的标准价格，不含充值手续费或账户优惠，也不是每千条评论的价格。视频、笔记评论和商品买家评价分别列出；逐行区分实测结果与尚未实调的文档能力。</p></div>
+<label class="api-select-label" for="comparison-kind">数据类型 <select id="comparison-kind"><option value="">全部重点渠道</option><option value="商品">商品买家评价</option><option value="内容">内容互动评论</option></select></label>
+<div class="comparison-scroll"><table class="comparison-table"><thead><tr><th>平台与数据</th><th>EveryInfra</th><th>Qovia</th></tr></thead><tbody id="comparison-price-rows"></tbody></table></div>
+<div class="section-heading"><h2>额度、接入和使用限制</h2><p>请求速率、每日上限、试用金到期、分页游标到期和评论数据保留是不同规则。未公开的项目保留“未核”，不按无限制处理。</p></div>
+<div class="comparison-scroll"><table class="comparison-table"><thead><tr><th>比较项目</th><th>EveryInfra</th><th>Qovia</th></tr></thead><tbody id="comparison-limit-rows"></tbody></table></div>
+<details class="criteria"><summary>展开全部目录平台的价格范围</summary><p>包含各类能力，并非全部都是评论接口；同一平台可能混合按次、按页、按条和按目标收费。这里只用于了解大致范围，选型仍须回到具体端点。</p><div class="comparison-filters"><label for="comparison-provider">供应商 <select id="comparison-provider"><option value="">两家</option><option value="EveryInfra">EveryInfra</option><option value="Qovia">Qovia</option></select></label><label for="comparison-platform-search">搜索平台 <input id="comparison-platform-search" placeholder="例如：淘宝、amazon、weibo" type="search"/></label></div><p class="sample-meta" id="comparison-platform-count" role="status"></p><div class="comparison-scroll"><table class="comparison-table platform-price-table"><thead><tr><th>供应商 / 平台</th><th>目录能力数</th><th>每千单位价格范围（USD）</th><th>计量边界 / 来源</th></tr></thead><tbody id="comparison-platform-rows"></tbody></table></div></details>
+<article class="review-note"><h3>试用验收方式</h3><p>同一批商品分别取第一页、后续页和最后可读页，记录实际评论条数、最早日期、重复率、正文与追评字段、响应耗时、失败原因和实扣金额。先用少量正常请求确认接口，再按官方账户速率逐步测试；每分钟请求上限不能替代实际吞吐与历史深度。</p><p>两家均未核到可供客户依赖的“避风港”免责承诺。条款对照重点检查数据来源授权、存储、再分发、侵权下架与责任边界；供应商免责声明不等于向客户授予底层评论的使用权。</p><div class="sample-links"><a download="" href="data/trial-comparison.json">下载完整对比 JSON</a><a href="#library">查看完整原始目录与报告 →</a></div></article>
+</section>
+<section aria-labelledby="review-api-title" class="view" hidden="" id="review-api">
+<div class="section-heading"><h2 id="review-api-title">评论接口文档初筛存档</h2><p>本页保留试用前的文档与信誉筛选。两家最新的注册、真实响应、价格与限制请看<a href="#comparison">试用及报价对比</a>。</p><p id="review-api-conclusion">正在载入评论接口复核…</p></div>
+<div class="quality"><strong>上一轮的魔镜、Nint、数说，均撤出评论 API 主推荐。</strong><p>公开证据未证明它们提供现成的逐条商品评论正文接口。魔镜旧 API 的维护情况待核；不能据此判断其整个业务已停更。大盘分析、情绪统计、文件导出和定制能力均不足以满足当前交付要求。</p></div>
+<div class="section-heading"><h2>两种技术试验对象，均未通过采购验收</h2><p>以下只说明接口与需求的接近程度。主体、客户案例和真实可用性仍需补证；拼多多、美团的原文覆盖尚未核实。</p></div>
+<div class="review-trials" id="review-api-trials"></div>
+<div class="section-heading"><h2>原文接口逐项对照</h2><p>保留所有复核结果，包括不适合的产品。文档中的页码参数上限，不等于实际能取到的页数。</p></div>
+<label class="api-select-label" for="review-api-candidate">选择供应商或工具 <select id="review-api-candidate"></select></label>
+<div id="review-api-detail"></div>
+<article class="review-note"><h3>试用后的补充证据</h3><p>2026年11月6日已取得 EveryInfra 与 Qovia 的真实评论响应，并记录分页、重复、字段、耗时与扣费。最新结果见<a href="#comparison">两家试用与报价</a>；本页的公开文档示例仍不算实际业务样本。</p><p>仍需补验目标商品批量成功率、历史深度、追评、完整子回复、增量更新及生产吞吐；两家均未核拼多多与美团评论端点，也未验证完整的数据使用授权。</p><div class="sample-links"><a download="" href="data/review-api.json">下载文档初筛存档 JSON</a><a href="#library">完整报告与原始证据 →</a></div></article>
+</section>
+<section aria-labelledby="api-title" class="view" hidden="" id="integration">
+<div class="section-heading"><h2 id="api-title">2026 年 11 月 5 日企业 API 研究存档</h2><p>此页保留前轮多大类企业交付研究；不再作为评论原文采购推荐。当前结论请看“评论原文 API”。</p><p id="api-conclusion"></p></div>
+<div aria-label="期望的交付关系" class="api-flow"><span>淘 / 京 / 拼 / 美等上游</span><b aria-hidden="true">→</b><span>主供应商负责采集、适配、字段统一</span><b aria-hidden="true">→</b><strong>你们对接供应商 API</strong></div>
+<p class="sample-meta">这是采购目标，尚未确认任何一家完整满足。可以有商品、销量、评价、营销等多个端点；关键是上游平台的开发维护由供应商承担。</p>
+<div class="shortlist-grid" id="api-primary"></div>
+<div class="section-heading"><h2>逐项看覆盖，避免把“有 API”当作“都能交付”</h2><p>深查 18 家。下表始终保留具体限制：“已核文档”也可能是文档明确限制能力，不表示实调成功或全量覆盖。</p></div>
+<label class="api-select-label" for="api-candidate">选择供应商 <select id="api-candidate"></select></label>
+<div id="api-detail"></div>
+<details class="criteria"><summary>统一交付要求与建议字段（需求清单，非厂商现成 API）</summary><div id="api-requirements"></div></details>
+<details class="criteria"><summary>这轮如何调整上一版名单</summary><div id="api-changes"></div></details>
+<article class="review-note" id="api-catalog-sample"></article>
+</section>
+<section aria-labelledby="shortlist-title" class="view" hidden="" id="shortlist">
+<div class="section-heading"><h2 id="shortlist-title">历史信誉复核的九家候选</h2><p>这一页保留此前按信誉与用途形成的名单；当前采购结论请看“评论原文 API”。这里的信誉分组不代表评论接口合格。</p></div>
+<div class="review-summary" id="review-summary"></div>
+<details class="criteria"><summary>这次如何收紧筛选</summary><div id="criteria-content"></div></details>
+<div class="shortlist-grid" id="shortlist-cards"></div>
+<div class="review-note"><h3>原始 API 服务商先补证</h3><p>Just One API、TMAPI、Qovia、竹简数据、EveryInfra 暂不进入优先名单。现有文档与 SDK 只能证明技术入口，仍需具名客户、主体和实际样本。万邦有外部历史记录，保留为备选，但旧国内接口的当前可用性仍待核验。</p><p>GitHub：当前官网链接的 Just One API Python SDK / MCP 页面分别为 11 / 6 stars；EveryInfra 的 SEO skill 为 76 stars（2026-11-05 网页读取）。客户端或工具的 star 不等于数据引擎质量或客户数；未取到的指标不记为 0。</p><a href="#catalog">查看全部 49 组的保留 / 降级依据 →</a></div>
+</section>
+<section aria-label="平台总表" class="view" hidden="" id="catalog">
+<form class="filters" id="filters" role="search">
+<label class="search-label"><span>搜索平台、字段或数据需求</span><input autocomplete="off" id="search" placeholder="例如：美团、评价正文、sale_count" type="search"/></label>
+<label><span>渠道覆盖</span><select id="channel"><option value="">全部渠道</option><option>淘宝/天猫</option><option>京东</option><option>拼多多</option><option>美团</option><option>抖音</option><option>快手</option><option>小红书</option><option>1688</option></select></label>
+<label><span>平台类别</span><select id="category"><option value="">全部类别</option></select></label>
+<label><span>历史信誉分组</span><select id="verdict"><option value="">全部判断</option><option value="精选">原信誉精选</option><option value="备选">备选</option><option value="补证">待补证</option><option value="外围用途">外围用途</option></select></label>
+<label><span>验证进度</span><select id="status"><option value="">全部进度</option><option value="preview">已取得公开数据</option><option value="login">需登录 / 注册</option><option value="sales">需商务 / 授权 / 凭证</option><option value="incomplete">浏览器核验未完成</option><option value="document">尚未完成浏览器测试</option></select></label>
+<button class="text-button" type="reset">重置</button>
+</form>
+<div class="table-caption"><p id="count" role="status">正在载入 49 组平台资料…</p><p>覆盖与字段来自文档；只有明确标注的项目取得了实际数据。</p></div>
+<div aria-label="可横向滚动的平台对照表" class="table-scroll" tabindex="0">
+<table class="catalog-table"><thead><tr><th scope="col">平台 / 本轮判断</th><th scope="col">覆盖渠道</th><th scope="col">API / 导出方式</th><th scope="col">数据与字段</th><th scope="col">实际验证结果</th></tr></thead><tbody id="rows"></tbody></table>
+</div>
+<div class="empty" hidden="" id="empty">没有匹配的平台。可以减少筛选条件，或搜索“价格”“评价”等关键词。</div>
+<p class="footnote">34 组尝试中，31 组确认访问方式、3 组因页面或工具异常未完成；另 15 组尚未完成浏览器测试，其中好单库另取得公开 HTTP 样本。登录或商务门槛不表示供应商不可用。候选含同集团产品及外围工具，不宣称穷尽市场。</p>
+</section>
+<section aria-labelledby="samples-title" class="view" hidden="" id="samples">
+<div class="section-heading"><h2 id="samples-title">取得了什么，仍缺什么</h2><p>原始响应与观察保留原口径；网页预览、供应商文档和真实 API 调用分别记录。</p></div>
+<div id="sample-content"></div>
+</section>
+<section aria-labelledby="library-title" class="view" hidden="" id="library">
+<div class="section-heading"><h2 id="library-title">完整资料库</h2><p>新增 2026-11-12 海外评论 API 报告、字段与价格证据；保留 2026-11-06 EveryInfra / Qovia 实测及更早调研档案。公开文档和真实调用分别标明。</p></div>
+<a class="primary-link" download="" href="downloads/ecommerce-research-2026-11-05.zip">下载完整资料 ZIP</a>
+<div class="documents" id="documents"></div>
+</section>
+<div class="error" hidden="" id="error" role="alert"></div>
+</main>
+<footer><span>国内与海外电商数据平台调研</span><span>单次核验不代表持续稳定性、全量覆盖或真实成交口径。</span></footer>
+<dialog aria-labelledby="detail-title" id="detail"><div class="dialog-header"><span>平台详情与证据</span><button aria-label="关闭平台详情" id="close-detail">关闭 ×</button></div><div id="detail-body"></div></dialog>
+</body>
+</html>

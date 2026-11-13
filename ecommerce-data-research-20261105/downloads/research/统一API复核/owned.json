@@ -1,0 +1,575 @@
+[
+  {
+    "id": "jiushuyun",
+    "name": "九数云",
+    "delivery_model": "预置连接器汇入分析表/仪表板 → 同一企业鉴权；两种出口：分析表CSV/Excel文件，或仪表板组件分页JSON。统一的是交付结构，电商语义字段仍要建模。",
+    "unified_api_evidence": [
+      {
+        "claim": "企业版超管获取accessKeyId/accessKeySecret，换取同一企业临时令牌；业务数据源授权与此出口鉴权分开。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-140.html"
+      },
+      {
+        "claim": "POST /api/v2/export 接收 tableId、format，响应 data 为下载链接；只导出分析表，源表不能直接导出。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-149.html"
+      },
+      {
+        "claim": "数据源市场允许连接多源再分析；Alpha 定义为已上线但未经过数据测试、不建议使用。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-562.html"
+      },
+      {
+        "claim": "2026-03-27仪表板查询文档列出GET /api/public/analysis/v1/dashboards/{dashboardId}/meta 与 POST /api/public/analysis/v1/component/data；返回fields、rows、page.hasNext，分页每页1–500行。页面标社区级协助/用户贡献，商用支持范围需确认。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-1100.html"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "付费连接器，需鲸钻客ERP服务和店铺授权；2026-10-10页面仍标Alpha，完整表字段需授权选表查看。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-1124.html"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "可经聚水潭等ERP授权路径汇入；不是已核独立JD直连。当前聚水潭连接器页说明京东敏感字段为空，不应引用旧历史版的全面停取说法。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-342.html"
+        ]
+      },
+      "pdd": {
+        "status": "已核文档",
+        "detail": "普通连接器要求贝壳订单服务/主账号授权；自研模式需创建上线PDD应用并明确Alpha。普通页Alpha说明混写商家自研名称，状态需厂商确认。ERP连接器自2025-08-20不再新增同步PDD。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-1121.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-1055.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-342.html"
+        ]
+      },
+      "meituan": {
+        "status": "已核文档",
+        "detail": "餐饮外卖订单和评价、团购门店点评/结算、到店CPC日报；每业务分别授权，不包括已核闪购全量。首次历史仅近5天。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-604.html"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "抖音账号/作品、巨量千川各有授权连接器；抖店订单可经ERP路径，不能把抖音开放平台连接器当抖店交易接口。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-670.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-694.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-342.html"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "授权订单/售后等分析表可计算自营销量，按连接器和口径验收。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-342.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-604.html"
+        ]
+      },
+      "price": {
+        "status": "商务待核",
+        "detail": "ERP店铺商品/订单价格可进入分析表；全平台实时SKU/到手价统一表未证实。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-342.html"
+        ]
+      },
+      "reviews": {
+        "status": "已核文档",
+        "detail": "美团餐饮连接器列门店评价及点评内容；未证明淘京拼评价全文齐全。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-604.html"
+        ]
+      },
+      "marketing": {
+        "status": "已核文档",
+        "detail": "美团到店CPC日报、巨量千川授权数据；其他商城广告花费/曝光/ROI未核齐。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-604.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-694.html"
+        ]
+      },
+      "owned": {
+        "status": "已核文档",
+        "detail": "面向本人店铺/广告账号授权，具备汇总和自动导出的路径。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-140.html",
+          "https://help.fanruan.com/jiushuyun/doc-view-149.html"
+        ]
+      },
+      "competitor": {
+        "status": "未证实",
+        "detail": "这些授权连接器不提供竞品真实订单与广告后台。",
+        "urls": [
+          "https://help.fanruan.com/jiushuyun/doc-view-562.html"
+        ]
+      }
+    },
+    "gaps": [
+      "一套出口不等于零配置：逐店铺、逐广告账户授权与源表映射仍必要。",
+      "不能再把九数云概括为只能导文件：已有组件分页JSON文档；但组件API不是预置订单/评价API，需在九数云建好统一模型和组件，并确认社区级文档的生产支持。",
+      "淘宝Alpha；PDD自研Alpha且需要自己上线应用，不适合直接承诺省掉全部平台接入工作。",
+      "四大平台×销量/价格/评价/营销并未全覆盖；需源端授权后取得实际表清单。",
+      "无鉴权实调成功记录。"
+    ],
+    "verdict": "自营统一出口有条件备选；新增JSON路线，仍不满足完整竞品+自营四大类",
+    "next_verification": [
+      "要求供应商负责现成连接器、统一字段模型和仪表板组件，交付固定componentId、fields/rows schema，并明确组件查询API的企业版生产支持、分页和权限。",
+      "优先验收淘/拼连接器实际状态以及PDD无需自研应用的普通路径。",
+      "至少交一份跨平台订单表、一份评论表和一份广告日报，核自动增量、历史补数、失败重试和字段完整率。"
+    ],
+    "checked_on": "2026-11-05",
+    "json_api_fields": {
+      "request": [
+        "componentId",
+        "pageRequest.pageIndex",
+        "pageRequest.pageSize",
+        "parameters[].name",
+        "parameters[].value"
+      ],
+      "response": [
+        "code",
+        "data.componentId",
+        "data.componentType",
+        "data.fields[].id",
+        "data.fields[].name",
+        "data.fields[].dataType",
+        "data.fields[].role",
+        "data.rows[][]",
+        "data.page.pageIndex",
+        "data.page.pageSize",
+        "data.page.hasNext"
+      ],
+      "scope": "这些是BI组件传输字段，不是已核齐跨淘宝/京东/拼多多/美团的订单、价格、评价、营销业务列。",
+      "source_url": "https://help.fanruan.com/jiushuyun/doc-view-1100.html"
+    }
+  },
+  {
+    "id": "jijyun",
+    "name": "集简云",
+    "delivery_model": "配置多个授权应用动作 → 以一个子流程API触发并返回自定义JSON；是集成执行层，不是现成全平台经营数据库。",
+    "unified_api_evidence": [
+      {
+        "claim": "官方嵌入方案允许通过API调用已搭建子流程，无需前端开发；SDK嵌入方案另需审核。",
+        "url": "https://www.jijyun.cn/help/detail/776"
+      },
+      {
+        "claim": "子流程可自定义输入和返回参数，前面各动作的返回值可映射到统一Response；公开列子流程列表POST https://openapi.jijyun.cn/v1/api/query_process。",
+        "url": "https://www.jijyun.cn/help/detail/784"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "未证实",
+        "detail": "本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      },
+      "jd": {
+        "status": "未证实",
+        "detail": "本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "抖店新订单动作和order_id/p_id转换有正式帮助；仅证明局部自营动作。",
+        "urls": [
+          "https://www.jijyun.cn/help/detail/756"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "抖店授权新订单可进入流程；跨淘京拼美销量表未证实。",
+        "urls": [
+          "https://www.jijyun.cn/help/detail/756"
+        ]
+      },
+      "price": {
+        "status": "商务待核",
+        "detail": "取决于目标应用动作可返回字段，需固定动作清单和样例。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "此前商家评分动作不等于评价全文，四大平台评论动作未核齐。",
+        "urls": [
+          "https://www.jijyun.cn/help/detail/1485"
+        ]
+      },
+      "marketing": {
+        "status": "商务待核",
+        "detail": "有营销应用连接能力，但需逐广告产品核字段；未确认四平台统一投放报表。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      },
+      "owned": {
+        "status": "已核文档",
+        "detail": "通过已授权应用动作同步并统一封装。",
+        "urls": [
+          "https://www.jijyun.cn/help/detail/784"
+        ]
+      },
+      "competitor": {
+        "status": "未证实",
+        "detail": "不自带经核实的淘京拼美全网竞品数据库。",
+        "urls": [
+          "https://www.jijyun.cn/apps/"
+        ]
+      }
+    },
+    "gaps": [
+      "能够减少代码对接，不代表减少数据源合同与授权。",
+      "仍要逐源配置流程/动作和映射字段；要求供应商实施才能达到用户只接一套API。",
+      "覆盖缺口比统一出口本身更大；不能因应用多就承诺四大类齐全。",
+      "流程有执行延迟，官方建议按步骤设置等待超时；不等于低延时批量数据API。",
+      "本轮未鉴权调用。"
+    ],
+    "verdict": "统一JSON出口的集成方案备选；数据覆盖待核",
+    "next_verification": [
+      "供应商先给淘京拼美×四类数据的可用动作矩阵，而非应用总目录。",
+      "要求演示一次子流程请求返回统一结构，以及无需用户逐个平台开发。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "qeasy",
+    "name": "轻易云",
+    "delivery_model": "源端ERP/业务系统授权适配器 + 字段映射 + 目标API/数据库；可由供应商做统一交付，但本轮未核现成跨电商统一查询API。",
+    "unified_api_evidence": [
+      {
+        "claim": "官方集成目录有聚水潭/奇门、旺店通、管易、吉客云及目标数据库；未收录的新系统需用户提供接口文档和数据结构。",
+        "url": "https://www.qeasy.cloud/en/platform"
+      },
+      {
+        "claim": "聚水潭适配器展示业务方法与订单字段，这通常是底层服务接口，并非通用全网电商数据端点。",
+        "url": "https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接taobao全数据。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接jd全数据。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "pdd": {
+        "status": "商务待核",
+        "detail": "可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接pdd全数据。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接douyin全数据。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "本轮未核美团订单、价格、评论、广告的完整标准动作组合。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "聚水潭适配器有订单/商品数量金额等字段，按ERP权限提供。",
+        "urls": [
+          "https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "订单条目price等字段可映射，不代表前台到手价或竞品SKU价格库。",
+        "urls": [
+          "https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "未核跨四商城逐条评价正文标准数据源。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "未核跨四商城统一广告投放明细源。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "owned": {
+        "status": "已核文档",
+        "detail": "以企业现有业务系统和授权数据为主。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      },
+      "competitor": {
+        "status": "未证实",
+        "detail": "没有已核自带竞品市场数据库。",
+        "urls": [
+          "https://www.qeasy.cloud/en/platform"
+        ]
+      }
+    },
+    "gaps": [
+      "集成实施服务不等于数据供应商；底层平台授权和限制仍在。",
+      "统一目标schema和API需实施合同明确；公开目录未证明直接开通即用。",
+      "公开适配器存在旧版本和占位字段，需要现行沙箱/生产样例。"
+    ],
+    "verdict": "已有多系统时的实施备选；不作为现成数据API首选",
+    "next_verification": [
+      "要求对方包办源接入和维护、只向用户交付一套稳定API。",
+      "先给真实可用的数据矩阵及字段，不接受连接器数量替代。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "jushuitan",
+    "name": "聚水潭",
+    "delivery_model": "统一ERP订单/商品/库存API，源店铺分别授权；部分平台另走奇门等路径。",
+    "unified_api_evidence": [
+      {
+        "claim": "正式订单查询说明外部系统可获取ERP订单，但该普通接口排除淘系和拼多多；淘系需奇门appkey。",
+        "url": "https://open.jushuitan.com/document/2125.html"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "普通订单接口排除；需另申请奇门权限。",
+        "urls": [
+          "https://open.jushuitan.com/document/2125.html"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "ERP订单路线可用范围需按账户权限；敏感信息随平台规则变化。",
+        "urls": [
+          "https://openweb.jushuitan.com/doc?docId=340"
+        ]
+      },
+      "pdd": {
+        "status": "商务待核",
+        "detail": "普通订单接口排除，不能按ERP已接入PDD推断对外统一开放。",
+        "urls": [
+          "https://open.jushuitan.com/document/2125.html"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "本轮未核完整美团数据对外API。",
+        "urls": [
+          "https://open.jushuitan.com/"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "自有ERP订单路线，仍需商家授权及具体接口权限。",
+        "urls": [
+          "https://openweb.jushuitan.com/doc?docId=340"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "订单明细price×qty、应付/实付可汇总自营销量销额。",
+        "urls": [
+          "https://open.jushuitan.com/document/2125.html"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "订单成交价和ERP商品字段；不是全网竞品到手价监测。",
+        "urls": [
+          "https://open.jushuitan.com/document/2125.html"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "未核到消费者购后评价全文通用API。",
+        "urls": [
+          "https://open.jushuitan.com/"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "未核广告曝光/点击/花费/ROI统一报表API。",
+        "urls": [
+          "https://open.jushuitan.com/"
+        ]
+      },
+      "owned": {
+        "status": "已核文档",
+        "detail": "主营授权商家ERP经营数据。",
+        "urls": [
+          "https://open.jushuitan.com/"
+        ]
+      },
+      "competitor": {
+        "status": "未证实",
+        "detail": "不提供竞品真实订单或广告后台。",
+        "urls": [
+          "https://open.jushuitan.com/"
+        ]
+      }
+    },
+    "gaps": [
+      "数据大类以交易/库存/售后为主，缺本任务的统一评价和广告。",
+      "淘/拼出库不能假设与普通ERP接口一致。",
+      "不适合仅为取竞品数据而新购整套ERP。"
+    ],
+    "verdict": "已有ERP时作自营交易补充；从综合统一API主名单降级",
+    "next_verification": [
+      "明确当前在用ERP，再核订单外发权限和具体缺失字段；无需为本需求单独重建ERP。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "candao",
+    "name": "餐道",
+    "delivery_model": "餐饮全渠道订单/餐单中台及开放平台；可聚合美团/抖音等门店经营，但不覆盖淘京拼货架电商。",
+    "unified_api_evidence": [
+      {
+        "claim": "官网COMS产品说明将多平台订单统一归集，集中维护餐品、价格、库存；ODMP及开发者门户宣称API/沙箱。",
+        "url": "https://www.can-dao.com/product.html"
+      },
+      {
+        "claim": "开放平台入口可达，本轮正文仅标题，未取得完整公开字段及鉴权手册。",
+        "url": "https://open-api.can-dao.com/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "未证实",
+        "detail": "本轮未核此货架电商数据源；餐饮中台不能当淘京拼综合数据商。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "jd": {
+        "status": "未证实",
+        "detail": "本轮未核此货架电商数据源；餐饮中台不能当淘京拼综合数据商。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "本轮未核此货架电商数据源；餐饮中台不能当淘京拼综合数据商。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "meituan": {
+        "status": "商务待核",
+        "detail": "自营餐饮订单/菜单聚合明确，具体API字段和外发权限需商务。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "自营餐饮本地生活订单/团购聚合，不等同抖音全网商品数据。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "产品提供授权订单/核销聚合，API schema待取得。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "price": {
+        "status": "商务待核",
+        "detail": "产品提供餐单/价格统一管理，外发字段待取得。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "客服/评价咨询产品不等于公开逐条评价API。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "UAG AI投手页面带“规划中”，不能列作已交付统一CPC花费/ROI接口。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "owned": {
+        "status": "商务待核",
+        "detail": "主营授权餐饮门店中台。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      },
+      "competitor": {
+        "status": "未证实",
+        "detail": "未核全网竞品数据服务。",
+        "urls": [
+          "https://www.can-dao.com/product.html"
+        ]
+      }
+    },
+    "gaps": [
+      "覆盖集中餐饮本地生活，与淘京拼综合目标不匹配。",
+      "具备成熟业务/官方合作身份不代表所有广告或评价API开放。",
+      "规划中产品不能算当前可交付内容。"
+    ],
+    "verdict": "自营餐饮专项备选；从综合统一API主名单降级",
+    "next_verification": [
+      "仅在需要经营自有餐饮门店时询问具体开放API包和订单/评论/广告字段。"
+    ],
+    "checked_on": "2026-11-05"
+  }
+]

@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>样本下载说明</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E6%A0%B7%E6%9C%AC%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E.md" download>下载原始 Markdown</a></header><article><h1 id="_1">样本下载说明</h1>
+<p>本目录严格区分以下三类证据。所有内容核验日期为 2026-11-05；观察日期与数据日期可能不同。</p>
+<table>
+<thead>
+<tr>
+<th>证据类型</th>
+<th>本次文件及内容</th>
+<th>能证明什么</th>
+<th>不能证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>真实 HTTP 响应</td>
+<td><code>好单库-公开活动商品响应-2026-11-05.json</code>：实际匿名 GET 返回，3 件商品、41 个商品字段</td>
+<td>该公开地址在本次请求时确实返回这些字段和值</td>
+<td>鉴权开放 API 可用、平台真实订单、销量准确、全库覆盖</td>
+</tr>
+<tr>
+<td>浏览器 UI 观察</td>
+<td><code>ui-observed-excerpts.json</code>：达多多 1 个商品、商指针 2 个行业的人工转录</td>
+<td>本次会话实际 getAXState 可访问文本中出现这些展示值</td>
+<td>供应商导出文件、API 返回、平台原始订单</td>
+</tr>
+<tr>
+<td>文档示例</td>
+<td>本目录没有把供应商文档示例作为实际数据文件</td>
+<td>文档可用于识别格式或字段</td>
+<td>文档示例不能算本次实调成功</td>
+</tr>
+</tbody>
+</table>
+<p>UI 观察数据从本次会话 UI 可访问文本人工整理，非供应商导出/非 API 返回。</p>
+<p>达多多样例保留原展示口径：30 日销量、直播销量、商品卡销量为 <code>10w+</code>，视频销量为 <code>2w~10w</code>；它们不是精确订单量。转化率保留 <code>20%~25 %</code>，关联达人 <code>1,535</code>、关联直播 <code>2,451</code>。价格显示被遮蔽，未还原；佣金未转录，字段省略。点击导出要求登录，没有获得文件。</p>
+<p>商指针样例数据期为 <strong>2025-01</strong>，观察日期为 <strong>2026-11-05</strong>。公开页可见 20 个行业，文件仅转录会话留存的“手机及配件”和“服饰”2 行。行业份额与增速是页面展示值，未追溯分母或订单底表；不能当作当前行业数据。</p>
+<p>好单库原始响应存在两项已记录的质量问题：券总量与已领/剩余量不一致；结构化券后价与营销文案的叠加优惠到手价不同。详见 <code>好单库-公开活动响应样本说明.md</code>。原始 JSON 未修改。</p>
+<p>当前仍为 <strong>0 次鉴权业务 API 成功、0 个供应商 Excel/CSV 导出、0 次注册</strong>。好单库浏览器 UI 未测，但已实际取得公开 HTTP JSON。研究生成的验证记录、说明和 UI 人工转录均不能计作供应商数据导出。</p>
+<p><code>index.json</code> 提供文件相对下载 URL、字节数及 SHA256。网站 <code>data/samples.json</code> 提供结构化预览；完整原文件在此目录保留。</p></article></body></html>

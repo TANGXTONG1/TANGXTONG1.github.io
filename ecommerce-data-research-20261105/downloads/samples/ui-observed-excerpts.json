@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-11-05T13:31:52.145191+00:00",
+  "evidence_type": "ui_observation",
+  "records_are": "从本次会话UI可访问文本人工整理，非供应商导出/非API返回。",
+  "capture_method": "root在本次会话调用getAXState获得公开页面可访问文本，依据保留的工具结果人工转录。",
+  "not_verified": [
+    "供应商Excel/CSV导出",
+    "鉴权业务API调用",
+    "平台原始订单",
+    "精确实际成交量"
+  ],
+  "observations": [
+    {
+      "id": "daduoduo-public-ui-20261105",
+      "name": "达多多匿名商品表",
+      "source_url": "https://www.daduoduo.com/product/",
+      "observed_on": "2026-11-05",
+      "evidence_type": "ui_observation",
+      "data_period": "页面30日口径；具体起止日期未记录",
+      "records": [
+        {
+          "商品": "公仔牌顽渍净洗衣粉轻松搓洗去污渍除菌除螨3倍洁净去渍家用去黄",
+          "30日销量": "10w+",
+          "直播销量": "10w+",
+          "视频销量": "2w~10w",
+          "商品卡销量": "10w+",
+          "转化率": "20%~25 %",
+          "关联达人": "1,535",
+          "关联直播": "2,451",
+          "价格": null,
+          "价格显示状态": "被遮蔽，未还原数字"
+        }
+      ],
+      "notes": [
+        "w及+、区间、逗号和百分号按观察文本保留，不折算为精确订单量。",
+        "价格被遮蔽；不还原。佣金未转录，字段省略。",
+        "实际点击导出后跳转dashboard?needLogin=1，没有取得文件。"
+      ]
+    },
+    {
+      "id": "shangzhizhen-public-ui-20261105",
+      "name": "商指针公开版行业预览",
+      "source_url": "https://open.shangzhizhen.com/#/industry/index",
+      "observed_on": "2026-11-05",
+      "evidence_type": "ui_observation",
+      "data_period": "2025-01",
+      "industry_count_observed": 20,
+      "records": [
+        {
+          "行业": "手机及配件",
+          "子行业数": "12个",
+          "市场份额": "9.56%",
+          "环比增速": "52.33%",
+          "同比增速": "26.11%"
+        },
+        {
+          "行业": "服饰",
+          "子行业数": "3个",
+          "市场份额": "7.25%",
+          "环比增速": "20.83%",
+          "同比增速": "-30.79%"
+        }
+      ],
+      "notes": [
+        "20个行业中仅转录本次会话留存的2行，不代表全表。",
+        "页面数据期为2025年01月，不能当作2026年11月当前行业数据。",
+        "百分比为页面展示值，未追溯分母/抽样方法/订单底表。"
+      ]
+    }
+  ]
+}

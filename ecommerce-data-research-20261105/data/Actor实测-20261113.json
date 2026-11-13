@@ -1,0 +1,428 @@
+{
+  "checkedOn": "2026-11-13",
+  "scope": "美国站；五个选定Actor，每个1商品、目标5条评论",
+  "trials": [
+    {
+      "id": "amazon",
+      "platform": "Amazon",
+      "actor": "junglee/amazon-reviews-scraper",
+      "actorUrl": "https://apify.com/junglee/amazon-reviews-scraper",
+      "result": "小样本通过",
+      "runStatus": "SUCCEEDED",
+      "build": "0.1.367",
+      "finishedAt": "2026-11-13T15:03:23.646Z",
+      "launchMethod": "Apify Console",
+      "apiStartTested": false,
+      "apiReadHttpStatus": 200,
+      "requestedReviews": 5,
+      "datasetRows": 5,
+      "validReviewTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "productId": "B0CWXNS552",
+      "input": {
+        "deduplicateRedirectedAsins": true,
+        "filterByRatings": [
+          "allStars"
+        ],
+        "includeGdprSensitive": false,
+        "maxReviews": 5,
+        "productUrls": [
+          {
+            "url": "https://www.amazon.com/dp/B0CWXNS552"
+          }
+        ],
+        "reviewsAlwaysSaveCategoryData": false,
+        "reviewsUseProductVariantFilter": false,
+        "scrapeProductDetails": false,
+        "sort": "helpful"
+      },
+      "usageUsd": 0.03,
+      "chargedEvents": {
+        "result": 5,
+        "dateFilterNewerThan": 0
+      },
+      "runtimeSeconds": 11.36,
+      "memoryMb": 4096,
+      "timeoutSeconds": 180,
+      "earliestReviewDate": "2025-12-12",
+      "latestReviewDate": "2026-10-16",
+      "priorSampleOverlap": 5,
+      "observedFields": [
+        "reviewTitle",
+        "reviewDescription",
+        "ratingScore",
+        "reviewImages",
+        "reviewId",
+        "date",
+        "reviewedIn",
+        "reviewUrl",
+        "reviewReaction",
+        "isVerified",
+        "isAmazonVine",
+        "variant",
+        "variantAttributes",
+        "userProfileLink",
+        "userId",
+        "position",
+        "totalCategoryRatings",
+        "totalCategoryReviews",
+        "reviewCategoryUrl",
+        "filterByRating",
+        "filterByKeyword",
+        "productAsin",
+        "productOriginalAsin",
+        "variantAsin",
+        "product",
+        "input",
+        "country",
+        "countryCode"
+      ],
+      "fieldMapping": {
+        "body": "reviewDescription",
+        "reviewId": "reviewId",
+        "rating": "ratingScore",
+        "date": "date",
+        "productId": "productAsin"
+      },
+      "example": {
+        "bodyExcerpt": "I found the Apple AirTag very practical. It is small, easy to…",
+        "rating": 5,
+        "date": "2026-08-13",
+        "excerptIsPartial": true
+      },
+      "limitations": [
+        "Free 单次最多5条；本次复跑与此前5条全部重合，不能算新增10条。",
+        "生产需要付费套餐；日期筛选另按事件计费，本次未启用。"
+      ]
+    },
+    {
+      "id": "temu",
+      "platform": "Temu",
+      "actor": "omkar-cloud/temu-reviews-scraper",
+      "actorUrl": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+      "result": "小样本通过",
+      "runStatus": "SUCCEEDED",
+      "build": "0.0.3",
+      "finishedAt": "2026-11-13T14:58:24.907Z",
+      "launchMethod": "Apify Console",
+      "apiStartTested": false,
+      "apiReadHttpStatus": 200,
+      "requestedReviews": 5,
+      "datasetRows": 5,
+      "validReviewTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "productId": "601099537773480",
+      "input": {
+        "country": "us",
+        "maxResults": 5,
+        "maxReviewsPerProduct": 5,
+        "products": [
+          "https://www.temu.com/goods.html?goods_id=601099537773480"
+        ],
+        "withPhotosOnly": false
+      },
+      "usageUsd": 0.01005,
+      "chargedEvents": {
+        "apify-actor-start": 1,
+        "apify-default-dataset-item": 5
+      },
+      "runtimeSeconds": 1.949,
+      "memoryMb": 256,
+      "timeoutSeconds": 600,
+      "earliestReviewDate": "2024-05-04",
+      "latestReviewDate": "2025-04-19",
+      "priorSampleOverlap": null,
+      "observedFields": [
+        "input",
+        "source",
+        "position",
+        "country",
+        "review_id",
+        "rating",
+        "text",
+        "translated_text",
+        "date",
+        "author",
+        "author_country",
+        "variant",
+        "fit",
+        "images",
+        "videos",
+        "product_id",
+        "product_name",
+        "product_link",
+        "product_image",
+        "store_id",
+        "store_link",
+        "overall_rating",
+        "overall_review_count",
+        "five_star_percent",
+        "one_star_percent"
+      ],
+      "fieldMapping": {
+        "body": "text",
+        "reviewId": "review_id",
+        "rating": "rating",
+        "date": "date",
+        "productId": "product_id"
+      },
+      "example": {
+        "bodyExcerpt": "love these pearl bracelets. so cute & stylish. will definitely buy more…",
+        "rating": 5,
+        "date": "2025-04-19",
+        "excerptIsPartial": true
+      },
+      "limitations": [
+        "最多100条/商品；本轮返回2024–2025年评价，非时间排序。",
+        "采用度低；本次成功不等于能完整覆盖历史或稳定增量。"
+      ]
+    },
+    {
+      "id": "tiktok_shop",
+      "platform": "TikTok Shop",
+      "actor": "vistics/tiktok-shop-product-reviews",
+      "actorUrl": "https://apify.com/vistics/tiktok-shop-product-reviews",
+      "result": "小样本通过",
+      "runStatus": "SUCCEEDED",
+      "build": "0.0.35",
+      "finishedAt": "2026-11-13T15:01:03.346Z",
+      "launchMethod": "Apify Console",
+      "apiStartTested": false,
+      "apiReadHttpStatus": 200,
+      "requestedReviews": 5,
+      "datasetRows": 5,
+      "validReviewTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "productId": "1731578642912612516",
+      "input": {
+        "maxReviews": 5,
+        "region": "US",
+        "startUrls": [
+          "https://www.tiktok.com/shop/pdp/cat-nail-clipper-by-potaroma-adjustable-sizes-built-in-file-safe-for-kittens-cats/1731578642912612516"
+        ]
+      },
+      "usageUsd": 0.02,
+      "chargedEvents": {
+        "apify-default-dataset-item": 5,
+        "apify-actor-start": 1
+      },
+      "runtimeSeconds": 4.879,
+      "memoryMb": 512,
+      "timeoutSeconds": 300,
+      "earliestReviewDate": "2026-02-21",
+      "latestReviewDate": "2026-09-23",
+      "priorSampleOverlap": null,
+      "observedFields": [
+        "productUrl",
+        "productId",
+        "region",
+        "totalReviews",
+        "review_id",
+        "product_id",
+        "reviewer_id",
+        "review_rating",
+        "review_time",
+        "is_verified_purchase",
+        "is_incentivized_review",
+        "product_name",
+        "reviewer_name",
+        "reviewer_avatar_url",
+        "review_text",
+        "display_image_url",
+        "review_images",
+        "sku_specification",
+        "review_country"
+      ],
+      "fieldMapping": {
+        "body": "review_text",
+        "reviewId": "review_id",
+        "rating": "review_rating",
+        "date": "review_time",
+        "productId": "productId"
+      },
+      "example": {
+        "bodyExcerpt": "These are the best nail clippers I’ve found for cats. I was…",
+        "rating": 5,
+        "date": "2026-09-21",
+        "excerptIsPartial": true
+      },
+      "limitations": [
+        "本次确认一条评论对应一个Dataset计费行；另收$0.01启动事件。",
+        "商品名称字段为空；返回评论非时间排序，不能承诺最新评论。"
+      ]
+    },
+    {
+      "id": "ebay",
+      "platform": "eBay",
+      "actor": "apt_marble/ebay-product-reviews-scraper",
+      "actorUrl": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+      "result": "小样本通过",
+      "runStatus": "SUCCEEDED",
+      "build": "0.0.2",
+      "finishedAt": "2026-11-13T15:02:31.625Z",
+      "launchMethod": "Apify Console",
+      "apiStartTested": false,
+      "apiReadHttpStatus": 200,
+      "requestedReviews": 5,
+      "datasetRows": 5,
+      "validReviewTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "productId": "22054478105",
+      "input": {
+        "includeProductSummary": false,
+        "marketplace": "US",
+        "maxConcurrency": 1,
+        "maxReviewsPerProduct": 5,
+        "products": [
+          "https://www.ebay.com/p/22054478105"
+        ],
+        "sort": "newest"
+      },
+      "usageUsd": 0.005,
+      "chargedEvents": {
+        "apify-default-dataset-item": 5,
+        "product-review-summary": 0
+      },
+      "runtimeSeconds": 4.17,
+      "memoryMb": 512,
+      "timeoutSeconds": 300,
+      "earliestReviewDate": "2026-10-09",
+      "latestReviewDate": "2026-11-04",
+      "priorSampleOverlap": null,
+      "observedFields": [
+        "rowType",
+        "epid",
+        "reviewId",
+        "author",
+        "authorProfileUrl",
+        "rating",
+        "title",
+        "body",
+        "dateText",
+        "dateIso",
+        "helpfulVotes",
+        "unhelpfulVotes",
+        "verifiedPurchase",
+        "conditionPurchased",
+        "soldBySeller",
+        "position",
+        "sortOrder",
+        "url",
+        "requestedInput",
+        "resolvedFromItemId",
+        "marketplace",
+        "scrapedAt"
+      ],
+      "fieldMapping": {
+        "body": "body",
+        "reviewId": "reviewId",
+        "rating": "rating",
+        "date": "dateIso",
+        "productId": "epid"
+      },
+      "example": {
+        "bodyExcerpt": "Bass is distorted at high volume. Using audio jack cable produces low…",
+        "rating": 2,
+        "date": "2026-11-04",
+        "excerptIsPartial": true
+      },
+      "limitations": [
+        "返回rowType=review和1–5星商品评价，未混入卖家交易反馈。",
+        "ePID是商品目录；评论可能跨卖家汇总，不等于某一店铺独享。",
+        "采用度低；小样本通过后仍需跨商品验收。"
+      ]
+    },
+    {
+      "id": "walmart",
+      "platform": "Walmart",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "actorUrl": "https://apify.com/e-commerce/walmart-reviews-scraper",
+      "result": "小样本通过",
+      "runStatus": "SUCCEEDED",
+      "build": "0.0.84",
+      "finishedAt": "2026-11-13T15:04:17.230Z",
+      "launchMethod": "Apify Console",
+      "apiStartTested": false,
+      "apiReadHttpStatus": 200,
+      "requestedReviews": 5,
+      "datasetRows": 5,
+      "validReviewTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "productId": "771934678",
+      "input": {
+        "maxProductsPerStartUrl": 1,
+        "maxReviewsPerProduct": 5,
+        "reviewsSortType": "submission-desc",
+        "startUrls": [
+          {
+            "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+          }
+        ]
+      },
+      "usageUsd": 0.0251,
+      "chargedEvents": {
+        "start": 1,
+        "push-product-reviews": 5
+      },
+      "runtimeSeconds": 9.034,
+      "memoryMb": 256,
+      "timeoutSeconds": 180,
+      "earliestReviewDate": "2026-10-06",
+      "latestReviewDate": "2026-11-01",
+      "priorSampleOverlap": 5,
+      "observedFields": [
+        "itemType",
+        "reviewId",
+        "productId",
+        "productUrl",
+        "productName",
+        "authorId",
+        "submissionTime",
+        "rating",
+        "text",
+        "title",
+        "badges",
+        "negativeFeedback",
+        "positiveFeedback",
+        "recommended",
+        "userNickname",
+        "syndicationSource",
+        "externalSource",
+        "photos"
+      ],
+      "fieldMapping": {
+        "body": "text",
+        "reviewId": "reviewId",
+        "rating": "rating",
+        "date": "submissionTime",
+        "productId": "productId"
+      },
+      "example": {
+        "bodyExcerpt": "I have 1 kid with sensitive skin so i have been using…",
+        "rating": 5,
+        "date": "2026-11-01",
+        "excerptIsPartial": true
+      },
+      "limitations": [
+        "本次5条均带bazaarvoice及转载来源，若只要Walmart原生评价，需另外筛选并复测产出率。",
+        "Full permissions 已获用户授权；应隔离采集账号。"
+      ]
+    }
+  ],
+  "totals": {
+    "attemptedRuns": 5,
+    "succeededRuns": 5,
+    "returnedRows": 25,
+    "validReviewTexts": 25,
+    "usageUsd": 0.09015
+  },
+  "interpretation": "5/5只指本轮五个任务成功；每个Actor仅测一个商品，不能推算生产成功率、限流或全历史覆盖。",
+  "apiBoundary": "本轮均由Console启动，随后通过正式Run、Dataset、INPUT API读取真实响应；本地POST启动尚未验证。",
+  "costBoundary": "费用为当前Free套餐运行用量，抵扣现有免费额度；没有充值或购买套餐。API下载和存储可能产生额外账户用量。",
+  "redaction": "未公开账号、密钥、运行/存储ID、作者信息、头像或完整评论原文。"
+}

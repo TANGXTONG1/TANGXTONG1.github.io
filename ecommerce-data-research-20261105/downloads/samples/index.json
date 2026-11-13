@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-11-05T13:31:52.145191+00:00",
+  "url_base": "site_root_relative",
+  "sample_data_url": "data/samples.json",
+  "files": [
+    {
+      "name": "ui-observed-excerpts.json",
+      "url": "downloads/samples/ui-observed-excerpts.json",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/ui-observed-excerpts.json",
+      "bytes": 2626,
+      "sha256": "71e4fd77eb7890d9ecf0acbc708084003577eadc1d5046e8db2859a1da8bde93",
+      "format": "json",
+      "role": "ui_observation_transcript"
+    },
+    {
+      "name": "好单库-公开活动响应样本说明.md",
+      "url": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%93%8D%E5%BA%94%E6%A0%B7%E6%9C%AC%E8%AF%B4%E6%98%8E.md",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/好单库-公开活动响应样本说明.md",
+      "bytes": 3321,
+      "sha256": "b1cf70c5c1c5c21db62245db0e7eb36c4b55c357a164618b29b20fdb9c20c703",
+      "format": "md",
+      "role": "sample_explanation"
+    },
+    {
+      "name": "好单库-公开活动商品响应-2026-11-05.json",
+      "url": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/好单库-公开活动商品响应-2026-11-05.json",
+      "bytes": 5415,
+      "sha256": "b44d346b1d14c615c574dff2ce8374a3266af20b493193953c723990d197ba82",
+      "format": "json",
+      "role": "raw_http_response"
+    },
+    {
+      "name": "好单库-公开活动商品响应-验证记录.json",
+      "url": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/好单库-公开活动商品响应-验证记录.json",
+      "bytes": 1911,
+      "sha256": "7c2f435581072fc35e649d493e57d273ad0487b3f4af1481927263d391ed656c",
+      "format": "json",
+      "role": "verification_record"
+    },
+    {
+      "name": "样本下载说明.md",
+      "url": "downloads/samples/%E6%A0%B7%E6%9C%AC%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E.md",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/样本下载说明.md",
+      "bytes": 2342,
+      "sha256": "5b2c10542c217226b51ae1061c16f18f6decab97362527b3ab8ce47d44e355f8",
+      "format": "md",
+      "role": "sample_download_guide"
+    }
+  ],
+  "notice": "raw_http_response为实际公开HTTP数据；ui_observation_transcript为本次会话getAXState文本人工转录，非供应商导出/非API返回。验证记录与说明为研究生成材料。无鉴权API成功、无供应商Excel/CSV导出。"
+}

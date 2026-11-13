@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>好单库公开活动商品响应：实际获取记录与质量观察</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%93%8D%E5%BA%94%E6%A0%B7%E6%9C%AC%E8%AF%B4%E6%98%8E.md" download>下载原始 Markdown</a></header><article><h1 id="_1">好单库公开活动商品响应：实际获取记录与质量观察</h1>
+<p>2026-11-05 21:07:57（北京时间），对官网已公开的活动数据地址进行一次无账号、无 API Key、无 Cookie 的只读 HTTP GET，返回 HTTP 200。响应体可解析为 JSON，包含 3 条商品记录；这不是文档内嵌示例。</p>
+<ul>
+<li>来源：https://www.haodanku.com/Activity/get_three_datas</li>
+<li>原始文件：<a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json">好单库-公开活动商品响应-2026-11-05.json</a></li>
+<li>下载时间、HTTP 状态、字段与 SHA256：<a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json">验证记录</a></li>
+<li>获取方式是公开 HTTP 响应；本次未通过浏览器完成好单库 UI 试用，也未注册、登录、创建密钥或调用需要鉴权的开放平台 API。</li>
+</ul>
+<h2 id="_2">已确认与未确认</h2>
+<p>已确认该公开地址在本次请求时能返回活动商品数据，以及原始文件中列出的 41 个商品字段存在。单次真实 HTTP 返回不等于字段是真实订单、不等于数据准确、不等于平台全量数据，也不证明商业开放 API 当前可用。<code>itemsale</code>、<code>itemsale2</code>、<code>todaysale</code> 是供应商返回字段，没有平台交易流水或独立数据交叉核验；不能据此称为真实成交量。来源有活动精选范围，仅 3 条商品，不能代表全库覆盖。</p>
+<p>内容类型响应头为 <code>text/html; charset=UTF-8</code>，实际正文是 JSON；下游接入需处理这种类型声明不一致。文件保留原始字节，没有修改数值或补造字段。</p>
+<h2 id="_3">实际数据质量问题</h2>
+<ol>
+<li>商品 <code>521027319777</code>：<code>couponnum="10000"</code>、<code>couponsurplus="948650"</code>、<code>couponreceive="51350"</code>。后两者合计 1,000,000，与优惠券总量 10,000 不一致，剩余量本身也超过总量。可能涉及口径、更新时点或源数据错误，当前无法确定原因；不得自行“修复”为某个推断数字。</li>
+<li>商品 <code>600558109013</code>：<code>itemprice="60.00"</code>、<code>itemendprice="60.00"</code>、<code>couponmoney="0"</code>；但 <code>itemdesc</code> 称叠加淘礼金、淘金币、消费券和美妆券后“到手35.17元”。结构化价格与营销文案所指消费场景不同，不能直接把 <code>itemendprice</code> 当作所有用户的最终到手价，也不能把文案价视为人人可得。该文案没有提供足以复算全部优惠条件的完整规则。</li>
+</ol>
+<p>因此，这份样本适合验证字段解析和建立质量规则；不适合直接作为精确比价、销量核算或优惠券库存的可靠基准。</p>
+<h2 id="_4">其他公开文件检查结果</h2>
+<p>富泰科官网给出 Excel/CSV 导出表格截图与 Windows 采集软件 ZIP 下载。对其页面公开链接中的 4 个相关软件包仅检查 ZIP 文件清单，没有执行程序；没有找到附带的 <code>.xls</code>、<code>.xlsx</code>、<code>.csv</code> 或 <code>.tsv</code> 数据文件。鼎点解决方案、云听 MCP 文档、值得买公开文档及八爪鱼导出说明页未找到可直接匿名下载的业务 Excel/CSV；云听的 <code>cosExcelUrl</code> 需要有权限的项目查询任务产生。大淘客开放平台首页这次 HTTP 请求返回 500，不能据此判断其所有服务不可用。</p>
+<p>这次未取得官方直接提供的 Excel/CSV 数据样本，但取得了上面 1 份真实可解析的官网活动数据 JSON。本文没有把软件包、截图、文档样例或接口文档 ZIP 计入业务数据样本。</p></article></body></html>

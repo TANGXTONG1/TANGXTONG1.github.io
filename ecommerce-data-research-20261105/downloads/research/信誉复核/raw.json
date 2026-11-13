@@ -1,0 +1,217 @@
+[
+  {
+    "id": "just-one-api",
+    "name": "Just One API",
+    "verdict": "补证",
+    "reason": "有正式文档与官方 SDK/MCP，但本轮未取得具名企业客户或客户侧采购证据；不进入优先采购名单。",
+    "credibility_evidence": [
+      {
+        "claim": "当前官网指向 justoneapi-official 组织；Python SDK 页面显示 11 stars，MCP 页面显示 6 stars。",
+        "url": "https://github.com/justoneapi-official/justoneapi-python",
+        "source_type": "GitHub 仓库页面",
+        "date": "2026-11-05",
+        "scope": "只代表这两个客户端仓库的关注量；不是数据引擎开源或商业客户数量。"
+      },
+      {
+        "claim": "官方 MCP 仓库页面显示 6 stars。",
+        "url": "https://github.com/justoneapi-official/justoneapi-mcp",
+        "source_type": "GitHub 仓库页面",
+        "date": "2026-11-05",
+        "scope": "GitHub REST 查询遇到 403 限流；数字采用本次网页读取，未独立审计 star 来源。"
+      },
+      {
+        "claim": "官网使用场景以通用说明为主，服务条款说明上游变化会影响数据可用性。",
+        "url": "https://justoneapi.com/en/terms",
+        "source_type": "供应商条款",
+        "date": "2026-07-13",
+        "scope": "不构成客户案例或 SLA 验收。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "注册获取API Token，一个Token跨平台；query参数token鉴权；按实际调用付费，权限/余额/Token限额分别控制。",
+        "url": "https://api.justoneapi.com/"
+      }
+    ],
+    "limitations": [
+      "旧组织/搜索缓存的 star 数不能移植到当前官网所链接仓库。",
+      "未完成鉴权 API 调用；完整法律主体、具名客户和持续稳定性仍待补证。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "tmapi",
+    "name": "TMAPI",
+    "verdict": "补证",
+    "reason": "接口字段较清楚，但本轮未找到可核实的具名客户案例或足够的外部经营证据。",
+    "credibility_evidence": [
+      {
+        "claim": "官网页脚标注 CyberData LLC 2019–2026。",
+        "url": "https://tmapi.top/zh-cn/",
+        "source_type": "供应商官网",
+        "date": null,
+        "scope": "仅为页脚自述，本轮未核验企业登记和持续经营年限。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "注册→Console API Keys创建apikey→请求头apikey；各平台独立API。读取官网Markdown文档可得到完整样例，部分HTML路线只显示首页或Loading。",
+        "url": "https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md"
+      }
+    ],
+    "limitations": [
+      "API 文档丰富不能替代客户案例。",
+      "未核到能确认归属且可作为主要影响力证据的开源仓库；未完成鉴权调用。",
+      "拼多多 comment_count 是评论数量，不能当作评价正文；销量展示口径仍需样本验收。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "qovia",
+    "name": "Qovia",
+    "verdict": "补证",
+    "reason": "接口覆盖与评价字段有价值，但现有主体透明度、企业案例和影响力证据不足，暂不进入精选。",
+    "credibility_evidence": [
+      {
+        "claim": "官网 About/Terms 介绍服务范围；条款明确是非官方数据服务，未在该页提供完整公司主体名称。",
+        "url": "https://qovia.ai/terms/",
+        "source_type": "供应商条款",
+        "date": null,
+        "scope": "适用法律所在地不等于企业注册实体已核验。"
+      },
+      {
+        "claim": "官网联系页提供的 github.com/qovia 在本轮网页读取返回 404。",
+        "url": "https://qovia.ai/contact",
+        "source_type": "本轮链接访问",
+        "date": "2026-11-05",
+        "scope": "仅表示这次无法核验该链接，不等于没有其他仓库。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "注册API Key；Authorization Bearer或x-api-key请求头；REST与MCP https://api.qovia.ai/mcp；预付余额，非空成功结果计费。",
+        "url": "https://qovia.ai/docs/api-reference/raw.taobao.comments/"
+      }
+    ],
+    "limitations": [
+      "本轮未取得具名企业客户侧证据。",
+      "目录站收录和文档示例不算企业客户背书。",
+      "登录/注册门槛后未完成鉴权 API；不能依据样例宣称全量评价可取。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "onebound",
+    "name": "万邦 Onebound",
+    "verdict": "备选",
+    "reason": "在原始电商 API 组中，公司历史有外部记录可核实；仍需把旧接口、当前国内渠道和交付质量补验后才考虑采购。",
+    "credibility_evidence": [
+      {
+        "claim": "新余学院 2018 年招聘公告已列出新余市万邦科技及电商 API 业务。",
+        "url": "https://jycnew.xyc.edu.cn/info/1171/15402.htm",
+        "source_type": "高校公开公告",
+        "date": "2018-09-29",
+        "scope": "支持该主体与该业务在较早时期已出现；招聘介绍包含企业提供的信息。"
+      },
+      {
+        "claim": "江西省 2022 年第二批高新技术企业名单含新余市万邦科技，编号 GR202236001416。",
+        "url": "https://www.zgq.gov.cn/zgqxxgk/c108482/202301/f0709cf485ce4736a9645a073f5bb036/files/a7317a08cc75413983e1dba96afbbaa3.pdf",
+        "source_type": "政府公开名单",
+        "date": "2022",
+        "scope": "历史认定，不推定 2026 年证书仍有效，更不证明 API 数据质量。"
+      },
+      {
+        "claim": "江西工程学院 2025 年活动报道点名万邦创始人廖小青。",
+        "url": "https://blockchain.jxue.edu.cn/2025/0530/c381a39762/page.htm",
+        "source_type": "高校活动报道",
+        "date": "2025-05-30",
+        "scope": "支持主体与经营人员关联，不属于客户采购证据。"
+      },
+      {
+        "claim": "官网展示 Cssbuy/Hubbuycn 等客户标识；未取得具体数据采购项目或客户侧确认。",
+        "url": "https://www.onebound.cn/",
+        "source_type": "供应商客户标识",
+        "date": null,
+        "scope": "标识展示不计作具名实施案例。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "历史文档为key+secret鉴权，key必须GET拼URL；注册/联系客服开通。当前国内旧文档多重定向到跨境tglobal。",
+        "url": "https://open.onebound.cn/help/api/tglobal.readme.html"
+      }
+    ],
+    "limitations": [
+      "官网客户 Logo 与代购案例属于供应商自述，未取得这些客户独立确认。",
+      "旧国内接口文档部分重定向到跨境 tglobal，不能按旧目录承诺当前淘宝/京东/拼多多能力。",
+      "本轮没有成功鉴权调用；不把高新资质当作数据准确性背书。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "bamboo-data",
+    "name": "竹简数据",
+    "verdict": "补证",
+    "reason": "目前主要依据是数据市场和接口文档，未找到足以进入精选的具名客户、主体或外部影响力证据。",
+    "credibility_evidence": [
+      {
+        "claim": "数据市场列出平台与接口能力；开通依赖商务联系。",
+        "url": "https://marketplace.bamboodatalab.com/zh/",
+        "source_type": "供应商产品目录",
+        "date": null,
+        "scope": "产品列表不是实际成功调用或客户使用证明。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "暂未开放自助调用；联系销售开通权限、发token与专属endpoint。POST JSON，token通过query传递。",
+        "url": "https://marketplace.bamboodatalab.com/zh/api/taobao/"
+      }
+    ],
+    "limitations": [
+      "本轮未取得具名客户或官方关联开源仓库的可核实影响力证据。",
+      "尚未开放自助调用路径，需商务提供 token/endpoint；未完成鉴权调用。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "everyinfra",
+    "name": "EveryInfra/万有引擎",
+    "verdict": "补证",
+    "reason": "有 API、插件与开源辅助工具，但这些不足以证明电商数据业务的成熟客户规模。",
+    "credibility_evidence": [
+      {
+        "claim": "seo-skills 仓库页面显示 76 stars。",
+        "url": "https://github.com/everyinfra/seo-skills",
+        "source_type": "GitHub 仓库页面",
+        "date": "2026-11-05",
+        "scope": "这是 SEO/GEO skill，与国内电商数据采集引擎不是同一产品。"
+      },
+      {
+        "claim": "官网明确部分 skill 本身不采集数据，EveryData 按次收费。",
+        "url": "https://everyinfra.com/",
+        "source_type": "供应商官网",
+        "date": null,
+        "scope": "客户端/skill 开源不能推定托管数据服务开源或已有大客户。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "注册充值创建API Key；Authorization: Bearer；统一POST social API，也可MCP；GET /api/v1/social/catalog免费查询能力、参数、上限和价格。",
+        "url": "https://everyinfra.com/jd-api/reviews"
+      }
+    ],
+    "limitations": [
+      "本轮未取得具名企业客户侧采购证据。",
+      "everyinfra-agent-plugins 本次页面请求超时；GitHub REST 查询限流，未把缺失计为 0 stars。",
+      "已记录的淘宝人民币价格存在换算误差说明；需要实际价格对账和稳定性验收。"
+    ],
+    "checked_on": "2026-11-05"
+  }
+]

@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EveryInfra 公开能力目录：真实响应，但不是业务样本</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E6%A0%B7%E6%9C%AC/EveryInfra-%E8%83%BD%E5%8A%9B%E7%9B%AE%E5%BD%95%E8%AF%B4%E6%98%8E.md" download>下载原始 Markdown</a></header><article><h1 id="everyinfra">EveryInfra 公开能力目录：真实响应，但不是业务样本</h1>
+<p>本次匿名 GET https://api.everyinfra.com/api/v1/social/catalog 取得 HTTP 200。原始响应与验证记录已保留。它是能力/字段/参数/价格的元数据，不含真实商品订单或评价业务响应；不计为鉴权业务 API 成功，也不据此将供应商列为采购精选。</p>
+<p>目录没有 pdd/pinduoduo 或 meituan，temu 不等于国内拼多多。实际可调用性仍需要账户、权限和样本验收。</p>
+<p>统一入口并未消除平台差异：</p>
+<table>
+<thead>
+<tr>
+<th>业务含义</th>
+<th>淘宝</th>
+<th>京东</th>
+<th>抖音</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品主键</td>
+<td>id</td>
+<td>item_id</td>
+<td>product_id</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>price + currency；部分换算限制</td>
+<td>price + currency；可能遮蔽/缺失</td>
+<td>price_cny / price_cny_minor</td>
+</tr>
+<tr>
+<td>销量</td>
+<td>sold_count / sold_text</td>
+<td>search 的 sold_count</td>
+<td>monthly_sales / sales_text / sold_count</td>
+</tr>
+<tr>
+<td>评论</td>
+<td>reviews 的 text / rating / posted_at</td>
+<td>reviews 的 text / rating / posted_at</td>
+<td>社媒评论不是购后评价；不能自动混用</td>
+</tr>
+</tbody>
+</table>
+<p>供应商如能统一交付，应在合同与接口文档中定义时间窗、金额单位、销量来源与估算标志、分页上限、缺失状态、平台 ID，以及评价与内容评论的区别。</p></article></body></html>

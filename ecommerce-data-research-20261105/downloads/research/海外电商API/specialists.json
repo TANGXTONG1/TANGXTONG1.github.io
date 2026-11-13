@@ -1,0 +1,93 @@
+{
+  "checked_at": "2026-11-12",
+  "method": "官方公开网页、API 文档及更新公告核查；未注册、未付费、未调用需密钥的采集 API；全部标注未实测。",
+  "conclusions": [
+    "本组未找到可直接认定同时覆盖所列九个平台原始评论的单一现成 API。",
+    "Traject Data 能用同一供应商采购 Amazon、Walmart、eBay 数据，但属于 Rainforest、BlueCart、Countdown 三个不同 API 产品/域名；Amazon 完整评论当前不能据旧文档保证。",
+    "DataForSEO Amazon 评论任务接口明确暂不可用，应从当前评论采购主候选中排除。",
+    "DataWeave 确有 API 数据采集和原始数据交付能力，适合企业定制询样；逐平台评论覆盖、字段、完整性和报价未公开。",
+    "Diffbot 为通用网页提取 API，有评论正文、时间、图片、回复关系 schema，但未公开九个平台各自评论可用性保证，且 Discussion schema 未列单条星级，不能直接代替专用评论 API。"
+  ],
+  "vendors": [
+    {
+      "name": "DataForSEO",
+      "position": "暂不推荐作为当前海外电商评论主接口",
+      "live_tested": false,
+      "api": "POST /v3/merchant/amazon/reviews/task_post + task_get（文档存在，当前暂不可用）",
+      "coverage": {"Amazon":"评论 endpoint 暂不可用；商品/ASIN 数据另有接口", "Walmart":"未见专用电商评论支持", "eBay":"未见专用电商评论支持", "Etsy":"未见专用电商评论支持", "AliExpress":"未见专用电商评论支持", "Temu":"未见专用电商评论支持", "Shopee":"未见专用电商评论支持", "Lazada":"未见专用电商评论支持", "TikTok Shop":"未见专用电商评论支持"},
+      "limits": "旧评论规格 depth 最大 50、默认 10，按每 10 条计费，只提供 helpful 排序；这些参数不代表当前可调用。Merchant 官方目录为 Amazon、Google Shopping。",
+      "pricing": "平台按量付费，最低充值 $50、余额不失效；新账号 $1 试用额度、Sandbox 为样例响应。不可用评论端点不提供当前可交付成本估算。",
+      "reputation": "官方列出 Twinword 采用 API 后付费客户增长 35% 的案例，属于 SEO/API 总体能力，非电商评论采集效果证明。",
+      "sources": [
+        {"url":"https://docs.dataforseo.com/v3/merchant-amazon-reviews-task_post/","supports":"明确 temporarily unavailable；depth 50、helpful 排序和旧计费规则"},
+        {"url":"https://docs.dataforseo.com/v3/merchant/overview/","supports":"Merchant 来源范围 Amazon、Google Shopping"},
+        {"url":"https://dataforseo.com/pricing","supports":"最低 $50、$1 试用、Sandbox 说明"},
+        {"url":"https://dataforseo.com/","supports":"Twinword 客户案例"}
+      ]
+    },
+    {
+      "name": "Traject Data / Rainforest API + BlueCart API + Countdown API",
+      "position": "北美/欧美平台专项候选；同供应商多 API，非九平台统一评论 API",
+      "live_tested": false,
+      "ownership_note": "当前官网展示 Traject Data joins ScraperAPI；产品和独立 API 域名仍公开。",
+      "coverage": {"Amazon":"Rainforest product.top_reviews 有限可见精选评论；2025-03 官方公告 most_recent 不再公开，reviews_v2 停用；不能保证全量/最新/历史分页", "Walmart":"BlueCart type=reviews 有原始评论；明确不支持 walmart.ca，因此确认范围仅 Walmart 美国", "eBay":"Countdown type=reviews 有商品评论，不只是卖家反馈；按 EPID/GTIN/产品 URL 查询", "Etsy":"未见此产品族支持", "AliExpress":"未见此产品族支持", "Temu":"未见此产品族支持", "Shopee":"未见此产品族支持", "Lazada":"未见此产品族支持", "TikTok Shop":"未见此产品族支持"},
+      "products": [
+        {"name":"Rainforest API","endpoint":"https://api.rainforestapi.com/request?type=product","fields":"product.top_reviews 数组；官网列正文、评分、图片、有用票、验证购买、时间；要以试用样本核验当前 top_reviews 实际返回。ASIN/变体在商品层。","limits":"只认精选公开评论；官方 status page 的 Reviews Operational 与功能更新限制不能混为一谈。Collections 可排程、每集合 15,000 请求；API/JSON/CSV/HTML/webhook/S3/GCS/Azure。","pricing":"当前主页面文本显示 Hobbyist $23/月 500 credits、Starter $83/月 10,000、Production $375/月 250,000，但相邻标签均写 Billed Annually；价格总览仍写 $18 起，旧 landing 页 Starter $59。存在显示/页面差异，不能把这些数字当已确认月付成交价。官方 landing 页试用 100 请求、免信用卡。"},
+        {"name":"BlueCart API","endpoint":"https://api.bluecartapi.com/request?type=reviews&item_id=...","fields":"id/title/body/date/rating/positive_feedback/negative_feedback/source（含外部来源、作者、verified_purchase）；商品绑定 item_id。公开 reviews schema 未见评论图片或商家回复字段。","limits":"按 page / max_page 分页，可排序/按星级筛选；结果页写 USA/Canada，但参数页明确 type=reviews is not supported for walmart.ca，应以该限制为准。","pricing":"专属价页显示年付折合 Hobbyist $18/月含 500 请求；Starter $66/月含 10,000；Production 页面当前显示 $375/月含 250,000（旁有年付标签，月付价未验证）；100 请求免费试用，无信用卡；只收成功请求。"},
+        {"name":"Countdown API","endpoint":"https://api.countdownapi.com/request?type=reviews&epid=...&ebay_domain=...","fields":"id/title/body/rating/date/raw+utc/profile/verified_purchase/seller_name/attributes/helpful_votes/unhelpful_votes；商品关联 EPID，可由 GTIN/ISBN/UPC/EAN 转换。公开 schema 未见评论图片/商家回复字段。","limits":"10 条评论/页；page / max_page；most_recent、评分排序、condition、search_term；强制刷新 GTIN 映射扣 2 credits，否则常规请求 1。","pricing":"专属价页显示年付折合 Hobbyist $18/月含 500 请求、Starter $66/月含 10,000；100 请求试用且免信用卡；月付成交价未验证。"}
+      ],
+      "reputation": "官方实名案例 Publisher Rocket：维护时间减少 90%，每周收回 10–20 小时，自定义查询从 45 秒降为 5 秒。案例证明 Amazon 数据基础设施能力，不证明全量评论可达性。另有 Sigil 品牌保护案例。",
+      "sources": [
+        {"url":"https://docs.trajectdata.com/rainforestapi/product-updates","supports":"2025-03 Reviews V2 Deprecation；近期评论不可公开获取，top reviews 用 product"},
+        {"url":"https://docs.trajectdata.com/rainforestapi/product-data-api/results/product","supports":"top_reviews 仅商品页 Top Reviews；商品 ASIN/变体 schema"},
+        {"url":"https://docs.trajectdata.com/bluecartapi/walmart-product-data-api/parameters/reviews","supports":"Walmart 评论 API 参数；加拿大不支持的明确限制"},
+        {"url":"https://docs.trajectdata.com/bluecartapi/walmart-product-data-api/results/reviews","supports":"Walmart 原始评论 schema"},
+        {"url":"https://docs.trajectdata.com/countdownapi/ebay-product-data-api/results/reviews","supports":"eBay 评论 schema、10 条/页"},
+        {"url":"https://docs.trajectdata.com/countdownapi/ebay-product-data-api/parameters/reviews","supports":"EPID/GTIN、分页、排序、查询条件"},
+        {"url":"https://trajectdata.com/ecommerce/blue-cart-api/pricing/","supports":"BlueCart 年付展示价格、100 请求免卡试用、成功请求计费"},
+        {"url":"https://trajectdata.com/ecommerce/countdown-api/pricing/","supports":"Countdown 价格、试用"},
+        {"url":"https://trajectdata.com/ecommerce/rainforest-api/","supports":"当前 Rainforest 价格文本、交付方式、页面营销字段；与更新公告有能力差异"},
+        {"url":"https://trajectdata.com/discover-rainforest-api/","supports":"100 请求免卡试用；旧价与主页面不同"},
+        {"url":"https://trajectdata.com/case-studies/how-publisher-rocket-built-scalable-author-friendly-insights-powered-by-direct-amazon-data/","supports":"客户案例及效果"},
+        {"url":"https://trajectdata.com/","supports":"同供应商多个独立产品及当前并入 ScraperAPI 公告"}
+      ]
+    },
+    {
+      "name": "DataWeave",
+      "position": "企业跨平台定制采集询样候选",
+      "live_tested": false,
+      "api": "Data Collection API；可 API 触发实时、批量、定时采集，支持自设源与字段；同时有 Digital Shelf Ratings & Reviews 分析产品。",
+      "coverage": {"Amazon":"有历史评论研究证据，当前 API 评论覆盖须询样", "Walmart":"逐平台评论 API 未公开，须询样", "eBay":"逐平台评论 API 未公开，须询样", "Etsy":"逐平台评论 API 未公开，须询样", "AliExpress":"逐平台评论 API 未公开，须询样", "Temu":"逐平台评论 API 未公开，须询样", "Shopee":"逐平台评论 API 未公开，须询样", "Lazada":"逐平台评论 API 未公开，须询样", "TikTok Shop":"逐平台评论 API 未公开，须询样"},
+      "fields": "官方确认 text/images/metadata/product details/reviews 及定制字段；未公开单条评论统一 schema，不能确认日期、SKU、评论晒图、商家回复逐项齐全。",
+      "delivery": "JSON、CSV、WARC 或定制格式；AWS S3、Snowflake、Google Cloud；可处理 JS、分页、无限滚动、AJAX。",
+      "pricing": "公开页 Request Demo / 联系销售；未见公开套餐价、免费额度、并发/评论上限；应要求按目标站点与字段报价。",
+      "reputation": "实名案例 SimpleTire SKU 覆盖扩大 50%，另有 Adidas、Bain & Company；官网 Bush Brothers 证言称内容健康度 51%→76%。这是电商数据/数字货架能力证明，非九平台评论覆盖证明。",
+      "sources": [
+        {"url":"https://dataweave.com/us/data-collection-api","supports":"真实 API 采集、评论与定制字段、数据格式及云交付，非仅 dashboard 导出"},
+        {"url":"https://dataweave.com/us/dsa-ratings-reviews","supports":"评分/评论分析产品"},
+        {"url":"https://dataweave.com/pages/case-study-pricing-intelligence-simple-tire","supports":"SimpleTire 实名案例 50% SKU 覆盖提升"},
+        {"url":"https://dataweave.com/us/case-studies","supports":"Adidas、Bain 等实名案例目录"},
+        {"url":"https://dataweave.com/gb","supports":"Bush Brothers、Pernod Ricard 等实名证言"},
+        {"url":"https://dataweave.com/downloads/whitepaper-us-pet-food-market.pdf","supports":"历史大规模评论分析研究；非当前 endpoint 承诺"}
+      ]
+    },
+    {
+      "name": "Diffbot",
+      "position": "通用提取备选，不宜直接当成现成多 marketplace 评论 API",
+      "live_tested": false,
+      "api": "GET https://api.diffbot.com/v3/product 或 /v3/discussion；Product 默认尝试把评论放入 discussion。",
+      "coverage": {"Amazon":"通用 URL 提取，不等于已确认此平台评论可用", "Walmart":"通用 URL 提取，未确认评论覆盖", "eBay":"通用 URL 提取，未确认评论覆盖", "Etsy":"通用 URL 提取，未确认评论覆盖", "AliExpress":"通用 URL 提取，未确认评论覆盖", "Temu":"通用 URL 提取，未确认评论覆盖", "Shopee":"通用 URL 提取，未确认评论覆盖", "Lazada":"通用 URL 提取，未确认评论覆盖", "TikTok Shop":"通用 URL 提取，未确认评论覆盖"},
+      "fields": "Discussion schema 有 posts.text、date、images、author、parentId 回复关系、pageUrl；未列单条星级字段。Product 层有 SKU/UPC/MPN，不能假定每条评论均能对应变体 SKU；parentId 不能直接等同 merchant reply。",
+      "limits": "可多页合并，每页独立计费；公开文档 maxPages 默认说明互相不一致，应显式传参并测试。未公布所列商城的全量/最新评论保障。",
+      "pricing": "Free 10,000 credits/月、5 请求/分钟、免信用卡；Startup $299/月 250,000 credits、5 请求/秒；Plus $899/月 1,000,000、25 请求/秒；Extract 1 页=1 credit，使用其数据中心代理=2 credits。",
+      "reputation": "官方文档称 DuckDuckGo 用 Extract 结构化商品数据；实名客户故事 Avast、Zippia、Relational AI。主要证明通用提取/知识图谱，不是商城原始评论专项案例。",
+      "sources": [
+        {"url":"https://www.diffbot.com/docs/extract/product","supports":"Product 接口及默认评论提取、商品 ID schema"},
+        {"url":"https://www.diffbot.com/docs/extract/discussion","supports":"评论正文、日期、图片、parentId；公开 schema 未列星级"},
+        {"url":"https://www.diffbot.com/pricing","supports":"当前免费与付费档、速率、credits 计费"},
+        {"url":"https://www.diffbot.com/docs/","supports":"DuckDuckGo 商品提取用途"},
+        {"url":"https://www.diffbot.com/resources/customer-stories","supports":"实名客户与效果案例"}
+      ]
+    }
+  ]
+}

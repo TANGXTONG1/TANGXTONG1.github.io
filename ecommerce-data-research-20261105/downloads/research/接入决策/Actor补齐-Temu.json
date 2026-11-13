@@ -1,0 +1,551 @@
+{
+  "platform": "Temu",
+  "priority": 2,
+  "decision": "先试用这一只",
+  "selected_actor": "omkar-cloud/temu-reviews-scraper",
+  "actor_url": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+  "actor_id": "VzEE9Ow57UDVJ0uX2",
+  "maintainer": "Omkar Cloud",
+  "maintenance_type": "Community",
+  "checked_at": "2026-11-13T14:42:57.885657+00:00",
+  "status": "已选试用Actor；接口/参数/计价可匿名核验；真实采集和生产稳定性尚未验收",
+  "production_ready": false,
+  "trial_actor_selected": true,
+  "why_selected": [
+    "专门交付Temu商品买家评论原文，输出一条评论一行，字段匹配核心需求。",
+    "参数明确支持自动评论分页，最多100条/商品；比只能拿商品页预览的对照更适合第一轮试用。",
+    "按交付评论计费，商品URL可直传，不要求再接入Temu商家授权API。",
+    "虽然成熟度不够，但在五个平台都要具体Actor的目标下，将它作为有明确验收标准的试用主选，而不是遗漏Temu。"
+  ],
+  "verification": {
+    "actor_metadata_http": "匿名GET成功",
+    "latest_build_http": "匿名GET成功",
+    "input_schema_read": true,
+    "output_schema_read": true,
+    "pricing_read": true,
+    "authenticated_run_executed": false,
+    "reason_no_run": "本轮仅官网和匿名API核验，未使用账号token、未创建收费运行。",
+    "rate_success": "不可报告真实数据成功率；公开run状态不等于评论正文有效。"
+  },
+  "trust_evidence": {
+    "created_at": "2026-10-26T11:50:06.796Z",
+    "modified_at": "2026-11-09T07:25:30.746Z",
+    "latest_build": {
+      "buildId": "8CvrWd5BQjVocmGpU",
+      "finishedAt": "2026-11-09T07:25:30.746Z",
+      "buildNumberInt": 3,
+      "buildNumber": "0.0.3"
+    },
+    "total_users": 1,
+    "monthly_active_users": 1,
+    "actor_rating_count": 0,
+    "actor_rating": null,
+    "total_runs": 6,
+    "public_runs_30_days": {
+      "ABORTED": 0,
+      "FAILED": 0,
+      "SUCCEEDED": 4,
+      "TIMED-OUT": 1,
+      "TOTAL": 5
+    },
+    "is_deprecated": false,
+    "permission_level": "LIMITED_PERMISSIONS",
+    "confidence": "低，适合试用验证；不以厂商整体口碑替代此Actor的使用记录。",
+    "metadata_note": "本轮直接API为1总用户/1月活；搜索缓存曾显示2总用户，预算和选型页采用直接API。"
+  },
+  "countries_documented": [
+    "US",
+    "UK",
+    "Canada"
+  ],
+  "country_input_values": [
+    "us",
+    "gb",
+    "ca"
+  ],
+  "initial_region": "us",
+  "countries_live_tested": [],
+  "input_parameters": [
+    {
+      "name": "products",
+      "type": "array",
+      "meaning": "商品URL或商品ID列表"
+    },
+    {
+      "name": "stores",
+      "type": "array",
+      "meaning": "店铺URL或店铺ID列表，试用先不传"
+    },
+    {
+      "name": "country",
+      "type": "string",
+      "meaning": "站点代码",
+      "default": "us",
+      "enum": [
+        "us",
+        "gb",
+        "ca"
+      ]
+    },
+    {
+      "name": "minRating",
+      "type": "integer",
+      "meaning": "最低星级过滤",
+      "minimum": 1,
+      "maximum": 5
+    },
+    {
+      "name": "withPhotosOnly",
+      "type": "boolean",
+      "meaning": "仅带照片或视频的评论",
+      "default": false
+    },
+    {
+      "name": "maxReviewsPerProduct",
+      "type": "integer",
+      "meaning": "每商品评论数",
+      "default": 50,
+      "minimum": 1,
+      "maximum": 100
+    },
+    {
+      "name": "maxResults",
+      "type": "integer",
+      "meaning": "整个run返回评论数上限",
+      "minimum": 1
+    }
+  ],
+  "recommended_trial_input": {
+    "products": [
+      "https://www.temu.com/goods.html?goods_id=601099537773480"
+    ],
+    "country": "us",
+    "maxReviewsPerProduct": 20,
+    "maxResults": 20,
+    "withPhotosOnly": false
+  },
+  "trial_input_note": "该商品ID来自官方预填样例；是待试用目标，不代表本轮已读到其评论。首次不设置星级或媒体过滤，以便判断是否存在正文。",
+  "api": {
+    "method": "POST",
+    "run_url": "https://api.apify.com/v2/actors/omkar-cloud~temu-reviews-scraper/runs?token=<APIFY_TOKEN>",
+    "input": {
+      "products": [
+        "https://www.temu.com/goods.html?goods_id=601099537773480"
+      ],
+      "country": "us",
+      "maxReviewsPerProduct": 20,
+      "maxResults": 20,
+      "withPhotosOnly": false
+    },
+    "poll": "GET https://api.apify.com/v2/actor-runs/<RUN_ID>?token=<APIFY_TOKEN>",
+    "dataset": "GET https://api.apify.com/v2/datasets/<DEFAULT_DATASET_ID>/items?format=json&clean=true&token=<APIFY_TOKEN>",
+    "integration": "服务端保存 token；异步启动，保存 runId/defaultDatasetId，轮询或 webhook 后拉 Dataset；可导出 CSV/Excel。正式配置应采用安全鉴权方式，避免 token 出现在日志。",
+    "tested": false
+  },
+  "output_unit": "一条Dataset item对应一条商品/店铺评论；source区分product/store。字段均可为空，必须验证text非空，不只验HTTP状态或itemCount。",
+  "output_fields": [
+    {
+      "name": "input",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "source",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "position",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    {
+      "name": "country",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "review_id",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "rating",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    {
+      "name": "text",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "translated_text",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "date",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "author",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "author_country",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "variant",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "fit",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "images",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    {
+      "name": "videos",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    {
+      "name": "product_id",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "product_name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "product_link",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "product_image",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "store_id",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "store_link",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "name": "overall_rating",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    {
+      "name": "overall_review_count",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    {
+      "name": "five_star_percent",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    {
+      "name": "one_star_percent",
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  ],
+  "output_field_groups": {
+    "核心评论": [
+      "review_id",
+      "rating",
+      "text",
+      "date"
+    ],
+    "评论上下文": [
+      "source",
+      "position",
+      "country",
+      "input",
+      "translated_text"
+    ],
+    "购买及买家信息": [
+      "author",
+      "author_country",
+      "variant",
+      "fit"
+    ],
+    "媒体": [
+      "images",
+      "videos"
+    ],
+    "商品店铺": [
+      "product_id",
+      "product_name",
+      "product_link",
+      "product_image",
+      "store_id",
+      "store_link"
+    ],
+    "汇总评级": [
+      "overall_rating",
+      "overall_review_count",
+      "five_star_percent",
+      "one_star_percent"
+    ]
+  },
+  "pagination": {
+    "review_page_size": 10,
+    "max_reviews_per_product": 100,
+    "max_store_reviews": 10,
+    "automatic_paging": true,
+    "resume_cursor_parameter": false,
+    "date_since_parameter": false,
+    "full_history_guarantee": false,
+    "note": "每商品最多100条是已核上限；总评论数overall_review_count不能作为已取得条数。没有日期过滤/跨run续传参数，增量需本地review_id去重。"
+  },
+  "pricing": {
+    "currency": "USD",
+    "model": "PAY_PER_EVENT",
+    "usd_per_review": 0.002,
+    "usd_per_1000_reviews": 2,
+    "actor_start_usd_per_gb_min_one": 5e-05,
+    "default_memory_mb": 256,
+    "event_keys": [
+      "apify-default-dataset-item",
+      "apify-actor-start"
+    ],
+    "formula": "0.002 × 已计费评论行 + 0.00005 × 启动事件（每GB一次、至少一次）",
+    "price_effective_since": "2026-10-27T04:30:17.409Z",
+    "has_price_tier_discounts": false,
+    "trial_20_rows_1_start_usd": 0.04005,
+    "trial_100_rows_1_start_usd": 0.20005,
+    "scenario_10000_review_rows_usd_excluding_starts": 20,
+    "scenario_100000_review_rows_usd_excluding_starts": 200,
+    "platform_subscription": "使用同一Apify账户额度；不要重复按每个Actor支付平台月费。实际信用额度、税费及平台账单由当前账户决定。",
+    "pricing_discrepancy": "README写no start fee，但当前pricingInfos存在$0.00005启动事件；按API事件价保守核算。",
+    "additional_cost_status": "本次元数据未列用户另付CU/代理标记；不得把未列项当作合同保证，首次试用核对run账单。",
+    "billing_unit_source": "当前pricingInfos明确一个Temu商品或店铺review为结果事件。"
+  },
+  "limits": [
+    "最多100条/商品，店铺仅访客可见前10条；不承诺完整历史。",
+    "仅核到US、UK、Canada，其他地区不写入支持清单。",
+    "没有声明每日请求上限，但仍受Apify账户余额、并发和源站反爬影响；未知不等于无限。",
+    "输出没有独立商品价格/销量/广告投放字段；若后续需要，可另加产品数据Actor，当前先完成评论接入。",
+    "原文、媒体、买家地区、SKU等字段都可能缺失；图片/视频链接是否长期有效未测。",
+    "未取得数据授权、商业转售许可、SLA或下架通知保障；本轮只确认技术接口。"
+  ],
+  "comparison_candidates": [
+    {
+      "actor": "cliqtomedia/temu-scraper",
+      "url": "https://apify.com/cliqtomedia/temu-scraper",
+      "role": "对照，不作为评论主选",
+      "matches": "商品详情reviews数组含text/rating/date/media；可以辅助比较某商品可见评论。",
+      "why_not_primary": "仅商品页公开预览，不翻全部评论；每条返回是商品，不能把每商品价格换算成每评论价格。",
+      "countries": [
+        "US"
+      ],
+      "input_example": {
+        "mode": "products",
+        "productUrls": [
+          "601099537773480"
+        ],
+        "country": "US",
+        "dataLevel": "full",
+        "maxItems": 1
+      },
+      "output_unit": "商品一行，reviews内嵌数组",
+      "users": 7,
+      "monthly_active_users": 2,
+      "rating_count": 0,
+      "modified_at": "2026-11-13T03:29:59.456Z",
+      "latest_build": {
+        "buildId": "OMplc9Kjady1Xq0Sb",
+        "finishedAt": "2026-11-05T15:30:15.210Z",
+        "buildNumberInt": 100070,
+        "buildNumber": "0.1.70"
+      },
+      "pricing_free_plan": {
+        "full_product_page_read_usd": 0.0162,
+        "actor_start_usd_per_gb_min_one": 5e-05,
+        "minimum_max_total_charge_setting_usd": 0.05,
+        "note": "按有效完整商品页读取计费，过滤或历史去掉Dataset行也可能收费；$0.05是允许设置的run费用上限最低值，不是每次固定收费。"
+      }
+    },
+    {
+      "actor": "hypebridge/temu-scraper",
+      "url": "https://apify.com/hypebridge/temu-scraper",
+      "role": "排除",
+      "reason": "虽然1099用户/263月活，但官方明确评论正文redacted，只提供星级与日期；不满足原文评论目标。"
+    }
+  ],
+  "acceptance_plan": {
+    "first_run": "先对官方预填商品取20条；逐条检查review_id、text、rating、date、product_id。",
+    "second_run": "对有100+评论的第二商品取50条，确认超过第一页且不重复。",
+    "budget": "按最多70条评论和2次启动，基础事件费约$0.14010；这是预估，不是已发生费用，不包含未知账单项。",
+    "pass_criteria": [
+      "两商品均有可核的非空买家原文，不把默认好评占位或星级当正文。",
+      "50条请求实际跨页，review_id重复情况有记录，未因抓不到历史而伪报全部完成。",
+      "账单按评论结果事件计费、启动费与公开价格一致。",
+      "导出JSON能稳定写入统一评论schema，保留原始JSON/runId/buildId和抓取时间。"
+    ],
+    "after_pass": "将产品能力表写为Temu评论采样（最多100条/商品）；不写全量历史或高成功率。",
+    "after_fail": "保存run日志和真实失败类型，检查维护者支持；仍保留具体试用Actor选择及失败证据，不用ratings_count替代评论。"
+  },
+  "sources": [
+    {
+      "id": "temu_store",
+      "url": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "字段说明",
+        "商品最多100条",
+        "店铺前10条",
+        "US/UK/CA",
+        "厂商示例"
+      ]
+    },
+    {
+      "id": "temu_api",
+      "url": "https://api.apify.com/v2/acts/omkar-cloud~temu-reviews-scraper",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "Actor存在且未弃用",
+        "实时公开使用量",
+        "当前pricingInfos",
+        "latest build"
+      ]
+    },
+    {
+      "id": "temu_build",
+      "url": "https://api.apify.com/v2/actor-builds/8CvrWd5BQjVocmGpU",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "inputSchema",
+        "output字段类型",
+        "latest 0.0.3"
+      ]
+    },
+    {
+      "id": "temu_api_usage",
+      "url": "https://apify.com/omkar-cloud/temu-reviews-scraper/api",
+      "checked_at": "2026-11-13",
+      "supports": [
+        "API调用路由与token要求"
+      ]
+    },
+    {
+      "id": "cliqtomedia_store",
+      "url": "https://apify.com/cliqtomedia/temu-scraper",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "商品页预览评论",
+        "无全量评论",
+        "US限定"
+      ]
+    },
+    {
+      "id": "cliqtomedia_api",
+      "url": "https://api.apify.com/v2/acts/cliqtomedia~temu-scraper",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "使用量",
+        "当前价格",
+        "更新时间"
+      ]
+    },
+    {
+      "id": "cliqtomedia_build",
+      "url": "https://api.apify.com/v2/actor-builds/OMplc9Kjady1Xq0Sb",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "输入",
+        "reviews输出数组",
+        "产品单位"
+      ]
+    },
+    {
+      "id": "hypebridge_store",
+      "url": "https://apify.com/hypebridge/temu-scraper",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "reviewTextRedacted",
+        "无正文"
+      ]
+    },
+    {
+      "id": "hypebridge_api",
+      "url": "https://api.apify.com/v2/acts/hypebridge~temu-scraper",
+      "checked_at": "2026-11-13T14:42:57.885657+00:00",
+      "supports": [
+        "使用量较高但字段不适配"
+      ]
+    }
+  ],
+  "previous_decision_revision": "此前建议暂缓生产接入仍保留为生产状态；本次按用户要求补齐明确试用Actor，Temu主选不再留空。"
+}

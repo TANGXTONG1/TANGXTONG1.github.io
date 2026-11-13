@@ -1,0 +1,626 @@
+[
+  {
+    "id": "just-one-api",
+    "name": "Just One API",
+    "checked_on": "2026-11-05",
+    "delivery_model": "同一供应商、同一域名、共享账户余额与 Token；各渠道/功能采用独立 path。",
+    "unification_level": "统一鉴权/计费/错误封装；未证实统一业务模型",
+    "unified_api_evidence": [
+      {
+        "claim": "使用指南确认 query token 与共享账户余额，code=0 才是业务成功。",
+        "url": "https://docs.justoneapi.com/zh/usage"
+      },
+      {
+        "claim": "当前目录含淘系/JD/抖音电商，以及星图/蒲公英；未列拼多多/美团。",
+        "url": "https://docs.justoneapi.com/zh/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "商品详情、搜索、评价目录；当前字段需按版本。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "商品详情、价格、搜索、评论目录。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "未在现行目录找到标准接口。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "未在现行目录找到标准接口。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "电商详情/SKU/评论与星图达人营销目录。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "商品接口可能含前台销量，未核统一销量 schema、时间窗与成交口径。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "JD专门价格端点，其他商品详情按版本。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      },
+      "reviews": {
+        "status": "已核文档",
+        "detail": "淘系/JD/抖音电商评价端点；不代表全量。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/api/taobao-and-tmall/product-reviews-v3"
+        ]
+      },
+      "marketing": {
+        "status": "已核文档",
+        "detail": "星图营销接口明确用于比较创作者商业报价；不等于广告账户实际消耗/ROI。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/api/douyin-creator-marketplace-xingtu/marketing-metrics-v1"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核自有商家订单/广告账户授权汇总接口。",
+        "urls": [
+          "https://docs.justoneapi.com/zh/"
+        ]
+      }
+    },
+    "gaps": [
+      "缺拼多多/美团现行接口证据",
+      "供应商客户与主体补证仍未通过",
+      "一个 Token 仍需要处理各平台 path、版本、参数、分页与 data 字段"
+    ],
+    "verdict": "技术备选，仍须补信誉与覆盖",
+    "next_verification": "提供淘/JD/抖音同一商品类型的真实响应、销量口径；若承诺拼美须先给现行文档和样本。",
+    "schema_notes": [
+      "公共 code/message/data 封装相同不代表 data 字段相同。",
+      "星图用 oAuthorId/platform；电商用商品标识，不是统一商品/营销实体接口。"
+    ],
+    "credibility_verdict": "补证",
+    "credibility_reason": "有正式文档与官方 SDK/MCP，但本轮未取得具名企业客户或客户侧采购证据；不进入优先采购名单。",
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "tmapi",
+    "name": "TMAPI",
+    "checked_on": "2026-11-05",
+    "delivery_model": "一套账户/apikey；以 /pdd、/jd、/taobao 等独立路由提供商品 API。",
+    "unification_level": "统一供应商/鉴权；部分商品字段近似，未核统一业务模型",
+    "unified_api_evidence": [
+      {
+        "claim": "官网接入流程为注册后选择具体 API。",
+        "url": "https://tmapi.top/docs/start.html"
+      },
+      {
+        "claim": "正式目录可核拼多多、京东、淘系，未见美团或国内抖音电商。",
+        "url": "https://tmapi.top/docs/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "详情/搜索/销量；部分旧路线维护。",
+        "urls": [
+          "https://tmapi.top/docs/"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "详情价格SKU；已核样例未含销售/评价原文。",
+        "urls": [
+          "https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md"
+        ]
+      },
+      "pdd": {
+        "status": "已核文档",
+        "detail": "详情、price_info、sale_count、comment_count。",
+        "urls": [
+          "https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "未见标准目录。",
+        "urls": [
+          "https://tmapi.top/docs/"
+        ]
+      },
+      "douyin": {
+        "status": "未证实",
+        "detail": "TikTok Shop 目录不能算国内抖音电商。",
+        "urls": [
+          "https://tmapi.top/docs/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "淘系销量专门端点；PDD sale_count/side_sales_tip；非同口径。",
+        "urls": [
+          "https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-sales-by-id-v3"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "淘/JD/PDD详情/sku价格。",
+        "urls": [
+          "https://tmapi.top/docs/"
+        ]
+      },
+      "reviews": {
+        "status": "未证实",
+        "detail": "已核PDD comment_count只有评论数，不能算评价正文。",
+        "urls": [
+          "https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "未核广告投放、达人内容等统一API。",
+        "urls": [
+          "https://tmapi.top/docs/"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核自有订单/广告后台授权数据。",
+        "urls": [
+          "https://tmapi.top/docs/"
+        ]
+      }
+    },
+    "gaps": [
+      "缺美团及多类营销",
+      "评价数量不能满足评价原文",
+      "主体/企业客户证据不足",
+      "JD/PDD/淘系销量字段与可取范围不同"
+    ],
+    "verdict": "商品价格/拼多多局部技术备选，非完整统一交付",
+    "next_verification": "先验淘京拼三平台样本与生产HTTPS；广告、评价正文、美团不能靠商品详情目录补齐。",
+    "schema_notes": [
+      "PDD 返回 sale_count、side_sales_tip、comment_count；JD已核详情没有这组字段。",
+      "price_info 接近的结构不保证折扣条件、SKU库存语义一致。"
+    ],
+    "credibility_verdict": "补证",
+    "credibility_reason": "接口字段较清楚，但本轮未找到可核实的具名客户案例或足够的外部经营证据。",
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "qovia",
+    "name": "Qovia",
+    "checked_on": "2026-11-05",
+    "delivery_model": "单一 api.qovia.ai、Bearer/x-api-key、统一 JSON 外壳；raw 业务端点分平台。",
+    "unification_level": "统一鉴权和 envelope；评价字段部分归一，其余仍分业务",
+    "unified_api_evidence": [
+      {
+        "claim": "公开 OpenAPI 给出同一 base URL/security 与 request_id/data/meta 外壳。",
+        "url": "https://qovia.ai/openapi.json"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "当前核心为 comments/comments_v2。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "当前核心为 comments。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "未见标准电商路径。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "未见标准路径。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "社媒与星图；电商评价见原字段字典，不等于完整交易库。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "未证实",
+        "detail": "未核跨商城销量API。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "price": {
+        "status": "未证实",
+        "detail": "未核跨商城价格/SKU库；达人报价不是商品售价。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "reviews": {
+        "status": "已核文档",
+        "detail": "淘/JD评价原文、rating/时间/SKU/追评，但分页不保证全量。",
+        "urls": [
+          "https://qovia.ai/docs/api-reference/raw.jd.comments/"
+        ]
+      },
+      "marketing": {
+        "status": "已核文档",
+        "detail": "星图作者报价/CPM/转化等达人情报，非各电商广告后台。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核商家订单和广告账户数据。",
+        "urls": [
+          "https://qovia.ai/openapi.json"
+        ]
+      }
+    },
+    "gaps": [
+      "缺商品价格销量两大类",
+      "拼多多/美团未证实",
+      "具名企业客户证据不足"
+    ],
+    "verdict": "评价与达人营销专项技术备选",
+    "next_verification": "若采购需先确认主体/客户；不能用统一 JSON 外壳替代完整电商数据覆盖。",
+    "schema_notes": [
+      "淘系评价用 rating_level；JD用 rating 并有 max_page。",
+      "共同 items[].text 只覆盖部分评价归一，不等于商品、销量、广告全域统一。"
+    ],
+    "credibility_verdict": "补证",
+    "credibility_reason": "接口覆盖与评价字段有价值，但现有主体透明度、企业案例和影响力证据不足，暂不进入精选。",
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "onebound",
+    "name": "万邦 Onebound",
+    "checked_on": "2026-11-05",
+    "delivery_model": "历史一个 key/secret、多平台接口；当前国内文档会转向跨境 tglobal。",
+    "unification_level": "现行国内统一交付未证实",
+    "unified_api_evidence": [
+      {
+        "claim": "本轮再次打开旧淘宝 item_get 文档，仍跳到 tglobal.readme。",
+        "url": "https://open.onebound.cn/help/api/taobao.item_get.html"
+      },
+      {
+        "claim": "官方功能PDF日期为2024-11-01，不能作为2026可用承诺。",
+        "url": "https://www.onebound.cn/daigou/api-list.pdf"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "商务待核",
+        "detail": "旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "jd": {
+        "status": "商务待核",
+        "detail": "旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "pdd": {
+        "status": "商务待核",
+        "detail": "旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "meituan": {
+        "status": "商务待核",
+        "detail": "旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "douyin": {
+        "status": "商务待核",
+        "detail": "旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "商务待核",
+        "detail": "当前国内接口字段、交付覆盖和口径未核实。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "price": {
+        "status": "商务待核",
+        "detail": "当前国内接口字段、交付覆盖和口径未核实。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "reviews": {
+        "status": "商务待核",
+        "detail": "当前国内接口字段、交付覆盖和口径未核实。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "marketing": {
+        "status": "商务待核",
+        "detail": "当前国内接口字段、交付覆盖和口径未核实。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      },
+      "owned": {
+        "status": "商务待核",
+        "detail": "当前国内接口字段、交付覆盖和口径未核实。",
+        "urls": [
+          "https://open.onebound.cn/help/api/"
+        ]
+      }
+    },
+    "gaps": [
+      "公司历史证据相对较强，但接口证据滞后",
+      "跨境 tglobal 不能外推国内全平台能力",
+      "营销后台和美团子业务未核"
+    ],
+    "verdict": "可询样备选，不能按历史全平台目录入选",
+    "next_verification": "让供应商交一份当前可调用平台×大类矩阵、统一接口契约与真实响应。",
+    "schema_notes": [
+      "无法从重定向旧文档确认统一国内业务模型。"
+    ],
+    "credibility_verdict": "备选",
+    "credibility_reason": "在原始电商 API 组中，公司历史有外部记录可核实；仍需把旧接口、当前国内渠道和交付质量补验后才考虑采购。",
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "bamboo-data",
+    "name": "竹简数据",
+    "checked_on": "2026-11-05",
+    "delivery_model": "销售提供 token 与专属 endpoint；不同平台/能力各自 POST path。",
+    "unification_level": "定制入口与共享鉴权；公共 code/message/data 外壳",
+    "unified_api_evidence": [
+      {
+        "claim": "数据市场列出平台能力并引导商务开通。",
+        "url": "https://marketplace.bamboodatalab.com/zh/"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "详情/SKU/搜索/评论/销量；含淘宝闪购部分能力。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "商品详情一项；不能外推京东评价。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "公开目录未确认。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "公开目录未确认，淘宝闪购不等于美团。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "抖音电商与团购独立接口目录。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/api/douyin-ec/"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "淘系 sales_30d/sales_total 为文档字段，真实口径未实测。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/api/taobao/item-sales-v1"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "商品详情/SKU目录，字段按平台。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      },
+      "reviews": {
+        "status": "已核文档",
+        "detail": "淘系 comment_id/content/append；仅文档。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1"
+        ]
+      },
+      "marketing": {
+        "status": "未证实",
+        "detail": "未证实统一广告/达人营销数据交付。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核自营商家后台授权汇总。",
+        "urls": [
+          "https://marketplace.bamboodatalab.com/zh/"
+        ]
+      }
+    },
+    "gaps": [
+      "缺拼多多/美团现行标准接口",
+      "专属地址尚需商务交付",
+      "品牌/客户证据不足"
+    ],
+    "verdict": "暂不作为主供应商",
+    "next_verification": "需补主体、客户、完整五平台能力与正式专属接口样本。",
+    "schema_notes": [
+      "content 对比其他家 text；sales_30d 对比 sale_count/sold_count，需供应商统一语义。"
+    ],
+    "credibility_verdict": "补证",
+    "credibility_reason": "目前主要依据是数据市场和接口文档，未找到足以进入精选的具名客户、主体或外部影响力证据。",
+    "authenticated_business_api_success": false
+  },
+  {
+    "id": "everyinfra",
+    "name": "EveryInfra/万有引擎",
+    "checked_on": "2026-11-05",
+    "delivery_model": "同一 Bearer Key、统一 POST /api/v1/social，body 用 platform/action 选择能力；统一响应壳。",
+    "unification_level": "统一入口和部分公共字段；业务仍按 platform/action 差异",
+    "unified_api_evidence": [
+      {
+        "claim": "匿名公开能力目录本次取得真实HTTP JSON，列各 action、参数、字段与限制；只是能力元数据。",
+        "url": "https://api.everyinfra.com/api/v1/social/catalog"
+      },
+      {
+        "claim": "正式文档说明统一 social API。",
+        "url": "https://everyinfra.com/docs"
+      }
+    ],
+    "platform_coverage": {
+      "taobao": {
+        "status": "已核文档",
+        "detail": "search/product_detail/shop/reviews/questions。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      },
+      "jd": {
+        "status": "已核文档",
+        "detail": "search/product_detail/reviews/shop/product_price/skus 等。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      },
+      "pdd": {
+        "status": "未证实",
+        "detail": "platforms 无 pinduoduo/pdd；temu 不等于国内拼多多。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      },
+      "meituan": {
+        "status": "未证实",
+        "detail": "platforms 无 meituan。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      },
+      "douyin": {
+        "status": "已核文档",
+        "detail": "商品搜索/详情、星图达人与社媒内容；并非完整商家后台。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      }
+    },
+    "data_categories": {
+      "sales": {
+        "status": "已核文档",
+        "detail": "淘系 sold_count、JD search sold_count、抖音 monthly_sales/sales_text/sold_count；不是统一真实成交口径。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      },
+      "price": {
+        "status": "已核文档",
+        "detail": "淘系 price、JD price、抖音 price_cny；淘系文档提示部分美元换算误差。",
+        "urls": [
+          "https://everyinfra.com/taobao-api/product_detail"
+        ]
+      },
+      "reviews": {
+        "status": "已核文档",
+        "detail": "淘/JD评价原文；JD文档上限10条等约束需另验。",
+        "urls": [
+          "https://everyinfra.com/jd-api/reviews"
+        ]
+      },
+      "marketing": {
+        "status": "已核文档",
+        "detail": "抖音星图报价、GMV/转化区间及社媒互动；非店铺广告账户消耗/ROI。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      },
+      "owned": {
+        "status": "未证实",
+        "detail": "未核自营完整订单、财务、广告后台授权API。",
+        "urls": [
+          "https://api.everyinfra.com/api/v1/social/catalog"
+        ]
+      }
+    },
+    "gaps": [
+      "拼多多/美团缺口明确",
+      "虽有较统一的入口，字段/销量/价格语义仍不同",
+      "供应商具名客户与企业成熟证据仍缺",
+      "目录available标记不等于本轮业务成功"
+    ],
+    "verdict": "统一入口技术最接近之一，但仍未通过信誉/全覆盖筛选",
+    "next_verification": "先补客户证据，再按同一套商品/评价/营销契约索取淘京抖真实样本；拼美不可默认可定制。",
+    "schema_notes": [
+      "淘宝商品主键 id；京东 item_id；抖音 product_id。",
+      "淘宝/JD价格 price+currency；抖音 price_cny/price_cny_minor，单位必须区分。",
+      "销量有 sold_count、monthly_sales、sales_text/区间；不能直接相加。",
+      "评价 text/rating/posted_at 较统一，但分页、数量上限、追评和SKU字段仍不同。"
+    ],
+    "credibility_verdict": "补证",
+    "credibility_reason": "有 API、插件与开源辅助工具，但这些不足以证明电商数据业务的成熟客户规模。",
+    "authenticated_business_api_success": false
+  }
+]

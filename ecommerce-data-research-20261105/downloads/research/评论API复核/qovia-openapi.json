@@ -1,0 +1,1319 @@
+{
+  "source": "https://qovia.ai/openapi.json",
+  "checked_on": "2026-11-06",
+  "http_status": 200,
+  "data": {
+    "info": {
+      "title": "Qovia API",
+      "version": "0.1.0",
+      "summary": "Public web data API for AI: 164 endpoints, one key, one JSON envelope.",
+      "description": "Public web data for AI agents and developers: social, e-commerce and web platforms behind one API key and one JSON envelope.\n\n- **Base URL:** `https://api.qovia.ai`\n- **Auth:** `Authorization: Bearer <API key>` (or `x-api-key: <API key>`). Create keys at https://qovia.ai/console/?tab=keys.\n- **Requests:** GET endpoints take query parameters, POST endpoints a JSON object body. Unknown parameters are rejected with 400 `invalid_params`.\n- **Responses:** HTTP 200 with `{\"request_id\", \"data\", \"meta\"}`. An empty result is still 200, with `meta.empty: true` and `data` empty or null. Errors are `{\"error\": {\"code\", \"message\", \"request_id\", \"support\"}}`; branch on `code`.\n- **Billing (USD):** a new account gets 50 trial calls on any endpoint (`meta.trial_calls_remaining` counts down); after that, a prepaid balance. Only successful, non-empty results are charged or counted, and errors and empty results are not.\n- **Rate limits:** 60 requests per minute per account (600 after the first top-up); some endpoints also have a global per-second cap (429 `endpoint_busy`). Honour `Retry-After`.\n- `/v1` only takes GET and POST: other methods (e.g. PUT, DELETE) get a framework 405 `{\"detail\": \"Method Not Allowed\"}`, and an unexpected server error may be a plain-text 500. Neither is charged.\n\nDocs: https://qovia.ai/docs/ · API reference: https://qovia.ai/docs/api-reference/ · Chinese: https://qovia.ai/zh/docs/"
+    },
+    "paths": {
+      "/v1/raw/taobao/comments": {
+        "get": {
+          "operationId": "raw_taobao_comments",
+          "summary": "Taobao & Tmall product reviews",
+          "description": "Buyer reviews of a Taobao or Tmall item, newest first, 20 per page: text and time, positive / neutral / negative rating, SKU, the buyer's nickname (masked by Taobao) and member level, photos and videos, the follow-up review and shop replies. item_id takes Taobao and Tmall item IDs alike. Default positive reviews without text are skipped unless they carry a follow-up. Stop paging when has_more is false. An item without reviews, or one that does not exist, answers empty and is not charged.",
+          "tags": [
+            "Taobao & Tmall"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Taobao or Tmall item ID (the id= in the item URL)",
+              "x-qovia-description-zh": "淘宝或天猫商品 ID（商品链接里的 id=）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{5,19}$",
+                "examples": [
+                  "611261922146"
+                ]
+              },
+              "example": "611261922146"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, from 1; stop when has_more is false",
+              "x-qovia-description-zh": "页码，从 1 开始；has_more 为 false 时停止",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              }
+            },
+            {
+              "name": "skip_default_reviews",
+              "in": "query",
+              "required": false,
+              "description": "true (default) skips default positive reviews without text (those with a follow-up stay); false returns every review",
+              "x-qovia-description-zh": "true（默认）跳过没有内容的默认好评（带追评的仍保留）；false 返回全部评价",
+              "schema": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "items": [
+                        {
+                          "id": "eco_tao_e35d27d45024",
+                          "cid": "1316054905552",
+                          "text": "其实线上买药很方便也很优惠很好，",
+                          "rating_level": "good",
+                          "likes": 0,
+                          "created_at": "2026-10-03T21:27:00+08:00",
+                          "sku": "套餐类型:1盒装[基础体验【欧洲原研进口】]",
+                          "user_name": "刘***7",
+                          "user_level": 0,
+                          "anonymous": true,
+                          "images": [
+                            "https://img.alicdn.com/imgextra/i4/4611686018427385600/O1CN01bZPUiKO6BBJ1SdaC_!!4611686018427385600-0-rate.jpg_400x400.jpg"
+                          ],
+                          "videos": [],
+                          "shop_reply": null,
+                          "followup": {
+                            "text": "相信",
+                            "days_after_receipt": 16,
+                            "images": [
+                              "https://img.alicdn.com/imgextra/i1/4611686018427385600/O1CN01L74IopdbT1I1SdaC_!!4611686018427385600-0-rate.jpg_400x400.jpg"
+                            ],
+                            "videos": [],
+                            "shop_reply": "感谢您的认可，也谢谢您的晒图和追评。能让您买药更方便、享受到实惠，我们很高兴。…"
+                          }
+                        },
+                        {
+                          "id": "eco_tao_9b5c72573494",
+                          "cid": "1316866273768",
+                          "text": "我觉得性价比一般，有点贵。效果还可以",
+                          "rating_level": "good",
+                          "likes": 0,
+                          "created_at": "2026-10-14T21:08:00+08:00",
+                          "sku": "套餐类型:1盒装[基础体验【欧洲原研进口】]",
+                          "user_name": "欣***笑",
+                          "user_level": 0,
+                          "anonymous": false,
+                          "images": [
+                            "https://img.alicdn.com/imgextra/i3/4611686018427380977/O1CN01mo211OzAnAF2BxNI_!!4611686018427380977-0-rate.jpg_400x400.jpg"
+                          ],
+                          "videos": [],
+                          "shop_reply": null,
+                          "followup": null
+                        }
+                      ],
+                      "page": 1,
+                      "has_more": true,
+                      "total": 400,
+                      "total_exact": false,
+                      "prov": {
+                        "hash": "0x7b921e36e8cf1b4c",
+                        "ts": "2026-10-21T19:59:04+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.013500",
+                      "balance_usd": "9.986500",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.taobao.comments",
+          "x-qovia-title-zh": "淘宝/天猫商品评价",
+          "x-qovia-description-zh": "淘宝和天猫商品的买家评价，从新到旧，每页 20 条：评价内容和时间、好评/中评/差评、SKU、买家昵称（平台已打码）和会员等级、晒图和视频、追评和商家回复。 item_id 填淘宝或天猫的商品 ID 均可。默认跳过没有内容的默认好评（带追评的仍保留）。 has_more 为 false 时停止翻页。商品没有评价或不存在时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:taobao",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 13500,
+            "usd_per_call": "0.013500",
+            "usd_per_1k": "13.5"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.taobao.comments/"
+        }
+      },
+      "/v1/raw/taobao/comments_v2": {
+        "get": {
+          "operationId": "raw_taobao_comments_v2",
+          "summary": "Taobao & Tmall product reviews V2",
+          "description": "Buyer reviews of a Taobao or Tmall item, returned as the platform answers in JSON: the comments list (20 per page, each with text and time, rating, SKU, the buyer's nickname, photos and videos, follow-up review, shop reply, likes), plus the review total, maxPage, the popular review keywords (first page only) and hasNextPage. item_id takes Taobao and Tmall item IDs alike; page starts at 1; stop paging when hasNextPage is false. It usually answers in about 3 seconds. Only an answer with data is charged; an item without reviews, or an error, is not.",
+          "tags": [
+            "Taobao & Tmall"
+          ],
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "query",
+              "required": true,
+              "description": "Taobao or Tmall item ID (the id= in the item URL)",
+              "x-qovia-description-zh": "淘宝或天猫商品 ID（商品链接里的 id=）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{5,19}$",
+                "examples": [
+                  "611261922146"
+                ]
+              },
+              "example": "611261922146"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, from 1; stop when hasNextPage is false",
+              "x-qovia-description-zh": "页码，从 1 开始；hasNextPage 为 false 时停止",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "qnaDisabled": true,
+                      "watershed": 100,
+                      "total": 4000,
+                      "totalFuzzy": "4000+",
+                      "comments": [
+                        {
+                          "date": "2026年10月31日 00:29",
+                          "shareInfo": {
+                            "lastReplyTime": "",
+                            "share": false,
+                            "pic": 0,
+                            "reply": 0,
+                            "userNumIdBase64": ""
+                          },
+                          "showDepositIcon": false,
+                          "o2oRate": null,
+                          "mainTradeId": 0,
+                          "raterType": 0,
+                          "validscore": 1,
+                          "video": null,
+                          "photos": [],
+                          "content": "该用户觉得商品非常好，给出5星好评",
+                          "rateId": 2914289593649150,
+                          "spuRatting": [],
+                          "auction": {
+                            "thumbnail": "",
+                            "link": "//item.taobao.com/auction/item_detail.htm?item_num_id=611261922146",
+                            "auctionPic": "",
+                            "sku": "套餐类型:2盒装[疗程周期【缓解多种过敏症状】]",
+                            "title": "",
+                            "aucNumId": "611261922146"
+                          },
+                          "award": "",
+                          "rate": "1",
+                          "creditFraudRule": 0,
+                          "appendCanExplainable": false,
+                          "from": "h5",
+                          "tag": "",
+                          "propertiesAvg": "5",
+                          "reply": null,
+                          "dayAfterConfirm": 0,
+                          "lastModifyFrom": 0,
+                          "bidPriceMoney": null,
+                          "noQna": true,
+                          "promotionType": "",
+                          "vicious": "",
+                          "enableSNS": false,
+                          "appendList": [],
+                          "buyAmount": 0,
+                          "showCuIcon": false,
+                          "serviceRate": null,
+                          "useful": 0,
+                          "likeCount": 0,
+                          "user": {
+                            "nick": "爱***娘",
+                            "vipLevel": 0,
+                            "displayRatePic": "",
+                            "nickUrl": "",
+                            "creditPic": "",
+                            "anony": true,
+                            "rank": 0,
+                            "avatar": "https://gw.alicdn.com/imgextra/i3/O1CN01YXMxVW1ng5k8sZ6L3_!!6000000005118-0-tps-160-160.jpg_Q75.jpg_.webp",
+                            "vip": "",
+                            "userId": "",
+                            "rankUrl": ""
+                          },
+                          "append": null,
+                          "status": 0
+                        }
+                      ],
+                      "currentPageNum": 1,
+                      "maxPage": 50,
+                      "keywords": [
+                        {
+                          "count": "25",
+                          "labelId": "2093864846-11",
+                          "type": "1",
+                          "word": "价格便宜"
+                        },
+                        {
+                          "count": "14",
+                          "labelId": "2030868717-11",
+                          "type": "1",
+                          "word": "使用体验很好"
+                        }
+                      ],
+                      "hasMediaCount": 100,
+                      "hasAppendCount": 17,
+                      "hasNextPage": true
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.016910",
+                      "balance_usd": "9.983090",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.taobao.comments_v2",
+          "x-qovia-title-zh": "淘宝/天猫商品评价 V2",
+          "x-qovia-description-zh": "淘宝和天猫商品的买家评价（按平台的原样 JSON 返回）：comments 列表（每页 20 条，含评价内容和时间、评分、SKU、买家昵称、晒图和视频、追评、商家回复、点赞数），以及评价总数 total、总页数 maxPage、热门评价词 keywords（仅第一页）和是否有下一页 hasNextPage。 item_id 填淘宝或天猫的商品 ID 均可，page 从 1 开始，hasNextPage 为 false 时停止翻页。一般 3 秒左右返回。 只对有数据的结果计费，没有评价或出错都不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:taobao",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 16910,
+            "usd_per_call": "0.016910",
+            "usd_per_1k": "16.91"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/"
+        }
+      },
+      "/v1/raw/jd/comments": {
+        "get": {
+          "operationId": "raw_jd_comments",
+          "summary": "JD.com product reviews",
+          "description": "Buyer reviews of a JD.com product, newest first, 10 per page: text and time, 1-5 star rating, variant and SKU ID, the buyer's nickname (mostly masked by JD), anonymity, IP location, full-size photos, helpful votes and the shop's reply. By default only this SKU's reviews; with only_this_sku false, every variant of the product. max_page tells how far paging goes (often far fewer pages than the review total); stop when has_more is false. A SKU without reviews, or one that does not exist, answers empty and is not charged.",
+          "tags": [
+            "JD.com"
+          ],
+          "parameters": [
+            {
+              "name": "sku_id",
+              "in": "query",
+              "required": true,
+              "description": "JD.com SKU ID (the number in item.jd.com/<SKU>.html)",
+              "x-qovia-description-zh": "京东商品 SKU ID（商品链接 item.jd.com/<SKU>.html 里的数字）",
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{3,19}$",
+                "examples": [
+                  "100006271091"
+                ]
+              },
+              "example": "100006271091"
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "required": false,
+              "description": "Page number, from 1, up to the max_page of the previous answer; stop when has_more is false",
+              "x-qovia-description-zh": "页码，从 1 开始，不超过上一页返回的 max_page；has_more 为 false 时停止",
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
+                "default": 1
+              }
+            },
+            {
+              "name": "only_this_sku",
+              "in": "query",
+              "required": false,
+              "description": "true (default) returns this SKU's reviews only; false returns the reviews of every variant (colour, size, ...) of the product",
+              "x-qovia-description-zh": "true（默认）只看这个 SKU 的评价；false 返回同一商品所有规格（颜色、尺码等）的评价",
+              "schema": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success. Charged only when data is non-empty.",
+              "headers": {
+                "X-Request-Id": {
+                  "$ref": "#/components/headers/X-Request-Id"
+                },
+                "X-RateLimit-Limit": {
+                  "$ref": "#/components/headers/X-RateLimit-Limit"
+                },
+                "X-RateLimit-Remaining": {
+                  "$ref": "#/components/headers/X-RateLimit-Remaining"
+                },
+                "X-Qovia-Charged": {
+                  "$ref": "#/components/headers/X-Qovia-Charged"
+                },
+                "X-Qovia-Balance": {
+                  "$ref": "#/components/headers/X-Qovia-Balance"
+                }
+              },
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessEnvelope"
+                  },
+                  "example": {
+                    "request_id": "00000000-0000-0000-0000-000000000000",
+                    "data": {
+                      "items": [
+                        {
+                          "id": "eco_jd_43a365a0aaef",
+                          "cid": "106314560218561793",
+                          "text": "还可以吧，唯一的缺点就是颗粒太大了，吞咽的时候有点不舒服",
+                          "rating": 5,
+                          "likes": 0,
+                          "created_at": "2026-10-20T19:45:27+08:00",
+                          "sku": "规格:【60片*1盒】院线同款-60天用量",
+                          "sku_id": "100006271091",
+                          "user_name": "j***i",
+                          "anonymous": false,
+                          "ip_location": "广东",
+                          "images": [],
+                          "shop_reply": "非常感谢您的反馈！我们注意到您对颗粒大小的反馈，这可能给您带来了些许不适。我们会努力改进产品。…"
+                        },
+                        {
+                          "id": "eco_jd_001042af4786",
+                          "cid": "106191920223780233",
+                          "text": "一直喝的这个，每天一个，挺好的，一家人都在喝。",
+                          "rating": 5,
+                          "likes": 0,
+                          "created_at": "2026-10-18T18:55:50+08:00",
+                          "sku": "规格:【60片*1盒】院线同款-60天用量",
+                          "sku_id": "100006271091",
+                          "user_name": "赵***g",
+                          "anonymous": false,
+                          "ip_location": "河北",
+                          "images": [
+                            "https://img30.360buyimg.com/shaidan/jfs/t1/549256/12/1897/1368430/6ad4a5b5Fc881e4a1/00a9c00000e872a7.jpg"
+                          ],
+                          "shop_reply": "嘿，看到您一直钟爱我们的善存多维元素片，真是倍感荣幸！…"
+                        }
+                      ],
+                      "page": 1,
+                      "has_more": true,
+                      "max_page": 2,
+                      "total": 20000,
+                      "prov": {
+                        "hash": "0x494e4995216cc2cc",
+                        "ts": "2026-10-21T20:03:12+08:00",
+                        "source": "live"
+                      }
+                    },
+                    "meta": {
+                      "billed": true,
+                      "charged_usd": "0.019500",
+                      "balance_usd": "9.980500",
+                      "empty": false
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "$ref": "#/components/responses/BadRequest"
+            },
+            "401": {
+              "$ref": "#/components/responses/Unauthorized"
+            },
+            "402": {
+              "$ref": "#/components/responses/PaymentRequired"
+            },
+            "403": {
+              "$ref": "#/components/responses/Forbidden"
+            },
+            "404": {
+              "$ref": "#/components/responses/NotFound"
+            },
+            "429": {
+              "$ref": "#/components/responses/TooManyRequests"
+            },
+            "502": {
+              "$ref": "#/components/responses/BadGateway"
+            },
+            "503": {
+              "$ref": "#/components/responses/ServiceUnavailable"
+            },
+            "504": {
+              "$ref": "#/components/responses/GatewayTimeout"
+            }
+          },
+          "x-qovia-endpoint-id": "raw.jd.comments",
+          "x-qovia-title-zh": "京东商品评价",
+          "x-qovia-description-zh": "京东商品的买家评价，从新到旧，每页 10 条：评价内容和时间、1–5 星评分、规格和 SKU ID、买家昵称（多数已由京东打码）、匿名标记、IP 属地、晒图（原图）、有用数和商家回复。 默认只看这个 SKU 的评价，only_this_sku 为 false 时返回同一商品所有规格的评价。 可翻页数见 max_page（常远少于评价总数），has_more 为 false 时停止。没有评价或 SKU 不存在时返回空结果，不计费。",
+          "x-qovia-availability": "live",
+          "x-qovia-status": "beta",
+          "x-qovia-scope": "raw:jd",
+          "x-qovia-price": {
+            "mode": "fixed",
+            "unit_price_micros": 19500,
+            "usd_per_call": "0.019500",
+            "usd_per_1k": "19.5"
+          },
+          "x-qovia-docs-url": "https://qovia.ai/docs/api-reference/raw.jd.comments/"
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "sk-qovia-…"
+        },
+        "apiKeyHeader": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "x-api-key"
+        }
+      },
+      "schemas": {
+        "Meta": {
+          "type": "object",
+          "required": [
+            "billed",
+            "charged_usd",
+            "balance_usd",
+            "empty"
+          ],
+          "properties": {
+            "billed": {
+              "type": "boolean",
+              "description": "Whether this call was charged to the balance; `false` for empty results."
+            },
+            "charged_usd": {
+              "type": "string",
+              "description": "Amount charged in USD, 6 decimals; `\"0.000000\"` when nothing was charged."
+            },
+            "balance_usd": {
+              "type": "string",
+              "description": "Balance after settlement, USD, 6 decimals."
+            },
+            "empty": {
+              "type": "boolean",
+              "description": "The result is empty: not charged."
+            }
+          }
+        },
+        "SuccessEnvelope": {
+          "type": "object",
+          "required": [
+            "request_id",
+            "data",
+            "meta"
+          ],
+          "properties": {
+            "request_id": {
+              "type": "string",
+              "description": "The call's ID (its usage record), also in the `X-Request-Id` header and in the console usage log.",
+              "format": "uuid"
+            },
+            "data": {
+              "type": [
+                "object",
+                "array",
+                "null"
+              ],
+              "description": "The endpoint's data; see each endpoint's response example. An empty result may be an empty structure (e.g. empty `items`) or `null`; check `meta.empty`."
+            },
+            "meta": {
+              "$ref": "#/components/schemas/Meta"
+            }
+          }
+        },
+        "Error": {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "type": "object",
+              "required": [
+                "code",
+                "message",
+                "request_id",
+                "support"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "The error code; see the error table. Branch on `code`.",
+                  "enum": [
+                    "invalid_api_key",
+                    "too_many_auth_failures",
+                    "account_disabled",
+                    "payload_too_large",
+                    "endpoint_not_found",
+                    "method_not_allowed",
+                    "endpoint_disabled",
+                    "scope_denied",
+                    "endpoint_unavailable",
+                    "invalid_params",
+                    "rate_limited",
+                    "too_many_unbilled",
+                    "endpoint_busy",
+                    "insufficient_balance",
+                    "upstream_busy",
+                    "upstream_timeout",
+                    "upstream_error",
+                    "upstream_rejected",
+                    "not_found",
+                    "reservation_expired"
+                  ]
+                },
+                "message": {
+                  "type": "string",
+                  "description": "A short English explanation. One code can have several messages (the error table lists them all), so do not branch on it. Never contains the data source's own error text."
+                },
+                "request_id": {
+                  "type": "string",
+                  "description": "Same as the `X-Request-Id` header (see below)."
+                },
+                "support": {
+                  "type": "string",
+                  "description": "Where to get help (Telegram); include the `request_id` so we can find the call."
+                }
+              }
+            }
+          }
+        },
+        "Account": {
+          "type": "object",
+          "required": [
+            "request_id",
+            "data",
+            "meta"
+          ],
+          "properties": {
+            "request_id": {
+              "type": "string"
+            },
+            "data": {
+              "type": "object",
+              "required": [
+                "user",
+                "api_key",
+                "billing"
+              ],
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "email"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    }
+                  }
+                },
+                "api_key": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "name",
+                    "scopes",
+                    "expires_at"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "scopes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "expires_at": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "billing": {
+                  "type": "object",
+                  "required": [
+                    "balance_usd",
+                    "plan",
+                    "rpm_limit"
+                  ],
+                  "properties": {
+                    "balance_usd": {
+                      "type": "string",
+                      "description": "USD, 6 decimals."
+                    },
+                    "plan": {
+                      "type": "string",
+                      "enum": [
+                        "free",
+                        "payg",
+                        "enterprise"
+                      ]
+                    },
+                    "rpm_limit": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            },
+            "meta": {
+              "type": "object",
+              "required": [
+                "billed"
+              ],
+              "properties": {
+                "billed": {
+                  "type": "boolean",
+                  "const": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "headers": {
+        "X-Request-Id": {
+          "description": "Same as `request_id` in the body. For a reserved call (success, empty, or a failure after reservation) it is the usage record ID; a request refused before reservation keeps the `X-Request-Id` you sent, or gets a generated one.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "X-RateLimit-Limit": {
+          "description": "The account's requests-per-minute limit.",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "X-RateLimit-Remaining": {
+          "description": "Requests left in the current 60-second window.",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "X-Qovia-Charged": {
+          "description": "Charged for this call, USD, 6 decimals; `0.000000` when nothing was charged or it was refunded.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "X-Qovia-Balance": {
+          "description": "Balance after settlement, USD, 6 decimals.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "Retry-After": {
+          "description": "Seconds to wait before retrying.",
+          "schema": {
+            "type": "integer"
+          }
+        },
+        "WWW-Authenticate": {
+          "description": "`Bearer realm=\"qovia\"`.",
+          "schema": {
+            "type": "string"
+          }
+        },
+        "Allow": {
+          "description": "The methods this path supports.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      },
+      "responses": {
+        "BadRequest": {
+          "description": "Codes: invalid_params, upstream_rejected. Never charged.",
+          "headers": {
+            "X-Qovia-Charged": {
+              "$ref": "#/components/headers/X-Qovia-Charged"
+            },
+            "X-Qovia-Balance": {
+              "$ref": "#/components/headers/X-Qovia-Balance"
+            },
+            "X-RateLimit-Limit": {
+              "$ref": "#/components/headers/X-RateLimit-Limit"
+            },
+            "X-RateLimit-Remaining": {
+              "$ref": "#/components/headers/X-RateLimit-Remaining"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "invalid_params": {
+                  "summary": "The parameters failed validation: a required one is missing, a type or format is wrong, an array has more items than allowed, an unknown one was sent, or the POST body is not a JSON object. An error in one parameter starts with its name (`item_id: …`); a missing or unknown parameter starts with `params: …`.",
+                  "value": {
+                    "error": {
+                      "code": "invalid_params",
+                      "message": "<param>: <reason>",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "upstream_rejected": {
+                  "summary": "The data source rejected these parameters (well-formed, but not accepted); refunded.",
+                  "value": {
+                    "error": {
+                      "code": "upstream_rejected",
+                      "message": "the data source rejected these parameters; not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Unauthorized": {
+          "description": "Codes: invalid_api_key. Never charged.",
+          "headers": {
+            "WWW-Authenticate": {
+              "$ref": "#/components/headers/WWW-Authenticate"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "invalid_api_key": {
+                  "summary": "The API key is missing, malformed, unknown, revoked or expired.",
+                  "value": {
+                    "error": {
+                      "code": "invalid_api_key",
+                      "message": "missing or invalid API key",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "PaymentRequired": {
+          "description": "Codes: insufficient_balance. Never charged.",
+          "headers": {},
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "insufficient_balance": {
+                  "summary": "The balance cannot pay for this call; top up first.",
+                  "value": {
+                    "error": {
+                      "code": "insufficient_balance",
+                      "message": "insufficient balance for this request",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Forbidden": {
+          "description": "Codes: account_disabled, scope_denied. Never charged.",
+          "headers": {},
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "account_disabled": {
+                  "summary": "The account is disabled.",
+                  "value": {
+                    "error": {
+                      "code": "account_disabled",
+                      "message": "account is disabled",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "scope_denied": {
+                  "summary": "This API key lacks the scope the endpoint requires.",
+                  "value": {
+                    "error": {
+                      "code": "scope_denied",
+                      "message": "this API key does not have scope <scope>",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "NotFound": {
+          "description": "Codes: endpoint_not_found, not_found. Never charged.",
+          "headers": {
+            "X-Qovia-Charged": {
+              "$ref": "#/components/headers/X-Qovia-Charged"
+            },
+            "X-Qovia-Balance": {
+              "$ref": "#/components/headers/X-Qovia-Balance"
+            },
+            "X-RateLimit-Limit": {
+              "$ref": "#/components/headers/X-RateLimit-Limit"
+            },
+            "X-RateLimit-Remaining": {
+              "$ref": "#/components/headers/X-RateLimit-Remaining"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "endpoint_not_found": {
+                  "summary": "No such endpoint; check the method and path.",
+                  "value": {
+                    "error": {
+                      "code": "endpoint_not_found",
+                      "message": "no endpoint <METHOD> <path>",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "not_found": {
+                  "summary": "The data source has no such item (deleted, or the ID does not exist); refunded.",
+                  "value": {
+                    "error": {
+                      "code": "not_found",
+                      "message": "the data source has no such item; not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "MethodNotAllowed": {
+          "description": "Codes: method_not_allowed. Never charged.",
+          "headers": {
+            "Allow": {
+              "$ref": "#/components/headers/Allow"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "method_not_allowed": {
+                  "summary": "The path exists but takes another method; the `Allow` header names it.",
+                  "value": {
+                    "error": {
+                      "code": "method_not_allowed",
+                      "message": "use <METHODS>",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Gone": {
+          "description": "Codes: endpoint_disabled. Never charged.",
+          "headers": {},
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "endpoint_disabled": {
+                  "summary": "The endpoint has been retired.",
+                  "value": {
+                    "error": {
+                      "code": "endpoint_disabled",
+                      "message": "<id> has been retired",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "TooManyRequests": {
+          "description": "Codes: too_many_auth_failures, rate_limited, too_many_unbilled, endpoint_busy. Never charged.",
+          "headers": {
+            "Retry-After": {
+              "$ref": "#/components/headers/Retry-After"
+            },
+            "X-RateLimit-Limit": {
+              "$ref": "#/components/headers/X-RateLimit-Limit"
+            },
+            "X-RateLimit-Remaining": {
+              "$ref": "#/components/headers/X-RateLimit-Remaining"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "too_many_auth_failures": {
+                  "summary": "30 failed authentications from this IP within a minute; try again in 60 seconds.",
+                  "value": {
+                    "error": {
+                      "code": "too_many_auth_failures",
+                      "message": "too many failed authentications; try again later",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "rate_limited": {
+                  "summary": "Over the account's per-minute limit (sliding 60-second window); wait for `Retry-After`.",
+                  "value": {
+                    "error": {
+                      "code": "rate_limited",
+                      "message": "rate limit exceeded",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "too_many_unbilled": {
+                  "summary": "In the last 10 minutes at least 50 of your calls to data sources, and over 80% of them, came back empty, not found or rejected; slow down.",
+                  "value": {
+                    "error": {
+                      "code": "too_many_unbilled",
+                      "message": "too many recent requests came back empty, not found or rejected; slow down. Not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "endpoint_busy": {
+                  "summary": "The endpoint's per-second capacity across all users is full; retry in 1 second. This does not count toward your per-minute limit.",
+                  "value": {
+                    "error": {
+                      "code": "endpoint_busy",
+                      "message": "<id> is at capacity; retry shortly",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "BadGateway": {
+          "description": "Codes: upstream_error. Never charged.",
+          "headers": {
+            "X-Qovia-Charged": {
+              "$ref": "#/components/headers/X-Qovia-Charged"
+            },
+            "X-Qovia-Balance": {
+              "$ref": "#/components/headers/X-Qovia-Balance"
+            },
+            "X-RateLimit-Limit": {
+              "$ref": "#/components/headers/X-RateLimit-Limit"
+            },
+            "X-RateLimit-Remaining": {
+              "$ref": "#/components/headers/X-RateLimit-Remaining"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "upstream_error": {
+                  "summary": "The data source failed; refunded.",
+                  "value": {
+                    "error": {
+                      "code": "upstream_error",
+                      "message": "the data source failed; not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ServiceUnavailable": {
+          "description": "Codes: endpoint_unavailable, upstream_busy, upstream_error. Never charged.",
+          "headers": {
+            "Retry-After": {
+              "$ref": "#/components/headers/Retry-After"
+            },
+            "X-Qovia-Charged": {
+              "$ref": "#/components/headers/X-Qovia-Charged"
+            },
+            "X-Qovia-Balance": {
+              "$ref": "#/components/headers/X-Qovia-Balance"
+            },
+            "X-RateLimit-Limit": {
+              "$ref": "#/components/headers/X-RateLimit-Limit"
+            },
+            "X-RateLimit-Remaining": {
+              "$ref": "#/components/headers/X-RateLimit-Remaining"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "endpoint_unavailable": {
+                  "summary": "The endpoint is not available right now (no data source connected yet, or no price configured); nothing ran.",
+                  "value": {
+                    "error": {
+                      "code": "endpoint_unavailable",
+                      "message": "<id> is temporarily unavailable",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "upstream_busy": {
+                  "summary": "The data source is busy or cooling down; refunded. Retry after `Retry-After`.",
+                  "value": {
+                    "error": {
+                      "code": "upstream_busy",
+                      "message": "the data source is busy; retry later; not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "upstream_error": {
+                  "summary": "The data source failed; refunded.",
+                  "value": {
+                    "error": {
+                      "code": "upstream_error",
+                      "message": "the data source failed; not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "GatewayTimeout": {
+          "description": "Codes: upstream_timeout, reservation_expired. Never charged.",
+          "headers": {
+            "X-Qovia-Charged": {
+              "$ref": "#/components/headers/X-Qovia-Charged"
+            },
+            "X-Qovia-Balance": {
+              "$ref": "#/components/headers/X-Qovia-Balance"
+            },
+            "X-RateLimit-Limit": {
+              "$ref": "#/components/headers/X-RateLimit-Limit"
+            },
+            "X-RateLimit-Remaining": {
+              "$ref": "#/components/headers/X-RateLimit-Remaining"
+            }
+          },
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Error"
+              },
+              "examples": {
+                "upstream_timeout": {
+                  "summary": "The data source timed out; refunded.",
+                  "value": {
+                    "error": {
+                      "code": "upstream_timeout",
+                      "message": "the data source timed out; not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                },
+                "reservation_expired": {
+                  "summary": "The call took too long and was refunded automatically; no data is returned.",
+                  "value": {
+                    "error": {
+                      "code": "reservation_expired",
+                      "message": "the request took too long and was not charged",
+                      "request_id": "00000000-0000-0000-0000-000000000000",
+                      "support": "https://t.me/scott10081"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

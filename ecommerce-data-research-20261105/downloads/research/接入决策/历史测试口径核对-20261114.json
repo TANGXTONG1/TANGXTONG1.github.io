@@ -1,0 +1,70 @@
+{
+  "checkedOn": "2026-11-14",
+  "scope": "复核11月5–6日已保存并发布的证据；未找到不等于断言供应商从未成功",
+  "finding": "第一次鉴权成功的是EveryInfra淘宝商品搜索，返回18个商品；已保存记录未发现淘宝或天猫评论正文成功。",
+  "timeline": [
+    {
+      "timeCST": "2026-11-05",
+      "action": "两家调试台可见页面与文档样例",
+      "result": "未注册、未调用；示例不计实时业务数据"
+    },
+    {
+      "timeCST": "2026-11-06 15:12",
+      "vendor": "EveryInfra",
+      "endpoint": "/api/v1/social",
+      "platform": "taobao",
+      "action": "search",
+      "keyword": "保温杯",
+      "productRows": 18,
+      "reviewTexts": 0
+    },
+    {
+      "timeCST": "2026-11-06 15:11 / 15:13 / 15:19",
+      "vendor": "EveryInfra",
+      "endpoint": "/api/v1/social",
+      "action": "taobao/reviews",
+      "attempts": 3,
+      "reviewTexts": 0,
+      "note": "后两次HTTP200但empty_result_refunded；预置旧示例不计成功"
+    },
+    {
+      "timeCST": "2026-11-06 15:30 / 15:33 / 16:59",
+      "vendor": "Qovia",
+      "endpoint": "/v1/raw/taobao/comments",
+      "attempts": 3,
+      "httpStatus": 503,
+      "reviewTexts": 0
+    },
+    {
+      "timeCST": "2026-11-06 15:35 / 16:58",
+      "vendor": "Qovia",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "attempts": 2,
+      "httpStatus": 502,
+      "reviewTexts": 0
+    }
+  ],
+  "tmall": "未找到当时独立天猫商品评论成功样本",
+  "integrity": {
+    "originalReleaseUTC": "2026-11-06T09:16:06.273Z",
+    "evidence": [
+      {
+        "sourceFile": "双平台试用对比/真实API试调记录-2026-11-06.json",
+        "sha256": "05f554ddb11442b9b1fc20bab6fd7041ef83738c626bf54f7d8fabfeeac587df",
+        "originalPublishedPaths": [
+          "data/live-trials.json",
+          "downloads/research/双平台试用对比/真实API试调记录-2026-11-06.json"
+        ],
+        "matchesOriginalRelease": true
+      },
+      {
+        "sourceFile": "双平台试用对比/EveryInfra与Qovia试用及报价对比-2026-11-06.md",
+        "sha256": "e7bd1e958f10f8f6c0177bfd751c85d7d191d551336381afbe27c2c281d9b753",
+        "originalPublishedPaths": [
+          "downloads/research/双平台试用对比/EveryInfra与Qovia试用及报价对比-2026-11-06.md"
+        ],
+        "matchesOriginalRelease": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-11-13T14:44:21.426243+00:00",
+  "platform": "eBay",
+  "overseas_priority": 4,
+  "status": "selected_for_trial",
+  "decision": "先试用 apt_marble/ebay-product-reviews-scraper；eBay明确有对应Actor，生产能力仍待验收。",
+  "selection_scope": "本轮选择“先试用哪一个”，不把低采用度、未实测的 Actor 标为已可生产使用。",
+  "homepage": {
+    "id": "ebay",
+    "actor": "apt_marble/ebay-product-reviews-scraper",
+    "url": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+    "label": "首选试用 · 商品评价",
+    "price": "$1 / 千条评论；摘要另 $0.002/商品（首期关闭）",
+    "evidence": "官网/schema/计费已核；7用户、5月活、0评分；认证业务采集未执行。",
+    "action": "先试用该Actor；只有通过商品1–5星正文与API链路验收后，才开启生产入口。"
+  },
+  "primary": {
+    "actor": {
+      "slug": "apt_marble/ebay-product-reviews-scraper",
+      "store_url": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+      "api_url": "https://apify.com/apt_marble/ebay-product-reviews-scraper/api",
+      "pricing_url": "https://apify.com/apt_marble/ebay-product-reviews-scraper/pricing",
+      "actor_id": "7WxE6FBu91XOCjdJJ",
+      "maintained_by": "Community",
+      "permission": "LIMITED_PERMISSIONS",
+      "created_at": "2026-08-18T15:46:08.761Z",
+      "modified_at": "2026-10-29T21:07:42.283Z",
+      "build": "0.0.2",
+      "build_finished_at": "2026-10-29T21:07:42.283Z",
+      "default_memory_mb": 512,
+      "total_users": 7,
+      "monthly_active_users": 5,
+      "rating_count": 0,
+      "rating": null,
+      "adoption_caveat": "当前均为小体量、无评分的社区 Actor。公开运行 SUCCEEDED 仅进程状态，不能推算有效正文成功率。"
+    },
+    "selection": "先试用这一只；将其作为 eBay 商品评价接口的首选 Actor，生产入口在验收完成前关闭。",
+    "selection_reason": [
+      "专做 eBay catalog 商品评价；官方字段明确 rowType=review、数值 1–5 星 rating 与正文 body，贴合本次需求。",
+      "没有 seller feedback 自动降级输入模式，首期更容易保持评论语义与数据映射正确；6 个输入字段即可配置。",
+      "两者采用度都低，7/5 对 5/2 的差异不足以证明更稳定；本选择主要基于用途贴合与接入复杂度，不能宣传成功率优势。",
+      "标价虽高于 epicscrapers，但每千条差额 $0.10–0.40；试用阶段优先核正文正确性，规模扩大再比较有效评论成本。"
+    ],
+    "documentary_evidence": "官网有商品评价示例，输入 schema 公开可读。该 Actor 当前没有独立 dataset 字段 JSON schema，返回字段契约以官方 README 为依据，必须通过真实样本确认。",
+    "input_schema": {
+      "title": "eBay Product Reviews Scraper",
+      "type": "object",
+      "schemaVersion": 1,
+      "properties": {
+        "products": {
+          "title": "Products",
+          "type": "array",
+          "description": "The products whose reviews you want. Paste an eBay product number (ePID), a product page link (…/p/…), a reviews page link (…/urw/…) or a listing link (…/itm/…) — mixed freely in one list. Listing links are matched to their catalog product first; a listing that is not part of the eBay catalog has no reviews page and is reported as unavailable.",
+          "editor": "stringList",
+          "prefill": [
+            "https://www.ebay.com/p/22054478105"
+          ]
+        },
+        "sort": {
+          "title": "Review order",
+          "type": "string",
+          "description": "The order eBay serves the reviews in. \"Most recent\" is the one to use for monitoring new feedback.",
+          "editor": "select",
+          "enum": [
+            "most_relevant",
+            "newest",
+            "highest_rated",
+            "lowest_rated"
+          ],
+          "enumTitles": [
+            "Most relevant (eBay's default)",
+            "Most recent",
+            "Highest rated first",
+            "Lowest rated first"
+          ],
+          "default": "most_relevant",
+          "prefill": "most_relevant"
+        },
+        "maxReviewsPerProduct": {
+          "title": "Maximum reviews per product",
+          "type": "integer",
+          "description": "Stop after this many written reviews per product. Products with fewer reviews simply return what exists. Set 0 to skip review text entirely and collect only the product rating summary.",
+          "default": 100,
+          "prefill": 100,
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "includeProductSummary": {
+          "title": "Include the product rating summary",
+          "type": "boolean",
+          "description": "Add one summary row per product: name, brand, overall rating, ratings total, written-review total (a different number), the count at each star level and eBay's aspect tags such as \"Good sound quality\".",
+          "default": true,
+          "prefill": true
+        },
+        "marketplace": {
+          "title": "eBay site",
+          "type": "string",
+          "description": "Which country's eBay site to read. Reviews for the same catalog product can differ between sites.",
+          "editor": "select",
+          "enum": [
+            "US",
+            "UK",
+            "DE",
+            "AU",
+            "CA",
+            "FR",
+            "IT",
+            "ES"
+          ],
+          "enumTitles": [
+            "United States (ebay.com)",
+            "United Kingdom (ebay.co.uk)",
+            "Germany (ebay.de)",
+            "Australia (ebay.com.au)",
+            "Canada (ebay.ca)",
+            "France (ebay.fr)",
+            "Italy (ebay.it)",
+            "Spain (ebay.es)"
+          ],
+          "default": "US",
+          "prefill": "US",
+          "sectionCaption": "Site & performance"
+        },
+        "maxConcurrency": {
+          "title": "Parallel products",
+          "type": "integer",
+          "description": "How many products to work on at the same time. Higher is faster; leave at 4 unless you have a reason.",
+          "default": 4,
+          "prefill": 4,
+          "minimum": 1,
+          "maximum": 10
+        }
+      },
+      "required": [
+        "products"
+      ]
+    },
+    "request": {
+      "method": "POST",
+      "endpoint": "https://api.apify.com/v2/actors/apt_marble~ebay-product-reviews-scraper/runs",
+      "headers": {
+        "Authorization": "Bearer <APIFY_API_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "build": "0.0.2",
+        "timeout": 300,
+        "restartOnError": false,
+        "maxTotalChargeUsd": 0.1
+      },
+      "json": {
+        "products": [
+          "https://www.ebay.com/p/22054478105"
+        ],
+        "sort": "newest",
+        "maxReviewsPerProduct": 5,
+        "includeProductSummary": false,
+        "marketplace": "US",
+        "maxConcurrency": 1
+      }
+    },
+    "request_status": "参数逐项对照当前输入 schema；没有执行该 POST。样例商品来自官方输入预填值，不保证当前仍有可见评论。",
+    "normalized_mapping": {
+      "review_type": "固定 product_review；只接受 rowType=review",
+      "source_product_id": "epid；catalog 产品 ID，不是当前 listing item ID",
+      "review_id": "reviewId",
+      "text": "body",
+      "title": "title",
+      "rating": "rating，数值 1–5",
+      "published_at": "dateIso，无法干净解析时可空；保留 dateText",
+      "published_at_raw": "dateText",
+      "verified_purchase": "verifiedPurchase",
+      "helpful_votes": "helpfulVotes",
+      "unhelpful_votes": "unhelpfulVotes",
+      "condition": "conditionPurchased",
+      "seller": "soldBySeller，为评论交易卖家；不等于当前 listing 卖家",
+      "review_page_url": "url",
+      "source_input": "requestedInput",
+      "resolved_listing_id": "resolvedFromItemId",
+      "region": "marketplace",
+      "collected_at": "scrapedAt"
+    },
+    "row_validation": "rowType===review，reviewId 非空，rating 为数值且在1–5内，body.trim()非空；剔除 productSummary / error / unavailable，不把摘要或计数行当正文。",
+    "pricing": {
+      "currency": "USD",
+      "billing_model": "PAY_PER_EVENT",
+      "usd_per_1000_reviews": {
+        "Free": 1,
+        "Starter": 1,
+        "Scale": 1,
+        "Business": 1
+      },
+      "usd_per_summary_product": 0.002,
+      "start_fee_usd": 0,
+      "current_start_event_present": false,
+      "platform_costs": "Included（定价页四档明确列出）；额外长期存储/账户其他用量另按实际账单。",
+      "formula": "0.001 × 计费 written-review 行数 + 0.002 × 商品摘要事件数。首期 includeProductSummary=false，因此只估评论事件。",
+      "shared_plan_note": "上述为 Actor 用量，不是账户总账单。和其余 Apify Actor 共用月费及内含额度，不能再给 eBay 单独加一份 Starter $19。",
+      "sample_10000_billable_reviews_usd": 10,
+      "sample_100000_billable_reviews_usd": 100,
+      "free_note": "官网按 $5 免费额度展示最多约 5000 条，不是承诺采集成功/完整历史或独立赠送 5000 条；账户额度由所有 Actor 共用。",
+      "latest_pricing_effective_at": "2026-10-04T14:04:57.971Z",
+      "has_charged_test": false
+    },
+    "limits": [
+      "首轮只接 US；当前 schema 列 US/UK/DE/AU/CA/FR/IT/ES，其余逐站待实测。",
+      "maxReviewsPerProduct 默认100，范围0–5000；0表示仅摘要，不是无限采集。5000是输入上限，不是可取满或完整历史保证。",
+      "listing 必须关联 eBay catalog ePID 才有商品评价；未关联则 unavailable，不能悄悄用卖家反馈补足数量。",
+      "商品评价按 catalog 产品汇聚，可能来自不同卖家和商品成色；不能直接当当前店铺或当前 listing 专属评价。",
+      "sort 可选 most_relevant/newest/highest_rated/lowest_rated；未见日期截止、星级筛选或调用方游标参数。增量先用 newest + 本地 reviewId 去重。",
+      "maxConcurrency 默认4，范围1–10；首轮设1。该并发仅 Actor 输入，仍受账户并发额度、预算和目标站限制。",
+      "未在已核官方输入和介绍发现该 Actor 固定每日次数限制；不能据此承诺无限 QPS 或 SLA。",
+      "作者姓名和 profile 属于额外字段，首期映射不收集到分析产品；只保留必要评论与商品标识。"
+    ],
+    "trial_plan": {
+      "phase1": "用官方 ePID 样例先取5条，再选3个不同品类、页面可见文字的商品各取20条；只在已授权的现有免费余额内执行。此文件仅准备，未执行。",
+      "phase2": "加入一个未关联 catalog 的 listing，验证明确无商品评论且不返回 seller_feedback；在第二时段重跑，并检查 reviewId 去重、日期和商品匹配。",
+      "success_criteria": [
+        "返回至少一批真实 rowType=review、1–5 星、非空正文与稳定 reviewId，人工对照来源页面。",
+        "直接 API 启动→轮询→Dataset API 导出→自有数据库的全链路成功。",
+        "开启摘要与关闭摘要各验证一次事件账单，确认关闭时无摘要费；确认0.001/评论事件与有效去重评论差异。",
+        "有无评价/错误行单独分类；不拿 SUCCEEDED 作为正文成功。"
+      ],
+      "after_pass": "把首页状态从“首选试用”提升为“API小样本通过”；完成跨商品批量验收后才启用生产。"
+    },
+    "sources": [
+      {
+        "url": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "商品评价语义、README输出字段、catalog限制"
+      },
+      {
+        "url": "https://apify.com/apt_marble/ebay-product-reviews-scraper/pricing",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "四档$1/千条、$0.002/摘要、平台成本包含"
+      },
+      {
+        "url": "https://api.apify.com/v2/actors/apt_marble~ebay-product-reviews-scraper",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "采用度、权限、当前计费元数据"
+      },
+      {
+        "url": "https://api.apify.com/v2/actors/apt_marble~ebay-product-reviews-scraper/builds/default",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "当前0.0.2输入schema及构建"
+      }
+    ]
+  },
+  "backup": {
+    "actor": {
+      "slug": "epicscrapers/ebay-reviews-scraper",
+      "store_url": "https://apify.com/epicscrapers/ebay-reviews-scraper",
+      "api_url": "https://apify.com/epicscrapers/ebay-reviews-scraper/api",
+      "pricing_url": "https://apify.com/epicscrapers/ebay-reviews-scraper/pricing",
+      "actor_id": "SwnZGNLeFxTYUSwRp",
+      "maintained_by": "Community",
+      "permission": "LIMITED_PERMISSIONS",
+      "created_at": "2026-10-03T12:14:30.942Z",
+      "modified_at": "2026-11-03T00:53:13.679Z",
+      "build": "0.1.4",
+      "build_finished_at": "2026-11-03T00:46:59.998Z",
+      "default_memory_mb": 1024,
+      "total_users": 5,
+      "monthly_active_users": 2,
+      "rating_count": 0,
+      "rating": null,
+      "adoption_caveat": "当前均为小体量、无评分的社区 Actor。公开运行 SUCCEEDED 仅进程状态，不能推算有效正文成功率。"
+    },
+    "selection": "唯一备选；首选未通过，或后续需要多国、星级/关键词筛选、明确运行摘要时再试。",
+    "differences": [
+      "费用更低、17站点、更多输入筛选、有正式输出字段 schema 与 RUN_SUMMARY，利于诊断。",
+      "默认 mode=auto；未关联 catalog 的 listing 会转为卖家反馈。产品评论用途必须固定 mode=productReviews，并只保留 type=productReview。",
+      "5总用户/2月活/0评分，也缺少我们认证样本，不是已经更可靠的备份。"
+    ],
+    "request": {
+      "method": "POST",
+      "endpoint": "https://api.apify.com/v2/actors/epicscrapers~ebay-reviews-scraper/runs",
+      "headers": {
+        "Authorization": "Bearer <APIFY_API_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "query": {
+        "build": "0.1.4",
+        "timeout": 300,
+        "restartOnError": false,
+        "maxTotalChargeUsd": 0.1
+      },
+      "json": {
+        "startUrls": [
+          "https://www.ebay.com/p/4062765295"
+        ],
+        "mode": "productReviews",
+        "site": "ebay.com",
+        "maxItemsPerSource": 5,
+        "maxItems": 5,
+        "reviewSort": "newest",
+        "reviewStarRatings": [],
+        "verifiedPurchasesOnly": false,
+        "proxyConfiguration": {
+          "useApifyProxy": true,
+          "apifyProxyGroups": [
+            "RESIDENTIAL"
+          ]
+        }
+      }
+    },
+    "row_validation": "type===productReview；rating 为数值1–5；feedbackRating 应为空；text 非空；id非空。任何 sellerFeedback 行均不进入商品评价数据集。",
+    "output_mapping": {
+      "review_id": "id",
+      "source_product_id": "productId (ePID)",
+      "text": "text",
+      "title": "title",
+      "rating": "rating",
+      "published_at": "date",
+      "verified_purchase": "isVerifiedPurchase",
+      "product_url": "productUrl",
+      "review_origin_marketplace": "reviewedOn",
+      "source_site": "site",
+      "collected_at": "scrapedAt"
+    },
+    "pricing": {
+      "currency": "USD",
+      "usd_per_1000_saved_rows": {
+        "Free": 0.9,
+        "Starter": 0.8,
+        "Scale": 0.7,
+        "Business": 0.6
+      },
+      "start_event_usd": 5e-05,
+      "start_events": "每次运行按每GB一个事件、至少一个；当前默认1024MB为一个事件。调高memory需重算。",
+      "platform_costs": "Included，官网/元数据明确包括住宅代理。",
+      "filters": "文档称被筛掉的行、store lookup 与 RUN_SUMMARY 不收费；实际计费仍须验收。",
+      "formula": "计费 entry 数 × 对应套餐单价 + 0.00005 × 启动事件数。"
+    },
+    "limits": [
+      "输入 maxItemsPerSource/maxItems 的0表示无限制，不在小样本试验中使用0。",
+      "星级筛选由 Actor 读后过滤，非 eBay原生过滤；返回数量可能低于商品显示评论总数。",
+      "官方推荐住宅代理；不依赖 cookie 或新注册 eBay 账号。",
+      "RUN_SUMMARY 在默认 key-value store，包含productReviewsSaved、sellerFeedbackSaved、filteredOut、errors、stopReason；应作质量检查。"
+    ],
+    "sources": [
+      {
+        "url": "https://apify.com/epicscrapers/ebay-reviews-scraper",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "双语义、强制商品模式和样例"
+      },
+      {
+        "url": "https://apify.com/epicscrapers/ebay-reviews-scraper/pricing",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "分档费率与启动事件"
+      },
+      {
+        "url": "https://api.apify.com/v2/actors/epicscrapers~ebay-reviews-scraper",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "采用度、权限和当前计价"
+      },
+      {
+        "url": "https://api.apify.com/v2/actors/epicscrapers~ebay-reviews-scraper/builds/default",
+        "checked_at": "2026-11-13T14:44:21.426243+00:00",
+        "supports": "0.1.4输入和正式输出schema"
+      }
+    ]
+  },
+  "not_selected_as_product_review_actor": {
+    "actor": "e-commerce/store-ebay",
+    "reason": "官方样例为POSITIVE交易反馈和相对日期；不作为这次商品五星评价Actor。"
+  },
+  "shared_api": {
+    "poll": "GET https://api.apify.com/v2/actor-runs/{runId}",
+    "export": "GET https://api.apify.com/v2/datasets/{defaultDatasetId}/items?format=json&clean=false&offset=0&limit=1000",
+    "auth": "Authorization: Bearer <APIFY_API_TOKEN>；只在服务端持有。",
+    "retention": "任务结束立即导出到自有库；平台默认存储期限不应成为业务历史数据保存策略。"
+  },
+  "verification": {
+    "new_account_created": false,
+    "new_authenticated_business_run": false,
+    "new_paid_call": false,
+    "credential_access": false,
+    "public_metadata_and_schema_get": true,
+    "issues_pages": "两家 issues 页面此次工具无法读取；不声称零issue。",
+    "business_success_rate": null,
+    "last_check_sources": "公开Apify店铺、定价页、匿名Actor元数据和构建schema"
+  },
+  "evidence_directory": "research/qa/decision-brief/Actor补齐-eBay-evidence/"
+}

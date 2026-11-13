@@ -1,0 +1,52 @@
+{
+  "kind": "public_api_capability_metadata",
+  "source_url": "https://api.everyinfra.com/api/v1/social/catalog",
+  "final_url": "https://api.everyinfra.com/api/v1/social/catalog",
+  "retrieved_at": "2026-11-05T15:12:58.707989+00:00",
+  "http_status": 200,
+  "content_type": "application/json",
+  "bytes": 979943,
+  "sha256": "fe8f3074d122e8d391fb75581de067a5b654f17a0a4a19c6e55a7c76db299857",
+  "authenticated": false,
+  "business_api_success": false,
+  "platform_count": 106,
+  "capability_count": 573,
+  "top_level_fields": [
+    "platforms",
+    "capabilities",
+    "async_mode"
+  ],
+  "observed_platforms": {
+    "taobao": true,
+    "jd": true,
+    "douyin": true,
+    "pinduoduo": false,
+    "pdd": false,
+    "meituan": false,
+    "temu": true
+  },
+  "record_fields": [
+    "platform",
+    "action",
+    "action_label",
+    "required_params",
+    "mode",
+    "cost_credits",
+    "price_cny",
+    "price_usd",
+    "optional_params",
+    "param_meanings",
+    "returns_list",
+    "available",
+    "default_limit",
+    "max_limit",
+    "response_fields",
+    "field_note",
+    "platform_field_meanings"
+  ],
+  "limitations": [
+    "这是匿名能力清单，不含商品业务实测响应，不证明清单接口当前可调用。",
+    "temu 不等于拼多多国内商城。",
+    "不计入鉴权业务API验收成功；不作为供应商信誉背书。"
+  ]
+}

@@ -1,0 +1,1567 @@
+{
+  "checked_on": "2026-11-13",
+  "generated_at_utc": "2026-11-13T06:56:31.280791+00:00",
+  "scope": "Bright Data four review collectors plus Oxylabs Amazon product reviews",
+  "summary": {
+    "successful_live_review_collections": 0,
+    "authentication_gate_probes": 3,
+    "unauthenticated_live_review_demo_found": false,
+    "registration_performed": false,
+    "paid_calls_performed": false,
+    "browser_operations_performed": false,
+    "overall_status": "需账号；采集可用性仍待真实认证请求验证"
+  },
+  "test_results": [
+    {
+      "id": "bright_amazon_auth_probe",
+      "provider": "Bright Data",
+      "platform": "Amazon",
+      "timestamp_utc": "2026-11-13T06:52:46.592701+00:00",
+      "method": "POST",
+      "url": "https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_le8e811kzy4ggddlq&include_errors=true",
+      "sent_authorization": false,
+      "request_body": {
+        "input": [
+          {
+            "url": "https://www.amazon.com/dp/B0CHHSFMRL",
+            "max_reviews": 1
+          }
+        ]
+      },
+      "http_status": 401,
+      "elapsed_sec": 6.18,
+      "content_type": "text/html; charset=utf-8",
+      "response_body_excerpt": "Credentials are missing",
+      "example_source": "https://docs.brightdata.com/api-reference/scrapers/e-commerce-apis/amazon-reviews-collect-by-url",
+      "test_kind": "unauthenticated_access_gate_probe",
+      "business_state": "authentication_required",
+      "review_text_count": null,
+      "observed_review_fields": null,
+      "pagination_verified": false,
+      "data_collection_verified": false,
+      "conclusion": "只证实无认证请求被拒绝；没有执行采集，正文条数未知，不能标为实测可用或实测不可用。"
+    },
+    {
+      "id": "oxy_webapi_amazon_auth_probe",
+      "provider": "Oxylabs Web API",
+      "platform": "Amazon",
+      "timestamp_utc": "2026-11-13T06:52:52.962558+00:00",
+      "method": "POST",
+      "url": "https://webapi.oxylabs.io/v1/scrape/amazon/product",
+      "sent_authorization": false,
+      "request_body": {
+        "query": "B0CX23V2ZK",
+        "domain": "com",
+        "output": [
+          "json"
+        ]
+      },
+      "http_status": 401,
+      "elapsed_sec": 3.579,
+      "content_type": "application/problem+json",
+      "response_body_excerpt": "{\"status\":401,\"title\":\"UNAUTHORIZED\",\"detail\":\"Authorization header not provided.\",\"instance\":\"6af6b3c8-b49d37f55e1046448dc54828\"}\n",
+      "example_source": "https://developers.oxylabs.io/products/web-api/scrape/delivery-modes.md",
+      "test_kind": "unauthenticated_access_gate_probe",
+      "business_state": "authentication_required",
+      "review_text_count": null,
+      "observed_review_fields": null,
+      "pagination_verified": false,
+      "data_collection_verified": false,
+      "conclusion": "只证实无认证请求被拒绝；没有执行采集，正文条数未知，不能标为实测可用或实测不可用。"
+    },
+    {
+      "id": "oxy_classic_amazon_auth_probe",
+      "provider": "Oxylabs Web Scraper API Classic",
+      "platform": "Amazon",
+      "timestamp_utc": "2026-11-13T06:52:56.546827+00:00",
+      "method": "POST",
+      "url": "https://realtime.oxylabs.io/v1/queries",
+      "sent_authorization": false,
+      "request_body": {
+        "source": "amazon_product",
+        "query": "B07FZ8S74R",
+        "parse": true
+      },
+      "http_status": 401,
+      "elapsed_sec": 1.569,
+      "content_type": "text/plain; charset=utf-8",
+      "response_body_excerpt": "\n",
+      "example_source": "https://developers.oxylabs.io/products/web-scraper-api.md",
+      "test_kind": "unauthenticated_access_gate_probe",
+      "business_state": "authentication_required",
+      "review_text_count": null,
+      "observed_review_fields": null,
+      "pagination_verified": false,
+      "data_collection_verified": false,
+      "conclusion": "只证实无认证请求被拒绝；没有执行采集，正文条数未知，不能标为实测可用或实测不可用。"
+    }
+  ],
+  "public_schema_fetches": {
+    "Amazon": {
+      "url": "https://docs.brightdata.com/scrapers/gd_le8e811kzy4ggddlq.json",
+      "timestamp_utc": "2026-11-13T06:56:20.847972+00:00",
+      "http_status": 200,
+      "elapsed_sec": 10.328,
+      "test_kind": "public_schema_document_fetch_not_scrape",
+      "data_collection_verified": false,
+      "schema": {
+        "collection_methods": {
+          "collect_by_url": {
+            "input_schema": [
+              {
+                "name": "url",
+                "required": true,
+                "type": "url"
+              },
+              {
+                "name": "reviews_to_not_include",
+                "required": false,
+                "type": "array"
+              },
+              {
+                "name": "max_reviews",
+                "required": false,
+                "type": "number"
+              },
+              {
+                "name": "variation_specific",
+                "required": false,
+                "type": "boolean"
+              }
+            ],
+            "output_fields": [
+              {
+                "description": "The URL or link to the review on Amazon",
+                "name": "url",
+                "type": "url"
+              },
+              {
+                "description": " The name of the product",
+                "name": "product_name",
+                "type": "text"
+              },
+              {
+                "description": "The average rating of the product",
+                "name": "product_rating",
+                "type": "number"
+              },
+              {
+                "description": "Object representing the breakdown of product ratings",
+                "name": "product_rating_object",
+                "type": "object"
+              },
+              {
+                "description": "The maximum product rating",
+                "name": "product_rating_max",
+                "type": "number"
+              },
+              {
+                "description": "The rating given by the reviewer for the product",
+                "name": "rating",
+                "type": "number"
+              },
+              {
+                "description": "The name of the person who wrote the review",
+                "name": "author_name",
+                "type": "text"
+              },
+              {
+                "description": "The Amazon Standard Identification Number of the product",
+                "name": "asin",
+                "type": "text"
+              },
+              {
+                "description": "The total count of ratings for the product",
+                "name": "product_rating_count",
+                "type": "number"
+              },
+              {
+                "description": "The header or title of the review",
+                "name": "review_header",
+                "type": "text"
+              },
+              {
+                "description": "The unique identifier for each review",
+                "name": "review_id",
+                "type": "text"
+              },
+              {
+                "description": "The textual content of the review",
+                "name": "review_text",
+                "type": "text"
+              },
+              {
+                "description": "The unique identifier for the review author",
+                "name": "author_id",
+                "type": "text"
+              },
+              {
+                "description": "Link to the author's profile or page",
+                "name": "author_link",
+                "type": "url"
+              },
+              {
+                "description": "Any badge or recognition associated with the review author",
+                "name": "badge",
+                "type": "text"
+              },
+              {
+                "description": "The brand of the product being reviewed",
+                "name": "brand",
+                "type": "text"
+              },
+              {
+                "description": "The date when the review was posted",
+                "name": "review_posted_date",
+                "type": "text"
+              },
+              {
+                "description": "The country associated with the reviewer",
+                "name": "review_country",
+                "type": "text"
+              },
+              {
+                "description": "Any images attached to the review",
+                "name": "review_images",
+                "type": "array"
+              },
+              {
+                "description": " The count of users who found the review helpful",
+                "name": "helpful_count",
+                "type": "number"
+              },
+              {
+                "description": "is_amazon_vine",
+                "name": "is_amazon_vine",
+                "type": "boolean"
+              },
+              {
+                "description": "is_verified",
+                "name": "is_verified",
+                "type": "boolean"
+              },
+              {
+                "description": "variant_asin",
+                "name": "variant_asin",
+                "type": "text"
+              },
+              {
+                "description": "variant_name",
+                "name": "variant_name",
+                "type": "text"
+              },
+              {
+                "description": "videos",
+                "name": "videos",
+                "type": "array"
+              },
+              {
+                "description": "The product's categories",
+                "name": "categories",
+                "type": "array"
+              },
+              {
+                "description": "The product's department",
+                "name": "department",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        "domain": "amazon.com",
+        "id": "gd_le8e811kzy4ggddlq",
+        "name": "Amazon Reviews"
+      }
+    },
+    "Walmart": {
+      "url": "https://docs.brightdata.com/scrapers/gd_mpql1v8g2o8o6l1wzd.json",
+      "timestamp_utc": "2026-11-13T06:56:21.114329+00:00",
+      "http_status": 200,
+      "elapsed_sec": 10.151,
+      "test_kind": "public_schema_document_fetch_not_scrape",
+      "data_collection_verified": false,
+      "schema": {
+        "collection_methods": {
+          "collect_by_url": {
+            "input_schema": [
+              {
+                "name": "url",
+                "required": true,
+                "type": "url"
+              },
+              {
+                "name": "sort_by",
+                "required": false,
+                "type": "text"
+              },
+              {
+                "name": "days_back",
+                "required": false,
+                "type": "number"
+              }
+            ],
+            "output_fields": [
+              {
+                "description": "The URL or link to the review on Amazon",
+                "name": "url",
+                "type": "url"
+              },
+              {
+                "description": " The name of the product",
+                "name": "product_name",
+                "type": "text"
+              },
+              {
+                "description": "product_id",
+                "name": "product_id",
+                "type": "text"
+              },
+              {
+                "description": "The rating given by the reviewer for the product",
+                "name": "rating",
+                "type": "number"
+              },
+              {
+                "description": "The name of the person who wrote the review",
+                "name": "author_name",
+                "type": "text"
+              },
+              {
+                "description": "The header or title of the review",
+                "name": "review_header",
+                "type": "text"
+              },
+              {
+                "description": "The unique identifier for each review",
+                "name": "review_id",
+                "type": "text"
+              },
+              {
+                "description": "The textual content of the review",
+                "name": "review_text",
+                "type": "text"
+              },
+              {
+                "description": "The unique identifier for the review author",
+                "name": "author_id",
+                "type": "text"
+              },
+              {
+                "description": "Link to the author's profile or page",
+                "name": "author_link",
+                "type": "url"
+              },
+              {
+                "description": "The date when the review was posted",
+                "name": "review_posted_date",
+                "type": "text"
+              },
+              {
+                "description": "Any images attached to the review",
+                "name": "review_images",
+                "type": "array"
+              },
+              {
+                "description": " The count of users who found the review helpful",
+                "name": "helpful_count",
+                "type": "number"
+              },
+              {
+                "description": "is_verified",
+                "name": "is_verified",
+                "type": "boolean"
+              },
+              {
+                "description": "videos",
+                "name": "videos",
+                "type": "array"
+              },
+              {
+                "description": "top_reviewer",
+                "name": "top_reviewer",
+                "type": "boolean"
+              },
+              {
+                "description": "item_details",
+                "name": "item_details",
+                "type": "array"
+              },
+              {
+                "description": "reply",
+                "name": "reply",
+                "type": "object"
+              },
+              {
+                "description": "The count of users who found the review not helpful",
+                "name": "not_helpful_count",
+                "type": "number"
+              },
+              {
+                "description": "The page number where the review appears when sorted by \"Most recent\" (submission-desc). Only populated for \"Most recent\" sort order, as other sort types return non-deterministic review ordering.",
+                "name": "review_page_number",
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "domain": "walmart.com",
+        "id": "gd_mpql1v8g2o8o6l1wzd",
+        "name": "Walmart Reviews"
+      }
+    },
+    "Lazada": {
+      "url": "https://docs.brightdata.com/scrapers/gd_lub6mys21lzcklkq1z.json",
+      "timestamp_utc": "2026-11-13T06:56:21.166439+00:00",
+      "http_status": 200,
+      "elapsed_sec": 10.071,
+      "test_kind": "public_schema_document_fetch_not_scrape",
+      "data_collection_verified": false,
+      "schema": {
+        "collection_methods": {
+          "collect_by_url": {
+            "input_schema": [
+              {
+                "name": "url",
+                "required": true,
+                "type": "url"
+              },
+              {
+                "name": "days_back",
+                "required": false,
+                "type": "number"
+              },
+              {
+                "name": "exclude_variations",
+                "required": false,
+                "type": "boolean"
+              },
+              {
+                "name": "start_date",
+                "required": false,
+                "type": "text"
+              },
+              {
+                "name": "end_date",
+                "required": false,
+                "type": "text"
+              }
+            ],
+            "output_fields": [
+              {
+                "description": "URL pointing to the product on the Lazada platform.",
+                "name": "url",
+                "type": "url"
+              },
+              {
+                "description": "The title or name of the product.",
+                "name": "title",
+                "type": "text"
+              },
+              {
+                "description": "The average rating given by customers for the product",
+                "name": "rating",
+                "type": "number"
+              },
+              {
+                "description": "The total number of reviews for the product",
+                "name": "reviews",
+                "type": "number"
+              },
+              {
+                "description": "The name of the seller offering the product",
+                "name": "seller_name",
+                "type": "text"
+              },
+              {
+                "description": "Stock Keeping Unit or identifier for the product",
+                "name": "sku",
+                "type": "text"
+              },
+              {
+                "description": "Manufacturer Part Number associated with the product",
+                "name": "mpn",
+                "type": "text"
+              },
+              {
+                "description": "Indicates whether the seller is a Lazada Super Seller (verified high-performance seller)",
+                "name": "is_super_seller",
+                "type": "boolean"
+              },
+              {
+                "description": "The brand of the product",
+                "name": "brand",
+                "type": "text"
+              },
+              {
+                "description": "Breadcrumb trail indicating the product's category path (from main category to subcategory)",
+                "name": "breadcrumb",
+                "type": "array"
+              },
+              {
+                "description": "Name/username of the reviewer who wrote the review",
+                "name": "review_username",
+                "type": "text"
+              },
+              {
+                "description": "Textual content of the review provided by the user",
+                "name": "review",
+                "type": "text"
+              },
+              {
+                "description": "Indicates whether the purchase associated with the review is verified",
+                "name": "verified_purchase",
+                "type": "boolean"
+              },
+              {
+                "description": "Star rating assigned by the reviewer (1-5 scale)",
+                "name": "review_star_rating",
+                "type": "number"
+              },
+              {
+                "description": "Date when the review was submitted",
+                "name": "review_date",
+                "type": "date"
+              },
+              {
+                "description": "URLs linking to images uploaded by the reviewer with their review",
+                "name": "review_image_urls",
+                "type": "array"
+              },
+              {
+                "description": "URLs linking to videos uploaded by the reviewer with their review",
+                "name": "review_video_urls",
+                "type": "array"
+              },
+              {
+                "description": "Number of images attached to the review",
+                "name": "count_images",
+                "type": "number"
+              },
+              {
+                "description": "Number of videos attached to the review",
+                "name": "count_videos",
+                "type": "number"
+              },
+              {
+                "description": "Number of likes or upvotes received for the review",
+                "name": "review_likes",
+                "type": "number"
+              },
+              {
+                "description": "Unique identification number for each review",
+                "name": "review_id",
+                "type": "text"
+              },
+              {
+                "description": "Seller replies/responses to the customer review",
+                "name": "replies",
+                "type": "array"
+              },
+              {
+                "description": "Indicates whether the product is sold via LazMall (Lazada's premium marketplace)",
+                "name": "lazmall",
+                "type": "boolean"
+              },
+              {
+                "description": "Input parameter: start date for filtering reviews by date range (used to limit review collection)",
+                "name": "start_date",
+                "type": "text"
+              },
+              {
+                "description": "Input parameter: end date for filtering reviews by date range (used to limit review collection)",
+                "name": "end_date",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        "domain": "lazada.com.my",
+        "id": "gd_lub6mys21lzcklkq1z",
+        "name": "Lazada -  Reviews "
+      }
+    },
+    "Best Buy": {
+      "url": "https://docs.brightdata.com/scrapers/gd_mv3s5qosodai3txro.json",
+      "timestamp_utc": "2026-11-13T06:56:21.284716+00:00",
+      "http_status": 200,
+      "elapsed_sec": 9.98,
+      "test_kind": "public_schema_document_fetch_not_scrape",
+      "data_collection_verified": false,
+      "schema": {
+        "collection_methods": {
+          "collect_by_url": {
+            "input_schema": [
+              {
+                "name": "url",
+                "required": true,
+                "type": "url"
+              },
+              {
+                "name": "sort_by",
+                "required": false,
+                "type": "text"
+              },
+              {
+                "name": "days_back",
+                "required": false,
+                "type": "number"
+              }
+            ],
+            "output_fields": [
+              {
+                "description": "The URL of the Best Buy product reviews page",
+                "name": "url",
+                "type": "url"
+              },
+              {
+                "description": "The name of the product",
+                "name": "product_name",
+                "type": "text"
+              },
+              {
+                "description": "The Best Buy product identifier (e.g. JJ8ZH9F3Z4 from the URL)",
+                "name": "product_id",
+                "type": "text"
+              },
+              {
+                "description": "The Best Buy SKU of the product (e.g. 6500685)",
+                "name": "sku",
+                "type": "text"
+              },
+              {
+                "description": "The manufacturer model number of the product (e.g. MN893LL/A)",
+                "name": "model_number",
+                "type": "text"
+              },
+              {
+                "description": "The overall average rating of the product",
+                "name": "overall_rating",
+                "type": "number"
+              },
+              {
+                "description": "The total number of reviews for the product",
+                "name": "total_reviews",
+                "type": "number"
+              },
+              {
+                "description": "The unique identifier for each review",
+                "name": "review_id",
+                "type": "text"
+              },
+              {
+                "description": "The rating (1-5) given by the reviewer for the product",
+                "name": "rating",
+                "type": "number"
+              },
+              {
+                "description": "The header or title of the review",
+                "name": "review_header",
+                "type": "text"
+              },
+              {
+                "description": "The textual content of the review",
+                "name": "review_text",
+                "type": "text"
+              },
+              {
+                "description": "The pros listed by the reviewer, when available",
+                "name": "pros",
+                "type": "text"
+              },
+              {
+                "description": "The cons listed by the reviewer, when available",
+                "name": "cons",
+                "type": "text"
+              },
+              {
+                "description": "The display name of the person who wrote the review",
+                "name": "author_name",
+                "type": "text"
+              },
+              {
+                "description": "The date when the review was posted",
+                "name": "review_posted_date",
+                "type": "text"
+              },
+              {
+                "description": "Whether the reviewer is a verified purchaser",
+                "name": "is_verified",
+                "type": "boolean"
+              },
+              {
+                "description": "Whether the reviewer recommends the product to a friend",
+                "name": "is_recommended",
+                "type": "boolean"
+              },
+              {
+                "description": "Badges shown next to the reviewer (e.g. Verified Purchaser, Top Contributor)",
+                "name": "badges",
+                "type": "array"
+              },
+              {
+                "description": "The source the review was syndicated from, if it did not originate on Best Buy",
+                "name": "syndication_source",
+                "type": "text"
+              },
+              {
+                "description": "Any images attached to the review",
+                "name": "review_images",
+                "type": "array"
+              },
+              {
+                "description": "The count of users who found the review helpful",
+                "name": "helpful_count",
+                "type": "number"
+              },
+              {
+                "description": "The count of users who found the review not helpful",
+                "name": "not_helpful_count",
+                "type": "number"
+              },
+              {
+                "description": "The brand or seller response to the review",
+                "name": "brand_response",
+                "type": "object"
+              },
+              {
+                "description": "The page number where the review appears when sorted by \"Most recent\". Only populated for \"Most recent\" sort order, as other sort types return non-deterministic review ordering.",
+                "name": "review_page_number",
+                "type": "number"
+              }
+            ]
+          }
+        },
+        "domain": "bestbuy.com",
+        "id": "gd_mv3s5qosodai3txro",
+        "name": "Best Buy Reviews"
+      }
+    }
+  },
+  "integration_rows": [
+    {
+      "provider": "Bright Data",
+      "platform": "Amazon",
+      "kind": "dedicated_product_review_scraper",
+      "status": "authentication_required_not_data_tested",
+      "dataset_id": "gd_le8e811kzy4ggddlq",
+      "endpoint": "POST https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_le8e811kzy4ggddlq&format=json&include_errors=true",
+      "bulk_endpoint": "POST https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_le8e811kzy4ggddlq&format=json&include_errors=true",
+      "authentication": "Authorization: Bearer <user API key>",
+      "required_input": "input array, each item requires url",
+      "input_schema": [
+        {
+          "name": "url",
+          "required": true,
+          "type": "url"
+        },
+        {
+          "name": "reviews_to_not_include",
+          "required": false,
+          "type": "array"
+        },
+        {
+          "name": "max_reviews",
+          "required": false,
+          "type": "number"
+        },
+        {
+          "name": "variation_specific",
+          "required": false,
+          "type": "boolean"
+        }
+      ],
+      "output_schema": [
+        {
+          "description": "The URL or link to the review on Amazon",
+          "name": "url",
+          "type": "url"
+        },
+        {
+          "description": " The name of the product",
+          "name": "product_name",
+          "type": "text"
+        },
+        {
+          "description": "The average rating of the product",
+          "name": "product_rating",
+          "type": "number"
+        },
+        {
+          "description": "Object representing the breakdown of product ratings",
+          "name": "product_rating_object",
+          "type": "object"
+        },
+        {
+          "description": "The maximum product rating",
+          "name": "product_rating_max",
+          "type": "number"
+        },
+        {
+          "description": "The rating given by the reviewer for the product",
+          "name": "rating",
+          "type": "number"
+        },
+        {
+          "description": "The name of the person who wrote the review",
+          "name": "author_name",
+          "type": "text"
+        },
+        {
+          "description": "The Amazon Standard Identification Number of the product",
+          "name": "asin",
+          "type": "text"
+        },
+        {
+          "description": "The total count of ratings for the product",
+          "name": "product_rating_count",
+          "type": "number"
+        },
+        {
+          "description": "The header or title of the review",
+          "name": "review_header",
+          "type": "text"
+        },
+        {
+          "description": "The unique identifier for each review",
+          "name": "review_id",
+          "type": "text"
+        },
+        {
+          "description": "The textual content of the review",
+          "name": "review_text",
+          "type": "text"
+        },
+        {
+          "description": "The unique identifier for the review author",
+          "name": "author_id",
+          "type": "text"
+        },
+        {
+          "description": "Link to the author's profile or page",
+          "name": "author_link",
+          "type": "url"
+        },
+        {
+          "description": "Any badge or recognition associated with the review author",
+          "name": "badge",
+          "type": "text"
+        },
+        {
+          "description": "The brand of the product being reviewed",
+          "name": "brand",
+          "type": "text"
+        },
+        {
+          "description": "The date when the review was posted",
+          "name": "review_posted_date",
+          "type": "text"
+        },
+        {
+          "description": "The country associated with the reviewer",
+          "name": "review_country",
+          "type": "text"
+        },
+        {
+          "description": "Any images attached to the review",
+          "name": "review_images",
+          "type": "array"
+        },
+        {
+          "description": " The count of users who found the review helpful",
+          "name": "helpful_count",
+          "type": "number"
+        },
+        {
+          "description": "is_amazon_vine",
+          "name": "is_amazon_vine",
+          "type": "boolean"
+        },
+        {
+          "description": "is_verified",
+          "name": "is_verified",
+          "type": "boolean"
+        },
+        {
+          "description": "variant_asin",
+          "name": "variant_asin",
+          "type": "text"
+        },
+        {
+          "description": "variant_name",
+          "name": "variant_name",
+          "type": "text"
+        },
+        {
+          "description": "videos",
+          "name": "videos",
+          "type": "array"
+        },
+        {
+          "description": "The product's categories",
+          "name": "categories",
+          "type": "array"
+        },
+        {
+          "description": "The product's department",
+          "name": "department",
+          "type": "text"
+        }
+      ],
+      "fields_summary": "review_text/rating/review_posted_date/asin/variant_asin/variant_name/review_images/videos/is_verified；未列商家回复字段",
+      "pagination_or_history": "max_reviews是用户设置上限，不是保证返回量；reviews_to_not_include用于排除已取review_id；variation_specific=true按链接变体。未找到官方最大历史深度、完整率或硬性每ASIN上限承诺。",
+      "rate_limit": "最多5000 active jobs/snapshots；async input<=1GB；sync等待1分钟后202转异步；snapshot保存30天。未公开该评论collector专属RPS/历史最大值。",
+      "rate_source": "https://docs.brightdata.com/products/scrapers/limits.md",
+      "pricing": "Scraper API 1 credit/record; PAYG $1.50/1000 delivered records; wrong-input failed records may still be billed.",
+      "trial": "新账户每月5000免费credits，与适用产品共享，无信用卡；需要账号和API key。",
+      "trial_entry": "https://brightdata.com/products/web-scraper/amazon?hs_signup=1",
+      "dashboard_entry": "https://brightdata.com/cp/scrapers/gd_le8e811kzy4ggddlq",
+      "prepared_request_body": {
+        "input": [
+          {
+            "url": "https://www.amazon.com/dp/B0CHHSFMRL",
+            "max_reviews": 1
+          }
+        ]
+      },
+      "example_source": "https://docs.brightdata.com/api-reference/scrapers/e-commerce-apis/amazon-reviews-collect-by-url",
+      "prepared_request_note": "官方公开页面示例URL用于准备单商品请求；除Amazon认证探测外未调用。days_back=1是拟用范围限制，不保证非空或固定条数。",
+      "data_collection_verified": false,
+      "review_text_count": null,
+      "pagination_verified": false,
+      "source": "https://docs.brightdata.com/scrapers/gd_le8e811kzy4ggddlq.json"
+    },
+    {
+      "provider": "Bright Data",
+      "platform": "Walmart",
+      "kind": "dedicated_product_review_scraper",
+      "status": "authentication_required_not_data_tested",
+      "dataset_id": "gd_mpql1v8g2o8o6l1wzd",
+      "endpoint": "POST https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_mpql1v8g2o8o6l1wzd&format=json&include_errors=true",
+      "bulk_endpoint": "POST https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_mpql1v8g2o8o6l1wzd&format=json&include_errors=true",
+      "authentication": "Authorization: Bearer <user API key>",
+      "required_input": "input array, each item requires url",
+      "input_schema": [
+        {
+          "name": "url",
+          "required": true,
+          "type": "url"
+        },
+        {
+          "name": "sort_by",
+          "required": false,
+          "type": "text"
+        },
+        {
+          "name": "days_back",
+          "required": false,
+          "type": "number"
+        }
+      ],
+      "output_schema": [
+        {
+          "description": "The URL or link to the review on Amazon",
+          "name": "url",
+          "type": "url"
+        },
+        {
+          "description": " The name of the product",
+          "name": "product_name",
+          "type": "text"
+        },
+        {
+          "description": "product_id",
+          "name": "product_id",
+          "type": "text"
+        },
+        {
+          "description": "The rating given by the reviewer for the product",
+          "name": "rating",
+          "type": "number"
+        },
+        {
+          "description": "The name of the person who wrote the review",
+          "name": "author_name",
+          "type": "text"
+        },
+        {
+          "description": "The header or title of the review",
+          "name": "review_header",
+          "type": "text"
+        },
+        {
+          "description": "The unique identifier for each review",
+          "name": "review_id",
+          "type": "text"
+        },
+        {
+          "description": "The textual content of the review",
+          "name": "review_text",
+          "type": "text"
+        },
+        {
+          "description": "The unique identifier for the review author",
+          "name": "author_id",
+          "type": "text"
+        },
+        {
+          "description": "Link to the author's profile or page",
+          "name": "author_link",
+          "type": "url"
+        },
+        {
+          "description": "The date when the review was posted",
+          "name": "review_posted_date",
+          "type": "text"
+        },
+        {
+          "description": "Any images attached to the review",
+          "name": "review_images",
+          "type": "array"
+        },
+        {
+          "description": " The count of users who found the review helpful",
+          "name": "helpful_count",
+          "type": "number"
+        },
+        {
+          "description": "is_verified",
+          "name": "is_verified",
+          "type": "boolean"
+        },
+        {
+          "description": "videos",
+          "name": "videos",
+          "type": "array"
+        },
+        {
+          "description": "top_reviewer",
+          "name": "top_reviewer",
+          "type": "boolean"
+        },
+        {
+          "description": "item_details",
+          "name": "item_details",
+          "type": "array"
+        },
+        {
+          "description": "reply",
+          "name": "reply",
+          "type": "object"
+        },
+        {
+          "description": "The count of users who found the review not helpful",
+          "name": "not_helpful_count",
+          "type": "number"
+        },
+        {
+          "description": "The page number where the review appears when sorted by \"Most recent\" (submission-desc). Only populated for \"Most recent\" sort order, as other sort types return non-deterministic review ordering.",
+          "name": "review_page_number",
+          "type": "number"
+        }
+      ],
+      "fields_summary": "review_text/rating/review_posted_date/product_id/review_images/videos/item_details/reply；Most recent排序可有review_page_number",
+      "pagination_or_history": "输入sort_by、days_back；未公开可验证最大页数或历史深度。",
+      "rate_limit": "最多5000 active jobs/snapshots；async input<=1GB；sync等待1分钟后202转异步；snapshot保存30天。未公开该评论collector专属RPS/历史最大值。",
+      "rate_source": "https://docs.brightdata.com/products/scrapers/limits.md",
+      "pricing": "Scraper API 1 credit/record; PAYG $1.50/1000 delivered records; wrong-input failed records may still be billed.",
+      "trial": "新账户每月5000免费credits，与适用产品共享，无信用卡；需要账号和API key。",
+      "trial_entry": "https://brightdata.com/products/web-scraper/amazon?hs_signup=1",
+      "dashboard_entry": "https://brightdata.com/cp/scrapers/gd_mpql1v8g2o8o6l1wzd",
+      "prepared_request_body": {
+        "input": [
+          {
+            "url": "https://www.walmart.com/reviews/product/746021606",
+            "days_back": 1
+          }
+        ]
+      },
+      "example_source": "https://brightdata.com/products/web-scraper/walmart",
+      "prepared_request_note": "官方公开页面示例URL用于准备单商品请求；除Amazon认证探测外未调用。days_back=1是拟用范围限制，不保证非空或固定条数。",
+      "data_collection_verified": false,
+      "review_text_count": null,
+      "pagination_verified": false,
+      "source": "https://docs.brightdata.com/scrapers/gd_mpql1v8g2o8o6l1wzd.json"
+    },
+    {
+      "provider": "Bright Data",
+      "platform": "Lazada",
+      "kind": "dedicated_product_review_scraper",
+      "status": "authentication_required_not_data_tested",
+      "dataset_id": "gd_lub6mys21lzcklkq1z",
+      "endpoint": "POST https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_lub6mys21lzcklkq1z&format=json&include_errors=true",
+      "bulk_endpoint": "POST https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_lub6mys21lzcklkq1z&format=json&include_errors=true",
+      "authentication": "Authorization: Bearer <user API key>",
+      "required_input": "input array, each item requires url",
+      "input_schema": [
+        {
+          "name": "url",
+          "required": true,
+          "type": "url"
+        },
+        {
+          "name": "days_back",
+          "required": false,
+          "type": "number"
+        },
+        {
+          "name": "exclude_variations",
+          "required": false,
+          "type": "boolean"
+        },
+        {
+          "name": "start_date",
+          "required": false,
+          "type": "text"
+        },
+        {
+          "name": "end_date",
+          "required": false,
+          "type": "text"
+        }
+      ],
+      "output_schema": [
+        {
+          "description": "URL pointing to the product on the Lazada platform.",
+          "name": "url",
+          "type": "url"
+        },
+        {
+          "description": "The title or name of the product.",
+          "name": "title",
+          "type": "text"
+        },
+        {
+          "description": "The average rating given by customers for the product",
+          "name": "rating",
+          "type": "number"
+        },
+        {
+          "description": "The total number of reviews for the product",
+          "name": "reviews",
+          "type": "number"
+        },
+        {
+          "description": "The name of the seller offering the product",
+          "name": "seller_name",
+          "type": "text"
+        },
+        {
+          "description": "Stock Keeping Unit or identifier for the product",
+          "name": "sku",
+          "type": "text"
+        },
+        {
+          "description": "Manufacturer Part Number associated with the product",
+          "name": "mpn",
+          "type": "text"
+        },
+        {
+          "description": "Indicates whether the seller is a Lazada Super Seller (verified high-performance seller)",
+          "name": "is_super_seller",
+          "type": "boolean"
+        },
+        {
+          "description": "The brand of the product",
+          "name": "brand",
+          "type": "text"
+        },
+        {
+          "description": "Breadcrumb trail indicating the product's category path (from main category to subcategory)",
+          "name": "breadcrumb",
+          "type": "array"
+        },
+        {
+          "description": "Name/username of the reviewer who wrote the review",
+          "name": "review_username",
+          "type": "text"
+        },
+        {
+          "description": "Textual content of the review provided by the user",
+          "name": "review",
+          "type": "text"
+        },
+        {
+          "description": "Indicates whether the purchase associated with the review is verified",
+          "name": "verified_purchase",
+          "type": "boolean"
+        },
+        {
+          "description": "Star rating assigned by the reviewer (1-5 scale)",
+          "name": "review_star_rating",
+          "type": "number"
+        },
+        {
+          "description": "Date when the review was submitted",
+          "name": "review_date",
+          "type": "date"
+        },
+        {
+          "description": "URLs linking to images uploaded by the reviewer with their review",
+          "name": "review_image_urls",
+          "type": "array"
+        },
+        {
+          "description": "URLs linking to videos uploaded by the reviewer with their review",
+          "name": "review_video_urls",
+          "type": "array"
+        },
+        {
+          "description": "Number of images attached to the review",
+          "name": "count_images",
+          "type": "number"
+        },
+        {
+          "description": "Number of videos attached to the review",
+          "name": "count_videos",
+          "type": "number"
+        },
+        {
+          "description": "Number of likes or upvotes received for the review",
+          "name": "review_likes",
+          "type": "number"
+        },
+        {
+          "description": "Unique identification number for each review",
+          "name": "review_id",
+          "type": "text"
+        },
+        {
+          "description": "Seller replies/responses to the customer review",
+          "name": "replies",
+          "type": "array"
+        },
+        {
+          "description": "Indicates whether the product is sold via LazMall (Lazada's premium marketplace)",
+          "name": "lazmall",
+          "type": "boolean"
+        },
+        {
+          "description": "Input parameter: start date for filtering reviews by date range (used to limit review collection)",
+          "name": "start_date",
+          "type": "text"
+        },
+        {
+          "description": "Input parameter: end date for filtering reviews by date range (used to limit review collection)",
+          "name": "end_date",
+          "type": "text"
+        }
+      ],
+      "fields_summary": "review/review_star_rating/review_date/sku/review_image_urls/review_video_urls/replies/verified_purchase",
+      "pagination_or_history": "输入days_back/exclude_variations/start_date/end_date；catalog代表域lazada.com.my，不把这等同于六国全站均已验证。",
+      "rate_limit": "最多5000 active jobs/snapshots；async input<=1GB；sync等待1分钟后202转异步；snapshot保存30天。未公开该评论collector专属RPS/历史最大值。",
+      "rate_source": "https://docs.brightdata.com/products/scrapers/limits.md",
+      "pricing": "Scraper API 1 credit/record; PAYG $1.50/1000 delivered records; wrong-input failed records may still be billed.",
+      "trial": "新账户每月5000免费credits，与适用产品共享，无信用卡；需要账号和API key。",
+      "trial_entry": "https://brightdata.com/products/web-scraper/amazon?hs_signup=1",
+      "dashboard_entry": "https://brightdata.com/cp/scrapers/gd_lub6mys21lzcklkq1z",
+      "prepared_request_body": {
+        "input": [
+          {
+            "url": "https://www.lazada.sg/products/loreal-paris-infaillible-32h-freshwear-foundation-30ml-i3143299189-s21422552211.html",
+            "days_back": 1
+          }
+        ]
+      },
+      "example_source": "https://brightdata.com/products/web-scraper/lazada",
+      "prepared_request_note": "官方公开页面示例URL用于准备单商品请求；除Amazon认证探测外未调用。days_back=1是拟用范围限制，不保证非空或固定条数。 Lazada目录代表域MY，官网静态样例含SG；这是文档证据，非国家覆盖实测。",
+      "data_collection_verified": false,
+      "review_text_count": null,
+      "pagination_verified": false,
+      "source": "https://docs.brightdata.com/scrapers/gd_lub6mys21lzcklkq1z.json"
+    },
+    {
+      "provider": "Bright Data",
+      "platform": "Best Buy",
+      "kind": "dedicated_product_review_scraper",
+      "status": "authentication_required_not_data_tested",
+      "dataset_id": "gd_mv3s5qosodai3txro",
+      "endpoint": "POST https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_mv3s5qosodai3txro&format=json&include_errors=true",
+      "bulk_endpoint": "POST https://api.brightdata.com/datasets/v3/trigger?dataset_id=gd_mv3s5qosodai3txro&format=json&include_errors=true",
+      "authentication": "Authorization: Bearer <user API key>",
+      "required_input": "input array, each item requires url",
+      "input_schema": [
+        {
+          "name": "url",
+          "required": true,
+          "type": "url"
+        },
+        {
+          "name": "sort_by",
+          "required": false,
+          "type": "text"
+        },
+        {
+          "name": "days_back",
+          "required": false,
+          "type": "number"
+        }
+      ],
+      "output_schema": [
+        {
+          "description": "The URL of the Best Buy product reviews page",
+          "name": "url",
+          "type": "url"
+        },
+        {
+          "description": "The name of the product",
+          "name": "product_name",
+          "type": "text"
+        },
+        {
+          "description": "The Best Buy product identifier (e.g. JJ8ZH9F3Z4 from the URL)",
+          "name": "product_id",
+          "type": "text"
+        },
+        {
+          "description": "The Best Buy SKU of the product (e.g. 6500685)",
+          "name": "sku",
+          "type": "text"
+        },
+        {
+          "description": "The manufacturer model number of the product (e.g. MN893LL/A)",
+          "name": "model_number",
+          "type": "text"
+        },
+        {
+          "description": "The overall average rating of the product",
+          "name": "overall_rating",
+          "type": "number"
+        },
+        {
+          "description": "The total number of reviews for the product",
+          "name": "total_reviews",
+          "type": "number"
+        },
+        {
+          "description": "The unique identifier for each review",
+          "name": "review_id",
+          "type": "text"
+        },
+        {
+          "description": "The rating (1-5) given by the reviewer for the product",
+          "name": "rating",
+          "type": "number"
+        },
+        {
+          "description": "The header or title of the review",
+          "name": "review_header",
+          "type": "text"
+        },
+        {
+          "description": "The textual content of the review",
+          "name": "review_text",
+          "type": "text"
+        },
+        {
+          "description": "The pros listed by the reviewer, when available",
+          "name": "pros",
+          "type": "text"
+        },
+        {
+          "description": "The cons listed by the reviewer, when available",
+          "name": "cons",
+          "type": "text"
+        },
+        {
+          "description": "The display name of the person who wrote the review",
+          "name": "author_name",
+          "type": "text"
+        },
+        {
+          "description": "The date when the review was posted",
+          "name": "review_posted_date",
+          "type": "text"
+        },
+        {
+          "description": "Whether the reviewer is a verified purchaser",
+          "name": "is_verified",
+          "type": "boolean"
+        },
+        {
+          "description": "Whether the reviewer recommends the product to a friend",
+          "name": "is_recommended",
+          "type": "boolean"
+        },
+        {
+          "description": "Badges shown next to the reviewer (e.g. Verified Purchaser, Top Contributor)",
+          "name": "badges",
+          "type": "array"
+        },
+        {
+          "description": "The source the review was syndicated from, if it did not originate on Best Buy",
+          "name": "syndication_source",
+          "type": "text"
+        },
+        {
+          "description": "Any images attached to the review",
+          "name": "review_images",
+          "type": "array"
+        },
+        {
+          "description": "The count of users who found the review helpful",
+          "name": "helpful_count",
+          "type": "number"
+        },
+        {
+          "description": "The count of users who found the review not helpful",
+          "name": "not_helpful_count",
+          "type": "number"
+        },
+        {
+          "description": "The brand or seller response to the review",
+          "name": "brand_response",
+          "type": "object"
+        },
+        {
+          "description": "The page number where the review appears when sorted by \"Most recent\". Only populated for \"Most recent\" sort order, as other sort types return non-deterministic review ordering.",
+          "name": "review_page_number",
+          "type": "number"
+        }
+      ],
+      "fields_summary": "review_text/rating/review_posted_date/product_id/sku/model_number/review_images/brand_response/syndication_source",
+      "pagination_or_history": "输入sort_by/days_back；未公开可验证最大页数或历史深度。",
+      "rate_limit": "最多5000 active jobs/snapshots；async input<=1GB；sync等待1分钟后202转异步；snapshot保存30天。未公开该评论collector专属RPS/历史最大值。",
+      "rate_source": "https://docs.brightdata.com/products/scrapers/limits.md",
+      "pricing": "Scraper API 1 credit/record; PAYG $1.50/1000 delivered records; wrong-input failed records may still be billed.",
+      "trial": "新账户每月5000免费credits，与适用产品共享，无信用卡；需要账号和API key。",
+      "trial_entry": "https://brightdata.com/products/web-scraper/amazon?hs_signup=1",
+      "dashboard_entry": "https://brightdata.com/cp/scrapers/gd_mv3s5qosodai3txro",
+      "prepared_request_body": {
+        "input": [
+          {
+            "url": "https://www.bestbuy.com/site/ekids-dreamworks-trolls-bluetooth-karaoke-with-sing-along-microphone-and-ez-link-technology-pink/6562447.p?skuId=6562447",
+            "days_back": 1
+          }
+        ]
+      },
+      "example_source": "https://brightdata.com/products/web-scraper/best-buy/reviews",
+      "prepared_request_note": "官方公开页面示例URL用于准备单商品请求；除Amazon认证探测外未调用。days_back=1是拟用范围限制，不保证非空或固定条数。 Best Buy landing代码错用商品dataset_id；这里改用当前公开schema的评论dataset_id，仍需验证URL兼容性。",
+      "data_collection_verified": false,
+      "review_text_count": null,
+      "pagination_verified": false,
+      "source": "https://docs.brightdata.com/scrapers/gd_mv3s5qosodai3txro.json"
+    },
+    {
+      "provider": "Oxylabs Web API",
+      "platform": "Amazon",
+      "kind": "product_page_with_reviews_not_dedicated_review_api",
+      "status": "authentication_required_not_data_tested",
+      "endpoint": "POST https://webapi.oxylabs.io/v1/scrape/amazon/product",
+      "authentication": "Authorization: Bearer <Web API instance API key>；其他Oxylabs产品key不可代用。",
+      "required_input": {
+        "query": "ASIN"
+      },
+      "relevant_optional_inputs": {
+        "domain": "marketplace TLD e.g. com/co.uk/de",
+        "output": "[\"json\"] selects parsed fields",
+        "location": "postal code matching marketplace",
+        "locale": "interface language",
+        "autoselect_variant": "boolean follows default variant",
+        "currency": "currency code",
+        "run_js": "boolean; rendered requests may cost more"
+      },
+      "prepared_request_body": {
+        "query": "B0CX23V2ZK",
+        "domain": "com",
+        "output": [
+          "json"
+        ]
+      },
+      "output_schema_note": "新API envelope results[].json；Amazon reviews子字段未获本轮实际响应。不能把旧Classic schema自动视为新API已验证。",
+      "pagination_or_history": "商品页端点没有已验证评论分页输入；官方Classic教程称未登录商品页常见8–13精选评论，非API返回量保证。",
+      "rate_limit": "新API当前公开材料未核到数值RPS表；HTTP429需退避。同步单输入、支持端点async batch最多5000，client timeout建议至少150秒。",
+      "trial": "$5 welcome credits; needs dashboard account and Web API instance",
+      "trial_entry": "https://dashboard.oxylabs.io/playground/web-api/search",
+      "pricing": "当前/scrape页面Starter $15/mo；Amazon non-JS $0.50/1000 page/results，不是每1000条评论。",
+      "data_collection_verified": false,
+      "review_text_count": null,
+      "pagination_verified": false,
+      "sources": [
+        "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md",
+        "https://developers.oxylabs.io/products/web-api/scrape/delivery-modes.md",
+        "https://developers.oxylabs.io/products/web-api/playground",
+        "https://oxylabs.io/products/web-api/scrape/pricing"
+      ]
+    },
+    {
+      "provider": "Oxylabs Web Scraper API Classic",
+      "platform": "Amazon",
+      "kind": "product_page_with_reviews_not_dedicated_review_api",
+      "status": "authentication_required_not_data_tested",
+      "endpoint": "POST https://realtime.oxylabs.io/v1/queries",
+      "authentication": "HTTP Basic auth username/password",
+      "required_input": {
+        "source": "amazon_product",
+        "query": "ASIN"
+      },
+      "relevant_optional_inputs": {
+        "parse": true,
+        "domain": "com",
+        "geo_location": "postal code",
+        "context": [
+          {
+            "key": "autoselect_variant",
+            "value": true
+          }
+        ]
+      },
+      "documented_output_fields": [
+        "results[].content.reviews[].id",
+        "title",
+        "author",
+        "rating",
+        "content",
+        "timestamp",
+        "is_verified"
+      ],
+      "review_text_count": null,
+      "data_collection_verified": false,
+      "pagination_verified": false,
+      "pagination_or_history": "官方教程采用商品页reviews数组；未登录页面通常8–13 featured reviews；未验证完整历史。",
+      "rate_limit": "旧Classic文档试用10 jobs/s/3 rendered jobs/s；Micro/Starter50/13；此为旧套餐，不能套用新Web API。",
+      "trial_entry": "https://dashboard.oxylabs.io/",
+      "trial_note": "旧宣传页2K results free trial与新$5 welcome credit并存，具体按账号产品实例确认。",
+      "sources": [
+        "https://oxylabs.io/blog/how-to-scrape-amazon-reviews",
+        "https://developers.oxylabs.io/products/web-scraper-api/targets/e-commerce/amazon",
+        "https://developers.oxylabs.io/scraping-solutions/web-scraper-api/usage-and-billing/rate-limits"
+      ]
+    }
+  ],
+  "public_trial_findings": [
+    {
+      "provider": "Bright Data",
+      "official_entry": "https://brightdata.com/products/web-scraper/amazon?hs_signup=1",
+      "observed": "产品页Start free链接为注册弹窗#popup-155639；公开机器schema无需账号，但不是数据采集API。",
+      "source": "https://brightdata.com/products/web-scraper/amazon"
+    },
+    {
+      "provider": "Oxylabs",
+      "official_entry": "https://dashboard.oxylabs.io/playground/web-api/search",
+      "observed": "Playground文档要求登录并进入Web API实例，非匿名live demo。",
+      "source": "https://developers.oxylabs.io/products/web-api/playground"
+    }
+  ],
+  "documentation_pitfalls": [
+    {
+      "finding": "Best Buy Reviews marketing page currently shows product scraper dataset_id gd_ltre1jqe1jfr7cccf and product response, despite Reviews heading; true reviews catalog/schema id is gd_mv3s5qosodai3txro.",
+      "sources": [
+        "https://brightdata.com/products/web-scraper/best-buy/reviews",
+        "https://docs.brightdata.com/scrapers/gd_mv3s5qosodai3txro.json"
+      ]
+    },
+    {
+      "finding": "Bright Amazon HTML sample field names differ from machine schema; validate actual response before binding fields.",
+      "sources": [
+        "https://docs.brightdata.com/api-reference/scrapers/e-commerce-apis/amazon-reviews-collect-by-url",
+        "https://docs.brightdata.com/scrapers/gd_le8e811kzy4ggddlq.json"
+      ]
+    }
+  ],
+  "interpretation_rules": [
+    "401只证明认证门槛，不证明源站采集成功或失败。",
+    "正文条数null表示未执行采集；不要写成0条或空结果。",
+    "HTTP200读取schema、营销输出和静态sample均不是live采集。",
+    "准备请求中的示例URL不保证目标商品当前存在或有可达评论；需先验证实际返回。"
+  ]
+}

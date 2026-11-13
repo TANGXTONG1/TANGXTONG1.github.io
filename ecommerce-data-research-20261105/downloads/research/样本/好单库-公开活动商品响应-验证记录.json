@@ -1,0 +1,79 @@
+{
+  "vendor": "好单库",
+  "source_url": "https://www.haodanku.com/Activity/get_three_datas",
+  "retrieved_at": "2026-11-05T13:07:57.360160+00:00",
+  "http_status": 200,
+  "content_type": "text/html; charset=UTF-8",
+  "authentication": "无账号、无API key、无cookie",
+  "type": "官网公开活动数据HTTP响应，非文档示例，非通用开放API测试",
+  "items": 3,
+  "top_level_fields": [
+    "status",
+    "msg",
+    "banner",
+    "background_img",
+    "data"
+  ],
+  "item_fields": [
+    "id",
+    "itemid",
+    "seller_id",
+    "itemtitle",
+    "itemshorttitle",
+    "itemsale",
+    "itemsale2",
+    "itemprice",
+    "itemdesc",
+    "itempic_copy",
+    "shoptype",
+    "is_foreshow",
+    "is_brand",
+    "videoid",
+    "activityid",
+    "activity_type",
+    "fqcat",
+    "shopid",
+    "userid",
+    "shopname",
+    "tkrates",
+    "tkmoney",
+    "couponurl",
+    "couponmoney",
+    "couponsurplus",
+    "couponreceive",
+    "couponnum",
+    "couponstarttime",
+    "itemendprice",
+    "couponendtime",
+    "general_index",
+    "grade_avg",
+    "rate_total",
+    "todaysale",
+    "stock",
+    "itempic",
+    "discount",
+    "seller_name",
+    "report_status",
+    "down_type",
+    "activity_plan"
+  ],
+  "sha256": "b44d346b1d14c615c574dff2ce8374a3266af20b493193953c723990d197ba82",
+  "file": "research/样本/好单库-公开活动商品响应-2026-11-05.json",
+  "quality_observations": [
+    {
+      "itemid": "521027319777",
+      "issue": "couponnum=10000 与 couponsurplus=948650、couponreceive=51350 不一致，后两者合计1000000；原因未确认"
+    },
+    {
+      "itemid": "600558109013",
+      "issue": "itemendprice=60.00，但itemdesc宣称叠加多种条件优惠到手35.17；不能混用价格口径"
+    }
+  ],
+  "not_verified": [
+    "浏览器UI",
+    "鉴权开放API",
+    "真实订单或平台真实销量",
+    "全库覆盖",
+    "字段准确性与时效"
+  ]
+}

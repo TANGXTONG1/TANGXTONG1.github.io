@@ -1,0 +1,449 @@
+{
+  "checked_at": "2026-11-13",
+  "scope": [
+    "Temu",
+    "TikTok Shop"
+  ],
+  "decision_basis": "以商品买家原文评论为首要目标；美国站仅为首发假设。只有公开官网、Store、Actor 元数据和构建 schema 核验，无账号内商业调用，无本次真实采集成功率。",
+  "headline": "TikTok Shop 首发 US 选择 vistics 评论 Actor，先完成一次计费与正文验收后上线；Temu 暂缓，不把新 Actor 写成已接通能力。",
+  "platforms": [
+    {
+      "platform": "Temu",
+      "overseas_priority": 2,
+      "decision": "暂缓",
+      "selected_actor": null,
+      "developer_action": "首发保留平台占位，关闭采集入口；不要投入生产适配。后续有明确 Temu 客户再验证候选。",
+      "reason": "唯一核到明确原文评论字段的候选刚上线、使用样本极少，且商品最多 100 条、店铺仅前 10 条，无法支撑完整历史承诺。其他搜索结果多为商品 rating/reviewCount、公司 Trustpilot 或 Temu App 评论，不满足本需求。",
+      "watch_candidate": {
+        "actor": "omkar-cloud/temu-reviews-scraper",
+        "owner": "Omkar Cloud",
+        "maintained_by": "Community",
+        "store_url": "https://apify.com/omkar-cloud/temu-reviews-scraper",
+        "maturity": {
+          "total_users": 1,
+          "monthly_active_users": 1,
+          "rating": 0,
+          "rating_count": 0,
+          "created_at": "2026-10-26T11:50:06.796Z",
+          "modified_at": "2026-11-09T07:25:30.746Z",
+          "latest_build": {
+            "buildId": "8CvrWd5BQjVocmGpU",
+            "finishedAt": "2026-11-09T07:25:30.746Z",
+            "buildNumberInt": 3,
+            "buildNumber": "0.0.3"
+          },
+          "public_runs_30_days": {
+            "ABORTED": 0,
+            "FAILED": 0,
+            "SUCCEEDED": 4,
+            "TIMED-OUT": 1,
+            "TOTAL": 5
+          },
+          "is_deprecated": false,
+          "permission_level": "LIMITED_PERMISSIONS",
+          "source": "https://api.apify.com/v2/acts/omkar-cloud~temu-reviews-scraper",
+          "warning": "使用量和运行状态是公开平台元数据，既非独立客户案例，也非评论正文成功率；不把 SUCCEEDED 当作非空有效数据。"
+        },
+        "countries_documented": [
+          "US",
+          "UK",
+          "Canada"
+        ],
+        "countries_api_enum": [
+          "us",
+          "gb",
+          "ca"
+        ],
+        "actual_collection_test": "未执行；官网示例不等于本次采集数据。",
+        "input_fields": {
+          "products": "商品 URL 或 ID 数组",
+          "stores": "店铺 URL 或 ID 数组",
+          "country": "us/gb/ca，默认 us",
+          "minRating": "1–5，可选",
+          "withPhotosOnly": "默认 false",
+          "maxReviewsPerProduct": "默认 50，范围 1–100",
+          "maxResults": "整个 run 的结果上限，可选"
+        },
+        "output_unit": "一条商品或店铺买家评论；source 标记 product/store。",
+        "output_fields": [
+          "source",
+          "country",
+          "review_id",
+          "rating",
+          "text",
+          "translated_text",
+          "date",
+          "author",
+          "author_country",
+          "variant",
+          "fit",
+          "images",
+          "videos",
+          "product_id",
+          "product_name",
+          "product_link",
+          "store_id",
+          "store_link",
+          "overall_rating",
+          "overall_review_count",
+          "five_star_percent",
+          "one_star_percent"
+        ],
+        "pagination": "自动 10 条/页；商品最多 100 条；店铺访客可见前 10 条，继续查看需登录，而此 Actor 没有登录输入。没有已核日期增量/游标续传参数。",
+        "limits": "未见 Actor 独立日调用量限制，但 100 条/商品属于明确深度限制；不能写无限历史。",
+        "price": {
+          "currency": "USD",
+          "usd_per_1000_review_rows": 2,
+          "actor_start_usd_per_gb_min_one": 5e-05,
+          "formula": "0.002 × 实际评论结果行数 + 0.00005 × 每次启动计费事件数",
+          "discrepancy": "README 宣称 no start fee；当前公开 pricingInfos 却有 Actor Start $0.00005/GB（至少一个事件）。按元数据保守核算，实际以启动页计费为准。",
+          "sample_10000_rows_variable_usd": 20,
+          "sample_100000_rows_variable_usd": 200,
+          "excluded_from_production_budget": true
+        },
+        "api": {
+          "method": "POST",
+          "run_url": "https://api.apify.com/v2/actors/omkar-cloud~temu-reviews-scraper/runs?token=<APIFY_TOKEN>",
+          "input": {
+            "products": [
+              "https://www.temu.com/goods.html?goods_id=601099537773480"
+            ],
+            "country": "us",
+            "maxReviewsPerProduct": 20,
+            "maxResults": 20
+          },
+          "poll": "GET https://api.apify.com/v2/actor-runs/<RUN_ID>?token=<APIFY_TOKEN>",
+          "dataset": "GET https://api.apify.com/v2/datasets/<DEFAULT_DATASET_ID>/items?format=json&clean=true&token=<APIFY_TOKEN>",
+          "integration": "服务端保存 token；异步启动，保存 runId/defaultDatasetId，轮询或 webhook 后拉 Dataset；可导出 CSV/Excel。正式配置应采用安全鉴权方式，避免 token 出现在日志。",
+          "tested": false
+        },
+        "vendor_example_not_live": {
+          "source": "store",
+          "review_id": "362923990395657518",
+          "product_id": "605570857835822",
+          "rating": 5,
+          "date": "2026-07-25",
+          "review_text_excerpt": "Just as pictured, very blingy which I love"
+        },
+        "readiness_gate": [
+          "至少多个有正文商品对照核验；确认 100 条上限满足客户目标",
+          "记录本次 runId、实际非空正文数、重复率、账单事件与耗时",
+          "验证后续更新维护和增量能力；不要拿厂商整体 Trustpilot 分数替代此 Actor 的表现"
+        ],
+        "sources": [
+          "https://apify.com/omkar-cloud/temu-reviews-scraper",
+          "https://apify.com/omkar-cloud/temu-reviews-scraper/api",
+          "https://api.apify.com/v2/acts/omkar-cloud~temu-reviews-scraper",
+          "https://api.apify.com/v2/actor-builds/8CvrWd5BQjVocmGpU"
+        ]
+      },
+      "rejected": [
+        {
+          "actor": "hypebridge/temu-scraper",
+          "reason": "官网明确 reviewTextRedacted，评论正文不可供给。",
+          "source": "https://apify.com/hypebridge/temu-scraper"
+        }
+      ]
+    },
+    {
+      "platform": "TikTok Shop",
+      "overseas_priority": 3,
+      "decision": "选定 Actor，先验收再上线",
+      "selected_actor": "vistics/tiktok-shop-product-reviews",
+      "developer_action": "首发实现 vistics 的 TikTok Shop US 评论适配；生产开关默认关闭，正文和账单验收通过后开启。非 US 需求优先评估唯一备选。",
+      "reason": "评论专用 Actor 的实际使用规模、11 条公开评分和近期构建优于低使用量新作；比低价 web_wanderer 少了长期未关闭的零结果问题信号。此选择是工程决策，尚非稳定性实测结论。",
+      "primary": {
+        "actor": "vistics/tiktok-shop-product-reviews",
+        "owner": "Ilong Mamman",
+        "maintained_by": "Community",
+        "store_url": "https://apify.com/vistics/tiktok-shop-product-reviews",
+        "maturity": {
+          "total_users": 381,
+          "monthly_active_users": 77,
+          "rating": 5,
+          "rating_count": 11,
+          "created_at": "2026-05-18T14:04:39.383Z",
+          "modified_at": "2026-11-05T21:10:18.946Z",
+          "latest_build": {
+            "buildId": "IBFHqugLpjboCpOQc",
+            "finishedAt": "2026-11-05T21:10:18.946Z",
+            "buildNumberInt": 35,
+            "buildNumber": "0.0.35"
+          },
+          "public_runs_30_days": {
+            "ABORTED": 8,
+            "FAILED": 9,
+            "SUCCEEDED": 1612,
+            "TIMED-OUT": 8,
+            "TOTAL": 1637
+          },
+          "is_deprecated": false,
+          "permission_level": "LIMITED_PERMISSIONS",
+          "source": "https://api.apify.com/v2/acts/vistics~tiktok-shop-product-reviews",
+          "warning": "使用量和运行状态是公开平台元数据，既非独立客户案例，也非评论正文成功率；不把 SUCCEEDED 当作非空有效数据。"
+        },
+        "issues_checked": {
+          "open": 0,
+          "closed": 0,
+          "source": "https://apify.com/vistics/tiktok-shop-product-reviews/issues",
+          "note": "没有问题记录不代表没有缺陷。"
+        },
+        "countries_documented": [
+          "US"
+        ],
+        "country_caveat": "最新 input schema 的 region 为自由文本并称 any available region，但 README 仍明确只接受 US；未经实测不扩张到其他地区。",
+        "api": {
+          "method": "POST",
+          "run_url": "https://api.apify.com/v2/actors/vistics~tiktok-shop-product-reviews/runs?token=<APIFY_TOKEN>",
+          "input": {
+            "startUrls": [
+              "https://www.tiktok.com/shop/pdp/cat-nail-clipper-by-potaroma-adjustable-sizes-built-in-file-safe-for-kittens-cats/1731578642912612516"
+            ],
+            "maxReviews": 20,
+            "region": "US"
+          },
+          "poll": "GET https://api.apify.com/v2/actor-runs/<RUN_ID>?token=<APIFY_TOKEN>",
+          "dataset": "GET https://api.apify.com/v2/datasets/<DEFAULT_DATASET_ID>/items?format=json&clean=true&token=<APIFY_TOKEN>",
+          "integration": "服务端保存 token；异步启动，保存 runId/defaultDatasetId，轮询或 webhook 后拉 Dataset；可导出 CSV/Excel。正式配置应采用安全鉴权方式，避免 token 出现在日志。",
+          "tested": false
+        },
+        "input_fields": {
+          "startUrls": "商品 URL 字符串数组",
+          "maxReviews": "每商品评论上限，默认10、最小1，无 schema 最大值",
+          "region": "默认 US；首发固定 US"
+        },
+        "input_validation": "schema required 数组为空但业务必须有商品 URL；调用方自行验证 startUrls 非空。",
+        "output_unit": "最新 0.0.35 构建 Dataset view 为平铺评论行；README 示例仍是每商品 reviews[]，因此单行单位须由首次实测确认。",
+        "output_fields": [
+          "productUrl",
+          "productId",
+          "region",
+          "totalReviews",
+          "review_id",
+          "reviewer_name",
+          "review_rating",
+          "review_text",
+          "review_time",
+          "review_country",
+          "is_verified_purchase",
+          "is_incentivized_review",
+          "sku_specification",
+          "product_name",
+          "reviewer_avatar_url",
+          "display_image_url",
+          "review_images"
+        ],
+        "data_scope": "商品买家评价正文、星级、日期、SKU、图片、购买验证/激励标记；不是视频评论。商品价格、销量和营销指标不在此评论 Actor 的已核字段内。",
+        "pagination": "开发者称每页10条自动翻页直到 maxReviews 或源端无数据；未核到最大可回溯深度、日期范围、增量游标、排序或星级筛选输入。",
+        "limits": "未找到额外每日/每分钟 Actor 限额或必须付费套餐的说明；不能因此保证无限调用。源站可见深度、Apify 并发/余额及上游服务仍限制交付。",
+        "dependency_note": "最新构建 actorDefinition 说明使用 ScrapeCreators API；调用方 input 没有上游 API key 字段。稳定性依赖该维护者及上游，不是 Apify 官方自维护。",
+        "price": {
+          "currency": "USD",
+          "pricing_model": "PAY_PER_EVENT",
+          "usd_per_1000_dataset_items": 2,
+          "actor_start_usd_per_gb_min_one": 0.01,
+          "default_memory_mb": 512,
+          "formula": "0.002 × 实际计费 Dataset item 数 + 0.01 × 启动事件数（每GB一次，至少一次；此构建512MB）",
+          "tiers": "当前事件价未按 Free/Starter/Scale/Business 分档。Apify 月费与可抵扣额度另按账号统一预算。",
+          "sample_10000_items_variable_usd": 20,
+          "sample_100000_items_variable_usd": 200,
+          "sample_100_runs_start_usd": 1,
+          "price_effective_since": "2026-10-28T16:00:31.772Z",
+          "caveat": "较旧搜索缓存仍写 $3/千；当前公开 pricingInfos 是 $2/千 + $0.01 启动事件。首次验收必须核对一次 Dataset item 是否一条 review；在此之前总价按结果行，不伪称已验证每评论成本。"
+        },
+        "vendor_example_not_live": {
+          "review_id": "7609467006076651278",
+          "product_id": "1731578642912612516",
+          "review_rating": 5,
+          "review_time": "1771717123706",
+          "review_text_excerpt": "I just got mine and it works great.",
+          "is_verified_purchase": true,
+          "is_incentivized_review": false
+        },
+        "acceptance_gate": [
+          "两个不同 US 商品，各取20条，核对 review_text 为买家原文且 review_id 非空",
+          "对照 Dataset itemCount、计费事件数、返回 reviews[] 或平铺形式，确认 $2/千究竟如何计费",
+          "对已知超过20条的商品请求更多，验证确实翻页、没有重复页；抽查页面上可见的正文/星级/日期",
+          "同一商品重复跑，记录有效正文成功率、重复率、耗时和空结果；SUCCEEDED+0条判为失败",
+          "保存原始记录和采集时间；用 platform+region+product_id+review_id 去重；不要假定重复运行可免费增量"
+        ],
+        "authorization_and_sla": "本次公开资料未核到商业转售许可、可用性 SLA、历史完整性保证或下架通知保障；公开可见数据不代表数据方授权。这些项目仍待供应商确认。",
+        "sources": [
+          "https://apify.com/vistics/tiktok-shop-product-reviews",
+          "https://apify.com/vistics/tiktok-shop-product-reviews/api",
+          "https://apify.com/vistics/tiktok-shop-product-reviews/issues",
+          "https://api.apify.com/v2/acts/vistics~tiktok-shop-product-reviews",
+          "https://api.apify.com/v2/actor-builds/IBFHqugLpjboCpOQc"
+        ]
+      },
+      "backup": {
+        "actor": "pro100chok/tiktok-shop-scraper-usage",
+        "owner": "Raven",
+        "maintained_by": "Community",
+        "store_url": "https://apify.com/pro100chok/tiktok-shop-scraper-usage",
+        "maturity": {
+          "total_users": 1041,
+          "monthly_active_users": 282,
+          "rating": 5,
+          "rating_count": 1,
+          "created_at": "2026-03-09T23:37:27.269Z",
+          "modified_at": "2026-10-09T08:07:10.892Z",
+          "latest_build": {
+            "buildId": "yVUF1ZljSOmAJiCoU",
+            "finishedAt": "2026-10-09T08:07:10.892Z",
+            "buildNumberInt": 400013,
+            "buildNumber": "0.4.13"
+          },
+          "public_runs_30_days": {
+            "ABORTED": 178,
+            "FAILED": 0,
+            "SUCCEEDED": 10235,
+            "TIMED-OUT": 189,
+            "TOTAL": 10602
+          },
+          "is_deprecated": false,
+          "permission_level": "LIMITED_PERMISSIONS",
+          "source": "https://api.apify.com/v2/acts/pro100chok~tiktok-shop-scraper-usage",
+          "warning": "使用量和运行状态是公开平台元数据，既非独立客户案例，也非评论正文成功率；不把 SUCCEEDED 当作非空有效数据。"
+        },
+        "when_to_use": "主选无法验收，或明确需要东南亚站点/商品价格销量上下文时；不要同时接两套。",
+        "countries_documented": [
+          "US",
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH"
+        ],
+        "api": {
+          "method": "POST",
+          "run_url": "https://api.apify.com/v2/actors/pro100chok~tiktok-shop-scraper-usage/runs?token=<APIFY_TOKEN>",
+          "input": {
+            "scrapeType": "reviews",
+            "region": "us",
+            "reviewProductUrls": [
+              "https://www.tiktok.com/shop/pdp/honlink-5x-vitamin-c-skincare-set-with-hyaluronic-acid-niacinamide/1731753318135730868"
+            ],
+            "maxReviews": 20,
+            "reviewsSortBy": "recent",
+            "reviewsFilterType": "all",
+            "reviewsStarRating": 0
+          },
+          "poll": "GET https://api.apify.com/v2/actor-runs/<RUN_ID>?token=<APIFY_TOKEN>",
+          "dataset": "GET https://api.apify.com/v2/datasets/<DEFAULT_DATASET_ID>/items?format=json&clean=true&token=<APIFY_TOKEN>",
+          "integration": "服务端保存 token；异步启动，保存 runId/defaultDatasetId，轮询或 webhook 后拉 Dataset；可导出 CSV/Excel。正式配置应采用安全鉴权方式，避免 token 出现在日志。",
+          "tested": false
+        },
+        "output_unit": "明确 reviews 模式下一条买家评论对应一条 Dataset row；不要用 product 模式内嵌少量评论作为全量评论。",
+        "output_fields": [
+          "reviewId",
+          "storefront",
+          "currency",
+          "productId",
+          "productName",
+          "productUrl",
+          "reviewerName",
+          "rating",
+          "text",
+          "date",
+          "variant",
+          "country",
+          "isVerifiedPurchase",
+          "isIncentivizedReview",
+          "imageUrls",
+          "totalReviews",
+          "query"
+        ],
+        "input_details": {
+          "maxReviews": "默认30；0表示全部可抓取评论",
+          "reviewsSortBy": [
+            "recommended",
+            "recent"
+          ],
+          "reviewsFilterType": [
+            "all",
+            "verified",
+            "with_media"
+          ],
+          "reviewsStarRating": "0全部或1–5单星级"
+        },
+        "pagination": "开发者称自动20条/页；没有已核跨运行 cursor/日期增量参数；所谓全部只指源站可访问评论。",
+        "price": {
+          "currency": "USD",
+          "usd_per_1000_review_rows": 2,
+          "additional_cost": "平台计算 CU 和住宅代理流量另计，即使零结果也可能有计算/代理费。metadata isPPEPlatformUsagePaidByUser=true；README明确代理另付。",
+          "formula": "0.002 × 评论结果行数 + CU费用 + 住宅代理费用 + 适用其他平台用量",
+          "sample_10000_rows_result_fee_only_usd": 20,
+          "sample_100000_rows_result_fee_only_usd": 200,
+          "full_cost_known": false
+        },
+        "issues_checked": {
+          "open": 0,
+          "closed": 6,
+          "source": "https://apify.com/pro100chok/tiktok-shop-scraper-usage/issues",
+          "note": "包括曾有评论模式失败问题已关闭；未逐条核验修复，不能据此保证当前成功。"
+        },
+        "extra_fields": "同 Actor 的 product/search/store 模式可补价格、公开 sold count、SKU/库存、店铺；GMV为估算，不是已审计营收。",
+        "sources": [
+          "https://apify.com/pro100chok/tiktok-shop-scraper-usage",
+          "https://apify.com/pro100chok/tiktok-shop-scraper-usage/issues",
+          "https://api.apify.com/v2/acts/pro100chok~tiktok-shop-scraper-usage",
+          "https://api.apify.com/v2/actor-builds/yVUF1ZljSOmAJiCoU"
+        ]
+      },
+      "rejected_after_deeper_review": [
+        {
+          "actor": "web_wanderer/tiktok-reviews-scraper",
+          "reason": "虽然用户量与价格好看，但官网仍有4个未关闭问题，含零评论仍标成功、TikTok更新后不能工作；公开响应指标约64.47天。本项目不选它做主选或备选。",
+          "maturity": {
+            "total_users": 617,
+            "monthly_active_users": 121,
+            "rating": 5,
+            "rating_count": 2,
+            "created_at": "2026-04-04T15:04:18.256Z",
+            "modified_at": "2026-09-30T19:51:20.693Z",
+            "latest_build": {
+              "buildId": "OyuuRFPVAXcttwJSc",
+              "finishedAt": "2026-09-30T19:51:20.693Z",
+              "buildNumberInt": 300023,
+              "buildNumber": "0.3.23"
+            },
+            "public_runs_30_days": {
+              "ABORTED": 25,
+              "FAILED": 0,
+              "SUCCEEDED": 8603,
+              "TIMED-OUT": 5,
+              "TOTAL": 8633
+            },
+            "is_deprecated": false,
+            "permission_level": "LIMITED_PERMISSIONS",
+            "source": "https://api.apify.com/v2/acts/web_wanderer~tiktok-reviews-scraper",
+            "warning": "使用量和运行状态是公开平台元数据，既非独立客户案例，也非评论正文成功率；不把 SUCCEEDED 当作非空有效数据。"
+          },
+          "current_pricing_usd_per_1000_by_internal_tier": {
+            "FREE": 0.8,
+            "BRONZE": 0.67,
+            "SILVER": 0.53,
+            "GOLD": 0.4
+          },
+          "source": "https://apify.com/web_wanderer/tiktok-reviews-scraper/issues"
+        },
+        {
+          "actor": "lurkapi/tiktok-shop-reviews-scraper",
+          "reason": "US限定、公开说明深度约2000–2400且仅86用户/10月活/0评分，未优于主选；不额外纳入开发候选。",
+          "source": "https://apify.com/lurkapi/tiktok-shop-reviews-scraper"
+        }
+      ]
+    }
+  ],
+  "unified_developer_notes": [
+    "保持一个 Apify provider，Actor 只作为平台配置；不同 Actor 的入参与返回字段仍需薄适配器。",
+    "成本按返回结果行计，不按 HTTP 请求计。100条评论可能只需一次 Actor API 启动，但 Actor 内部分页另有工作量。",
+    "把原始 JSON、runId、buildId、datasetId、站点、采集时间、有效正文数量与账单保存到自己的服务器，避免只依赖 Apify 保留期。",
+    "报价均 USD，未加入汇率、税费；主选/备选都未进行认证商业调用，报价与 schema 是核验事实，成功率/耗时仍待实测。",
+    "首发暂定 US。支持国家是开发者文件声明，不是本项目已经逐国试验。"
+  ],
+  "api_reference": "https://docs.apify.com/api/v2/actors-runs-post",
+  "raw_public_evidence_dir": "research/qa/apify-temutiktok-20261113",
+  "note_on_freshness": "搜索索引 Store 页的使用量与价格有明显缓存差异；数值采用2026-11-13直接读取公开Apify API，字段用对应latest构建；展示页仍保留其原始矛盾作为验收项。"
+}

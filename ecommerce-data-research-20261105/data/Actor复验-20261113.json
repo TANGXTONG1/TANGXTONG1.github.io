@@ -1,0 +1,635 @@
+{
+  "checkedOn": "2026-11-13",
+  "scope": "美国站；保留空结果和超时，不以SUCCEEDED标签直接判定通过",
+  "runs": [
+    {
+      "platformId": "amazon",
+      "test": "amazon",
+      "actor": "junglee/amazon-reviews-scraper",
+      "productId": "B0CWXNS552",
+      "note": "初始样本",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 5,
+      "rows": 5,
+      "validTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "usageUsd": 0.03,
+      "runtimeSeconds": 11.36,
+      "build": "0.1.367",
+      "timeoutSeconds": 180,
+      "input": {
+        "deduplicateRedirectedAsins": true,
+        "filterByRatings": [
+          "allStars"
+        ],
+        "includeGdprSensitive": false,
+        "maxReviews": 5,
+        "productUrls": [
+          {
+            "url": "https://www.amazon.com/dp/B0CWXNS552"
+          }
+        ],
+        "reviewsAlwaysSaveCategoryData": false,
+        "reviewsUseProductVariantFilter": false,
+        "scrapeProductDetails": false,
+        "sort": "helpful"
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "temu",
+      "test": "temu",
+      "actor": "omkar-cloud/temu-reviews-scraper",
+      "productId": "601099537773480",
+      "note": "Actor 默认商品",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 5,
+      "rows": 5,
+      "validTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "usageUsd": 0.01005,
+      "runtimeSeconds": 1.949,
+      "build": "0.0.3",
+      "timeoutSeconds": 600,
+      "input": {
+        "country": "us",
+        "maxResults": 5,
+        "maxReviewsPerProduct": 5,
+        "products": [
+          "https://www.temu.com/goods.html?goods_id=601099537773480"
+        ],
+        "withPhotosOnly": false
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "tiktok_shop",
+      "test": "tiktok",
+      "actor": "vistics/tiktok-shop-product-reviews",
+      "productId": "1731578642912612516",
+      "note": "Actor 默认商品",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 5,
+      "rows": 5,
+      "validTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "usageUsd": 0.02,
+      "runtimeSeconds": 4.879,
+      "build": "0.0.35",
+      "timeoutSeconds": 300,
+      "input": {
+        "maxReviews": 5,
+        "region": "US",
+        "startUrls": [
+          "https://www.tiktok.com/shop/pdp/cat-nail-clipper-by-potaroma-adjustable-sizes-built-in-file-safe-for-kittens-cats/1731578642912612516"
+        ]
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "ebay",
+      "test": "ebay",
+      "actor": "apt_marble/ebay-product-reviews-scraper",
+      "productId": "22054478105",
+      "note": "Actor 默认商品",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 5,
+      "rows": 5,
+      "validTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "usageUsd": 0.005,
+      "runtimeSeconds": 4.17,
+      "build": "0.0.2",
+      "timeoutSeconds": 300,
+      "input": {
+        "includeProductSummary": false,
+        "marketplace": "US",
+        "maxConcurrency": 1,
+        "maxReviewsPerProduct": 5,
+        "products": [
+          "https://www.ebay.com/p/22054478105"
+        ],
+        "sort": "newest"
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "walmart",
+      "test": "walmart",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "productId": "771934678",
+      "note": "初始样本",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 5,
+      "rows": 5,
+      "validTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "usageUsd": 0.0251,
+      "runtimeSeconds": 9.034,
+      "build": "0.0.84",
+      "timeoutSeconds": 180,
+      "input": {
+        "maxProductsPerStartUrl": 1,
+        "maxReviewsPerProduct": 5,
+        "reviewsSortType": "submission-desc",
+        "startUrls": [
+          {
+            "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+          }
+        ]
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "tiktok_shop",
+      "test": "tiktok-hydrojug",
+      "actor": "vistics/tiktok-shop-product-reviews",
+      "productId": "1729553368065741562",
+      "note": "官方商品页选取的新商品，翻到第2页",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 15,
+      "rows": 15,
+      "validTexts": 15,
+      "uniqueReviewIds": 15,
+      "productMatches": 15,
+      "usageUsd": 0.04,
+      "runtimeSeconds": 5.069,
+      "build": "0.0.35",
+      "timeoutSeconds": 300,
+      "input": {
+        "maxReviews": 15,
+        "region": "US",
+        "startUrls": [
+          "https://shop.tiktok.com/us/pdp/hydrojug-traveler-leak-proof-insulated-tumbler-with-flip-straw/1729553368065741562"
+        ]
+      },
+      "failure": "",
+      "pagesVerified": 2
+    },
+    {
+      "platformId": "ebay",
+      "test": "ebay-switch",
+      "actor": "apt_marble/ebay-product-reviews-scraper",
+      "productId": "23024812516",
+      "note": "官方商品页选取的新目录商品",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 15,
+      "rows": 15,
+      "validTexts": 15,
+      "uniqueReviewIds": 15,
+      "productMatches": 15,
+      "usageUsd": 0.015,
+      "runtimeSeconds": 4.533,
+      "build": "0.0.2",
+      "timeoutSeconds": 300,
+      "input": {
+        "includeProductSummary": false,
+        "marketplace": "US",
+        "maxConcurrency": 1,
+        "maxReviewsPerProduct": 15,
+        "products": [
+          "https://www.ebay.com/p/23024812516"
+        ],
+        "sort": "newest"
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "amazon",
+      "test": "amazon-cerave",
+      "actor": "junglee/amazon-reviews-scraper",
+      "productId": "B08CQDF382",
+      "note": "官方商品页选取的新商品",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 5,
+      "rows": 5,
+      "validTexts": 5,
+      "uniqueReviewIds": 5,
+      "productMatches": 5,
+      "usageUsd": 0.03,
+      "runtimeSeconds": 15.583,
+      "build": "0.1.367",
+      "timeoutSeconds": 180,
+      "input": {
+        "deduplicateRedirectedAsins": true,
+        "filterByRatings": [
+          "allStars"
+        ],
+        "includeGdprSensitive": false,
+        "maxReviews": 5,
+        "productUrls": [
+          {
+            "url": "https://www.amazon.com/dp/B08CQDF382"
+          }
+        ],
+        "reviewsAlwaysSaveCategoryData": false,
+        "reviewsUseProductVariantFilter": false,
+        "scrapeProductDetails": false,
+        "sort": "helpful"
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "walmart",
+      "test": "walmart-cerave",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "productId": "627154369",
+      "note": "新商品短链接，触发搜索后空结果",
+      "status": "SUCCEEDED",
+      "passed": false,
+      "requested": 15,
+      "rows": 0,
+      "validTexts": 0,
+      "uniqueReviewIds": 0,
+      "productMatches": 0,
+      "usageUsd": 0.0001,
+      "runtimeSeconds": 44.541,
+      "build": "0.0.84",
+      "timeoutSeconds": 180,
+      "input": {
+        "maxProductsPerStartUrl": 1,
+        "maxReviewsPerProduct": 15,
+        "reviewsSortType": "submission-desc",
+        "startUrls": [
+          {
+            "url": "https://www.walmart.com/ip/627154369"
+          }
+        ]
+      },
+      "failure": "SUCCEEDED但0条：短URL进入商品搜索，搜索连续验证码失败；完整商品链接重试成功。",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "walmart",
+      "test": "walmart-cerave-full",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "productId": "627154369",
+      "note": "同商品完整规范链接重试",
+      "status": "SUCCEEDED",
+      "passed": true,
+      "requested": 15,
+      "rows": 15,
+      "validTexts": 15,
+      "uniqueReviewIds": 15,
+      "productMatches": 15,
+      "usageUsd": 0.0751,
+      "runtimeSeconds": 6.199,
+      "build": "0.0.84",
+      "timeoutSeconds": 180,
+      "input": {
+        "maxProductsPerStartUrl": 1,
+        "maxReviewsPerProduct": 15,
+        "reviewsSortType": "submission-desc",
+        "startUrls": [
+          {
+            "url": "https://www.walmart.com/ip/CeraVe-Hydrating-Cream-to-Foam-Cleanser-Makeup-Remover-and-Face-Wash-With-Hyaluronic-Acid-Fragrance-Free-19-Ounce/627154369"
+          }
+        ]
+      },
+      "failure": "",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "temu",
+      "test": "temu-containers",
+      "actor": "omkar-cloud/temu-reviews-scraper",
+      "productId": "601099684111165",
+      "note": "官方索引商品：玻璃饭盒；当前在售状态未独立确认",
+      "status": "TIMED-OUT",
+      "passed": false,
+      "requested": 15,
+      "rows": 0,
+      "validTexts": 0,
+      "uniqueReviewIds": 0,
+      "productMatches": 0,
+      "usageUsd": 5e-05,
+      "runtimeSeconds": 599.852,
+      "build": "0.0.3",
+      "timeoutSeconds": 600,
+      "input": {
+        "country": "us",
+        "maxResults": 15,
+        "maxReviewsPerProduct": 15,
+        "products": [
+          "https://www.temu.com/20-pack-22oz-glass-meal-prep-containers-10-containers-10-lids-airtight-food-storage-containers-with-lids-pantry-kitchen-storage-containers-for-lunch-food-storage-glass-lunch-bento-boxes-g-601099684111165.html"
+        ],
+        "withPhotosOnly": false
+      },
+      "failure": "达到超时上限仍0条；日志只有启动信息，不能确定是商品不可用还是上游故障。",
+      "pagesVerified": null
+    },
+    {
+      "platformId": "temu",
+      "test": "temu-powerstrip",
+      "actor": "omkar-cloud/temu-reviews-scraper",
+      "productId": "601100577974046",
+      "note": "官方索引商品：插排；goods.html 标准URL",
+      "status": "TIMED-OUT",
+      "passed": false,
+      "requested": 15,
+      "rows": 0,
+      "validTexts": 0,
+      "uniqueReviewIds": 0,
+      "productMatches": 0,
+      "usageUsd": 5e-05,
+      "runtimeSeconds": 179.869,
+      "build": "0.0.3",
+      "timeoutSeconds": 180,
+      "input": {
+        "country": "us",
+        "maxResults": 15,
+        "maxReviewsPerProduct": 15,
+        "products": [
+          "https://www.temu.com/goods.html?goods_id=601100577974046"
+        ],
+        "withPhotosOnly": false
+      },
+      "failure": "达到超时上限仍0条；日志只有启动信息，不能确定是商品不可用还是上游故障。",
+      "pagesVerified": null
+    }
+  ],
+  "platforms": [
+    {
+      "id": "amazon",
+      "runs": 2,
+      "passed": 2,
+      "distinctProducts": 2,
+      "validTexts": 10,
+      "usageUsd": 0.06,
+      "maxPagesVerified": 0
+    },
+    {
+      "id": "temu",
+      "runs": 3,
+      "passed": 1,
+      "distinctProducts": 3,
+      "validTexts": 5,
+      "usageUsd": 0.01015,
+      "maxPagesVerified": 0
+    },
+    {
+      "id": "tiktok_shop",
+      "runs": 2,
+      "passed": 2,
+      "distinctProducts": 2,
+      "validTexts": 20,
+      "usageUsd": 0.06,
+      "maxPagesVerified": 2
+    },
+    {
+      "id": "ebay",
+      "runs": 2,
+      "passed": 2,
+      "distinctProducts": 2,
+      "validTexts": 20,
+      "usageUsd": 0.02,
+      "maxPagesVerified": 0
+    },
+    {
+      "id": "walmart",
+      "runs": 3,
+      "passed": 2,
+      "distinctProducts": 2,
+      "validTexts": 20,
+      "usageUsd": 0.1003,
+      "maxPagesVerified": 0
+    }
+  ],
+  "totals": {
+    "runs": 12,
+    "passed": 9,
+    "validTexts": 75,
+    "usageUsd": 0.25045
+  },
+  "conclusions": {
+    "amazon": "保留主选；2个商品均通过，Free每次最多5条，商品详情选项尚未验成。",
+    "temu": "原选omkar不通过跨商品复验；cliqtomedia同两商品各得4条，限详情和评论预览；批量评论暂缓。",
+    "tiktok_shop": "保留主选；新商品15条跨2页通过，product_id有值而productId为空，映射须修正。",
+    "ebay": "限商品目录场景接入；2商品通过，不能当作单店铺评价；采用度低。",
+    "walmart": "保留主选；2商品成功，但必须完整商品URL，短链接空结果仍计为失败。"
+  },
+  "apiBoundary": "本轮均由Console启动，随后通过正式Run、Dataset、INPUT API读取真实响应；本地POST启动尚未验证。",
+  "statisticalBoundary": "这是小样本回归结果，不是生产成功率。不同商品、时段、国家及深分页仍可能不同。",
+  "redaction": "未公开账号、密钥、运行/存储ID、作者信息、头像或完整评论原文。",
+  "temuFallback": {
+    "actor": "cliqtomedia/temu-scraper",
+    "url": "https://apify.com/cliqtomedia/temu-scraper",
+    "decision": "详情与公开评论预览备选；不作为批量评论主选",
+    "trials": [
+      {
+        "test": "temu-alt-powerstrip",
+        "actor": "cliqtomedia/temu-scraper",
+        "productId": "601100577974046",
+        "status": "SUCCEEDED",
+        "productRows": 1,
+        "reviewPreviews": 4,
+        "validTexts": 4,
+        "uniqueReviewIds": 4,
+        "usageUsd": 0.01625,
+        "runtimeSeconds": 6.206,
+        "build": "0.1.70",
+        "input": {
+          "excludeAds": false,
+          "excludeAdultProducts": false,
+          "maxItems": 1,
+          "onlyNew": false,
+          "resetState": false,
+          "startUrls": [
+            "https://www.temu.com/goods.html?goods_id=601100577974046"
+          ],
+          "country": "US",
+          "mode": "auto",
+          "dataLevel": "auto",
+          "stateName": "default"
+        },
+        "fields": [
+          "rowType",
+          "status",
+          "detailLevel",
+          "goodsId",
+          "title",
+          "price",
+          "priceText",
+          "currency",
+          "originalPrice",
+          "discountPercent",
+          "minPrice",
+          "maxPrice",
+          "sales",
+          "salesText",
+          "salesIsLowerBound",
+          "rating",
+          "reviewCount",
+          "url",
+          "images",
+          "videoUrl",
+          "skuId",
+          "sellerId",
+          "sellerName",
+          "sellerUrl",
+          "categoryId",
+          "categoryPath",
+          "description",
+          "specifications",
+          "skus",
+          "reviews",
+          "inStock",
+          "shippingText",
+          "returnPolicy",
+          "isAdultProduct",
+          "isAd",
+          "tags",
+          "country",
+          "rank",
+          "source",
+          "sourceUrl",
+          "fetchedAt",
+          "changeType",
+          "changedFields"
+        ],
+        "reviewFields": [
+          "reviewId",
+          "rating",
+          "text",
+          "reviewedAt",
+          "images",
+          "videoUrls"
+        ],
+        "billing": {
+          "apify-actor-start": 1,
+          "catalog-page": 0,
+          "product": 0,
+          "product-details": 1
+        }
+      },
+      {
+        "test": "temu-alt-containers",
+        "actor": "cliqtomedia/temu-scraper",
+        "productId": "601099684111165",
+        "status": "SUCCEEDED",
+        "productRows": 1,
+        "reviewPreviews": 4,
+        "validTexts": 4,
+        "uniqueReviewIds": 4,
+        "usageUsd": 0.01625,
+        "runtimeSeconds": 6.805,
+        "build": "0.1.70",
+        "input": {
+          "excludeAds": false,
+          "excludeAdultProducts": false,
+          "maxItems": 1,
+          "onlyNew": false,
+          "resetState": false,
+          "startUrls": [
+            "https://www.temu.com/goods.html?goods_id=601099684111165"
+          ],
+          "country": "US",
+          "mode": "auto",
+          "dataLevel": "auto",
+          "stateName": "default"
+        },
+        "fields": [
+          "rowType",
+          "status",
+          "detailLevel",
+          "goodsId",
+          "title",
+          "price",
+          "priceText",
+          "currency",
+          "originalPrice",
+          "discountPercent",
+          "minPrice",
+          "maxPrice",
+          "sales",
+          "salesText",
+          "salesIsLowerBound",
+          "rating",
+          "reviewCount",
+          "url",
+          "images",
+          "videoUrl",
+          "skuId",
+          "sellerId",
+          "sellerName",
+          "sellerUrl",
+          "categoryId",
+          "categoryPath",
+          "description",
+          "specifications",
+          "skus",
+          "reviews",
+          "inStock",
+          "shippingText",
+          "returnPolicy",
+          "isAdultProduct",
+          "isAd",
+          "tags",
+          "country",
+          "rank",
+          "source",
+          "sourceUrl",
+          "fetchedAt",
+          "changeType",
+          "changedFields"
+        ],
+        "reviewFields": [
+          "reviewId",
+          "rating",
+          "text",
+          "reviewedAt",
+          "images",
+          "videoUrls"
+        ],
+        "billing": {
+          "apify-actor-start": 1,
+          "catalog-page": 0,
+          "product": 0,
+          "product-details": 1
+        }
+      }
+    ],
+    "limitation": "两个商品各4条；无评论分页或数量参数，不能推算完整历史。每Dataset行是一个商品，评论嵌在reviews数组。",
+    "adoption": {
+      "users": 7,
+      "monthlyUsers": 2,
+      "reviews": 0,
+      "checkedOn": "2026-11-13"
+    },
+    "pricePerProductDetailUsd": {
+      "Free": 0.0162,
+      "Starter": 0.01458,
+      "Scale": 0.01296,
+      "Business": 0.01134
+    },
+    "startUsd": 5e-05,
+    "billingNote": "按商品详情页计费，不是按评论条数；成功抓到详情但过滤未输出仍可收详情事件费。最低每次费用上限设置$0.05并非最低消费。",
+    "source": "https://apify.com/cliqtomedia/temu-scraper/pricing"
+  },
+  "allTestTotals": {
+    "runs": 14,
+    "validTexts": 83,
+    "usageUsd": 0.28295,
+    "note": "含12次原选Actor运行和2次Temu预览备选；83条为返回正文数，非累计新增唯一评论总量。"
+  }
+}

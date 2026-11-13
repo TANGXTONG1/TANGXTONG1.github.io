@@ -1,0 +1,317 @@
+{
+  "checked_on": "2026-11-05",
+  "counts": {
+    "dictionary_records": 49,
+    "catalog_records": 49,
+    "review_table_rows": 49,
+    "browser_records": 34,
+    "browser_attempted": 34,
+    "browser_clear_result": 31,
+    "browser_incomplete": 3,
+    "browser_not_tested": 15,
+    "public_web_preview": 2,
+    "public_http_json_samples": 1,
+    "authenticated_business_api_success": 0,
+    "supplier_excel_csv_exports": 0,
+    "registrations": 0
+  },
+  "type_counts": {
+    "competitive": 28,
+    "self": 14,
+    "tool": 10,
+    "supplement": 9,
+    "affiliate": 3
+  },
+  "type_definitions": {
+    "self": "自营授权经营数据/系统集成用途",
+    "competitive": "外部商品、竞品或市场研究用途",
+    "affiliate": "联盟推广、选品、优惠或CPS用途",
+    "tool": "数据连接、编排、采集或分析工具",
+    "supplement": "流量、媒介、线下、选址或数据集等补充研究用途"
+  },
+  "type_scope": "分类只描述已有资料中的用途定位，不新增 API 权限、字段或平台覆盖承诺；允许一条多类。",
+  "all_original_dictionary_fields_preserved": true,
+  "all_ui_records_preserved": true,
+  "original_files_modified": false,
+  "unmatched_ui_names": [],
+  "unmatched_dictionary_markdown_names": [],
+  "unmatched_review_table_names": [],
+  "explicit_alias_mapping": [
+    {
+      "catalog_name": "EveryInfra/万有引擎",
+      "ui_name": "EveryInfra",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "预策",
+      "ui_name": "预策科技",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "快麦",
+      "ui_name": "快麦 ERP",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "魔镜洞察 / MMI / 分析+ / 价控",
+      "ui_name": "魔镜洞察",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "Nint 任拓 / 情报通 / 倾听",
+      "ui_name": "Nint 任拓",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "数说故事 / 数说聚合 / 应用市场",
+      "ui_name": "数说故事",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "蝉妈妈 / 蝉妈妈开放平台",
+      "ui_name": "蝉妈妈",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "新榜有数 / 新抖 / 新快 / 新红 / 新视",
+      "ui_name": "新榜",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "电霸 / 店霸（拼多多版）",
+      "ui_name": "电霸 / 店霸",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "考古加 / 考古加创意",
+      "ui_name": "考古加",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "QuestMobile / GROWTH / TRUTH",
+      "ui_name": "QuestMobile",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "百观科技 / BigOne Lab",
+      "ui_name": "百观科技",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "马上赢 / 品牌 CT",
+      "ui_name": "马上赢",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "DataEye / ADX",
+      "ui_name": "DataEye",
+      "method": "explicit_alias"
+    }
+  ],
+  "all_ui_mapping": [
+    {
+      "catalog_name": "Just One API",
+      "ui_name": "Just One API",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "TMAPI",
+      "ui_name": "TMAPI",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "Qovia",
+      "ui_name": "Qovia",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "万邦 Onebound",
+      "ui_name": "万邦 Onebound",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "竹简数据",
+      "ui_name": "竹简数据",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "EveryInfra/万有引擎",
+      "ui_name": "EveryInfra",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "九数云",
+      "ui_name": "九数云",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "预策",
+      "ui_name": "预策科技",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "轻易云",
+      "ui_name": "轻易云",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "集简云",
+      "ui_name": "集简云",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "聚水潭",
+      "ui_name": "聚水潭",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "旺店通",
+      "ui_name": "旺店通",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "管易云",
+      "ui_name": "管易云",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "吉客云",
+      "ui_name": "吉客云",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "网店管家",
+      "ui_name": "网店管家",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "快麦",
+      "ui_name": "快麦 ERP",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "魔镜洞察 / MMI / 分析+ / 价控",
+      "ui_name": "魔镜洞察",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "Nint 任拓 / 情报通 / 倾听",
+      "ui_name": "Nint 任拓",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "数说故事 / 数说聚合 / 应用市场",
+      "ui_name": "数说故事",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "蝉妈妈 / 蝉妈妈开放平台",
+      "ui_name": "蝉妈妈",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "新榜有数 / 新抖 / 新快 / 新红 / 新视",
+      "ui_name": "新榜",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "飞瓜数据",
+      "ui_name": "飞瓜数据",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "千瓜数据",
+      "ui_name": "千瓜数据",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "灰豚数据",
+      "ui_name": "灰豚数据",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "久谦中台",
+      "ui_name": "久谦中台",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "电霸 / 店霸（拼多多版）",
+      "ui_name": "电霸 / 店霸",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "考古加 / 考古加创意",
+      "ui_name": "考古加",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "达多多",
+      "ui_name": "达多多",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "QuestMobile / GROWTH / TRUTH",
+      "ui_name": "QuestMobile",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "窄门餐眼",
+      "ui_name": "窄门餐眼",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "欧特欧 / 商指针",
+      "ui_name": "欧特欧 / 商指针",
+      "method": "exact"
+    },
+    {
+      "catalog_name": "百观科技 / BigOne Lab",
+      "ui_name": "百观科技",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "马上赢 / 品牌 CT",
+      "ui_name": "马上赢",
+      "method": "explicit_alias"
+    },
+    {
+      "catalog_name": "DataEye / ADX",
+      "ui_name": "DataEye",
+      "method": "explicit_alias"
+    }
+  ],
+  "browser_not_tested_names": [
+    "艾瑞 / 易观千帆（两家公司）",
+    "艺恩数据（当前 AI 数据集产品）",
+    "餐道",
+    "鼎点科技",
+    "极致了/大家来数据",
+    "富泰科",
+    "云飞API",
+    "无限聚核",
+    "值得买消费信息开放平台",
+    "大淘客",
+    "好单库",
+    "折淘客/折京客",
+    "慢慢买",
+    "八爪鱼",
+    "云听CEM"
+  ],
+  "browser_incomplete_names": [
+    "灰豚数据",
+    "电霸 / 店霸（拼多多版）",
+    "DataEye / ADX"
+  ],
+  "input_sha256": {
+    "证据附录/平台字段字典.json": "a8321bc59ef3ca19c8a03e3d8d612560f1d639a3b02e18233afcad75d14cd31d",
+    "证据附录/平台字段字典.md": "b0c084e8211dea57e6a949aa49acf28c473335c1c565e52af425ea57944e6ffc",
+    "证据附录/自营集成详细字段字典.md": "d9c4112a77e8a4cbda0336353493c07a3757f7fc3f566032b08e2d603261ad82",
+    "浏览器试用记录.json": "8ca3178d91dcfeeda30caca0dc85a5b752975604d19d14438e5097ffab9c2272",
+    "浏览器试用核验.md": "6edc6a91c0de9d8d7470c3aebd652d13541aea6c20a1b349a02e16899e5b5675",
+    "样本/好单库-公开活动商品响应-验证记录.json": "7c2f435581072fc35e649d493e57d273ad0487b3f4af1481927263d391ed656c",
+    "样本/好单库-公开活动商品响应-2026-11-05.json": "b44d346b1d14c615c574dff2ce8374a3266af20b493193953c723990d197ba82",
+    "样本/好单库-公开活动响应样本说明.md": "b1cf70c5c1c5c21db62245db0e7eb36c4b55c357a164618b29b20fdb9c20c703"
+  },
+  "catalog_bytes": 423329,
+  "catalog_sha256": "91a3cb026628b3cd0269ad4d537df6f3585a162248ceae900bbd1adfbd48e40f"
+}

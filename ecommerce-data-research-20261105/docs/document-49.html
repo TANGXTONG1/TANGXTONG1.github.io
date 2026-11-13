@@ -1,0 +1,1775 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>国内电商数据：以统一 API 交付为主的选型</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E7%BB%9F%E4%B8%80API%E5%A4%8D%E6%A0%B8/%E7%BB%9F%E4%B8%80API%E4%BA%A4%E4%BB%98%E4%BC%98%E5%85%88%E6%B8%85%E5%8D%95-2026-11-05.md" download>下载原始 Markdown</a></header><article><h1 id="api">国内电商数据：以统一 API 交付为主的选型</h1>
+<p>采购目标是一家主供应商提供跨平台统一 API。优先评估数说、魔镜、Nint 的企业交付；尚未确认任何一家同时满足淘京拼美全渠道、销量价格评价营销全类及自营后台数据。</p>
+<p>本轮收紧了交付条件；原49组资料与信誉判断保留。重点深查18家，主评估仅3家。供应商有影响力、声称支持多平台、提供API，分别是三种证据，不能互相替代。</p>
+<h2 id="_1">主评估名单</h2>
+<table>
+<thead>
+<tr>
+<th>候选</th>
+<th>为什么保留</th>
+<th>API证据</th>
+<th>关键缺口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数说故事 / 数说聚合 / 应用市场</td>
+<td>多渠道电商、口碑与营销产品覆盖较广，有商业 API 和定制接口说明。</td>
+<td>企业定制 API；标准鉴权、端点和字段包尚未取得。</td>
+<td>拼多多有官方产品覆盖说明；美团只有 UAT 线索。自有数据汇聚不等于现成商家连接器。</td>
+</tr>
+<tr>
+<td>魔镜洞察 / MMI / 分析+ / 价控</td>
+<td>三家中公开 API 文档最具体：同一 APIKEY、plat 渠道参数、销量与价格返回字段。</td>
+<td>现有 REST API + 产品订阅；旧文档须用当前样本复验。</td>
+<td>淘/京销量价格较明确；拼/美只见部分旧枚举。评价原文、广告后台及统一字段包仍有缺口。</td>
+</tr>
+<tr>
+<td>Nint 任拓 / 情报通 / 倾听</td>
+<td>销量、价格、评价、促销产品较齐，支持跨平台类目对齐与库表建设；本轮补证企业 API 服务。</td>
+<td>官网明确 API 对接服务；统一鉴权、技术文档和跨产品权限待核。</td>
+<td>淘/京/抖产品较清楚，拼多多、美团未证实；促销洞察不等于广告账户花费。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">统一交付的验收要求</h2>
+<ul>
+<li><strong>统一交付责任</strong>：由一家主供应商负责上游采集、连接器、字段映射与维护；我们对接其 API 服务。允许有商品、销量、评价、营销多个端点，不要求所有功能挤在一个 URL。</li>
+<li><strong>统一数据模型</strong>：要求同一商品/品牌跨渠道映射、金额与销量口径、时间粒度、缺失值定义。一个 Key 或一个入口尚不能证明这些已经统一。</li>
+<li><strong>完整覆盖矩阵</strong>：逐一列淘宝/天猫、京东、拼多多、美团外卖/闪购/到店及抖音的销量、价格、评价原文、营销能力；把现成接口、项目定制、估算和不支持分开。</li>
+<li><strong>自营与竞品分开</strong>：自营后台订单和广告账户仍需逐源授权；供应商封装连接与维护可减少开发对接。竞品监测不能当作对方真实订单或广告账单。</li>
+<li><strong>同一 API 下的验收样本</strong>：要求多渠道同一品牌的实际 JSON、字段字典、增量与历史查询、分页/限额、更新时间和失败处理；本轮尚未取得这样的完整交付样本。</li>
+</ul>
+<h2 id="_3">建议要求供应商交付的字段</h2>
+<p>以下是需求/验收字段建议，不是宣称任何供应商已经支持的接口定义。实际已核字段仍见原49组字段字典和下方文档。</p>
+<table>
+<thead>
+<tr>
+<th>数据类</th>
+<th>建议字段</th>
+<th>必须说明的口径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共通字段</td>
+<td>platform, item_id / sku_id, shop_id, brand_id / category_id, observed_at, period_start / period_end, source_type / is_estimated</td>
+<td>跨平台身份、时间与观测/估算口径；供应商负责映射。</td>
+</tr>
+<tr>
+<td>销量</td>
+<td>sales_units, sales_amount, sales_period, sales_basis, refund_basis</td>
+<td>区分累计/近30日/日销量、前台展示/估算/授权真实订单；不同口径不可直接相加。</td>
+</tr>
+<tr>
+<td>商品与价格</td>
+<td>title, sku_attributes, list_price, sale_price, coupon / promotion, final_price_conditions, currency / unit, stock</td>
+<td>到手价需保留券、会员和凑单条件；分/元与币种统一。</td>
+</tr>
+<tr>
+<td>用户评价</td>
+<td>review_id, content, rating, reviewed_at, sku, followup, images, shop_reply</td>
+<td>必须确认可交付评价原文；情绪分数、评价数不能代替原文。</td>
+</tr>
+<tr>
+<td>营销：公开内容与促销</td>
+<td>campaign / promotion, creator_id, content_id, engagement, live_metrics, estimated_commerce_metrics</td>
+<td>包括促销、达人、内容、直播；估算指标需标注。</td>
+</tr>
+<tr>
+<td>营销：自营广告后台</td>
+<td>ad_account_id, campaign_id, impressions, clicks, spend, attributed_orders, ROAS, attribution_window</td>
+<td>仅经授权账号；须确认广告平台与归因口径，不承诺竞品后台真实值。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">本轮修正</h2>
+<ul>
+<li><strong>Nint</strong>：补证官网提供企业 API 服务；仍未获得公开标准端点/schema，不等于全产品统一 API 已验收。</li>
+<li><strong>九数云</strong>：新增仪表板组件分页 JSON 文档（社区级协助），另有正式分析表导出；需建模、授权并确认生产支持。</li>
+<li><strong>飞瓜 / 欧特欧</strong>：在 API 优先条件下退出主评估，保留原档案与专项用途。</li>
+<li><strong>聚水潭 / 餐道 / 蝉妈妈</strong>：可补局部需求，不能单独满足统一跨淘京拼美、多大类的数据交付。</li>
+</ul>
+<h2 id="_5">技术对照：统一入口并不自动统一字段</h2>
+<p>EveryInfra 当前公开能力目录使用 platform/action 选择功能，但业务字段仍不同：淘宝 id、京东 item_id、抖音 product_id；金额单位与销量周期也不同。其信誉仍待补证，且目录未列拼多多、美团，不能因技术入口整齐升为主供应商。目录原始响应和验证记录已保存；没有新增鉴权业务 API 成功记录。</p>
+<h2 id="18">18 家逐项复核</h2>
+<h3 id="mmi">魔镜洞察 / MMI / 分析+ / 价控</h3>
+<p>核心API候选：接口证据最具体，覆盖仍不完整</p>
+<p>同一供应商的多平台参数化 REST API；市场情报与价控有公开文档，但多个产品域，不是已证四平台全字段统一 schema。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>MMI 使用 MOOJING-APIKEY，接口以 plat 指定渠道，含商品/店铺/类目销售和价格；与价控是不同产品接口。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>2025白皮书说明淘天、京东、抖音整合以及销售、评论产品联动；不能把产品打通等同API全集交付。 <a href="https://cdn.mktindex.com/pdf/【魔镜洞察】2025年消费新潜力白皮书_汇总.pdf" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>旧正式API含淘天商品/店铺销售与价格。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>旧正式API含京东销售与价控。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>商务待核</td>
+<td>只在部分市场类目/品牌接口旧枚举出现，不可套到全部商品接口。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>商务待核</td>
+<td>部分旧市场接口枚举出现；外卖/闪购/到店子业务未明确。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>当前产品材料有整合说明，公开MMI所核端点未覆盖抖音业务schema。 <a href="https://mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>item/shop趋势含 sold、sale；是第三方监测口径，非自营真实订单流水。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>price、SKU价控、促销价/券/库存等，平台按各端点限定。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>商务待核</td>
+<td>公开API仅确认评论计数/好中差评趋势；逐条原文API未核。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>商务待核</td>
+<td>可分析促销/价格，曝光、点击、广告花费和ROAS未证统一API。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>可监测自有品牌；未证授权订单/广告后台数据的统一同步。 <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>示例日期旧，需要当前端点与当月真实响应。</li>
+<li>没有确认一个合同/API权限同时含销量、SKU价控、电商评价原文、社媒、广告。</li>
+<li>尚无实调；拼多多/美团不能标全覆盖。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>以一个品牌跨淘天/京东/抖音及拼多多/美团分别给真实JSON；确认一个交付合同、统一账号和跨平台商品映射。</li>
+</ul>
+<h3 id="_6">数说故事 / 数说聚合 / 应用市场</h3>
+<p>优先询证：单供应商覆盖面和统一交付定位最贴近需求</p>
+<p>企业多源数据汇聚 + 商业API传输/定制；有统一平台定位，但尚无本需求统一API地址、鉴权或逐渠道schema。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>数说聚合官方产品页说明公开与自有数据统一接入处理，并提供50+商业API数据传输接口。 <a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>官方应用市场说明应用支持接口接入及定制，共用PaaS平台；这证明交付模式，不证明每个所需数据集均可对外输出。 <a href="https://www.datastory.com.cn/details/782?from=hotspot" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>官方电商产品文章明确列出淘天、京东、抖音、快手、拼多多等，并描述按商品/店铺URL采集。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>数说自有UAT站的渠道产品页题名含美团/大众点评/京东到家，正文说明门店、单品销量评估及评价；仅作补充线索。 <a href="https://uat-hermes.datastory.com.cn/channel" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>官网电商覆盖明确，实际API端点及字段待商务。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>官网电商覆盖明确，实际API端点及字段待商务。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>商务待核</td>
+<td>官网电商文章明确列出拼多多；未取得API schema。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>商务待核</td>
+<td>只有自有UAT渠道页线索，生产API与外卖/闪购/团购范围未确认。 <a href="https://uat-hermes.datastory.com.cn/channel" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>官网电商及社媒产品覆盖；内容与电商各数据集交付范围待核。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>电商/渠道产品有销售监测及销量评估，精度和API字段未公开。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://uat-hermes.datastory.com.cn/channel" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>商务待核</td>
+<td>电商商品采集产品有价格/促销相关分析，SKU及到手价字段需样例确认。 <a href="https://www.datastory.com.cn/details/810.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>商务待核</td>
+<td>聚合产品有原文及评论分析；逐条商品购后评价API、各商城范围待核。 <a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>商务待核</td>
+<td>声量/情绪/内容/账号监测与营销洞察范围明确；广告后台花费并未证明。 <a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>商务待核</td>
+<td>明确支持自有数据汇聚，但上游授权与订单/广告连接器清单未公开。 <a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>本轮产品主页面直读出现403/异常内容，搜索索引仍有正式产品描述；不据此判断整项服务不可用。</li>
+<li>UAT域名不是已验收的生产服务，不据它承诺美团可交付。</li>
+<li>暂无覆盖×字段矩阵及标准响应，50+API数量不等于全部目标数据均可获取。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>让厂商承诺一个企业项目/统一API出库，书面逐项勾选淘京拼美的销量/价格/评价/营销，并交同一套鉴权下的样例。</li>
+</ul>
+<h3 id="nint">Nint 任拓 / 情报通 / 倾听</h3>
+<p>优先询证：企业API服务已补证，电商大类较齐</p>
+<p>官方明确企业API对接服务 + 定制库表，跨平台数据治理产品矩阵；标准公用API端点/schema未公开。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>2026-07-02官方产品介绍明确SaaS、报告、定制系统、API对接四种服务；应更新前轮“API服务未核”的判断。 <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>研究咨询页说明跨平台品类对齐、SKU属性清洗、统一计量及专项库表建设。 <a href="https://www.nint.com/research" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>官网有阿里入口与情报通产品；须确认其企业API所含字段。 <a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>官网有京东入口；企业API服务存在但渠道字段矩阵未公开。 <a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>未找到足够明确的拼多多可交付API证据；提及平台的行业文章不计。 <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>表单本地生活/外卖选项不证明美团接口。 <a href="https://www.nint.com/research" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>官网抖音入口明确；API字段与内容/电商范围待核。 <a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>产品有品类/品牌/店铺/单品市场监测，API形式已明确但正式schema未公开。 <a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>商务待核</td>
+<td>渠道治理及促销产品支持价格库存、券/赠品/最低到手价；API交付字段需确认。 <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>商务待核</td>
+<td>倾听产品支持消费者评价与竞品对标；原文、追评、图片是否出库待核。 <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>商务待核</td>
+<td>有竞品促销策略分析；不等于竞品广告账户花费/曝光点击。 <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>自有品牌可做市场监测；未证授权后台订单与广告原始流水的统一连接器。 <a href="https://www.nint.com/case/267sjfxdrj" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>API服务声明是供应商产品说明，不是技术验收；不能推断所有产品共用一套接口和权限。</li>
+<li>拼多多、美团为明显缺口。</li>
+<li>原前轮“公开标准API未核”仍成立；仅“是否提供企业API服务”得到补证。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>重点索取情报通+倾听+价格/促销统一API包，单一鉴权/契约/字段标准；先拿淘天京东抖音样例，再问拼多多美团。</li>
+</ul>
+<h3 id="questmobile-growth-truth">QuestMobile / GROWTH / TRUTH</h3>
+<p>营销流量补充，不能作本需求唯一供应商</p>
+<p>GROWTH数据中台明确一站式整合TRUTH指标、标准API与多格式批量输出。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>官方明确全部标准产品已计算指标可统一对接和批量同步，API交付证据强。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>应用/小程序流量及用户层覆盖按合同，非此商城商品数据。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>应用/小程序流量及用户层覆盖按合同，非此商城商品数据。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>商务待核</td>
+<td>应用/小程序流量及用户层覆盖按合同，非此商城商品数据。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>商务待核</td>
+<td>应用/小程序流量及用户层覆盖按合同，非此商城商品数据。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>应用/小程序流量及用户层覆盖按合同，非此商城商品数据。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>未证实</td>
+<td>未核SKU销量或销售额接口。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>未证实</td>
+<td>未核商品价格接口。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>未核购后评价原文接口。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>已核文档</td>
+<td>流量/用户画像/渠道转化/跨媒体营销指标可由标准API整合；具体指标权限另核。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>商务待核</td>
+<td>可融合企业业务模型和用户增长场景，不等同店铺订单后台同步。 <a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>满足统一API交付形式，但主要缺商品销量、价格、评价三大类。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>仅在确需流量/受众/营销归因时并入，不能用它替代商品数据库。</li>
+</ul>
+<h3 id="_7">新榜有数 / 新抖 / 新快 / 新红 / 新视</h3>
+<p>营销内容补充，退出统一电商核心候选</p>
+<p>统一供应商的社媒数据/定制API；各产品权限与输出合同待确认。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>现行官网列出矩阵管理、社媒聆听、营销投放数据汇聚，并明确增值服务含定制API。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>未证实</td>
+<td>无货架商品数据库API证据。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>未证实</td>
+<td>无货架商品数据库API证据。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>无货架商品数据库API证据。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>无本地生活商品数据库API证据。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>内容账号/直播等覆盖，定制API逐产品确认。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>内容电商分析可能涉及销量，但未核全域统一字段。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>未证实</td>
+<td>未核货架电商SKU价格统一API。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>社媒互动评论不能替代购后评价。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>商务待核</td>
+<td>多平台声量、账号内容、投放复盘与达人管理明确；定制API字段待核。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>商务待核</td>
+<td>自有账号矩阵/投放资产可管理，不是电商订单统一API。 <a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>单供应商社媒覆盖较广，但不能覆盖淘京拼美商品四大类。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>只有营销模块不足时考虑定制API，不作为减少电商接入工作的主要方案。</li>
+</ul>
+<h3 id="bigone-lab">百观科技 / BigOne Lab</h3>
+<p>降为商务备选：先补API承诺再进入主选</p>
+<p>企业数据研究与定制服务，公开统一API交付仍未核实。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>原有公司/客户证据只能支持业务存在；本轮检索未获得可确认的统一API文档。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>电商消费研究、品牌销售追踪与社媒情绪；API输出颗粒度未核。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>未证实</td>
+<td>未核SKU价格统一API。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>未核逐条购后评价API。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>未核广告投放API。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核授权自营后台数据连接器。 <a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>未找到API不等于供应商不能定制，但不能为本需求把它列为已可统一接入。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>要求先提供API交付合同条目、当前技术文档、统一鉴权和多平台样本；只有报告/Excel则不符合主要求。</li>
+</ul>
+<h3 id="_8">欧特欧 / 商指针</h3>
+<p>降为商务备选：先补API承诺再进入主选</p>
+<p>政府/企业市场监测产品，特定产品导出明确，公开统一API未核实。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>原有公司/客户证据只能支持业务存在；本轮检索未获得可确认的统一API文档。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>产品覆盖宣传不等于可交付的该平台API；逐端点待核。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>网络零售大盘、行业/地区销售指标；API输出颗粒度未核。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>未证实</td>
+<td>未核SKU价格统一API。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>未核逐条购后评价API。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>未核广告投放API。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核授权自营后台数据连接器。 <a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>未找到API不等于供应商不能定制，但不能为本需求把它列为已可统一接入。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>要求先提供API交付合同条目、当前技术文档、统一鉴权和多平台样本；只有报告/Excel则不符合主要求。</li>
+</ul>
+<h3 id="_9">九数云</h3>
+<p>自营统一出口有条件备选；新增JSON路线，仍不满足完整竞品+自营四大类</p>
+<p>预置连接器汇入分析表/仪表板 → 同一企业鉴权；两种出口：分析表CSV/Excel文件，或仪表板组件分页JSON。统一的是交付结构，电商语义字段仍要建模。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>企业版超管获取accessKeyId/accessKeySecret，换取同一企业临时令牌；业务数据源授权与此出口鉴权分开。 <a href="https://help.fanruan.com/jiushuyun/doc-view-140.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>POST /api/v2/export 接收 tableId、format，响应 data 为下载链接；只导出分析表，源表不能直接导出。 <a href="https://help.fanruan.com/jiushuyun/doc-view-149.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>数据源市场允许连接多源再分析；Alpha 定义为已上线但未经过数据测试、不建议使用。 <a href="https://help.fanruan.com/jiushuyun/doc-view-562.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>2026-03-27仪表板查询文档列出GET /api/public/analysis/v1/dashboards/{dashboardId}/meta 与 POST /api/public/analysis/v1/component/data；返回fields、rows、page.hasNext，分页每页1–500行。页面标社区级协助/用户贡献，商用支持范围需确认。 <a href="https://help.fanruan.com/jiushuyun/doc-view-1100.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>付费连接器，需鲸钻客ERP服务和店铺授权；2026-10-10页面仍标Alpha，完整表字段需授权选表查看。 <a href="https://help.fanruan.com/jiushuyun/doc-view-1124.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>可经聚水潭等ERP授权路径汇入；不是已核独立JD直连。当前聚水潭连接器页说明京东敏感字段为空，不应引用旧历史版的全面停取说法。 <a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>已核文档</td>
+<td>普通连接器要求贝壳订单服务/主账号授权；自研模式需创建上线PDD应用并明确Alpha。普通页Alpha说明混写商家自研名称，状态需厂商确认。ERP连接器自2025-08-20不再新增同步PDD。 <a href="https://help.fanruan.com/jiushuyun/doc-view-1121.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-1055.html" rel="noopener noreferrer" target="_blank">来源2</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">来源3</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>已核文档</td>
+<td>餐饮外卖订单和评价、团购门店点评/结算、到店CPC日报；每业务分别授权，不包括已核闪购全量。首次历史仅近5天。 <a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>抖音账号/作品、巨量千川各有授权连接器；抖店订单可经ERP路径，不能把抖音开放平台连接器当抖店交易接口。 <a href="https://help.fanruan.com/jiushuyun/doc-view-670.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-694.html" rel="noopener noreferrer" target="_blank">来源2</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">来源3</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>授权订单/售后等分析表可计算自营销量，按连接器和口径验收。 <a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>商务待核</td>
+<td>ERP店铺商品/订单价格可进入分析表；全平台实时SKU/到手价统一表未证实。 <a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>已核文档</td>
+<td>美团餐饮连接器列门店评价及点评内容；未证明淘京拼评价全文齐全。 <a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>已核文档</td>
+<td>美团到店CPC日报、巨量千川授权数据；其他商城广告花费/曝光/ROI未核齐。 <a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-694.html" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>已核文档</td>
+<td>面向本人店铺/广告账号授权，具备汇总和自动导出的路径。 <a href="https://help.fanruan.com/jiushuyun/doc-view-140.html" rel="noopener noreferrer" target="_blank">来源1</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-149.html" rel="noopener noreferrer" target="_blank">来源2</a></td>
+</tr>
+<tr>
+<td>竞品</td>
+<td>未证实</td>
+<td>这些授权连接器不提供竞品真实订单与广告后台。 <a href="https://help.fanruan.com/jiushuyun/doc-view-562.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>一套出口不等于零配置：逐店铺、逐广告账户授权与源表映射仍必要。</li>
+<li>不能再把九数云概括为只能导文件：已有组件分页JSON文档；但组件API不是预置订单/评价API，需在九数云建好统一模型和组件，并确认社区级文档的生产支持。</li>
+<li>淘宝Alpha；PDD自研Alpha且需要自己上线应用，不适合直接承诺省掉全部平台接入工作。</li>
+<li>四大平台×销量/价格/评价/营销并未全覆盖；需源端授权后取得实际表清单。</li>
+<li>无鉴权实调成功记录。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>要求供应商负责现成连接器、统一字段模型和仪表板组件，交付固定componentId、fields/rows schema，并明确组件查询API的企业版生产支持、分页和权限。</li>
+<li>优先验收淘/拼连接器实际状态以及PDD无需自研应用的普通路径。</li>
+<li>至少交一份跨平台订单表、一份评论表和一份广告日报，核自动增量、历史补数、失败重试和字段完整率。</li>
+</ul>
+<h3 id="_10">集简云</h3>
+<p>统一JSON出口的集成方案备选；数据覆盖待核</p>
+<p>配置多个授权应用动作 → 以一个子流程API触发并返回自定义JSON；是集成执行层，不是现成全平台经营数据库。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>官方嵌入方案允许通过API调用已搭建子流程，无需前端开发；SDK嵌入方案另需审核。 <a href="https://www.jijyun.cn/help/detail/776" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>子流程可自定义输入和返回参数，前面各动作的返回值可映射到统一Response；公开列子流程列表POST https://openapi.jijyun.cn/v1/api/query_process。 <a href="https://www.jijyun.cn/help/detail/784" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>未证实</td>
+<td>本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>未证实</td>
+<td>本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>本轮未核到该平台完整订单、价格、评价、营销四类动作；应用目录不能替代字段验收。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>抖店新订单动作和order_id/p_id转换有正式帮助；仅证明局部自营动作。 <a href="https://www.jijyun.cn/help/detail/756" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>抖店授权新订单可进入流程；跨淘京拼美销量表未证实。 <a href="https://www.jijyun.cn/help/detail/756" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>商务待核</td>
+<td>取决于目标应用动作可返回字段，需固定动作清单和样例。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>此前商家评分动作不等于评价全文，四大平台评论动作未核齐。 <a href="https://www.jijyun.cn/help/detail/1485" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>商务待核</td>
+<td>有营销应用连接能力，但需逐广告产品核字段；未确认四平台统一投放报表。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>已核文档</td>
+<td>通过已授权应用动作同步并统一封装。 <a href="https://www.jijyun.cn/help/detail/784" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>竞品</td>
+<td>未证实</td>
+<td>不自带经核实的淘京拼美全网竞品数据库。 <a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>能够减少代码对接，不代表减少数据源合同与授权。</li>
+<li>仍要逐源配置流程/动作和映射字段；要求供应商实施才能达到用户只接一套API。</li>
+<li>覆盖缺口比统一出口本身更大；不能因应用多就承诺四大类齐全。</li>
+<li>流程有执行延迟，官方建议按步骤设置等待超时；不等于低延时批量数据API。</li>
+<li>本轮未鉴权调用。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>供应商先给淘京拼美×四类数据的可用动作矩阵，而非应用总目录。</li>
+<li>要求演示一次子流程请求返回统一结构，以及无需用户逐个平台开发。</li>
+</ul>
+<h3 id="_11">轻易云</h3>
+<p>已有多系统时的实施备选；不作为现成数据API首选</p>
+<p>源端ERP/业务系统授权适配器 + 字段映射 + 目标API/数据库；可由供应商做统一交付，但本轮未核现成跨电商统一查询API。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>官方集成目录有聚水潭/奇门、旺店通、管易、吉客云及目标数据库；未收录的新系统需用户提供接口文档和数据结构。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>聚水潭适配器展示业务方法与订单字段，这通常是底层服务接口，并非通用全网电商数据端点。 <a href="https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接taobao全数据。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接jd全数据。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>商务待核</td>
+<td>可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接pdd全数据。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>可从ERP适配器间接集成，具体平台外发权限和当前字段需逐项确认；不等于直接连接douyin全数据。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>本轮未核美团订单、价格、评论、广告的完整标准动作组合。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>聚水潭适配器有订单/商品数量金额等字段，按ERP权限提供。 <a href="https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>订单条目price等字段可映射，不代表前台到手价或竞品SKU价格库。 <a href="https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>未核跨四商城逐条评价正文标准数据源。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>未核跨四商城统一广告投放明细源。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>已核文档</td>
+<td>以企业现有业务系统和授权数据为主。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>竞品</td>
+<td>未证实</td>
+<td>没有已核自带竞品市场数据库。 <a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>集成实施服务不等于数据供应商；底层平台授权和限制仍在。</li>
+<li>统一目标schema和API需实施合同明确；公开目录未证明直接开通即用。</li>
+<li>公开适配器存在旧版本和占位字段，需要现行沙箱/生产样例。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>要求对方包办源接入和维护、只向用户交付一套稳定API。</li>
+<li>先给真实可用的数据矩阵及字段，不接受连接器数量替代。</li>
+</ul>
+<h3 id="_12">聚水潭</h3>
+<p>已有ERP时作自营交易补充；从综合统一API主名单降级</p>
+<p>统一ERP订单/商品/库存API，源店铺分别授权；部分平台另走奇门等路径。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>正式订单查询说明外部系统可获取ERP订单，但该普通接口排除淘系和拼多多；淘系需奇门appkey。 <a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>普通订单接口排除；需另申请奇门权限。 <a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>ERP订单路线可用范围需按账户权限；敏感信息随平台规则变化。 <a href="https://openweb.jushuitan.com/doc?docId=340" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>商务待核</td>
+<td>普通订单接口排除，不能按ERP已接入PDD推断对外统一开放。 <a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>本轮未核完整美团数据对外API。 <a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>自有ERP订单路线，仍需商家授权及具体接口权限。 <a href="https://openweb.jushuitan.com/doc?docId=340" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>订单明细price×qty、应付/实付可汇总自营销量销额。 <a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>订单成交价和ERP商品字段；不是全网竞品到手价监测。 <a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>未核到消费者购后评价全文通用API。 <a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>未核广告曝光/点击/花费/ROI统一报表API。 <a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>已核文档</td>
+<td>主营授权商家ERP经营数据。 <a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>竞品</td>
+<td>未证实</td>
+<td>不提供竞品真实订单或广告后台。 <a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>数据大类以交易/库存/售后为主，缺本任务的统一评价和广告。</li>
+<li>淘/拼出库不能假设与普通ERP接口一致。</li>
+<li>不适合仅为取竞品数据而新购整套ERP。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>明确当前在用ERP，再核订单外发权限和具体缺失字段；无需为本需求单独重建ERP。</li>
+</ul>
+<h3 id="_13">餐道</h3>
+<p>自营餐饮专项备选；从综合统一API主名单降级</p>
+<p>餐饮全渠道订单/餐单中台及开放平台；可聚合美团/抖音等门店经营，但不覆盖淘京拼货架电商。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>官网COMS产品说明将多平台订单统一归集，集中维护餐品、价格、库存；ODMP及开发者门户宣称API/沙箱。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>开放平台入口可达，本轮正文仅标题，未取得完整公开字段及鉴权手册。 <a href="https://open-api.can-dao.com/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>未证实</td>
+<td>本轮未核此货架电商数据源；餐饮中台不能当淘京拼综合数据商。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>未证实</td>
+<td>本轮未核此货架电商数据源；餐饮中台不能当淘京拼综合数据商。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>本轮未核此货架电商数据源；餐饮中台不能当淘京拼综合数据商。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>商务待核</td>
+<td>自营餐饮订单/菜单聚合明确，具体API字段和外发权限需商务。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>自营餐饮本地生活订单/团购聚合，不等同抖音全网商品数据。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>产品提供授权订单/核销聚合，API schema待取得。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>商务待核</td>
+<td>产品提供餐单/价格统一管理，外发字段待取得。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>客服/评价咨询产品不等于公开逐条评价API。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>UAG AI投手页面带“规划中”，不能列作已交付统一CPC花费/ROI接口。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>商务待核</td>
+<td>主营授权餐饮门店中台。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>竞品</td>
+<td>未证实</td>
+<td>未核全网竞品数据服务。 <a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>覆盖集中餐饮本地生活，与淘京拼综合目标不匹配。</li>
+<li>具备成熟业务/官方合作身份不代表所有广告或评价API开放。</li>
+<li>规划中产品不能算当前可交付内容。</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>仅在需要经营自有餐饮门店时询问具体开放API包和订单/评论/广告字段。</li>
+</ul>
+<h3 id="just-one-api">Just One API</h3>
+<p>技术备选，仍须补信誉与覆盖</p>
+<p>同一供应商、同一域名、共享账户余额与 Token；各渠道/功能采用独立 path。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>使用指南确认 query token 与共享账户余额，code=0 才是业务成功。 <a href="https://docs.justoneapi.com/zh/usage" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>当前目录含淘系/JD/抖音电商，以及星图/蒲公英；未列拼多多/美团。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>商品详情、搜索、评价目录；当前字段需按版本。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>商品详情、价格、搜索、评论目录。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>未在现行目录找到标准接口。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>未在现行目录找到标准接口。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>电商详情/SKU/评论与星图达人营销目录。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>商品接口可能含前台销量，未核统一销量 schema、时间窗与成交口径。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>JD专门价格端点，其他商品详情按版本。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>已核文档</td>
+<td>淘系/JD/抖音电商评价端点；不代表全量。 <a href="https://docs.justoneapi.com/zh/api/taobao-and-tmall/product-reviews-v3" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>已核文档</td>
+<td>星图营销接口明确用于比较创作者商业报价；不等于广告账户实际消耗/ROI。 <a href="https://docs.justoneapi.com/zh/api/douyin-creator-marketplace-xingtu/marketing-metrics-v1" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核自有商家订单/广告账户授权汇总接口。 <a href="https://docs.justoneapi.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>缺拼多多/美团现行接口证据</li>
+<li>供应商客户与主体补证仍未通过</li>
+<li>一个 Token 仍需要处理各平台 path、版本、参数、分页与 data 字段</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>提供淘/JD/抖音同一商品类型的真实响应、销量口径；若承诺拼美须先给现行文档和样本。</li>
+</ul>
+<h3 id="tmapi">TMAPI</h3>
+<p>商品价格/拼多多局部技术备选，非完整统一交付</p>
+<p>一套账户/apikey；以 /pdd、/jd、/taobao 等独立路由提供商品 API。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>官网接入流程为注册后选择具体 API。 <a href="https://tmapi.top/docs/start.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>正式目录可核拼多多、京东、淘系，未见美团或国内抖音电商。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>详情/搜索/销量；部分旧路线维护。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>详情价格SKU；已核样例未含销售/评价原文。 <a href="https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>已核文档</td>
+<td>详情、price_info、sale_count、comment_count。 <a href="https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>未见标准目录。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>未证实</td>
+<td>TikTok Shop 目录不能算国内抖音电商。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>淘系销量专门端点；PDD sale_count/side_sales_tip；非同口径。 <a href="https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-sales-by-id-v3" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>淘/JD/PDD详情/sku价格。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>未证实</td>
+<td>已核PDD comment_count只有评论数，不能算评价正文。 <a href="https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>未核广告投放、达人内容等统一API。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核自有订单/广告后台授权数据。 <a href="https://tmapi.top/docs/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>缺美团及多类营销</li>
+<li>评价数量不能满足评价原文</li>
+<li>主体/企业客户证据不足</li>
+<li>JD/PDD/淘系销量字段与可取范围不同</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>先验淘京拼三平台样本与生产HTTPS；广告、评价正文、美团不能靠商品详情目录补齐。</li>
+</ul>
+<h3 id="qovia">Qovia</h3>
+<p>评价与达人营销专项技术备选</p>
+<p>单一 api.qovia.ai、Bearer/x-api-key、统一 JSON 外壳；raw 业务端点分平台。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>公开 OpenAPI 给出同一 base URL/security 与 request_id/data/meta 外壳。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>当前核心为 comments/comments_v2。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>当前核心为 comments。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>未见标准电商路径。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>未见标准路径。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>社媒与星图；电商评价见原字段字典，不等于完整交易库。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>未证实</td>
+<td>未核跨商城销量API。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>未证实</td>
+<td>未核跨商城价格/SKU库；达人报价不是商品售价。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>已核文档</td>
+<td>淘/JD评价原文、rating/时间/SKU/追评，但分页不保证全量。 <a href="https://qovia.ai/docs/api-reference/raw.jd.comments/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>已核文档</td>
+<td>星图作者报价/CPM/转化等达人情报，非各电商广告后台。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核商家订单和广告账户数据。 <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>缺商品价格销量两大类</li>
+<li>拼多多/美团未证实</li>
+<li>具名企业客户证据不足</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>若采购需先确认主体/客户；不能用统一 JSON 外壳替代完整电商数据覆盖。</li>
+</ul>
+<h3 id="onebound">万邦 Onebound</h3>
+<p>可询样备选，不能按历史全平台目录入选</p>
+<p>历史一个 key/secret、多平台接口；当前国内文档会转向跨境 tglobal。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>本轮再次打开旧淘宝 item_get 文档，仍跳到 tglobal.readme。 <a href="https://open.onebound.cn/help/api/taobao.item_get.html" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>官方功能PDF日期为2024-11-01，不能作为2026可用承诺。 <a href="https://www.onebound.cn/daigou/api-list.pdf" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>商务待核</td>
+<td>旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>商务待核</td>
+<td>旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>商务待核</td>
+<td>旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>商务待核</td>
+<td>旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>商务待核</td>
+<td>旧目录/供应商宣传不足以核实现行接口与字段；需当前清单。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>商务待核</td>
+<td>当前国内接口字段、交付覆盖和口径未核实。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>商务待核</td>
+<td>当前国内接口字段、交付覆盖和口径未核实。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>商务待核</td>
+<td>当前国内接口字段、交付覆盖和口径未核实。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>商务待核</td>
+<td>当前国内接口字段、交付覆盖和口径未核实。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>商务待核</td>
+<td>当前国内接口字段、交付覆盖和口径未核实。 <a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>公司历史证据相对较强，但接口证据滞后</li>
+<li>跨境 tglobal 不能外推国内全平台能力</li>
+<li>营销后台和美团子业务未核</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>让供应商交一份当前可调用平台×大类矩阵、统一接口契约与真实响应。</li>
+</ul>
+<h3 id="_14">竹简数据</h3>
+<p>暂不作为主供应商</p>
+<p>销售提供 token 与专属 endpoint；不同平台/能力各自 POST path。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>数据市场列出平台能力并引导商务开通。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>详情/SKU/搜索/评论/销量；含淘宝闪购部分能力。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>商品详情一项；不能外推京东评价。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>公开目录未确认。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>公开目录未确认，淘宝闪购不等于美团。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>抖音电商与团购独立接口目录。 <a href="https://marketplace.bamboodatalab.com/zh/api/douyin-ec/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>淘系 sales_30d/sales_total 为文档字段，真实口径未实测。 <a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-sales-v1" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>商品详情/SKU目录，字段按平台。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>已核文档</td>
+<td>淘系 comment_id/content/append；仅文档。 <a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>未证实</td>
+<td>未证实统一广告/达人营销数据交付。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核自营商家后台授权汇总。 <a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>缺拼多多/美团现行标准接口</li>
+<li>专属地址尚需商务交付</li>
+<li>品牌/客户证据不足</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>需补主体、客户、完整五平台能力与正式专属接口样本。</li>
+</ul>
+<h3 id="everyinfra">EveryInfra/万有引擎</h3>
+<p>统一入口技术最接近之一，但仍未通过信誉/全覆盖筛选</p>
+<p>同一 Bearer Key、统一 POST /api/v1/social，body 用 platform/action 选择能力；统一响应壳。</p>
+<p><strong>统一API证据</strong></p>
+<ul>
+<li>匿名公开能力目录本次取得真实HTTP JSON，列各 action、参数、字段与限制；只是能力元数据。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源</a></li>
+<li>正式文档说明统一 social API。 <a href="https://everyinfra.com/docs" rel="noopener noreferrer" target="_blank">来源</a></li>
+</ul>
+<p><strong>渠道覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>已核文档</td>
+<td>search/product_detail/shop/reviews/questions。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已核文档</td>
+<td>search/product_detail/reviews/shop/product_price/skus 等。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>未证实</td>
+<td>platforms 无 pinduoduo/pdd；temu 不等于国内拼多多。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>美团</td>
+<td>未证实</td>
+<td>platforms 无 meituan。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>抖音</td>
+<td>已核文档</td>
+<td>商品搜索/详情、星图达人与社媒内容；并非完整商家后台。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>数据类别覆盖</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>核验状态</th>
+<th>边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>销量</td>
+<td>已核文档</td>
+<td>淘系 sold_count、JD search sold_count、抖音 monthly_sales/sales_text/sold_count；不是统一真实成交口径。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>商品价格</td>
+<td>已核文档</td>
+<td>淘系 price、JD price、抖音 price_cny；淘系文档提示部分美元换算误差。 <a href="https://everyinfra.com/taobao-api/product_detail" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>评价原文</td>
+<td>已核文档</td>
+<td>淘/JD评价原文；JD文档上限10条等约束需另验。 <a href="https://everyinfra.com/jd-api/reviews" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>营销</td>
+<td>已核文档</td>
+<td>抖音星图报价、GMV/转化区间及社媒互动；非店铺广告账户消耗/ROI。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+<tr>
+<td>自营后台</td>
+<td>未证实</td>
+<td>未核自营完整订单、财务、广告后台授权API。 <a href="https://api.everyinfra.com/api/v1/social/catalog" rel="noopener noreferrer" target="_blank">来源1</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未满足/待确认</strong></p>
+<ul>
+<li>拼多多/美团缺口明确</li>
+<li>虽有较统一的入口，字段/销量/价格语义仍不同</li>
+<li>供应商具名客户与企业成熟证据仍缺</li>
+<li>目录available标记不等于本轮业务成功</li>
+</ul>
+<p><strong>下一步验收</strong></p>
+<ul>
+<li>先补客户证据，再按同一套商品/评价/营销契约索取淘京抖真实样本；拼美不可默认可定制。</li>
+</ul></article></body></html>

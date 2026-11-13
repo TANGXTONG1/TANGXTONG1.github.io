@@ -1,0 +1,39 @@
+{
+  "checked_on": "2026-11-06",
+  "everyinfra": {
+    "status": "trial_claimed_and_business_api_tested",
+    "registration_completed": true,
+    "github_link_completed": true,
+    "star_performed": true,
+    "api_key_created": true,
+    "trial_claimed": true,
+    "initial_credit_usd": 1,
+    "latest_balance_usd": 0.93986111,
+    "trial_expiry_display": "2026-11-07 15:08 UTC+8",
+    "business_calls": 15
+  },
+  "qovia": {
+    "status": "email_verified_and_business_api_tested",
+    "registration_completed": true,
+    "email_verification_completed": true,
+    "api_key_created": true,
+    "initial_trial_calls": 50,
+    "trial_calls_remaining": 41,
+    "rpm_limit": 60,
+    "business_calls": 14,
+    "account_checked_at": "2026-11-06T09:00:01.569722+00:00",
+    "key_scopes": [
+      "raw:taobao",
+      "raw:jd",
+      "raw:douyin",
+      "raw:xiaohongshu"
+    ],
+    "key_expires_at": "2026-12-06T15:59:59+00:00",
+    "trial_expiry": "未核"
+  },
+  "business_calls": 29,
+  "account_checks_excluded": true,
+  "paid_topups": 0,
+  "private_data_included": false,
+  "evidence": "https://118.145.70.247/ecommerce-data-research-20261105/data/live-trials.json"
+}

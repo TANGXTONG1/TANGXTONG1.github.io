@@ -1,0 +1,722 @@
+{
+  "researched_at": "2026-11-13T06:52:26.833626+00:00",
+  "scope": "Apify, Scrapingdog, ScraperAPI; public demo discovery and unauthenticated endpoint checks",
+  "constraints": {
+    "signup": false,
+    "credentials_used": false,
+    "browser_used": false,
+    "paid_calls": false,
+    "third_party_keys_used": false
+  },
+  "status": "NO_AUTHENTICATED_REVIEW_SAMPLE",
+  "important": "These are access-gate checks, not successful scraping tests. 401/403 authentication errors do not prove an API is broken. Durations measure gate/network response, not data-collection latency.",
+  "attempts": [
+    {
+      "vendor": "Apify",
+      "market": "Amazon",
+      "actor": "junglee/amazon-reviews-scraper",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.apify.com/v2/actors/junglee~amazon-reviews-scraper/run-sync-get-dataset-items",
+      "method": "POST",
+      "input": {
+        "productUrls": [
+          {
+            "url": "https://www.amazon.com/dp/B08BHHSB6M"
+          }
+        ],
+        "maxReviews": 2,
+        "includeGdprSensitive": false
+      },
+      "input_source": "https://apify.com/junglee/amazon-reviews-scraper",
+      "endpoint_source": "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+      "expected_auth": "Apify token",
+      "review_collection_attempted": false,
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:17.651287+00:00",
+        "elapsed_seconds": 2.584,
+        "http_status": 402,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.apify.com/v2/actors/junglee~amazon-reviews-scraper/run-sync-get-dataset-items",
+        "body_bytes": 238,
+        "body_sha256": "e48c74c307c30c0ba8905a7566fc22dddbfb7e7304880d21d6942606fbc7f969",
+        "response_kind": "json",
+        "body_excerpt": "{\n  \"error\": {\n    \"type\": \"x402-payment-required\",\n    \"message\": \"Request not authenticated. Add your Apify API token, or a PAYMENT-SIGNATURE header for x402 payment. See https://docs.apify.com/api/v2#/introduction/authentication\"\n  }\n}"
+      },
+      "status": "AUTH_OR_PAYMENT_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": "x402-payment-required"
+      },
+      "next_gate": "需有效 Apify 账户 token及免费额度；无账户的x402方式要求付款，本轮未付款。获取token后先按2条输入运行，再测分页。"
+    },
+    {
+      "vendor": "Apify",
+      "market": "Walmart",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.apify.com/v2/actors/e-commerce~walmart-reviews-scraper/run-sync-get-dataset-items",
+      "method": "POST",
+      "input": {
+        "startUrls": [
+          {
+            "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+          }
+        ],
+        "maxProductsPerStartUrl": 1,
+        "maxReviewsPerProduct": 2
+      },
+      "input_source": "https://apify.com/e-commerce/walmart-reviews-scraper",
+      "endpoint_source": "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+      "expected_auth": "Apify token",
+      "review_collection_attempted": false,
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:17.945452+00:00",
+        "elapsed_seconds": 4.152,
+        "http_status": 402,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.apify.com/v2/actors/e-commerce~walmart-reviews-scraper/run-sync-get-dataset-items",
+        "body_bytes": 238,
+        "body_sha256": "e48c74c307c30c0ba8905a7566fc22dddbfb7e7304880d21d6942606fbc7f969",
+        "response_kind": "json",
+        "body_excerpt": "{\n  \"error\": {\n    \"type\": \"x402-payment-required\",\n    \"message\": \"Request not authenticated. Add your Apify API token, or a PAYMENT-SIGNATURE header for x402 payment. See https://docs.apify.com/api/v2#/introduction/authentication\"\n  }\n}"
+      },
+      "status": "AUTH_OR_PAYMENT_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": "x402-payment-required"
+      },
+      "next_gate": "需有效 Apify 账户 token及免费额度；无账户的x402方式要求付款，本轮未付款。获取token后先按2条输入运行，再测分页。"
+    },
+    {
+      "vendor": "Apify",
+      "market": "eBay",
+      "actor": "e-commerce/store-ebay",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.apify.com/v2/actors/e-commerce~store-ebay/run-sync-get-dataset-items",
+      "method": "POST",
+      "input": {
+        "startUrls": [
+          {
+            "url": "https://www.ebay.com/itm/166383500910"
+          }
+        ],
+        "maxItemsPerStartUrl": 2
+      },
+      "input_source": "https://apify.com/e-commerce/store-ebay",
+      "endpoint_source": "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+      "expected_auth": "Apify token",
+      "review_collection_attempted": false,
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:18.066712+00:00",
+        "elapsed_seconds": 3.921,
+        "http_status": 402,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.apify.com/v2/actors/e-commerce~store-ebay/run-sync-get-dataset-items",
+        "body_bytes": 238,
+        "body_sha256": "e48c74c307c30c0ba8905a7566fc22dddbfb7e7304880d21d6942606fbc7f969",
+        "response_kind": "json",
+        "body_excerpt": "{\n  \"error\": {\n    \"type\": \"x402-payment-required\",\n    \"message\": \"Request not authenticated. Add your Apify API token, or a PAYMENT-SIGNATURE header for x402 payment. See https://docs.apify.com/api/v2#/introduction/authentication\"\n  }\n}"
+      },
+      "status": "AUTH_OR_PAYMENT_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": "x402-payment-required"
+      },
+      "next_gate": "需有效 Apify 账户 token及免费额度；无账户的x402方式要求付款，本轮未付款。获取token后先按2条输入运行，再测分页。"
+    },
+    {
+      "vendor": "Apify",
+      "market": "Shopee",
+      "actor": "memo23/shopee-reviews-scraper",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.apify.com/v2/actors/memo23~shopee-reviews-scraper/run-sync-get-dataset-items",
+      "method": "POST",
+      "input": {
+        "startUrls": [
+          "https://shopee.sg/shop/442800909"
+        ],
+        "onlyWithText": true,
+        "maxReviewsPerShop": 2,
+        "maxConcurrency": 1
+      },
+      "input_source": "https://apify.com/memo23/shopee-reviews-scraper",
+      "endpoint_source": "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+      "expected_auth": "Apify token",
+      "review_collection_attempted": false,
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:18.191452+00:00",
+        "elapsed_seconds": 2.329,
+        "http_status": 402,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.apify.com/v2/actors/memo23~shopee-reviews-scraper/run-sync-get-dataset-items",
+        "body_bytes": 238,
+        "body_sha256": "e48c74c307c30c0ba8905a7566fc22dddbfb7e7304880d21d6942606fbc7f969",
+        "response_kind": "json",
+        "body_excerpt": "{\n  \"error\": {\n    \"type\": \"x402-payment-required\",\n    \"message\": \"Request not authenticated. Add your Apify API token, or a PAYMENT-SIGNATURE header for x402 payment. See https://docs.apify.com/api/v2#/introduction/authentication\"\n  }\n}"
+      },
+      "status": "AUTH_OR_PAYMENT_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": "x402-payment-required"
+      },
+      "next_gate": "需有效 Apify 账户 token及免费额度；无账户的x402方式要求付款，本轮未付款。获取token后先按2条输入运行，再测分页。"
+    },
+    {
+      "vendor": "Apify",
+      "market": "Lazada",
+      "actor": "zen-studio/lazada-reviews-scraper",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.apify.com/v2/actors/zen-studio~lazada-reviews-scraper/run-sync-get-dataset-items",
+      "method": "POST",
+      "input": {
+        "startUrls": [
+          {
+            "url": "https://www.lazada.co.th/products/i2378352847.html"
+          }
+        ],
+        "maxReviewsPerProduct": 2
+      },
+      "input_source": "https://apify.com/zen-studio/lazada-reviews-scraper",
+      "endpoint_source": "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+      "expected_auth": "Apify token",
+      "review_collection_attempted": false,
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:20.291944+00:00",
+        "elapsed_seconds": 3.13,
+        "http_status": 402,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.apify.com/v2/actors/zen-studio~lazada-reviews-scraper/run-sync-get-dataset-items",
+        "body_bytes": 238,
+        "body_sha256": "e48c74c307c30c0ba8905a7566fc22dddbfb7e7304880d21d6942606fbc7f969",
+        "response_kind": "json",
+        "body_excerpt": "{\n  \"error\": {\n    \"type\": \"x402-payment-required\",\n    \"message\": \"Request not authenticated. Add your Apify API token, or a PAYMENT-SIGNATURE header for x402 payment. See https://docs.apify.com/api/v2#/introduction/authentication\"\n  }\n}"
+      },
+      "status": "AUTH_OR_PAYMENT_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": "x402-payment-required"
+      },
+      "next_gate": "需有效 Apify 账户 token及免费额度；无账户的x402方式要求付款，本轮未付款。获取token后先按2条输入运行，再测分页。"
+    },
+    {
+      "vendor": "Scrapingdog",
+      "market": "Amazon",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.scrapingdog.com/amazon/reviews",
+      "method": "GET",
+      "input": {
+        "domain": "com",
+        "asin": "B00AP877FS",
+        "page": 1
+      },
+      "input_source": "https://www.scrapingdog.com/documentation/amazon-reviews-api/",
+      "endpoint_source": "https://www.scrapingdog.com/documentation/amazon-reviews-api/",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "review endpoint",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:20.523780+00:00",
+        "elapsed_seconds": 2.188,
+        "http_status": 404,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.scrapingdog.com/amazon/reviews?domain=com&asin=B00AP877FS&page=1",
+        "body_bytes": 44,
+        "body_sha256": "4288ea131f02b558d651a0d2ee1af946848b1ec6dbe5c37e989f0fc60a191520",
+        "response_kind": "json",
+        "body_excerpt": "{\"message\":\"user not found\",\"success\":false}"
+      },
+      "status": "ACCOUNT_LOOKUP_ERROR_WITHOUT_KEY",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "缺少api_key时返回user not found；此响应不能判断评论业务可用性。文档另行标明Amazon Reviews暂不可用，需供应商确认恢复后再持有效试用key验证。"
+    },
+    {
+      "vendor": "Scrapingdog",
+      "market": "Walmart",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.scrapingdog.com/walmart/reviews",
+      "method": "GET",
+      "input": {
+        "url": "https://www.walmart.com/reviews/product/317408869"
+      },
+      "input_source": "https://www.scrapingdog.com/documentation/walmart-reviews-scraper/",
+      "endpoint_source": "https://www.scrapingdog.com/documentation/walmart-reviews-scraper/",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "review endpoint",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:21.988314+00:00",
+        "elapsed_seconds": 0.658,
+        "http_status": 403,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.scrapingdog.com/walmart/reviews?url=https%3A%2F%2Fwww.walmart.com%2Freviews%2Fproduct%2F317408869",
+        "body_bytes": 91,
+        "body_sha256": "25ab0ca50b0042f91c02ca36b0dee3d7c649e2f11123b1461bc8d6a7c85dccad",
+        "response_kind": "json",
+        "body_excerpt": "{\"message\":\"Unauthorized request, please make sure your API key is valid.\",\"success\":false}"
+      },
+      "status": "AUTH_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "合法账户及有效试用密钥；先确认余额和每次最大费用，再进行单商品两页正文验收。"
+    },
+    {
+      "vendor": "Scrapingdog",
+      "market": "eBay",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.scrapingdog.com/ebay/product",
+      "method": "GET",
+      "input": {
+        "url": "https://www.ebay.co.uk/itm/305209925234"
+      },
+      "input_source": "https://www.scrapingdog.com/documentation/ebay-product-api/",
+      "endpoint_source": "https://www.scrapingdog.com/documentation/ebay-product-api/",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "product metadata endpoint, not established raw review endpoint",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:22.105125+00:00",
+        "elapsed_seconds": 1.186,
+        "http_status": 403,
+        "content_type": "application/json; charset=utf-8",
+        "final_url": "https://api.scrapingdog.com/ebay/product?url=https%3A%2F%2Fwww.ebay.co.uk%2Fitm%2F305209925234",
+        "body_bytes": 91,
+        "body_sha256": "25ab0ca50b0042f91c02ca36b0dee3d7c649e2f11123b1461bc8d6a7c85dccad",
+        "response_kind": "json",
+        "body_excerpt": "{\"message\":\"Unauthorized request, please make sure your API key is valid.\",\"success\":false}"
+      },
+      "status": "AUTH_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "合法账户及有效试用密钥；先确认余额和每次最大费用，再进行单商品两页正文验收。"
+    },
+    {
+      "vendor": "ScraperAPI",
+      "market": "Amazon",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.scraperapi.com/structured/amazon/product",
+      "method": "GET",
+      "input": {
+        "asin": "B0BFJWCYTL",
+        "tld": "com",
+        "country_code": "us"
+      },
+      "input_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+      "endpoint_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "public product-page reviews only",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:22.646880+00:00",
+        "elapsed_seconds": 3.124,
+        "http_status": 404,
+        "content_type": null,
+        "final_url": "https://api.scraperapi.com/structured/amazon/product?asin=B0BFJWCYTL&tld=com&country_code=us",
+        "body_bytes": 0,
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "response_kind": "text",
+        "body_excerpt": ""
+      },
+      "status": "UNAUTHENTICATED_UNDETERMINED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "无key得到空404，不能据此判断端点失效；须用合法试用key确认路由及业务数据。"
+    },
+    {
+      "vendor": "ScraperAPI",
+      "market": "Walmart",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.scraperapi.com/structured/walmart/review",
+      "method": "GET",
+      "input": {
+        "product_id": "5253396052",
+        "tld": "com",
+        "page": 1
+      },
+      "input_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+      "endpoint_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "dedicated paginated reviews",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:22.711757+00:00",
+        "elapsed_seconds": 2.032,
+        "http_status": 404,
+        "content_type": null,
+        "final_url": "https://api.scraperapi.com/structured/walmart/review?product_id=5253396052&tld=com&page=1",
+        "body_bytes": 0,
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "response_kind": "text",
+        "body_excerpt": ""
+      },
+      "status": "UNAUTHENTICATED_UNDETERMINED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "无key得到空404，不能据此判断端点失效；须用合法试用key确认路由及业务数据。"
+    },
+    {
+      "vendor": "ScraperAPI",
+      "market": "eBay",
+      "test_type": "unauthenticated_business_endpoint_access_check",
+      "endpoint": "https://api.scraperapi.com/structured/ebay/product",
+      "method": "GET",
+      "input": {
+        "product_id": "166619046796",
+        "tld": "com"
+      },
+      "input_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/ebay/ebay-product-api",
+      "endpoint_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/ebay/ebay-product-api",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "product metadata endpoint; no claimed full reviews",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:52:23.291716+00:00",
+        "elapsed_seconds": 2.996,
+        "http_status": 404,
+        "content_type": null,
+        "final_url": "https://api.scraperapi.com/structured/ebay/product?product_id=166619046796&tld=com",
+        "body_bytes": 0,
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "response_kind": "text",
+        "body_excerpt": ""
+      },
+      "status": "UNAUTHENTICATED_UNDETERMINED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "无key得到空404，不能据此判断端点失效；须用合法试用key确认路由及业务数据。"
+    },
+    {
+      "vendor": "ScraperAPI",
+      "market": "Amazon",
+      "test_type": "documented_placeholder_key_control",
+      "endpoint": "https://api.scraperapi.com/structured/amazon/product",
+      "method": "GET",
+      "input": {
+        "asin": "B0BFJWCYTL",
+        "tld": "com",
+        "country_code": "us",
+        "api_key": "API_KEY"
+      },
+      "input_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+      "endpoint_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "public product-page reviews only",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:54:46.320915+00:00",
+        "elapsed_seconds": 1.767,
+        "http_status": 401,
+        "content_type": "text/html; charset=utf-8",
+        "body_bytes": 61,
+        "body_excerpt": "Unauthorized request, please make sure your API key is valid.",
+        "body_sha256": "73579a9fbd2efe341736a887a0a9a2323fa51ec789093a5210234bb5488ea99c",
+        "transport_error": null
+      },
+      "status": "AUTH_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "需有效账户试用密钥才能判断评论正文和分页；占位符响应不可用作真实业务成功率。",
+      "authentication_note": "Literal non-secret placeholder from official examples; no valid key used."
+    },
+    {
+      "vendor": "ScraperAPI",
+      "market": "Walmart",
+      "test_type": "documented_placeholder_key_control",
+      "endpoint": "https://api.scraperapi.com/structured/walmart/review",
+      "method": "GET",
+      "input": {
+        "product_id": "5253396052",
+        "tld": "com",
+        "page": 1,
+        "api_key": "API_KEY"
+      },
+      "input_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+      "endpoint_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "dedicated paginated reviews",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:54:46.616296+00:00",
+        "elapsed_seconds": 1.633,
+        "http_status": 401,
+        "content_type": "text/html; charset=utf-8",
+        "body_bytes": 61,
+        "body_excerpt": "Unauthorized request, please make sure your API key is valid.",
+        "body_sha256": "73579a9fbd2efe341736a887a0a9a2323fa51ec789093a5210234bb5488ea99c",
+        "transport_error": null
+      },
+      "status": "AUTH_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "需有效账户试用密钥才能判断评论正文和分页；占位符响应不可用作真实业务成功率。",
+      "authentication_note": "Literal non-secret placeholder from official examples; no valid key used."
+    },
+    {
+      "vendor": "ScraperAPI",
+      "market": "eBay",
+      "test_type": "documented_placeholder_key_control",
+      "endpoint": "https://api.scraperapi.com/structured/ebay/product",
+      "method": "GET",
+      "input": {
+        "product_id": "166619046796",
+        "tld": "com",
+        "api_key": "API_KEY"
+      },
+      "input_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/ebay/ebay-product-api",
+      "endpoint_source": "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/ebay/ebay-product-api",
+      "expected_auth": "api_key",
+      "review_collection_attempted": false,
+      "scope_note": "product metadata endpoint; no claimed full reviews",
+      "authentication_sent": false,
+      "result": {
+        "started_at": "2026-11-13T06:54:46.746763+00:00",
+        "elapsed_seconds": 1.777,
+        "http_status": 401,
+        "content_type": "text/html; charset=utf-8",
+        "body_bytes": 61,
+        "body_excerpt": "Unauthorized request, please make sure your API key is valid.",
+        "body_sha256": "73579a9fbd2efe341736a887a0a9a2323fa51ec789093a5210234bb5488ea99c",
+        "transport_error": null
+      },
+      "status": "AUTH_REQUIRED",
+      "outputs_summary": {
+        "business_review_records_received": false,
+        "nonempty_review_count": null,
+        "review_fields_verified": [],
+        "pagination_verified": false,
+        "full_history_verified": false,
+        "error_type": null
+      },
+      "next_gate": "需有效账户试用密钥才能判断评论正文和分页；占位符响应不可用作真实业务成功率。",
+      "authentication_note": "Literal non-secret placeholder from official examples; no valid key used."
+    }
+  ],
+  "public_metadata_checks": [
+    {
+      "vendor": "Apify",
+      "actor": "junglee/amazon-reviews-scraper",
+      "endpoint": "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper/builds/default",
+      "http_status": 200,
+      "elapsed_seconds": 2.351,
+      "source_type": "official_public_build_metadata",
+      "business_output": false,
+      "schema_available": true
+    },
+    {
+      "vendor": "Apify",
+      "actor": "e-commerce/walmart-reviews-scraper",
+      "endpoint": "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper/builds/default",
+      "http_status": 200,
+      "elapsed_seconds": 2.946,
+      "source_type": "official_public_build_metadata",
+      "business_output": false,
+      "schema_available": true
+    },
+    {
+      "vendor": "Apify",
+      "actor": "e-commerce/store-ebay",
+      "endpoint": "https://api.apify.com/v2/acts/e-commerce~store-ebay/builds/default",
+      "http_status": 200,
+      "elapsed_seconds": 1.643,
+      "source_type": "official_public_build_metadata",
+      "business_output": false,
+      "schema_available": true
+    },
+    {
+      "vendor": "Apify",
+      "actor": "memo23/shopee-reviews-scraper",
+      "endpoint": "https://api.apify.com/v2/acts/memo23~shopee-reviews-scraper/builds/default",
+      "http_status": 200,
+      "elapsed_seconds": 1.992,
+      "source_type": "official_public_build_metadata",
+      "business_output": false,
+      "schema_available": true
+    },
+    {
+      "vendor": "Apify",
+      "actor": "zen-studio/lazada-reviews-scraper",
+      "endpoint": "https://api.apify.com/v2/acts/zen-studio~lazada-reviews-scraper/builds/default",
+      "http_status": 200,
+      "elapsed_seconds": 2.137,
+      "source_type": "official_public_build_metadata",
+      "business_output": false,
+      "schema_available": true
+    }
+  ],
+  "demo_findings": [
+    {
+      "vendor": "Apify",
+      "source": "https://apify.com/junglee/amazon-reviews-scraper",
+      "trial_url": "https://console.apify.com/actors/R8WeJwLuzLZ6g4Bkk?addFromActorId=R8WeJwLuzLZ6g4Bkk",
+      "observed": "公开Try for free链接进入Apify Console；业务端点无token返回402；没有完成登录或运行。",
+      "status": "ACCOUNT_OR_PAYMENT_GATE"
+    },
+    {
+      "vendor": "Scrapingdog",
+      "source": "https://www.scrapingdog.com/amazon-reviews-api/",
+      "trial_url": "https://api.scrapingdog.com/register",
+      "observed": "页面包含固定JSON及live api response文字，直接HTML内已存在，没有可填写商品的匿名业务表单。Try for free实际链接register；仅示例展示不计实际返回。",
+      "status": "STATIC_SAMPLE_AND_SIGNUP_GATE",
+      "static_fields": [
+        "review",
+        "title",
+        "rating",
+        "date",
+        "review_url",
+        "extension",
+        "is_helpful"
+      ],
+      "business_validation": false
+    },
+    {
+      "vendor": "ScraperAPI",
+      "source": "https://www.scraperapi.com/",
+      "trial_url": "https://dashboard.scraperapi.com/signup",
+      "observed": "Start Free链接实际进入signup，页面需JavaScript；本地urllib读取营销首页曾403，而web读取成功，属于页面访问差异不是评论API失败。",
+      "status": "SIGNUP_GATE"
+    },
+    {
+      "vendor": "Apify community",
+      "source": "https://apify.com/signalsift/amazon-reviews-analyzer",
+      "observed": "搜索到free demo，但作者明确样本为40条虚构水瓶评论且属于分析器，不是实时采集；未运行，不能满足业务原文验收。",
+      "status": "FICTIONAL_STATIC_DEMO_EXCLUDED"
+    },
+    {
+      "vendor": "Scrapingdog",
+      "source": "https://www.scrapingdog.com/",
+      "secondary_source": "https://www.scrapingdog.com/privacy/",
+      "status": "POSSIBLE_DYNAMIC_DEMO_NEEDS_BROWSER",
+      "observed": "官方隐私政策提到首页匿名live demo采用Turnstile。直接下载首页无input/select/textarea，但HTML内含转义HeroTester片段和HeroTester脚本路径；已交主代理用浏览器核对。未调用未文档内部demo端点，未绕过Turnstile。",
+      "business_validation": false,
+      "next_gate": "主代理浏览器查看是否真的展示可操作匿名tester，并只用官方示例目标小样本执行。"
+    }
+  ],
+  "sources": [
+    "https://apify.com/junglee/amazon-reviews-scraper",
+    "https://apify.com/e-commerce/walmart-reviews-scraper",
+    "https://apify.com/e-commerce/store-ebay",
+    "https://apify.com/memo23/shopee-reviews-scraper",
+    "https://apify.com/zen-studio/lazada-reviews-scraper",
+    "https://www.scrapingdog.com/documentation/amazon-reviews-api/",
+    "https://www.scrapingdog.com/documentation/walmart-reviews-scraper/",
+    "https://www.scrapingdog.com/documentation/ebay-product-api/",
+    "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/amazon/amazon-product-api",
+    "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/walmart/walmart-reviews-api",
+    "https://docs.scraperapi.com/structured-data-endpoints/e-commerce/ebay/ebay-product-api",
+    "https://docs.apify.com/api/v2/actor-run-sync-get-dataset-items-post",
+    "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper/builds/default",
+    "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper/builds/default",
+    "https://api.apify.com/v2/acts/e-commerce~store-ebay/builds/default",
+    "https://api.apify.com/v2/acts/memo23~shopee-reviews-scraper/builds/default",
+    "https://api.apify.com/v2/acts/zen-studio~lazada-reviews-scraper/builds/default",
+    "https://www.scrapingdog.com/amazon-reviews-api/",
+    "https://www.scraperapi.com/",
+    "https://apify.com/signalsift/amazon-reviews-analyzer",
+    "https://apify.com/junglee/amazon-reviews-scraper/issues/only-10-reviews-retu-mrddPbkcok9cA3mxl",
+    "https://www.scrapingdog.com/",
+    "https://www.scrapingdog.com/privacy/"
+  ],
+  "new_documentary_limits": [
+    {
+      "market": "Shopee",
+      "source": "https://api.apify.com/v2/acts/memo23~shopee-reviews-scraper/builds/default",
+      "observation": "本次读取inputSchema明确按店铺流匹配商品；大店只能取商品的部分评论。每星最多1000，全部五星约5000/店铺。onlyWithText可过滤纯星级。未实测这些上限。"
+    },
+    {
+      "market": "Amazon",
+      "source": "https://apify.com/junglee/amazon-reviews-scraper/issues/only-10-reviews-retu-mrddPbkcok9cA3mxl",
+      "observation": "官方维护者旧issue答复称Free用户每run仅10条演示，非付费500条上限；属历史公开答复，需在当前试用账户复核，不能直接承诺$5免费额度可全量抓。"
+    }
+  ],
+  "summary": {
+    "successful_live_business_review_tests": 0,
+    "authentication_or_payment_gate_checks": 11,
+    "public_metadata_read_successes": 5,
+    "review_text_or_pagination_validated": false,
+    "network_timings_are_not_scrape_latencies": true,
+    "recommendation": "本轮不能给三家标记业务实测通过。Apify/Walmart系候选保留；下一门槛是用户自有合法试用账户/API key与费用上限。不得把静态JSON、metadata HTTP200、无key401/402/403/404解释为评论采集成功或失败。",
+    "total_endpoint_http_attempts": 14,
+    "unresolved_no_key_responses": 3
+  }
+}

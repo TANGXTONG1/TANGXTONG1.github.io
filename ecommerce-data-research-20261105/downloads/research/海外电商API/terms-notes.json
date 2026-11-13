@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-11-12",
+  "scope": "仅核对公开官方条款文本，不作法律结论，不联络厂商；未检视具体订单/SLA。",
+  "versions": {
+    "Bright Data MSA": "Last Updated October 12, 2026",
+    "Apify General Terms": "Effective July 9, 2026",
+    "Apify Actor Terms": "Effective July 9, 2026"
+  },
+  "comparisons": [
+    {
+      "topic": "数据权利与用途",
+      "bright_data": "MSA 3.9 禁止通过分发、转售等方式用数据提供相似或竞争产品；本次未核到普遍授予抓取内容第三方版权的条款。",
+      "bright_data_url": "https://brightdata.com/license",
+      "apify": "General 5.8：在适用法律允许范围内，客户保留 Customer Data 权利；Actor 3.2 同样保留已有输入/输出权利，并授予开发者为运行 Actor 所需的处理许可。",
+      "apify_urls": [
+        "https://docs.apify.com/legal/general-terms-and-conditions",
+        "https://docs.apify.com/legal/actor-terms-and-conditions"
+      ]
+    },
+    {
+      "topic": "第三方权利边界",
+      "bright_data": "MSA 3.5 要求不违反第三方权利；10.2 允许其拒绝可能侵权的 Web Scraper IDE 服务或数据。",
+      "bright_data_url": "https://brightdata.com/license",
+      "apify": "General 6.2 要求仅处理获授权访问且合规的数据；Actor 2.2 还要求遵守具体开发者条款。",
+      "apify_urls": [
+        "https://docs.apify.com/legal/general-terms-and-conditions",
+        "https://docs.apify.com/legal/actor-terms-and-conditions"
+      ]
+    },
+    {
+      "topic": "投诉、下架或停用",
+      "bright_data": "MSA 2：因潜在责任、违法或违约等可通知后立即暂停；AUP 提供滥用举报并可限制目标内容。本次未核实专门版权下架流程。",
+      "bright_data_urls": [
+        "https://brightdata.com/license",
+        "https://brightdata.com/acceptable-use-policy"
+      ],
+      "apify": "General 13.2 提供违法/侵权内容通知机制；Actor 9.5 允许对被举报且有严重问题的 Community Actor 删除或禁用访问。",
+      "apify_urls": [
+        "https://docs.apify.com/legal/general-terms-and-conditions",
+        "https://docs.apify.com/legal/actor-terms-and-conditions"
+      ]
+    },
+    {
+      "topic": "持续可用性与数据质量",
+      "bright_data": "MSA 6 不保证服务连续、无中断、无错误，或数据准确完整；1.1 另提及适用时的 SLA。",
+      "bright_data_url": "https://brightdata.com/license",
+      "apify": "General 10.1–10.3 不保证无中断或数据准确；除另有约定外不保证平台可用性，并排除第三方网站变更造成的错误责任。",
+      "apify_url": "https://docs.apify.com/legal/general-terms-and-conditions"
+    },
+    {
+      "topic": "具体采集器持续维护",
+      "bright_data": "本次未核到与 Apify 社区开发者相同的分类承诺；其数据采集仍受 MSA 服务条款及适用 SLA 约束。",
+      "bright_data_url": "https://brightdata.com/license",
+      "apify": "Actor 8.2 对 Apify Maintained Actors 有符合官方描述的有限保证及合理修正努力；8.3 可停用。9.2 社区作者无默认维护/更新/支持义务，除非另行声明。",
+      "apify_url": "https://docs.apify.com/legal/actor-terms-and-conditions"
+    }
+  ]
+}

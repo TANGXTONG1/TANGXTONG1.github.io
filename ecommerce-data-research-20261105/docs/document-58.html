@@ -1,0 +1,3051 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>国内电商数据平台字段字典</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E5%B9%B3%E5%8F%B0%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.md" download>下载原始 Markdown</a></header><article><h1 id="_1">国内电商数据平台字段字典</h1>
+<p>核验日期：2026-11-05。共49组产品/平台，来自四份分工调查。全部是官网、公开技术文档、文档元数据、公开示例或导出说明的证据，<strong>未用商家账号/密钥调用业务接口，未验证真实返回或稳定性</strong>。文档目录接口读取不属于商家业务实调。</p>
+<p>字段说明中的“官网样例”“产品指标”“界面列”“未公开”均保留，不能把这些内容一律当作已返回的JSON字段。品牌/平台目录仅说明候选范围，不能覆盖下方每个接口的单独限制。原始来源与局限说明逐项保留；新增元数据仅用于标识分组与未实调状态。</p>
+<ul>
+<li><a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E5%B9%B3%E5%8F%B0%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.json">完整机器可读数据（49组）</a></li>
+<li><a href="document-62.html">自营集成详细字段字典（17个接口/动作）</a></li>
+<li><a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%87%AA%E8%90%A5%E9%9B%86%E6%88%90%E6%8E%A5%E5%8F%A3%E5%AD%97%E6%AE%B5%E7%BB%93%E6%9E%84.json">自营集成接口字段结构JSON</a></li>
+</ul>
+<h2 id="_2">索引</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>平台/产品组</th>
+<th>分组</th>
+<th>证据状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Just One API</td>
+<td>商品价格评价聚合接口</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TMAPI</td>
+<td>商品价格评价聚合接口</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Qovia</td>
+<td>商品价格评价聚合接口</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>4</td>
+<td>万邦 Onebound</td>
+<td>商品价格评价聚合接口</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>5</td>
+<td>竹简数据</td>
+<td>商品价格评价聚合接口</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>6</td>
+<td>EveryInfra/万有引擎</td>
+<td>商品价格评价聚合接口</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>7</td>
+<td>九数云</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>8</td>
+<td>预策</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>9</td>
+<td>轻易云</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>10</td>
+<td>集简云</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>11</td>
+<td>聚水潭</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>12</td>
+<td>旺店通</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>13</td>
+<td>管易云</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>14</td>
+<td>吉客云</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>15</td>
+<td>网店管家</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>16</td>
+<td>快麦</td>
+<td>自营连接与系统集成</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>17</td>
+<td>魔镜洞察 / MMI / 分析+ / 价控</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Nint 任拓 / 情报通 / 倾听</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>19</td>
+<td>数说故事 / 数说聚合 / 应用市场</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>20</td>
+<td>蝉妈妈 / 蝉妈妈开放平台</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>21</td>
+<td>新榜有数 / 新抖 / 新快 / 新红 / 新视</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>22</td>
+<td>飞瓜数据</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>23</td>
+<td>千瓜数据</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>24</td>
+<td>灰豚数据</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>25</td>
+<td>久谦中台</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>26</td>
+<td>电霸 / 店霸（拼多多版）</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>27</td>
+<td>考古加 / 考古加创意</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>28</td>
+<td>达多多</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>29</td>
+<td>QuestMobile / GROWTH / TRUTH</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>30</td>
+<td>窄门餐眼</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>31</td>
+<td>欧特欧 / 商指针</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>32</td>
+<td>百观科技 / BigOne Lab</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>33</td>
+<td>马上赢 / 品牌 CT</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>34</td>
+<td>DataEye / ADX</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>35</td>
+<td>艾瑞 / 易观千帆（两家公司）</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>36</td>
+<td>艺恩数据（当前 AI 数据集产品）</td>
+<td>行业竞品与营销分析</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>37</td>
+<td>餐道</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>38</td>
+<td>鼎点科技</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>39</td>
+<td>极致了/大家来数据</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>40</td>
+<td>富泰科</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>41</td>
+<td>云飞API</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>42</td>
+<td>无限聚核</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>43</td>
+<td>值得买消费信息开放平台</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>44</td>
+<td>大淘客</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>45</td>
+<td>好单库</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>46</td>
+<td>折淘客/折京客</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>47</td>
+<td>慢慢买</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>48</td>
+<td>八爪鱼</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+<tr>
+<td>49</td>
+<td>云听CEM</td>
+<td>本地生活联盟与采集补充</td>
+<td>文档证据，未实调</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-just-one-api">1. Just One API</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：商品价格评价聚合接口。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；抖音电商；小红书电商/蒲公英；巨量星图；得物；闲鱼；1688；小红书/抖音/微博等社媒</p>
+<p><strong>接入方式：</strong> 注册获取API Token，一个Token跨平台；query参数token鉴权；按实际调用付费，权限/余额/Token限额分别控制。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://api.justoneapi.com/api/dewu/search-item-list/v1</li>
+<li>GET https://api.justoneapi.com/api/xianyu/get-item-detail/v1</li>
+<li>GET https://api.justoneapi.com/api/1688/get-item-detail/v1</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>得物搜索：token、keyword（必填）、page（可选）</li>
+<li>闲鱼详情：token、itemId（必填）</li>
+<li>1688详情V1：token、itemId（必填）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>共同响应schema：code、message、data、recordTime、requestId、reason、requestParams</li>
+<li>得物/闲鱼公开OpenAPI的data是空schema，未列业务字段；页面响应示例需动态加载，本次未确认具体价格/销量/评论键名</li>
+<li>1688详情返回业务字段本次未公开核验</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>已核实具体接口存在；得物当前可核的是商品搜索，不能扩写成全商品详情/评价</li>
+<li>闲鱼是二手商品详情，不是平台销量或交易订单接口</li>
+<li>1688目录有21项接口，但不同版本字段必须分别核验</li>
+<li>code=0才是业务成功；HTTP200不能单独表示采集成功</li>
+<li>文档推荐120秒请求超时；是否全量、价格时效与评价分页需实际样本验证</li>
+<li>本次仅公开文档/公开schema核验，无账号密钥，未实际调用业务API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://justoneapi.com/zh" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://api.justoneapi.com/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://docs.justoneapi.com/zh/api/dewu-poizon/product-search-v1" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://docs.justoneapi.com/openapi/dewu-poizon/product-search-v1-zh.json" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://docs.justoneapi.com/zh/api/xianyu-goofish/product-details-v1" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+<li><a href="https://docs.justoneapi.com/openapi/xianyu-goofish/product-details-v1-zh.json" rel="noopener noreferrer" target="_blank">来源 6</a></li>
+<li><a href="https://docs.justoneapi.com/zh/api/1688/product-details-v1" rel="noopener noreferrer" target="_blank">来源 7</a></li>
+</ul>
+<h2 id="2-tmapi">2. TMAPI</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：商品价格评价聚合接口。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；1688；拼多多；京东；义乌购；海外电商（另有独立目录）</p>
+<p><strong>接入方式：</strong> 注册→Console API Keys创建apikey→请求头apikey；各平台独立API。读取官网Markdown文档可得到完整样例，部分HTML路线只显示首页或Loading。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET http://api.tmapi.top/pdd/item_detail</li>
+<li>GET http://api.tmapi.top/jd/item_detail</li>
+<li>GET http://api.tmapi.top/taobao/item/sales/v3（淘系总销量，不能套用JD/PDD）</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>apikey（请求头）</li>
+<li>item_id（拼多多/京东详情query必填）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>拼多多官方样例：data.item_id, data.title, data.currency, data.price, data.price_info, data.price_info.price, data.price_info.min_onsale_group_price, data.price_info.max_onsale_group_price, data.price_info.max_normal_price, data.price_info.min_normal_price, data.price_info.price_tag, data.quantity, data.side_sales_tip, data.shop_info.shop_name, data.shop_info.shop_id, data.shop_info.shop_url, data.shop_info.shop_logo, data.shop_info.shop_rate, data.shop_info.shop_rate[].title, data.shop_info.shop_rate[].type, data.shop_info.shop_rate[].score, data.shop_info.shop_rate[].text, data.comment_count, data.sale_count, data.skus[].skuid, data.skus[].sale_price, data.skus[].origin_price, data.skus[].group_price, data.skus[].stock</li>
+<li>京东官方样例：data.item_id, data.product_url, data.title, data.currency, data.price_info, data.price_info.price, data.price_info.origin_price, data.shop_info, data.shop_info.shop_id, data.shop_info.shop_name, data.shop_info.shop_url, data.skus[].skuid, data.skus[].sale_price, data.skus[].origin_price, data.skus[].stock</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>PDD明确存在sale_count、side_sales_tip（示例“已拼3035件”）、comment_count；这些是销量显示/评论数量，不是评论正文</li>
+<li>JD详情公开样例无销量和评论字段；不能写成京东销量/评价API已验证</li>
+<li>SKU stock样例全部100可能是可售状态映射或默认值；未验证真实库存语义</li>
+<li>淘宝销量V2及店铺列表部分接口页面标维护中，不能按历史清单认定当前可用</li>
+<li>PDD样例库存quantity与各SKU stock并不直接相等，勿擅自加总</li>
+<li>HTTP endpoint照录文档；生产HTTPS域名支持待确认</li>
+<li>本次仅公开文档/公开schema核验，无账号密钥，未实际调用业务API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://tmapi.top/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-sales-by-id-v3" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-sales-by-id-v2.html" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<h2 id="3-qovia">3. Qovia</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：商品价格评价聚合接口。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫评价；京东评价；抖音电商评价；小红书/抖音/快手等社媒；巨量星图/蒲公英/磁力聚星达人数据</p>
+<p><strong>接入方式：</strong> 注册API Key；Authorization Bearer或x-api-key请求头；REST与MCP https://api.qovia.ai/mcp；预付余额，非空成功结果计费。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://api.qovia.ai/v1/raw/taobao/comments</li>
+<li>GET https://api.qovia.ai/v1/raw/taobao/comments_v2</li>
+<li>GET https://api.qovia.ai/v1/raw/jd/comments</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>淘宝：item_id、page（1-500）、skip_default_reviews（默认true）</li>
+<li>京东：sku_id、page（1-100且不超max_page）、only_this_sku（默认true）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>/v1/raw/taobao/comments: request_id, data, data.items, data.items[].id, data.items[].cid, data.items[].text, data.items[].rating_level, data.items[].likes, data.items[].created_at, data.items[].sku, data.items[].user_name, data.items[].user_level, data.items[].anonymous, data.items[].images, data.items[].videos, data.items[].shop_reply, data.items[].followup, data.items[].followup.text, data.items[].followup.days_after_receipt, data.items[].followup.images, data.items[].followup.videos, data.items[].followup.shop_reply, data.page, data.has_more, data.total, data.total_exact, data.prov, data.prov.hash, data.prov.ts, data.prov.source, meta, meta.billed, meta.charged_usd, meta.balance_usd, meta.empty</li>
+<li>/v1/raw/jd/comments: request_id, data, data.items, data.items[].id, data.items[].cid, data.items[].text, data.items[].rating, data.items[].likes, data.items[].created_at, data.items[].sku, data.items[].sku_id, data.items[].user_name, data.items[].anonymous, data.items[].ip_location, data.items[].images, data.items[].shop_reply, data.page, data.has_more, data.max_page, data.total, data.prov, data.prov.hash, data.prov.ts, data.prov.source, meta, meta.billed, meta.charged_usd, meta.balance_usd, meta.empty</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>确有原文text、图片、回复等字段，不只是评论数</li>
+<li>淘宝每页20，默认过滤无文本默认好评；total_exact=false表示total不精确</li>
+<li>京东每页10；max_page往往远少于平台显示评价总数，不能承诺全量评论</li>
+<li>JD only_this_sku=false才含同商品全部规格</li>
+<li>API标beta；本次核验重点是评价，未证实全平台商品/真实销量/广告账户花费API</li>
+<li>未在当前公开OpenAPI查到拼多多电商接口</li>
+<li>本次仅公开文档/公开schema核验，无账号密钥，未实际调用业务API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://qovia.ai/docs/api-reference/raw.taobao.comments/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://qovia.ai/docs/api-reference/raw.jd.comments/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://qovia.ai/docs" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://www.qovia.ai/about/" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<h2 id="4-onebound">4. 万邦 Onebound</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：商品价格评价聚合接口。</p>
+<p><strong>渠道/范围：</strong> 历史目录含淘宝/天猫、京东、拼多多、1688等；当前国内接口逐项可用性未确认</p>
+<p><strong>接入方式：</strong> 历史文档为key+secret鉴权，key必须GET拼URL；注册/联系客服开通。当前国内旧文档多重定向到跨境tglobal。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>历史搜索索引： https://api-gw.onebound.cn/taobao/item_get（当前文档URL跳转，未核验有效服务）</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>历史公开字段：key、secret、api_name、cache、result_type、lang、version、num_iid、is_promotion</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>当前可读取国内接口业务schema未公开核验；不将第三方转载或旧搜索缓存字段作为当前有效承诺</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>本次直接请求https://open.onebound.cn/help/api/taobao.item_get.html最终返回https://open.onebound.cn/help/api/tglobal.readme.html</li>
+<li>搜索引擎仍能检索旧淘宝文档内容，不代表当前可调用</li>
+<li>只能列为需要客服提供当前国内API清单、真实样例及有效测试权限的候选</li>
+<li>不要把tglobal跨境商品接口算作国内淘宝/京东/拼多多已核验接入</li>
+<li>本次仅公开文档/公开schema核验，无账号密钥，未实际调用业务API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://open.onebound.cn/help/api/taobao.item_get.html" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.onebound.cn/help/api/tglobal.readme.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://open.onebound.cn/help/api/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="5">5. 竹简数据</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：商品价格评价聚合接口。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；淘宝闪购周边商家/爆品团；抖音电商；抖音团购；京东（详情1项）；小红书/微博/抖音等社媒；飞猪/同程/智行</p>
+<p><strong>接入方式：</strong> 暂未开放自助调用；联系销售开通权限、发token与专属endpoint。POST JSON，token通过query传递。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST https://&lt;专属endpoint&gt;/api/taobao/item-comments-v1</li>
+<li>POST https://&lt;专属endpoint&gt;/api/taobao/item-sales-v1</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>token（query必填）</li>
+<li>item_id（JSON必填）</li>
+<li>page（评论，可选默认1）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>评论：code、message、data.item_id、data.total、data.list[].comment_id、data.list[].content、data.list[].has_image、data.list[].append</li>
+<li>销量：code、message、data.item_id、data.sales_30d、data.sales_total</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>官网有请求/响应样例，但数字和文案是示例，不是本次实测</li>
+<li>销量字段存在不代表对所有商品可获得真实精确交易量，口径及近30日算法未披露</li>
+<li>has_image仅图片布尔值；本页示例未提供图片URL或评论时间字段</li>
+<li>京东目录仅商品详情，不能写成京东评论API</li>
+<li>未在25平台公开目录确认美团或拼多多标准接口；定制意向不等于现成能力</li>
+<li>专属域名需要商务开通，公开占位符不能直接调用</li>
+<li>本次仅公开文档/公开schema核验，无账号密钥，未实际调用业务API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://marketplace.bamboodatalab.com/zh/api/taobao/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-sales-v1" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://marketplace.bamboodatalab.com/zh/api/douyin-ec/" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<h2 id="6-everyinfra">6. EveryInfra/万有引擎</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：商品价格评价聚合接口。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；1688；得物（价格概要）；闲鱼（搜索/详情）；小红书/抖音/微博等；海外电商/点评平台；国内电商能力以catalog为准</p>
+<p><strong>接入方式：</strong> 注册充值创建API Key；Authorization: Bearer；统一POST social API，也可MCP；GET /api/v1/social/catalog免费查询能力、参数、上限和价格。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST https://api.everyinfra.com/api/v1/social</li>
+<li>GET https://api.everyinfra.com/api/v1/social/catalog</li>
+<li>GET https://api.everyinfra.com/api/v1/jobs/{job_id}</li>
+<li>MCP https://api.everyinfra.com/mcp</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>Authorization（header）</li>
+<li>platform（例如taobao/jd）</li>
+<li>action（例如product_detail/reviews）</li>
+<li>params.url（淘宝详情：商品数字ID/商品URL/唯一商品URL分享文本）</li>
+<li>params.item_id（京东评价）</li>
+<li>params.limit（京东评价1-10，默认10）</li>
+<li>mode=async（异步可选）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>共同：id、platform、action、results、count、billing.charged、billing.charged_usd、billing.balance_after_usd、quota</li>
+<li>淘系详情：results.id、url、title、price、currency、stock、category_id、shop_name、shop_id、skus[].id/name/price/stock/image_url、sku_count、price_usd、original_price、coupon_price、sold_count（search有，详情常缺省）、reviews[].text/rating/posted_at/sku</li>
+<li>京东评价results[]：id、item_id、text、review_append、rating、rating_scale、posted_at、color、size、useful_count、images、author_name、author_avatar_url、author_is_plus、buy_count、platform</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>文档明确淘系详情price及SKU价格多数由美元折算人民币，可能相差页面1–4%；不宜直接用于精确到手价监测</li>
+<li>淘宝shop只有original_price划线价，非实际卖价；sold_count在详情常缺省</li>
+<li>京东评价接口上限10条，不能据工具名承诺全量历史评论；页面样例为schema占位而非真实样本</li>
+<li>平台未提供的值不补造；不存在字段与零值需区分</li>
+<li>未在当前106平台目录核验拼多多/美团标准电商接口</li>
+<li>官网有验证码/代理服务，但本次未调用；无需为普通数据API调研触碰这些能力</li>
+<li>本次仅公开文档/公开schema核验，无账号密钥，未实际调用业务API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://everyinfra.com/docs" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://everyinfra.com/jd-api/reviews" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://everyinfra.com/taobao-api/product_detail" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://everyinfra.com/market" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<h2 id="7">7. 九数云</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（授权与奇门）；拼多多（直连/商家自研）；抖店；美团餐饮外卖/团购/到店广告；饿了么；巨量千川；聚水潭/旺店通/吉客云等ERP</p>
+<p><strong>接入方式：</strong> 先开通各付费数据源并授权店铺/广告账户；数据入分析表后可CSV/Excel或API导出。外发API仅企业版，超管取密钥。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://work.jiushuyun.com/decision/api/v1/corp/get/apitoken</li>
+<li>GET https://work.jiushuyun.com/decision/api/v1/corp/oauth/token</li>
+<li>POST https://work.jiushuyun.com/decision/api/v1/folders</li>
+<li>POST https://work.jiushuyun.com/decision/api/v1/{folderId}/tables</li>
+<li>POST https://work.jiushuyun.com/decision/api/v2/export</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>Authorization</li>
+<li>tableId</li>
+<li>format</li>
+<li>accessKeyId</li>
+<li>accessKeySecret</li>
+<li>folderId</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>success</li>
+<li>code</li>
+<li>message</li>
+<li>data</li>
+<li>errorCode</li>
+<li>detailErrorMsg</li>
+<li>errorMsg</li>
+<li>data[].id</li>
+<li>data[].name</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>业务字段随所选表和分析表变化；公开帮助页未给全连接器英文schema，授权后选表界面可查看。</li>
+<li>淘宝与拼多多直连均有Alpha标识；拼多多要主账号及贝壳订单服务，试用授权7天。</li>
+<li>美团首次近5天；团购仅餐饮且单系统绑定可能顶掉原关联；到店广告仅CPC门店日报，不代表闪购全数据。</li>
+<li>2025-08-20起聚水潭/吉客云/旺店通连接器不再新增同步拼多多；应走拼多多直连或自研路径。</li>
+<li>聚水潭连接器2026-02-28起京东敏感字段为空。</li>
+<li>API只导出分析表；data是下载链接，CSV列没有跨平台统一字段名。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-149.html" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-140.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-1124.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-1121.html" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-1055.html" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">来源 6</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">来源 7</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-673.html" rel="noopener noreferrer" target="_blank">来源 8</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-562.html" rel="noopener noreferrer" target="_blank">来源 9</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="8">8. 预策</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 具体渠道未从可靠官方技术文档验证</p>
+<p><strong>接入方式：</strong> 官网产品存在；外发API、文件导出、授权步骤与费用未公开核实。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>未公开/未核实</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>未公开</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>未公开</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>公开Apifox“预策”目录未证明官网归属，部分内容复制九数云，不能作为已上线连接器证据。</li>
+<li>未核到任何可承诺的请求/响应字段。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.yucekj.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="9">9. 轻易云</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 聚水潭适配器；旺店通适配器；管易云适配器；吉客云适配器；网店管家适配器；有赞/微盟（目录级）；淘宝奇门路径（须独立授权）</p>
+<p><strong>接入方式：</strong> iPaaS按源端授权配置适配器、字段映射、目标系统写入；目录的method通常为底层服务API方法，不等于轻易云统一对外数据API。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST orders.single.query（聚水潭适配器）</li>
+<li>POST jushuitan.order.list.query（聚水潭奇门适配器）</li>
+<li>POST gy.erp.trade.get（管易适配器）</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>shop_id</li>
+<li>is_offline_shop</li>
+<li>so_ids</li>
+<li>modified_begin</li>
+<li>modified_end</li>
+<li>status</li>
+<li>page_index</li>
+<li>page_size</li>
+<li>page_no</li>
+<li>start_date</li>
+<li>end_date</li>
+<li>date_type</li>
+<li>order_state</li>
+<li>warehouse_code</li>
+<li>shop_code</li>
+<li>vip_name</li>
+<li>platform_code</li>
+<li>receiver_mobile</li>
+<li>code</li>
+<li>has_cancel_data</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>is_cod</li>
+<li>l_id</li>
+<li>send_date</li>
+<li>pay_date</li>
+<li>freight</li>
+<li>receiver_address</li>
+<li>receiver_district</li>
+<li>wms_co_id</li>
+<li>logistics_company</li>
+<li>free_amount</li>
+<li>shop_name</li>
+<li>question_type</li>
+<li>outer_pay_id</li>
+<li>so_id</li>
+<li>type</li>
+<li>order_from</li>
+<li>status</li>
+<li>pay_amount</li>
+<li>shop_buyer_id</li>
+<li>shop_status</li>
+<li>receiver_mobile</li>
+<li>order_date</li>
+<li>question_desc</li>
+<li>receiver_city</li>
+<li>receiver_state</li>
+<li>receiver_name</li>
+<li>o_id</li>
+<li>shop_id</li>
+<li>co_id</li>
+<li>pays</li>
+<li>items</li>
+<li>remark</li>
+<li>drp_co_id_from</li>
+<li>modified</li>
+<li>labels</li>
+<li>paid_amount</li>
+<li>currency</li>
+<li>buyer_message</li>
+<li>lc_id</li>
+<li>invoice_title</li>
+<li>invoice_type</li>
+<li>buyer_tax_no</li>
+<li>creator_name</li>
+<li>plan_delivery_date</li>
+<li>node</li>
+<li>receiver_town</li>
+<li>drp_co_id_to</li>
+<li>is_order_pay</li>
+<li>buyer_account</li>
+<li>amount</li>
+<li>pay_id</li>
+<li>payment</li>
+<li>is_gift</li>
+<li>sku_id</li>
+<li>name</li>
+<li>refund_status</li>
+<li>refund_id</li>
+<li>price</li>
+<li>outer_oi_id</li>
+<li>item_status</li>
+<li>i_id</li>
+<li>properties_value</li>
+<li>oi_id</li>
+<li>shop_sku_id</li>
+<li>raw_so_id</li>
+<li>qty</li>
+<li>is_presale</li>
+<li>base_price</li>
+<li>pic</li>
+<li>sku_type</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>自营系统间搬运，不能据ERP兼容数量认定可外发淘系/拼多多全部字段。</li>
+<li>公开聚水潭适配器页更新2021，响应说明111占位、类型不细；管易页未公开响应字段。</li>
+<li>接口资产目录证明有适配文档，不证明当前应用账号已获商家/平台权限。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://qeasy.cloud/api/a7127585-62c9-34d1-a91c-8d981692a9cb" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://mcp.qeasy.cloud/solution-article/3397-ju-shui-tan-qi-men-dui-jie-da-tong-qing-yi-yun-ji-cheng-ping-tai-ding-dan-cha-xun-jie-kou-yu-xiao-shou-chu-ku-xin-zeng-jie-kou" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="10">10. 集简云</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 抖店；有赞商城；微盟智慧零售/微商城；百度营销；微信视频号小店（更新文档级）；抖音来客（更新文档级）；管易云（采购/调拨/会员动作）</p>
+<p><strong>接入方式：</strong> 流程连接器：授权应用→选触发/执行动作→获取样本→字段映射→写入目标系统；支持Webhook/自定义API动作。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>抖店：订单列表查询、订单详情查询、售后详情、商品详情、联盟订单明细、商家评分</li>
+<li>抖店：创建资金流水明细下载任务→下载明细文件</li>
+<li>连接器平台开放SDK/API与具体电商取数动作须区分</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>order_id</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>p_id</li>
+<li>download_id</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>完整电商请求/响应字段字典未在公开页面给出；只确认order_id/p_id/download_id。</li>
+<li>官方故障页描述抖店近90天、单页最多100、总查询最多5万，应以当前动作实调为准。</li>
+<li>评价“商家评分”只说明体验分/物流/服务分，不是用户评价全文。</li>
+<li>未据官方技术文档验证淘宝、京东、拼多多、美团四者完整直连字段；京东小程序不可等同京东商城。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.jijyun.cn/apps/processes/1874" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.jijyun.cn/help/detail/756" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://www.jijyun.cn/help/detail/380" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://www.jijyun.cn/help/detail/1240" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+<li><a href="https://www.jijyun.cn/help/detail/1485" rel="noopener noreferrer" target="_blank">来源 6</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="11">11. 聚水潭</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（奇门独立路径）；京东；拼多多（平台独立路径；普通订单接口排除）；快手；抖音；自建商城</p>
+<p><strong>接入方式：</strong> 商家授权+应用审核/权限；新OpenAPI用app_key/access_token/签名。ERP订单、商品、库存、售后，真实业务数需按退款/拆合单口径汇总。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST https://openapi.jushuitan.com/open/orders/single/query</li>
+<li>POST https://openapi.jushuitan.com/open/sku/query（仅核到部分分页/时间参数）</li>
+<li>旧版methods: orders.single.query</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>app_key</li>
+<li>access_token</li>
+<li>timestamp</li>
+<li>charset</li>
+<li>version</li>
+<li>sign</li>
+<li>shop_id</li>
+<li>is_offline_shop</li>
+<li>page_index</li>
+<li>page_size</li>
+<li>start_ts</li>
+<li>is_get_total</li>
+<li>o_ids</li>
+<li>order_flds</li>
+<li>order_item_flds</li>
+<li>order_types</li>
+<li>archive</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>code</li>
+<li>msg</li>
+<li>data</li>
+<li>data.page_size</li>
+<li>data.page_index</li>
+<li>data.data_count</li>
+<li>data.page_count</li>
+<li>data.has_next</li>
+<li>data.orders</li>
+<li>data.orders[].is_cod</li>
+<li>data.orders[].l_id</li>
+<li>data.orders[].send_date</li>
+<li>data.orders[].pay_date</li>
+<li>data.orders[].freight</li>
+<li>data.orders[].first_freight</li>
+<li>data.orders[].outerwms_freight</li>
+<li>data.orders[].receiver_address</li>
+<li>data.orders[].receiver_district</li>
+<li>data.orders[].wms_co_id</li>
+<li>data.orders[].logistics_company</li>
+<li>data.orders[].as_id</li>
+<li>data.orders[].free_amount</li>
+<li>data.orders[].shop_name</li>
+<li>data.orders[].question_type</li>
+<li>data.orders[].outer_pay_id</li>
+<li>data.orders[].so_id</li>
+<li>data.orders[].type</li>
+<li>data.orders[].order_from</li>
+<li>data.orders[].status</li>
+<li>data.orders[].pay_amount</li>
+<li>data.orders[].shop_buyer_id</li>
+<li>data.orders[].open_id</li>
+<li>data.orders[].shop_status</li>
+<li>data.orders[].receiver_mobile</li>
+<li>data.orders[].receiver_phone</li>
+<li>data.orders[].order_date</li>
+<li>data.orders[].question_desc</li>
+<li>data.orders[].receiver_city</li>
+<li>data.orders[].receiver_state</li>
+<li>data.orders[].receiver_name</li>
+<li>data.orders[].o_id</li>
+<li>data.orders[].shop_id</li>
+<li>data.orders[].co_id</li>
+<li>data.orders[].remark</li>
+<li>data.orders[].package_no</li>
+<li>data.orders[].warehouse_oid</li>
+<li>data.orders[].drp_co_id_from</li>
+<li>data.orders[].modified</li>
+<li>data.orders[].labels</li>
+<li>data.orders[].paid_amount</li>
+<li>data.orders[].platform_free_amount</li>
+<li>data.orders[].pay_free_amount</li>
+<li>data.orders[].referrer_free_amount</li>
+<li>data.orders[].shop_free_amount</li>
+<li>data.orders[].currency</li>
+<li>data.orders[].buyer_message</li>
+<li>data.orders[].lc_id</li>
+<li>data.orders[].cb_total_tax</li>
+<li>data.orders[].invoice_title</li>
+<li>data.orders[].invoice_type</li>
+<li>data.orders[].invoice_amount</li>
+<li>data.orders[].buyer_tax_no</li>
+<li>data.orders[].creator_name</li>
+<li>data.orders[].plan_delivery_date</li>
+<li>data.orders[].node</li>
+<li>data.orders[].receiver_town</li>
+<li>data.orders[].drp_co_id_to</li>
+<li>data.orders[].shop_site</li>
+<li>data.orders[].un_lid</li>
+<li>data.orders[].end_time</li>
+<li>data.orders[].receiver_country</li>
+<li>data.orders[].receiver_zip</li>
+<li>data.orders[].seller_flag</li>
+<li>data.orders[].receiver_email</li>
+<li>data.orders[].referrer_id</li>
+<li>data.orders[].referrer_name</li>
+<li>data.orders[].created</li>
+<li>data.orders[].pays</li>
+<li>data.orders[].items</li>
+<li>data.orders[].skus</li>
+<li>data.orders[].f_weight</li>
+<li>data.orders[].weight</li>
+<li>data.orders[].ts</li>
+<li>data.orders[].buyer_id</li>
+<li>data.orders[].buyer_paid_amount</li>
+<li>data.orders[].seller_income_amount</li>
+<li>data.orders[].chosen_channel</li>
+<li>data.orders[].channel_name</li>
+<li>data.orders[].cb_lc_code</li>
+<li>data.orders[].cb_lc_name</li>
+<li>data.orders[].link_o_id</li>
+<li>data.orders[].merge_so_id</li>
+<li>data.orders[].shipment</li>
+<li>data.orders[].sign_time</li>
+<li>data.orders[].is_merge</li>
+<li>data.orders[].is_split</li>
+<li>data.orders[].first_freight_tariff</li>
+<li>data.orders[].f_freight_other_expense</li>
+<li>data.orders[].service_charge</li>
+<li>data.orders[].government_free_amount</li>
+<li>data.orders[].online_origin_amount</li>
+<li>data.orders[].items[].is_gift</li>
+<li>data.orders[].items[].sku_id</li>
+<li>data.orders[].items[].name</li>
+<li>data.orders[].items[].refund_status</li>
+<li>data.orders[].items[].refund_id</li>
+<li>data.orders[].items[].price</li>
+<li>data.orders[].items[].outer_oi_id</li>
+<li>data.orders[].items[].item_status</li>
+<li>data.orders[].items[].i_id</li>
+<li>data.orders[].items[].properties_value</li>
+<li>data.orders[].items[].oi_id</li>
+<li>data.orders[].items[].amount</li>
+<li>data.orders[].items[].shop_sku_id</li>
+<li>data.orders[].items[].raw_so_id</li>
+<li>data.orders[].items[].qty</li>
+<li>data.orders[].items[].src_combine_sku_id</li>
+<li>data.orders[].items[].is_presale</li>
+<li>data.orders[].items[].base_price</li>
+<li>data.orders[].items[].pic</li>
+<li>data.orders[].items[].sku_type</li>
+<li>data.orders[].items[].shop_i_id</li>
+<li>data.orders[].items[].buyer_paid_amount</li>
+<li>data.orders[].items[].seller_income_amount</li>
+<li>data.orders[].items[].referrer_id</li>
+<li>data.orders[].items[].lwh_id</li>
+<li>data.orders[].items[].lwh_name</li>
+<li>data.orders[].items[].remark</li>
+<li>data.orders[].items[].produced_date</li>
+<li>data.orders[].items[].batch_id</li>
+<li>data.orders[].items[].item_ext_data</li>
+<li>data.orders[].pays[].is_order_pay</li>
+<li>data.orders[].pays[].buyer_account</li>
+<li>data.orders[].pays[].amount</li>
+<li>data.orders[].pays[].pay_date</li>
+<li>data.orders[].pays[].outer_pay_id</li>
+<li>data.orders[].pays[].pay_id</li>
+<li>data.orders[].pays[].payment</li>
+<li>data.orders[].pays[].status</li>
+<li>data.orders[].pays[].pay_type</li>
+<li>data.orders[].pays[].o_id</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>普通订单接口不返回淘系、拼多多；淘系奇门另授权。</li>
+<li>字段order_from列平台枚举不代表这些平台在当前普通接口全部可出库。</li>
+<li>新页字段本轮来自官方搜索索引，直接正文超时；不声称实调可用。</li>
+<li>金额字段pay_amount为应付；实付汇总pays[].is_order_pay=true的amount。</li>
+<li>敏感信息按平台脱敏/加密/不返回；未核到通用广告曝光点击报表或消费者评价全文。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://openweb.jushuitan.com/dev-doc?docId=22&amp;docType=4" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://openweb.jushuitan.com/doc?docId=340" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://openweb.jushuitan.com/dev-doc?docId=14&amp;docType=2" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="12">12. 旺店通</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（奇门）；京东；拼多多（普通订单接口排除）；抖音；快手；小红书；1688；美团外卖/闪购/闪电仓（平台代码级）</p>
+<p><strong>接入方式：</strong> 企业版API示例需sid/appkey/appsecret签名和店铺授权；接口增值收费；多产品线API不同。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>HTTP API路径 https://api.wangdian.cn/openapi2/vip_api_trade_query.php（调用方法按官方SDK）</li>
+<li>历史订单路径 https://api.wangdian.cn/openapi2/vip_his_api_trade_query.php</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>sid</li>
+<li>appkey</li>
+<li>timestamp</li>
+<li>sign</li>
+<li>tid</li>
+<li>platform_id</li>
+<li>shop_no</li>
+<li>start_time</li>
+<li>end_time</li>
+<li>page_no</li>
+<li>page_size</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>code</li>
+<li>message</li>
+<li>total_count</li>
+<li>trade_list</li>
+<li>trade_list[].platform_id</li>
+<li>trade_list[].shop_no</li>
+<li>trade_list[].tid</li>
+<li>trade_list[].trade_status</li>
+<li>trade_list[].guarantee_mode</li>
+<li>trade_list[].pay_status</li>
+<li>trade_list[].delivery_term</li>
+<li>trade_list[].pay_method</li>
+<li>trade_list[].refund_status</li>
+<li>trade_list[].process_status</li>
+<li>trade_list[].trade_time</li>
+<li>trade_list[].pay_time</li>
+<li>trade_list[].buyer_message</li>
+<li>trade_list[].remark</li>
+<li>trade_list[].goods_amount</li>
+<li>trade_list[].post_amount</li>
+<li>trade_list[].other_amount</li>
+<li>trade_list[].discount</li>
+<li>trade_list[].paid</li>
+<li>trade_list[].platform_cost</li>
+<li>trade_list[].received</li>
+<li>trade_list[].receivable</li>
+<li>trade_list[].dap_amount</li>
+<li>trade_list[].cod_amount</li>
+<li>trade_list[].refund_amount</li>
+<li>trade_list[].logistics_type</li>
+<li>trade_list[].invoice_type</li>
+<li>trade_list[].invoice_title</li>
+<li>trade_list[].invoice_content</li>
+<li>trade_list[].end_time</li>
+<li>trade_list[].fenxiao_type</li>
+<li>trade_list[].trade_from</li>
+<li>trade_list[].modified</li>
+<li>trade_list[].created</li>
+<li>trade_list[].trade_mask</li>
+<li>trade_list[].openid</li>
+<li>trade_list[].currency</li>
+<li>trade_list[].score</li>
+<li>trade_list[].to_deliver_time</li>
+<li>trade_list[].pi_amount</li>
+<li>trade_list[].rec_id</li>
+<li>trade_list[].shop_id</li>
+<li>trade_list[].order_count</li>
+<li>trade_list[].goods_count</li>
+<li>trade_list[].buyer_nick</li>
+<li>trade_list[].buyer_area</li>
+<li>trade_list[].customer_no</li>
+<li>trade_list[].receiver_name</li>
+<li>trade_list[].receiver_country</li>
+<li>trade_list[].receiver_province</li>
+<li>trade_list[].receiver_city</li>
+<li>trade_list[].receiver_district</li>
+<li>trade_list[].receiver_mobile</li>
+<li>trade_list[].receiver_telno</li>
+<li>trade_list[].receiver_province_name</li>
+<li>trade_list[].receiver_city_name</li>
+<li>trade_list[].receiver_district_name</li>
+<li>trade_list[].receiver_area</li>
+<li>trade_list[].receiver_address</li>
+<li>trade_list[].remark_flag</li>
+<li>trade_list[].pay_id</li>
+<li>trade_list[].invoice_consumer_amount</li>
+<li>trade_list[].invoice_platform_amount</li>
+<li>trade_list[].is_auto_wms</li>
+<li>trade_list[].actual_paid</li>
+<li>trade_list[].goods_list</li>
+<li>trade_list[].discount_list</li>
+<li>trade_list[].goods_list[].platform_id</li>
+<li>trade_list[].goods_list[].tid</li>
+<li>trade_list[].goods_list[].oid</li>
+<li>trade_list[].goods_list[].status</li>
+<li>trade_list[].goods_list[].process_status</li>
+<li>trade_list[].goods_list[].refund_status</li>
+<li>trade_list[].goods_list[].order_type</li>
+<li>trade_list[].goods_list[].goods_id</li>
+<li>trade_list[].goods_list[].spec_id</li>
+<li>trade_list[].goods_list[].goods_no</li>
+<li>trade_list[].goods_list[].spec_no</li>
+<li>trade_list[].goods_list[].goods_name</li>
+<li>trade_list[].goods_list[].spec_name</li>
+<li>trade_list[].goods_list[].num</li>
+<li>trade_list[].goods_list[].price</li>
+<li>trade_list[].goods_list[].adjust_amount</li>
+<li>trade_list[].goods_list[].discount</li>
+<li>trade_list[].goods_list[].total_amount</li>
+<li>trade_list[].goods_list[].share_discount</li>
+<li>trade_list[].goods_list[].share_amount</li>
+<li>trade_list[].goods_list[].share_post</li>
+<li>trade_list[].goods_list[].paid</li>
+<li>trade_list[].goods_list[].invoice_type</li>
+<li>trade_list[].goods_list[].invoice_content</li>
+<li>trade_list[].goods_list[].bind_oid</li>
+<li>trade_list[].goods_list[].refund_id</li>
+<li>trade_list[].goods_list[].refund_amount</li>
+<li>trade_list[].goods_list[].r emark</li>
+<li>trade_list[].goods_list[].daifa_logistics_no</li>
+<li>trade_list[].goods_list[].daifa_logistics_type</li>
+<li>trade_list[].goods_list[].daifa_consign_time</li>
+<li>trade_list[].goods_list[].daifa_end_time</li>
+<li>trade_list[].goods_list[].modified</li>
+<li>trade_list[].goods_list[].created</li>
+<li>trade_list[].goods_list[].end_time</li>
+<li>trade_list[].goods_list[].rec_id</li>
+<li>trade_list[].goods_list[].process_refund_status</li>
+<li>trade_list[].goods_list[].spec_code</li>
+<li>trade_list[].goods_list[].commission</li>
+<li>trade_list[].goods_list[].stockout_no</li>
+<li>trade_list[].goods_list[].logistics_no</li>
+<li>trade_list[].goods_list[].is_auto_wms</li>
+<li>trade_list[].goods_list[].cid</li>
+<li>trade_list[].goods_list[].actual_paid</li>
+<li>trade_list[].discount_list[].platform_id</li>
+<li>trade_list[].discount_list[].tid</li>
+<li>trade_list[].discount_list[].oid</li>
+<li>trade_list[].discount_list[].rec_id</li>
+<li>trade_list[].discount_list[].type</li>
+<li>trade_list[].discount_list[].is_bonus</li>
+<li>trade_list[].discount_list[].created</li>
+<li>trade_list[].discount_list[].name</li>
+<li>trade_list[].discount_list[].detail</li>
+<li>trade_list[].discount_list[].amount</li>
+<li>trade_list[].discount_list[].sn</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>普通原始订单接口不含淘系、拼多多、系统供销。</li>
+<li>按修改时间增量，时间窗最多30天；page_size 1至100，page_no从0。</li>
+<li>隐私字段列在字典中但可被加密或留空；不得当成明文可取得承诺。</li>
+<li>平台代码仅证明ERP渠道枚举，具体美团子业务可外发字段需账号确认。</li>
+<li>未核到标准广告投放曝光/点击/转化或评价文本API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.wangdian.cn/open/guide?path=qjbguide_ptdmbb" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://open.wangdian.cn/open/guide?path=guide_yygz" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="13">13. 管易云</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；拼多多；抖音（官网合作级；具体出库权限待核）</p>
+<p><strong>接入方式：</strong> 官网确认OpenAPI/奇门/集成服务；公开当前字段手册未可靠获得，客户/商务确认。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>未从当前官方技术文档确认可用端点；gy.erp.trade.get仅见轻易云适配器目录，不计作管易当前一手证明。</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>未公开/未核实当前版本</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>未公开/未核实当前版本</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>旧官方帮助域guanyi.kf5.com现显示未注册，不能照旧转载实现。</li>
+<li>营销账单归集不等于广告曝光/点击/转化报表；评价字段未核实。</li>
+<li>当期请求/响应字典未公开核实，先索取正式文档和可脱敏样本。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.guanyiyun.com/zhihuicangpeijiejuefangan/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.guanyiyun.com/dajiankang/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.guanyiyun.com/guanyuwomen/316.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://guanyi.kf5.com/hc/kb/article/1234992/" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="14">14. 吉客云</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；拼多多（受外发规则限制）；抖音；美团零售/医药/餐饮/点评（接入列表级）</p>
+<p><strong>接入方式：</strong> OpenAPI或官方MCP；企业认证、创建应用、订阅接口和商家授权。公开MCP参数目录可免登录查看；真实调用需授权。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>oms.trade.fullinfoget</li>
+<li>erp-goods.pricelist.get</li>
+<li>omsapi-business.order.get</li>
+<li>birc.report.needauth.goodsMultiDimensionalAnalysis</li>
+<li>birc.report.needauthsalesPerformanceStat</li>
+<li>ass-business.returnchange.fullinfoget</li>
+<li>erp.storage.goodslist</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>tradeNo</li>
+<li>pageIndex</li>
+<li>fields</li>
+<li>pageSize</li>
+<li>startConsignTime</li>
+<li>endConsignTime</li>
+<li>startAuditTime</li>
+<li>endAuditTime</li>
+<li>shopIds</li>
+<li>warehouseIds</li>
+<li>tradeStatus</li>
+<li>cols</li>
+<li>skuBarcodes</li>
+<li>goodsNos</li>
+<li>goodsNames</li>
+<li>skuNames</li>
+<li>createTimeBegin</li>
+<li>createTimeEnd</li>
+<li>timeType</li>
+<li>filterTimeType</li>
+<li>finReceiptStatus</li>
+<li>skuIds</li>
+<li>assemblyDimension</li>
+<li>tradeType</li>
+<li>tradeFrom</li>
+<li>startTime</li>
+<li>endTime</li>
+<li>startFinReceiptTime</li>
+<li>endFinReceiptTime</li>
+<li>summaryType</li>
+<li>flagIds</li>
+<li>platformCode</li>
+<li>tradeOrderTypes</li>
+<li>tradeFroms</li>
+<li>excludeFlag</li>
+<li>filterBlockup</li>
+<li>merchandiserFilterBlockup</li>
+<li>returnChangeNo</li>
+<li>startGmtCreate</li>
+<li>endGmtCreate</li>
+<li>sourceTradeNo</li>
+<li>sourceTradeAfterNo</li>
+<li>goodsNo</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>trades:goodsDetail:goodsNo</li>
+<li>trades:goodsDetail:goodsName</li>
+<li>trades:tradeNo</li>
+<li>trades:shopName</li>
+<li>trades:goodsDetail:sellTotal</li>
+<li>trades:sourceTradeNo</li>
+<li>trades:goodsDetail:sellCount</li>
+<li>trades:warehouseName</li>
+<li>trades:goodsDetail:sellPrice</li>
+<li>trades:mainPostid</li>
+<li>trades:goodsDetail:specName</li>
+<li>trades:goodsDetail:unit</li>
+<li>trades:payment</li>
+<li>trades:goodsDetail:barcode</li>
+<li>trades:tradeStatus</li>
+<li>skuName</li>
+<li>skuBarcode</li>
+<li>goodsNo</li>
+<li>goodsName</li>
+<li>unitName</li>
+<li>currencyCode</li>
+<li>currencyName</li>
+<li>minPrice</li>
+<li>price1</li>
+<li>price2</li>
+<li>price3</li>
+<li>price4</li>
+<li>price5</li>
+<li>tradeNo</li>
+<li>logisticNo</li>
+<li>shopName</li>
+<li>createTime</li>
+<li>payTime</li>
+<li>payment</li>
+<li>goodsCount</li>
+<li>goodsDetailList:goodsBarcode</li>
+<li>goodsDetailList:goodsName</li>
+<li>goodsDetailList:platGoodsId</li>
+<li>goodsDetailList:price</li>
+<li>goodsDetailList:sellCount</li>
+<li>goodsDetailList:sellTotal</li>
+<li>curStatusExplain</li>
+<li>tradeStatusExplain</li>
+<li>skuNo</li>
+<li>barcode</li>
+<li>brandName</li>
+<li>cateName</li>
+<li>countryName</li>
+<li>provinceName</li>
+<li>cityName</li>
+<li>time</li>
+<li>finReceiptTime</li>
+<li>companyName</li>
+<li>departName</li>
+<li>shopCateName</li>
+<li>warehouseName</li>
+<li>logisticName</li>
+<li>sellerName</li>
+<li>goodsQty</li>
+<li>sellAmtCompanyCurrency</li>
+<li>goodsAmtCompanyCurrency</li>
+<li>deductRefundgoodsAmtCompanyCurrency</li>
+<li>refundGoodsAmtCompanyCurrency</li>
+<li>cancelGoodsAmtCompanyCurrency</li>
+<li>costAmtCompanyCurrency</li>
+<li>expenseShareAmtCompanyCurrency</li>
+<li>grossProfitCompanyCurrency</li>
+<li>grossProfitRateCompanyCurrencyShow</li>
+<li>taxAmtCompanyCurrency</li>
+<li>noTaxGoodsAmtCompanyCurrency</li>
+<li>noTaxGrossProfitCompanyCurrency</li>
+<li>noTaxGrossProfitRateCompanyCurrencyShow</li>
+<li>returnGoodsRate</li>
+<li>deliveryGoodsQty</li>
+<li>returnGoodsQty</li>
+<li>estimateWeight</li>
+<li>customerTotal</li>
+<li>channelName</li>
+<li>channelCateName</li>
+<li>channelCode</li>
+<li>userName</li>
+<li>mainDepartName</li>
+<li>merchandiser</li>
+<li>salesTeamName</li>
+<li>platformName</li>
+<li>soQtyTotal</li>
+<li>sellCountTotal</li>
+<li>sellTotal</li>
+<li>afterShareFeeTotal</li>
+<li>localAfterShareFeeTotal</li>
+<li>deductRefundSoQty</li>
+<li>refundSoQty</li>
+<li>deductRefundSellCount</li>
+<li>refundSellCount</li>
+<li>deductRefundAfterShareFee</li>
+<li>refundAfterShareFee</li>
+<li>deductRefundLocalAfterShareFee</li>
+<li>refundLocalAfterShareFee</li>
+<li>deductCost</li>
+<li>refundCost</li>
+<li>costTotal</li>
+<li>localShareSalesExpense</li>
+<li>profit</li>
+<li>profitTotal</li>
+<li>profitRateShow</li>
+<li>profitRateTotalShow</li>
+<li>notTaxedProfit</li>
+<li>notTaxedProfitRateShow</li>
+<li>assessmentCost</li>
+<li>assessmentPrice</li>
+<li>assessmentProfit</li>
+<li>avgPrice</li>
+<li>goodsTaxAmt</li>
+<li>receiptAmount</li>
+<li>discountAmt</li>
+<li>couponAmt</li>
+<li>receivablePostAmt</li>
+<li>postAmt</li>
+<li>taxAmt</li>
+<li>packageNum</li>
+<li>packageWeight</li>
+<li>localWarehouseAmt</li>
+<li>salesContributionRateShow</li>
+<li>profitContributionRateShow</li>
+<li>returnChangeList:returnChangeNo</li>
+<li>returnChangeList:tradeNo</li>
+<li>returnChangeList:sourceTradeNo</li>
+<li>returnChangeList:sourceTradeAfterNo</li>
+<li>returnChangeList:warehouseName</li>
+<li>returnChangeList:sendWarehouseName</li>
+<li>returnChangeList:shopName</li>
+<li>returnChangeList:companyName</li>
+<li>returnChangeList:sourceShopName</li>
+<li>returnChangeList:deliveryTime</li>
+<li>returnChangeList:gmtCreate</li>
+<li>returnChangeList:returnTradeNo</li>
+<li>returnChangeList:sendTradeNo</li>
+<li>returnChangeList:returnChangeGoodsDetail:goodsNo</li>
+<li>returnChangeList:returnChangeGoodsDetail:goodsName</li>
+<li>returnChangeList:returnChangeGoodsDetail:barcode</li>
+<li>returnChangeList:returnChangeGoodsDetail:unit</li>
+<li>returnChangeList:returnChangeGoodsDetail:price</li>
+<li>returnChangeList:returnChangeGoodsDetail:sellCount</li>
+<li>returnChangeList:returnChangeGoodsDetail:returnCount</li>
+<li>returnChangeList:returnChangeGoodsDetail:returnFee</li>
+<li>returnChangeList:returnChangeGoodsDetail:sendCount</li>
+<li>returnChangeList:returnChangeGoodsDetail:shouldReturnFee</li>
+<li>returnChangeList:returnChangeGoodsDetail:returnChangeList:returnChangeGoodsDetail:deliveryCount</li>
+<li>returnChangeList:returnChangeGoodsDetail:returnChangeList:returnChangeGoodsDetail:shareReturnFee</li>
+<li>returnChangeList:returnChangeGoodsDetail:shareShouldReturnFee</li>
+<li>returnChangeList:mainPostid</li>
+<li>goods:goodsName</li>
+<li>goods:unitName</li>
+<li>goods:warehouseName</li>
+<li>goods:skuBarcode</li>
+<li>goods:cateName</li>
+<li>goods:brandName</li>
+<li>goods:skuName</li>
+<li>goods:defaultVendName</li>
+<li>goods:ownerName</li>
+<li>goods:goodsNo</li>
+<li>goods:skuCode</li>
+<li>goods:skuId</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>本轮读取的是公开文档元数据，不是MCP业务工具调用成功。</li>
+<li>MCP参数列表是典型字段；实际分页/扩展字段以正式接口为准；原始冒号路径未自行转换。</li>
+<li>货品价目minPrice/price1至price5是ERP价目，不能自动当电商到手价。</li>
+<li>吉客云→九数云连接器明确自2025-08-20停取拼多多；其他外发路径需单独核验。</li>
+<li>没有核到通用广告计划报表或商品评价全文；销售业绩统计是ERP业务指标。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://open.jackyun.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.jackyun.com/developer/mcpservice/toolList.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://open.jackyun.com/developer/mcpservice/toolList.js" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://www.jackyun.com/official/platformList?platName=%E7%BE%8E%E5%9B%A2" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://help.fanruan.com/jiushuyun/doc-view-673.html" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="15">15. 网店管家</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（奇门）；京东；拼多多（普通查询排除）；1688；抖音；快手；有赞；美团零售/医药（历史场景，当前字段未核）</p>
+<p><strong>接入方式：</strong> 订购开放平台、Appkey/Accesstoken/签名；标准API可返回XML/JSON；淘系须独立平台对接。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>wdgj.tradenosensitiveinfo.list.get</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>Method</li>
+<li>Accesstoken</li>
+<li>Appkey</li>
+<li>Sign</li>
+<li>Timestamp</li>
+<li>Format</li>
+<li>Versions</li>
+<li>searchtype</li>
+<li>begintime</li>
+<li>endtime</li>
+<li>pageno</li>
+<li>pagesize</li>
+<li>timetype</li>
+<li>searchstatus</li>
+<li>operationtype</li>
+<li>searchno</li>
+<li>relationno</li>
+<li>warehouseno</li>
+<li>querymarkup</li>
+<li>reservedword</li>
+<li>searchname</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>returncode</li>
+<li>returninfo</li>
+<li>datalist</li>
+<li>totalcount</li>
+<li>datalist.datainfo</li>
+<li>datalist.datainfo.keytype</li>
+<li>datalist.datainfo.type</li>
+<li>datalist.datainfo.tradeid</li>
+<li>datalist.datainfo.regtime</li>
+<li>datalist.datainfo.tradetime</li>
+<li>datalist.datainfo.tradestatus</li>
+<li>datalist.datainfo.tradeno</li>
+<li>datalist.datainfo.shopid</li>
+<li>datalist.datainfo.cardname</li>
+<li>datalist.datainfo.shoptype</li>
+<li>datalist.datainfo.shopno</li>
+<li>datalist.datainfo.shopname</li>
+<li>datalist.datainfo.warehouseid</li>
+<li>datalist.datainfo.warehouseno</li>
+<li>datalist.datainfo.warehousename</li>
+<li>datalist.datainfo.seller</li>
+<li>datalist.datainfo.tradetype</li>
+<li>datalist.datainfo.customerid</li>
+<li>datalist.datainfo.sndto</li>
+<li>datalist.datainfo.country</li>
+<li>datalist.datainfo.province</li>
+<li>datalist.datainfo.city</li>
+<li>datalist.datainfo.town</li>
+<li>datalist.datainfo.adr</li>
+<li>datalist.datainfo.zip</li>
+<li>datalist.datainfo.tel</li>
+<li>datalist.datainfo.cancelreason</li>
+<li>datalist.datainfo.tradefrom</li>
+<li>datalist.datainfo.tradeno2</li>
+<li>datalist.datainfo.goodslist</li>
+<li>datalist.datainfo.goodslist.goodsinfo</li>
+<li>datalist.datainfo.goodslist.goodsinfo.barcode</li>
+<li>datalist.datainfo.goodslist.goodsinfo.goodsname</li>
+<li>datalist.datainfo.goodslist.goodsinfo.goodsno</li>
+<li>datalist.datainfo.goodslist.goodsinfo.price</li>
+<li>datalist.datainfo.goodslist.goodsinfo.unit</li>
+<li>datalist.datainfo.goodslist.goodsinfo.specname</li>
+<li>datalist.datainfo.goodslist.goodsinfo.remark</li>
+<li>datalist.datainfo.goodslist.goodsinfo.goodsmoney</li>
+<li>datalist.datainfo.goodslist.goodsinfo.goodscount</li>
+<li>datalist.datainfo.goodslist.goodsinfo.recid</li>
+<li>datalist.datainfo.goodslist.goodsinfo.bfit</li>
+<li>datalist.datainfo.goodslist.goodsinfo.bgift</li>
+<li>datalist.datainfo.goodslist.goodsinfo.goodsid</li>
+<li>datalist.datainfo.goodslist.goodsinfo.specid</li>
+<li>datalist.datainfo.goodslist.goodsinfo.sn</li>
+<li>datalist.datainfo.goodslist.goodsinfo.recno</li>
+<li>datalist.datainfo.goodslist.goodsinfo.positionsname</li>
+<li>datalist.datainfo.goodslist.goodsinfo.errmsg</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>该接口不返回订单敏感信息；淘系只返回管家订单号与店铺信息；不返回拼多多销售单。</li>
+<li>返回样例虽列adr/tel/sndto等旧字段，不能据此承诺当前明文可得。</li>
+<li>每页1至100；参数大小写与奇门wdgj前缀规则须遵守。</li>
+<li>未核到广告报表和用户评价全文API。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://open.wdgj.com/OpenApiDoc/ApiInfo.html?OpenAPIID=70056&amp;dictID=84" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.wdgj.com/OpenApiDoc/OpenFlow.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.wdgj.com/product-esapi.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="16">16. 快麦</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：自营连接与系统集成。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（奇门另开）；拼多多（方舟另开）；京东；抖音；1688；唯品会；得物；自建商城</p>
+<p><strong>接入方式：</strong> OpenAPI appKey/session/签名；可申请奇门和方舟对应场景。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST https://gw.superboss.cc/router; method=erp.trade.list.query</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>method</li>
+<li>appKey</li>
+<li>timestamp</li>
+<li>format</li>
+<li>version</li>
+<li>sign_method</li>
+<li>sign</li>
+<li>session</li>
+<li>sid</li>
+<li>tid</li>
+<li>timeType</li>
+<li>startTime</li>
+<li>endTime</li>
+<li>userIds</li>
+<li>pageSize</li>
+<li>pageNo</li>
+<li>status</li>
+<li>tagIds</li>
+<li>exceptIds</li>
+<li>exceptionStatus</li>
+<li>types</li>
+<li>onlyContain</li>
+<li>consignedType</li>
+<li>buyerNick</li>
+<li>queryType</li>
+<li>outSids</li>
+<li>useHasNext</li>
+<li>useCursor</li>
+<li>cursor</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>success</li>
+<li>trace_id</li>
+<li>list</li>
+<li>list[].paymentDiff</li>
+<li>list[].buyerNick</li>
+<li>list[].threePlTiming</li>
+<li>list[].type</li>
+<li>list[].receiverCity</li>
+<li>list[].invoiceRemark</li>
+<li>list[].poNos</li>
+<li>list[].packmaCost</li>
+<li>list[].receiverPhone</li>
+<li>list[].expressCode</li>
+<li>list[].payment</li>
+<li>list[].payAmount</li>
+<li>list[].adjustFee</li>
+<li>list[].isExcep</li>
+<li>list[].exceptIds</li>
+<li>list[].exceptNames</li>
+<li>list[].receiverZip</li>
+<li>list[].isTmallDelivery</li>
+<li>list[].buyerTaxNo</li>
+<li>list[].isHalt</li>
+<li>list[].warehouseId</li>
+<li>list[].isRefund</li>
+<li>list[].receiverState</li>
+<li>list[].orders</li>
+<li>list[].orders[].sysSkuPropertiesName</li>
+<li>list[].orders[].discountRate</li>
+<li>list[].orders[].discountFee</li>
+<li>list[].orders[].payTime</li>
+<li>list[].orders[].numIid</li>
+<li>list[].orders[].num</li>
+<li>list[].orders[].source</li>
+<li>list[].orders[].shortTitle</li>
+<li>list[].orders[].sysTitle</li>
+<li>list[].orders[].type</li>
+<li>list[].orders[].suits</li>
+<li>list[].orders[].suits[].sysSkuPropertiesName</li>
+<li>list[].orders[].suits[].discountRate</li>
+<li>list[].orders[].suits[].discountFee</li>
+<li>list[].orders[].suits[].payTime</li>
+<li>list[].orders[].suits[].numIid</li>
+<li>list[].orders[].suits[].num</li>
+<li>list[].orders[].suits[].source</li>
+<li>list[].orders[].suits[].shortTitle</li>
+<li>list[].orders[].suits[].sysTitle</li>
+<li>list[].orders[].suits[].type</li>
+<li>list[].orders[].suits[].cost</li>
+<li>list[].orders[].suits[].outerSkuId</li>
+<li>list[].orders[].suits[].combineId</li>
+<li>list[].orders[].suits[].payAmount</li>
+<li>list[].orders[].suits[].tid</li>
+<li>list[].orders[].suits[].consignTime</li>
+<li>list[].orders[].suits[].isPresell</li>
+<li>list[].orders[].suits[].price</li>
+<li>list[].orders[].suits[].updTime</li>
+<li>list[].orders[].suits[].giftNum</li>
+<li>list[].orders[].suits[].stockStatus</li>
+<li>list[].orders[].suits[].modified</li>
+<li>list[].orders[].suits[].payment</li>
+<li>list[].orders[].suits[].id</li>
+<li>list[].orders[].suits[].adjustFee</li>
+<li>list[].orders[].suits[].skuId</li>
+<li>list[].orders[].suits[].created</li>
+<li>list[].orders[].suits[].insufficientCanceled</li>
+<li>list[].orders[].suits[].taobaoId</li>
+<li>list[].orders[].suits[].sysOuterId</li>
+<li>list[].orders[].suits[].saleFee</li>
+<li>list[].orders[].suits[].picPath</li>
+<li>list[].orders[].suits[].volume</li>
+<li>list[].orders[].suits[].sysItemRemark</li>
+<li>list[].orders[].suits[].companyId</li>
+<li>list[].orders[].suits[].netWeight</li>
+<li>list[].orders[].suits[].unit</li>
+<li>list[].orders[].suits[].isVirtual</li>
+<li>list[].orders[].suits[].status</li>
+<li>list[].orders[].suits[].sysConsigned</li>
+<li>list[].orders[].suits[].refundStatus</li>
+<li>list[].orders[].suits[].oid</li>
+<li>list[].orders[].suits[].title</li>
+<li>list[].orders[].suits[].itemSysId</li>
+<li>list[].orders[].suits[].sid</li>
+<li>list[].orders[].suits[].forcePackNum</li>
+<li>list[].orders[].suits[].sysStatus</li>
+<li>list[].orders[].suits[].divideOrderFee</li>
+<li>list[].orders[].suits[].skuPropertiesName</li>
+<li>list[].orders[].suits[].isCancel</li>
+<li>list[].orders[].suits[].salePrice</li>
+<li>list[].orders[].suits[].ptConsignTime</li>
+<li>list[].orders[].suits[].totalFee</li>
+<li>list[].orders[].suits[].sysPicPath</li>
+<li>list[].orders[].suits[].skuSysId</li>
+<li>list[].orders[].suits[].estimateConTime</li>
+<li>list[].orders[].suits[].endTime</li>
+<li>list[].orders[].suits[].orderStockProducts</li>
+<li>list[].orders[].suits[].orderStockProducts[].batchNo</li>
+<li>list[].orders[].suits[].orderStockProducts[].productionDate</li>
+<li>list[].orders[].suits[].orderStockProducts[].expireDate</li>
+<li>list[].orders[].suits[].orderStockProducts[].lockNum</li>
+<li>list[].orders[].tid</li>
+<li>list[].orders[].isPresell</li>
+<li>list[].orders[].consignTime</li>
+<li>list[].orders[].uniqueCode</li>
+<li>list[].orders[].outerSkuId</li>
+<li>list[].orders[].sysSkuPropertiesAlias</li>
+<li>list[].orders[].price</li>
+<li>list[].orders[].updTime</li>
+<li>list[].orders[].giftNum</li>
+<li>list[].orders[].stockNum</li>
+<li>list[].orders[].stockStatus</li>
+<li>list[].orders[].modified</li>
+<li>list[].orders[].payment</li>
+<li>list[].orders[].id</li>
+<li>list[].orders[].adjustFee</li>
+<li>list[].orders[].skuId</li>
+<li>list[].orders[].created</li>
+<li>list[].orders[].insufficientCanceled</li>
+<li>list[].orders[].taobaoId</li>
+<li>list[].orders[].diffStockNum</li>
+<li>list[].orders[].sysSkuRemark</li>
+<li>list[].orders[].sysOuterId</li>
+<li>list[].orders[].saleFee</li>
+<li>list[].orders[].exceptions</li>
+<li>list[].orders[].volume</li>
+<li>list[].orders[].picPath</li>
+<li>list[].orders[].sysItemRemark</li>
+<li>list[].orders[].companyId</li>
+<li>list[].orders[].unit</li>
+<li>list[].orders[].netWeight</li>
+<li>list[].orders[].osGiftCount</li>
+<li>list[].orders[].oldStatus</li>
+<li>list[].orders[].warehouseId</li>
+<li>list[].orders[].isVirtual</li>
+<li>list[].orders[].status</li>
+<li>list[].orders[].sysConsigned</li>
+<li>list[].orders[].soid</li>
+<li>list[].orders[].refundStatus</li>
+<li>list[].orders[].oid</li>
+<li>list[].orders[].itemSysId</li>
+<li>list[].orders[].title</li>
+<li>list[].orders[].sid</li>
+<li>list[].orders[].forcePackNum</li>
+<li>list[].orders[].acPayment</li>
+<li>list[].orders[].sysStatus</li>
+<li>list[].orders[].sysItemOuterId</li>
+<li>list[].orders[].osSortNum</li>
+<li>list[].orders[].skuPropertiesName</li>
+<li>list[].orders[].skuUnit</li>
+<li>list[].orders[].cost</li>
+<li>list[].orders[].isCancel</li>
+<li>list[].orders[].salePrice</li>
+<li>list[].orders[].oldPrice</li>
+<li>list[].orders[].postFee</li>
+<li>list[].orders[].identCode</li>
+<li>list[].orders[].combineId</li>
+<li>list[].orders[].authorId</li>
+<li>list[].orders[].authorNo</li>
+<li>list[].orders[].authorName</li>
+<li>list[].orders[].userId</li>
+<li>list[].orders[].ptConsignTime</li>
+<li>list[].orders[].totalFee</li>
+<li>list[].orders[].sysPicPath</li>
+<li>list[].orders[].skuSysId</li>
+<li>list[].orders[].outerId</li>
+<li>list[].orders[].endTime</li>
+<li>list[].orders[].estimateConTime</li>
+<li>list[].orders[].refundId</li>
+<li>list[].orders[].expressCompanyId</li>
+<li>list[].orders[].orderExt</li>
+<li>list[].orders[].orderExt[].orderRemark</li>
+<li>list[].orders[].orderExt[].customization</li>
+<li>list[].orders[].orderExt[].originalPrice</li>
+<li>list[].orders[].orderExt[].originalPayment</li>
+<li>list[].orders[].orderExt[].originalOtherFee</li>
+<li>list[].orders[].payAmount</li>
+<li>list[].orders[].divideOrderFee</li>
+<li>list[].orders[].orderStockProducts</li>
+<li>list[].orders[].orderStockProducts[].batchNo</li>
+<li>list[].orders[].orderStockProducts[].productionDate</li>
+<li>list[].orders[].orderStockProducts[].expireDate</li>
+<li>list[].orders[].orderStockProducts[].lockNum</li>
+<li>list[].expressCompanyId</li>
+<li>list[].status</li>
+<li>list[].isUrgent</li>
+<li>list[].theoryPostFee</li>
+<li>list[].warehouseName</li>
+<li>list[].hasSuit</li>
+<li>list[].itemNum</li>
+<li>list[].receiverDistrict</li>
+<li>list[].taxFee</li>
+<li>list[].isHandlerMessage</li>
+<li>list[].grossProfit</li>
+<li>list[].postFee</li>
+<li>list[].receiverMobile</li>
+<li>list[].singleItemKindNum</li>
+<li>list[].userId</li>
+<li>list[].itemKindNum</li>
+<li>list[].exceptMemo</li>
+<li>list[].ptConsignTime</li>
+<li>list[].buyerMessage</li>
+<li>list[].unifiedStatus</li>
+<li>list[].excep</li>
+<li>list[].tradeTags</li>
+<li>list[].tradeTags[].bgColor</li>
+<li>list[].tradeTags[].remark</li>
+<li>list[].tradeTags[].id</li>
+<li>list[].tradeTags[].tagName</li>
+<li>list[].tradeTags[].fontColor</li>
+<li>list[].shortId</li>
+<li>list[].discountFee</li>
+<li>list[].sellerFlagString</li>
+<li>list[].payTime</li>
+<li>list[].mobileTail</li>
+<li>list[].source</li>
+<li>list[].tid</li>
+<li>list[].consignTime</li>
+<li>list[].isPresell</li>
+<li>list[].receiverCountry</li>
+<li>list[].updTime</li>
+<li>list[].stockStatus</li>
+<li>list[].modified</li>
+<li>list[].created</li>
+<li>list[].taobaoId</li>
+<li>list[].weight</li>
+<li>list[].auditMatchRule</li>
+<li>list[].sysOuterId</li>
+<li>list[].saleFee</li>
+<li>list[].exceptions</li>
+<li>list[].outSid</li>
+<li>list[].receiverAddress</li>
+<li>list[].volume</li>
+<li>list[].scalping</li>
+<li>list[].companyId</li>
+<li>list[].netWeight</li>
+<li>list[].sellerMemo</li>
+<li>list[].chSysStatus</li>
+<li>list[].subSource</li>
+<li>list[].sysMemo</li>
+<li>list[].shopName</li>
+<li>list[].sid</li>
+<li>list[].cancelFrom</li>
+<li>list[].acPayment</li>
+<li>list[].sysStatus</li>
+<li>list[].manualPaymentAmount</li>
+<li>list[].fxIsUpload</li>
+<li>list[].promiseService</li>
+<li>list[].cost</li>
+<li>list[].isCancel</li>
+<li>list[].receiverName</li>
+<li>list[].timeoutActionTime</li>
+<li>list[].isHandlerMemo</li>
+<li>list[].expressCompanyName</li>
+<li>list[].isCancelDistributorAttribute</li>
+<li>list[].tradeFrom</li>
+<li>list[].platformPaymentAmount</li>
+<li>list[].totalFee</li>
+<li>list[].wlbTemplateType</li>
+<li>list[].timingPromise</li>
+<li>list[].actualPostFee</li>
+<li>list[].splitType</li>
+<li>list[].splitSid</li>
+<li>list[].endTime</li>
+<li>list[].templateId</li>
+<li>list[].templateName</li>
+<li>list[].logisticsCompanyId</li>
+<li>list[].logisticsCompanyName</li>
+<li>list[].isPackage</li>
+<li>list[].sellerFlag</li>
+<li>list[].salesmanId</li>
+<li>list[].salesmanName</li>
+<li>list[].sourceName</li>
+<li>list[].sourceId</li>
+<li>list[].destName</li>
+<li>list[].destId</li>
+<li>list[].expressPrintTime</li>
+<li>list[].deliverPrintTime</li>
+<li>list[].expressStatus</li>
+<li>list[].deliverStatus</li>
+<li>list[].sellerNick</li>
+<li>list[].selfBuiltPaymentReceivable</li>
+<li>list[].selfBuiltDepositAmount</li>
+<li>list[].selfBuiltPayment</li>
+<li>list[].tradeInvoice</li>
+<li>list[].tradeInvoice[].invoiceType</li>
+<li>list[].tradeInvoice[].invoiceKind</li>
+<li>list[].tradeInvoice[].invoiceName</li>
+<li>list[].tradeInvoice[].buyerTaxNo</li>
+<li>list[].tradeInvoice[].invoiceRemark</li>
+<li>list[].tradeInvoice[].buyerAddress</li>
+<li>list[].tradeInvoice[].buyerPhone</li>
+<li>list[].tradeInvoice[].buyerBank</li>
+<li>list[].tradeInvoice[].buyerBankAccount</li>
+<li>list[].tradeInvoice[].invoiceAmount</li>
+<li>list[].tradeInvoice[].email</li>
+<li>list[].subShop</li>
+<li>list[].subShop[].id</li>
+<li>list[].subShop[].shopName</li>
+<li>list[].subShop[].platformCode</li>
+<li>list[].subShop[].shopCode</li>
+<li>list[].subShop[].logisticsCode</li>
+<li>list[].tradeExt</li>
+<li>list[].tradeExt[].currency</li>
+<li>list[].tradeExt[].originalPayment</li>
+<li>list[].tradeExt[].originalPostFee</li>
+<li>list[].tradeExt[].originalDiscountFee</li>
+<li>list[].tradeExt[].originalTaxFee</li>
+<li>list[].tradeExt[].originalOtherFeeBuyer</li>
+<li>list[].tradeExt[].originalOtherFeeSeller</li>
+<li>list[].tradeExt[].originalOtherFeeOther</li>
+<li>list[].tradePictureMemoUris</li>
+<li>list[].messageMemos</li>
+<li>list[].messageMemos[].sid</li>
+<li>list[].messageMemos[].tid</li>
+<li>list[].messageMemos[].buyerMessage</li>
+<li>list[].messageMemos[].sellerMemo</li>
+<li>list[].messageMemos[].sysMemo</li>
+<li>list[].messageMemos[].sellerFlag</li>
+<li>list[].messageMemos[].payment</li>
+<li>list[].messageMemos[].totalFee</li>
+<li>list[].messageMemos[].discountFee</li>
+<li>list[].messageMemos[].postFee</li>
+<li>list[].messageMemos[].acPayment</li>
+<li>list[].messageMemos[].payAmount</li>
+<li>list[].messageMemos[].theoryPostFee</li>
+<li>list[].messageMemos[].adjustFee</li>
+<li>list[].messageMemos[].paymentDisplay</li>
+<li>list[].messageMemos[].totalDiscountFee</li>
+<li>list[].messageMemos[].created</li>
+<li>list[].messageMemos[].payTime</li>
+<li>list[].messageMemos[].consignTime</li>
+<li>list[].messageMemos[].ptConsignTime</li>
+<li>list[].messageMemos[].taxFee</li>
+<li>list[].messageMemos[].saleFee</li>
+<li>list[].messageMemos[].grossProfit</li>
+<li>list[].messageMemos[].isHandlerMessage</li>
+<li>list[].messageMemos[].isHandlerMemo</li>
+<li>list[].messageMemos[].addressChanged</li>
+<li>list[].messageMemos[].isMergeMain</li>
+<li>list[].messageMemos[].unifiedStatus</li>
+<li>list[].messageMemos[].sysConsigned</li>
+<li>list[].messageMemos[].isUpload</li>
+<li>list[].messageMemos[].userId</li>
+<li>list[].messageMemos[].sysStatus</li>
+<li>list[].messageMemos[].actualPostFee</li>
+<li>list[].distributor</li>
+<li>list[].distributor[].distributorName</li>
+<li>list[].distributor[].distributorPhone</li>
+<li>list[].vipPickNo</li>
+<li>list[].vipStorageNo</li>
+<li>list[].storageNo</li>
+<li>total</li>
+<li>hasNext</li>
+<li>cursor</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>仅文档证据，未注册授权、未做业务API实调；不能据此判定账户实际可用。</li>
+<li>普通查询不含淘系和拼多多；新申请的拼多多需方舟ERP-自研数据传输场景。</li>
+<li>时间跨度建议不超过1天；pageSize 20至200；queryType区分3个月前后。</li>
+<li>归档不支持audit_time/upd_time；useHasNext=true不返回总数。</li>
+<li>隐私字段可能缺失或加密；未核标准广告报表与用户评价文本。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://open.kuaimai.com/docs/api/API%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93/%E8%AE%A2%E5%8D%95%E6%9F%A5%E8%AF%A2%E9%9D%9E%E6%B7%98%E7%B3%BB%E6%8B%BC%E5%A4%9A%E5%A4%9A/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.kuaimai.com/docs/question/%E7%B3%BB%E7%BB%9F%E5%85%AC%E5%91%8A/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E8%87%AA%E7%A0%94%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5%E5%BC%80%E6%94%BE%E5%85%AC%E5%91%8A/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<p><a href="document-62.html">更多自营接口字段、类型和口径</a></p>
+<h2 id="17-mmi">17. 魔镜洞察 / MMI / 分析+ / 价控</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；拼多多（部分市场接口旧文档枚举）；美团（部分市场接口旧文档枚举）</p>
+<p><strong>接入方式：</strong> 公开 API 文档；MOOJING-APIKEY 请求头鉴权，需开通数据权限及额度。分析+官方明确 Excel 导出。未登录或实调。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://market.moojing.com/api/platform/<plat>/cats/<catid>/brands/<brandid>/hot_items</brandid></catid></plat></li>
+<li>GET https://market.moojing.com/api/item/sale/trend</li>
+<li>GET https://market.moojing.com/api/shop/sale/trend</li>
+<li>GET https://market.moojing.com/api/platform/<plat>/cats/<catid>/brands/<brandid>/comment_trend</brandid></catid></plat></li>
+<li>GET https://detact.moojing.com/api/items/price/trend</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>SiteHotItems: plat, catid, brandid, start, page, page_size；catid != 0 或 brandid != all</li>
+<li>ItemSale: plat, item_id, start</li>
+<li>ShopSale: plat, uid, cat_id, brand_id, start</li>
+<li>SiteCommentTrend: plat, catid, brandid, type（month/quarter/year）</li>
+<li>ItemPriceTrend: item_id, sku_id, plat（仅 taobao/jd）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>SiteHotItems: count, data[]；item_id, title, shop_name, sold, price, comment, brand_name, loc, min_price, price_ds3, price_ps, price_cp, cat_path</li>
+<li>ItemSale: result.trend[month].comment, sold, title, price, sale</li>
+<li>ShopSale: trend, item_num, sold, sale, uid, shop_name</li>
+<li>SiteCommentTrend: bad, good, neutral, count，值为时间序列</li>
+<li>ItemPriceTrend: coupon, info；sku_id, monit_price, pro_price, dis_price, stock, title, update_time, price, sku_name, shop_coupon, plat, discount</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>本条字段来自公开文档，非实际响应；示例日期较旧，当前可售渠道及字段需样例验收。</li>
+<li>拼多多/美团仅出现在部分 MMI 接口枚举，不能套到 ItemSale/ShopSale/价控；ItemSale/ShopSale 文档只列淘系和京东相关平台。</li>
+<li>hot_items 为商品级监测聚合，不是原始订单或完整 SKU 账本。</li>
+<li>comment_trend 是评论数量及好中差评率，非逐条评论文本；文档对淘系还有限制。电商聆听有商品评论文本分析，但原文批量 API 未核实。</li>
+<li>鉴权、订阅、余额、每日调用量及限速会限制数据访问。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://mktindex.com/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.mktindex.com/static/fenxi/?f=fenxi" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="18-nint">18. Nint 任拓 / 情报通 / 倾听</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 阿里/淘宝/天猫；京东；抖音；小红书；考拉（官网导航）</p>
+<p><strong>接入方式：</strong> 企业 SaaS、定制标准库及研究服务；需商务试用/演示，官方 FAQ 表示暂不向个人提供。未核实公开对外 API 或完整导出规格。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>产品界面维度，非 API 参数：行业/类目、品牌、店铺、商品、日期</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>情报通产品指标，非 API schema：销量、销售额、均价、参考价、品牌/货品排名、同比、环比、市场占比、商品属性</li>
+<li>运营监测指标，非 API schema：调价、改名、新链接等运营动作</li>
+<li>倾听产品能力：好差评、情感/语义聚类、自定义标签、购买场景/动机、行业/品牌/店铺/商品/竞品评价比较</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>公开产品能力不等于可直接 API/CSV 接入；逐条评价原文、SKU 关联、追评/商家回复及批量导出待商务确认。</li>
+<li>需求表中的本地生活/外卖选项不能证明美团或饿了么具体接口已可用；拼多多覆盖本轮未获明确接口证据。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.nint.com/shopper-listening" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.nint.com/research" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://www.nint.com/faq" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<h2 id="19">19. 数说故事 / 数说聚合 / 应用市场</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 社交媒体/短视频/新闻/问答；电商评论（具体商城清单未公开核实）</p>
+<p><strong>接入方式：</strong> 官网明确 Open API/商用 API、接口接入及定制服务；商务咨询/试用。API 能力已确认，具体电商端点及字段 schema 未公开核实。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>聚合产品查询输入，非已核实 API 参数名：关键词、账号 UID、单帖 URL、事件话题</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开产品指标，非 API schema：声量趋势、阵地分布、情感分布、内容词云、原文</li>
+<li>应用市场产品能力：电商大盘、商业内容、达人选评、口碑分析，输入含社媒/电商评论/消费者留言</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>公司级 Open API 能力不能证明每一电商平台逐条评价均有标准接口。</li>
+<li>官网可见原文能力，但平台来源、原文交付格式、脱敏、历史长度和字段字典需商务样例。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.datastory.com.cn/details/830" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.datastory.com.cn/details/782?from=hotspot" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://appstore.datastory.com.cn/" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<h2 id="20">20. 蝉妈妈 / 蝉妈妈开放平台</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 抖音</p>
+<p><strong>接入方式：</strong> 官网明确数据定制、API 服务、Agent Skills 和定制报表；需联系商务/取得相应数据权限。本轮未取得正式接口 schema 或凭证。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>公开产品搜索对象，非 API 参数：行业、商品、达人、直播、小店、品牌、短视频</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>官网产品指标，非 API schema：直播热度、观众热度、商品热度、销售额热度、销量热度</li>
+<li>开放平台数据对象：短视频、达人、商品、直播、小店、品牌、行业趋势、竞品数据、爆款素材</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>API 服务存在已获官网证明，具体 endpoint/字段/日期权限仍需正式文档或授权样例。</li>
+<li>有第三方镜像列 CMM API 技能及商品评论明细，但未从官方源成功取回原文，本文件不将镜像字段视作已核实官方 schema。</li>
+<li>销量/销额的具体区间或精确值口径尚未实测；素材情报不等于竞品真实广告账单。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.chanmama.com/open-platform/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.chanmama.com/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="21">21. 新榜有数 / 新抖 / 新快 / 新红 / 新视</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 抖音；快手；小红书；视频号；微信公众号；B站；微博</p>
+<p><strong>接入方式：</strong> 官网确认定制 API；需登录/商务获取方案。官方自定义榜单产品支持 Excel 导出，按所选账号/时间等使用规则开通，不能推定所有产品都有同等导出。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>自定义榜单产品输入，非 API 参数：跨平台指定账号、日期区间</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>自定义榜单/Excel 产品指标，非 API schema：阅读量、点赞量、粉丝数、新榜指数、排名</li>
+<li>其余产品对象：账号、内容、互动、直播、营销效果；逐产品 API 字段未公开核实</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>定制 API 与 SaaS 会员权限独立确认；未核实所有新榜子产品均可全量 API 输出。</li>
+<li>社媒内容评论不等同商品买家购后评价。</li>
+<li>检索到 Apifox 开发中页面但未建立官方入口关联，未纳入已核实端点。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://chs.newrank.cn/main/pdf/newrank-introduce-2024.pdf" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.newrank.cn/article/detail/30526" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="22">22. 飞瓜数据</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 抖音；快手；B站；小红书（单独版本/会员）</p>
+<p><strong>接入方式：</strong> 微信扫码注册并按产品绑定账号/购买会员。官方 FAQ 明确集团版定制数据导出；快手官方帮助说明商品销售、关联直播、关联达人等导出。未核实公开外部 API。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>商品界面输入，非 API 参数：商品链接或关键词；日期区间；版本/平台</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>抖音商品产品指标，非 API schema：昨日/近 30 天销量、浏览量、价格、佣金率、销量/销售额、推广视频、推广直播、热推播主</li>
+<li>快手商品导出说明中的列/指标：商品信息、商品来源、价格、销量、销售额</li>
+<li>快手关联直播：直播时间、直播价、预估销量、预估销额；关联达人列表及同类目商品也有导出说明</li>
+<li>其他产品指标：视频点赞/点赞增量、直播人气峰值、观众性别/年龄/地域/星座</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>导出范围、配额及是否含所需列取决于平台版本与套餐；集团定制导出不等于公开 API。</li>
+<li>不同平台会员独立；不能把快手导出说明套给抖音全部模块。</li>
+<li>预估销量/销额不等同真实订单；营销/舆情不是全渠道商品评价原文库。</li>
+<li>本轮未登录、未实际调用、未下载导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.feigua.cn/home" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://dy3.feigua.cn/help/detail/13/101.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://dy3.feigua.cn/help/detail/22/25.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://ks.feigua.cn/Help/HelpCenter?id=46" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://ks.feigua.cn/login/Purchase" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<h2 id="23">23. 千瓜数据</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 小红书</p>
+<p><strong>接入方式：</strong> 会员 SaaS；官方定价表确认商品数据、达人/粉丝画像及通用数据导出权限，具体模块/配额随套餐；未核实公开 API。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>产品界面维度，非 API 参数：达人、笔记、品牌、商品、店铺、直播、行业、日期</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>协议明列估算指标，非 API schema：预估曝光、预估阅读、系统测算投放报价、预估合作收入、预估投放金额、预估搜索指数</li>
+<li>协议明列估算指标，非 API schema：预估销售额/销量、预估成交销售额/销量、笔记预估贡献销额/销量、预估 CPM、预估 CPE</li>
+<li>导出权限表证明可导出模块，未提供统一 CSV 列名/schema</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>协议明确多项指标为预估；不能当真实广告消耗或精确交易。</li>
+<li>笔记评论不等同商品购后评价，逐条评价库未核实。</li>
+<li>部分历史数据/定制导出需商务确认；与飞瓜同属果集体系，勿重复算作独立底层供应商。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.qian-gua.com/Home/AllPrice" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://wap.qian-gua.com/Home/IndexAnalysisTool" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://app.qian-gua.com/?chl=guanjianci-bing" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://www.qian-gua.com/qg/informations/3/1" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+</ul>
+<h2 id="24">24. 灰豚数据</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 抖音；小红书；快手</p>
+<p><strong>接入方式：</strong> 官方 FAQ 明确不提供 API；仅带导出按钮页面可导 Excel。注册/绑定手机后按平台购买会员，各版本会员不通用。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开产品指标，非已核实导出列：直播带货/转化、粉丝互动及画像、播主销量榜、爆品榜、MCN 榜、行业和直播分析</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>FAQ 正文更新较早，当前商务定制 API 是否有变化需向厂商确认。</li>
+<li>Excel 按页面按钮提供，不能推断全部页面/字段可导；未见统一导出字典。</li>
+<li>未核实淘宝/京东/拼多多/美团商品购后评价数据。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://huitun.com/help" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.huitun.com/about.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="25">25. 久谦中台</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 电商及消费研究（具体渠道/字段待商务确认）</p>
+<p><strong>接入方式：</strong> 公司官网和中台入口存在，企业咨询/定制研究；公开页面为动态应用，本轮无法核实当前产品目录、公开 API 或 CSV 规格。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>响应字段/产品列：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>网络流传淘系/京东/抖音/得物/外卖等目录未从当前官方可读文档逐项确认，不计作已核实渠道。</li>
+<li>客户名单不能当作数据覆盖清单；需商务提供当前字段字典与样例。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.meritco-group.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://databank.meritco-group.com/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="26">26. 电霸 / 店霸（拼多多版）</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 拼多多</p>
+<p><strong>接入方式：</strong> SaaS 登录/会员；官方文章提到导出分析报告，未核实标准 API、表格格式或具体导出列。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>公开产品筛选/搜索，非 API 参数：商品、店铺、行业、品牌、关键词、活动、直通车</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开页面指标，非 API schema：近一天销量、近一天销售额、有销产品数量、产品数、店铺数、商品标题、价格、预估销量区间</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>页面展示销量区间/学习参考用途，不能当真实订单明细；商业使用范围须按合同核实。</li>
+<li>官方文章的报告导出不等于结构化 Excel/CSV 或开放 API。</li>
+<li>评价原文、用户画像、竞品真实广告消耗未核实。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://pdd.dianba6.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://pdd.dianba6.com/helpCenter/detail/hotArticle_7668.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://dianba6.com/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="27">27. 考古加 / 考古加创意</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 抖音</p>
+<p><strong>接入方式：</strong> 官网主站 SaaS；创意模块官方会员权益页明确榜单数据导出，需相应付费权限。公开 API 未核实。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>创意产品界面对象，非 API 参数：达人、小店、品牌、关键词、分类</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>创意模块公开榜单/产品字段，非 API schema：黄金 3 秒话术榜、卖点趋势榜、高频片段榜、文案提取、脚本结构/分镜/策略</li>
+<li>榜单数据导出权限已核实，但逐列 schema 未公开核实</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>创意模块榜单导出不能证明主站完整商品销量/销售额数据库可导出。</li>
+<li>主站正文抓取有限，API/商品评论原文与主站交易导出字段仍待登录验证。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.kaogujia.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://ad.kaogujia.com/member/rights" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="28">28. 达多多</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 抖音（以下商品字段）；快手（另有选品产品，未核其相同字段）</p>
+<p><strong>接入方式：</strong> 主站提示先微信登录并设置密码，不支持直接手机号注册；会员 SaaS。商品库/店铺公开页面有导出数据按钮，会员页确认导出权限；未核实公开 API。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>商品库界面筛选，非 API 参数：带货分类、佣金比例、抖音销量、价格、受众性别/年龄、关联达人、商品好评率、店铺体验分、直播/视频/商品卡占比</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>商品库表列，非 API schema：商品、价格、佣金比例、订单量、销量、销售额/预估结算金额、直播销量、直播预估结算金额、视频销量、视频预估结算金额、商品卡销量、转化率、关联达人、关联直播、关联视频、30 天销量趋势</li>
+<li>店铺动销商品表列：商品、价格、均价、佣金比例、预估结算金额、销量(件)、关联达人、30 日浏览量、30 日转化率</li>
+<li>店铺直播表列：直播、达人、开播时间、带货商品数、小店销量、预估结算金额</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>页面明确经营数据为达多多预估数据、非官方数据；订单量为剔除多件起拍重复后的估算。</li>
+<li>店铺商品价格指所选时段最低价；销售额逐日分摊累加，不一定等于价格乘销量。</li>
+<li>商品好评率不等于逐条评论原文；登录前模板占位符不是实际数据。</li>
+<li>协议限制未经书面授权的软件自动获取；会员导出不等于 API 授权。</li>
+<li>本轮未登录、未实际调用、未下载导出；列名来自公开页面。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.daduoduo.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.daduoduo.com/product/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.daduoduo.com/shop/shopDetail" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://www.daduoduo.com/usercenter/vip" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://www.daduoduo.com/userAgreement" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<h2 id="29-questmobile-growth-truth">29. QuestMobile / GROWTH / TRUTH</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 移动 App/小程序等跨平台用户与流量；具体合同数据范围待确认</p>
+<p><strong>接入方式：</strong> GROWTH 官网明确标准 API、多文件格式和批量输出；企业商务申请，沿用其标准数据产品更新。未公布可核实端点和公开字段 schema。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开产品指标，非 API schema：应用用户规模、流量、用户画像、渠道转化、跨媒体营销效果、行业/应用/人群洞察</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>本轮未核实逐 SKU 销量、价格、买家评价字段；流量/画像数据不应作为交易账本使用。</li>
+<li>标准 API 接出其已有产品指标，具体平台、颗粒度、更新时间、配额需合同/样例确认。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.questmobile.cn/about/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="30">30. 窄门餐眼</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 餐饮品牌/门店/区域；美团合作选址报告（特定产品）</p>
+<p><strong>接入方式：</strong> 官网、小程序和付费报告；选址报告按点位购买，需进入相应产品。未找到公开 API 或批量结构化导出说明。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>产品查询/选址输入，非 API 参数：餐饮品牌、门店、品类、区域、候选点位</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开产品/报告指标，非 API schema：品牌档案、门店数量、地区分布、产品、客单价、城市排行、商圈、消费画像</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>美团合作证据限于特定选址产品，不代表获得美团全量订单、销量或逐条点评 API。</li>
+<li>报告可购买不等于可批量 API/CSV 接入；需询问企业交付权限。</li>
+<li>本轮未登录、未实际调用、未购买报告。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.canyandata.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.canyandata.com/location/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="31">31. 欧特欧 / 商指针</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（猫指针）；京东（京指针）；抖音（抖指针）；其他零售网站（80+ 为官网整体宣传，未逐项核实）</p>
+<p><strong>接入方式：</strong> 官网政府版明确关键指标集合导出；企业试用/商务表单需单位、部门、邮箱、姓名、手机及需求。未核实公开 API；企业版文件规格需另询。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>产品界面维度，非 API 参数：区域/省市县、行业/品类、渠道、时间</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开产品指标，非 API schema：网络零售额、网络零售量、增速、店铺分布、主播分布、带货热度</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>政府版导出不能自动套给所有企业版；未见精确列名/文件样例。</li>
+<li>80+ 平台宣传不证明拼多多或美团的每种商品/评价字段有现成接口。</li>
+<li>逐条评论、竞品真实广告花费未核实。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://gov.shangzhizhen.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="32-bigone-lab">32. 百观科技 / BigOne Lab</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 中国主要电商/消费研究（具体来源清单待商务确认）；线下消费样本/社媒</p>
+<p><strong>接入方式：</strong> 企业数据与研究服务、商务咨询；公开 API、下载格式与当前字段字典未核实。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>官网产品能力，非可核实 API 字段：品牌线上销售追踪、消费/零售/餐饮样本研究、社媒情绪</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>官网覆盖规模宣传不能代替淘宝/京东/拼多多/美团逐字段覆盖证据。</li>
+<li>未核实原始 SKU 交易、评价原文、营销费用及可交付字段颗粒度。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.bigonelab.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.bigonelab.com/zh-cn/client" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="33-ct">33. 马上赢 / 品牌 CT</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 线下快消 POS/条码商品（不是国内电商聚合）</p>
+<p><strong>接入方式：</strong> 开放平台文档可读；需商务分配 appid/签名凭证。品牌 CT 官网说明订阅类目销售数据下载。未实调。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST https://api.banmahui.cn/rest；method=top.products.month.get</li>
+<li>测试网关（仅文档示例）：https://api.yikuaigao.com/rest</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>公共参数：version（文档 2.0.0）, method, charset, sign_type（MD5）, sign, appid, nonce_str</li>
+<li>top.products.month.get: date, province_code, business_type, class_name, category_name, sort_type, offset</li>
+<li>business_type: 1 全部/2 便利店及小超市/3 超市；sort_type: AMOUNT 或 QUANTITY</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>外层：list（JSON 字符串）, total, date, province_code, business_type</li>
+<li>list 行：sort, sort_change, product_id（条码）, name, average_price, median_price, category_name, brand_name, class_name</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>公开榜单响应按销量/销额排序，但上述响应字段不含实际销量/销售额数值，不能据排序参数推定返回成交数量。</li>
+<li>月榜文档限最近 6 个月，前月榜每月 5 日 9 时发布；大类最多 200、小类最多 60。</li>
+<li>非淘宝京东拼多多美团数据源；未证明有商品评价或平台广告账单。</li>
+<li>本轮仅核官方文档，未登录、未调用、未下载。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://open.banmahui.cn/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://open.banmahui.cn/top.products.month.get/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://brand.pre.banmahui.cn/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="34-dataeye-adx">34. DataEye / ADX</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 国内/海外广告媒体（具体媒体清单按产品）</p>
+<p><strong>接入方式：</strong> 广告情报 SaaS/研究服务，注册或商务咨询；未核实公开对外 API 或可下载字段字典。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>公开产品对象，非 API schema：广告素材、落地页、创意文案、产品/媒体/公司营销情报；游戏、短剧、泛行业广告分析</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>当前官网重点广告情报；旧电商版文章不能自动证明现售交易数据模块。</li>
+<li>投放素材/动向不等于竞品真实广告账单，未核实淘京拼美 SKU 销量、价格和逐条评价。</li>
+<li>本轮官网部分访问出现重定向异常，保留已核产品定位，实际登录可用性由 UI 测试决定。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.dataeye.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+</ul>
+<h2 id="35">35. 艾瑞 / 易观千帆（两家公司）</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 移动互联网 App/用户/广告行业数据</p>
+<p><strong>接入方式：</strong> 数据产品网页、SaaS、行业研究与企业试用；千帆显示登录/免费试用。未核实面向本需求的公开 API 或逐列导出规格。</p>
+<p><strong>接口或动作示例：</strong></p>
+<p>未取得可公开核验的具体端点。</p>
+<p><strong>请求字段/筛选条件：</strong></p>
+<p>未公开或本轮未核实。</p>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>艾瑞产品指标，非 API schema：App/广告/设备指数、用户和品牌投放研究</li>
+<li>千帆产品指标，非 API schema：重合用户、独占用户、用户构成、新安装用户、留存用户、沉默用户、用户属性、关联应用渗透率、关联应用渗透 TGI、行业流量规模/趋势</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>两家为不同公司，合并记录仅为任务分组，不能视为同一套数据或合同。</li>
+<li>本轮未核实逐 SKU 交易/价格/购后评价，适合流量和受众层补充。</li>
+<li>易观方舟自营埋点 API 不等于千帆第三方行业数据 API。</li>
+<li>本轮未登录、未实际调用、未导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://data.iresearch.com.cn/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://pre2qianfan.analysys.cn/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="36-ai">36. 艺恩数据（当前 AI 数据集产品）</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：行业竞品与营销分析。</p>
+<p><strong>渠道/范围：</strong> 电商领域数据集（具体国内平台清单未公开核实）；影视/社交/版权等其他领域</p>
+<p><strong>接入方式：</strong> 当前官网数据集 REST API，Bearer Token；商务申请数据集/样本、用途审核及协议，企业 API 配额按合同。文档提 API/对象存储/私有离线交付；JSONL/Parquet/CSV 依数据集。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://api.endata.com.cn/v1/datasets</li>
+<li>GET https://api.endata.com.cn/v1/datasets/{id}</li>
+<li>POST https://api.endata.com.cn/v1/datasets/query</li>
+<li>GET https://api.endata.com.cn/v1/datasets/{id}/schema</li>
+<li>POST https://api.endata.com.cn/v1/datasets/{id}/export</li>
+<li>GET https://api.endata.com.cn/v1/jobs/{job_id}</li>
+<li>GET https://api.endata.com.cn/v1/account/quota</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>通用查询示例：dataset_id, filters（示例 task_family, language）, limit, offset, format</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>数据集元数据 schema：dataset_id, modality, domain, task_family, license_type, language, size_bytes, record_count, quality_score, created_at, compliance_audit, version</li>
+<li>domain 枚举示例含 film_tv/social/ecommerce/copyright；实际电商记录 schema 需调用具体 datasets/{id}/schema 后确认</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>此为通用 AI 数据集接口，不是已证实的淘宝/京东/拼多多/美团经营数据 API。</li>
+<li>官网样本有电商图文/评论配对等，但不能据此推断国内平台来源、逐 SKU 销量或价格字段。</li>
+<li>公开通用 schema 是数据集元数据，不能当作商品记录字段；旧营销/电商智库能力不能自动沿用。</li>
+<li>本轮只核官方文档，未登录、未调用、未取得样本或导出。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.endata.com.cn/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.endata.com.cn/docs.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="37">37. 餐道</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 美团外卖；饿了么；抖音本地生活；快手；品牌自有小程序</p>
+<p><strong>接入方式：</strong> 官网产品演示/商务接入；open-api.can-dao.com 为开放平台入口；自有商家授权后集成，具体鉴权与费用未公开核验。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>https://open-api.can-dao.com/（入口；具体接口路径未公开核验）</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>未公开核验</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>未公开核验；产品页描述订单、菜单/商品、库存、价格、核销、经营BI等能力，不能当作API字段</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>面向自有门店，不是全网竞品库</li>
+<li>未找到可公开复核的评价全文API字段</li>
+<li>营销管理/投手产品宣传不等于开放广告花费、ROI API</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.can-dao.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://open-api.can-dao.com/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="38">38. 鼎点科技</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 淘宝；天猫；京东；拼多多；抖音；快手；美团（子业务未区分）；饿了么；药师帮；医药城；海拍客</p>
+<p><strong>接入方式：</strong> 报价/试用需联系商务；官网价格监控解决方案宣称可提供API。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>未公开核验具体API路径</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>未公开</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>非schema的产品宣称：SKU、到手价、券后价、优惠、销量、型号、库存</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>证据为供应商营销解决方案页，未发现公开请求/响应schema</li>
+<li>美团外卖、闪购、到店团购的覆盖未分别证实</li>
+<li>未核实评价全文及其分页、历史范围</li>
+<li>竞争销量来源/口径、采样与更新频率须实测</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.dingdiankj.cn/contents/44/522.html" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+</ul>
+<h2 id="39">39. 极致了/大家来数据</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 美团（宣称）；饿了么（宣称）；抖音；小红书；快手；哔哩哔哩；微博</p>
+<p><strong>接入方式：</strong> 官网宣称API JSON、飞书插件、定制数据集；联系销售获取权限和样例。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>未公开核验美团/饿了么具体API路径</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>未公开</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>非schema的营销宣称：商品/店铺、价格、前端显示销量、评价</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>美团能力证据为官方营销文章；产品首页主要是社媒数据</li>
+<li>美团外卖/闪购/团购分产品覆盖、评价全文字段和分页均未公开确认</li>
+<li>“销量非估算”是供应商说法，不能据此等同真实支付/退款后销量</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.jzl.com/news/meituan-data-api-2" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.jzl.com/news/meituan-data-13" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.dajiala.com/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="40">40. 富泰科</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 美团外卖餐饮；美团闪购商超；美团药房；饿了么/淘宝闪购；京东外卖（聚合店铺基础资料）</p>
+<p><strong>接入方式：</strong> 主要是采集软件/定制数据Excel；美团外卖助手Windows版需用户cookie；聚合店铺基础版称免登录；API开发另行定制，公开页面2000元起。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>未公开标准API路径；有定制API开发服务</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>非API参数：城市、行政区、商圈、目标门店/商品；不同软件可能要求cookie</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>美团餐饮店导出列：商家名、商家ID、地址、人均、配送时间、起送、月售数量、评分、配送费用、商家图片、营业时间、满减、新客、折扣、距离、联系方式(定制)</li>
+<li>美团餐饮商品导出列：商家名称、评论数、分类id、分类名称、单品名称、商品说明、配料、价格、商品月售、折扣说明、平均时间、起送、配送费、商家评分、新品、招牌、商品图片、单位、好评度、点赞数、商品评价标签</li>
+<li>美团商超导出列：一级分类、二级分类、商品名称、价格、原价、优惠、销量、库存、条码、商品图、商家名、商家ID、地址、人均、配送时间、起送、月售数量、评分、配送费用、折扣</li>
+<li>美团药房导出列：一级分类、二级分类、商品名称、价格、原价、优惠、销量、商品图、商家名、人均、配送时间、折扣</li>
+<li>饿了么餐饮商品导出列：分类id、分类名称、单品名称、商品说明、价格、商品月售、折扣说明、平均时间、起送、配送费、商家名称、商家评分</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>这些是官网列出的导出字段名，不是固定JSON键名</li>
+<li>评论数/评价标签/好评度不等于评价全文；未发现全文导出证据</li>
+<li>商超/药房定制覆盖不等于到店团购；京东外卖基础版字段不能套用美团商品字段</li>
+<li>页面价格及软件授权期限有多种版本，需按具体产品报价</li>
+<li>月售通常为页面显示值，未核对真实订单口径</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.futaike.net/meituan-ele-waimai-data-get" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.futaike.net/meituan-ele-data-solution" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.futaike.net/product_service/11272.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="41-api">41. 云飞API</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 美团到店团购（餐饮/到综）；抖音团购；快手团购（请求枚举中出现，逐字段支持待核）</p>
+<p><strong>接入方式：</strong> 获取access_token；使用opPoiId绑定自有门店，完成美团经营宝等平台扫码授权；绑定关系本身不授予权限。文档标明团购查询免费。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST http://wspacebot.yunfeiwork.com/wspace-openapi/partner/tuangou/queryshopdeal?access_token=ACCESS_TOKEN</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>access_token</li>
+<li>page（必填，美团；抖音忽略）</li>
+<li>opPoiId（必填，内部唯一门店ID）</li>
+<li>platform（meituan/douyin/kuaishou，默认meituan）</li>
+<li>cursor（抖音分页）</li>
+<li>dealType（美团餐饮1套餐/2代金券）</li>
+<li>dealGroupId（美团到综单团购查询）</li>
+<li>syncField（如thirdSkuId，美团餐饮）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>code</li>
+<li>msg</li>
+<li>count</li>
+<li>nextCursor</li>
+<li>tid</li>
+<li>data[].dealId</li>
+<li>data[].dealGroupId</li>
+<li>data[].skuId</li>
+<li>data[].thirdOutId</li>
+<li>data[].thirdSkuId</li>
+<li>data[].title</li>
+<li>data[].price</li>
+<li>data[].marketPrice</li>
+<li>data[].beginDate</li>
+<li>data[].endDate</li>
+<li>data[].receiptBeginDate</li>
+<li>data[].receiptEndDate</li>
+<li>data[].saleStatus</li>
+<li>data[].dealGroupStatus</li>
+<li>data[].dealType</li>
+<li>data[].saleChannelName（示例）</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>限授权自有门店，不是全网竞品</li>
+<li>查询初次同步约10秒；文档称不适合实时请求</li>
+<li>已核字段没有评价全文、销量或广告费用</li>
+<li>不同平台字段不相同；美团每页100条</li>
+<li>文档HTTP endpoint仅照录，生产HTTPS可用地址须供应商确认</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://doc.yunfeiapi.com/9034922m0" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://doc.yunfeiapi.com/8949771m0" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="42">42. 无限聚核</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 美团到店团购；抖音本地生活团购</p>
+<p><strong>接入方式：</strong> 开发者后台获取API key；Authorization: Bearer <key>；按具体门店shopId完成平台授权。无接口接入费，核销按用量收费；查询在售套餐不扣核销配额。</key></p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>POST https://newopen.elys.cn/api/hexiao/v2/ddzh-tuangou-deal-queryshopdeal</li>
+<li>POST https://newopen.elys.cn/api/hexiao/v2/ddzh-tuangou-receipt-querylistbydate</li>
+<li>POST https://newopen.elys.cn/api/hexiao/v2/get/auth/url</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>Authorization（必填）</li>
+<li>shopId（必填）</li>
+<li>platform（必填）</li>
+<li>offset</li>
+<li>limit</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>success</li>
+<li>code</li>
+<li>message</li>
+<li>traceId</li>
+<li>data</li>
+<li>data[].marketPrice</li>
+<li>data[].extraMap</li>
+<li>data[].endDate</li>
+<li>data[].dealId</li>
+<li>data[].saleStatus</li>
+<li>data[].title</li>
+<li>data[].dealType</li>
+<li>data[].receiptEndDate</li>
+<li>data[].beginDate</li>
+<li>data[].saleChannelName</li>
+<li>data[].dealGroupStatus</li>
+<li>data[].price</li>
+<li>data[].receiptBeginDate</li>
+<li>data[].dealGroupId</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>V2为当前版本；V1标注停止维护，不宜据旧路径新接入</li>
+<li>shopId必须具体子门店，不能传商户主门店</li>
+<li>limit最大100；offset是页码，从1开始</li>
+<li>价格单位元；部分字段缺省为0或空字符串，不能当观测值</li>
+<li>没有评价全文/全网销量/广告投放字段；自有核销记录不等于平台全部成交订单</li>
+<li>返回success才是成功判断依据，不能只看code=10000</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://doc.elys.cn/#v2-deals" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://doc.elys.cn/#v2-receipt-records" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://doc.elys.cn/v1" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="43">43. 值得买消费信息开放平台</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；拼多多；唯品会；苏宁（旧API文档）；什么值得买内容/好价</p>
+<p><strong>接入方式：</strong> 消费API/Agent API申请商用接入；旧比价API要求OAuth Access_Token与App_Key；Agent服务具体鉴权按开通文档。不同产品接口权限需分别确认。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>https://openapi.smzdm.com/v1/agent/search/list（商品检索）</li>
+<li>https://openapi.smzdm.com/v1/agent/compare/price（比价）</li>
+<li>https://openapi.smzdm.com/v1/agent/content_summary/search（AI口碑摘要）</li>
+<li>旧评论查询/历史价格API：公开字段可见，本页未公开具体调用path</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>Agent搜索：keyword</li>
+<li>Agent比价：keyword、request_id</li>
+<li>Agent口碑：question</li>
+<li>旧评论：Access_Token、App_Key、Url、StartTime、EndTime</li>
+<li>旧历史价格：Access_Token、App_Key、Urls、Months、GetOriginalPriceNodes、Sid、ShowPriceSeriesDetail、PriceType</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>Agent商品：title、price、price_1、mall_id、mall_name、url、focus_pic_url、prom_info、sales_cnt、comment_cnt、es_recall_cnt、index、keyword</li>
+<li>Agent口碑：data.contextLen、data.isUse、data.result、error_code、error_msg</li>
+<li>旧评论：Result、Url、Details（评论详情）、Time（评论时间）、Version</li>
+<li>旧历史价格：Result.PriceSeriesList、Url、OriginalUrl、Title、StatusID、PriceSeries、StatusMsg、WebsiteName、CurrencyType、CurrencyTypeID</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>Agent口碑result是AI综合摘要，不是原始评价全文</li>
+<li>独立旧评论API确有Details/Time原文schema，但页面更新2021年；当前可开权限、平台覆盖与API地址需再确认</li>
+<li>sales_cnt/comment_cnt样例为0，不能据字段存在承诺所有平台都返回有效值</li>
+<li>联盟/比价覆盖不等于全平台全量SKU；未核对价格时效和活动条件</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://openapi.zhidemai.com/pages/aiagent/1.商品检索接口.html" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://openapi.zhidemai.com/pages/aiagent/2.商品口碑接口.html" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://openapi.zhidemai.com/pages/aiagent/6.比价商品检索接口.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://openapi.zhidemai.com/pages/price/3.评论查询API.html" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://openapi.zhidemai.com/pages/price/4.历史价格查询API.html" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+<li><a href="https://ai.zhidemai.com/mcp" rel="noopener noreferrer" target="_blank">来源 6</a></li>
+</ul>
+<h2 id="44">44. 大淘客</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 淘宝；天猫；京东/拼多多/唯品会/抖音/快手/本地生活（站点有独立接口目录；本次精确字段限淘系列表/历史价）</p>
+<p><strong>接入方式：</strong> 开放平台注册创建应用获取appKey/appSecret，使用签名或官方SDK；API版本按接口指定。商品列表当前公开版本v1.2.4。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://openapi.dataoke.com/api/goods/get-goods-list</li>
+<li>GET https://openapi.dataoke.com/api/goods/price-trend</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>appKey</li>
+<li>version</li>
+<li>pageId（页码最大100页，推荐scroll_id分页）</li>
+<li>pageSize（10/50/100）</li>
+<li>sort</li>
+<li>cids</li>
+<li>subcid</li>
+<li>tmall</li>
+<li>priceLowerLimit</li>
+<li>priceUpperLimit</li>
+<li>couponPriceLowerLimit</li>
+<li>commissionRateLowerLimit</li>
+<li>monthSalesLowerLimit</li>
+<li>hasCoupon</li>
+<li>历史价：id（在线大淘客商品ID）或goodsId（淘宝商品ID）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>id</li>
+<li>goodsId</li>
+<li>goodsSign</li>
+<li>itemLink</li>
+<li>title</li>
+<li>dtitle</li>
+<li>desc</li>
+<li>originalPrice</li>
+<li>actualPrice</li>
+<li>commissionType</li>
+<li>commissionRate</li>
+<li>couponLink</li>
+<li>couponTotalNum</li>
+<li>couponReceiveNum</li>
+<li>couponStartTime</li>
+<li>couponEndTime</li>
+<li>couponPrice</li>
+<li>couponConditions</li>
+<li>monthSales（30天热销）</li>
+<li>twoHoursSales（2小时热销）</li>
+<li>dailySales（当日热销）</li>
+<li>shopType</li>
+<li>sellerId</li>
+<li>shopName</li>
+<li>descScore</li>
+<li>dsrScore</li>
+<li>shipScore</li>
+<li>serviceScore</li>
+<li>activityType</li>
+<li>activityStartTime</li>
+<li>activityEndTime</li>
+<li>历史价：historicalPrice[].date、historicalPrice[].actualPrice</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>推广商品库不等于全网全量数据</li>
+<li>官方字段描述称“热销”，不应改写成精确真实订单量</li>
+<li>店铺评分不是评价全文；未见本文档支持全文</li>
+<li>历史价限大淘客在线商品，不支持已下架商品ID；历史日期是大淘客平台记录</li>
+<li>不同渠道有独立接口与权限，不可直接套用淘系字段</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.dataoke.com/kfpt/api-d.html?id=5" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.dataoke.com/kfpt/api-d.html?id=36" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.dataoke.com/kfpt/" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="45">45. 好单库</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；拼多多；唯品会；抖音；快手；闲鱼；美团活动/CPS；淘宝闪购/饿了么活动/CPS；同程酒店；淘票票；T3出行；飞猪；餐饮茶饮品牌优惠</p>
+<p><strong>接入方式：</strong> 创建应用获取普通apikey；增值接口appkey+appsecret签名；京东/拼多多/唯品会/抖音及订单权限需申请；官方AI文档包可下载。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET http://v2.api.haodanku.com/get_keyword_items（公开页面旧版关键词查询）</li>
+<li>GET https://v3.api.haodanku.com/column（当前文档淘宝列表）</li>
+<li>GET https://v3.api.haodanku.com/meituan_activity_list</li>
+<li>POST https://v3.api.haodanku.com/meituan_ratesurl</li>
+<li>GET https://v3.api.haodanku.com/elm_activity_list</li>
+<li>POST https://v3.api.haodanku.com/elm_activity_ratesurl</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>关键词页：apikey、keyword（两次urlencode；支持itemid）、shopid、min_id、min_size、sort、cid、price_min、price_max、sale_min、sale_max、coupon_min、coupon_max、type</li>
+<li>当前列表：apikey、min_id、back</li>
+<li>美团活动：apikey、min_id、back；转链：activity_id或text二选一、link_type、skuViewId、channel</li>
+<li>淘宝闪购活动：apikey、min_id、back；会场转链：activity_id、sid、link</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>商品：itemid、itemtitle、itemshorttitle、itemdesc、itemprice、itemsale、itemsale2、todaysale、itemendprice、shoptype、tkrates、tkmoney、couponmoney、couponsurplus、couponreceive、couponnum、couponstarttime、couponendtime、shopname、sellernick</li>
+<li>美团活动：activity_id、activity_name、activity_desc_private、activity_image、start_time、end_time、min_id；转链url</li>
+<li>淘宝闪购活动：activity_id、activity_name、activity_desc、activity_image、start_time、end_time、min_id；转链title、description、h5_short_link、h5_url、mini_qrcode、wx_appid、wx_path、full_taobao_word、tb_scheme_url、ele_scheme_url、alipay_mini_url</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>本地生活主要活动推广/转链/归因订单，不能当作竞品商家菜单、月销量或评价API</li>
+<li>普通商品库销量字段不等于平台内部真实订单；需核对口径</li>
+<li>未见评价全文字段</li>
+<li>官方AI接入文档是下载文档包后自行配文件系统MCP，不能误称已经提供远程业务MCP服务</li>
+<li>旧关键词文档v2与当前v3产品接口并存，正式接入需核对具体版本</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.haodanku.com/openapi/api_detail?id=60" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.haodanku.com/openapi/ai_docs" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://file.bc.haodanku.com/file/haodanku-openapi-docs.zip" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+<li><a href="https://www.haodanku.com/Openapi/api_detail?id=165" rel="noopener noreferrer" target="_blank">来源 4</a></li>
+<li><a href="https://www.haodanku.com/Openapi/api_detail?id=174" rel="noopener noreferrer" target="_blank">来源 5</a></li>
+</ul>
+<h2 id="46">46. 折淘客/折京客</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫（折淘客）；京东（本次字段核验为折京客）</p>
+<p><strong>接入方式：</strong> 注册获得appkey；京东搜索要求已授权京东联盟unionId；文档称接口免费，但生产额度和当前账号等级须确认。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET http://api.zhetaoke.com:20000/api/api_quanwang.ashx（京东搜索）</li>
+<li>GET http://api.zhetaoke.com:20000/api/open_jd_union_open_goods_bigfield_query.ashx（京东大字段详情）</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>appkey</li>
+<li>unionId（京东搜索必填）</li>
+<li>page</li>
+<li>page_size（1-50）</li>
+<li>sort</li>
+<li>q</li>
+<li>youquan</li>
+<li>tj</li>
+<li>start_tk_rate</li>
+<li>end_tk_rate</li>
+<li>start_price</li>
+<li>end_price</li>
+<li>type</li>
+<li>大字段详情：content（商品ID或URL，urlencode）、fields</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>搜索：status、content[].code、tao_id、title、tao_title、seller_id、shop_title、shop_dsr、volume、size、quanhou_jiage、tkrate3、tkrate3_plus、coupon_info_money、coupon_start_time、coupon_end_time、commentCount、score1、score2、score3、haopinglv、date_time_yongjin、item_url</li>
+<li>大字段：skuId、skuName、mainSkuId、productId、owner、skuStatus、categoryInfo、imageInfo、baseBigFieldInfo、detailImages</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>搜索文档sellCount明确标为“网页实时总销量-废弃”；不能作为可用销量字段</li>
+<li>coupon_total_count、coupon_remain_count注明官方为0/无用</li>
+<li>commentCount/好评率/评分并非评论全文</li>
+<li>字段含tao_id等兼容命名，但这里是京东接口；不要因字段名判断平台</li>
+<li>官方禁止该搜索接口多线程采集</li>
+<li>HTTP示例和老样例不保证当前所有字段均有效</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://j.zhetaoke.com/user/extend/extend_lingquan_keywords.aspx" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://j.zhetaoke.com/user/open/open_item_info3.aspx" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="47">47. 慢慢买</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 淘宝/天猫；京东；苏宁及其他B2C比价（具体商用覆盖清单未公开核验）</p>
+<p><strong>接入方式：</strong> 消费者网页/App历史价格查询；官网确认曾对外开放API输出比价能力，商用联系数据合作。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>未在当前官方站公开核验标准商用API路径；不采用第三方逆向接口教程</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>商用API未公开；消费者功能通常提交商品链接或关键词</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>商用API精确字段未公开；产品可见历史价格曲线、当前价格/同款比价、降价通知</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>API合作历史不能证明当前自助开通或免费可调用</li>
+<li>第三方MCP市场的临时测试key存在过期日期，未作为可用凭证</li>
+<li>未证实评价全文或平台真实销量API</li>
+<li>价格曲线有收录覆盖与促销条件差异，需真实SKU测试</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://help.manmanbuy.com/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://help.manmanbuy.com/default.aspx?id=144075" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+</ul>
+<h2 id="48">48. 八爪鱼</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 通用网页采集；淘宝/京东/拼多多/美团/大众点评等须逐模板、登录态、目标页面实测，不能统一承诺</p>
+<p><strong>接入方式：</strong> 先配置并运行采集任务，任务数据导出Excel/CSV/数据库或OpenAPI；新API为openapi.bazhuayu.com，需账号身份令牌；部分数据API限旗舰版/旗舰+/企业/团队。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>GET https://openapi.bazhuayu.com/data/all</li>
+<li>GET https://openapi.bazhuayu.com/data/lotno/all</li>
+<li>https://openapi.bazhuayu.com/data/notexported</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>Authorization: Bearer <token></token></li>
+<li>taskId</li>
+<li>offset</li>
+<li>size（1-1000）</li>
+<li>lotno（按任务批次读取时）</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>requestId</li>
+<li>data.total</li>
+<li>data.restTotal</li>
+<li>data.offset</li>
+<li>data.data[]（每条记录的字段由采集任务自行定义）</li>
+<li>error.code</li>
+<li>error.message</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>是采集器与数据导出接口，不是保证覆盖全部电商的标准数据库</li>
+<li>价格/销量/评论全文能否采集取决于具体页面、模板和实际可访问内容；API只输出任务已采到的数据</li>
+<li>原dataapi/advancedapi第一套接口不再更新，推荐2021年后第二套API</li>
+<li>云采集数据默认保存3个月；Excel单元格超32000字符会截断，CSV无该字符限制</li>
+<li>单次导出大小有限额，须分页</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.bazhuayu.com/helpcenter/docs/TijX9v" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://openapi.bazhuayu.com/zh-CN/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.bazhuayu.com/helpcenter/docs/2xF5Mz/eYW3hC" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul>
+<h2 id="49-cem">49. 云听CEM</h2>
+<p><strong>证据状态：</strong> 文档证据，未实调。来源分组：本地生活联盟与采集补充。</p>
+<p><strong>渠道/范围：</strong> 项目已配置的电商评论；客服工单/会话；邮件；新闻；社媒；具体淘宝/京东/拼多多/美团等平台以项目source和数据权限为准</p>
+<p><strong>接入方式：</strong> 开通CEM账号和企业MCP能力；管理后台企业中心→安全→MCP接入生成API Key；Streamable HTTP，X-MCP-Api-Key或客户端Bearer Token。</p>
+<p><strong>接口或动作示例：</strong></p>
+<ul>
+<li>MCP https://ytcem.cn/mcp</li>
+<li>list_accessible_projects</li>
+<li>get_project_data_types</li>
+<li>list_project_topic_names</li>
+<li>query_project_raw_messages</li>
+<li>get_task_status</li>
+<li>get_query_task_result</li>
+</ul>
+<p><strong>请求字段/筛选条件：</strong></p>
+<ul>
+<li>query_project_raw_messages：projectId（兼容project_id）、queryTaskType、startTime（yyyy-MM-dd HH:mm:ss）、endTime、total、source、fieldFilter（字段名到值数组）、emotion（正面/负面/中性/混合）</li>
+<li>get_task_status/get_query_task_result：task_id</li>
+<li>前置list_accessible_projects无需显式参数；projectId来自返回id</li>
+</ul>
+<p><strong>响应字段/产品列：</strong></p>
+<ul>
+<li>list_accessible_projects：accountId、projects[].id、projects[].name</li>
+<li>get_project_data_types：projects[].data_type（TICKET/CONSUMER_REVIEW/EMAIL/NEWS/SOCIAL等）</li>
+<li>创建查询：task_id、next_tool、poll_after_seconds</li>
+<li>状态：status、result_available、next_tool、poll_after_seconds</li>
+<li>最终结果：ok、task_id、status、total、cosExcelUrl、elapsedMinutes（仅测试任务）、message、result_available、terminal、progress_percent、next_action、next_tool、poll_after_seconds、request_id</li>
+</ul>
+<p><strong>限制与待核验项：</strong></p>
+<ul>
+<li>确有“查询客户反馈原文”能力；最终通过cosExcelUrl返回Excel，公开文档未展示Excel内部列schema</li>
+<li>仅已配置项目、授权账号与来源；不能凭MCP工具名推断全平台任意竞品数据可随取</li>
+<li>必须先查项目可用数据类型，再建异步任务轮询</li>
+<li>尚未核验单个平台原文完整率、历史深度、去重与PII处理</li>
+<li>未见此MCP公开销量/价格/广告花费查询工具</li>
+<li>本次仅核验官网、公开技术文档或导出字段；未使用账号密钥实际调用。</li>
+</ul>
+<p><strong>一手来源或供应商来源：</strong></p>
+<ul>
+<li><a href="https://www.yuntingai.com/mcp/" rel="noopener noreferrer" target="_blank">来源 1</a></li>
+<li><a href="https://www.yuntingai.com/mcp-doc/" rel="noopener noreferrer" target="_blank">来源 2</a></li>
+<li><a href="https://www.yuntingai.com/CEMzhinan/472.html" rel="noopener noreferrer" target="_blank">来源 3</a></li>
+</ul></article></body></html>

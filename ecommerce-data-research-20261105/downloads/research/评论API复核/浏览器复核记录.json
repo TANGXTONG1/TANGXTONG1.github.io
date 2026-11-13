@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-11-06",
+  "supplier": "Qovia",
+  "surface": "Microsoft Edge native UI",
+  "source": "https://qovia.ai/zh/docs/api-reference/raw.jd.comments/",
+  "actions": [
+    "打开现行京东评论文档，阅读Beta标签、每页10条和max_page说明",
+    "点击在调试台试用"
+  ],
+  "result": "重定向至注册/登录；要求工作邮箱、密码及邮箱验证码，未完成注册或调用。",
+  "business_call_succeeded": false,
+  "api_samples_obtained": 0,
+  "notes": [
+    "页面明确标注文档目录示例不是实时数据。",
+    "未填写身份资料、发送验证码或购买额度。",
+    "此前已有该供应商浏览器记录，此次复核不增加已尝试供应商组数。"
+  ]
+}

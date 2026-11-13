@@ -1,0 +1,484 @@
+[
+  {
+    "id": "jiushuyun",
+    "name": "九数云",
+    "verdict": "精选",
+    "reason": "作为自有多平台数据汇总及对外导出的优先试点；有产品级案例、持续更新的正式帮助文档及导出 API。精选范围限 BI 汇总，淘宝/拼多多连接器仍需按 Alpha 状态做试点验收。",
+    "credibility_evidence": [
+      {
+        "claim": "官方案例库列出元创时代、杭州遥望科技等九数云具体应用，而非只引用帆软集团客户 Logo。",
+        "url": "https://www.jiushuyun.com/case",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      },
+      {
+        "claim": "九数云帮助中心由帆软维护，有版本历史及 2026-09-20 产品更新日志，能核验持续维护活动。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-1198.html",
+        "source_type": "官方更新日志",
+        "date": "2026-09-20",
+        "scope": "产品级"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "元创时代",
+        "description": "官方案例库说明以九数云统一查询电商平台 SKU 销售及售价监控数据；本轮仅核到案例库摘要，未取得客户方公告。",
+        "url": "https://www.jiushuyun.com/case",
+        "customer_side": false
+      },
+      {
+        "customer": "杭州遥望科技",
+        "description": "官方案例库列出品牌、达人与渠道的 MCN 运营数据体系。",
+        "url": "https://www.jiushuyun.com/case",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "正式文档给出读取分析表/异步导出接口，能将分析表导出文件；企业版授权限制应与连接器费用分开确认。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-149.html"
+      },
+      {
+        "claim": "淘宝连接器明确为付费 Alpha，需购买鲸钻客 ERP 服务并授权；字段可在授权后选表界面查看。",
+        "url": "https://help.fanruan.com/jiushuyun/doc-view-1124.html"
+      }
+    ],
+    "limitations": [
+      "未核到九数云产品独立审计收入、付费客户留存或 SLA 履约统计；不能把帆软整体规模当作九数云连接器成熟度。",
+      "淘系/拼多多直连的 Alpha 标签不应隐藏；自 2025-08-20 起经聚水潭/吉客云/旺店通连接器不再新增同步拼多多，须核实替代授权路径。",
+      "API 输出的是分析表，不是所有电商原始字段的统一开放 API；广告与美团不同子业务需逐表确认；不能提供竞品真实订单。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "yuce",
+    "name": "预策",
+    "verdict": "补证",
+    "reason": "官网产品线索存在，但当前公开证据尚不足以证明主体规模、已实施客户和可对外取数接口；暂不放入采购短名单。",
+    "credibility_evidence": [
+      {
+        "claim": "官网域名可访问，但本轮网页解析没有可读正文；仅支持官网入口存在，不支持客户规模或技术成熟度判断。",
+        "url": "https://www.yucekj.com/",
+        "source_type": "官方网站可达性",
+        "date": "2026-11-05",
+        "scope": "入口级"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "未核实可归属于官网主体的正式 API 字段文档及导出能力；不沿用未证实归属的同名 Apifox 目录。",
+        "url": "https://www.yucekj.com/"
+      }
+    ],
+    "limitations": [
+      "本轮未找到可引用的上市文件、客户方公告或具体可核实实施案例；缺少公开证据不等于供应商不可靠。",
+      "应先索取完整合同主体、官网关联技术文档、两家可联系的客户参考、目标平台授权方式及脱敏响应样本；未通过前不承诺广告/订单字段。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "qeasy",
+    "name": "轻易云",
+    "verdict": "备选",
+    "reason": "适合已有 ERP/财务系统之间的项目集成；公开适配器和实施叙述较多，但当前客户证据主要为供应商自述，不能据连接器数量视为全平台数据服务。",
+    "credibility_evidence": [
+      {
+        "claim": "官网明确运营主体为广东轻亿云软件科技有限公司，并公开适配器目录、定价和服务入口；5000+客户属于厂商自述，未当作审计数字。",
+        "url": "https://www.qeasy.cloud/en",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      },
+      {
+        "claim": "官网直接链接 qeasy-cloud/datahub-mcp-ops 开源仓库，证明存在具名工程项目；本轮 GitHub 页面与 API 未能稳定核到 star 数，不填造数。",
+        "url": "https://github.com/qeasy-cloud/datahub-mcp-ops",
+        "source_type": "官方链接的代码仓库",
+        "date": "2026-11-05",
+        "scope": "辅助工具级，非 SaaS 客户量"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "汤臣倍健",
+        "description": "供应商案例描述营销云与经销商 ERP 的销售/库存/订单集成，发布日期 2024-10-13；未核到客户方确认。",
+        "url": "https://mcp.qeasy.cloud/en/case/by-health-integration-1",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "有聚水潭 orders.single.query 适配器请求参数文档，能支持字段映射方案设计。",
+        "url": "https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208"
+      },
+      {
+        "claim": "有管易 gy.erp.trade.get 适配器目录，但这是底层系统的接口适配，不是已验证的统一外发数据 API。",
+        "url": "https://qeasy.cloud/api/a7127585-62c9-34d1-a91c-8d981692a9cb"
+      }
+    ],
+    "limitations": [
+      "大型客户名称目前为供应商自述，尚无客户侧公告/验收佐证；大量方案文章和公开 API 资产数不等于活跃生产连接器。",
+      "公开聚水潭适配页较旧且响应说明有占位内容，须用当前客户账号联调；平台授权边界仍受源 ERP 约束。",
+      "不宜作为竞品商品/销量/评价数据供应商；应以一条端到端增量同步和失败补偿试点决定采购。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "jijyun",
+    "name": "集简云",
+    "verdict": "备选",
+    "reason": "适合低代码流程同步与小规模试点；有具名流程案例和字段级故障说明，成熟证据高于仅有营销页面的工具，但四大电商覆盖不能由应用总量推断。",
+    "credibility_evidence": [
+      {
+        "claim": "官方帮助中心署名北京集简慧通互联科技有限公司，具备应用文档、字段故障指引和客户流程案例。",
+        "url": "https://www.jijyun.cn/help/detail/154",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      },
+      {
+        "claim": "官网提供可注册的可视化工作流产品及公开应用目录；1000+应用是厂商目录规模，并非本任务四平台完整取数证明。",
+        "url": "https://www.jijyun.cn/",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "杭州思邦信息技术有限公司",
+        "description": "官方实施叙述详细展示 webhook→网易互客及易企通→筛选/文本处理→网易互客，附流程和数据同步截图；这是线索集成案例，不是电商销量/评价案例。",
+        "url": "https://www.jijyun.cn/help/detail/154",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "抖店 order_id 官方问题页明确从触发样本 p_id 获取、处理主单 ID 后缀；证明存在具体动作和字段级维护。",
+        "url": "https://www.jijyun.cn/help/detail/756"
+      },
+      {
+        "claim": "应用动作以授权、获取样本、映射字段、写目标系统运行，须与平台 SDK/API 开放能力区分。",
+        "url": "https://www.jijyun.cn/apps/"
+      }
+    ],
+    "limitations": [
+      "未核到产品级审计财务或独立活跃付费客户数；案例未在客户自有渠道交叉确认。",
+      "本轮未证实淘宝/京东/拼多多/美团全部订单与广告字段直连；京东小程序不能等同京东商城。",
+      "商家评分动作不代表消费者评价全文；完整响应 schema 通常需登录后的样本，不应先承诺字段。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "jushuitan",
+    "name": "聚水潭",
+    "verdict": "精选",
+    "reason": "自有店铺真实订单、商品、库存和售后数据的成熟候选；有上市年报及正式接口证据。适合已有聚水潭或确实需要多店 ERP 的商家，不能替代竞品和广告监测服务。",
+    "credibility_evidence": [
+      {
+        "claim": "港交所 2025 年报确认 2025-10-21 上市、股份代码 6687；披露 2025 年收入约 11.4247 亿元，ERP 收入约 9.1878 亿元。",
+        "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042701045_c.pdf",
+        "source_type": "上市公司年报",
+        "date": "2026-04-27",
+        "scope": "集团及 ERP 产品线"
+      },
+      {
+        "claim": "同份年报第 11 页披露 SaaS 客户 11.3 万、年处理订单 388 亿笔；属于公司披露的运营规模，不是对接口外发权限或可用率的承诺。",
+        "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042701045_c.pdf",
+        "source_type": "上市公司年报",
+        "date": "2026-04-27",
+        "scope": "集团 SaaS 运营指标"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "诺特兰德",
+        "description": "官方客户区描述切换聚水潭后应对直播大促订单，并采用聚核账/聚胜算建设业财流程；不是仅摆放 Logo。",
+        "url": "https://www.jushuitan.com/?initialSessionID=262-0733613-8122024&ld=ASXXSCTUKDirect",
+        "customer_side": false
+      },
+      {
+        "customer": "恒安集团",
+        "description": "官方客户区描述分销管理和供应链上下游数据管理；本轮未取得恒安客户方发布。",
+        "url": "https://www.jushuitan.com/?initialSessionID=262-0733613-8122024&ld=ASXXSCTUKDirect",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "官方开放平台公开测试、开发者资质、商家授权、接口权限申请及正式环境上线流程。",
+        "url": "https://open.jushuitan.com/"
+      },
+      {
+        "claim": "orders.single.query 正式文档明确普通订单查询不含淘系、拼多多；其他路径及敏感信息须按平台规则另授权。",
+        "url": "https://open.jushuitan.com/document/2125.html"
+      }
+    ],
+    "limitations": [
+      "年报有明确业务规模，但上市身份及收入不能代替本次 API 性能/字段验收；客户案例是厂商发布。",
+      "集团 2025 年归母亏损与上市优先股转换相关；不把经调整利润当审计净利润，也不据单项亏损认定供应商不可靠。",
+      "不能通过普通 ERP 接口取全量淘系/拼多多；未核到通用广告曝光点击报表、消费者评价全文、竞品真实订单。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "wangdiantong",
+    "name": "旺店通",
+    "verdict": "备选",
+    "reason": "产品与接口资料较完整；作为已使用旺店通商家的自营数据源优先，未使用 ERP 时不宜仅为数据采购再引入整套业务系统。",
+    "credibility_evidence": [
+      {
+        "claim": "官方产品级案例页明确中粮使用 ERP 企业版、强生使用 ERP 企业版+WMS、周黑鸭使用 ERP 企业版；比集团泛客户 Logo 更具体。",
+        "url": "https://www.wangdian.cn/cases/",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      },
+      {
+        "claim": "企业版正式开放平台公开原始订单参数、返回字段、分页与敏感信息限制，并标注增值接口。",
+        "url": "https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php",
+        "source_type": "官方 API 文档",
+        "date": null,
+        "scope": "企业版接口"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "中粮",
+        "description": "厂商页明确 ERP 企业版及食品批次、效期管理场景；未证明全部中粮集团均部署。",
+        "url": "https://www.wangdian.cn/cases/",
+        "customer_side": false
+      },
+      {
+        "customer": "强生",
+        "description": "厂商页列 ERP 企业版+WMS，用于商品管理和内部仓储系统协同；未取得强生客户方公告。",
+        "url": "https://www.wangdian.cn/cases/",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "vip_api_trade_query.php 有正式业务字段、授权和分页规则；普通原始订单不含淘系、拼多多及系统供销。",
+        "url": "https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php"
+      }
+    ],
+    "limitations": [
+      "本轮未取得可引用的上市年报/独立审计运营指标；官网具名案例和收益百分比仍为供应商材料。",
+      "不同产品版本 API 和增值费用不同，企业版文档不能自动代表旗舰版或极速版。",
+      "ERP 渠道列表不证明所有数据可外发，广告报表和用户评价全文仍未核实；不能获取竞品后台数据。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "guanyiyun",
+    "name": "管易云",
+    "verdict": "备选",
+    "reason": "金蝶旗下电商 ERP 的持续经营与产品案例可证，但当前正式 API 字段公开核验较弱；适合已有金蝶/管易体系，先补接口交付材料。",
+    "credibility_evidence": [
+      {
+        "claim": "金蝶 2025 年报单独披露管易云 CGU，证明是集团实际经营业务；同页披露约 2180.7 万元商誉减值及表现低于预期，不应只取集团品牌正面背书。",
+        "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0423/2026042300339_c.pdf",
+        "source_type": "上市公司年报",
+        "date": "2026-04-23",
+        "scope": "管易云业务单元，年报第136页"
+      },
+      {
+        "claim": "官网产品线明确 C-ERP、WMS、易集成、易对账，而非只列金蝶集团产品。",
+        "url": "https://www.guanyiyun.com/",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "捷安特",
+        "description": "官方品牌电商方案叙述 2014 年起合作、天猫/京东新零售验券、线上下单门店提车与业财系统集成；具业务细节但仍为供应商发布。",
+        "url": "https://www.guanyiyun.com/pinpaidianshangjiejuefangan/",
+        "customer_side": false
+      },
+      {
+        "customer": "凯迪仕",
+        "description": "官方专页描述全渠道订单、安装服务、自动对账及金蝶 ERP 同步；不将其宣传提升比例当独立验收结果。",
+        "url": "https://www.guanyiyun.com/biaogananli/157.html",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "官方即时零售方案描述 API 聚合与订单/库存/会员/营销归集，但未公开本次可用完整请求/返回 schema。",
+        "url": "https://www.guanyiyun.com/jishilingshou/"
+      },
+      {
+        "claim": "旧 guanyi.kf5.com 帮助页本轮返回域名平台未注册，不能继续作为现行 API 凭据。",
+        "url": "https://guanyi.kf5.com/hc/kb/article/1234992/"
+      }
+    ],
+    "limitations": [
+      "金蝶集团客户数、收入不能算作管易云产品客户数；商誉减值不是产品不可用的直接证明，但应询问持续维护和服务保障。",
+      "需索取当前官方 OpenAPI/奇门文档、SKU/订单样本、PDD 外发路径和 SLA；轻易云适配目录不能替代管易一手文档。",
+      "营销费用账单不等于广告曝光/点击/转化接口；评价全文未验证。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "jackyun",
+    "name": "吉客云",
+    "verdict": "备选",
+    "reason": "有具体业务案例和正式 OpenAPI/MCP 工具目录，适合自有 ERP、业财及多渠道经营；公开规模多为自述，暂不因品牌案例提高为全数据精选。",
+    "credibility_evidence": [
+      {
+        "claim": "官方说明依托网店管家团队研发，公开产品体系及实施方式；10万家等规模为厂商自述，未取得独立审计。",
+        "url": "https://www.jackyun.com/official/knowledgeArticleDetail_3960.html",
+        "source_type": "官方产品介绍",
+        "date": null,
+        "scope": "产品级"
+      },
+      {
+        "claim": "官方典型案例库持续更新，2026-10-15 具名北京十头象与武汉网智易讯案例提供了具体订单、门店及财务集成场景。",
+        "url": "https://m.jackyun.com/official/typicalCase",
+        "source_type": "官方实施案例",
+        "date": "2026-10-15",
+        "scope": "产品级"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "北京十头象日用品",
+        "description": "官方案例说明统一线上多平台与线下 B 端分销订单、账单解析和财务对账。",
+        "url": "https://m.jackyun.com/official/typicalCase",
+        "customer_side": false
+      },
+      {
+        "customer": "来酷 Lecoo",
+        "description": "官方即时零售案例描述门店/城市/省级仓及云仓协同，属于零售履约方案，不能推出评价和广告接口。",
+        "url": "https://www.jackyun.com/official/newsDetail_453.html",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "官方 OpenAPI/MCP 参数目录给出 oms.trade.fullinfoget、erp-goods.pricelist.get 等业务接口；目录可读不代表已完成生产授权调用。",
+        "url": "https://open.jackyun.com/developer/mcpservice/toolList.html"
+      },
+      {
+        "claim": "开放平台为开发者接入入口；企业认证、应用订阅和商家授权需按实际账户完成。",
+        "url": "https://open.jackyun.com/"
+      }
+    ],
+    "limitations": [
+      "无客户侧交叉确认；网店管家历史与吉客云当前产品成熟度应区分。",
+      "九数云的吉客云连接器自2025-08-20停取拼多多，不能由 ERP 自身支持 PDD 推断任意外发路径可用。",
+      "ERP 价目表不是实时电商到手价，销售报表不是广告报表；评价文本与竞品订单未验证。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "wdgj",
+    "name": "网店管家",
+    "verdict": "备选",
+    "reason": "具备正式接口和清晰主体，可作为已在用网店管家的自营订单来源；本轮独立客户证据与数据外发覆盖较弱，不新增为综合数据供应商。",
+    "credibility_evidence": [
+      {
+        "claim": "官网署名杭州笛佛软件有限公司，产品体系含网店管家云端版、esAPI、wmsAPI、开放平台；用户与日包裹数字为自述。",
+        "url": "https://www.wdgj.com/",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      },
+      {
+        "claim": "开放平台文档详细公开授权、签名、XML/JSON 返回和订单限制，接口技术证据可核验。",
+        "url": "https://open.wdgj.com/OpenApiDoc/ApiInfo.html?OpenAPIID=70056&dictID=84",
+        "source_type": "官方 API 文档",
+        "date": null,
+        "scope": "网店管家订单接口"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "wdgj.tradenosensitiveinfo.list.get 明确不返回敏感信息；淘系仅返回管家单号及店铺信息，PDD 销售单不返回，须自行对接平台。",
+        "url": "https://open.wdgj.com/OpenApiDoc/ApiInfo.html?OpenAPIID=70056&dictID=84"
+      }
+    ],
+    "limitations": [
+      "本轮签约快报页未稳定取得具名实施正文，因此没有用吉客云案例替代网店管家本产品案例；缺证不表示缺客户。",
+      "官网累计用户和日处理量没有本轮独立审计佐证，不能拿来推断接口可用率。",
+      "作为四大电商统一外发接口有明确缺口；广告与用户评论全文没有正式证据。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "kuaimai",
+    "name": "快麦",
+    "verdict": "备选",
+    "reason": "公司与产品成熟度证据较强，可进入自有订单 ERP 备选；与聚水潭/旺店通用途重叠，按现有 ERP 和授权成本选，不能把 ERP 接入能力当综合竞品数据服务。",
+    "credibility_evidence": [
+      {
+        "claim": "光云科技（688365）2025 年报明确快麦 ERP 产品：60多个服务网点、上万家电商企业、支持超过140个平台数据同步、日均订单超1400万；这是产品级披露，不是集团 Logo 推断。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-25/1225193734.PDF",
+        "source_type": "上市公司年报",
+        "date": "2026-04-25",
+        "scope": "快麦 ERP 产品；正文搜索索引可核，本轮 PDF 直开超时"
+      },
+      {
+        "claim": "快麦官网明确运营主体杭州光云科技股份有限公司，并有具体 ERP 实施案例与开放平台。",
+        "url": "https://www.kuaimai.com/anli.html",
+        "source_type": "官方产品资料",
+        "date": null,
+        "scope": "产品级"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "金猫塑业",
+        "description": "官方案例具体说明按体积计算包材运费、接力拣选及阶梯成本等 ERP 实施内容；未独立验证提升比例。",
+        "url": "https://www.kuaimai.com/anli.html",
+        "customer_side": false
+      },
+      {
+        "customer": "索菲亚",
+        "description": "官方案例描述多平台订单集中处理并配合小智客服中台；只可支持该产品/场景合作，不代表集团所有业务。",
+        "url": "https://www.kuaimai.com/anli.html",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "正式 API erp.trade.list.query 公开参数和字段，标题明确非淘系、拼多多订单查询。",
+        "url": "https://open.kuaimai.com/docs/api/API文档/交易/订单查询非淘系拼多多/"
+      },
+      {
+        "claim": "官方新公告明确获取 ERP 中 PDD 订单需方舟 ERP-自研数据传输场景、开发者应用及双方 client_id 绑定；当前快麦普通开放平台不再返回 PDD。",
+        "url": "https://open.kuaimai.com/docs/question/系统公告/拼多多自研接口接入开放公告/"
+      }
+    ],
+    "limitations": [
+      "年报披露平台覆盖不代表普通 API 可外发所有平台全部字段；上市公司身份也不能代替生产验收。",
+      "案例页有中邮泰普/中邮普泰名称和类目文字不一致的编辑问题，本轮未把该案例作为正面依据。",
+      "PDD 方舟另接、淘系奇门另授权；通用广告和用户评价全文未证实，竞品数据不属其 ERP 证据范围。",
+      "本轮为公开资料核验；未调用获授权的生产业务 API。客户方自有渠道未核到交叉确认，不等于案例虚假。",
+      "此类商用 SaaS 不以 GitHub star 数代替客户交付、数据授权和服务质量证据。"
+    ],
+    "checked_on": "2026-11-05"
+  }
+]

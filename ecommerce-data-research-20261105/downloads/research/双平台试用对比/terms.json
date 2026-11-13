@@ -1,0 +1,173 @@
+{
+  "checked_on": "2026-11-06",
+  "scope": "供应商现行公开服务条款、隐私、退款、使用边界与数据保留；不作为数据使用授权或法律结论。",
+  "interpretation_note": "用户提到每日清除限制：本组分别检查请求额度/试用额度到期、服务端结果保留和用户已下载数据的清理要求；未将其混为一类。避风港按免责与权利处理条款核验，未发现两家公开页面提供可直接适用于客户的safe-harbor/DMCA保护承诺。",
+  "records": [
+    {
+      "id": "everyinfra",
+      "name": "EveryInfra",
+      "terms_last_updated": "2026-11-01",
+      "privacy_last_updated": "2026-10",
+      "legal_entity": {
+        "status": "供应商自述，未独立核登记",
+        "detail": "自称在新加坡和美国注册，但本条款未列这两地主体全称及注册号；列有香港关联代收公司垚焱環球商貿有限公司，编号79721831。",
+        "source": "https://everyinfra.com/terms"
+      },
+      "trial": {
+        "detail": "自助注册默认无免费额；GitHub点星后可领取$1，领取后24小时失效，每账户及GitHub各限一次。",
+        "documentation_conflict": "条款只列everyinfra-agent-plugins；当前快速开始要求everyinfra-agent-plugins与seo-skills两个仓库都点星。以控制台实际领取条件复核。",
+        "sources": [
+          "https://everyinfra.com/terms",
+          "https://everyinfra.com/docs#quickstart"
+        ]
+      },
+      "commercial_use_and_resale": {
+        "detail": "普通API使用不等于底层内容授权；需遵守来源规则。未经批准不得转售、共享账户或仿同等产品；批准的服务商有独立转售规则。",
+        "source": "https://everyinfra.com/terms"
+      },
+      "availability_and_liability": {
+        "detail": "按现状和可用性提供，可维护或调整限流，无不中断承诺；累计责任上限为争议前3个月实付费用。",
+        "public_sla_percentage": null,
+        "source": "https://everyinfra.com/terms"
+      },
+      "refund": {
+        "detail": "执行失败、空响应不最终扣费，预扣可自动恢复；公开条款未提供通用余额退款承诺。",
+        "source": "https://everyinfra.com/terms"
+      },
+      "retention": {
+        "provider_logs": "保存调用日志及请求参数原文用于账务、排障和反滥用；未给固定保留天数。",
+        "account_deletion": "注销后合理期限内删除或匿名化账户资料，但日志、账务和依法保留的信息除外。",
+        "downloaded_reviews_daily_purge": "未查到要求客户每日清空已下载评论的固定条款；不能反推允许永久保留或任意再分发。",
+        "job_result_ttl": "主API文档及getJob说明未核到固定保留期限。",
+        "pagination_token": "部分可分页能力的next_page_token有24小时有效期，绑定账户及原参数；不是已下载评论被每日清空。",
+        "sources": [
+          "https://everyinfra.com/privacy",
+          "https://everyinfra.com/docs",
+          "https://api.everyinfra.com/openapi.json"
+        ]
+      },
+      "safe_harbor_dmca": {
+        "status": "未找到具体承诺",
+        "detail": "条款把下游数据使用责任交给用户；免责声明不能当作数据权利担保或客户免责。",
+        "source": "https://everyinfra.com/terms"
+      },
+      "practical_conclusion": "商业接入条款比Qovia公开摘要细；试用需点星且24小时失效，应先备好样本任务再领取。请求日志和异步结果保存期需补证。"
+    },
+    {
+      "id": "qovia",
+      "name": "Qovia",
+      "terms_last_updated": null,
+      "privacy_last_updated": null,
+      "legal_entity": {
+        "status": "公开摘要未明确法定合同主体",
+        "detail": "写明适用美国特拉华州法律，但该信息不等于已核实当地公司登记；about、terms未提供足以核验的完整主体注册资料。",
+        "sources": [
+          "https://qovia.ai/terms/",
+          "https://qovia.ai/about/"
+        ]
+      },
+      "commercial_use_and_resale": {
+        "detail": "不主张底层内容所有权；数据集按各自许可。下游用途需遵守法律和来源规则；未见统一授予永久存储、转售或再分发的许可。",
+        "source": "https://qovia.ai/terms/"
+      },
+      "availability_and_liability": {
+        "detail": "条款及隐私页面是摘要，以签署合同为准；未核到公开量化SLA、停服赔偿或完整责任分配。",
+        "public_sla_percentage": null,
+        "source": "https://qovia.ai/terms/"
+      },
+      "refund": {
+        "detail": "充值一般不退；经其确认购买端点不可用时，付款后7日内可申请退未用余额；临时故障、限流、平台改版不属于该例外，赠送额度不退。",
+        "source": "https://qovia.ai/terms/",
+        "sources": [
+          "https://qovia.ai/terms/",
+          "https://qovia.ai/zh/pricing/"
+        ]
+      },
+      "retention": {
+        "provider_logs": "隐私摘要未明示请求/结果的保留天数和处理地域。",
+        "requests_and_results_resale": "承诺不转售客户请求内容和返回结果。",
+        "account_deletion": "可向官方公布的联系邮箱提交删除请求；未列完成期限与例外清单。",
+        "downloaded_reviews_daily_purge": "未查到要求客户每日清空已下载评论的固定条款；仍需确认所购数据许可。",
+        "job_result_ttl": "本组未核到适用于评论数据的固定服务端保留期。",
+        "sources": [
+          "https://qovia.ai/privacy/",
+          "https://qovia.ai/terms/"
+        ]
+      },
+      "safe_harbor_dmca": {
+        "status": "未找到具体承诺",
+        "detail": "声明是非官方服务、与来源平台无隶属关系；不构成来源授权或客户免责。",
+        "source": "https://qovia.ai/terms/"
+      },
+      "practical_conclusion": "可以先小额试验；采购前需要完整合同、主体、数据使用许可与保存范围。公开摘要不足以支持大额预付或稳定性承诺。"
+    }
+  ],
+  "comparison_rows": [
+    {
+      "dimension": "免费额到期",
+      "everyinfra": "$1领取后24小时失效，点星条件页面有差异",
+      "qovia": "见定价/试用核验，条款仅说赠送不可退"
+    },
+    {
+      "dimension": "每日清空已下载评论",
+      "everyinfra": "未见固定每日删除条款",
+      "qovia": "未见固定每日删除条款"
+    },
+    {
+      "dimension": "服务端保留",
+      "everyinfra": "请求原文/日志保存，期限未明；job结果TTL待核",
+      "qovia": "请求/结果保留期限未明"
+    },
+    {
+      "dimension": "再分发/转售",
+      "everyinfra": "需批准服务商权限；底层内容权利另核",
+      "qovia": "按所购数据许可；公开摘要未授予统一转售权"
+    },
+    {
+      "dimension": "SLA/可用性",
+      "everyinfra": "无不中断保证；可调整限流",
+      "qovia": "未核公开量化SLA，正式合同待取得"
+    },
+    {
+      "dimension": "避风港/DMCA",
+      "everyinfra": "未找到客户免责承诺",
+      "qovia": "未找到客户免责承诺"
+    }
+  ],
+  "sources": [
+    {
+      "title": "EveryInfra 服务条款",
+      "url": "https://everyinfra.com/terms"
+    },
+    {
+      "title": "EveryInfra 隐私政策",
+      "url": "https://everyinfra.com/privacy"
+    },
+    {
+      "title": "EveryInfra 开发文档",
+      "url": "https://everyinfra.com/docs"
+    },
+    {
+      "title": "Qovia 服务条款",
+      "url": "https://qovia.ai/terms/"
+    },
+    {
+      "title": "Qovia 隐私政策",
+      "url": "https://qovia.ai/privacy/"
+    },
+    {
+      "title": "Qovia 关于",
+      "url": "https://qovia.ai/about/"
+    },
+    {
+      "title": "Qovia 定价与退款说明",
+      "url": "https://qovia.ai/zh/pricing/"
+    }
+  ],
+  "verification_limits": [
+    "无注册、登录、付费、供应商联系或签署合同。",
+    "未独立验证公司注册或所有数据来源许可。",
+    "只将明确现行公开说明记为已核；未找到不等于供应商绝对不存在该条款。",
+    "EveryInfra条款/隐私页通过网页工具可读，直接urllib访问HTTP403；Qovia两页直接HTTP200；未将文档可访问计为业务接口成功。"
+  ]
+}

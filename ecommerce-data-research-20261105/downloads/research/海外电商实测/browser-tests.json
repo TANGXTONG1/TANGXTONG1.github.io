@@ -1,0 +1,76 @@
+{
+  "checked_at": "2026-11-13T09:26:39.221182+00:00",
+  "method": "Official UI observations before and after explicitly authorized signup; historical registration prompts retained. Subsequent UI operations restricted to browser-tab extension per user instruction.",
+  "attempts": [
+    {
+      "provider": "Bright Data",
+      "url": "https://brightdata.com/products/web-scraper/amazon?hs_signup=1",
+      "channel": "Chrome native UI",
+      "status": "registration_terms_confirmation_pending",
+      "observed": "已显示Sign up弹窗、Continue with Google/ GitHub、Work email、Create Account。页面明确创建账户接受Master Service Agreement和Privacy Policy；免费5K credits，无需信用卡。",
+      "business_reviews_received": null,
+      "historical_observation": true,
+      "superseded_by": "authenticated-trials.json"
+    },
+    {
+      "provider": "Apify",
+      "url": "https://console.apify.com/sign-up",
+      "channel": "Chrome native UI",
+      "status": "google_registration_confirmation_pending",
+      "observed": "已显示Google账户继续注册面板，明确分享姓名、邮箱和头像，并提供隐私及服务条款。尚未提交。",
+      "business_reviews_received": null,
+      "historical_observation": true,
+      "superseded_by": "authenticated-trials.json"
+    },
+    {
+      "provider": "Scrapingdog",
+      "url": "https://www.scrapingdog.com/",
+      "channel": "official_anonymous_browser_demo",
+      "status": "demo_http_200_review_text_unverified",
+      "input": {
+        "url": "https://www.walmart.com/reviews/product/317408869",
+        "endpoint": "/scrape"
+      },
+      "observed_at": "2026-11-13T07:05:10.433227+00:00",
+      "observed": "在官网Website URL输入官方文档Walmart评论示例，Run /scrape从可点击到running，再显示200 OK · 2.99s。返回Markdown，已可见Walmart页面导航；AX仅暴露开头约500字符，继续截图滚动遇noWindowsAvailable，未确认评论正文。",
+      "http_status_displayed": 200,
+      "elapsed_seconds_displayed": 2.99,
+      "business_reviews_received": null,
+      "review_endpoint_tested": false,
+      "billing": "公开匿名演示，无账户扣款",
+      "source": "https://www.scrapingdog.com/"
+    },
+    {
+      "provider": "Bright Data",
+      "url": "https://brightdata.com/cp/",
+      "channel": "authenticated_console_ui",
+      "status": "registered_free_tier",
+      "observed": "Google sign-in and authorized terms completed. Free tier activated; 5000/5000 credits observed before API tests. Payment method not added.",
+      "business_reviews_received": null
+    },
+    {
+      "provider": "Apify",
+      "url": "https://console.apify.com/",
+      "channel": "authenticated_console_ui",
+      "status": "logged_in_existing_account",
+      "observed": "Google sign-in reached existing Free-plan account with $5 monthly allowance. Amazon and Walmart runs completed; details in authenticated-trials.json. Walmart full-account Actor permissions explicitly approved by user.",
+      "business_reviews_received": null
+    }
+  ],
+  "account_created": {
+    "Bright Data": true,
+    "Apify": "existing account logged in"
+  },
+  "paid_topup": false,
+  "historical_ui_limitations": [
+    "浏览器扩展连接列表为空；已改用桌面Chrome读取官网。",
+    "Edge有窗口但AX一度仅返回扩展菜单，Chrome可读取注册UI。",
+    "Scrapingdog返回后进一步截图滚动收到noWindowsAvailable，正文验证未完成。",
+    "再次连接Chrome返回codex app-server exited before returning a response；注册和进一步浏览器验证当前无法继续。"
+  ],
+  "ui_limitations": [
+    "User now requires browser-tab extension control only; no further native desktop interaction.",
+    "Edge extension connection and tab inventory visible. Claim/read/navigation calls timed out; tab control not yet functional. This is local tooling, not supplier API failure."
+  ],
+  "terms_authorized": true
+}

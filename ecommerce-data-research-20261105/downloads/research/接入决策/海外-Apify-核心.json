@@ -1,0 +1,931 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-11-13T14:14:46.561480+00:00",
+  "scope": [
+    "Amazon",
+    "eBay",
+    "Walmart"
+  ],
+  "decision_summary": "Amazon 与 Walmart 先排开发，eBay 商品评价暂缓；Apify 统一账户、鉴权和任务链路，仍需每 Actor 输入/字段适配。",
+  "research_actions": "本轮仅读已有公开实测摘要、官网及匿名公开元数据/schema；未读凭据，未新增业务采集，未付款，未操作浏览器。",
+  "currency": "USD",
+  "shared_account_billing": {
+    "plans": {
+      "Free": {
+        "monthly_fee": 0,
+        "included_credit": 5,
+        "concurrent_runs": 5
+      },
+      "Starter": {
+        "monthly_fee": 19,
+        "included_credit": 19,
+        "concurrent_runs": 32
+      },
+      "Scale": {
+        "monthly_fee": 199,
+        "included_credit": 199,
+        "concurrent_runs": 128
+      },
+      "Business": {
+        "monthly_fee": 999,
+        "included_credit": 999,
+        "concurrent_runs": 256
+      }
+    },
+    "cash_formula_paid": "月账单=套餐月费+max(0,同一账户所有 Actor 与其他应计使用费之和−套餐内含额度)。不逐平台重复收月费；此式未含税、汇率和另购服务。",
+    "free_rule": "Free 每月 $5 试用额度，不当作可无限超额按量用的套餐；本账号 Amazon 单次 5 条限制独立存在。",
+    "plan_recommendation": "开发验证阶段沿用免费余额；Amazon 批量验收再启用共用 Starter。流量达到明确规模后比较所有 Actor 合计成本再选套餐，不只看某个 Actor 单价。",
+    "cost_examples": [
+      {
+        "scenario": "仅 Amazon 和 Walmart，各 10,000 条计费评论/月；无 Amazon 日期筛选；Walmart 启动次数 R",
+        "Starter": "max(19, 70 + 0.00009×R)",
+        "Scale": "max(199, 55 + 0.00008×R)",
+        "Business": "max(999, 40 + 0.00007×R)",
+        "decision": "正常批次数下 Starter 更低。"
+      },
+      {
+        "scenario": "仅 Amazon 和 Walmart，各 100,000 条计费评论/月；无 Amazon 日期筛选；Walmart 启动次数 R",
+        "Starter": "max(19, 700 + 0.00009×R)",
+        "Scale": "max(199, 550 + 0.00008×R)",
+        "Business": "max(999, 400 + 0.00007×R)",
+        "decision": "正常批次数下 Scale 更低；不能一直推荐 Starter。"
+      }
+    ],
+    "date_filter_formula": "Amazon 用量=N_result×result单价+N_dateFilterNewerThan×日期事件单价；尚未证明日期事件与返回评论永远一一对应。若验收确认一一对应，再可把千条价格相加。",
+    "retention": "官方帮助页说明默认 unnamed 数据 Free 7 天、常规付费 31 天，named storage 不按此自动过期；应任务结束立即导入自有数据库，不依赖 Apify 充当长期数据仓库。",
+    "sources": [
+      {
+        "url": "https://apify.com/pricing",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00",
+        "supports": "月付套餐、内含额度、折扣和并发"
+      },
+      {
+        "url": "https://docs.apify.com/account/limits",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00",
+        "supports": "并发与账户运行限制"
+      },
+      {
+        "url": "https://help.apify.com/en/articles/8857541-how-to-prevent-a-dataset-from-expiring",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00",
+        "supports": "默认数据保留与命名存储"
+      }
+    ]
+  },
+  "unified_api_contract": {
+    "start": {
+      "method": "POST",
+      "url": "https://api.apify.com/v2/actors/{owner}~{actor}/runs",
+      "headers": {
+        "Authorization": "Bearer <APIFY_API_TOKEN>",
+        "Content-Type": "application/json"
+      },
+      "query": "build=<validated-build>&timeout=<seconds>&restartOnError=false&maxTotalChargeUsd=<budget>"
+    },
+    "poll": {
+      "method": "GET",
+      "url": "https://api.apify.com/v2/actor-runs/{runId}",
+      "read": [
+        "data.status",
+        "data.defaultDatasetId",
+        "data.usageTotalUsd",
+        "data.chargedEventCounts",
+        "data.buildNumber"
+      ]
+    },
+    "export": {
+      "method": "GET",
+      "url": "https://api.apify.com/v2/datasets/{defaultDatasetId}/items?format=json&clean=false&offset=0&limit=1000",
+      "pagination": "每页按原始返回行数推进 offset；先完成全量读取再做有效评论过滤，避免过滤后 offset 跳错。CSV 可用 format=csv。",
+      "storage": "任务终态后立即读取到自己的数据库并记录 source、actor、build、run 时间；不要公开 token 或账户 dataset ID。"
+    },
+    "architecture": "后端统一 start/poll/export/预算/重试模块 + 每站 input builder 与 output mapper；业务端只调用自己的统一评论接口。",
+    "limits_and_retries": [
+      "轮询有退避；HTTP 请求超时不代表 Actor 已停止，必须先查 runId 再决定是否重启，以免重复计费。",
+      "失败重试设置应用层次数和总预算；预算值为上限，不是预扣费用；Dataset limit 只限制下载页，不限制采集量。",
+      "记录 Actor 终态和有效行数两套成功指标；SUCCEEDED + 0 条不得按抓到评论成功。",
+      "本次未核验账号专属限额，不把公开 API 的高请求率当作目标电商保证吞吐。"
+    ],
+    "sources": [
+      {
+        "url": "https://docs.apify.com/api/v2/actors-runs-post",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00",
+        "supports": "canonical 新 Actor 启动路由、费用上限、构建固定、等待状态"
+      },
+      {
+        "url": "https://docs.apify.com/api/v2",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00",
+        "supports": "鉴权和通用 API"
+      }
+    ]
+  },
+  "platforms": [
+    {
+      "platform": "Amazon",
+      "priority": 1,
+      "status": "implement_with_acceptance_gate",
+      "decision": "首批排开发：先接美国站商品文字评论与增量监测；上线前补直接 API 和批量验收。",
+      "primary_actor": {
+        "slug": "junglee/amazon-reviews-scraper",
+        "url": "https://apify.com/junglee/amazon-reviews-scraper",
+        "actor_id": "R8WeJwLuzLZ6g4Bkk",
+        "owner": "junglee",
+        "maintained_by": "Apify",
+        "build_number": "0.1.367",
+        "modified_at": "2026-11-13T13:23:51.391Z",
+        "permission": "LIMITED_PERMISSIONS",
+        "total_users": 17794,
+        "monthly_active_users": 2410,
+        "rating": 2.7,
+        "rating_count": 46,
+        "public_run_status_counts_30_days": {
+          "ABORTED": 1614,
+          "FAILED": 705,
+          "SUCCEEDED": 140139,
+          "TIMED-OUT": 3117,
+          "TOTAL": 145575
+        },
+        "metrics_warning": "用户数、评分和 SUCCEEDED 状态只作维护与采用度信号；SUCCEEDED 可能含空数据，不能当有效评论成功率。",
+        "input_required": [
+          "productUrls"
+        ],
+        "input_schema_source": "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper/builds/default",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00"
+      },
+      "backup_actor": null,
+      "selection_reason": "Apify 维护、规模采用信号较强且本账号已有真实文字结果；低评分 2.7/46 必须纳入验收，不能据此承诺稳定性或全历史。暂不并行接入第二个 Amazon Actor。",
+      "data_type": "product_review",
+      "regions": {
+        "implementation_scope": "amazon.com / US",
+        "other_markets": "本轮未逐站实测，不承诺所有 Amazon 国别站都可用。"
+      },
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.apify.com/v2/actors/junglee~amazon-reviews-scraper/runs",
+        "headers": {
+          "Authorization": "Bearer <APIFY_API_TOKEN>",
+          "Content-Type": "application/json"
+        },
+        "query": {
+          "build": "0.1.367",
+          "timeout": 600,
+          "restartOnError": false,
+          "maxTotalChargeUsd": 0.5
+        },
+        "json": {
+          "productUrls": [
+            {
+              "url": "https://www.amazon.com/dp/B0CWXNS552"
+            }
+          ],
+          "maxReviews": 5,
+          "includeGdprSensitive": false,
+          "sort": "helpful",
+          "filterByRatings": [
+            "allStars"
+          ],
+          "reviewsUseProductVariantFilter": false,
+          "reviewsFilterByKeywords": [],
+          "scrapeProductDetails": false,
+          "reviewsAlwaysSaveCategoryData": false
+        }
+      },
+      "field_mapping": {
+        "source_product_id": "productAsin；另保留 productOriginalAsin / variantAsin",
+        "review_id": "reviewId",
+        "title": "reviewTitle",
+        "text": "reviewDescription",
+        "rating": "ratingScore",
+        "published_at": "date",
+        "review_url": "reviewUrl",
+        "country": "countryCode / country",
+        "verified_purchase": "isVerified",
+        "incentivized_program": "isAmazonVine",
+        "images": "reviewImages",
+        "variant": "variant / variantAttributes",
+        "helpful_or_reactions": "reviewReaction",
+        "author": "默认 includeGdprSensitive=false，不要求作者姓名或 profile",
+        "price_sales_marketing": "本评论模式未验证；不得填成已覆盖价格、销量或营销投放数据。"
+      },
+      "pricing": {
+        "currency": "USD",
+        "model": "PAY_PER_EVENT",
+        "effective_since": "2026-07-28T08:49:09.570Z",
+        "primary_event": "result",
+        "primary_usd_per_1000": {
+          "Free": 6.0,
+          "Starter": 5.0,
+          "Scale": 4.0,
+          "Business": 3.0
+        },
+        "events_by_plan": {
+          "Free": {
+            "result": {
+              "usd_per_event": 0.006,
+              "usd_per_1000_events": 6.0,
+              "one_time_event": false
+            },
+            "dateFilterNewerThan": {
+              "usd_per_event": 0.0013,
+              "usd_per_1000_events": 1.3,
+              "one_time_event": false
+            }
+          },
+          "Starter": {
+            "result": {
+              "usd_per_event": 0.005,
+              "usd_per_1000_events": 5.0,
+              "one_time_event": false
+            },
+            "dateFilterNewerThan": {
+              "usd_per_event": 0.001,
+              "usd_per_1000_events": 1.0,
+              "one_time_event": false
+            }
+          },
+          "Scale": {
+            "result": {
+              "usd_per_event": 0.004,
+              "usd_per_1000_events": 4.0,
+              "one_time_event": false
+            },
+            "dateFilterNewerThan": {
+              "usd_per_event": 0.0008,
+              "usd_per_1000_events": 0.8,
+              "one_time_event": false
+            }
+          },
+          "Business": {
+            "result": {
+              "usd_per_event": 0.003,
+              "usd_per_1000_events": 3.0,
+              "one_time_event": false
+            },
+            "dateFilterNewerThan": {
+              "usd_per_event": 0.0006,
+              "usd_per_1000_events": 0.6,
+              "one_time_event": false
+            }
+          }
+        },
+        "minimal_max_total_charge_usd": 0.5,
+        "platform_usage": "所列选定 Actor 定价页显示 Platform costs Included；用户另行保存、读取和传输等账户消耗仍须对账，不把平台包含项再重复计费。",
+        "plan_tiers_note": "只按官网公开月付 Free / Starter / Scale / Business 报价。API 的 PLATINUM/DIAMOND 不映射为可自行购买套餐。",
+        "sources": [
+          {
+            "url": "https://apify.com/junglee/amazon-reviews-scraper/pricing",
+            "checked_at": "2026-11-13T14:14:46.561480+00:00",
+            "supports": "各套餐计价事件和平台费用包含标注"
+          },
+          {
+            "url": "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper",
+            "checked_at": "2026-11-13T14:14:46.561480+00:00",
+            "supports": "最新已生效 pricingInfos，避免错用历史收费事件"
+          }
+        ]
+      },
+      "limits": [
+        "Free 账号实测每次最多 5 条，日志要求升级 Starter 才可单次更多；每月免费额度不能解除单次上限。",
+        "maxReviews 是每商品目标上限，不保证返回目标数；README 描述每星级最多约 100 条、理想组合约 500 条，输入 schema 还注明关键词搜索约 20 条及变体差异，不能承诺全历史。",
+        "reviewsCutoffDate 的当前输入说明写明该模式每商品最多 100 条；日期筛选是额外收费事件，真实事件数须对账。",
+        "评分总数并非文字评论总数；无评论、URL 错误和过滤后为空可能输出 error 行。",
+        "当前 metadata 的 minimalMaxTotalChargeUsd=0.50 是单次允许设置的最低费用上限，不是至少扣 $0.50；现行价格没有 actor-start 事件。"
+      ],
+      "optional_input": {
+        "incremental": {
+          "sort": "recent",
+          "reviewsCutoffDate": "<YYYY-MM-DD>",
+          "maxReviews": 100
+        },
+        "explanation": "日期全部按 UTC 理解；增量窗口应有重叠并按 reviewId 去重。该可选模板尚未进行计费与完整性实测。"
+      },
+      "acceptance_gates": [
+        "先补齐后端直接 POST 启动 → 轮询 → 导出 → 自有数据库这一整条链路，不能把控制台启动样本算作 API 启动验收。",
+        "在明确有公开文字评论的 10 个目标商品、至少 3 个品类上，连续 2 天执行 20 次；建议有效任务比例至少 95%，单独记录零评论、超时、权限、商品下架和目标站阻断。此为建议验收标准，未完成。",
+        "抽查商品 ID 和评论类型匹配率 100%；有效评论必须文字非空，排除 error/summary/评分汇总，使用源 review_id 去重；保留原文、抓取时间、来源站点和版本。",
+        "用真实计费事件与账单核对每千条“有效去重评论”成本；重试、重复评论和过滤事件不隐入基础单价。",
+        "至少验证一次分页完整导出、一次有意失败、一次重跑去重和一次增量更新；未验证深历史完整覆盖。",
+        "批量能力必须在获准启用 Starter 后测试；首个小样本仍可在 Free 内完成。每次限制预算、先用 1 个商品，不为凑数量反复刷同一批 5 条。",
+        "付费验收覆盖低星、高星、较新和较旧评论；若需求是几千条完整历史，此 Actor 当前公开限制不满足直接承诺。"
+      ],
+      "sources": [
+        {
+          "url": "https://apify.com/junglee/amazon-reviews-scraper",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "维护者、限制、输出说明"
+        },
+        {
+          "url": "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper/builds/default",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "当前输入 schema、错误项、版本"
+        },
+        {
+          "url": "https://api.apify.com/v2/acts/junglee~amazon-reviews-scraper",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "当日指标与计费元数据"
+        }
+      ],
+      "trial_evidence": {
+        "provider": "Apify",
+        "platform": "Amazon",
+        "actor": "junglee/amazon-reviews-scraper",
+        "channel": "authenticated_console_start_then_dataset_api_export",
+        "run_status": "SUCCEEDED",
+        "requested_reviews": 5,
+        "returned_items": 5,
+        "nonempty_text": 5,
+        "unique_review_ids": 5,
+        "elapsed_seconds_console": 8,
+        "charged_usd_console": 0.03,
+        "paid_topup_usd": 0,
+        "max_total_charge_usd": 0.5,
+        "personal_info_requested": false,
+        "export_http_status": 200,
+        "fields": [
+          "reviewTitle",
+          "reviewDescription",
+          "ratingScore",
+          "reviewImages",
+          "reviewId",
+          "date",
+          "reviewedIn",
+          "reviewUrl",
+          "reviewReaction",
+          "isVerified",
+          "isAmazonVine",
+          "variant",
+          "variantAttributes",
+          "userProfileLink",
+          "userId",
+          "position",
+          "totalCategoryRatings",
+          "totalCategoryReviews",
+          "reviewCategoryUrl",
+          "filterByRating",
+          "filterByKeyword",
+          "productAsin",
+          "productOriginalAsin",
+          "variantAsin",
+          "product",
+          "input",
+          "country",
+          "countryCode"
+        ],
+        "dates": [
+          "2026-08-13",
+          "2026-09-18",
+          "2026-10-16",
+          "2025-12-12",
+          "2026-09-23"
+        ],
+        "free_plan_message": "Here are your 5 Amazon reviews. To access more reviews in a single run, upgrade to the Starter plan.",
+        "observed_at": "2026-11-13T08:40:11.407496+00:00",
+        "direct_api_start_verified": false,
+        "evidence_path": "research/海外电商实测/authenticated-trials.json",
+        "interpretation": "仅证明该单商品小样本在当次环境可采到文字且可 API 导出；不是跨商品成功率，也不证明历史完整性。"
+      },
+      "valid_row_rule": "无 error，非 foundNoReviews，reviewDescription 为非空字符串；reviewId 非空。包含总评分/类别字段的空行不算评论。",
+      "cost_formula": "N_result × 当前套餐 result 单价 + N_dateFilterNewerThan × 当前套餐日期事件单价；无当前启动费。"
+    },
+    {
+      "platform": "eBay",
+      "priority": 4,
+      "status": "hold_product_reviews",
+      "decision": "暂缓作为首批商品评价平台上线；不要用卖家交易反馈冒充商品评价。若之后明确要卖家口碑，可另排反馈适配器。",
+      "primary_actor": null,
+      "data_type": "product_review_required",
+      "reason": "成熟度较高的 e-commerce/store-ebay 官方样例为 POSITIVE 交易反馈和 Past month 相对时间。新增真五星商品评价候选采用度极低且没有我们的真实业务样本，未达到用户要求的可信度。",
+      "feedback_only_candidate": {
+        "actor": {
+          "slug": "e-commerce/store-ebay",
+          "url": "https://apify.com/e-commerce/store-ebay",
+          "actor_id": "rgmJSzSEMzYZDDauS",
+          "owner": "e-commerce",
+          "maintained_by": "Apify",
+          "build_number": "0.0.31",
+          "modified_at": "2026-10-26T13:55:28.916Z",
+          "permission": "LIMITED_PERMISSIONS",
+          "total_users": 222,
+          "monthly_active_users": 11,
+          "rating": 5.0,
+          "rating_count": 5,
+          "public_run_status_counts_30_days": {
+            "ABORTED": 0,
+            "FAILED": 0,
+            "SUCCEEDED": 61,
+            "TIMED-OUT": 0,
+            "TOTAL": 61
+          },
+          "metrics_warning": "用户数、评分和 SUCCEEDED 状态只作维护与采用度信号；SUCCEEDED 可能含空数据，不能当有效评论成功率。",
+          "input_required": [
+            "startUrls"
+          ],
+          "input_schema_source": "https://api.apify.com/v2/acts/e-commerce~store-ebay/builds/default",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00"
+        },
+        "decision": "只作为卖家交易反馈候选；未实测，未排入商品评价覆盖。",
+        "api": {
+          "method": "POST",
+          "endpoint": "https://api.apify.com/v2/actors/e-commerce~store-ebay/runs",
+          "headers": {
+            "Authorization": "Bearer <APIFY_API_TOKEN>",
+            "Content-Type": "application/json"
+          },
+          "query": {
+            "build": "0.0.31",
+            "timeout": 300,
+            "restartOnError": false,
+            "maxTotalChargeUsd": 0.1
+          },
+          "json": {
+            "startUrls": [
+              {
+                "url": "https://www.ebay.com/itm/166383500910"
+              }
+            ],
+            "maxItemsPerStartUrl": 5
+          }
+        },
+        "field_mapping": {
+          "record_type": "seller_feedback",
+          "text": "text",
+          "feedback_sentiment": "rating: POSITIVE/NEUTRAL/NEGATIVE；不可转为 1–5 星",
+          "date_text": "submissionTime；可能是 Past month，不伪造准确日期",
+          "item_id": "item.id",
+          "item_name": "item.name",
+          "item_price_text": "item.price；交易上下文中的字符串价格，不是实时商品报价",
+          "reply": "reply",
+          "images": "image",
+          "review_id": "无已证实稳定 ID；本地哈希只能辅助去重，不能冒充源 ID"
+        },
+        "pricing": {
+          "currency": "USD",
+          "model": "PAY_PER_EVENT",
+          "effective_since": "2026-08-16T07:11:21.564Z",
+          "primary_event": "result",
+          "primary_usd_per_1000": {
+            "Free": 5.0,
+            "Starter": 4.0,
+            "Scale": 3.0,
+            "Business": 2.0
+          },
+          "events_by_plan": {
+            "Free": {
+              "start": {
+                "usd_per_event": 0.0001,
+                "usd_per_1000_events": 0.1,
+                "one_time_event": null
+              },
+              "result": {
+                "usd_per_event": 0.005,
+                "usd_per_1000_events": 5.0,
+                "one_time_event": null
+              }
+            },
+            "Starter": {
+              "start": {
+                "usd_per_event": 9e-05,
+                "usd_per_1000_events": 0.09,
+                "one_time_event": null
+              },
+              "result": {
+                "usd_per_event": 0.004,
+                "usd_per_1000_events": 4.0,
+                "one_time_event": null
+              }
+            },
+            "Scale": {
+              "start": {
+                "usd_per_event": 8e-05,
+                "usd_per_1000_events": 0.08,
+                "one_time_event": null
+              },
+              "result": {
+                "usd_per_event": 0.003,
+                "usd_per_1000_events": 3.0,
+                "one_time_event": null
+              }
+            },
+            "Business": {
+              "start": {
+                "usd_per_event": 7e-05,
+                "usd_per_1000_events": 0.07,
+                "one_time_event": null
+              },
+              "result": {
+                "usd_per_event": 0.002,
+                "usd_per_1000_events": 2.0,
+                "one_time_event": null
+              }
+            }
+          },
+          "minimal_max_total_charge_usd": null,
+          "platform_usage": "所列选定 Actor 定价页显示 Platform costs Included；用户另行保存、读取和传输等账户消耗仍须对账，不把平台包含项再重复计费。",
+          "plan_tiers_note": "只按官网公开月付 Free / Starter / Scale / Business 报价。API 的 PLATINUM/DIAMOND 不映射为可自行购买套餐。",
+          "sources": [
+            {
+              "url": "https://apify.com/e-commerce/store-ebay/pricing",
+              "checked_at": "2026-11-13T14:14:46.561480+00:00",
+              "supports": "各套餐计价事件和平台费用包含标注"
+            },
+            {
+              "url": "https://api.apify.com/v2/acts/e-commerce~store-ebay",
+              "checked_at": "2026-11-13T14:14:46.561480+00:00",
+              "supports": "最新已生效 pricingInfos，避免错用历史收费事件"
+            }
+          ]
+        },
+        "limits": [
+          "仅两个当前输入字段 startUrls、maxItemsPerStartUrl；缺少精确日期过滤参数。",
+          "若仍使用 item URL，应验证返回 item.id 全部与目标匹配；店铺/卖家 URL 会混入跨商品交易反馈。",
+          "未做登录后实际采集。历史无凭据 HTTP 402 只是身份验证门槛，不是采集失败。"
+        ]
+      },
+      "product_review_recheck_candidate": {
+        "actor": {
+          "slug": "apt_marble/ebay-product-reviews-scraper",
+          "url": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+          "actor_id": "7WxE6FBu91XOCjdJJ",
+          "owner": "apt_marble",
+          "maintained_by": "Community",
+          "build_number": "0.0.2",
+          "modified_at": "2026-10-29T21:07:42.283Z",
+          "permission": "LIMITED_PERMISSIONS",
+          "total_users": 7,
+          "monthly_active_users": 5,
+          "rating": 0,
+          "rating_count": 0,
+          "public_run_status_counts_30_days": {
+            "ABORTED": 0,
+            "FAILED": 0,
+            "SUCCEEDED": 46,
+            "TIMED-OUT": 0,
+            "TOTAL": 46
+          },
+          "metrics_warning": "用户数、评分和 SUCCEEDED 状态只作维护与采用度信号；SUCCEEDED 可能含空数据，不能当有效评论成功率。",
+          "input_required": [
+            "products"
+          ],
+          "input_schema_source": "https://api.apify.com/v2/acts/apt_marble~ebay-product-reviews-scraper/builds/default",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00"
+        },
+        "decision": "后续仅优先试验该候选，不作为上线推荐，也不当前付费试跑。",
+        "why_not_primary": "7 总用户、5 月活、0 个评分，只有文档与匿名 schema；没有可信业务样本。",
+        "api": {
+          "method": "POST",
+          "endpoint": "https://api.apify.com/v2/actors/apt_marble~ebay-product-reviews-scraper/runs",
+          "headers": {
+            "Authorization": "Bearer <APIFY_API_TOKEN>",
+            "Content-Type": "application/json"
+          },
+          "query": {
+            "build": "0.0.2",
+            "timeout": 300,
+            "restartOnError": false,
+            "maxTotalChargeUsd": 0.1
+          },
+          "json": {
+            "products": [
+              "https://www.ebay.com/p/22054478105"
+            ],
+            "sort": "newest",
+            "maxReviewsPerProduct": 5,
+            "includeProductSummary": false,
+            "marketplace": "US",
+            "maxConcurrency": 1
+          }
+        },
+        "field_mapping_documented_only": {
+          "record_type": "rowType=review；排除 productSummary",
+          "source_product_id": "epid，不是 listing item ID",
+          "review_id": "reviewId",
+          "title": "title",
+          "text": "body",
+          "rating": "rating 数值 1–5",
+          "published_at": "dateIso",
+          "verified_purchase": "verifiedPurchase",
+          "product_condition": "conditionPurchased",
+          "seller": "soldBySeller",
+          "review_url": "url"
+        },
+        "pricing_documented_only": {
+          "usd_per_1000_reviews": 1,
+          "additional_product_summary_usd_per_product": 0.002,
+          "tiers": "当前元数据事件为非分层价格，未列 Starter 等折扣。",
+          "platform_usage_included": "需正式试验前再核价表；不把低采用度候选的标价当已验证总成本。"
+        },
+        "documented_limits": [
+          "maxReviewsPerProduct 0–5000；0 为只做摘要而非无限量。",
+          "listing 须能映射 eBay catalog ePID，否则无商品评论页；可接受 ePID、/p/、/urw/、/itm/。",
+          "支持 US/UK/DE/AU/CA/FR/IT/ES；本轮没有逐站实测。"
+        ]
+      },
+      "other_candidate_rejected": {
+        "slug": "epicscrapers/ebay-reviews-scraper",
+        "reason": "真商品评论与卖家反馈可分类型，但 5 总用户、2 月活、0 个评分，无我们的实测；未选为备份。",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00",
+        "sources": [
+          {
+            "url": "https://apify.com/epicscrapers/ebay-reviews-scraper",
+            "checked_at": "2026-11-13T14:14:46.561480+00:00",
+            "supports": "两个记录类型及输入行为"
+          },
+          {
+            "url": "https://api.apify.com/v2/acts/epicscrapers~ebay-reviews-scraper",
+            "checked_at": "2026-11-13T14:14:46.561480+00:00",
+            "supports": "当日采用度指标"
+          }
+        ]
+      },
+      "acceptance_gates": [
+        "必须得到真实 ePID 商品评论样本：数值 1–5 星、原文、准确日期、稳定 reviewId，且不是 POSITIVE 交易反馈。",
+        "验证至少 10 个有 catalog 关联的商品；验证无 catalog 关联商品返回明确 unavailable，而不是回退卖家反馈。",
+        "通过统一 API 完整链路、去重、成本、分页和重跑验证后，才改变暂缓结论。",
+        "低采用度候选须获得更多可信客户使用/维护支持证据；当前不因 README 宣称支持就认定可上线。"
+      ],
+      "sources": [
+        {
+          "url": "https://apify.com/e-commerce/store-ebay",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "官方样例 POSITIVE 与 Past month 及卖家反馈 URL"
+        },
+        {
+          "url": "https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/feedback.html",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "eBay 对交易 feedback 的正/中/负定义"
+        },
+        {
+          "url": "https://apify.com/apt_marble/ebay-product-reviews-scraper",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "真实商品评价文档字段"
+        },
+        {
+          "url": "https://api.apify.com/v2/acts/apt_marble~ebay-product-reviews-scraper",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "当日指标、计费"
+        },
+        {
+          "url": "https://api.apify.com/v2/acts/apt_marble~ebay-product-reviews-scraper/builds/default",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "商品评价输入、国别和上限"
+        }
+      ]
+    },
+    {
+      "platform": "Walmart",
+      "priority": 5,
+      "status": "implement_with_acceptance_gate",
+      "decision": "首批排开发：接 Walmart.com 商品评论；上线前补直接 API 和批量验收。",
+      "primary_actor": {
+        "slug": "e-commerce/walmart-reviews-scraper",
+        "url": "https://apify.com/e-commerce/walmart-reviews-scraper",
+        "actor_id": "GrCGuxb9wLSi0OI5O",
+        "owner": "e-commerce",
+        "maintained_by": "Apify",
+        "build_number": "0.0.84",
+        "modified_at": "2026-11-05T11:38:57.340Z",
+        "permission": "FULL_PERMISSIONS",
+        "total_users": 594,
+        "monthly_active_users": 25,
+        "rating": 5.0,
+        "rating_count": 3,
+        "public_run_status_counts_30_days": {
+          "ABORTED": 13,
+          "FAILED": 3,
+          "SUCCEEDED": 3729,
+          "TIMED-OUT": 15,
+          "TOTAL": 3760
+        },
+        "metrics_warning": "用户数、评分和 SUCCEEDED 状态只作维护与采用度信号；SUCCEEDED 可能含空数据，不能当有效评论成功率。",
+        "input_required": [],
+        "input_schema_source": "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper/builds/default",
+        "checked_at": "2026-11-13T14:14:46.561480+00:00"
+      },
+      "backup_actor": null,
+      "selection_reason": "Apify 维护且已有真实 5 条文字样本；评价仅 3 个、月活 25，采用度明显小于 Amazon，不能用 5.0 分推断高成功率。",
+      "data_type": "product_review",
+      "regions": {
+        "implementation_scope": "walmart.com / US",
+        "other_markets": "不包含加拿大、墨西哥等 Walmart 国别站的已验证覆盖。"
+      },
+      "api": {
+        "method": "POST",
+        "endpoint": "https://api.apify.com/v2/actors/e-commerce~walmart-reviews-scraper/runs",
+        "headers": {
+          "Authorization": "Bearer <APIFY_API_TOKEN>",
+          "Content-Type": "application/json"
+        },
+        "query": {
+          "build": "0.0.84",
+          "timeout": 300,
+          "restartOnError": false,
+          "maxTotalChargeUsd": 0.1
+        },
+        "json": {
+          "startUrls": [
+            {
+              "url": "https://www.walmart.com/ip/all-Liquid-Laundry-Detergent-Free-Clear-24-Loads/771934678"
+            }
+          ],
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 5,
+          "reviewsSortType": "submission-desc"
+        }
+      },
+      "field_mapping": {
+        "source_product_id": "productId",
+        "source_product_url": "productUrl",
+        "source_product_name": "productName",
+        "review_id": "reviewId",
+        "title": "title",
+        "text": "text",
+        "rating": "rating",
+        "published_at": "submissionTime",
+        "images": "photos",
+        "helpful_votes": "positiveFeedback",
+        "unhelpful_votes": "negativeFeedback",
+        "recommended": "recommended",
+        "badges": "badges",
+        "syndication": "syndicationSource / externalSource",
+        "verified_purchase": "无独立已实测布尔字段，不从文字猜测；badges 另存",
+        "author": "默认不纳入产品分析输出：authorId / userNickname",
+        "price_sales_marketing": "本 Actor 的评论模式未验证，需商品详情采集器另行补充。"
+      },
+      "pricing": {
+        "currency": "USD",
+        "model": "PAY_PER_EVENT",
+        "effective_since": "2026-08-17T09:33:00.794Z",
+        "primary_event": "push-product-reviews",
+        "primary_usd_per_1000": {
+          "Free": 5.0,
+          "Starter": 2.0,
+          "Scale": 1.5,
+          "Business": 1.0
+        },
+        "events_by_plan": {
+          "Free": {
+            "start": {
+              "usd_per_event": 0.0001,
+              "usd_per_1000_events": 0.1,
+              "one_time_event": true
+            },
+            "push-product-reviews": {
+              "usd_per_event": 0.005,
+              "usd_per_1000_events": 5.0,
+              "one_time_event": null
+            }
+          },
+          "Starter": {
+            "start": {
+              "usd_per_event": 9e-05,
+              "usd_per_1000_events": 0.09,
+              "one_time_event": true
+            },
+            "push-product-reviews": {
+              "usd_per_event": 0.002,
+              "usd_per_1000_events": 2.0,
+              "one_time_event": null
+            }
+          },
+          "Scale": {
+            "start": {
+              "usd_per_event": 8e-05,
+              "usd_per_1000_events": 0.08,
+              "one_time_event": true
+            },
+            "push-product-reviews": {
+              "usd_per_event": 0.0015,
+              "usd_per_1000_events": 1.5,
+              "one_time_event": null
+            }
+          },
+          "Business": {
+            "start": {
+              "usd_per_event": 7e-05,
+              "usd_per_1000_events": 0.07,
+              "one_time_event": true
+            },
+            "push-product-reviews": {
+              "usd_per_event": 0.001,
+              "usd_per_1000_events": 1.0,
+              "one_time_event": null
+            }
+          }
+        },
+        "minimal_max_total_charge_usd": null,
+        "platform_usage": "所列选定 Actor 定价页显示 Platform costs Included；用户另行保存、读取和传输等账户消耗仍须对账，不把平台包含项再重复计费。",
+        "plan_tiers_note": "只按官网公开月付 Free / Starter / Scale / Business 报价。API 的 PLATINUM/DIAMOND 不映射为可自行购买套餐。",
+        "sources": [
+          {
+            "url": "https://apify.com/e-commerce/walmart-reviews-scraper/pricing",
+            "checked_at": "2026-11-13T14:14:46.561480+00:00",
+            "supports": "各套餐计价事件和平台费用包含标注"
+          },
+          {
+            "url": "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper",
+            "checked_at": "2026-11-13T14:14:46.561480+00:00",
+            "supports": "最新已生效 pricingInfos，避免错用历史收费事件"
+          }
+        ]
+      },
+      "limits": [
+        "Full permissions：会要求账号全量读写；先前免费试用已获用户授权，正式集成应使用独立组织/账户资源隔离，不声称 limited permissions。",
+        "输入可接受商品、搜索、类目 URL；首批只接受商品 URL，显式 maxProductsPerStartUrl=1 防止意外展开。",
+        "scrapeUntilDate 仅配合 reviewsSortType=submission-desc 生效；没有在现行价表发现独立日期事件。",
+        "有 syndicationSource/externalSource 的转载或同步评论须保留来源标记和商品匹配，避免与原站再采到的评论重复统计。",
+        "未发现该 Actor 的固定每日调用数上限，不等于无限量或保证成功；站点反爬、账户额度和并发仍会限制。"
+      ],
+      "optional_input": {
+        "incremental": {
+          "reviewsSortType": "submission-desc",
+          "scrapeUntilDate": "<YYYY-MM-DD>",
+          "maxProductsPerStartUrl": 1,
+          "maxReviewsPerProduct": 100
+        },
+        "explanation": "该日期和批量模式来自当日 schema，尚未实测。"
+      },
+      "acceptance_gates": [
+        "先补齐后端直接 POST 启动 → 轮询 → 导出 → 自有数据库这一整条链路，不能把控制台启动样本算作 API 启动验收。",
+        "在明确有公开文字评论的 10 个目标商品、至少 3 个品类上，连续 2 天执行 20 次；建议有效任务比例至少 95%，单独记录零评论、超时、权限、商品下架和目标站阻断。此为建议验收标准，未完成。",
+        "抽查商品 ID 和评论类型匹配率 100%；有效评论必须文字非空，排除 error/summary/评分汇总，使用源 review_id 去重；保留原文、抓取时间、来源站点和版本。",
+        "用真实计费事件与账单核对每千条“有效去重评论”成本；重试、重复评论和过滤事件不隐入基础单价。",
+        "至少验证一次分页完整导出、一次有意失败、一次重跑去重和一次增量更新；未验证深历史完整覆盖。",
+        "批量验收必须覆盖 Walmart 自有评论和 syndicated 评论；对外显示评论来源，分类排除商品不匹配的转载。",
+        "核验 Full permissions 所需权限边界与隔离账号方案，确认预算和账号上其余资源不会意外受到 Actor 操作影响。"
+      ],
+      "sources": [
+        {
+          "url": "https://apify.com/e-commerce/walmart-reviews-scraper",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "维护、评论类型、地区和限制"
+        },
+        {
+          "url": "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper/builds/default",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "5 个输入字段、排序、日期前置条件"
+        },
+        {
+          "url": "https://api.apify.com/v2/acts/e-commerce~walmart-reviews-scraper",
+          "checked_at": "2026-11-13T14:14:46.561480+00:00",
+          "supports": "价格、采用度和 Full permissions"
+        }
+      ],
+      "trial_evidence": {
+        "provider": "Apify",
+        "platform": "Walmart",
+        "actor": "e-commerce/walmart-reviews-scraper",
+        "channel": "authenticated_console_start_then_dataset_api_export",
+        "run_status": "SUCCEEDED",
+        "requested_reviews": 5,
+        "returned_items": 5,
+        "nonempty_text": 5,
+        "unique_review_ids": 5,
+        "elapsed_seconds_console": 16,
+        "charged_usd_console": 0.025,
+        "paid_topup_usd": 0,
+        "max_total_charge_usd": 0.1,
+        "export_http_status": 200,
+        "fields": [
+          "itemType",
+          "reviewId",
+          "productId",
+          "productUrl",
+          "productName",
+          "authorId",
+          "submissionTime",
+          "rating",
+          "text",
+          "title",
+          "badges",
+          "negativeFeedback",
+          "positiveFeedback",
+          "recommended",
+          "userNickname",
+          "syndicationSource",
+          "externalSource",
+          "photos"
+        ],
+        "dates": [
+          "2026-11-01",
+          "2026-11-01",
+          "2026-10-24",
+          "2026-10-14",
+          "2026-10-06"
+        ],
+        "permission_note": "采集器要求账号全量读写权限；本次已取得用户明确授权。",
+        "source_quality_note": "结果含 syndicationSource / externalSource，需区分同步评论来源并校验商品匹配。",
+        "observed_at": "2026-11-13T09:03:38.338443+00:00",
+        "direct_api_start_verified": false,
+        "evidence_path": "research/海外电商实测/authenticated-trials.json",
+        "interpretation": "仅证明该单商品小样本在当次环境可采到文字且可 API 导出；不是跨商品成功率，也不证明历史完整性。",
+        "billing_precision_note": "控制台记录为 $0.025；依公开事件价推算 5 条加 1 次启动为 $0.0251，尚未逐事件核账，不用显示金额反推没有启动费。"
+      },
+      "valid_row_rule": "itemType == Review，text 为非空字符串，reviewId 非空；排除 error 行。",
+      "cost_formula": "N_push_product_reviews × 当前套餐单价 + 运行次数 × start 单价。"
+    }
+  ],
+  "evidence_paths": [
+    "research/海外电商实测/authenticated-trials.json",
+    "research/qa/apify_trial_plan.json",
+    "research/qa/decision/source-snapshots/evidence-apify-core/"
+  ]
+}

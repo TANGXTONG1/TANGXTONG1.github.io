@@ -1,0 +1,1423 @@
+{
+  "title": "国内五平台 · Qovia 开发决策与成本",
+  "checked_on": "2026-11-13",
+  "generated_at": "2026-11-13T14:14:04.651749+00:00",
+  "business_test_date": "2026-11-06",
+  "verification_scope": "本次只读取公开官网/OpenAPI并复核历史实测；没有新鉴权业务调用、充值或对外询价。",
+  "summary": {
+    "decision": "国内统一保留Qovia为首发供应商：先开发抖音商城商品评价与京东；淘宝、天猫补验通过再开放；拼多多暂缓。",
+    "ready_for_development": [
+      "douyin_shop",
+      "jd"
+    ],
+    "requires_validation": [
+      "taobao",
+      "tmall"
+    ],
+    "deferred": [
+      "pinduoduo"
+    ],
+    "important_scope": "Qovia当前不能覆盖国内5个平台，也不提供淘天/京东完整商品价格、销量或营销数据；此决策以买家评价为主。",
+    "success_rate_note": "旧样本按平台分开：京东3/3、抖店2/2、淘天共用端点0/5；样本小且每个成功平台仅1个商品，不足以比较生产成功率。",
+    "confidence": "供应商官网与小样本业务记录支持选型；没有核到长期SLA或成熟客户案例，仍以受控灰度上线为边界。"
+  },
+  "budget_assumptions": {
+    "currency_authority": "USD",
+    "cny_per_usd": 7.2,
+    "fx_type": "可编辑预算假设，非实时汇率或结算承诺",
+    "monthly_targets_per_platform": [
+      10000,
+      100000
+    ],
+    "target_unit": "有效非空去重正文（默认好评剔除）；原始评价记录成本另列",
+    "null_policy": "未知或不可用填null，不填0",
+    "fees_excluded_from_unit_prices": true,
+    "primary_cost_basis": "历史样本中每个计费请求带回的有效正文量；线性外推，不是生产承诺或新的计费实测"
+  },
+  "commercial_terms": {
+    "model": "统一预付余额、无月费；每次HTTP 200且结果非空计费，试用同样只扣非空成功次数",
+    "free_trial_calls": 50,
+    "free_trial_unit": "成功非空请求，不是评论条数；各接口共享",
+    "historical_account_observation": {
+      "checked_on": "2026-11-06",
+      "trial_calls_remaining": 41,
+      "balance_usd": 0,
+      "note": "历史快照，非当前可用余额保证；本次未查询账户"
+    },
+    "minimum_topup_usd": null,
+    "minimum_topup_note": "官网价格页没有明确列出最小充值额，本次不进入付费流程，不能推断$50示例即最低充值。",
+    "trial_or_balance_expiration": null,
+    "expiration_note": "公开资料未核有效期或每日清零规则；不承诺永久有效。",
+    "topup_fees": {
+      "card_alipay": {
+        "variable_rate": 0.044,
+        "fixed_usd": 0.3,
+        "formula": "(topup_balance_usd × 1.044 + 0.30) × budget_fx"
+      },
+      "usdt_trc20": {
+        "variable_rate": 0.02,
+        "fixed_usd": 0.3,
+        "formula": "(topup_balance_usd × 1.02 + 0.30) × budget_fx",
+        "excludes": "链上转账手续费"
+      }
+    },
+    "refund": "通常不退款；经供应商确认购买接口不能使用，付款后7天内可申请未用余额；临时故障、限流、改版不属定价页例外；赠送额度不退。",
+    "sources": [
+      "https://qovia.ai/zh/pricing/",
+      "https://qovia.ai/zh/docs/"
+    ]
+  },
+  "rate_and_retention": {
+    "current_documented_account_or_endpoint_rpm": null,
+    "current_claim": "2026-11-13官方文档及OpenAPI声明不设账户或接口请求频率限制。",
+    "current_claim_does_not_mean": "不构成无限吞吐、可用性或最大并发保证，仍有上游503。",
+    "auth_throttle": "同IP每分钟认证失败达到30次，429 too_many_auth_failures。",
+    "documentation_inconsistency": "文档限流章节已改成不限流，但错误码/Retry-After表仍保留rate_limited、too_many_unbilled、endpoint_busy；视为文档未完全清理，客户端仍按错误码/Retry-After退避。",
+    "supersedes_old_limit": "2026-11-06旧文档及账户曾显示免费60RPM、充值后600RPM；不将该历史值写成现行限制。",
+    "daily_request_cap": null,
+    "daily_request_cap_note": "未发现公开每日硬上限；不能由此承诺无限日吞吐。",
+    "provider_retention_days": null,
+    "customer_redistribution_rights": "未见明确赋予长期存储、公开展示、转售或训练权利；正式协议需补充使用范围。",
+    "sources": [
+      "https://qovia.ai/zh/docs/#rate-limits",
+      "https://qovia.ai/openapi.json",
+      "https://qovia.ai/zh/privacy/",
+      "https://qovia.ai/zh/terms/"
+    ]
+  },
+  "integration": {
+    "base_url": "https://api.qovia.ai",
+    "auth": "Authorization: Bearer <API Key> 或 x-api-key；只在服务器端持有",
+    "transport": "HTTP GET query；统一request_id/data/meta外层，平台data并未统一",
+    "shared_components": [
+      "密钥/余额与用量日志",
+      "重试、退避与单任务预算",
+      "商品级游标、幂等去重、增量时间水位",
+      "CSV/JSON导出及平台字段映射"
+    ],
+    "platform_adapter_count_for_documented_domestic_reviews": 3,
+    "platform_adapter_note": "淘天共用一个，抖店一个，京东一个；一个供应商仍需要这些轻量字段/分页适配。",
+    "canonical_fields": [
+      "platform",
+      "product_id",
+      "review_id",
+      "text",
+      "rating_value",
+      "rating_scale",
+      "created_at",
+      "sku",
+      "images",
+      "videos",
+      "followup",
+      "seller_reply",
+      "source_url",
+      "fetched_at",
+      "provider_request_id"
+    ],
+    "engineering_notes": [
+      "平台/商品ID/cid组成去重键；原始字段可另存，不将昵称做主键",
+      "统一rating时保留淘宝good/neutral/bad的原始枚举，不伪造1–5星精度",
+      "对text空值、默认好评、重复数据分别计数；业务指标用有效文本率",
+      "每次回采有数据仍可能再次计费；本地缓存与增量水位减少重复成功请求",
+      "接口为Beta，统一包装层与数据字段可变化；固定回归样本验证契约"
+    ]
+  },
+  "rights_and_takedown": {
+    "official_statement": "非官方数据服务、与来源平台无隶属关系；供应商不拥有底层内容，用户负责下游用途并遵循法律及来源规则。",
+    "safe_harbor_guarantee": false,
+    "safe_harbor_note": "公开摘要未提供客户避风港、授权担保或赔偿保障；不能将非官方声明解释为免责许可。",
+    "takedown_process": "隐私页仅提供邮件删除申请，未列响应SLA、下游联动删除流程和保留时限。",
+    "contract_gaps": [
+      "产品内展示/导出评论的许可范围",
+      "来源投诉和下架的通知及处理时限",
+      "请求/响应与日志保存期",
+      "服务终止、字段变化及退款条件"
+    ],
+    "sources": [
+      "https://qovia.ai/zh/terms/",
+      "https://qovia.ai/zh/privacy/"
+    ]
+  },
+  "platforms": [
+    {
+      "id": "taobao",
+      "name": "淘宝",
+      "priority": 1,
+      "vendor": "Qovia",
+      "decision": "需补验",
+      "decision_detail": "排入优先补验队列；可以实现共享适配器，但先不对客户开放。现有3次v1及2次v2请求均失败，不能按官网live标签判定可用。",
+      "selected_endpoint": "/v1/raw/taobao/comments",
+      "fallback_endpoint": "/v1/raw/taobao/comments_v2",
+      "selection_rationale": "主接口字段较规整且比V2低价；V2仅作人工验证后的显式备选，两者均未取得成功业务响应。",
+      "review_type": "商品买家评价、追评、商家回复",
+      "input_onboarding": "用户提交商品链接/商品ID；现行淘天目录没有商品搜索或详情端点，首期不承诺自动搜全店。",
+      "parameters_example": {
+        "item_id": "971645268720",
+        "page": 1,
+        "skip_default_reviews": true
+      },
+      "pagination": {
+        "documented_rows_per_page": 20,
+        "observed_rows_per_page": null,
+        "cursor_or_page": "page从1开始，参数最大500；has_more=false停止。V2为hasNextPage。",
+        "caveat": "20是文档规格；未实测成功，不能用于宣称真实有效评论成本。默认跳过无文本好评；带追评保留。500是参数上限，不代表能读500页。"
+      },
+      "data_coverage": {
+        "reviews": "文档支持，业务未通过",
+        "price_sales_marketing": "此淘天API目录只有评价及V2；未提供商品价格、销量、营销费用API",
+        "documented_fields": [
+          "cid/id",
+          "text",
+          "created_at",
+          "rating_level",
+          "sku",
+          "images",
+          "videos",
+          "followup",
+          "shop_reply",
+          "likes",
+          "user_level"
+        ],
+        "tested_fields": []
+      },
+      "historical_tests": [
+        {
+          "requests": 3,
+          "nonempty_requests": 0,
+          "rows_returned": 0,
+          "unique_comment_ids": 0,
+          "duplicate_ids_across_requests": 0,
+          "trial_calls_consumed": 0,
+          "latency_seconds": [
+            3.134,
+            5.033,
+            4.189
+          ],
+          "pagination_observations": [
+            {},
+            {},
+            {}
+          ],
+          "fields": [],
+          "field_counts": {},
+          "default_text_count": 0,
+          "oldest_date_in_sample": null,
+          "newest_date_in_sample": null,
+          "http_statuses": [
+            503,
+            503,
+            503
+          ],
+          "tested_on": "2026-11-06",
+          "local_evidence_file": "research/site/data/live-trials.json",
+          "evidence_ids": [
+            "qovia-v1-raw-taobao-comments-20261106T073004Z",
+            "qovia-v1-raw-taobao-comments-20261106T073307Z",
+            "qovia-v1-raw-taobao-comments-20261106T085926Z"
+          ],
+          "cash_charge_usd": 0.0,
+          "note": "这是历史小样本实测，不代表2026-11-13重新调用成功或长期成功率；试用消耗次数不等于现金支出。"
+        },
+        {
+          "requests": 2,
+          "nonempty_requests": 0,
+          "rows_returned": 0,
+          "unique_comment_ids": 0,
+          "duplicate_ids_across_requests": 0,
+          "trial_calls_consumed": 0,
+          "latency_seconds": [
+            4.156,
+            4.71
+          ],
+          "pagination_observations": [
+            {},
+            {}
+          ],
+          "fields": [],
+          "field_counts": {},
+          "default_text_count": 0,
+          "oldest_date_in_sample": null,
+          "newest_date_in_sample": null,
+          "http_statuses": [
+            502,
+            502
+          ],
+          "tested_on": "2026-11-06",
+          "local_evidence_file": "research/site/data/live-trials.json",
+          "evidence_ids": [
+            "qovia-v1-raw-taobao-comments_v2-20261106T073541Z",
+            "qovia-v1-raw-taobao-comments_v2-20261106T085847Z"
+          ],
+          "cash_charge_usd": 0.0,
+          "note": "这是历史小样本实测，不代表2026-11-13重新调用成功或长期成功率；试用消耗次数不等于现金支出。"
+        }
+      ],
+      "cost": {
+        "usd_per_billable_request": 0.0135,
+        "cny_per_billable_request": 0.0972,
+        "v2_usd_per_billable_request": 0.01691,
+        "v2_cny_per_billable_request": 0.121752,
+        "billable_unit": "成功且非空请求；失败不扣费",
+        "effective_cost_per_1000_useful_comments": null,
+        "monthly_10000_comment_cost": null,
+        "monthly_100000_comment_cost": null,
+        "reason_unpriced": "未成功取得一页数据，不能核有效页容量和实用文本率；只报请求单价。",
+        "request_budget_examples": [
+          {
+            "successful_nonempty_requests": 1000,
+            "usd": 13.5,
+            "cny": 97.2
+          },
+          {
+            "successful_nonempty_requests": 10000,
+            "usd": 135,
+            "cny": 972
+          }
+        ],
+        "failure_cost_evidence": "2026-11-06三次503与两次502均现金扣费0，trial_call_consumed=false。"
+      },
+      "go_live_gates": [
+        "至少3个仍有可见评价的淘宝商品各取首两页，验证商品匹配、cid去重和字段",
+        "同批用v1与v2对照有效文本、媒体和追评；不得自动升级到更贵V2",
+        "跨2个时段重跑确认错误恢复；显示样本成功率及延迟",
+        "在有效页容量明确后重算1万/10万有效评论成本"
+      ],
+      "sources": [
+        "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+        "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+        "https://qovia.ai/openapi.json"
+      ]
+    },
+    {
+      "id": "tmall",
+      "name": "天猫",
+      "priority": 2,
+      "vendor": "Qovia",
+      "decision": "需补验",
+      "decision_detail": "与淘宝共用接口可共用适配器，但天猫没有独立标注的成功样本；必须以天猫真实商品单独补验后开放。",
+      "selected_endpoint": "/v1/raw/taobao/comments",
+      "fallback_endpoint": "/v1/raw/taobao/comments_v2",
+      "selection_rationale": "官网明确item_id接受淘宝和天猫ID；接口共用不等于两端都已实测可用。",
+      "review_type": "商品买家评价、追评、商家回复",
+      "input_onboarding": "用户提交商品链接/商品ID；现行淘天目录没有商品搜索或详情端点，首期不承诺自动搜全店。",
+      "parameters_example": {
+        "item_id": "<天猫商品链接中的id>",
+        "page": 1,
+        "skip_default_reviews": true
+      },
+      "pagination": {
+        "documented_rows_per_page": 20,
+        "observed_rows_per_page": null,
+        "cursor_or_page": "page从1开始，参数最大500；has_more=false停止。V2为hasNextPage。",
+        "caveat": "20是文档规格；未实测成功，不能用于宣称真实有效评论成本。默认跳过无文本好评；带追评保留。500是参数上限，不代表能读500页。"
+      },
+      "data_coverage": {
+        "reviews": "文档支持，业务未通过",
+        "price_sales_marketing": "此淘天API目录只有评价及V2；未提供商品价格、销量、营销费用API",
+        "documented_fields": [
+          "cid/id",
+          "text",
+          "created_at",
+          "rating_level",
+          "sku",
+          "images",
+          "videos",
+          "followup",
+          "shop_reply",
+          "likes",
+          "user_level"
+        ],
+        "tested_fields": []
+      },
+      "historical_tests": [],
+      "cost": {
+        "usd_per_billable_request": 0.0135,
+        "cny_per_billable_request": 0.0972,
+        "v2_usd_per_billable_request": 0.01691,
+        "v2_cny_per_billable_request": 0.121752,
+        "billable_unit": "成功且非空请求；失败不扣费",
+        "effective_cost_per_1000_useful_comments": null,
+        "monthly_10000_comment_cost": null,
+        "monthly_100000_comment_cost": null,
+        "reason_unpriced": "未成功取得一页数据，不能核有效页容量和实用文本率；只报请求单价。",
+        "request_budget_examples": [
+          {
+            "successful_nonempty_requests": 1000,
+            "usd": 13.5,
+            "cny": 97.2
+          },
+          {
+            "successful_nonempty_requests": 10000,
+            "usd": 135,
+            "cny": 972
+          }
+        ],
+        "failure_cost_evidence": "共用端点历史失败未扣费；没有天猫独立分组的实测账单。"
+      },
+      "go_live_gates": [
+        "至少3个明确属于天猫店铺的商品各取首两页，核对商品身份、cid及评价时间",
+        "与淘宝结果分别统计成功率、默认好评、去重率，不复用淘宝验证结论",
+        "在有效页容量明确后重算1万/10万有效评论成本"
+      ],
+      "sources": [
+        "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+        "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+        "https://qovia.ai/openapi.json"
+      ],
+      "shared_endpoint_evidence": {
+        "note": "现有淘天共用端点测试统一标作taobao，未核商品所属商城；不能当成天猫独立测试成功率。",
+        "shared_endpoint_failed_requests": 5,
+        "http_statuses": [
+          503,
+          503,
+          503,
+          502,
+          502
+        ]
+      }
+    },
+    {
+      "id": "douyin_shop",
+      "name": "抖音商城",
+      "priority": 3,
+      "vendor": "Qovia",
+      "decision": "可排开发",
+      "decision_detail": "首发开发选择goods_comments v1；已取得商品买家评价并翻到尾页。先以商品链接/ID触发，文本分析需过滤空text。",
+      "selected_endpoint": "/v1/raw/douyin/goods_comments",
+      "fallback_endpoint": "/v1/raw/douyin/goods_comments_v2",
+      "selection_rationale": "v1已有真实成功证据且价格为V2的约1/33.82。V2未实测，只有需要其额外字段或v1明确故障且验证通过时才显式切换。",
+      "review_type": "抖店商品买家评价；不使用/v1/raw/douyin/comments视频评论充数。",
+      "input_onboarding": "提交goods_id；可选goods_search查商品，但该搜索未实测且另收费。",
+      "parameters_example": {
+        "goods_id": "3827812353530004447",
+        "cursor": 0
+      },
+      "pagination": {
+        "documented_rows_per_page": 20,
+        "observed_rows_per_page": [
+          20,
+          12
+        ],
+        "cursor_or_page": "cursor从0开始，原样采用响应cursor；实测0→1→null，has_more终止。参数最大500。",
+        "caveat": "两页总32条去重；总数仅适用于这一商品。每页可能少于20，不承诺全部商品历史全量。"
+      },
+      "data_coverage": {
+        "reviews": "商品买家评分、文字、SKU、标签、商家回复；v1实测返回",
+        "price_sales_marketing": "goods_search文档有商品价格、月销量、好评率、店铺名称等；未业务实测，非本次可用性结论",
+        "tested_fields": [
+          "anonymous",
+          "cid",
+          "created_at",
+          "keywords",
+          "likes",
+          "rating",
+          "ratings",
+          "shop_reply",
+          "sku",
+          "tags",
+          "text",
+          "user_name"
+        ],
+        "quality": "32条记录仅10条text非空；没有默认好评模板，但22条没有文本。v1样本未出现images字段，不能把V2晒图声明移植成v1实测能力。"
+      },
+      "historical_tests": [
+        {
+          "requests": 2,
+          "nonempty_requests": 2,
+          "rows_returned": 32,
+          "unique_comment_ids": 32,
+          "duplicate_ids_across_requests": 0,
+          "trial_calls_consumed": 2,
+          "latency_seconds": [
+            18.229,
+            6.555
+          ],
+          "pagination_observations": [
+            {
+              "cursor": 1,
+              "has_more": true,
+              "total": 32
+            },
+            {
+              "cursor": null,
+              "has_more": false,
+              "total": 32
+            }
+          ],
+          "fields": [
+            "anonymous",
+            "cid",
+            "created_at",
+            "keywords",
+            "likes",
+            "rating",
+            "ratings",
+            "shop_reply",
+            "sku",
+            "tags",
+            "text",
+            "user_name"
+          ],
+          "field_counts": {
+            "anonymous": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "keywords": {
+              "present": 32,
+              "nonempty": 13
+            },
+            "likes": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "cid": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "shop_reply": {
+              "present": 32,
+              "nonempty": 30
+            },
+            "created_at": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "sku": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "text": {
+              "present": 32,
+              "nonempty": 10
+            },
+            "ratings": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "rating": {
+              "present": 32,
+              "nonempty": 32
+            },
+            "tags": {
+              "present": 32,
+              "nonempty": 2
+            },
+            "user_name": {
+              "present": 32,
+              "nonempty": 32
+            }
+          },
+          "default_text_count": 0,
+          "oldest_date_in_sample": "2026-07-06T09:14:04+08:00",
+          "newest_date_in_sample": "2026-11-05T12:16:04+08:00",
+          "http_statuses": [
+            200,
+            200
+          ],
+          "tested_on": "2026-11-06",
+          "local_evidence_file": "research/site/data/live-trials.json",
+          "evidence_ids": [
+            "qovia-v1-raw-douyin-goods_comments-20261106T073152Z",
+            "qovia-v1-raw-douyin-goods_comments-20261106T073309Z"
+          ],
+          "cash_charge_usd": 0.0,
+          "note": "这是历史小样本实测，不代表2026-11-13重新调用成功或长期成功率；试用消耗次数不等于现金支出。"
+        }
+      ],
+      "cost": {
+        "usd_per_billable_request": 0.0005,
+        "cny_per_billable_request": 0.0036,
+        "billable_unit": "成功且非空请求；一页含多条评价",
+        "full_page_record_budget": {
+          "basis": "满页评价记录；对每个平台每月可获取足量评价的预算模型，不是单一商品可读全量保证",
+          "page_rows": 20,
+          "formula_usd": "ceil(target_review_records / 20) × 0.0005",
+          "per_1000": {
+            "requests": 50,
+            "usd": 0.025,
+            "cny": 0.18
+          },
+          "monthly": [
+            {
+              "review_records": 10000,
+              "requests": 500,
+              "usd": 0.25,
+              "cny": 1.8
+            },
+            {
+              "review_records": 100000,
+              "requests": 5000,
+              "usd": 2.5,
+              "cny": 18.0
+            }
+          ],
+          "exclusions": [
+            "充值手续费",
+            "汇兑差价和税费",
+            "商品发现/搜索费用",
+            "额外重复的成功请求",
+            "存储和工程成本"
+          ],
+          "warning": "尾页、空文本、默认好评、重复数据和回采会降低有效产出；此模型不承诺可获得给定条数。"
+        },
+        "sample_yield_record_cost_per_1000": {
+          "basis": "2个成功调用返回32条记录；尾页计入",
+          "usd": 0.03125,
+          "cny": 0.225
+        },
+        "sample_text_quality_budget": {
+          "basis": "按2026-11-06样本非默认/非空文本密度作线性外推；不是供应商报价或实收",
+          "sample_billable_calls": 2,
+          "sample_useful_text_rows": 10,
+          "formula_usd": "target_useful_text_rows × 2 / 10 × 0.0005",
+          "per_1000_usd": 0.1,
+          "per_1000_cny": 0.72,
+          "monthly": [
+            {
+              "useful_text_rows": 10000,
+              "usd": 1.0,
+              "cny": 7.2
+            },
+            {
+              "useful_text_rows": 100000,
+              "usd": 10.0,
+              "cny": 72.0
+            }
+          ],
+          "warning": "小样本比例不能保证复制到其他商品；平台总评价数也不能保证能翻到这些文本。",
+          "effective_text_definition": "评论ID去重、text非空并剔除默认好评；仅按现有测试统计，不能保证新商品同样比例",
+          "per_1000_raw_rows_is_not_this_metric": true
+        },
+        "v2_usd_per_billable_request": 0.01691,
+        "v2_cny_per_billable_request": 0.121752,
+        "v2_price_multiple_of_v1": 33.82,
+        "v2_warning": "文档称20条/页但未实测；禁止无提示自动回退导致账单提升。",
+        "goods_search_usd_per_billable_request": 0.02536,
+        "goods_search_cny_per_billable_request": 0.182592,
+        "primary_budget_key": "sample_text_quality_budget"
+      },
+      "go_live_gates": [
+        "用实际首批客户的3–5个商品复核非空文本率，避免只返回评分影响分析",
+        "验证商品链接到goods_id的解析；保存商品级分页终止状态与去重键cid",
+        "V2、商品搜索、晒图需求单独验收；首发不以未测能力宣传",
+        "对503设退避和单任务预算，记录有效文本数与计费请求数"
+      ],
+      "sources": [
+        "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments/",
+        "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments_v2/",
+        "https://qovia.ai/docs/api-reference/raw.douyin.goods_search/"
+      ]
+    },
+    {
+      "id": "pinduoduo",
+      "name": "拼多多",
+      "priority": 4,
+      "vendor": "Qovia",
+      "decision": "暂缓",
+      "decision_detail": "本轮不排Qovia拼多多开发，产品入口保持未开放。当前公开OpenAPI及平台目录没有拼多多商品评价端点，无法报价和交付。",
+      "selected_endpoint": null,
+      "review_type": "目标为商品买家评价，目前供应商缺口",
+      "input_onboarding": null,
+      "pagination": {
+        "documented_rows_per_page": null,
+        "observed_rows_per_page": null
+      },
+      "data_coverage": {
+        "reviews": "未找到公开接口",
+        "price_sales_marketing": "未找到公开接口"
+      },
+      "historical_tests": [],
+      "cost": {
+        "usd_per_billable_request": null,
+        "cny_per_billable_request": null,
+        "effective_cost_per_1000_useful_comments": null,
+        "monthly_10000_comment_cost": null,
+        "monthly_100000_comment_cost": null,
+        "reason_unpriced": "无可调用端点，不应把缺失值填0。"
+      },
+      "go_live_gates": [
+        "供应商提供正式endpoint、价格、参数、返回字段及至少一个有评论的商品ID",
+        "用现有免费额度或批准的预算验证真实商品、两页去重及费用后再排期；目前未联系供应商"
+      ],
+      "sources": [
+        "https://qovia.ai/openapi.json",
+        "https://qovia.ai/zh/coverage/"
+      ]
+    },
+    {
+      "id": "jd",
+      "name": "京东",
+      "priority": 5,
+      "vendor": "Qovia",
+      "decision": "可排开发",
+      "decision_detail": "首发开发选择raw.jd.comments；三页真实成功且无重复。适合增量观察可见评论，不承诺下载商品全部历史评价。",
+      "selected_endpoint": "/v1/raw/jd/comments",
+      "fallback_endpoint": null,
+      "selection_rationale": "Qovia当前仅有这一个京东商品评价端点；字段规整，旧实测已核评分、图片与商家回复。",
+      "review_type": "京东商品买家评价",
+      "input_onboarding": "提交item.jd.com/<SKU>.html链接或sku_id；当前京东目录没有商品搜索API。",
+      "parameters_example": {
+        "sku_id": "100428822668",
+        "page": 1,
+        "only_this_sku": true
+      },
+      "pagination": {
+        "documented_rows_per_page": 10,
+        "observed_rows_per_page": [
+          10,
+          10,
+          10
+        ],
+        "cursor_or_page": "page从1开始；下一页不超过上一响应max_page且has_more为true；参数最大100。",
+        "caveat": "实测total始终1000，但max_page依次2/4/6；未验证最终可读条数，不能把1000总数当作可抓满1000。only_this_sku=false合并同商品变体会改变口径。"
+      },
+      "data_coverage": {
+        "reviews": "文本文字、评分、时间、SKU、图片、商家回复实测支持",
+        "price_sales_marketing": "此API不返回现价或销量；京东目录目前只有评价端点",
+        "tested_fields": [
+          "anonymous",
+          "cid",
+          "created_at",
+          "id",
+          "images",
+          "ip_location",
+          "likes",
+          "rating",
+          "shop_reply",
+          "sku",
+          "sku_id",
+          "text",
+          "user_name"
+        ],
+        "quality": "30条text均非空，其中1条默认好评；images非空27/30，shop_reply非空3/30。"
+      },
+      "historical_tests": [
+        {
+          "requests": 3,
+          "nonempty_requests": 3,
+          "rows_returned": 30,
+          "unique_comment_ids": 30,
+          "duplicate_ids_across_requests": 0,
+          "trial_calls_consumed": 3,
+          "latency_seconds": [
+            5.753,
+            16.937,
+            6.208
+          ],
+          "pagination_observations": [
+            {
+              "page": 1,
+              "has_more": true,
+              "max_page": 2,
+              "total": 1000
+            },
+            {
+              "page": 2,
+              "has_more": true,
+              "max_page": 4,
+              "total": 1000
+            },
+            {
+              "page": 3,
+              "has_more": true,
+              "max_page": 6,
+              "total": 1000
+            }
+          ],
+          "fields": [
+            "anonymous",
+            "cid",
+            "created_at",
+            "id",
+            "images",
+            "ip_location",
+            "likes",
+            "rating",
+            "shop_reply",
+            "sku",
+            "sku_id",
+            "text",
+            "user_name"
+          ],
+          "field_counts": {
+            "anonymous": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "likes": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "ip_location": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "cid": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "shop_reply": {
+              "present": 30,
+              "nonempty": 3
+            },
+            "images": {
+              "present": 30,
+              "nonempty": 27
+            },
+            "created_at": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "sku": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "id": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "text": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "rating": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "sku_id": {
+              "present": 30,
+              "nonempty": 30
+            },
+            "user_name": {
+              "present": 30,
+              "nonempty": 30
+            }
+          },
+          "default_text_count": 1,
+          "oldest_date_in_sample": "2026-11-02T13:00:29+08:00",
+          "newest_date_in_sample": "2026-11-06T07:41:01+08:00",
+          "http_statuses": [
+            200,
+            200,
+            200
+          ],
+          "tested_on": "2026-11-06",
+          "local_evidence_file": "research/site/data/live-trials.json",
+          "evidence_ids": [
+            "qovia-v1-raw-jd-comments-20261106T073006Z",
+            "qovia-v1-raw-jd-comments-20261106T073150Z",
+            "qovia-v1-raw-jd-comments-20261106T073309Z"
+          ],
+          "cash_charge_usd": 0.0,
+          "note": "这是历史小样本实测，不代表2026-11-13重新调用成功或长期成功率；试用消耗次数不等于现金支出。"
+        }
+      ],
+      "cost": {
+        "usd_per_billable_request": 0.0195,
+        "cny_per_billable_request": 0.1404,
+        "billable_unit": "成功且非空请求；每页最多10条",
+        "full_page_record_budget": {
+          "basis": "满页评价记录；对每个平台每月可获取足量评价的预算模型，不是单一商品可读全量保证",
+          "page_rows": 10,
+          "formula_usd": "ceil(target_review_records / 10) × 0.0195",
+          "per_1000": {
+            "requests": 100,
+            "usd": 1.95,
+            "cny": 14.04
+          },
+          "monthly": [
+            {
+              "review_records": 10000,
+              "requests": 1000,
+              "usd": 19.5,
+              "cny": 140.4
+            },
+            {
+              "review_records": 100000,
+              "requests": 10000,
+              "usd": 195.0,
+              "cny": 1404.0
+            }
+          ],
+          "exclusions": [
+            "充值手续费",
+            "汇兑差价和税费",
+            "商品发现/搜索费用",
+            "额外重复的成功请求",
+            "存储和工程成本"
+          ],
+          "warning": "尾页、空文本、默认好评、重复数据和回采会降低有效产出；此模型不承诺可获得给定条数。"
+        },
+        "sample_text_quality_budget": {
+          "basis": "按2026-11-06样本非默认/非空文本密度作线性外推；不是供应商报价或实收",
+          "sample_billable_calls": 3,
+          "sample_useful_text_rows": 29,
+          "formula_usd": "target_useful_text_rows × 3 / 29 × 0.0195",
+          "per_1000_usd": 2.0172414,
+          "per_1000_cny": 14.5241379,
+          "monthly": [
+            {
+              "useful_text_rows": 10000,
+              "usd": 20.1724138,
+              "cny": 145.2413793
+            },
+            {
+              "useful_text_rows": 100000,
+              "usd": 201.7241379,
+              "cny": 1452.4137931
+            }
+          ],
+          "warning": "小样本比例不能保证复制到其他商品；平台总评价数也不能保证能翻到这些文本。",
+          "effective_text_definition": "评论ID去重、text非空并剔除默认好评；仅按现有测试统计，不能保证新商品同样比例",
+          "per_1000_raw_rows_is_not_this_metric": true
+        },
+        "primary_budget_key": "sample_text_quality_budget"
+      },
+      "go_live_gates": [
+        "首批客户3–5个SKU复核可翻页深度；测试has_more终止和max_page变化",
+        "对cid去重、默认评价过滤；保持SKU口径固定",
+        "将采集显示为最近可读评价，不以平台total显示承诺已采全量",
+        "更大批量运行前核对账户实际额度、失败退费与自设并发预算"
+      ],
+      "sources": [
+        "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+        "https://qovia.ai/openapi.json"
+      ]
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "raw.taobao.comments",
+      "method": "GET",
+      "path": "/v1/raw/taobao/comments",
+      "url": "https://api.qovia.ai/v1/raw/taobao/comments",
+      "label": "淘宝/天猫商品评价",
+      "scope": "raw:taobao",
+      "official_availability": "live",
+      "status": "beta",
+      "parameters": [
+        {
+          "name": "item_id",
+          "required": true,
+          "description": "淘宝或天猫商品 ID（商品链接里的 id=）",
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{5,19}$",
+            "examples": [
+              "611261922146"
+            ]
+          }
+        },
+        {
+          "name": "page",
+          "required": false,
+          "description": "页码，从 1 开始；has_more 为 false 时停止",
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 1
+          }
+        },
+        {
+          "name": "skip_default_reviews",
+          "required": false,
+          "description": "true（默认）跳过没有内容的默认好评（带追评的仍保留）；false 返回全部评价",
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "response_top_level_fields": [
+        "items",
+        "page",
+        "has_more",
+        "total",
+        "total_exact",
+        "prov"
+      ],
+      "documented_item_fields": [
+        "id",
+        "cid",
+        "text",
+        "rating_level",
+        "likes",
+        "created_at",
+        "sku",
+        "user_name",
+        "user_level",
+        "anonymous",
+        "images",
+        "videos",
+        "shop_reply",
+        "followup"
+      ],
+      "price_usd_per_billable_request": 0.0135,
+      "price_cny_per_billable_request_at_assumed_fx": 0.0972,
+      "price_mode": "fixed",
+      "source_url": "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+      "checked_on": "2026-11-13"
+    },
+    {
+      "id": "raw.taobao.comments_v2",
+      "method": "GET",
+      "path": "/v1/raw/taobao/comments_v2",
+      "url": "https://api.qovia.ai/v1/raw/taobao/comments_v2",
+      "label": "淘宝/天猫商品评价 V2",
+      "scope": "raw:taobao",
+      "official_availability": "live",
+      "status": "beta",
+      "parameters": [
+        {
+          "name": "item_id",
+          "required": true,
+          "description": "淘宝或天猫商品 ID（商品链接里的 id=）",
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{5,19}$",
+            "examples": [
+              "611261922146"
+            ]
+          }
+        },
+        {
+          "name": "page",
+          "required": false,
+          "description": "页码，从 1 开始；hasNextPage 为 false 时停止",
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 1
+          }
+        }
+      ],
+      "response_top_level_fields": [
+        "qnaDisabled",
+        "watershed",
+        "total",
+        "totalFuzzy",
+        "comments",
+        "currentPageNum",
+        "maxPage",
+        "keywords",
+        "hasMediaCount",
+        "hasAppendCount",
+        "hasNextPage"
+      ],
+      "documented_item_fields": [
+        "date",
+        "shareInfo",
+        "showDepositIcon",
+        "o2oRate",
+        "mainTradeId",
+        "raterType",
+        "validscore",
+        "video",
+        "photos",
+        "content",
+        "rateId",
+        "spuRatting",
+        "auction",
+        "award",
+        "rate",
+        "creditFraudRule",
+        "appendCanExplainable",
+        "from",
+        "tag",
+        "propertiesAvg",
+        "reply",
+        "dayAfterConfirm",
+        "lastModifyFrom",
+        "bidPriceMoney",
+        "noQna",
+        "promotionType",
+        "vicious",
+        "enableSNS",
+        "appendList",
+        "buyAmount",
+        "showCuIcon",
+        "serviceRate",
+        "useful",
+        "likeCount",
+        "user",
+        "append",
+        "status"
+      ],
+      "price_usd_per_billable_request": 0.01691,
+      "price_cny_per_billable_request_at_assumed_fx": 0.121752,
+      "price_mode": "fixed",
+      "source_url": "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+      "checked_on": "2026-11-13"
+    },
+    {
+      "id": "raw.douyin.goods_comments",
+      "method": "GET",
+      "path": "/v1/raw/douyin/goods_comments",
+      "url": "https://api.qovia.ai/v1/raw/douyin/goods_comments",
+      "label": "抖音商品评价",
+      "scope": "raw:douyin",
+      "official_availability": "live",
+      "status": "beta",
+      "parameters": [
+        {
+          "name": "goods_id",
+          "required": true,
+          "description": "抖店商品 ID（product_id）",
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{14,19}$",
+            "examples": [
+              "3827812353530004447"
+            ]
+          }
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "description": "页码，从 0 开始；取上一页响应的 cursor",
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 500,
+            "default": 0
+          }
+        }
+      ],
+      "response_top_level_fields": [
+        "items",
+        "cursor",
+        "has_more",
+        "total",
+        "prov"
+      ],
+      "documented_item_fields": [
+        "cid",
+        "text",
+        "rating",
+        "ratings",
+        "likes",
+        "created_at",
+        "sku",
+        "user_name",
+        "anonymous",
+        "shop_reply",
+        "tags",
+        "keywords"
+      ],
+      "price_usd_per_billable_request": 0.0005,
+      "price_cny_per_billable_request_at_assumed_fx": 0.0036,
+      "price_mode": "fixed",
+      "source_url": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments/",
+      "checked_on": "2026-11-13"
+    },
+    {
+      "id": "raw.douyin.goods_comments_v2",
+      "method": "GET",
+      "path": "/v1/raw/douyin/goods_comments_v2",
+      "url": "https://api.qovia.ai/v1/raw/douyin/goods_comments_v2",
+      "label": "抖音商品评价 V2",
+      "scope": "raw:douyin",
+      "official_availability": "live",
+      "status": "beta",
+      "parameters": [
+        {
+          "name": "goods_id",
+          "required": true,
+          "description": "抖音电商商品 ID",
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{14,19}$",
+            "examples": [
+              "3633772266610903778"
+            ]
+          }
+        },
+        {
+          "name": "page",
+          "required": false,
+          "description": "页码，从 1 开始；HasMore 为 false 时停止",
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 1
+          }
+        }
+      ],
+      "response_top_level_fields": [
+        "Comments",
+        "Count",
+        "HasMore"
+      ],
+      "documented_item_fields": [
+        "AppId",
+        "AppealStatus",
+        "BrowseCount",
+        "CanAppend",
+        "CommentTime",
+        "CommentType",
+        "Content",
+        "Id",
+        "IsAbnormalOrder",
+        "IsAnonymous",
+        "KolId",
+        "Liked",
+        "Likes",
+        "Order",
+        "OrderSnapshot",
+        "OrigContent",
+        "ParentId",
+        "Product",
+        "ProductChannelId",
+        "ProductChannelType",
+        "ProductId",
+        "Rank",
+        "RankLogistic",
+        "RankProduct",
+        "RankShop",
+        "Recommend",
+        "ShopId",
+        "ShopReply",
+        "ShowTags",
+        "Sku",
+        "SourceFrom",
+        "Status",
+        "StoreId",
+        "UserAvatar",
+        "UserName",
+        "UserType"
+      ],
+      "price_usd_per_billable_request": 0.01691,
+      "price_cny_per_billable_request_at_assumed_fx": 0.121752,
+      "price_mode": "fixed",
+      "source_url": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments_v2/",
+      "checked_on": "2026-11-13"
+    },
+    {
+      "id": "raw.douyin.goods_search",
+      "method": "GET",
+      "path": "/v1/raw/douyin/goods_search",
+      "url": "https://api.qovia.ai/v1/raw/douyin/goods_search",
+      "label": "抖音商品搜索",
+      "scope": "raw:douyin",
+      "official_availability": "live",
+      "status": "beta",
+      "parameters": [
+        {
+          "name": "keyword",
+          "required": true,
+          "description": "搜索关键词",
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "examples": [
+              "口红"
+            ]
+          }
+        },
+        {
+          "name": "page",
+          "required": false,
+          "description": "页码，从 1 开始；has_more 为 false 时停止",
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 1
+          }
+        },
+        {
+          "name": "search_id",
+          "required": false,
+          "description": "翻页用：上一页返回 extra.search_id，原样传回；第一页不传",
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^[0-9A-Za-z_-]+$"
+          }
+        }
+      ],
+      "response_top_level_fields": [
+        "promotions",
+        "has_more",
+        "total",
+        "extra",
+        "summary_promotions"
+      ],
+      "documented_item_fields": [
+        "product_id",
+        "promotion_id",
+        "base_info"
+      ],
+      "price_usd_per_billable_request": 0.02536,
+      "price_cny_per_billable_request_at_assumed_fx": 0.182592,
+      "price_mode": "fixed",
+      "source_url": "https://qovia.ai/docs/api-reference/raw.douyin.goods_search/",
+      "checked_on": "2026-11-13"
+    },
+    {
+      "id": "raw.jd.comments",
+      "method": "GET",
+      "path": "/v1/raw/jd/comments",
+      "url": "https://api.qovia.ai/v1/raw/jd/comments",
+      "label": "京东商品评价",
+      "scope": "raw:jd",
+      "official_availability": "live",
+      "status": "beta",
+      "parameters": [
+        {
+          "name": "sku_id",
+          "required": true,
+          "description": "京东商品 SKU ID（商品链接 item.jd.com/<SKU>.html 里的数字）",
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{3,19}$",
+            "examples": [
+              "100006271091"
+            ]
+          }
+        },
+        {
+          "name": "page",
+          "required": false,
+          "description": "页码，从 1 开始，不超过上一页返回的 max_page；has_more 为 false 时停止",
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 1
+          }
+        },
+        {
+          "name": "only_this_sku",
+          "required": false,
+          "description": "true（默认）只看这个 SKU 的评价；false 返回同一商品所有规格（颜色、尺码等）的评价",
+          "schema": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      ],
+      "response_top_level_fields": [
+        "items",
+        "page",
+        "has_more",
+        "max_page",
+        "total",
+        "prov"
+      ],
+      "documented_item_fields": [
+        "id",
+        "cid",
+        "text",
+        "rating",
+        "likes",
+        "created_at",
+        "sku",
+        "sku_id",
+        "user_name",
+        "anonymous",
+        "ip_location",
+        "images",
+        "shop_reply"
+      ],
+      "price_usd_per_billable_request": 0.0195,
+      "price_cny_per_billable_request_at_assumed_fx": 0.1404,
+      "price_mode": "fixed",
+      "source_url": "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+      "checked_on": "2026-11-13"
+    }
+  ],
+  "real_sample_excerpts": [
+    {
+      "platform": "jd",
+      "tested_on": "2026-11-06",
+      "source_type": "真实历史API响应的脱敏节选",
+      "text_excerpt": "杯子做工质感在线，纯钛用着安心，茶水分离功能很好用，不会闷苦茶叶。重量适中便携，",
+      "text_length": 62,
+      "rating": 5,
+      "created_at": "2026-11-06T07:41:01+08:00",
+      "sku": "款式:【钛茶水分离版-深空灰】500ml",
+      "images_count": 2,
+      "evidence_id": "qovia-v1-raw-jd-comments-20261106T073006Z",
+      "note": "省略作者、IP属地及媒体URL；节选不作完整数据集。"
+    },
+    {
+      "platform": "jd",
+      "tested_on": "2026-11-06",
+      "source_type": "真实历史API响应的脱敏节选",
+      "text_excerpt": "此用户未填写评价内容",
+      "text_length": 10,
+      "rating": 5,
+      "created_at": "2026-11-05T20:50:17+08:00",
+      "sku": "款式:【钛茶水分离版-深空灰】500ml",
+      "images_count": 0,
+      "evidence_id": "qovia-v1-raw-jd-comments-20261106T073006Z",
+      "note": "省略作者、IP属地及媒体URL；节选不作完整数据集。"
+    },
+    {
+      "platform": "douyin",
+      "tested_on": "2026-11-06",
+      "source_type": "真实历史API响应的脱敏节选",
+      "text_excerpt": "很好用，特别保湿滋润",
+      "text_length": 10,
+      "rating": 5,
+      "created_at": "2026-11-04T08:52:46+08:00",
+      "sku": "默认",
+      "images_count": null,
+      "evidence_id": "qovia-v1-raw-douyin-goods_comments-20261106T073152Z",
+      "note": "省略作者、IP属地及媒体URL；节选不作完整数据集。"
+    },
+    {
+      "platform": "douyin",
+      "tested_on": "2026-11-06",
+      "source_type": "真实历史API响应的脱敏节选",
+      "text_excerpt": "前几天屁屁还有些红红的，用了两天就好了",
+      "text_length": 19,
+      "rating": 5,
+      "created_at": "2026-08-17T17:48:21+08:00",
+      "sku": "默认",
+      "images_count": null,
+      "evidence_id": "qovia-v1-raw-douyin-goods_comments-20261106T073309Z",
+      "note": "省略作者、IP属地及媒体URL；节选不作完整数据集。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "qovia-openapi",
+      "url": "https://qovia.ai/openapi.json",
+      "checked_on": "2026-11-13",
+      "kind": "官方公开OpenAPI快照",
+      "local_file": "research/qa/decision/source-snapshots/qovia-openapi-20261113.json"
+    },
+    {
+      "id": "qovia-pages",
+      "urls": [
+        "https://qovia.ai/zh/docs/",
+        "https://qovia.ai/zh/pricing/",
+        "https://qovia.ai/zh/coverage/",
+        "https://qovia.ai/zh/terms/",
+        "https://qovia.ai/zh/privacy/"
+      ],
+      "checked_on": "2026-11-13",
+      "kind": "官方页面HTTP读取快照",
+      "local_file": "research/qa/decision/source-snapshots/qovia-official-pages-20261113.json"
+    },
+    {
+      "id": "historical-tests",
+      "checked_on": "2026-11-06",
+      "kind": "此前鉴权实测结构化记录",
+      "local_file": "research/site/data/live-trials.json"
+    }
+  ],
+  "notes": [
+    "当前OpenAPI有166个路径（含账户），官网称165个数据接口；未见pinduoduo/pdd路径或平台标签。",
+    "本文件不包含API Key、账户邮箱或作者身份。",
+    "所有CNY价格为USD乘7.20，网页应允许改预算汇率；结算以实际供应商账单和支付汇率为准。"
+  ]
+}

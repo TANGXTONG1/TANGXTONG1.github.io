@@ -1,0 +1,210 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>海外电商接口测试说明</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%AF%B4%E6%98%8E-2026-11-13.md" download>下载原始 Markdown</a></header><article><h1 id="_1">海外电商接口测试说明</h1>
+<p>核验日期：2026-11-13。本轮已从官网、公开演示和无凭据检查，推进到授权账户内的真实采集。统一入口见研究站的“海外接口测试总表”。本说明以 <a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/authenticated-trials.json">认证实测记录</a> 和此前各供应商的测试文件为依据；不同验证层级分别呈现，不混算成功率。</p>
+<h2 id="_2">已认证业务实测</h2>
+<p>截至当前，Apify 已通过授权账户完成 Amazon、Walmart 各 5 条评论的小样本采集；Bright Data 的 Walmart 返回 4 条非空评论，Best Buy 返回 20 条，Lazada 返回 2 条，Amazon 则返回拦截错误。<strong>Best Buy 的最近 1 天筛选在本样本中未生效，不能把这次返回视为最新评论或可靠增量采集的验证。Lazada 单次采集耗时约 14 分 38 秒，接入应支持异步轮询。</strong></p>
+<table>
+<thead>
+<tr>
+<th>供应商 / 平台</th>
+<th>实际执行路径</th>
+<th>业务结果</th>
+<th>耗时口径</th>
+<th>费用与边界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apify / Amazon</td>
+<td>已登录 Free 账户；控制台启动 <code>junglee/amazon-reviews-scraper</code>，再经 Dataset API 导出</td>
+<td><code>SUCCEEDED</code>；请求 5 条，返回 5 条；5 条有正文、5 个唯一评论 ID；导出 HTTP 200</td>
+<td>控制台运行时间 8 秒，不含注册、人工操作及导出时间</td>
+<td>本次扣试用余额 $0.03；未充值。运行上限 $0.50；本次输出提示 Free 账户单次限 5 条，更多条数需升级</td>
+</tr>
+<tr>
+<td>Apify / Walmart</td>
+<td>同一授权账户；控制台启动 <code>e-commerce/walmart-reviews-scraper</code>，再经 Dataset API 导出</td>
+<td><code>SUCCEEDED</code>；请求 5 条，返回 5 条；5 条有正文、5 个唯一评论 ID；导出 HTTP 200</td>
+<td>控制台运行时间 16 秒，不含注册、人工操作及导出时间</td>
+<td>本次扣试用余额 $0.025；未充值。运行上限 $0.10；该 Actor 要求的账户读写权限已获用户明确授权</td>
+</tr>
+<tr>
+<td>Bright Data / Amazon</td>
+<td>正式评论采集器 <code>gd_le8e811kzy4ggddlq</code>；认证 API 触发 <code>https://www.amazon.com/dp/B0CWXNS552</code>，最多 5 条；轮询至 snapshot <code>ready</code> 后导出</td>
+<td>触发 HTTP 202、导出 HTTP 200；返回 1 条错误记录、0 条评论、0 条正文。<code>error_code=blocked</code>，错误说明要求登录查看评论</td>
+<td>触发 HTTP 往返 63.999 秒；采集记录 <code>204822 ms</code>，即 204.822 秒。两者是不同阶段，不能互相替代</td>
+<td>未充值、未添加付款方式；运行前看到 5,000 免费 credits。运行后余额及本次实际扣费尚未核实</td>
+</tr>
+<tr>
+<td>Bright Data / Walmart</td>
+<td>正式评论采集器 <code>gd_mpql1v8g2o8o6l1wzd</code>；认证 API 提交 <code>https://www.walmart.com/reviews/product/771934678</code>，<code>days_back=30</code>、<code>sort_by=Most recent</code></td>
+<td>修正参数后 HTTP 200；返回 4 条评论、4 条有正文</td>
+<td>该次直接 API 请求往返 3.673 秒；与 Apify 控制台任务时长口径不同</td>
+<td>本次实际扣费尚未核实，不能记为 $0；按最近 30 天筛选，没有使用与 Apify 相同的 5 条上限</td>
+</tr>
+<tr>
+<td>Bright Data / Best Buy</td>
+<td>独立评论采集器 <code>gd_mv3s5qosodai3txro</code>；商品 SKU <code>6562447</code>，保留 <code>days_back=1</code>，移除不被接受的 <code>sort_by</code></td>
+<td>HTTP 200；20 条评论、20 条非空正文、20 个唯一评论 ID。但日期为 2023-12-01 至 2025-02-25，全部超出本次请求的最近 1 天</td>
+<td>该次直接 API 请求往返 20.988 秒；没有与 Apify 使用相同条数限制</td>
+<td>实际扣费未知。只能证明正文可取；日期过滤未约束本样本，不能据此依赖该参数做增量采集</td>
+</tr>
+<tr>
+<td>Bright Data / Lazada</td>
+<td>正式评论采集器 <code>gd_lub6mys21lzcklkq1z</code>；新加坡商品 URL，<code>days_back=1</code>；一次 POST 后轮询同一快照</td>
+<td>触发 HTTP 202，最终 <code>ready</code>；导出 HTTP 200，2 条评论、2 条正文、2 个唯一评论 ID</td>
+<td>触发 HTTP 62.104 秒；服务端采集 878.117 秒（约 14 分 38 秒），不是 62 秒即采集完成</td>
+<td>实际扣费未知；两个 SKU 来自不同商品变体；返回日期均为 2026-11-13，未对源页面独立核验</td>
+</tr>
+</tbody>
+</table>
+<p>Bright Data Walmart 的首次认证请求返回 <code>bad_input</code>：<code>days_back</code> 需要同时指定 <code>sort_by=Most recent</code>。该次 HTTP 往返 23.996 秒，属于参数校验响应，不纳入采集成功率；补齐参数后的成功响应单独记录。两次请求均不能只凭 HTTP 200 判断业务结果。</p>
+<p>Best Buy 的首次请求恰好不同：<code>sort_by=Most recent</code> 被 HTTP 400 拒绝，耗时 1.667 秒；移除该参数、保留 <code>days_back=1</code> 后才返回 20 条正文。两次参数行为说明排序值不能跨采集器直接复用。成功响应中的评论距测试日期已一年以上，<strong>日期筛选本样本不生效，增量可用性没有通过验证</strong>；不能把取到正文等同于取到最近一天的评论。其输出虽有 <code>review_page_number</code>，本轮没有验证可用的翻页参数或游标。</p>
+<p>Apify 两次合计扣试用余额 <strong>$0.055</strong>，没有付费充值。这是两个小样本任务的实际费用，不能直接外推大规模单价或长期成功率。Amazon 返回日期覆盖 2025-12-12 至 2026-10-16；Walmart 返回日期覆盖 2026-10-06 至 2026-11-01。日期表明输出包含这些时间的评论，不证明所有历史评论、最新评论排序或增量更新均完整。</p>
+<p>Apify Amazon 样本包含正文、标题、评分、日期、商品 ASIN、变体、验证购买状态等字段，另有 <code>reviewImages</code> 字段；Walmart 样本包含正文、标题、评分、提交时间、商品 ID、反馈数和 <code>photos</code> 字段。字段存在不等于本次每条都有图片。商家回复及完整历史分页尚未验证。Walmart 输出带 <code>syndicationSource</code> / <code>externalSource</code>，后续应核对转载评论来源与商品匹配。</p>
+<p>Bright Data Walmart 成功响应含 <code>review_text</code>、<code>review_header</code>、<code>rating</code>、<code>review_posted_date</code>、<code>review_id</code>、<code>product_id</code>、<code>is_verified</code>、<code>helpful_count</code>、<code>not_helpful_count</code>、<code>review_page_number</code>、<code>videos</code>、<code>item_details</code> 等字段；视频字段存在不代表每条有视频。4 条非空正文证明本次目标与参数组合取得了评论，不证明完整历史、完整媒体或商家回复能力。</p>
+<p>Bright Data 的 Amazon 请求与 Apify 的 Amazon 测试针对同一商品作对照。本次 <code>ready</code> 只说明快照已可下载，HTTP 200 只说明导出成功；下载内容是一条错误记录，不能算一条评论，也不能据此断言该商品没有评论。此前另一次控制台点击没有保留可核验结果，不作为第二次已完成业务运行计数。</p>
+<h2 id="_3">公开价格与本次实际费用</h2>
+<p>以下是 2026-11-13 核对的公开费率，保留各自计费单位与套餐口径；它们不是本次 Bright Data 的账单，也不是长期总成本排名。</p>
+<table>
+<thead>
+<tr>
+<th>产品与口径</th>
+<th>公开参考费率</th>
+<th>本轮实付/试用额度记录</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bright Data Scraper API，Pay as you go</td>
+<td><strong>$1.50 / 1,000 条交付 records</strong>；不是每 1,000 次请求，也不能不加核验地当作每 1,000 条有效评论。<a href="https://brightdata.com/pricing/web-scraper" rel="noopener noreferrer" target="_blank">官方价格</a></td>
+<td>无付费充值；实际消耗 credits 与美元扣费未知</td>
+</tr>
+<tr>
+<td>Apify Amazon Reviews Scraper，Free 套餐的 Review Primary 事件</td>
+<td><strong>$6 / 1,000 条 reviews</strong>；价格页另列日期过滤事件，不代表所有参数组合都只有基础评论费。<a href="https://apify.com/junglee/amazon-reviews-scraper/pricing" rel="noopener noreferrer" target="_blank">Actor 价格</a></td>
+<td>本次 5 条，控制台记录扣试用余额 <strong>$0.03</strong></td>
+</tr>
+<tr>
+<td>Apify Walmart Reviews Scraper，Free 套餐的 Review Primary 事件</td>
+<td><strong>$5 / 1,000 条 reviews</strong>；价格页还列启动事件费用，其他套餐费率不同。<a href="https://apify.com/e-commerce/walmart-reviews-scraper/pricing" rel="noopener noreferrer" target="_blank">Actor 价格</a></td>
+<td>本次 5 条，控制台记录扣试用余额 <strong>$0.025</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Apify 两次记录合计 <strong>$0.055</strong>。Bright Data 的账单读取 API 返回 HTTP 403，原因是当前密钥缺少 <code>billing.read</code> 权限，因此运行后余额和各任务实际扣费仍为未知；不能把未充值、HTTP 错误或未读到账单解释为本次费用 $0。公开单位价格、试用额度扣减与正式账单分开记录，小样本结果也不折算为长期采集成功率。</p>
+<h2 id="demo">此前公开 demo 的结果</h2>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>实际执行</th>
+<th>结果</th>
+<th>能证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BlueCart / Walmart</td>
+<td>官方 <code>api_key=demo</code> 评论接口，第 1、2 页</td>
+<td>每页 20 条，两页无重复，响应标 <code>demo=true</code></td>
+<td>公开演示接口可返回评论并分页；未证明任意商品、新鲜数据或生产账号可用性</td>
+</tr>
+<tr>
+<td>Countdown / eBay</td>
+<td>官方 <code>api_key=demo</code> 评论接口，第 1、2 页</td>
+<td>每页 10 条，两页无重复，响应标 <code>demo=true</code></td>
+<td>公开演示接口可返回产品评价并分页；不是卖家反馈接口的验证，也不是生产认证调用</td>
+</tr>
+<tr>
+<td>Scrapingdog / Walmart 网页</td>
+<td>浏览器匿名 <code>/scrape</code> 演示，输入官方文档里的 Walmart 评论页 URL</td>
+<td>界面显示 <code>200 OK · 2.99s</code>，返回 Markdown，能看到 Walmart 导航</td>
+<td>公开网页抓取演示已响应；只读到开头，未确认评论正文，也未验证专用 <code>/walmart/reviews</code> 端点</td>
+</tr>
+<tr>
+<td>Diffbot / Amazon、Walmart</td>
+<td>官网 Test Drive 公开匿名代理，分别提交商品和评论页</td>
+<td>HTTP 200，但 Amazon 内含 <code>errorCode=500</code>，Walmart 到达拦截页、<code>numPosts=0</code></td>
+<td>两个匿名目标均未取得评论；不能把 HTTP 200 当作业务成功</td>
+</tr>
+<tr>
+<td>Rainforest / Amazon</td>
+<td>官方 demo 参数请求 <code>type=reviews</code></td>
+<td>HTTP 503，业务消息明确评论类型暂不可用且不扣费</td>
+<td>本次该评论类型不可用；不能推导其全部 Amazon 商品服务不可用</td>
+</tr>
+</tbody>
+</table>
+<p>BlueCart 和 Countdown 的 demo 是供应商公开提供的演示模式，没有计为生产账户成功采集。公开的 <a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/demo-samples.json">演示短摘录与字段样本</a> 中，BlueCart 前两条日期在 2020 年，Countdown 前两条在 2022/2023 年。这些响应可以用于理解字段与分页，不能承诺实时最新评论；数据是否缓存、任意商品是否支持仍需认证测试。</p>
+<h2 id="_4">此前无凭据检查与文档状态</h2>
+<p>这些记录保留为测试过程证据。其中 Apify 和 Bright Data 的认证门槛已经通过本轮授权账户测试继续验证，不再代表两家的当前进展停留在未注册状态。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>此前结果</th>
+<th>当前解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bright Data / Amazon</td>
+<td>正式评论端点不带密钥，HTTP 401</td>
+<td>历史认证层检查；本轮已完成上表的正式 API 触发与导出</td>
+</tr>
+<tr>
+<td>Apify 五站 Actor</td>
+<td>正式运行端点不带 token，HTTP 402</td>
+<td>当时没有启动任务；本轮已完成 Amazon、Walmart 认证采集，不能外推另外三站已成功</td>
+</tr>
+<tr>
+<td>Oxylabs 新旧 API / Amazon</td>
+<td>正式商品端点不带密钥，HTTP 401</td>
+<td>仅确认认证门槛；没有评论数据或业务采集耗时</td>
+</tr>
+<tr>
+<td>Magpie、SellerApp、Unwrangle、Zyte、Decodo</td>
+<td>按正式接口无凭据请求，HTTP 401</td>
+<td>未进入认证业务采集；不能计为采集失败</td>
+</tr>
+<tr>
+<td>Scrapingdog、ScraperAPI 专用接口</td>
+<td>按官方文档构造无密钥或字面占位符请求，出现 401、403 或无密钥 404</td>
+<td>认证前的响应不能判定付费/试用业务可用性；网页 demo 与专用评论 API 也分别记录</td>
+</tr>
+<tr>
+<td>DataForSEO / Amazon reviews</td>
+<td>官方端点文档注明暂不可用</td>
+<td>未进行生产业务采集；Sandbox 样例不能替代实时验证</td>
+</tr>
+<tr>
+<td>DataWeave</td>
+<td>官方销售演示入口可访问</td>
+<td>尚无本轮认证业务样本，逐平台评论字段与价格需正式样本确认</td>
+</tr>
+</tbody>
+</table>
+<p>Magpie 文档的“维护时返回 503”是条件说明，并非当前停用公告；本次实际获得的是无 token 的 401，当前业务运行状态仍待认证验证。Unwrangle 的 Amazon reviews 文档标注 Legacy / high-risk，并说明登录依赖；这与它的其他平台是否可用应分开判断。</p>
+<h2 id="_5">账户、授权与浏览器状态</h2>
+<p>截至本轮，相关注册、登录及服务条款步骤已获得用户授权并完成：Apify 使用已登录的现有 Free 账户，额度为 $5；Bright Data 已注册 Free tier，运行前观察到 5,000 免费 credits，未添加信用卡或付款方式。两家均未充值。密钥与完整账户信息不公开。</p>
+<p>用户最新约束是：<strong>UI 操作仅通过浏览器标签页插件，不允许桌面操作。</strong> 用户已确认桌面客户端显示 Edge 已连接；插件能够列出和新建标签页，但读取页面和导航仍超时。连接显示与实际标签页控制尚未一致；这属于本地工具故障，不是供应商错误，也不改变上表已经保留的 API 实测结果。</p>
+<p>此前曾遇到的 <code>noWindowsAvailable</code>、<code>codex app-server exited before returning a response</code> 同样归为工具故障。本文不会把旧的工具故障或当前插件超时计入供应商成功率。</p>
+<h2 id="_6">参数与结果仍需注意的差异</h2>
+<ul>
+<li>Bright Data 的 Best Buy Reviews 宣传页代码示例使用商品采集器 <code>gd_ltre1jqe1jfr7cccf</code>；独立评论采集器应按当前机器目录核对 <code>gd_mv3s5qosodai3txro</code>。商品结果不能当作评论分页证据。</li>
+<li>Apify 的 Shopee 候选通过店铺评价流匹配商品，schema 中有每星、每店铺的数量边界；商品可能只匹配到店铺流中的部分评论。允许设置较大数量不等于保证完整历史。</li>
+<li>统一账号或统一请求外壳，不等于各站字段、评论类型、分页、地区限制、权限和计费单位完全相同。两站小样本成功也不能推出同一供应商所有平台均成功。</li>
+</ul>
+<h2 id="_7">状态与时间如何比较</h2>
+<p>“官网可访问”“文档已读取”“无凭据认证响应”“公开 demo 返回”和“认证业务实测”是不同证据层级。认证业务实测还要区分触发是否成功、任务是否完成、导出是否成功、是否拿到非空评论正文，以及是否实际扣费。任务成功或 HTTP 200 单独出现，都不足以证明取得了目标评论。</p>
+<p>无密钥请求耗时只是认证层响应时间。Apify 控制台运行时间、Bright Data 触发请求时间与采集时长分别保留，不放在同一速度排名中。没有取得评论时，记录“本次 0 条正文”或“未知”，不能据此判断商品本身没有评论。每千请求、每千商品页、每千评论的标价与实际任务扣费也分别保留。</p>
+<h2 id="_8">证据文件</h2>
+<ul>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/authenticated-trials.json">认证账户与业务实测记录</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/bright-oxy-tests.json">Bright Data / Oxylabs 历史检查与参数</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/apify-tests.json">Apify / Scrapingdog / ScraperAPI 历史检查</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/specialist-tests.json">其他供应商与官方演示检查</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/browser-tests.json">浏览器注册与匿名演示历史记录</a></li>
+<li><a href="document-39.html">前轮海外评论 API 覆盖和价格报告</a></li>
+</ul>
+<p>公开资料只保留字段名、结果统计、必要短摘录和官方来源。原始评论的作者资料、长正文及账户密钥不放入公开网页；完整响应仅保留在本地私有证据目录。</p></article></body></html>

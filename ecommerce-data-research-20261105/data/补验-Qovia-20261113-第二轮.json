@@ -1,0 +1,829 @@
+{
+  "title": "Qovia 国内第二轮实测：新商品、独立平台、分时重试",
+  "checked_on": "2026-11-13",
+  "account_before": {
+    "checked_at": "2026-11-13T15:16:02.674642+00:00",
+    "http_status": 200,
+    "billing": {
+      "plan": "free",
+      "balance_usd": "0.000000",
+      "rpm_limit": null,
+      "trial_calls_remaining": 41
+    }
+  },
+  "old_round_reference": "补验-Qovia-20261113.json",
+  "scope": "仅使用剩余免费成功次数；不充值；原始响应只留private",
+  "endpoint_catalog": {
+    "source": "https://qovia.ai/openapi.json",
+    "checked_at": "2026-11-13T15:16:02.674642+00:00",
+    "path_count": 166,
+    "pdd_matches": [],
+    "finding": "未找到pinduoduo、pdd、duoduo或拼多多文案/路径；不猜测或枚举隐藏API"
+  },
+  "candidate_products": [],
+  "runs": [
+    {
+      "label": "taobao-new765-v1-p1",
+      "platform": "taobao",
+      "checked_at": "2026-11-13T15:17:03.985853+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "765833709683",
+        "page": 1,
+        "skip_default_reviews": "false"
+      },
+      "source_product": {
+        "url": "https://item.taobao.com/item.htm?id=765833709683",
+        "evidence_url": "https://apify.com/sinodata/taobao-product-search",
+        "provenance": "当前Actor官方商品详情示例标出2026-10-18评价和7万+好评，淘宝店名深圳华强北正品直销总店；尚未在淘宝页面实时独立确认"
+      },
+      "http_status": 503,
+      "elapsed_seconds": 1.993,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": "0.000000",
+      "retry_after_seconds": 10,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged"
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 41,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "taobao-new765-v2-p1",
+      "platform": "taobao",
+      "checked_at": "2026-11-13T15:17:41.681823+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "765833709683",
+        "page": 1
+      },
+      "source_product": {
+        "url": "https://item.taobao.com/item.htm?id=765833709683",
+        "evidence_url": "https://apify.com/sinodata/taobao-product-search",
+        "provenance": "当前Actor商品详情示例明确platform=Taobao，评价样例2026-10-18；非本轮淘宝网页确认"
+      },
+      "http_status": 502,
+      "elapsed_seconds": 1.571,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": null,
+      "retry_after_seconds": 60,
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 41,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "jd-control-p1",
+      "platform": "jd",
+      "checked_at": "2026-11-13T15:17:44.072795+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/jd/comments",
+      "params": {
+        "sku_id": "100428822668",
+        "page": 1,
+        "only_this_sku": "true"
+      },
+      "source_product": {
+        "url": "https://item.jd.com/100428822668.html",
+        "provenance": "11月6日实测成功SKU，复核同一控制样本"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 7.807,
+      "response_data_fields": [
+        "items",
+        "page",
+        "has_more",
+        "max_page",
+        "total",
+        "prov"
+      ],
+      "row_path": "data.items",
+      "row_count": 10,
+      "unique_rows_by_id_or_exact_fingerprint": 10,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 10,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 10,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "id",
+        "images",
+        "ip_location",
+        "likes",
+        "rating",
+        "shop_reply",
+        "sku",
+        "sku_id",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "cid": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "text": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "rating": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "likes": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "created_at": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sku": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "sku_id": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "user_name": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "anonymous": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "ip_location": {
+          "present": 10,
+          "nonempty": 10
+        },
+        "images": {
+          "present": 10,
+          "nonempty": 9
+        },
+        "shop_reply": {
+          "present": 10,
+          "nonempty": 0
+        }
+      },
+      "pagination": {
+        "page": 1,
+        "has_more": true,
+        "total": 1000,
+        "max_page": 2
+      },
+      "billing_meta": {
+        "billed": false,
+        "charged_usd": "0.000000",
+        "balance_usd": "0.000000",
+        "empty": false,
+        "trial_calls_remaining": 40
+      },
+      "charged_header_usd": "0.000000",
+      "retry_after_seconds": 0,
+      "error": null,
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 41,
+      "samples": [
+        {
+          "text_excerpt": "冬日渐寒，带上一杯暖意出发❄️\n钛纯度＞99%，轻盈杯身，轻装随行\n一杯温热相伴",
+          "text_length": 73,
+          "author_omitted": true,
+          "rating": 5,
+          "created_at": "2026-11-13T20:07:35+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "images_count": 2
+        },
+        {
+          "text_excerpt": "倒水方便，清洁也不错，保温效果挺好的",
+          "text_length": 18,
+          "author_omitted": true,
+          "rating": 5,
+          "created_at": "2026-11-12T22:08:27+08:00",
+          "sku": "款式:【钛茶水分离版-深空灰】500ml",
+          "images_count": 2
+        }
+      ],
+      "observed_review_dates": [
+        "2026-11-13T20:07:35+08:00",
+        "2026-11-12T22:08:27+08:00",
+        "2026-11-12T20:19:56+08:00",
+        "2026-11-10T14:14:21+08:00",
+        "2026-11-10T00:17:47+08:00",
+        "2026-11-09T21:17:37+08:00",
+        "2026-11-06T07:41:01+08:00",
+        "2026-11-05T16:17:21+08:00",
+        "2026-11-05T13:07:46+08:00",
+        "2026-11-04T23:34:21+08:00"
+      ],
+      "private_raw_saved": true
+    },
+    {
+      "label": "douyin-control-p1",
+      "platform": "douyin_shop",
+      "checked_at": "2026-11-13T15:17:52.428641+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/douyin/goods_comments",
+      "params": {
+        "goods_id": "3827812353530004447",
+        "cursor": 0
+      },
+      "source_product": {
+        "provenance": "11月6日实测成功商品，复核同一控制样本"
+      },
+      "http_status": 200,
+      "elapsed_seconds": 15.165,
+      "response_data_fields": [
+        "items",
+        "cursor",
+        "has_more",
+        "total",
+        "prov"
+      ],
+      "row_path": "data.items",
+      "row_count": 20,
+      "unique_rows_by_id_or_exact_fingerprint": 20,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 8,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 8,
+      "fields": [
+        "anonymous",
+        "cid",
+        "created_at",
+        "keywords",
+        "likes",
+        "rating",
+        "ratings",
+        "shop_reply",
+        "sku",
+        "tags",
+        "text",
+        "user_name"
+      ],
+      "field_counts": {
+        "cid": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "text": {
+          "present": 20,
+          "nonempty": 8
+        },
+        "rating": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "ratings": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "likes": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "created_at": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "sku": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "user_name": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "anonymous": {
+          "present": 20,
+          "nonempty": 20
+        },
+        "shop_reply": {
+          "present": 20,
+          "nonempty": 18
+        },
+        "tags": {
+          "present": 20,
+          "nonempty": 2
+        },
+        "keywords": {
+          "present": 20,
+          "nonempty": 6
+        }
+      },
+      "pagination": {
+        "cursor": 1,
+        "has_more": true,
+        "total": 32
+      },
+      "billing_meta": {
+        "billed": false,
+        "charged_usd": "0.000000",
+        "balance_usd": "0.000000",
+        "empty": false,
+        "trial_calls_remaining": 39
+      },
+      "charged_header_usd": "0.000000",
+      "retry_after_seconds": 0,
+      "error": null,
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 40,
+      "samples": [
+        {
+          "text_excerpt": "很好用，特别保湿滋润",
+          "text_length": 10,
+          "author_omitted": true,
+          "rating": 5,
+          "created_at": "2026-11-04T08:52:46+08:00",
+          "sku": "默认"
+        },
+        {
+          "text_excerpt": "刚好生了娃娃、有效果好用。",
+          "text_length": 13,
+          "author_omitted": true,
+          "rating": 5,
+          "created_at": "2026-10-30T18:42:54+08:00",
+          "sku": "默认"
+        }
+      ],
+      "observed_review_dates": [
+        "2026-11-05T12:16:04+08:00",
+        "2026-11-04T08:52:46+08:00",
+        "2026-10-30T18:42:54+08:00",
+        "2026-10-29T20:23:59+08:00",
+        "2026-10-26T17:30:26+08:00",
+        "2026-10-25T11:36:23+08:00",
+        "2026-10-25T10:32:28+08:00",
+        "2026-10-22T14:05:51+08:00",
+        "2026-10-20T09:08:16+08:00",
+        "2026-10-14T21:56:21+08:00",
+        "2026-10-13T19:21:48+08:00",
+        "2026-10-13T02:17:39+08:00",
+        "2026-10-13T00:35:25+08:00",
+        "2026-10-03T18:51:03+08:00",
+        "2026-09-26T12:06:06+08:00",
+        "2026-09-19T13:37:37+08:00",
+        "2026-09-15T11:50:37+08:00",
+        "2026-08-23T12:18:08+08:00",
+        "2026-08-22T00:47:07+08:00",
+        "2026-08-21T10:10:32+08:00"
+      ],
+      "private_raw_saved": true
+    },
+    {
+      "label": "tmall-new108-v1-p1",
+      "platform": "tmall",
+      "checked_at": "2026-11-13T15:19:19.536661+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "1081364414020",
+        "page": 1,
+        "skip_default_reviews": "false"
+      },
+      "source_product": {
+        "url": "https://detail.tmall.com/item.htm?id=1081364414020",
+        "evidence_url": "https://apify.com/tortuga/taobao-scraper",
+        "provenance": "当前Actor官方详情样例明确platform=tmall、sellerType=B、优思顿数码旗舰店、reviewCount=300、评价日2026-09-18；非本轮Tmall页面确认"
+      },
+      "http_status": 503,
+      "elapsed_seconds": 1.088,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": "0.000000",
+      "retry_after_seconds": 10,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged"
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 39,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "tmall-new108-v2-p1",
+      "platform": "tmall",
+      "checked_at": "2026-11-13T15:19:21.088730+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "1081364414020",
+        "page": 1
+      },
+      "source_product": {
+        "url": "https://detail.tmall.com/item.htm?id=1081364414020",
+        "evidence_url": "https://apify.com/tortuga/taobao-scraper",
+        "provenance": "当前Actor官方详情样例明确platform=tmall、sellerType=B、优思顿数码旗舰店、reviewCount=300、评价日2026-09-18；非本轮Tmall页面确认"
+      },
+      "http_status": 502,
+      "elapsed_seconds": 1.315,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": null,
+      "retry_after_seconds": 60,
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 39,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "taobao-new765-v1-minimal-retry",
+      "platform": "taobao",
+      "checked_at": "2026-11-13T15:20:32.537998+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "765833709683"
+      },
+      "source_product": {
+        "url": "https://item.taobao.com/item.htm?id=765833709683",
+        "evidence_url": "https://apify.com/sinodata/taobao-product-search",
+        "provenance": "同新淘宝商品间隔数分钟复试；仅保留必填item_id，使用官方默认page=1及skip_default_reviews=true，排除可选参数差异"
+      },
+      "http_status": 503,
+      "elapsed_seconds": 1.023,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": "0.000000",
+      "retry_after_seconds": 10,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged"
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 39,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "taobao-new765-v2-minimal-retry",
+      "platform": "taobao",
+      "checked_at": "2026-11-13T15:21:10.348391+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "765833709683"
+      },
+      "source_product": {
+        "url": "https://item.taobao.com/item.htm?id=765833709683",
+        "provenance": "距上次同端点响应超过60秒；同新淘宝商品最小必填参数复试，默认page=1"
+      },
+      "http_status": 502,
+      "elapsed_seconds": 1.29,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": null,
+      "retry_after_seconds": 60,
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 39,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "taobao-old-cooldown-v1",
+      "platform": "taobao",
+      "checked_at": "2026-11-13T15:37:09.406512+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "611261922146",
+        "page": 1
+      },
+      "source_product": {
+        "provenance": "原IP报告旧淘宝请求回归；此ID在当前厂商目录被标为示例，不能据此保证源商品有效"
+      },
+      "http_status": 503,
+      "elapsed_seconds": 1.333,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": "0.000000",
+      "retry_after_seconds": 10,
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged"
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 39,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    },
+    {
+      "label": "tmall-new108-cooldown-v2",
+      "platform": "tmall",
+      "checked_at": "2026-11-13T15:37:11.588163+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "1081364414020",
+        "page": 1
+      },
+      "source_product": {
+        "provenance": "第二轮新天猫商品，冷却十余分钟后独立复试"
+      },
+      "http_status": 502,
+      "elapsed_seconds": 1.668,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "field_counts": {},
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": null,
+      "retry_after_seconds": 60,
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "evidence_type": "2026-11-13本轮真实鉴权业务请求",
+      "pre_call_free_remaining": 39,
+      "samples": [],
+      "observed_review_dates": [],
+      "private_raw_saved": true
+    }
+  ],
+  "old_public_page_audit": {
+    "source_url": "https://118.145.70.247/ecommerce-data-research-20261105/data/live-trials.json",
+    "original_page": "https://118.145.70.247/ecommerce-data-research-20261105/",
+    "downloaded_at": "2026-11-13",
+    "cases": [
+      {
+        "vendor": "EveryInfra",
+        "platform": "taobao",
+        "action": "reviews",
+        "requests": 3,
+        "nonempty_requests": 0,
+        "rows_returned": 0,
+        "unique_comment_ids": 0,
+        "http_statuses": [
+          null,
+          200,
+          200
+        ]
+      },
+      {
+        "vendor": "EveryInfra",
+        "platform": "jd",
+        "action": "reviews",
+        "requests": 1,
+        "nonempty_requests": 1,
+        "rows_returned": 10,
+        "unique_comment_ids": 10,
+        "http_statuses": [
+          200
+        ]
+      },
+      {
+        "vendor": "EveryInfra",
+        "platform": "douyin",
+        "action": "comments",
+        "requests": 2,
+        "nonempty_requests": 2,
+        "rows_returned": 27,
+        "unique_comment_ids": 27,
+        "http_statuses": [
+          200,
+          200
+        ]
+      },
+      {
+        "vendor": "Qovia",
+        "platform": "taobao",
+        "action": "comments",
+        "requests": 3,
+        "nonempty_requests": 0,
+        "rows_returned": 0,
+        "unique_comment_ids": 0,
+        "http_statuses": [
+          503,
+          503,
+          503
+        ]
+      },
+      {
+        "vendor": "Qovia",
+        "platform": "jd",
+        "action": "comments",
+        "requests": 3,
+        "nonempty_requests": 3,
+        "rows_returned": 30,
+        "unique_comment_ids": 30,
+        "http_statuses": [
+          200,
+          200,
+          200
+        ]
+      },
+      {
+        "vendor": "Qovia",
+        "platform": "douyin",
+        "action": "comments",
+        "requests": 2,
+        "nonempty_requests": 2,
+        "rows_returned": 37,
+        "unique_comment_ids": 29,
+        "http_statuses": [
+          200,
+          200
+        ]
+      },
+      {
+        "vendor": "Qovia",
+        "platform": "douyin",
+        "action": "goods_comments",
+        "requests": 2,
+        "nonempty_requests": 2,
+        "rows_returned": 32,
+        "unique_comment_ids": 32,
+        "http_statuses": [
+          200,
+          200
+        ]
+      },
+      {
+        "vendor": "Qovia",
+        "platform": "taobao",
+        "action": "comments_v2",
+        "requests": 2,
+        "nonempty_requests": 0,
+        "rows_returned": 0,
+        "unique_comment_ids": 0,
+        "http_statuses": [
+          502,
+          502
+        ]
+      }
+    ],
+    "finding": "原网页的Qovia商品买家评价成功记录是京东和抖店；淘天v1/v2历史仍0/5。EveryInfra淘宝搜索有商品返回，不等于淘宝评价成功。抖音comments是视频评论，goods_comments才是商品评价。"
+  },
+  "public_product_page_checks": [
+    {
+      "product_id": "765833709683",
+      "requested_url": "https://world.taobao.com/item/765833709683.htm",
+      "http_status": 200,
+      "redirect_host": "world.taobao.com",
+      "title": null,
+      "login_indicator": false,
+      "review_marker_seen": false,
+      "current_reviews_verified": false,
+      "note": "仅公开网页HTTP读取；若登录/验证，不绕过。"
+    },
+    {
+      "product_id": "1081364414020",
+      "requested_url": "https://detail.tmall.com/item.htm?id=1081364414020",
+      "http_status": 200,
+      "redirect_host": "detail.tmall.com",
+      "title": null,
+      "login_indicator": true,
+      "review_marker_seen": false,
+      "current_reviews_verified": false,
+      "note": "仅公开网页HTTP读取；若登录/验证，不绕过。"
+    }
+  ],
+  "account_after": {
+    "checked_at": "2026-11-13T15:37:13.337542+00:00",
+    "http_status": 200,
+    "billing": {
+      "plan": "free",
+      "balance_usd": "0.000000",
+      "rpm_limit": null,
+      "trial_calls_remaining": 39
+    }
+  },
+  "free_calls_consumed": 2,
+  "summary": {
+    "businessRequests": 10,
+    "successfulRequests": 2,
+    "taobaoAttempts": 5,
+    "tmallAttempts": 3,
+    "taobaoTmallSucceeded": 0,
+    "jdValidTexts": 10,
+    "douyinRows": 20,
+    "douyinValidTexts": 8,
+    "freeCallsConsumed": 2,
+    "trialCallsRemaining": 39,
+    "finding": "更换商品、删减可选参数、遵循Retry-After并间隔约20分钟后仍失败；同一账号京东与抖店成功，不能归为全部账号失效。",
+    "oldEvidenceCorrection": "原IP报告中的淘宝成功样本来自EveryInfra商品搜索，不是Qovia淘宝评论；历史Qovia淘评v1/v2也未验成。"
+  }
+}

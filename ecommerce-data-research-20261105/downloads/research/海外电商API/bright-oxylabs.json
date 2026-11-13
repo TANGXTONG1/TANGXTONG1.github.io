@@ -1,0 +1,2055 @@
+{
+  "checked_on": "2026-11-12",
+  "method": "只读取官方公开网页、文档、公开schema；未注册、未调用认证数据API、未付费；所有接口均未live-test。缺少端点证据不等于技术上绝对不可抓取。",
+  "recommendation": "两者均达到成熟供应商可信度，但此需求优先试Bright Data四个独立review scraper；Oxylabs适合作为基础抓取/商品页精选评论方案，现有证据不足以推荐为跨平台全量评论API。",
+  "bright_data": {
+    "name": "Bright Data Scraper API",
+    "fit": "单账号/统一HTTP任务工作流，多站点不同dataset_id与schema；需自建归一字段映射。",
+    "coverage": {
+      "Amazon": {
+        "status": "独立原文评论抓取器，官方文档验证，未实测",
+        "fields": "review_text/rating/review_posted_date/asin/variant_asin/variant_name/review_images/videos/is_verified；未列商家回复字段",
+        "limit": "max_reviews是用户设置上限，不是保证返回量；reviews_to_not_include用于排除已取review_id；variation_specific=true按链接变体。未找到官方最大历史深度、完整率或硬性每ASIN上限承诺。",
+        "schema": {
+          "dataset_id": "gd_le8e811kzy4ggddlq",
+          "source": "https://docs.brightdata.com/scrapers/gd_le8e811kzy4ggddlq.json",
+          "catalog_domain": "amazon.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "reviews_to_not_include",
+              "required": false,
+              "type": "array"
+            },
+            {
+              "name": "max_reviews",
+              "required": false,
+              "type": "number"
+            },
+            {
+              "name": "variation_specific",
+              "required": false,
+              "type": "boolean"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "product_name",
+              "type": "text"
+            },
+            {
+              "name": "product_rating",
+              "type": "number"
+            },
+            {
+              "name": "product_rating_object",
+              "type": "object"
+            },
+            {
+              "name": "product_rating_max",
+              "type": "number"
+            },
+            {
+              "name": "rating",
+              "type": "number"
+            },
+            {
+              "name": "author_name",
+              "type": "text"
+            },
+            {
+              "name": "asin",
+              "type": "text"
+            },
+            {
+              "name": "product_rating_count",
+              "type": "number"
+            },
+            {
+              "name": "review_header",
+              "type": "text"
+            },
+            {
+              "name": "review_id",
+              "type": "text"
+            },
+            {
+              "name": "review_text",
+              "type": "text"
+            },
+            {
+              "name": "author_id",
+              "type": "text"
+            },
+            {
+              "name": "author_link",
+              "type": "url"
+            },
+            {
+              "name": "badge",
+              "type": "text"
+            },
+            {
+              "name": "brand",
+              "type": "text"
+            },
+            {
+              "name": "review_posted_date",
+              "type": "text"
+            },
+            {
+              "name": "review_country",
+              "type": "text"
+            },
+            {
+              "name": "review_images",
+              "type": "array"
+            },
+            {
+              "name": "helpful_count",
+              "type": "number"
+            },
+            {
+              "name": "is_amazon_vine",
+              "type": "boolean"
+            },
+            {
+              "name": "is_verified",
+              "type": "boolean"
+            },
+            {
+              "name": "variant_asin",
+              "type": "text"
+            },
+            {
+              "name": "variant_name",
+              "type": "text"
+            },
+            {
+              "name": "videos",
+              "type": "array"
+            },
+            {
+              "name": "categories",
+              "type": "array"
+            },
+            {
+              "name": "department",
+              "type": "text"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_le8e811kzy4ggddlq.json"
+        ]
+      },
+      "Walmart": {
+        "status": "独立原文评论抓取器，官方schema验证，未实测",
+        "fields": "review_text/rating/review_posted_date/product_id/review_images/videos/item_details/reply；Most recent排序可有review_page_number",
+        "limit": "输入sort_by、days_back；未公开可验证最大页数或历史深度。",
+        "schema": {
+          "dataset_id": "gd_mpql1v8g2o8o6l1wzd",
+          "source": "https://docs.brightdata.com/scrapers/gd_mpql1v8g2o8o6l1wzd.json",
+          "catalog_domain": "walmart.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "sort_by",
+              "required": false,
+              "type": "text"
+            },
+            {
+              "name": "days_back",
+              "required": false,
+              "type": "number"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "product_name",
+              "type": "text"
+            },
+            {
+              "name": "product_id",
+              "type": "text"
+            },
+            {
+              "name": "rating",
+              "type": "number"
+            },
+            {
+              "name": "author_name",
+              "type": "text"
+            },
+            {
+              "name": "review_header",
+              "type": "text"
+            },
+            {
+              "name": "review_id",
+              "type": "text"
+            },
+            {
+              "name": "review_text",
+              "type": "text"
+            },
+            {
+              "name": "author_id",
+              "type": "text"
+            },
+            {
+              "name": "author_link",
+              "type": "url"
+            },
+            {
+              "name": "review_posted_date",
+              "type": "text"
+            },
+            {
+              "name": "review_images",
+              "type": "array"
+            },
+            {
+              "name": "helpful_count",
+              "type": "number"
+            },
+            {
+              "name": "is_verified",
+              "type": "boolean"
+            },
+            {
+              "name": "videos",
+              "type": "array"
+            },
+            {
+              "name": "top_reviewer",
+              "type": "boolean"
+            },
+            {
+              "name": "item_details",
+              "type": "array"
+            },
+            {
+              "name": "reply",
+              "type": "object"
+            },
+            {
+              "name": "not_helpful_count",
+              "type": "number"
+            },
+            {
+              "name": "review_page_number",
+              "type": "number"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_mpql1v8g2o8o6l1wzd.json"
+        ]
+      },
+      "Lazada": {
+        "status": "独立原文评论抓取器，官方schema验证，未实测",
+        "fields": "review/review_star_rating/review_date/sku/review_image_urls/review_video_urls/replies/verified_purchase",
+        "limit": "输入days_back/exclude_variations/start_date/end_date；catalog代表域lazada.com.my，不把这等同于六国全站均已验证。",
+        "schema": {
+          "dataset_id": "gd_lub6mys21lzcklkq1z",
+          "source": "https://docs.brightdata.com/scrapers/gd_lub6mys21lzcklkq1z.json",
+          "catalog_domain": "lazada.com.my",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "days_back",
+              "required": false,
+              "type": "number"
+            },
+            {
+              "name": "exclude_variations",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "start_date",
+              "required": false,
+              "type": "text"
+            },
+            {
+              "name": "end_date",
+              "required": false,
+              "type": "text"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "name": "rating",
+              "type": "number"
+            },
+            {
+              "name": "reviews",
+              "type": "number"
+            },
+            {
+              "name": "seller_name",
+              "type": "text"
+            },
+            {
+              "name": "sku",
+              "type": "text"
+            },
+            {
+              "name": "mpn",
+              "type": "text"
+            },
+            {
+              "name": "is_super_seller",
+              "type": "boolean"
+            },
+            {
+              "name": "brand",
+              "type": "text"
+            },
+            {
+              "name": "breadcrumb",
+              "type": "array"
+            },
+            {
+              "name": "review_username",
+              "type": "text"
+            },
+            {
+              "name": "review",
+              "type": "text"
+            },
+            {
+              "name": "verified_purchase",
+              "type": "boolean"
+            },
+            {
+              "name": "review_star_rating",
+              "type": "number"
+            },
+            {
+              "name": "review_date",
+              "type": "date"
+            },
+            {
+              "name": "review_image_urls",
+              "type": "array"
+            },
+            {
+              "name": "review_video_urls",
+              "type": "array"
+            },
+            {
+              "name": "count_images",
+              "type": "number"
+            },
+            {
+              "name": "count_videos",
+              "type": "number"
+            },
+            {
+              "name": "review_likes",
+              "type": "number"
+            },
+            {
+              "name": "review_id",
+              "type": "text"
+            },
+            {
+              "name": "replies",
+              "type": "array"
+            },
+            {
+              "name": "lazmall",
+              "type": "boolean"
+            },
+            {
+              "name": "start_date",
+              "type": "text"
+            },
+            {
+              "name": "end_date",
+              "type": "text"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_lub6mys21lzcklkq1z.json"
+        ]
+      },
+      "Best Buy": {
+        "status": "独立原文评论抓取器，官方schema验证，未实测",
+        "fields": "review_text/rating/review_posted_date/product_id/sku/model_number/review_images/brand_response/syndication_source",
+        "limit": "输入sort_by/days_back；未公开可验证最大页数或历史深度。",
+        "schema": {
+          "dataset_id": "gd_mv3s5qosodai3txro",
+          "source": "https://docs.brightdata.com/scrapers/gd_mv3s5qosodai3txro.json",
+          "catalog_domain": "bestbuy.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "sort_by",
+              "required": false,
+              "type": "text"
+            },
+            {
+              "name": "days_back",
+              "required": false,
+              "type": "number"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "product_name",
+              "type": "text"
+            },
+            {
+              "name": "product_id",
+              "type": "text"
+            },
+            {
+              "name": "sku",
+              "type": "text"
+            },
+            {
+              "name": "model_number",
+              "type": "text"
+            },
+            {
+              "name": "overall_rating",
+              "type": "number"
+            },
+            {
+              "name": "total_reviews",
+              "type": "number"
+            },
+            {
+              "name": "review_id",
+              "type": "text"
+            },
+            {
+              "name": "rating",
+              "type": "number"
+            },
+            {
+              "name": "review_header",
+              "type": "text"
+            },
+            {
+              "name": "review_text",
+              "type": "text"
+            },
+            {
+              "name": "pros",
+              "type": "text"
+            },
+            {
+              "name": "cons",
+              "type": "text"
+            },
+            {
+              "name": "author_name",
+              "type": "text"
+            },
+            {
+              "name": "review_posted_date",
+              "type": "text"
+            },
+            {
+              "name": "is_verified",
+              "type": "boolean"
+            },
+            {
+              "name": "is_recommended",
+              "type": "boolean"
+            },
+            {
+              "name": "badges",
+              "type": "array"
+            },
+            {
+              "name": "syndication_source",
+              "type": "text"
+            },
+            {
+              "name": "review_images",
+              "type": "array"
+            },
+            {
+              "name": "helpful_count",
+              "type": "number"
+            },
+            {
+              "name": "not_helpful_count",
+              "type": "number"
+            },
+            {
+              "name": "brand_response",
+              "type": "object"
+            },
+            {
+              "name": "review_page_number",
+              "type": "number"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_mv3s5qosodai3txro.json"
+        ]
+      },
+      "eBay": {
+        "status": "商品接口附带most_relevant_reviews数组；非独立全量评论API",
+        "limit": "无评论分页、时间窗输入；不要把seller_reviews计数当评论原文，数组子字段未在schema细化。",
+        "schema": {
+          "dataset_id": "gd_ltr9mjt81n0zzdk1fb",
+          "source": "https://docs.brightdata.com/scrapers/gd_ltr9mjt81n0zzdk1fb.json",
+          "catalog_domain": "ebay.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "all_variations",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "country",
+              "required": false,
+              "type": "country"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "product_id",
+              "type": "text"
+            },
+            {
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "name": "seller_name",
+              "type": "text"
+            },
+            {
+              "name": "seller_rating",
+              "type": "text"
+            },
+            {
+              "name": "seller_reviews",
+              "type": "text"
+            },
+            {
+              "name": "breadcrumbs",
+              "type": "array"
+            },
+            {
+              "name": "root_category",
+              "type": "text"
+            },
+            {
+              "name": "images",
+              "type": "array"
+            },
+            {
+              "name": "price",
+              "type": "price"
+            },
+            {
+              "name": "currency",
+              "type": "text"
+            },
+            {
+              "name": "condition",
+              "type": "text"
+            },
+            {
+              "name": "available_count",
+              "type": "number"
+            },
+            {
+              "name": "sold_count",
+              "type": "text"
+            },
+            {
+              "name": "item_location",
+              "type": "text"
+            },
+            {
+              "name": "ships_to",
+              "type": "text"
+            },
+            {
+              "name": "excludes_shipping",
+              "type": "text"
+            },
+            {
+              "name": "shipping",
+              "type": "price"
+            },
+            {
+              "name": "service_shipping",
+              "type": "text"
+            },
+            {
+              "name": "return_policy",
+              "type": "text"
+            },
+            {
+              "name": "payment_details",
+              "type": "array"
+            },
+            {
+              "name": "related_items",
+              "type": "array"
+            },
+            {
+              "name": "product_specifications",
+              "type": "array"
+            },
+            {
+              "name": "seller_total_reviews",
+              "type": "number"
+            },
+            {
+              "name": "item_reviews",
+              "type": "number"
+            },
+            {
+              "name": "seller_ratings",
+              "type": "array"
+            },
+            {
+              "name": "popular_categories",
+              "type": "array"
+            },
+            {
+              "name": "product_ratings",
+              "type": "number"
+            },
+            {
+              "name": "amount_of_stars",
+              "type": "array"
+            },
+            {
+              "name": "what_customers_said",
+              "type": "array"
+            },
+            {
+              "name": "reviews_count",
+              "type": "text"
+            },
+            {
+              "name": "most_relevant_reviews",
+              "type": "array"
+            },
+            {
+              "name": "related_sponsored_items",
+              "type": "array"
+            },
+            {
+              "name": "tags",
+              "type": "array"
+            },
+            {
+              "name": "description_from_the_seller",
+              "type": "text"
+            },
+            {
+              "name": "compatibility",
+              "type": "array"
+            },
+            {
+              "name": "domain",
+              "type": "text"
+            },
+            {
+              "name": "seller_url",
+              "type": "url"
+            },
+            {
+              "name": "variant_id",
+              "type": "text"
+            },
+            {
+              "name": "brand",
+              "type": "text"
+            },
+            {
+              "name": "sale_price",
+              "type": "price"
+            },
+            {
+              "name": "availability",
+              "type": "text"
+            },
+            {
+              "name": "availability_date",
+              "type": "text"
+            },
+            {
+              "name": "group_id",
+              "type": "text"
+            },
+            {
+              "name": "listing_has_variations",
+              "type": "boolean"
+            },
+            {
+              "name": "variant_attributes",
+              "type": "array"
+            },
+            {
+              "name": "variants",
+              "type": "array"
+            },
+            {
+              "name": "product_category",
+              "type": "text"
+            },
+            {
+              "name": "item_id",
+              "type": "text"
+            },
+            {
+              "name": "description",
+              "type": "text"
+            },
+            {
+              "name": "category_tree",
+              "type": "array"
+            },
+            {
+              "name": "image_url",
+              "type": "text"
+            },
+            {
+              "name": "store_name",
+              "type": "text"
+            },
+            {
+              "name": "return_window",
+              "type": "number"
+            },
+            {
+              "name": "target_countries",
+              "type": "array"
+            },
+            {
+              "name": "store_country",
+              "type": "text"
+            },
+            {
+              "name": "category_urls",
+              "type": "array"
+            },
+            {
+              "name": "all_variations",
+              "type": "boolean"
+            },
+            {
+              "name": "seller_tos",
+              "type": "url"
+            },
+            {
+              "name": "seller_privacy_policy",
+              "type": "url"
+            },
+            {
+              "name": "gtin",
+              "type": "text"
+            },
+            {
+              "name": "mpn",
+              "type": "text"
+            },
+            {
+              "name": "listing_format",
+              "type": "text"
+            },
+            {
+              "name": "seller_feedback",
+              "type": "array"
+            },
+            {
+              "name": "product_information",
+              "type": "text"
+            },
+            {
+              "name": "quantity_available",
+              "type": "number"
+            },
+            {
+              "name": "quantity_sold",
+              "type": "number"
+            },
+            {
+              "name": "country",
+              "type": "country"
+            },
+            {
+              "name": "is_sold",
+              "type": "boolean"
+            },
+            {
+              "name": "sold_date",
+              "type": "date"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_ltr9mjt81n0zzdk1fb.json"
+        ]
+      },
+      "Etsy": {
+        "status": "商品接口附带top_reviews、photos_from_reviews和seller_response；非独立全量评论API",
+        "limit": "无评论分页输入；商品和店铺评论计数同时存在，需验证归属。",
+        "schema": {
+          "dataset_id": "gd_ltppk0jdv1jqz25mz",
+          "source": "https://docs.brightdata.com/scrapers/gd_ltppk0jdv1jqz25mz.json",
+          "catalog_domain": "etsy.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "all_variations",
+              "required": false,
+              "type": "boolean"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "product_id",
+              "type": "text"
+            },
+            {
+              "name": "listing_inventory_id",
+              "type": "text"
+            },
+            {
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "name": "rating",
+              "type": "number"
+            },
+            {
+              "name": "reviews_count_shop",
+              "type": "number"
+            },
+            {
+              "name": "reviews_count_item",
+              "type": "number"
+            },
+            {
+              "name": "initial_price",
+              "type": "number"
+            },
+            {
+              "name": "discount_percentage",
+              "type": "number"
+            },
+            {
+              "name": "final_price",
+              "type": "number"
+            },
+            {
+              "name": "currency",
+              "type": "text"
+            },
+            {
+              "name": "images",
+              "type": "array"
+            },
+            {
+              "name": "breadcrumbs",
+              "type": "array"
+            },
+            {
+              "name": "root_category",
+              "type": "text"
+            },
+            {
+              "name": "seller_name",
+              "type": "text"
+            },
+            {
+              "name": "seller_shop_name",
+              "type": "text"
+            },
+            {
+              "name": "seller_response",
+              "type": "text"
+            },
+            {
+              "name": "item_details",
+              "type": "array"
+            },
+            {
+              "name": "shipping_return_policies",
+              "type": "array"
+            },
+            {
+              "name": "product_specifications",
+              "type": "array"
+            },
+            {
+              "name": "related_searches",
+              "type": "array"
+            },
+            {
+              "name": "faqs",
+              "type": "array"
+            },
+            {
+              "name": "category_tree",
+              "type": "array"
+            },
+            {
+              "name": "top_reviews",
+              "type": "array"
+            },
+            {
+              "name": "photos_from_reviews",
+              "type": "array"
+            },
+            {
+              "name": "liisted_date",
+              "type": "date"
+            },
+            {
+              "name": "seller_shop_url",
+              "type": "url"
+            },
+            {
+              "name": "variation",
+              "type": "array"
+            },
+            {
+              "name": "variations",
+              "type": "array"
+            },
+            {
+              "name": "videos",
+              "type": "array"
+            },
+            {
+              "name": "highlights",
+              "type": "array"
+            },
+            {
+              "name": "item_details_html",
+              "type": "text"
+            },
+            {
+              "name": "highlights_lines",
+              "type": "array"
+            },
+            {
+              "name": "variation_url",
+              "type": "url"
+            },
+            {
+              "name": "is_star_seller",
+              "type": "boolean"
+            },
+            {
+              "name": "sku",
+              "type": "number"
+            },
+            {
+              "name": "description",
+              "type": "text"
+            },
+            {
+              "name": "product_category",
+              "type": "text"
+            },
+            {
+              "name": "nai_category_tree",
+              "type": "array"
+            },
+            {
+              "name": "image_url",
+              "type": "text"
+            },
+            {
+              "name": "price",
+              "type": "price"
+            },
+            {
+              "name": "sale_price",
+              "type": "price"
+            },
+            {
+              "name": "availability",
+              "type": "text"
+            },
+            {
+              "name": "availability_date",
+              "type": "text"
+            },
+            {
+              "name": "group_id",
+              "type": "text"
+            },
+            {
+              "name": "listing_has_variations",
+              "type": "boolean"
+            },
+            {
+              "name": "variant_attributes",
+              "type": "array"
+            },
+            {
+              "name": "nai_variants",
+              "type": "array"
+            },
+            {
+              "name": "store_name",
+              "type": "text"
+            },
+            {
+              "name": "seller_url",
+              "type": "text"
+            },
+            {
+              "name": "seller_privacy_policy",
+              "type": "text"
+            },
+            {
+              "name": "seller_tos",
+              "type": "text"
+            },
+            {
+              "name": "return_policy",
+              "type": "text"
+            },
+            {
+              "name": "return_window",
+              "type": "number"
+            },
+            {
+              "name": "target_countries",
+              "type": "array"
+            },
+            {
+              "name": "store_country",
+              "type": "text"
+            },
+            {
+              "name": "category_urls",
+              "type": "array"
+            },
+            {
+              "name": "brand",
+              "type": "text"
+            },
+            {
+              "name": "variant_id",
+              "type": "text"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_ltppk0jdv1jqz25mz.json"
+        ]
+      },
+      "AliExpress": {
+        "status": "商品接口附带reviews数组；非独立全量评论API",
+        "limit": "schema只有数组，子字段和评论分页未明确，未实测原文/日期/图片完整性。",
+        "schema": {
+          "dataset_id": "gd_mlj9v75u1w1jvaxvwp",
+          "source": "https://docs.brightdata.com/scrapers/gd_mlj9v75u1w1jvaxvwp.json",
+          "catalog_domain": "aliexpress.us",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "all_variations",
+              "required": false,
+              "type": "boolean"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "item_id",
+              "type": "text"
+            },
+            {
+              "name": "variant_id",
+              "type": "text"
+            },
+            {
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "name": "description",
+              "type": "text"
+            },
+            {
+              "name": "product_category",
+              "type": "text"
+            },
+            {
+              "name": "category_tree",
+              "type": "array"
+            },
+            {
+              "name": "brand",
+              "type": "text"
+            },
+            {
+              "name": "image_url",
+              "type": "text"
+            },
+            {
+              "name": "price",
+              "type": "price"
+            },
+            {
+              "name": "sale_price",
+              "type": "price"
+            },
+            {
+              "name": "availability",
+              "type": "text"
+            },
+            {
+              "name": "availability_date",
+              "type": "text"
+            },
+            {
+              "name": "group_id",
+              "type": "text"
+            },
+            {
+              "name": "listing_has_variations",
+              "type": "boolean"
+            },
+            {
+              "name": "variant_attributes",
+              "type": "array"
+            },
+            {
+              "name": "variants",
+              "type": "array"
+            },
+            {
+              "name": "store_name",
+              "type": "text"
+            },
+            {
+              "name": "seller_url",
+              "type": "text"
+            },
+            {
+              "name": "seller_privacy_policy",
+              "type": "text"
+            },
+            {
+              "name": "seller_tos",
+              "type": "text"
+            },
+            {
+              "name": "return_policy",
+              "type": "text"
+            },
+            {
+              "name": "return_window",
+              "type": "number"
+            },
+            {
+              "name": "target_countries",
+              "type": "array"
+            },
+            {
+              "name": "store_country",
+              "type": "text"
+            },
+            {
+              "name": "category_urls",
+              "type": "array"
+            },
+            {
+              "name": "star_rating",
+              "type": "number"
+            },
+            {
+              "name": "review_count",
+              "type": "number"
+            },
+            {
+              "name": "reviews",
+              "type": "array"
+            },
+            {
+              "name": "additional_image_urls",
+              "type": "array"
+            },
+            {
+              "name": "specifications",
+              "type": "array"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_mlj9v75u1w1jvaxvwp.json"
+        ]
+      },
+      "TikTok Shop": {
+        "status": "商品接口附带reviews/nai_reviews数组；非独立全量评论API",
+        "limit": "无评论分页输入；普通TikTok视频评论不是TikTok Shop购买评价。",
+        "schema": {
+          "dataset_id": "gd_m45m1u911dsa4274pi",
+          "source": "https://docs.brightdata.com/scrapers/gd_m45m1u911dsa4274pi.json",
+          "catalog_domain": "tiktok.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "category",
+              "required": false,
+              "type": "text"
+            },
+            {
+              "name": "category_url",
+              "required": false,
+              "type": "url"
+            },
+            {
+              "name": "position",
+              "required": false,
+              "type": "number"
+            },
+            {
+              "name": "country",
+              "required": false,
+              "type": "country"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "name": "available",
+              "type": "boolean"
+            },
+            {
+              "name": "description",
+              "type": "text"
+            },
+            {
+              "name": "currency",
+              "type": "text"
+            },
+            {
+              "name": "initial_price",
+              "type": "number"
+            },
+            {
+              "name": "final_price",
+              "type": "number"
+            },
+            {
+              "name": "discount_percent",
+              "type": "number"
+            },
+            {
+              "name": "initial_price_low",
+              "type": "number"
+            },
+            {
+              "name": "initial_price_high",
+              "type": "number"
+            },
+            {
+              "name": "final_price_low",
+              "type": "number"
+            },
+            {
+              "name": "final_price_high",
+              "type": "number"
+            },
+            {
+              "name": "sold",
+              "type": "number"
+            },
+            {
+              "name": "colors",
+              "type": "array"
+            },
+            {
+              "name": "sizes",
+              "type": "array"
+            },
+            {
+              "name": "shipping_fee",
+              "type": "number"
+            },
+            {
+              "name": "specifications",
+              "type": "array"
+            },
+            {
+              "name": "reviews_count",
+              "type": "number"
+            },
+            {
+              "name": "reviews",
+              "type": "array"
+            },
+            {
+              "name": "store_details",
+              "type": "object"
+            },
+            {
+              "name": "images",
+              "type": "array"
+            },
+            {
+              "name": "domain",
+              "type": "text"
+            },
+            {
+              "name": "videos",
+              "type": "array"
+            },
+            {
+              "name": "category",
+              "type": "text"
+            },
+            {
+              "name": "category_url",
+              "type": "url"
+            },
+            {
+              "name": "id",
+              "type": "text"
+            },
+            {
+              "name": "seller_id",
+              "type": "text"
+            },
+            {
+              "name": "prodct_rating",
+              "type": "number"
+            },
+            {
+              "name": "position",
+              "type": "number"
+            },
+            {
+              "name": "variations",
+              "type": "array"
+            },
+            {
+              "name": "In_stock",
+              "type": "boolean"
+            },
+            {
+              "name": "promotion_items",
+              "type": "array"
+            },
+            {
+              "name": "desc_detail",
+              "type": "text"
+            },
+            {
+              "name": "related_videos",
+              "type": "array"
+            },
+            {
+              "name": "video_link",
+              "type": "text"
+            },
+            {
+              "name": "Shop_performance_metrics",
+              "type": "array"
+            },
+            {
+              "name": "variant_id",
+              "type": "text"
+            },
+            {
+              "name": "category_tree",
+              "type": "array"
+            },
+            {
+              "name": "brand",
+              "type": "text"
+            },
+            {
+              "name": "image_url",
+              "type": "text"
+            },
+            {
+              "name": "nai_price",
+              "type": "price"
+            },
+            {
+              "name": "sale_price",
+              "type": "price"
+            },
+            {
+              "name": "availability",
+              "type": "text"
+            },
+            {
+              "name": "availability_date",
+              "type": "text"
+            },
+            {
+              "name": "group_id",
+              "type": "text"
+            },
+            {
+              "name": "listing_has_variations",
+              "type": "boolean"
+            },
+            {
+              "name": "variant_attributes",
+              "type": "array"
+            },
+            {
+              "name": "nai_variants",
+              "type": "array"
+            },
+            {
+              "name": "store_name",
+              "type": "text"
+            },
+            {
+              "name": "seller_url",
+              "type": "text"
+            },
+            {
+              "name": "seller_privacy_policy",
+              "type": "text"
+            },
+            {
+              "name": "seller_tos",
+              "type": "text"
+            },
+            {
+              "name": "return_policy",
+              "type": "text"
+            },
+            {
+              "name": "return_window",
+              "type": "number"
+            },
+            {
+              "name": "target_countries",
+              "type": "array"
+            },
+            {
+              "name": "store_country",
+              "type": "text"
+            },
+            {
+              "name": "category_urls",
+              "type": "array"
+            },
+            {
+              "name": "nai_reviews",
+              "type": "array"
+            },
+            {
+              "name": "additional_image_urls",
+              "type": "array"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_m45m1u911dsa4274pi.json"
+        ]
+      },
+      "Target": {
+        "status": "商品接口附带customer_reviews/review_images；非独立全量评论API",
+        "limit": "无评论分页输入；summary_of_reviews不是原文。",
+        "schema": {
+          "dataset_id": "gd_ltppk5mx2lp0v1k0vo",
+          "source": "https://docs.brightdata.com/scrapers/gd_ltppk5mx2lp0v1k0vo.json",
+          "catalog_domain": "target.com",
+          "input_fields": [
+            {
+              "name": "url",
+              "required": true,
+              "type": "url"
+            },
+            {
+              "name": "all_variations",
+              "required": false,
+              "type": "boolean"
+            },
+            {
+              "name": "zipcode",
+              "required": false,
+              "type": "text"
+            }
+          ],
+          "output_fields": [
+            {
+              "name": "url",
+              "type": "url"
+            },
+            {
+              "name": "product_id",
+              "type": "text"
+            },
+            {
+              "name": "title",
+              "type": "text"
+            },
+            {
+              "name": "product_description",
+              "type": "text"
+            },
+            {
+              "name": "rating",
+              "type": "number"
+            },
+            {
+              "name": "reviews_count",
+              "type": "number"
+            },
+            {
+              "name": "initial_price",
+              "type": "price"
+            },
+            {
+              "name": "discount",
+              "type": "text"
+            },
+            {
+              "name": "final_price",
+              "type": "price"
+            },
+            {
+              "name": "currency",
+              "type": "text"
+            },
+            {
+              "name": "images",
+              "type": "array"
+            },
+            {
+              "name": "breadcrumbs",
+              "type": "array"
+            },
+            {
+              "name": "seller_name",
+              "type": "text"
+            },
+            {
+              "name": "find_alternative",
+              "type": "array"
+            },
+            {
+              "name": "fit_and_sytle",
+              "type": "array"
+            },
+            {
+              "name": "offers",
+              "type": "array"
+            },
+            {
+              "name": "product_specifications",
+              "type": "array"
+            },
+            {
+              "name": "shipping_returns_policy",
+              "type": "array"
+            },
+            {
+              "name": "q&a",
+              "type": "array"
+            },
+            {
+              "name": "related_categories",
+              "type": "array"
+            },
+            {
+              "name": "amount_of_stars",
+              "type": "array"
+            },
+            {
+              "name": "recommendations",
+              "type": "array"
+            },
+            {
+              "name": "variations",
+              "type": "array"
+            },
+            {
+              "name": "what_customers_said",
+              "type": "array"
+            },
+            {
+              "name": "summary_of_reviews",
+              "type": "text"
+            },
+            {
+              "name": "review_images",
+              "type": "array"
+            },
+            {
+              "name": "reviews_related",
+              "type": "array"
+            },
+            {
+              "name": "upc",
+              "type": "text"
+            },
+            {
+              "name": "product_brand",
+              "type": "text"
+            },
+            {
+              "name": "item_number",
+              "type": "text"
+            },
+            {
+              "name": "retailer",
+              "type": "text"
+            },
+            {
+              "name": "price_range",
+              "type": "text"
+            },
+            {
+              "name": "is_available",
+              "type": "boolean"
+            },
+            {
+              "name": "availability_text",
+              "type": "text"
+            },
+            {
+              "name": "promotion_fulltext",
+              "type": "text"
+            },
+            {
+              "name": "tcin_id",
+              "type": "text"
+            },
+            {
+              "name": "upc_normalization",
+              "type": "text"
+            },
+            {
+              "name": "breadcrumb_text",
+              "type": "text"
+            },
+            {
+              "name": "is_available_binary",
+              "type": "number"
+            },
+            {
+              "name": "manufacturer_description",
+              "type": "object"
+            },
+            {
+              "name": "product_variant",
+              "type": "array"
+            },
+            {
+              "name": "customer_reviews",
+              "type": "array"
+            },
+            {
+              "name": "zipcode",
+              "type": "text"
+            },
+            {
+              "name": "image_url",
+              "type": "text"
+            },
+            {
+              "name": "price",
+              "type": "price"
+            },
+            {
+              "name": "sale_price",
+              "type": "price"
+            },
+            {
+              "name": "availability",
+              "type": "text"
+            },
+            {
+              "name": "group_id",
+              "type": "text"
+            },
+            {
+              "name": "listing_has_variations",
+              "type": "boolean"
+            },
+            {
+              "name": "variant_attributes",
+              "type": "array"
+            },
+            {
+              "name": "variants",
+              "type": "array"
+            },
+            {
+              "name": "category_urls",
+              "type": "array"
+            },
+            {
+              "name": "availability_date",
+              "type": "text"
+            },
+            {
+              "name": "seller_url",
+              "type": "text"
+            },
+            {
+              "name": "seller_privacy_policy",
+              "type": "text"
+            },
+            {
+              "name": "seller_tos",
+              "type": "text"
+            },
+            {
+              "name": "return_policy",
+              "type": "text"
+            },
+            {
+              "name": "return_window",
+              "type": "number"
+            },
+            {
+              "name": "target_countries",
+              "type": "array"
+            },
+            {
+              "name": "store_country",
+              "type": "text"
+            },
+            {
+              "name": "dimensions",
+              "type": "array"
+            },
+            {
+              "name": "item_weight",
+              "type": "text"
+            },
+            {
+              "name": "shipping_weight",
+              "type": "text"
+            },
+            {
+              "name": "shipping_dimensions",
+              "type": "array"
+            }
+          ]
+        },
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json",
+          "https://docs.brightdata.com/scrapers/gd_ltppk5mx2lp0v1k0vo.json"
+        ]
+      },
+      "Temu": {
+        "status": "在当前公开catalog中未找到现成对应抓取器；不能承诺reviews支持",
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json"
+        ]
+      },
+      "Shopee": {
+        "status": "在当前公开catalog中未找到现成对应抓取器；不能承诺reviews支持",
+        "sources": [
+          "https://docs.brightdata.com/scrapers.json"
+        ]
+      }
+    },
+    "pricing": [
+      {
+        "finding": "PAYG $1.50/1000 delivered records；Scale $499/月含384000 records，超额$1.30/1000；新账号每月5000免费credits、无信用卡要求；reviews按每条review一record。",
+        "sources": [
+          "https://brightdata.com/products/web-scraper/amazon",
+          "https://github.com/brightdata/amazon-scraper-node"
+        ]
+      },
+      {
+        "finding": "FAQ说明错误输入导致失败的记录仍收费，因此不能把营销“failed deliveries不收费”简化成所有失败免费。",
+        "sources": [
+          "https://docs.brightdata.com/products/scrapers/scrapers-library/faqs.md"
+        ]
+      }
+    ],
+    "operations": [
+      {
+        "finding": "POST /datasets/v3/scrape或/trigger + Bearer key + dataset_id；同步超过1分钟转202/snapshot异步。JSON/NDJSON/CSV与云存储/webhook可交付。",
+        "sources": [
+          "https://docs.brightdata.com/products/scrapers/amazon/introduction.md"
+        ]
+      },
+      {
+        "finding": "技术文档：async输入1GB/任务、5000 active jobs或snapshots、snapshot保留30天、下载或交付文件5GB。营销Unlimited concurrency不可理解为无技术上限。",
+        "sources": [
+          "https://docs.brightdata.com/products/scrapers/limits.md"
+        ]
+      },
+      {
+        "finding": "Amazon max_reviews/exclude IDs/variation_specific均有正式输入文档；不能由max_reviews=50示例推导全历史可用。",
+        "sources": [
+          "https://docs.brightdata.com/api-reference/scrapers/e-commerce-apis/amazon-reviews-collect-by-url"
+        ]
+      }
+    ],
+    "credibility": [
+      {
+        "finding": "官方宣称50000+客户；存在活跃文档及每天更新的公开scraper目录。",
+        "sources": [
+          "https://brightdata.com/customer-stories",
+          "https://docs.brightdata.com/products/scrapers/scrapers-library/async-requests.md"
+        ]
+      },
+      {
+        "finding": "实名Clootrack案例：六年使用Bright基础设施，分析billions of reviews，服务150+企业。案例明确proxy infrastructure；支持公司交付能力，不能当某review API的SLA/完整率测试。",
+        "sources": [
+          "https://brightdata.com/customer-stories/clootrack"
+        ]
+      }
+    ],
+    "caveats": [
+      {
+        "finding": "企业方案列Premium SLA，但本次未核实公开可量化评论完整率SLA；未核实再分发评论内容授权或特定下架补偿条款。",
+        "sources": [
+          "https://brightdata.com/products/web-scraper/amazon"
+        ]
+      },
+      {
+        "finding": "官方HTML Amazon简化示例用reviewer_name/review_title/review_date/verified_purchase；机器schema用author_name/review_header/review_posted_date/is_verified。接入须按试跑实际返回锁定schema，不应盲拷示例。",
+        "sources": [
+          "https://docs.brightdata.com/api-reference/scrapers/e-commerce-apis/amazon-reviews-collect-by-url",
+          "https://docs.brightdata.com/scrapers/gd_le8e811kzy4ggddlq.json"
+        ]
+      }
+    ]
+  },
+  "oxylabs": {
+    "name": "Oxylabs Web API / Web Scraper API Classic",
+    "fit": "成熟通用抓取平台；品牌多不等于独立商品评论端点多。新Web API与旧Classic认证/计费并存，勿混用旧路径旧套餐。",
+    "coverage": {
+      "Amazon": {
+        "status": "已验证amazon_product可返回公开商品页reviews原文数组；现行新旧endpoint目录均无amazon_reviews，不承诺完整历史",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/amazon/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Walmart": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/walmart/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "eBay": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/ebay/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Etsy": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/etsy/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "AliExpress": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/aliexpress/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Lazada": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/lazada/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "TikTok Shop": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/tiktok/shop/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Best Buy": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/bestbuy/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Target": {
+        "status": "现行commerce reference提供商品/搜索或URL抓取；未找到独立reviews端点，不认定全量评论支持",
+        "product_endpoint": "POST https://webapi.oxylabs.io/v1/scrape/target/product",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Temu": {
+        "status": "现行commerce endpoint目录未见专用端点；通用URL抓取可用于定制，但不是已验证评论API",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      },
+      "Shopee": {
+        "status": "现行commerce endpoint目录未见专用端点；通用URL抓取可用于定制，但不是已验证评论API",
+        "source": "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+      }
+    },
+    "amazon_reviews": [
+      {
+        "finding": "官方2026-06-22教程使用Classic source=amazon_product,parse=true取reviews数组，字段包括id/title/author/rating/content/timestamp/is_verified及其他属性。正文说明公开未登录商品页通常仅8–13 featured reviews，完整历史依赖分页且日益位于登录后。",
+        "sources": [
+          "https://oxylabs.io/blog/how-to-scrape-amazon-reviews"
+        ]
+      },
+      {
+        "finding": "Classic Amazon目录仅product/search/pricing/sellers/bestsellers五source；新commerce目录亦只有商品、搜索、报价等，未列独立reviews端点。",
+        "sources": [
+          "https://developers.oxylabs.io/products/web-scraper-api/targets/e-commerce/amazon",
+          "https://developers.oxylabs.io/api-reference/dedicated-scrapers/commerce-scrapers.md"
+        ]
+      }
+    ],
+    "pricing": [
+      {
+        "finding": "2026-11-12实际读取新/scrape价页：$5 welcome credits；Starter $15/月、Basic $100、Flexible $500、Enterprise从$2500。Starter Amazon non-JS $0.50/1000 results；其他目标从$1/1000；自定义JS $1.50/1000；AI parsing $3/1000 parsed pages。单位是page/result而非每条review；月额度到期失效。",
+        "sources": [
+          "https://oxylabs.io/products/web-api/scrape/pricing"
+        ]
+      },
+      {
+        "finding": "旧/targets/pricing FAQ仍出现Micro98K和旧Classic宣传up to 2K trial，与新页面并存；这里以新Web API价格为主，不能将旧套餐速率表直接套到新订阅。",
+        "sources": [
+          "https://oxylabs.io/products/web-api/scrape/targets/pricing",
+          "https://oxylabs.io/products/scraper-api/web/reviews-scraper"
+        ]
+      }
+    ],
+    "operations": [
+      {
+        "finding": "新API base https://webapi.oxylabs.io，Bearer认证，POST /v1/scrape/{target}/{collection}；统一返回envelope不代表平台review字段统一。",
+        "sources": [
+          "https://developers.oxylabs.io/api-reference"
+        ]
+      },
+      {
+        "finding": "同步/异步单任务输入1个；支持的异步batch最多5000任务；支持poll/webhook/S3/GCS/TOS等；建议client timeout>=150秒。新API未找到公开数字RPS表，本次标未确认。",
+        "sources": [
+          "https://developers.oxylabs.io/products/web-api/scrape/delivery-modes.md"
+        ]
+      },
+      {
+        "finding": "429可能为速率或额度；失败重试有限；特定全部upstream失败500不收费；错误云存储destination可能执行并计费但交付失败。",
+        "sources": [
+          "https://developers.oxylabs.io/products/web-api/troubleshooting.md",
+          "https://developers.oxylabs.io/products/web-api/scrape/delivery-modes.md"
+        ]
+      }
+    ],
+    "credibility": [
+      {
+        "finding": "官方press area列15000+客户、500+员工、160+专利；活跃新Web API文档。",
+        "sources": [
+          "https://oxylabs.io/press-area"
+        ]
+      },
+      {
+        "finding": "实名Conductor案例：CPO Wei Zheng说明使用SERP Scraper API/Web Scraper API规模抓取与解析；不是电商评论API客户证明。",
+        "sources": [
+          "https://oxylabs.io/resources/case-studies/conductor"
+        ]
+      }
+    ],
+    "caveats": [
+      {
+        "finding": "Classic文档要求自行审视目标网站条款/取得许可；提供工具不等于获得目标评论再发布授权。本次未核实评论完整率SLA或站点下架补偿。",
+        "sources": [
+          "https://developers.oxylabs.io/products/web-scraper-api.md"
+        ]
+      },
+      {
+        "finding": "新计费页面明确self-service不退款。",
+        "sources": [
+          "https://oxylabs.io/products/web-api/scrape/pricing"
+        ]
+      }
+    ]
+  },
+  "acceptance_test_needed": [
+    "每平台选公开竞品URL，测试实际原文、review_id、SKU变体、日期、媒体、卖家回复缺失率。",
+    "同一SKU请求不同max_reviews/时间窗，检验返回量是否真增长及是否只重复精选评论。",
+    "确认Lazada具体目标国家；确认API字段版本、成功计费定义、可接受延迟和并发。",
+    "若需售卖或公开展示评论原文，单独核查内容再分发权，不能把scraping产品订阅视作版权许可。"
+  ]
+}

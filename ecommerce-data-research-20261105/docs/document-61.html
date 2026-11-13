@@ -1,0 +1,173 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>官方权限边界与自营多渠道集成调研</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%87%AA%E8%90%A5ERP%E4%B8%8E%E5%AE%98%E6%96%B9%E6%9D%83%E9%99%90.md" download>下载原始 Markdown</a></header><article><h1 id="_1">官方权限边界与自营多渠道集成调研</h1>
+<p>核验日期：2026-11-05。范围：淘宝/天猫、1688、京东、拼多多的官方数据边界；补充聚水潭、旺店通、管易云、吉客云、网店管家、快麦等第三方自营集成。仅查公开官方文档和官网，未使用商家账户、未购买、未做API实调。官方页面存在不等于任意应用均能获得对应权限。</p>
+<h2 id="_2">核心结论</h2>
+<ol>
+<li>自营订单与竞品数据要分两套来源。下列ERP/OMS服务主要聚合商家授权数据，不能据此读取其他商家的真实订单、真实广告消耗或全部评价。</li>
+<li>“ERP支持某平台”与“其普通OpenAPI能把该平台数据发到你的系统”是两件事。旺店通、聚水潭、快麦、网店管家的官方文档均存在淘系奇门/平台安全环境要求；旺店通与快麦明确普通订单API不返回拼多多订单。快麦最新接入公告要求拼多多走“方舟ERP-自研数据传输场景”。</li>
+<li>ERP的强项是订单、商品/SKU、库存、退货退款、结算。营销费用账单可在特定财务模块归集，但这不等于广告计划级曝光、点击、转化报表；本轮没有核验到这六家标准ERP开放平台通用的竞品评价全文/竞品投放接口。</li>
+<li>京东于2026年迁移开放平台。新项目应使用京东商家开放平台 <code>open.jd.com</code>，京准通及京东联盟使用各自独立门户，不能只沿用旧“JOS宙斯”作为接入入口。官方公告见下。</li>
+</ol>
+<h2 id="_3">自营第三方集成平台清单</h2>
+<table>
+<thead>
+<tr>
+<th>平台/产品</th>
+<th>已核验渠道与数据</th>
+<th>API/导出状态</th>
+<th>营销与用户评价</th>
+<th>接入条件、费用、关键限制</th>
+<th>官方证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聚水潭ERP / 聚水潭开放平台</td>
+<td>官方订单查询文档列京东、拼多多、快手、抖音及淘系；订单、商品、库存、售后、财务/账单。真实业务销售量应从授权订单/退款按口径聚合，商品资料价格不必然等于买家最终到手价</td>
+<td>有公开API文档；官方流程为注册、测试、资质/应用、商家授权、接口权限、上线；可与自有商城、财务、WMS对接</td>
+<td>胜算账单接口含金额、费用名称、店铺、订单关联；未核验标准API直接提供全平台广告曝光/点击/转化或评价全文</td>
+<td>自营。淘系订单须通过奇门；平台数据交互规则明确不可直接作为数据传输方。具体费用/美团场景需向商务确认；不宜把平台兼容总数当成字段覆盖保证</td>
+<td><a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">开放平台</a>；<a href="https://openweb.jushuitan.com/dev-doc?docId=22&amp;docType=4" rel="noopener noreferrer" target="_blank">订单查询说明</a>；<a href="https://openweb.jushuitan.com/doc?docId=340" rel="noopener noreferrer" target="_blank">平台数据交互规则</a>；<a href="https://open.jushuitan.com/document.aspx?doc_id=2290" rel="noopener noreferrer" target="_blank">胜算账单API</a></td>
+</tr>
+<tr>
+<td>旺店通 / 慧策开放平台</td>
+<td>平台代码表明确淘宝、京东、拼多多、抖店、小红书、1688、唯品会、美团外卖/闪购/闪电仓、京东到家等。订单、出库、货品、库存、退款、平台账单、销售汇总；不同产品线字段不同</td>
+<td>有企业版/旗舰版/网页版/慧经营API；销售汇总为出库口径；有奇门对应接口</td>
+<td>慧经营标准账单API有金额、费用分类、渠道；未核验标准接口覆盖广告投放全指标及商品评价文本</td>
+<td>自营。必须商家授权，数据仅能用于同一卖家；普通原始订单API明确排除淘系、拼多多与系统供销订单。淘系走奇门；拼多多需要依平台场景接入。协议含基础/扩展API收费，当前金额需报价</td>
+<td><a href="https://open.wangdian.cn/" rel="noopener noreferrer" target="_blank">开放平台</a>；<a href="https://open.wangdian.cn/open/guide?path=qjbguide_ptdmbb" rel="noopener noreferrer" target="_blank">平台代码</a>；<a href="https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php" rel="noopener noreferrer" target="_blank">原始订单限制</a>；<a href="https://open.wangdian.cn/qyb/open/apidoc" rel="noopener noreferrer" target="_blank">API目录</a>；<a href="https://open.wangdian.cn/open/guide?path=guide_yygz" rel="noopener noreferrer" target="_blank">使用规则</a></td>
+</tr>
+<tr>
+<td>金蝶管易云 / 易集成</td>
+<td>官方确认淘宝/天猫、京东、拼多多、抖音等合作；订单、库存、会员、营销业务集成；适合ERP与金蝶财务打通。美团具体业务未从本轮一手材料核验</td>
+<td>官网确认OpenAPI、奇门、PaaS/集成能力；具体当前字段文档需商务/客户门户确认。旧 <code>guanyi.kf5.com</code> 帮助链接已失效，不能照旧博客假定仍有效</td>
+<td>官方“业财税”方案支持API、导入、增值RPA归集平台货款账单、营销账单、快递账单；这只证明账单归集，不证明可取广告曝光/点击等全指标；评价全文未核验</td>
+<td>自营。产品订阅、实施和接口费用商务报价；需现有业务与店铺授权。不能作为竞品数据平台</td>
+<td><a href="https://www.guanyiyun.com/" rel="noopener noreferrer" target="_blank">产品官网</a>；<a href="https://www.guanyiyun.com/zhihuicangpeijiejuefangan/" rel="noopener noreferrer" target="_blank">OpenAPI与奇门</a>；<a href="https://www.guanyiyun.com/dajiankang/" rel="noopener noreferrer" target="_blank">账单归集方案</a>；<a href="https://www.guanyiyun.com/guanyuwomen/316.html" rel="noopener noreferrer" target="_blank">官方渠道说明</a></td>
+</tr>
+<tr>
+<td>吉客云 / 菠萝派 / 吉客云开放平台</td>
+<td>官网提供电商平台接入与商品、订单、仓储、物流等接口；美团列表明确美团零售综合、医药健康、跨境医药、餐饮系统、点评等；另有淘宝/京东/拼多多/抖音等平台更新公告。侧重自营订单、货品、库存、出入库、财务</td>
+<td>明确OpenAPI、SDK、测试工具；有官方MCP服务，可调用订单/货品/采购/库存工具；企业认证→应用→签名→订阅接口→联调上线；可自定义报表/集成外部库</td>
+<td>未核验广告计划级曝光、点击与消费者商品评价全文标准API；CRM/促销策略不等同于营销媒体数据</td>
+<td>自营。需商家授权及接口订阅；价格商务确认。美团子业务需逐项确认，不能因“美团”总称推断全部业务/字段；官方部分详情页状态与列表不完全一致</td>
+<td><a href="https://open.jackyun.com/" rel="noopener noreferrer" target="_blank">开放平台</a>；<a href="https://open.jackyun.com/developer/solution.html?from=self" rel="noopener noreferrer" target="_blank">方案</a>；<a href="https://open.jackyun.com/developer/mcpservice/toolList.html" rel="noopener noreferrer" target="_blank">MCP</a>；<a href="https://www.jackyun.com/official/platformList?platName=%E7%BE%8E%E5%9B%A2" rel="noopener noreferrer" target="_blank">美团接入列表</a></td>
+</tr>
+<tr>
+<td>网店管家 / 笛佛开放平台 / esAPI</td>
+<td>自营商品、订单、库存、会员、售后、财务/仓库对接；官网及渠道文档确认淘宝/天猫、京东、拼多多、1688、抖店、快手、有赞等；历史官方公告有美团零售/医药接口场景</td>
+<td>有OpenAPI标准接口、API测试工具；esAPI支持订单/商品下载、发货与库存同步；需会员账号订购开放平台、授权获得AppKey/Token</td>
+<td>本轮未核验广告全指标、评价全文标准API；是业务系统集成</td>
+<td>自营。官方说明淘系订单须申请奇门，敏感信息按阿里/京东规定获取；产品与接口订阅收费未取得现行报价。广泛渠道数量可能含物流/仓储，不能等同“覆盖数百电商市场数据”</td>
+<td><a href="https://open.wdgj.com/" rel="noopener noreferrer" target="_blank">开放平台</a>；<a href="https://open.wdgj.com/OpenApiDoc/NewAPI.html" rel="noopener noreferrer" target="_blank">接口目录</a>；<a href="https://open.wdgj.com/OpenApiDoc/OpenFlow.html" rel="noopener noreferrer" target="_blank">接入与限制</a>；<a href="https://www.wdgj.com/product-esapi.html" rel="noopener noreferrer" target="_blank">esAPI</a></td>
+</tr>
+<tr>
+<td>快麦ERP / 快麦开放平台</td>
+<td>自营订单详情有商品数量、单价、实付、优惠、平台来源、退款/发货场景；文档示例覆盖京东、抖音、拼多多、淘系、1688、唯品会、得物等不同业务</td>
+<td>有公开OpenAPI文档和回调；订单查询建议日期跨度不超过1天、每页最多200条；淘系和拼多多需要独立渠道</td>
+<td>本轮未核验标准广告报表和消费者评价全文接口</td>
+<td>自营。普通订单查询明确不含淘系和拼多多；分别申请奇门/方舟；最新公告要求拼多多走“方舟ERP-自研数据传输场景”。价格商务确认</td>
+<td><a href="https://open.kuaimai.com/docs/api/API%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93/%E8%AE%A2%E5%8D%95%E6%9F%A5%E8%AF%A2%E9%9D%9E%E6%B7%98%E7%B3%BB%E6%8B%BC%E5%A4%9A%E5%A4%9A/" rel="noopener noreferrer" target="_blank">普通订单接口</a>；<a href="https://open.kuaimai.com/docs/question/%E7%B3%BB%E7%BB%9F%E5%85%AC%E5%91%8A/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E8%87%AA%E7%A0%94%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5%E5%BC%80%E6%94%BE%E5%85%AC%E5%91%8A/" rel="noopener noreferrer" target="_blank">拼多多新通道公告</a></td>
+</tr>
+</tbody>
+</table>
+<p>注：上表没有把“未核验”写成“不支持”；渠道列表/历史公告只证明存在对接，不能证明当前账户权限与字段均可用。六家均不宜作为竞品全网真实销量的数据源。第三方集成商也不能自动替代底层平台授权。</p>
+<h2 id="_4">官方平台：用于校验第三方供应商是否夸大能力</h2>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>数据与口径</th>
+<th>接入/限制</th>
+<th>第一手来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫 TOP交易API</td>
+<td>授权卖家的真实交易订单；<code>taobao.trades.sold.get</code> 按创建时间查询，详情可另取；可计算自营销量和交易金额</td>
+<td>文档标记“需要授权”；仅当前会话卖家；该接口只能取3个月内交易；文档列基础API，实际费用/环境/权限按应用</td>
+<td><a href="https://developer.alibaba.com/docs/api.htm?apiId=46&amp;source=search" rel="noopener noreferrer" target="_blank">交易API</a></td>
+</tr>
+<tr>
+<td>淘宝/天猫评价API</td>
+<td><code>taobao.traderates.get</code> 含评价结果、内容、回复、商品标题/价格、订单关联；评价类目还列天猫订单评价/追评/标签等接口</td>
+<td>需要授权，只能查询卖家给出或得到的评价，历史窗口180天；标记增值API。并非任意竞品全量评价API</td>
+<td><a href="https://developer.alibaba.com/docs/api.htm?apiId=55" rel="noopener noreferrer" target="_blank">评价API</a></td>
+</tr>
+<tr>
+<td>淘宝联盟 / 淘宝客</td>
+<td>商品库及推广资料：商品/店铺、价格促销、优惠券、佣金、展示销量字段；<code>annual_vol</code> 示例为“1万+”；部分文档仍列 <code>volume</code> 30天且统计截至昨日</td>
+<td>物料/场景/推广者权限约束；不能把联盟推广数据视为全站真实订单。当前搜索接口对标题精准匹配和商品链接入参有消费者比价场景ID2权限限制。销量字段存在历史变更，交付前应以账号实调确认，不承诺实时精确月销</td>
+<td><a href="https://developer.alibaba.com/docs/api.htm?apiId=62201" rel="noopener noreferrer" target="_blank">升级详情字段</a>；<a href="https://developer.alibaba.com/docs/api.htm?apiId=69450&amp;source=search" rel="noopener noreferrer" target="_blank">物料搜索/场景限制</a></td>
+</tr>
+<tr>
+<td>阿里妈妈万相台/直通车API</td>
+<td>广告自身报表；另官方已列关键词大盘接口，返回曝光、点击、CTR、CPC、竞争度、转化率等；广告账户与行业大盘是不同口径</td>
+<td><code>taobao.universalbp.new.insight.wordsdata.get</code> 文档标记免费且需要授权；并非所有大盘指标都能下钻到任一竞品真实消耗。旧直通车/新万相台接口需确认迁移和应用权限</td>
+<td><a href="https://developer.alibaba.com/docs/api.htm?apiId=74159" rel="noopener noreferrer" target="_blank">关键词大盘接口</a>；<a href="https://www.alimama.com/index.htm" rel="noopener noreferrer" target="_blank">阿里妈妈产品矩阵</a></td>
+</tr>
+<tr>
+<td>生意参谋</td>
+<td>官方商家经营/市场分析工具，适合自营与行业趋势补充</td>
+<td>公开网页本次不可读取；未核验面向一般外部开发者可直接调用的完整OpenAPI、当前导出范围或公开价格。不能将网页可看自动写成API可取</td>
+<td><a href="https://sycm.taobao.com/" rel="noopener noreferrer" target="_blank">产品入口</a>（本轮无法读取）</td>
+</tr>
+<tr>
+<td>1688开放平台</td>
+<td>商品、订单、会员、物流、支付；官方方案包含代发货源选品、铺货、采购订单同步</td>
+<td>自营/采购/分销业务授权；不是无条件全站竞争数据。官方2026年公告包含旧API下线、分销资源分层和批发价体系调整，应按当前接口验证</td>
+<td><a href="https://aop.alibaba.com/" rel="noopener noreferrer" target="_blank">官网能力目录</a>；<a href="https://aop.alibaba.com/doc/notice.htm" rel="noopener noreferrer" target="_blank">公告</a></td>
+</tr>
+<tr>
+<td>京东商家开放平台（JDO，原JOS）</td>
+<td>商品/SKU、订单、促销、物流、售后；旧公开目录的<code>jingdong.pop.order.search</code>支持创建时间近2年、更新时间近3个月，仍须按新平台权限/文档验证</td>
+<td>新入驻使用 <code>https://open.jd.com</code>；官方2026年公告要求企业账号/资质/安全等；商家订单不等于竞争对手数据</td>
+<td><a href="https://jos.jd.com/doc/channel.htm?id=994" rel="noopener noreferrer" target="_blank">迁移与入口公告</a>；<a href="https://jos.jd.com/apilist?apiGroupId=21&amp;apiGroupName=%E5%95%86%E5%AE%B6%E5%BA%94%E7%94%A8" rel="noopener noreferrer" target="_blank">旧官方商家API目录</a></td>
+</tr>
+<tr>
+<td>京东联盟开放平台</td>
+<td>推广商品名称、图片、类目、价格、券、佣金、30天“引单数量”；自己的推广订单及佣金（官方方案写近90天）</td>
+<td>引单量不等于商品全站销量；只在联盟业务权限范围，未核验提供任意商品评价全文。新入口 <code>https://union.jd.com/openplatform</code></td>
+<td><a href="https://jos.jd.com/jdunion" rel="noopener noreferrer" target="_blank">联盟方案与接口口径</a>；<a href="https://jos.jd.com/doc/channel.htm?id=994" rel="noopener noreferrer" target="_blank">独立入口公告</a></td>
+</tr>
+<tr>
+<td>京准通营销API / 京东营销云</td>
+<td>自有广告账户投放数据、定制经营看板，范围覆盖京准通、京媒、营销云；可和广告主后端接口打通</td>
+<td>面向具备开发能力品牌广告主、代理商、服务商；京媒API需联系商务；新入口 <code>https://jzt.jd.com/api/index</code>。不提供任意竞品真实投放账单</td>
+<td><a href="https://opendoc.jd.com/ads_api/jzt/api/word/introduce.html" rel="noopener noreferrer" target="_blank">官方营销API介绍</a></td>
+</tr>
+<tr>
+<td>京东商智</td>
+<td>商家经营与行业/竞品分析产品入口存在</td>
+<td>登录页本轮无可读文档；未核验一般开发者通用API、当前套餐/导出范围。应让供应商证明接口与指标权限</td>
+<td><a href="https://sz.jd.com/" rel="noopener noreferrer" target="_blank">官方入口</a></td>
+</tr>
+<tr>
+<td>拼多多开放平台 / 方舟</td>
+<td>自营商家订单与商品等业务接口；“ERP-自研数据传输”场景是第三方ERP订单外传的重要路径</td>
+<td>当前官方动态文档不可由检索器读取；本轮不声称某一接口可取评价全文或全广告报表。快麦官方迁移公告给出拼多多官方公告350与自研场景入口，可作为实施核对点</td>
+<td><a href="https://open.pinduoduo.com/" rel="noopener noreferrer" target="_blank">官方开放平台</a>；<a href="https://open.pinduoduo.com/application/document/announcement?id=350" rel="noopener noreferrer" target="_blank">官方公告350</a>（本轮不可读取）；<a href="https://open.kuaimai.com/docs/question/%E7%B3%BB%E7%BB%9F%E5%85%AC%E5%91%8A/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E8%87%AA%E7%A0%94%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5%E5%BC%80%E6%94%BE%E5%85%AC%E5%91%8A/" rel="noopener noreferrer" target="_blank">快麦接入迁移说明</a></td>
+</tr>
+<tr>
+<td>多多进宝</td>
+<td>历史官方资料确认商品库/API推广与商品查询；历史字段包括拼团价/单买价、券、佣金和展示销量等，当前返回需实调</td>
+<td>面向推广业务；开放平台应用审核后绑定Client ID；动态页面无法核验现行字段/权限，不应把2020年PDF当成2026年承诺；不是全站真实订单来源</td>
+<td><a href="https://commoncdn.yangkeduo.com/pdd_oms/2021-01-12/2e22638bda0b0f77479f89dab1de2988.pdf" rel="noopener noreferrer" target="_blank">官方历史商品查询PDF</a>；<a href="https://funimg.pddpic.com/ddjb/2020-12-04/4f8c0c46-e2c3-40e4-bfee-5ac05ba96607.pdf" rel="noopener noreferrer" target="_blank">官方历史接入PDF</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">对根任务的采购建议</h2>
+<ul>
+<li>自有订单层：在用户已有ERP中优先选一个做集成；如果美团为重点，先核对旺店通或吉客云具体美团业务，别只看到“覆盖美团”字样。</li>
+<li>营销层：要求供应商逐项证明“广告消耗/曝光/点击/转化”是否来自正式广告API、授权登录报表、文件/RPA；ERP“营销”模块往往指会员/促销/费用账单。</li>
+<li>竞品层：需另配第三方行业监测、价格/评价数据服务；订单ERP不能补齐。</li>
+<li>验收用同一批SKU/店铺样本比对：商品ID与SKU、销量口径（下单/支付/退款后/出库）、价格类型、评论全文/星级/图片/时间、数据更新时间、历史深度、可调用接口与导出许可。</li>
+<li>合同应写具体“平台 × 子业务 × 字段 × 更新频率 × 交付方式”，不要只写“覆盖N个平台”。</li>
+</ul>
+<h2 id="_6">补查：预策科技（候选，交付接口待确认）</h2>
+<ul>
+<li>官网已找到：<a href="https://www.yucekj.com/" rel="noopener noreferrer" target="_blank">预策科技</a>。该站为SPA，普通网页文本提取为空；读取页面公开引用的静态脚本可确认其文案：围绕自营平台经营、企业系统以及跨平台行情/竞品数据，提供电商数据整合与“生意高手”等产品。官网页脚显示浙ICP备20014541号。此为产品能力宣传，不是字段级接入承诺。</li>
+<li>名为“预策-连接器文档”的公开Apifox目录列小红书聚光、巨量广告/千川、腾讯广告、京东广告、抖店、拼多多、有赞、快手、多个ERP及奇门等。但本轮没有证明该Apifox与官网的可靠关联；部分“使用说明”页面只有标题，且<a href="https://q86jng5fw3.apifox.cn/8120283m0" rel="noopener noreferrer" target="_blank">分贝通页</a>明确注明内容来自帆软九数云文档，不能仅据目录认定所有连接器已上线。</li>
+<li><a href="https://q86jng5fw3.apifox.cn/8119707m0" rel="noopener noreferrer" target="_blank">小红书聚光目录页</a>列账户/计划/单元/笔记/关键词等报表。可作为问供应商的需求清单，但不能写成已实测对外API。</li>
+<li>本轮未找到对外数据出库API、Excel/CSV批量导出或数据库同步的可靠一手说明，也未核验美团。可列候选，优先要求演示“店铺+广告账户授权→实际字段→外部系统拿数”全流程。</li>
+</ul></article></body></html>

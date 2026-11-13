@@ -1,0 +1,99 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>海外电商接口测试说明</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%AF%B4%E6%98%8E-2026-11-13.md" download>下载原始 Markdown</a></header><article><h1 id="_1">海外电商接口测试说明</h1>
+<p>核验日期：2026-11-13。此轮接续前一天的供应商筛选，逐家访问官网、读取具体输入参数与返回字段，并尝试官方提供的公开演示及业务端点。统一入口见研究站的“海外接口测试总表”。</p>
+<h2 id="_2">当前拿到了什么</h2>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>实际执行</th>
+<th>结果</th>
+<th>能证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BlueCart / Walmart</td>
+<td>官方 <code>api_key=demo</code> 评论接口，第 1、2 页</td>
+<td>每页 20 条，页间内容不同，响应标 <code>demo=true</code></td>
+<td>公开演示接口可返回评论并分页；未证明任意商品、新鲜数据或生产账号可用性</td>
+</tr>
+<tr>
+<td>Countdown / eBay</td>
+<td>官方 <code>api_key=demo</code> 评论接口，第 1、2 页</td>
+<td>每页 10 条，页间内容不同，响应标 <code>demo=true</code></td>
+<td>公开演示接口可返回商品评价并分页；不是卖家反馈接口的验证，也不是生产认证调用</td>
+</tr>
+<tr>
+<td>Scrapingdog / Walmart 网页</td>
+<td>浏览器匿名 <code>/scrape</code> 演示，输入官方文档里的 Walmart 评论页 URL</td>
+<td>界面显示 <code>200 OK · 2.99s</code>，返回 Markdown，能看到 Walmart 导航</td>
+<td>公开网页抓取演示已响应；只读到开头，未确认评论正文，也未验证专用 <code>/walmart/reviews</code> 端点</td>
+</tr>
+<tr>
+<td>Diffbot / Amazon、Walmart</td>
+<td>官网 Test Drive 公开匿名代理，分别提交商品和评论页</td>
+<td>HTTP 200，但 Amazon 内含 <code>errorCode=500</code>，Walmart 到达 <code>Robot or human?</code> 拦截页、<code>numPosts=0</code></td>
+<td>传输层成功不等于业务成功；这两个匿名目标没有取得评论</td>
+</tr>
+<tr>
+<td>Rainforest / Amazon</td>
+<td>官方 demo 参数请求 <code>type=reviews</code></td>
+<td>HTTP 503，业务消息明确评论类型暂不可用且不扣费</td>
+<td>该评论类型当前不可用；不能推导其全部 Amazon 商品服务不可用</td>
+</tr>
+<tr>
+<td>Bright Data / Amazon</td>
+<td>正式评论端点，不带密钥</td>
+<td>HTTP 401，缺少凭证</td>
+<td>认证门槛，不能判评论采集成功或失败</td>
+</tr>
+<tr>
+<td>Oxylabs 新旧 API / Amazon</td>
+<td>正式商品端点，不带密钥</td>
+<td>HTTP 401</td>
+<td>认证门槛；无评论数据、无采集耗时结果</td>
+</tr>
+<tr>
+<td>Magpie、SellerApp、Unwrangle、Zyte、Decodo</td>
+<td>按正式接口无凭据请求</td>
+<td>HTTP 401</td>
+<td>仍需合法试用凭据；不算采集失败</td>
+</tr>
+<tr>
+<td>Apify 五站 Actor</td>
+<td>正式运行端点，不带 token</td>
+<td>HTTP 402，要求 token 或付款凭证</td>
+<td>必须以自己的试用账号继续；没有启动采集任务</td>
+</tr>
+<tr>
+<td>Scrapingdog、ScraperAPI 专用接口</td>
+<td>按官方文档构造无密钥/字面占位符请求</td>
+<td>出现 401、403 或无密钥 404 等认证响应</td>
+<td>不能将认证前的 404、接口文档 HTTP 200 或营销成功率当作业务验证</td>
+</tr>
+</tbody>
+</table>
+<p>BlueCart 和 Countdown 的 demo 是供应商公开提供的演示模式；本文没有把它们计为生产账户成功采集。公开演示不一定代表实时数据，示例日期、默认商品和可改参数需要在认证测试中另验。</p>
+<p>公开的 <a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/demo-samples.json">演示短摘录与字段样本</a> 中，BlueCart 前两条日期在 2020 年，Countdown 前两条在 2022/2023 年。它们可以用于理解字段格式，不能据此承诺当前最新评论或增量更新能力。</p>
+<h2 id="_3">注册与浏览器状态</h2>
+<p>Bright Data 的实际注册弹窗已读取：有 Google / GitHub / 工作邮箱入口，页面说明创建账户即接受服务协议和隐私政策，宣传无需信用卡、每月 5,000 免费 credits。Apify 注册页也已读取，支持 Google / GitHub / 邮箱，并列明条款。</p>
+<p>两家的账户创建尚未提交，服务条款授权仍待确认。没有创建这两家的密钥，也没有领取到账户或运行账户内的免费任务。此前国内供应商账户不代表这些海外供应商已经注册。</p>
+<p>电脑操作曾成功读取 Chrome 页面并运行 Scrapingdog 匿名演示，之后继续读取遇到 <code>noWindowsAvailable</code> 和 <code>codex app-server exited before returning a response</code>。这属于本地工具故障，不作为供应商失效证据。</p>
+<h2 id="_4">官网与参数的实质差异</h2>
+<ul>
+<li>Bright Data 的 Best Buy Reviews 宣传页代码示例使用商品采集器 <code>gd_ltre1jqe1jfr7cccf</code>；独立评论采集器应按当前机器目录核对 <code>gd_mv3s5qosodai3txro</code>。不能照抄营销页后把商品结果当作评论分页。</li>
+<li>Apify 的 Shopee 候选通过店铺评价流匹配商品，schema 中有每星、每店铺的数量边界；商品可能只匹配到店铺流中的部分评论。参数允许取很多条不等于保证完整历史。</li>
+<li>统一账号或统一请求外壳，不等于各站字段、评论类型、分页、计费单位完全相同。网页逐行保留端点、认证方式、必填参数、输出字段、地区、限制与来源。</li>
+</ul>
+<h2 id="_5">怎样阅读网页上的状态</h2>
+<p>“官网可访问”是站点访问结果；“文档/样例已读取”说明可以检查格式；“认证门槛”说明还未进入真实取数；“公开演示已返回”说明供应商允许的 demo 路径有响应；只有使用自身合法凭证、记录业务返回与扣费的请求，才列为“认证业务实测”。这些状态不能混算成功率。</p>
+<p>无密钥请求的耗时只是认证层响应时间。无数据的请求正文条数记为“未取得/未知”，而非假设商品有零条评论。每千请求、每千商品页和每千评论的报价也分别保留，不使用统一价格排名掩盖单位差异。</p>
+<h2 id="_6">证据文件</h2>
+<ul>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/bright-oxy-tests.json">Bright Data / Oxylabs 检查与参数</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/apify-tests.json">Apify / Scrapingdog / ScraperAPI 检查</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/specialist-tests.json">其他供应商与官方演示检查</a></li>
+<li><a href="../downloads/research/%E6%B5%B7%E5%A4%96%E7%94%B5%E5%95%86%E5%AE%9E%E6%B5%8B/browser-tests.json">浏览器注册与匿名演示记录</a></li>
+<li><a href="document-39.html">前轮海外评论 API 覆盖和价格报告</a></li>
+</ul>
+<p>公开资料只保留字段、结果统计、必要短摘录和官方来源。原始评论中的作者资料、长正文及账户密钥不放入公开网页。</p></article></body></html>

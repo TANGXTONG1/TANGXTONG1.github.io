@@ -1,0 +1,2599 @@
+{
+  "id": "qovia",
+  "name": "Qovia",
+  "checked_on": "2026-11-06",
+  "retrieved_at": "2026-11-05T17:34:30.254469+00:00",
+  "evidence_level": "现行官方文档及公开OpenAPI；没有鉴权业务实调",
+  "business_call_succeeded": false,
+  "trial": {
+    "free_calls": 50,
+    "unit": "成功且非空的调用次数，非50条评论",
+    "eligible_endpoints": "官方文档声明所有端点；仍需账户scope和对应端点实际可用",
+    "expiry": "公开资料未核试用有效期；不是每天50次",
+    "signup_gate": "邮箱、密码、邮箱验证码；公司/团队选填",
+    "signup_url": "https://qovia.ai/zh/account/",
+    "account_check": "GET /v1/account，不扣费但计入每分钟限流",
+    "source": "https://qovia.ai/zh/docs/"
+  },
+  "coverage_summary": {
+    "core": "淘天与京东有商品评价API；拼多多、美团/大众点评未出现在现行OpenAPI",
+    "other_commerce": "抖店商品评价及V2、飞猪酒店评价可见；Shopee/Amazon仍为coming_soon，Temu等规划不算可用",
+    "social": "抖音/快手/B站/小红书/微博等互动评论可见；不可混作商品购后评价",
+    "sources": [
+      "https://qovia.ai/openapi.json",
+      "https://qovia.ai/zh/coverage/"
+    ]
+  },
+  "pricing": {
+    "currency": "USD",
+    "billing_unit": "一次成功且非空的请求；不是一条评论",
+    "model": "统一预付余额，无月费；评论端点多数固定价",
+    "failed_empty_timeout": "失败、空结果、超时不计费，预扣自动退回；试用也只扣成功非空次数",
+    "topup_fees": {
+      "card_alipay": "4.4% + $0.30/笔",
+      "usdt_trc20": "2% + $0.30/笔"
+    },
+    "topup_minimum": "公开资料未核最小充值额",
+    "balance_expiry": "公开资料未核余额有效期或清零规则",
+    "refund": "一般不退；购买接口经供应商确认无法使用、付款后7天内可退未用余额；临时故障、限流和平台改版不属于该例外，赠送额不退",
+    "source": "https://qovia.ai/zh/pricing/"
+  },
+  "limits": {
+    "pre_first_topup_rpm": 60,
+    "after_first_topup_rpm": 600,
+    "scope": "同一账户所有API Key及控制台调试台共用；60秒滑动窗口",
+    "daily_cap": "未发现公开每日硬额度；不能据此承诺无限量",
+    "daily_reset_or_clear": "未发现每日次数清零、结果每日删除的明确规则；需区分计数窗口与数据保留",
+    "endpoint_global_qps": "某些端点有全用户合计每秒容量上限，429 endpoint_busy；未核每评论端点具体QPS，不占账户RPM",
+    "empty_error_throttle": "最近10分钟至少50次打到数据源的请求且超过80%为空、不存在或被拒，429 too_many_unbilled",
+    "authentication_throttle": "同IP每分钟认证失败30次后429",
+    "rate_retries": "429/503若带Retry-After按秒等待；endpoint_unavailable没有该头，表示接口暂不可用",
+    "source": "https://qovia.ai/zh/docs/#rate-limits"
+  },
+  "retention": {
+    "provider_request_response_retention": "公开隐私摘要无保存天数、自动清除周期或日志下载保留期",
+    "customer_retention_or_redistribution": "未见明确的评论长期存储、公开展示、转售或训练许可；正式合同需确认",
+    "delete_request": "隐私页提供人工删除申请途径，但未写删除SLA",
+    "sources": [
+      "https://qovia.ai/zh/privacy/",
+      "https://qovia.ai/zh/terms/"
+    ]
+  },
+  "integration": {
+    "assessment": "接入HTTP层较简单，跨平台评论字段与增量维护仍需适配",
+    "base_url": "https://api.qovia.ai",
+    "auth": "Bearer Key或x-api-key，支持scope；同一Key和余额",
+    "transport": "REST GET/POST，统一request_id/data/meta外层；各端点data字段不同，V2常原样JSON",
+    "server_only": "明确要求服务器调用；其他网站浏览器CORS请求被拒，不能把Key直接放前端",
+    "pagination": "逐端点page/cursor规则，客户端需去重、遵循has_more/max_page、记录最早时间；总评论数不代表可读数量",
+    "versioning": "现行OpenAPI版本0.1.0，评论端点标Beta，字段可调整",
+    "mcp": "官网有MCP入口，核心系统集成仍可直接REST",
+    "sources": [
+      "https://qovia.ai/zh/docs/",
+      "https://qovia.ai/openapi.json"
+    ]
+  },
+  "terms": {
+    "safe_harbor": "没有核到为客户提供法定避风港或权利担保的明确承诺；非官方服务声明不能等同免责保障",
+    "downstream_use": "条款要求用户自行遵守适用法律及来源平台规则；供应商不主张底层内容所有权，数据集另按许可",
+    "jurisdiction": "摘要写美国特拉华州法律；正式条款以签署合同为准",
+    "source": "https://qovia.ai/zh/terms/",
+    "interpretation": "这里只对照供应商公开条款，不作法律有效性判断"
+  },
+  "platform_pricing": [
+    {
+      "platform": "taobao",
+      "name": "淘宝/天猫",
+      "live_endpoint_count": 2,
+      "catalog_endpoint_count": 2,
+      "price_usd_per_1000_successful_nonempty_calls_min": 13.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 16.91,
+      "comment_endpoints": [
+        {
+          "platform": "taobao",
+          "name": "淘宝/天猫商品评价",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/taobao/comments",
+          "endpoint_id": "raw.taobao.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 13500,
+            "usd_per_call": "0.013500",
+            "usd_per_1k": "13.5"
+          },
+          "description": "淘宝和天猫商品的买家评价，从新到旧，每页 20 条：评价内容和时间、好评/中评/差评、SKU、买家昵称（平台已打码）和会员等级、晒图和视频、追评和商家回复。 item_id 填淘宝或天猫的商品 ID 均可。默认跳过没有内容的默认好评（带追评的仍保留）。 has_more 为 false 时停止翻页。商品没有评价或不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+          "parameters": [
+            {
+              "name": "item_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{5,19}$",
+                "examples": [
+                  "611261922146"
+                ]
+              },
+              "description": "淘宝或天猫商品 ID（商品链接里的 id=）"
+            },
+            {
+              "name": "page",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              },
+              "description": "页码，从 1 开始；has_more 为 false 时停止"
+            },
+            {
+              "name": "skip_default_reviews",
+              "required": false,
+              "schema": {
+                "type": "boolean",
+                "default": true
+              },
+              "description": "true（默认）跳过没有内容的默认好评（带追评的仍保留）；false 返回全部评价"
+            }
+          ]
+        },
+        {
+          "platform": "taobao",
+          "name": "淘宝/天猫商品评价 V2",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/taobao/comments_v2",
+          "endpoint_id": "raw.taobao.comments_v2",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 16910,
+            "usd_per_call": "0.016910",
+            "usd_per_1k": "16.91"
+          },
+          "description": "淘宝和天猫商品的买家评价（按平台的原样 JSON 返回）：comments 列表（每页 20 条，含评价内容和时间、评分、SKU、买家昵称、晒图和视频、追评、商家回复、点赞数），以及评价总数 total、总页数 maxPage、热门评价词 keywords（仅第一页）和是否有下一页 hasNextPage。 item_id 填淘宝或天猫的商品 ID 均可，page 从 1 开始，hasNextPage 为 false 时停止翻页。一般 3 秒左右返回。 只对有数据的结果计费，没有评价或出错都不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+          "parameters": [
+            {
+              "name": "item_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{5,19}$",
+                "examples": [
+                  "611261922146"
+                ]
+              },
+              "description": "淘宝或天猫商品 ID（商品链接里的 id=）"
+            },
+            {
+              "name": "page",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              },
+              "description": "页码，从 1 开始；hasNextPage 为 false 时停止"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "jd",
+      "name": "京东",
+      "live_endpoint_count": 1,
+      "catalog_endpoint_count": 1,
+      "price_usd_per_1000_successful_nonempty_calls_min": 19.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 19.5,
+      "comment_endpoints": [
+        {
+          "platform": "jd",
+          "name": "京东商品评价",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/jd/comments",
+          "endpoint_id": "raw.jd.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 19500,
+            "usd_per_call": "0.019500",
+            "usd_per_1k": "19.5"
+          },
+          "description": "京东商品的买家评价，从新到旧，每页 10 条：评价内容和时间、1–5 星评分、规格和 SKU ID、买家昵称（多数已由京东打码）、匿名标记、IP 属地、晒图（原图）、有用数和商家回复。 默认只看这个 SKU 的评价，only_this_sku 为 false 时返回同一商品所有规格的评价。 可翻页数见 max_page（常远少于评价总数），has_more 为 false 时停止。没有评价或 SKU 不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+          "parameters": [
+            {
+              "name": "sku_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{3,19}$",
+                "examples": [
+                  "100006271091"
+                ]
+              },
+              "description": "京东商品 SKU ID（商品链接 item.jd.com/<SKU>.html 里的数字）"
+            },
+            {
+              "name": "page",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
+                "default": 1
+              },
+              "description": "页码，从 1 开始，不超过上一页返回的 max_page；has_more 为 false 时停止"
+            },
+            {
+              "name": "only_this_sku",
+              "required": false,
+              "schema": {
+                "type": "boolean",
+                "default": true
+              },
+              "description": "true（默认）只看这个 SKU 的评价；false 返回同一商品所有规格（颜色、尺码等）的评价"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "pdd",
+      "name": "拼多多",
+      "live_endpoint_count": 0,
+      "catalog_endpoint_count": 0,
+      "price_usd_per_1000_successful_nonempty_calls_min": null,
+      "price_usd_per_1000_successful_nonempty_calls_max": null,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "现行公开OpenAPI中没有对应端点，不填0元，不代表永远不可定制。"
+    },
+    {
+      "platform": "meituan",
+      "name": "美团/大众点评",
+      "live_endpoint_count": 0,
+      "catalog_endpoint_count": 0,
+      "price_usd_per_1000_successful_nonempty_calls_min": null,
+      "price_usd_per_1000_successful_nonempty_calls_max": null,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "现行公开OpenAPI中没有对应端点，不填0元，不代表永远不可定制。"
+    },
+    {
+      "platform": "douyin",
+      "name": "抖音/抖店",
+      "live_endpoint_count": 14,
+      "catalog_endpoint_count": 14,
+      "price_usd_per_1000_successful_nonempty_calls_min": 0.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 25.36,
+      "comment_endpoints": [
+        {
+          "platform": "douyin",
+          "name": "抖音作品评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/douyin/comments",
+          "endpoint_id": "raw.douyin.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 500,
+            "usd_per_call": "0.000500",
+            "usd_per_1k": "0.5"
+          },
+          "description": "作品的评论树，按游标翻页，每页最多 50 条。",
+          "source": "https://qovia.ai/docs/api-reference/raw.douyin.comments/",
+          "parameters": [
+            {
+              "name": "item_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "7681194457378688292"
+                ]
+              },
+              "description": "作品 ID（aweme_id）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "description": "取上一页响应的 cursor。抖音每页排序可能变化，相邻页可能有重复，请按 cid 去重"
+            },
+            {
+              "name": "count",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 50,
+                "default": 20
+              },
+              "description": "每页条数"
+            }
+          ]
+        },
+        {
+          "platform": "douyin",
+          "name": "抖音商品评价",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/douyin/goods_comments",
+          "endpoint_id": "raw.douyin.goods_comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 500,
+            "usd_per_call": "0.000500",
+            "usd_per_1k": "0.5"
+          },
+          "description": "抖店商品的买家评价：评分、内容、SKU、标签和商家回复，每页 20 条。",
+          "source": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments/",
+          "parameters": [
+            {
+              "name": "goods_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{14,19}$",
+                "examples": [
+                  "3827812353530004447"
+                ]
+              },
+              "description": "抖店商品 ID（product_id）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 500,
+                "default": 0
+              },
+              "description": "页码，从 0 开始；取上一页响应的 cursor"
+            }
+          ]
+        },
+        {
+          "platform": "douyin",
+          "name": "抖音商品评价 V2",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/douyin/goods_comments_v2",
+          "endpoint_id": "raw.douyin.goods_comments_v2",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 16910,
+            "usd_per_call": "0.016910",
+            "usd_per_1k": "16.91"
+          },
+          "description": "抖音电商商品的买家评价（按抖音的原样 JSON 返回）：Comments 列表（每页 20 条，含评价内容和时间、评分、SKU、点赞数、商家回复、买家昵称和头像、晒图），以及评价总数 Count 和是否还有下一页 HasMore。 goods_id 填抖音电商的商品 ID，page 从 1 开始，HasMore 为 false 时停止翻页。一般 3 秒左右返回。 只对有数据的结果计费，没有评价或出错都不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments_v2/",
+          "parameters": [
+            {
+              "name": "goods_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{14,19}$",
+                "examples": [
+                  "3633772266610903778"
+                ]
+              },
+              "description": "抖音电商商品 ID"
+            },
+            {
+              "name": "page",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 500,
+                "default": 1
+              },
+              "description": "页码，从 1 开始；HasMore 为 false 时停止"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "xiaohongshu",
+      "name": "小红书",
+      "live_endpoint_count": 11,
+      "catalog_endpoint_count": 11,
+      "price_usd_per_1000_successful_nonempty_calls_min": 5.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 25.36,
+      "comment_endpoints": [
+        {
+          "platform": "xiaohongshu",
+          "name": "小红书笔记评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/xiaohongshu/comments",
+          "endpoint_id": "raw.xiaohongshu.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 5000,
+            "usd_per_call": "0.005000",
+            "usd_per_1k": "5"
+          },
+          "description": "一篇笔记的一级评论，按游标翻页。data 是平台返回的评论页原始字段：comments（每条含 id、content、like_count / like_view_count、sub_comment_count、sub_comments 预览、ip_location、time、pictures、user 等）、cursor、has_more、comment_count 等，不做改名、筛选或换算，评论者的 user_id 按平台原样给出。 sort 为 default（默认）时按小红书的默认顺序（置顶、热门在前），每页约 5 条；为 latest 时从新到旧，每页 10–15 条，评论者的字段与点赞数的给法和 default 不完全相同，以返回为准。 把响应里的 cursor 原样传回即可翻页（latest 的 cursor 是一段 JSON 文本，同样原样传回），has_more 为 false 时停止。回复用 raw.xiaohongshu.comment_replies 获取。没有评论或笔记不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.xiaohongshu.comments/",
+          "parameters": [
+            {
+              "name": "note_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{24}$",
+                "examples": [
+                  "6a14846d000000000702d0d4"
+                ]
+              },
+              "description": "笔记 ID（24 位十六进制）"
+            },
+            {
+              "name": "sort",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "default",
+                  "latest"
+                ],
+                "default": "default"
+              },
+              "description": "排序：default 小红书默认顺序（置顶、热门在前），latest 从新到旧"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "pattern": "^([0-9a-f]{24}|\\{.{1,600}\\})?$",
+                "default": ""
+              },
+              "description": "上一页响应里的 cursor，原样传回（可能是一段 JSON 文本）；第一页不传"
+            }
+          ]
+        },
+        {
+          "platform": "xiaohongshu",
+          "name": "小红书笔记评论 V4",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/xiaohongshu/comments_v4",
+          "endpoint_id": "raw.xiaohongshu.comments_v4",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 16910,
+            "usd_per_call": "0.016910",
+            "usd_per_1k": "16.91"
+          },
+          "description": "一篇笔记的一级评论（原样 JSON 返回）：comments（评论内容、点赞数、回复数、时间、图片、评论者）、comment_count、cursor、has_more 等。 sort 为 default（默认）按默认顺序，latest 从新到旧。 只返回第一页，没有翻页参数，返回里的 cursor / has_more 仅供参考。 只对有数据的结果计费，空结果和出错都不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.xiaohongshu.comments_v4/",
+          "parameters": [
+            {
+              "name": "note_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{24}$",
+                "examples": [
+                  "6a14846d000000000702d0d4"
+                ]
+              },
+              "description": "笔记 ID（24 位十六进制）"
+            },
+            {
+              "name": "sort",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "default",
+                  "latest"
+                ],
+                "default": "default"
+              },
+              "description": "排序：default 小红书默认顺序（置顶、热门在前），latest 从新到旧"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "kuaishou",
+      "name": "快手",
+      "live_endpoint_count": 11,
+      "catalog_endpoint_count": 11,
+      "price_usd_per_1000_successful_nonempty_calls_min": 0.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 5.0,
+      "comment_endpoints": [
+        {
+          "platform": "kuaishou",
+          "name": "快手作品评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/kuaishou/comments",
+          "endpoint_id": "raw.kuaishou.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "作品的一级评论，按游标翻页（首页约 30 条，之后约 20 条）：评论内容、点赞数、回复数、IP 属地、时间（北京时间）、是否热评、作者是否赞过、评论图片和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.kuaishou.comment_replies 获取。没有评论或作品不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.kuaishou.comments/",
+          "parameters": [
+            {
+              "name": "video_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^3x[0-9a-z]{10,20}$",
+                "examples": [
+                  "3xry7mhn2ywjyqg"
+                ]
+              },
+              "description": "作品 eid（作品记录的 extra.eid）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9#_=+/.:-]{1,300}$"
+              },
+              "description": "取上一页响应的 cursor；第一页不传"
+            }
+          ]
+        },
+        {
+          "platform": "kuaishou",
+          "name": "快手作品评论 V2",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/kuaishou/comments_v2",
+          "endpoint_id": "raw.kuaishou.comments_v2",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 500,
+            "usd_per_call": "0.000500",
+            "usd_per_1k": "0.5"
+          },
+          "description": "作品的一级评论，按游标翻页，可选按时间倒序（desc，默认）或正序（asc），count 为每页条数。 把上一页返回的 cursor 作为 pcursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.kuaishou.comment_replies_v2 获取。响应较慢（最长约 90 秒）。没有评论时返回空结果，作品不存在时返回 404，均不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.kuaishou.comments_v2/",
+          "parameters": [
+            {
+              "name": "photo_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{6,25}$",
+                "examples": [
+                  "5220235068916084263"
+                ]
+              },
+              "description": "作品的数字 photo_id"
+            },
+            {
+              "name": "pcursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "maxLength": 200,
+                "default": ""
+              },
+              "description": "翻页游标；首页留空，之后传上一页返回的 cursor"
+            },
+            {
+              "name": "count",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
+                "default": 20
+              },
+              "description": "每页条数"
+            },
+            {
+              "name": "order",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "desc",
+                  "asc"
+                ],
+                "default": "desc"
+              },
+              "description": "排序：desc 最新在前，asc 最早在前"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "bilibili",
+      "name": "B站",
+      "live_endpoint_count": 8,
+      "catalog_endpoint_count": 8,
+      "price_usd_per_1000_successful_nonempty_calls_min": 0.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "bilibili",
+          "name": "B 站视频评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/bilibili/comments",
+          "endpoint_id": "raw.bilibili.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 500,
+            "usd_per_call": "0.000500",
+            "usd_per_1k": "0.5"
+          },
+          "description": "视频的一级评论，按热度排序，每页 20 条；把上一页返回的 cursor 原样传回即可翻页。cid 可用于查询楼中楼回复。不含 IP 属地。",
+          "source": "https://qovia.ai/docs/api-reference/raw.bilibili.comments/",
+          "parameters": [
+            {
+              "name": "bvid",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^BV1[1-9A-HJ-NP-Za-km-z]{9}$",
+                "examples": [
+                  "BV1naKB64Evm"
+                ]
+              },
+              "description": "视频 BV 号"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "maxLength": 1024,
+                "default": ""
+              },
+              "description": "上一页返回的 cursor；第一页不传"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "weibo",
+      "name": "微博",
+      "live_endpoint_count": 7,
+      "catalog_endpoint_count": 7,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "weibo",
+          "name": "微博评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/weibo/comments",
+          "endpoint_id": "raw.weibo.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "微博的一级评论（按热度），按游标翻页，每页最多 20 条：评论内容、点赞数、回复数、IP 属地、时间、是否被博主赞过和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.weibo.comment_replies 获取。没有评论或微博不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.weibo.comments/",
+          "parameters": [
+            {
+              "name": "post_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,19}$",
+                "examples": [
+                  "5356532793082377"
+                ]
+              },
+              "description": "微博 mid（16 位数字，见微博记录的 extra.source_id）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "description": "取上一页响应的 cursor；第一页不传"
+            },
+            {
+              "name": "count",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20,
+                "default": 20
+              },
+              "description": "每页条数"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "wechat",
+      "name": "微信公众号/视频号",
+      "live_endpoint_count": 7,
+      "catalog_endpoint_count": 7,
+      "price_usd_per_1000_successful_nonempty_calls_min": 5.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 253.53,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "1688",
+      "name": "1688",
+      "live_endpoint_count": 0,
+      "catalog_endpoint_count": 0,
+      "price_usd_per_1000_successful_nonempty_calls_min": null,
+      "price_usd_per_1000_successful_nonempty_calls_max": null,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "现行公开OpenAPI中没有对应端点，不填0元，不代表永远不可定制。"
+    },
+    {
+      "platform": "fliggy",
+      "name": "飞猪",
+      "live_endpoint_count": 2,
+      "catalog_endpoint_count": 2,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.5,
+      "comment_endpoints": [
+        {
+          "platform": "fliggy",
+          "name": "飞猪酒店评价",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/fliggy/reviews",
+          "endpoint_id": "raw.fliggy.reviews",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "tiered",
+            "unit_price_micros": 1500,
+            "usd_per_call": "0.001500",
+            "usd_per_1k": "1.5"
+          },
+          "description": "飞猪酒店的用户评价，按发布时间从新到旧，每页最多 100 条，用 cursor 翻页。每条含评分（10 分制）、正文、 发布时间、评价人昵称与 ID（匿名评价有 ID 时也返回）、IP 属地、入住月份、房型、出行类型、分项评分、图片和店家回复。 翻过最后一页或酒店不存在时返回空列表，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.fliggy.reviews/",
+          "parameters": [
+            {
+              "name": "hotel_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{4,14}$",
+                "examples": [
+                  "10052156"
+                ]
+              },
+              "description": "飞猪酒店 ID（shid，5–15 位数字），例如 10052156"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 200,
+                "default": 1
+              },
+              "description": "页码，从 1 开始"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "search",
+      "name": "search",
+      "live_endpoint_count": 1,
+      "catalog_endpoint_count": 1,
+      "price_usd_per_1000_successful_nonempty_calls_min": 5.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 5.0,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "xingtu",
+      "name": "抖音星图",
+      "live_endpoint_count": 18,
+      "catalog_endpoint_count": 18,
+      "price_usd_per_1000_successful_nonempty_calls_min": 0.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 84.51,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "tieba",
+      "name": "贴吧",
+      "live_endpoint_count": 3,
+      "catalog_endpoint_count": 3,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.5,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "zhihu",
+      "name": "知乎",
+      "live_endpoint_count": 8,
+      "catalog_endpoint_count": 8,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "zhihu",
+          "name": "知乎回答评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/zhihu/comments",
+          "endpoint_id": "raw.zhihu.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "回答的一级评论，按游标翻页，每页 10 条：评论内容、点赞数、回复数、IP 属地、时间（北京时间）、是否热评和评论者。可按热度（默认）或最新排序。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.zhihu.comment_replies 获取。没有评论或回答不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.zhihu.comments/",
+          "parameters": [
+            {
+              "name": "answer_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{1,20}$",
+                "examples": [
+                  "2096190323630387908"
+                ]
+              },
+              "description": "回答 ID"
+            },
+            {
+              "name": "sort",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "hot",
+                  "latest"
+                ],
+                "default": "hot"
+              },
+              "description": "排序：hot 热度（默认）、latest 最新"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{1,20}_[0-9]{1,20}_[0-9]{1,2}$"
+              },
+              "description": "取上一页响应的 cursor；第一页不传"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "pgy",
+      "name": "小红书蒲公英",
+      "live_endpoint_count": 12,
+      "catalog_endpoint_count": 12,
+      "price_usd_per_1000_successful_nonempty_calls_min": 5.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 25.36,
+      "comment_endpoints": [
+        {
+          "platform": "pgy",
+          "name": "小红书蒲公英笔记精选评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/pgy/featured_comments",
+          "endpoint_id": "raw.pgy.featured_comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 5000,
+            "usd_per_call": "0.005000",
+            "usd_per_1k": "5"
+          },
+          "description": "笔记详情页展示的精选评论，最多 5 条，不分页；含评论者昵称和用户 ID，不含 IP 属地。没有评论时返回空列表，不收费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.pgy.featured_comments/",
+          "parameters": [
+            {
+              "name": "note_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{24}$",
+                "examples": [
+                  "6abcb896000000001a0338c3"
+                ]
+              },
+              "description": "笔记 ID（24 位十六进制）"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "tiktok",
+      "name": "tiktok",
+      "live_endpoint_count": 8,
+      "catalog_endpoint_count": 8,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "tiktok",
+          "name": "TikTok 视频评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/tiktok/comments",
+          "endpoint_id": "raw.tiktok.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "作品的一级评论，按游标翻页，每页最多 50 条：评论内容、点赞数、回复数、时间（UTC）、是否被作者点赞和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.tiktok.comment_replies 获取。没有评论或作品不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.tiktok.comments/",
+          "parameters": [
+            {
+              "name": "video_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "7688834577418194206"
+                ]
+              },
+              "description": "TikTok 作品 ID"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "description": "取上一页响应的 cursor"
+            },
+            {
+              "name": "count",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 50,
+                "default": 20
+              },
+              "description": "每页条数"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "youtube",
+      "name": "youtube",
+      "live_endpoint_count": 6,
+      "catalog_endpoint_count": 6,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "youtube",
+          "name": "YouTube 视频评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/youtube/comments",
+          "endpoint_id": "raw.youtube.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "视频的一级评论，按热门或最新排序，每页约 20 条：评论内容、点赞数、回复数、时间（UTC，按 YouTube 显示的“3 天前”换算，精确到所示单位）、是否被创作者点心和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.youtube.comment_replies 获取，传评论的 reply_cursor。没有评论或视频不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.youtube.comments/",
+          "parameters": [
+            {
+              "name": "video_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{11}$",
+                "examples": [
+                  "dQw4w9WgXcQ"
+                ]
+              },
+              "description": "YouTube 视频 ID"
+            },
+            {
+              "name": "sort",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "top",
+                  "newest"
+                ],
+                "default": "top"
+              },
+              "description": "排序：top 热门（默认）、newest 最新"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "maxLength": 6000,
+                "pattern": "^[A-Za-z0-9_%=-]+$"
+              },
+              "description": "取上一页响应的 cursor；第一页不传"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "instagram",
+      "name": "instagram",
+      "live_endpoint_count": 6,
+      "catalog_endpoint_count": 6,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 2.0,
+      "comment_endpoints": [
+        {
+          "platform": "instagram",
+          "name": "Instagram 帖子评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/instagram/comments",
+          "endpoint_id": "raw.instagram.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 2000,
+            "usd_per_call": "0.002000",
+            "usd_per_1k": "2"
+          },
+          "description": "帖子的一级评论（按 Instagram 的排序），按游标翻页，每页约 15 条：评论内容、点赞数、回复数、时间（UTC）、是否被作者点赞和评论者。 把上一页返回的 cursor 原样传回即可翻页，has_more 为 false 时停止。回复用 raw.instagram.comment_replies 获取。没有评论或帖子不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.instagram.comments/",
+          "parameters": [
+            {
+              "name": "post",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "maxLength": 400,
+                "pattern": "^(?:(?=[0-9]*[A-Za-z_-])[A-Za-z0-9_-]{5,40}|https?://(?:www\\.|m\\.)?instagram\\.com/(?:[A-Za-z0-9._]{1,30}/)?(?:p|reels?|tv)/[A-Za-z0-9_-]{5,40}/?(?:\\?[A-Za-z0-9=&%._-]{0,300})?)$",
+                "examples": [
+                  "DewxhTugF2T"
+                ]
+              },
+              "description": "帖子链接或 shortcode（见帖子记录的 extra.shortcode）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "maxLength": 4000,
+                "pattern": "^[A-Za-z0-9_=+/-]+$"
+              },
+              "description": "取上一页响应的 cursor，原样传回；第一页不传"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "x",
+      "name": "x",
+      "live_endpoint_count": 6,
+      "catalog_endpoint_count": 6,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "x",
+          "name": "X 帖子回复",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/x/comments",
+          "endpoint_id": "raw.x.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "帖子下的回复（X 的评论），按 X 的相关度排序，每页最多约 40 条：回复内容、点赞数、回复数、图片、时间（UTC）和回复者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复也是帖子，可以把 cid 当作 post_id 继续取它的回复。没有回复时返回空结果，帖子不存在时返回 400，均不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.x.comments/",
+          "parameters": [
+            {
+              "name": "post_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{0,19}$",
+                "examples": [
+                  "2112560723603632217"
+                ]
+              },
+              "description": "帖子 ID（链接 x.com/<用户名>/status/<ID> 里的数字）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_=+/-]{16,2048}$"
+              },
+              "description": "取上一页响应的 cursor；第一页不传"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "reddit",
+      "name": "reddit",
+      "live_endpoint_count": 6,
+      "catalog_endpoint_count": 6,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "reddit",
+          "name": "Reddit 帖子评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/reddit/comments",
+          "endpoint_id": "raw.reddit.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "帖子的评论树，按游标翻页，每页 8 条：几条一级评论连同 Reddit 在其下展开的回复，按 Reddit 的顺序平铺，带 depth（0 为一级评论）和 parent_cid（所回复的评论）；内容、得分、回复总数、时间（UTC）、是否置顶和评论者。 可按 best（默认）、top、new、old 或 controversial 排序。Reddit 收起的回复带 replies_cursor，交给 raw.reddit.comment_replies 获取。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。帖子没有评论时返回空结果，帖子不存在时返回 404，均不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.reddit.comments/",
+          "parameters": [
+            {
+              "name": "post_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^t3_[a-z0-9]{1,17}$",
+                "examples": [
+                  "t3_1xbt833"
+                ]
+              },
+              "description": "帖子 fullname（t3_ 开头，来自帖子详情、版块帖子或搜索的 extra.source_id）"
+            },
+            {
+              "name": "sort",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "best",
+                  "top",
+                  "new",
+                  "old",
+                  "controversial"
+                ],
+                "default": "best"
+              },
+              "description": "排序：best（默认）、top 得分最高、new 最新、old 最早、controversial 争议最大"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "minLength": 13,
+                "maxLength": 2048,
+                "pattern": "^commenttree:[!-~]+$"
+              },
+              "description": "取上一页响应的 cursor；第一页不传"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "toutiao",
+      "name": "今日头条",
+      "live_endpoint_count": 3,
+      "catalog_endpoint_count": 3,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.0,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.0,
+      "comment_endpoints": [
+        {
+          "platform": "toutiao",
+          "name": "今日头条评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/toutiao/comments",
+          "endpoint_id": "raw.toutiao.comments",
+          "availability": "live",
+          "status": "beta",
+          "price": {
+            "mode": "fixed",
+            "unit_price_micros": 1000,
+            "usd_per_call": "0.001000",
+            "usd_per_1k": "1"
+          },
+          "description": "文章或视频的一级评论，按热度排序，每页 20 条：评论内容、点赞数、回复数、时间、IP 属地、是否被作者点赞和评论者。 把上一页返回的 cursor 传回即可翻页（相邻页可能有个别重复，请按 cid 去重），has_more 为 false 时停止。没有评论或内容不存在时返回空结果，不计费。",
+          "source": "https://qovia.ai/docs/api-reference/raw.toutiao.comments/",
+          "parameters": [
+            {
+              "name": "group_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[0-9]{15,20}$",
+                "examples": [
+                  "7696832476378841640"
+                ]
+              },
+              "description": "文章或视频 ID（链接 toutiao.com/article/<ID>/ 或 toutiao.com/video/<ID>/ 里的数字）"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000,
+                "default": 0
+              },
+              "description": "取上一页响应的 cursor；第一页为 0"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "shopee",
+      "name": "shopee",
+      "live_endpoint_count": 0,
+      "catalog_endpoint_count": 3,
+      "price_usd_per_1000_successful_nonempty_calls_min": null,
+      "price_usd_per_1000_successful_nonempty_calls_max": null,
+      "comment_endpoints": [
+        {
+          "platform": "shopee",
+          "name": "Shopee 商品评价",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/shopee/reviews",
+          "endpoint_id": "raw.shopee.reviews",
+          "availability": "coming_soon",
+          "status": "beta",
+          "price": {
+            "mode": "tiered",
+            "unit_price_micros": 1500,
+            "usd_per_call": "0.001500",
+            "usd_per_1k": "1.5"
+          },
+          "description": "商品评价列表，按游标翻页。",
+          "source": "https://qovia.ai/docs/api-reference/raw.shopee.reviews/",
+          "parameters": [
+            {
+              "name": "item_id",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "minLength": 1,
+                "examples": [
+                  "22874185231"
+                ]
+              },
+              "description": "Shopee 商品 ID（itemid）"
+            },
+            {
+              "name": "region",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "sg",
+                  "th",
+                  "vn",
+                  "id",
+                  "my",
+                  "ph"
+                ],
+                "examples": [
+                  "th"
+                ]
+              },
+              "description": "站点：sg 新加坡、th 泰国、vn 越南、id 印度尼西亚、my 马来西亚、ph 菲律宾"
+            },
+            {
+              "name": "cursor",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 0,
+                "default": 0
+              },
+              "description": "取上一页响应的 cursor"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "amazon",
+      "name": "amazon",
+      "live_endpoint_count": 0,
+      "catalog_endpoint_count": 2,
+      "price_usd_per_1000_successful_nonempty_calls_min": null,
+      "price_usd_per_1000_successful_nonempty_calls_max": null,
+      "comment_endpoints": [
+        {
+          "platform": "amazon",
+          "name": "Amazon 商品评论",
+          "endpoint": "GET https://api.qovia.ai/v1/raw/amazon/reviews",
+          "endpoint_id": "raw.amazon.reviews",
+          "availability": "coming_soon",
+          "status": "beta",
+          "price": {
+            "mode": "tiered",
+            "unit_price_micros": 1500,
+            "usd_per_call": "0.001500",
+            "usd_per_1k": "1.5"
+          },
+          "description": "商品评论列表，按页翻。",
+          "source": "https://qovia.ai/docs/api-reference/raw.amazon.reviews/",
+          "parameters": [
+            {
+              "name": "asin",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "pattern": "^[A-Z0-9]{10}$",
+                "examples": [
+                  "B0BDHWDR12"
+                ]
+              },
+              "description": "商品 ASIN（10 位大写字母或数字）"
+            },
+            {
+              "name": "marketplace",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "us",
+                  "uk",
+                  "de",
+                  "jp",
+                  "sg"
+                ],
+                "default": "us"
+              },
+              "description": "站点：us 美国、uk 英国、de 德国、jp 日本、sg 新加坡"
+            },
+            {
+              "name": "page",
+              "required": false,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 50,
+                "default": 1
+              },
+              "description": "页码，从 1 开始"
+            }
+          ]
+        }
+      ],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "news",
+      "name": "news",
+      "live_endpoint_count": 0,
+      "catalog_endpoint_count": 1,
+      "price_usd_per_1000_successful_nonempty_calls_min": null,
+      "price_usd_per_1000_successful_nonempty_calls_max": null,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "cljx",
+      "name": "磁力聚星",
+      "live_endpoint_count": 12,
+      "catalog_endpoint_count": 12,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.5,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    },
+    {
+      "platform": "huahuo",
+      "name": "花火",
+      "live_endpoint_count": 6,
+      "catalog_endpoint_count": 6,
+      "price_usd_per_1000_successful_nonempty_calls_min": 1.5,
+      "price_usd_per_1000_successful_nonempty_calls_max": 1.5,
+      "comment_endpoints": [],
+      "source": "https://qovia.ai/openapi.json",
+      "note": "平台价格区间涵盖不同用途端点，不能当作所有端点统一价；评论应看具体端点。"
+    }
+  ],
+  "comment_endpoint_pricing": [
+    {
+      "platform": "douyin",
+      "name": "抖音作品评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/douyin/comments",
+      "endpoint_id": "raw.douyin.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 500,
+        "usd_per_call": "0.000500",
+        "usd_per_1k": "0.5"
+      },
+      "description": "作品的评论树，按游标翻页，每页最多 50 条。",
+      "source": "https://qovia.ai/docs/api-reference/raw.douyin.comments/",
+      "parameters": [
+        {
+          "name": "item_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{15,20}$",
+            "examples": [
+              "7681194457378688292"
+            ]
+          },
+          "description": "作品 ID（aweme_id）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "description": "取上一页响应的 cursor。抖音每页排序可能变化，相邻页可能有重复，请按 cid 去重"
+        },
+        {
+          "name": "count",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 20
+          },
+          "description": "每页条数"
+        }
+      ]
+    },
+    {
+      "platform": "douyin",
+      "name": "抖音商品评价",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/douyin/goods_comments",
+      "endpoint_id": "raw.douyin.goods_comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 500,
+        "usd_per_call": "0.000500",
+        "usd_per_1k": "0.5"
+      },
+      "description": "抖店商品的买家评价：评分、内容、SKU、标签和商家回复，每页 20 条。",
+      "source": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments/",
+      "parameters": [
+        {
+          "name": "goods_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{14,19}$",
+            "examples": [
+              "3827812353530004447"
+            ]
+          },
+          "description": "抖店商品 ID（product_id）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 500,
+            "default": 0
+          },
+          "description": "页码，从 0 开始；取上一页响应的 cursor"
+        }
+      ]
+    },
+    {
+      "platform": "douyin",
+      "name": "抖音商品评价 V2",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/douyin/goods_comments_v2",
+      "endpoint_id": "raw.douyin.goods_comments_v2",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 16910,
+        "usd_per_call": "0.016910",
+        "usd_per_1k": "16.91"
+      },
+      "description": "抖音电商商品的买家评价（按抖音的原样 JSON 返回）：Comments 列表（每页 20 条，含评价内容和时间、评分、SKU、点赞数、商家回复、买家昵称和头像、晒图），以及评价总数 Count 和是否还有下一页 HasMore。 goods_id 填抖音电商的商品 ID，page 从 1 开始，HasMore 为 false 时停止翻页。一般 3 秒左右返回。 只对有数据的结果计费，没有评价或出错都不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.douyin.goods_comments_v2/",
+      "parameters": [
+        {
+          "name": "goods_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{14,19}$",
+            "examples": [
+              "3633772266610903778"
+            ]
+          },
+          "description": "抖音电商商品 ID"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 1
+          },
+          "description": "页码，从 1 开始；HasMore 为 false 时停止"
+        }
+      ]
+    },
+    {
+      "platform": "kuaishou",
+      "name": "快手作品评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/kuaishou/comments",
+      "endpoint_id": "raw.kuaishou.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "作品的一级评论，按游标翻页（首页约 30 条，之后约 20 条）：评论内容、点赞数、回复数、IP 属地、时间（北京时间）、是否热评、作者是否赞过、评论图片和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.kuaishou.comment_replies 获取。没有评论或作品不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.kuaishou.comments/",
+      "parameters": [
+        {
+          "name": "video_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^3x[0-9a-z]{10,20}$",
+            "examples": [
+              "3xry7mhn2ywjyqg"
+            ]
+          },
+          "description": "作品 eid（作品记录的 extra.eid）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9#_=+/.:-]{1,300}$"
+          },
+          "description": "取上一页响应的 cursor；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "kuaishou",
+      "name": "快手作品评论 V2",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/kuaishou/comments_v2",
+      "endpoint_id": "raw.kuaishou.comments_v2",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 500,
+        "usd_per_call": "0.000500",
+        "usd_per_1k": "0.5"
+      },
+      "description": "作品的一级评论，按游标翻页，可选按时间倒序（desc，默认）或正序（asc），count 为每页条数。 把上一页返回的 cursor 作为 pcursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.kuaishou.comment_replies_v2 获取。响应较慢（最长约 90 秒）。没有评论时返回空结果，作品不存在时返回 404，均不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.kuaishou.comments_v2/",
+      "parameters": [
+        {
+          "name": "photo_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{6,25}$",
+            "examples": [
+              "5220235068916084263"
+            ]
+          },
+          "description": "作品的数字 photo_id"
+        },
+        {
+          "name": "pcursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 200,
+            "default": ""
+          },
+          "description": "翻页游标；首页留空，之后传上一页返回的 cursor"
+        },
+        {
+          "name": "count",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+          },
+          "description": "每页条数"
+        },
+        {
+          "name": "order",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "desc",
+              "asc"
+            ],
+            "default": "desc"
+          },
+          "description": "排序：desc 最新在前，asc 最早在前"
+        }
+      ]
+    },
+    {
+      "platform": "bilibili",
+      "name": "B 站视频评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/bilibili/comments",
+      "endpoint_id": "raw.bilibili.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 500,
+        "usd_per_call": "0.000500",
+        "usd_per_1k": "0.5"
+      },
+      "description": "视频的一级评论，按热度排序，每页 20 条；把上一页返回的 cursor 原样传回即可翻页。cid 可用于查询楼中楼回复。不含 IP 属地。",
+      "source": "https://qovia.ai/docs/api-reference/raw.bilibili.comments/",
+      "parameters": [
+        {
+          "name": "bvid",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^BV1[1-9A-HJ-NP-Za-km-z]{9}$",
+            "examples": [
+              "BV1naKB64Evm"
+            ]
+          },
+          "description": "视频 BV 号"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 1024,
+            "default": ""
+          },
+          "description": "上一页返回的 cursor；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "zhihu",
+      "name": "知乎回答评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/zhihu/comments",
+      "endpoint_id": "raw.zhihu.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "回答的一级评论，按游标翻页，每页 10 条：评论内容、点赞数、回复数、IP 属地、时间（北京时间）、是否热评和评论者。可按热度（默认）或最新排序。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.zhihu.comment_replies 获取。没有评论或回答不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.zhihu.comments/",
+      "parameters": [
+        {
+          "name": "answer_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{1,20}$",
+            "examples": [
+              "2096190323630387908"
+            ]
+          },
+          "description": "回答 ID"
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "hot",
+              "latest"
+            ],
+            "default": "hot"
+          },
+          "description": "排序：hot 热度（默认）、latest 最新"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{1,20}_[0-9]{1,20}_[0-9]{1,2}$"
+          },
+          "description": "取上一页响应的 cursor；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "xiaohongshu",
+      "name": "小红书笔记评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/xiaohongshu/comments",
+      "endpoint_id": "raw.xiaohongshu.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 5000,
+        "usd_per_call": "0.005000",
+        "usd_per_1k": "5"
+      },
+      "description": "一篇笔记的一级评论，按游标翻页。data 是平台返回的评论页原始字段：comments（每条含 id、content、like_count / like_view_count、sub_comment_count、sub_comments 预览、ip_location、time、pictures、user 等）、cursor、has_more、comment_count 等，不做改名、筛选或换算，评论者的 user_id 按平台原样给出。 sort 为 default（默认）时按小红书的默认顺序（置顶、热门在前），每页约 5 条；为 latest 时从新到旧，每页 10–15 条，评论者的字段与点赞数的给法和 default 不完全相同，以返回为准。 把响应里的 cursor 原样传回即可翻页（latest 的 cursor 是一段 JSON 文本，同样原样传回），has_more 为 false 时停止。回复用 raw.xiaohongshu.comment_replies 获取。没有评论或笔记不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.xiaohongshu.comments/",
+      "parameters": [
+        {
+          "name": "note_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{24}$",
+            "examples": [
+              "6a14846d000000000702d0d4"
+            ]
+          },
+          "description": "笔记 ID（24 位十六进制）"
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "default",
+              "latest"
+            ],
+            "default": "default"
+          },
+          "description": "排序：default 小红书默认顺序（置顶、热门在前），latest 从新到旧"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "pattern": "^([0-9a-f]{24}|\\{.{1,600}\\})?$",
+            "default": ""
+          },
+          "description": "上一页响应里的 cursor，原样传回（可能是一段 JSON 文本）；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "xiaohongshu",
+      "name": "小红书笔记评论 V4",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/xiaohongshu/comments_v4",
+      "endpoint_id": "raw.xiaohongshu.comments_v4",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 16910,
+        "usd_per_call": "0.016910",
+        "usd_per_1k": "16.91"
+      },
+      "description": "一篇笔记的一级评论（原样 JSON 返回）：comments（评论内容、点赞数、回复数、时间、图片、评论者）、comment_count、cursor、has_more 等。 sort 为 default（默认）按默认顺序，latest 从新到旧。 只返回第一页，没有翻页参数，返回里的 cursor / has_more 仅供参考。 只对有数据的结果计费，空结果和出错都不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.xiaohongshu.comments_v4/",
+      "parameters": [
+        {
+          "name": "note_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{24}$",
+            "examples": [
+              "6a14846d000000000702d0d4"
+            ]
+          },
+          "description": "笔记 ID（24 位十六进制）"
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "default",
+              "latest"
+            ],
+            "default": "default"
+          },
+          "description": "排序：default 小红书默认顺序（置顶、热门在前），latest 从新到旧"
+        }
+      ]
+    },
+    {
+      "platform": "pgy",
+      "name": "小红书蒲公英笔记精选评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/pgy/featured_comments",
+      "endpoint_id": "raw.pgy.featured_comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 5000,
+        "usd_per_call": "0.005000",
+        "usd_per_1k": "5"
+      },
+      "description": "笔记详情页展示的精选评论，最多 5 条，不分页；含评论者昵称和用户 ID，不含 IP 属地。没有评论时返回空列表，不收费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.pgy.featured_comments/",
+      "parameters": [
+        {
+          "name": "note_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{24}$",
+            "examples": [
+              "6abcb896000000001a0338c3"
+            ]
+          },
+          "description": "笔记 ID（24 位十六进制）"
+        }
+      ]
+    },
+    {
+      "platform": "tiktok",
+      "name": "TikTok 视频评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/tiktok/comments",
+      "endpoint_id": "raw.tiktok.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "作品的一级评论，按游标翻页，每页最多 50 条：评论内容、点赞数、回复数、时间（UTC）、是否被作者点赞和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.tiktok.comment_replies 获取。没有评论或作品不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.tiktok.comments/",
+      "parameters": [
+        {
+          "name": "video_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{15,20}$",
+            "examples": [
+              "7688834577418194206"
+            ]
+          },
+          "description": "TikTok 作品 ID"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "description": "取上一页响应的 cursor"
+        },
+        {
+          "name": "count",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 20
+          },
+          "description": "每页条数"
+        }
+      ]
+    },
+    {
+      "platform": "youtube",
+      "name": "YouTube 视频评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/youtube/comments",
+      "endpoint_id": "raw.youtube.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "视频的一级评论，按热门或最新排序，每页约 20 条：评论内容、点赞数、回复数、时间（UTC，按 YouTube 显示的“3 天前”换算，精确到所示单位）、是否被创作者点心和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.youtube.comment_replies 获取，传评论的 reply_cursor。没有评论或视频不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.youtube.comments/",
+      "parameters": [
+        {
+          "name": "video_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{11}$",
+            "examples": [
+              "dQw4w9WgXcQ"
+            ]
+          },
+          "description": "YouTube 视频 ID"
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "top",
+              "newest"
+            ],
+            "default": "top"
+          },
+          "description": "排序：top 热门（默认）、newest 最新"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 6000,
+            "pattern": "^[A-Za-z0-9_%=-]+$"
+          },
+          "description": "取上一页响应的 cursor；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "instagram",
+      "name": "Instagram 帖子评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/instagram/comments",
+      "endpoint_id": "raw.instagram.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 2000,
+        "usd_per_call": "0.002000",
+        "usd_per_1k": "2"
+      },
+      "description": "帖子的一级评论（按 Instagram 的排序），按游标翻页，每页约 15 条：评论内容、点赞数、回复数、时间（UTC）、是否被作者点赞和评论者。 把上一页返回的 cursor 原样传回即可翻页，has_more 为 false 时停止。回复用 raw.instagram.comment_replies 获取。没有评论或帖子不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.instagram.comments/",
+      "parameters": [
+        {
+          "name": "post",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "maxLength": 400,
+            "pattern": "^(?:(?=[0-9]*[A-Za-z_-])[A-Za-z0-9_-]{5,40}|https?://(?:www\\.|m\\.)?instagram\\.com/(?:[A-Za-z0-9._]{1,30}/)?(?:p|reels?|tv)/[A-Za-z0-9_-]{5,40}/?(?:\\?[A-Za-z0-9=&%._-]{0,300})?)$",
+            "examples": [
+              "DewxhTugF2T"
+            ]
+          },
+          "description": "帖子链接或 shortcode（见帖子记录的 extra.shortcode）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "maxLength": 4000,
+            "pattern": "^[A-Za-z0-9_=+/-]+$"
+          },
+          "description": "取上一页响应的 cursor，原样传回；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "x",
+      "name": "X 帖子回复",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/x/comments",
+      "endpoint_id": "raw.x.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "帖子下的回复（X 的评论），按 X 的相关度排序，每页最多约 40 条：回复内容、点赞数、回复数、图片、时间（UTC）和回复者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复也是帖子，可以把 cid 当作 post_id 继续取它的回复。没有回复时返回空结果，帖子不存在时返回 400，均不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.x.comments/",
+      "parameters": [
+        {
+          "name": "post_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{0,19}$",
+            "examples": [
+              "2112560723603632217"
+            ]
+          },
+          "description": "帖子 ID（链接 x.com/<用户名>/status/<ID> 里的数字）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_=+/-]{16,2048}$"
+          },
+          "description": "取上一页响应的 cursor；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "reddit",
+      "name": "Reddit 帖子评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/reddit/comments",
+      "endpoint_id": "raw.reddit.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "帖子的评论树，按游标翻页，每页 8 条：几条一级评论连同 Reddit 在其下展开的回复，按 Reddit 的顺序平铺，带 depth（0 为一级评论）和 parent_cid（所回复的评论）；内容、得分、回复总数、时间（UTC）、是否置顶和评论者。 可按 best（默认）、top、new、old 或 controversial 排序。Reddit 收起的回复带 replies_cursor，交给 raw.reddit.comment_replies 获取。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。帖子没有评论时返回空结果，帖子不存在时返回 404，均不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.reddit.comments/",
+      "parameters": [
+        {
+          "name": "post_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^t3_[a-z0-9]{1,17}$",
+            "examples": [
+              "t3_1xbt833"
+            ]
+          },
+          "description": "帖子 fullname（t3_ 开头，来自帖子详情、版块帖子或搜索的 extra.source_id）"
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "best",
+              "top",
+              "new",
+              "old",
+              "controversial"
+            ],
+            "default": "best"
+          },
+          "description": "排序：best（默认）、top 得分最高、new 最新、old 最早、controversial 争议最大"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "minLength": 13,
+            "maxLength": 2048,
+            "pattern": "^commenttree:[!-~]+$"
+          },
+          "description": "取上一页响应的 cursor；第一页不传"
+        }
+      ]
+    },
+    {
+      "platform": "weibo",
+      "name": "微博评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/weibo/comments",
+      "endpoint_id": "raw.weibo.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "微博的一级评论（按热度），按游标翻页，每页最多 20 条：评论内容、点赞数、回复数、IP 属地、时间、是否被博主赞过和评论者。 把上一页返回的 cursor 传回即可翻页，has_more 为 false 时停止。回复用 raw.weibo.comment_replies 获取。没有评论或微博不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.weibo.comments/",
+      "parameters": [
+        {
+          "name": "post_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{15,19}$",
+            "examples": [
+              "5356532793082377"
+            ]
+          },
+          "description": "微博 mid（16 位数字，见微博记录的 extra.source_id）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": "取上一页响应的 cursor；第一页不传"
+        },
+        {
+          "name": "count",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 20
+          },
+          "description": "每页条数"
+        }
+      ]
+    },
+    {
+      "platform": "toutiao",
+      "name": "今日头条评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/toutiao/comments",
+      "endpoint_id": "raw.toutiao.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 1000,
+        "usd_per_call": "0.001000",
+        "usd_per_1k": "1"
+      },
+      "description": "文章或视频的一级评论，按热度排序，每页 20 条：评论内容、点赞数、回复数、时间、IP 属地、是否被作者点赞和评论者。 把上一页返回的 cursor 传回即可翻页（相邻页可能有个别重复，请按 cid 去重），has_more 为 false 时停止。没有评论或内容不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.toutiao.comments/",
+      "parameters": [
+        {
+          "name": "group_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[0-9]{15,20}$",
+            "examples": [
+              "7696832476378841640"
+            ]
+          },
+          "description": "文章或视频 ID（链接 toutiao.com/article/<ID>/ 或 toutiao.com/video/<ID>/ 里的数字）"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000,
+            "default": 0
+          },
+          "description": "取上一页响应的 cursor；第一页为 0"
+        }
+      ]
+    },
+    {
+      "platform": "taobao",
+      "name": "淘宝/天猫商品评价",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/taobao/comments",
+      "endpoint_id": "raw.taobao.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 13500,
+        "usd_per_call": "0.013500",
+        "usd_per_1k": "13.5"
+      },
+      "description": "淘宝和天猫商品的买家评价，从新到旧，每页 20 条：评价内容和时间、好评/中评/差评、SKU、买家昵称（平台已打码）和会员等级、晒图和视频、追评和商家回复。 item_id 填淘宝或天猫的商品 ID 均可。默认跳过没有内容的默认好评（带追评的仍保留）。 has_more 为 false 时停止翻页。商品没有评价或不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+      "parameters": [
+        {
+          "name": "item_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{5,19}$",
+            "examples": [
+              "611261922146"
+            ]
+          },
+          "description": "淘宝或天猫商品 ID（商品链接里的 id=）"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 1
+          },
+          "description": "页码，从 1 开始；has_more 为 false 时停止"
+        },
+        {
+          "name": "skip_default_reviews",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          },
+          "description": "true（默认）跳过没有内容的默认好评（带追评的仍保留）；false 返回全部评价"
+        }
+      ]
+    },
+    {
+      "platform": "taobao",
+      "name": "淘宝/天猫商品评价 V2",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/taobao/comments_v2",
+      "endpoint_id": "raw.taobao.comments_v2",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 16910,
+        "usd_per_call": "0.016910",
+        "usd_per_1k": "16.91"
+      },
+      "description": "淘宝和天猫商品的买家评价（按平台的原样 JSON 返回）：comments 列表（每页 20 条，含评价内容和时间、评分、SKU、买家昵称、晒图和视频、追评、商家回复、点赞数），以及评价总数 total、总页数 maxPage、热门评价词 keywords（仅第一页）和是否有下一页 hasNextPage。 item_id 填淘宝或天猫的商品 ID 均可，page 从 1 开始，hasNextPage 为 false 时停止翻页。一般 3 秒左右返回。 只对有数据的结果计费，没有评价或出错都不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+      "parameters": [
+        {
+          "name": "item_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{5,19}$",
+            "examples": [
+              "611261922146"
+            ]
+          },
+          "description": "淘宝或天猫商品 ID（商品链接里的 id=）"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "default": 1
+          },
+          "description": "页码，从 1 开始；hasNextPage 为 false 时停止"
+        }
+      ]
+    },
+    {
+      "platform": "jd",
+      "name": "京东商品评价",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/jd/comments",
+      "endpoint_id": "raw.jd.comments",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "fixed",
+        "unit_price_micros": 19500,
+        "usd_per_call": "0.019500",
+        "usd_per_1k": "19.5"
+      },
+      "description": "京东商品的买家评价，从新到旧，每页 10 条：评价内容和时间、1–5 星评分、规格和 SKU ID、买家昵称（多数已由京东打码）、匿名标记、IP 属地、晒图（原图）、有用数和商家回复。 默认只看这个 SKU 的评价，only_this_sku 为 false 时返回同一商品所有规格的评价。 可翻页数见 max_page（常远少于评价总数），has_more 为 false 时停止。没有评价或 SKU 不存在时返回空结果，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.jd.comments/",
+      "parameters": [
+        {
+          "name": "sku_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{3,19}$",
+            "examples": [
+              "100006271091"
+            ]
+          },
+          "description": "京东商品 SKU ID（商品链接 item.jd.com/<SKU>.html 里的数字）"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 1
+          },
+          "description": "页码，从 1 开始，不超过上一页返回的 max_page；has_more 为 false 时停止"
+        },
+        {
+          "name": "only_this_sku",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "default": true
+          },
+          "description": "true（默认）只看这个 SKU 的评价；false 返回同一商品所有规格（颜色、尺码等）的评价"
+        }
+      ]
+    },
+    {
+      "platform": "shopee",
+      "name": "Shopee 商品评价",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/shopee/reviews",
+      "endpoint_id": "raw.shopee.reviews",
+      "availability": "coming_soon",
+      "status": "beta",
+      "price": {
+        "mode": "tiered",
+        "unit_price_micros": 1500,
+        "usd_per_call": "0.001500",
+        "usd_per_1k": "1.5"
+      },
+      "description": "商品评价列表，按游标翻页。",
+      "source": "https://qovia.ai/docs/api-reference/raw.shopee.reviews/",
+      "parameters": [
+        {
+          "name": "item_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "22874185231"
+            ]
+          },
+          "description": "Shopee 商品 ID（itemid）"
+        },
+        {
+          "name": "region",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "sg",
+              "th",
+              "vn",
+              "id",
+              "my",
+              "ph"
+            ],
+            "examples": [
+              "th"
+            ]
+          },
+          "description": "站点：sg 新加坡、th 泰国、vn 越南、id 印度尼西亚、my 马来西亚、ph 菲律宾"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "description": "取上一页响应的 cursor"
+        }
+      ]
+    },
+    {
+      "platform": "amazon",
+      "name": "Amazon 商品评论",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/amazon/reviews",
+      "endpoint_id": "raw.amazon.reviews",
+      "availability": "coming_soon",
+      "status": "beta",
+      "price": {
+        "mode": "tiered",
+        "unit_price_micros": 1500,
+        "usd_per_call": "0.001500",
+        "usd_per_1k": "1.5"
+      },
+      "description": "商品评论列表，按页翻。",
+      "source": "https://qovia.ai/docs/api-reference/raw.amazon.reviews/",
+      "parameters": [
+        {
+          "name": "asin",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]{10}$",
+            "examples": [
+              "B0BDHWDR12"
+            ]
+          },
+          "description": "商品 ASIN（10 位大写字母或数字）"
+        },
+        {
+          "name": "marketplace",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "us",
+              "uk",
+              "de",
+              "jp",
+              "sg"
+            ],
+            "default": "us"
+          },
+          "description": "站点：us 美国、uk 英国、de 德国、jp 日本、sg 新加坡"
+        },
+        {
+          "name": "page",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 1
+          },
+          "description": "页码，从 1 开始"
+        }
+      ]
+    },
+    {
+      "platform": "fliggy",
+      "name": "飞猪酒店评价",
+      "endpoint": "GET https://api.qovia.ai/v1/raw/fliggy/reviews",
+      "endpoint_id": "raw.fliggy.reviews",
+      "availability": "live",
+      "status": "beta",
+      "price": {
+        "mode": "tiered",
+        "unit_price_micros": 1500,
+        "usd_per_call": "0.001500",
+        "usd_per_1k": "1.5"
+      },
+      "description": "飞猪酒店的用户评价，按发布时间从新到旧，每页最多 100 条，用 cursor 翻页。每条含评分（10 分制）、正文、 发布时间、评价人昵称与 ID（匿名评价有 ID 时也返回）、IP 属地、入住月份、房型、出行类型、分项评分、图片和店家回复。 翻过最后一页或酒店不存在时返回空列表，不计费。",
+      "source": "https://qovia.ai/docs/api-reference/raw.fliggy.reviews/",
+      "parameters": [
+        {
+          "name": "hotel_id",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{4,14}$",
+            "examples": [
+              "10052156"
+            ]
+          },
+          "description": "飞猪酒店 ID（shid，5–15 位数字），例如 10052156"
+        },
+        {
+          "name": "cursor",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200,
+            "default": 1
+          },
+          "description": "页码，从 1 开始"
+        }
+      ]
+    }
+  ],
+  "indicative_comment_costs": [
+    {
+      "platform": "淘宝/天猫V1",
+      "usd_per_10000_comments_ideal": 6.75,
+      "assumption": "10000/20×0.0135，每页20条全部有正文且不重复，价格不含充值费；实际深度/有效率未验"
+    },
+    {
+      "platform": "京东",
+      "usd_per_10000_comments_ideal": 19.5,
+      "assumption": "10000/10×0.0195，每页10条全部有效且不重复，不含充值费；不意味着一个SKU能取1万条"
+    }
+  ],
+  "next_verification": [
+    "注册后用GET /v1/account核额度与RPM，并确认50次试用能调用淘天/JD/抖店",
+    "每平台选3个商品跨页获取，记录有效正文数、重复率、最早时间和页面终点",
+    "确认日额度、余额/试用期限、评论数据保存/展示许可、接口变更和停服退款规则",
+    "明确拼多多/美团是否现成、定制时间及价格；无端点前仍记未覆盖"
+  ]
+}

@@ -1,0 +1,3357 @@
+{
+  "source": "https://api.everyinfra.com/api/v1/social/catalog",
+  "checked_on": "2026-11-05",
+  "data": {
+    "platforms": [
+      "airbnb",
+      "alibaba1688",
+      "aliexpress",
+      "amazon",
+      "app_store",
+      "apple_maps",
+      "behance",
+      "bilibili",
+      "bing",
+      "bing_maps",
+      "bluesky",
+      "booking",
+      "capterra",
+      "clutch",
+      "company_data",
+      "craigslist",
+      "crexi",
+      "crypto_market",
+      "crypto_news",
+      "dailymotion",
+      "deviantart",
+      "dewu",
+      "dice",
+      "discord",
+      "douban",
+      "douyin",
+      "dribbble",
+      "duckduckgo",
+      "duckduckgo_maps",
+      "ebay",
+      "etsy",
+      "eventbrite",
+      "expedia",
+      "facebook",
+      "flickr",
+      "g2",
+      "gab",
+      "github",
+      "glassdoor",
+      "google_ads_transparency",
+      "google_maps_reviews",
+      "google_news",
+      "google_play",
+      "google_shopping",
+      "google_trends",
+      "indeed",
+      "instagram",
+      "iqiyi",
+      "jd",
+      "kalshi",
+      "kuaishou",
+      "lemmy",
+      "linkedin",
+      "mastodon",
+      "medium",
+      "naukri",
+      "naver",
+      "netease_music",
+      "nextdoor",
+      "odysee",
+      "patreon",
+      "pinterest",
+      "polymarket",
+      "producthunt",
+      "quora",
+      "realtor",
+      "reddit",
+      "rumble",
+      "seek",
+      "shopee",
+      "similarweb",
+      "snapchat",
+      "soundcloud",
+      "spotify",
+      "stepstone",
+      "substack",
+      "taobao",
+      "telegram",
+      "temu",
+      "thomasnet",
+      "threads",
+      "tiktok",
+      "toutiao",
+      "tripadvisor",
+      "trustpilot",
+      "truth_social",
+      "tumblr",
+      "twitch",
+      "twitter",
+      "upwork",
+      "vk",
+      "walmart",
+      "web",
+      "wechat_channels",
+      "wechat_oa",
+      "weibo",
+      "xianyu",
+      "xiaohongshu",
+      "xing",
+      "yahoo_finance",
+      "yandex",
+      "yelp",
+      "youku",
+      "youtube",
+      "zhihu",
+      "zillow"
+    ],
+    "capabilities": [
+      {
+        "platform": "douyin",
+        "action": "search",
+        "action_label": "关键词搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 600,
+        "price_cny": 0.055712,
+        "price_usd": 0.008333,
+        "optional_params": [
+          "page_token",
+          "publish_time",
+          "sort"
+        ],
+        "param_meanings": {
+          "publish_time": {
+            "description": "视频搜索的发布时间窗：unlimited 不限时间（默认）、one_day 最近 24 小时、one_week 最近 7 天、half_year 最近 6 个月。",
+            "allowed_values": [
+              "half_year",
+              "one_day",
+              "one_week",
+              "unlimited"
+            ],
+            "type": "string"
+          },
+          "sort": {
+            "description": "视频搜索排序：relevance 按相关度（默认）、newest 按最新发布、most_liked 按点赞最多。兼容旧值 general（同 relevance）和 latest（同 newest）。",
+            "allowed_values": [
+              "most_liked",
+              "newest",
+              "relevance"
+            ],
+            "type": "string"
+          },
+          "keyword": {
+            "description": "视频搜索关键词，传一个字符串，如 咖啡拉花；用于搜索视频，不是账号昵称或视频 ID。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。从第一页开始翻：传空字符串 page_token=\"\"；之后把上一页响应里的 next_page_token 原样传回取下一页，keyword、sort、publish_time 保持不变。每页算一次调用，按抖音的整页取、不截断：一页至少 limit 条（默认 10，最多 50；翻到底时可能更少），常常多出几条；抖音在相邻两页重复给的视频，已经给过的不再给。令牌 24 小时内有效，只能在同一账户、同一组参数下使用，过期或参数变了返回 422，从第一页重新开始即可；翻到底时响应里没有 next_page_token。不带 page_token 是单次调用：最多 limit 条，没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "default_limit": 10,
+        "max_limit": 50,
+        "response_fields": [
+          "next_page_token",
+          "id",
+          "url",
+          "text",
+          "media_type",
+          "video_url",
+          "like_count",
+          "comment_count",
+          "share_count",
+          "collect_count",
+          "view_count",
+          "author_name",
+          "author_id",
+          "author_douyin_id",
+          "author_uid",
+          "author_bio",
+          "author_avatar_url",
+          "author_follower_count",
+          "cover_image_url",
+          "video_width",
+          "video_height",
+          "duration_seconds",
+          "region",
+          "hashtags",
+          "posted_at",
+          "platform",
+          "image_urls",
+          "duration_sec",
+          "hashtag_ids",
+          "search_rank",
+          "author_is_verified",
+          "author_following_count",
+          "author_like_count",
+          "author_video_count",
+          "author_ip_location",
+          "title",
+          "music",
+          "download_count",
+          "forward_count",
+          "is_pinned",
+          "is_ad",
+          "video_tags",
+          "video_resolution",
+          "animated_cover_url",
+          "city",
+          "city_code",
+          "location",
+          "text_language",
+          "video_bitrates",
+          "download_url",
+          "has_watermark",
+          "video_url_expires_at",
+          "permissions",
+          "author_gender",
+          "author_age"
+        ],
+        "platform_field_meanings": {
+          "author_douyin_id": "作者抖音号。",
+          "region": "地区。",
+          "view_count": "播放量。抖音不对外公开播放量：多数结果没有这个字段，有时为 0，都不代表真实播放；判断视频热度请用 like_count(点赞)、comment_count、share_count。",
+          "media_type": "媒体类型。",
+          "search_rank": "在这次关键词搜索结果里的名次（从 1 开始）：product_search 行是商品，search 行是作品，hashtag_search 行是话题。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "author_uid": "作者（评论里是评论者）的数字用户 ID；author_id 是 secUid，两者是同一个人的两种 ID。",
+          "author_is_verified": "作者是否认证（search / user_posts / video 行上）。",
+          "author_bio": "作者主页简介（search / user_posts / video 行上）。",
+          "author_following_count": "作者关注数（search / user_posts / video 行上）。",
+          "author_like_count": "作者主页获赞总数（search / user_posts / video / transcript）。",
+          "author_video_count": "作者作品总数（search / user_posts / video 行上）。",
+          "author_ip_location": "作者 IP 属地（平台强制展示）。",
+          "music": "作品背景音乐：id、title（曲名）、author（演唱/作者）、is_original（是否原声）、duration_sec（秒）、cover_url、play_url（音频地址，可能会过期）；没有音乐信息时没有这个键。",
+          "download_count": "作品下载数。",
+          "forward_count": "作品转发数。",
+          "is_pinned": "是否置顶（作品行：作者主页置顶作品；trending：榜单置顶词）。",
+          "is_ad": "是否为广告作品。",
+          "video_tags": "平台给作品打的内容分类标签（如「美食」「探店」）。",
+          "video_width": "视频画面宽度（像素）。",
+          "video_height": "视频画面高度（像素）。",
+          "video_resolution": "视频清晰度档位原文（如 720p）。",
+          "animated_cover_url": "动态封面链接。",
+          "duration_sec": "视频时长（秒）。",
+          "hashtag_ids": "作品话题 ID 列表，与 hashtags 同序一一对应（search / user_posts / video）。",
+          "city": "城市：作品行（search / user_posts / video）是作品发布城市，平台给的是拼音写法（如 Suzhou）；xingtu_creator_rankings 是达人所在城市。",
+          "city_code": "作品发布城市的行政区划代码（如 320500）。",
+          "location": "作品定位的地点（POI）：id、name、category（地点分类）、address、district、city、province、country、city_code、latitude、longitude、cover_url、popularity_text（如 327人想去）、view_count、post_count（该地点下的作品数）、collect_count、visitor_count；作品没带定位时没有这个键。",
+          "text_language": "作品文案语言代码（如 zh；un 表示未识别）。",
+          "video_bitrates": "各清晰度播放地址：[{quality（清晰度名）, bitrate（码率，bps）, fps, is_h265（是否 H.265 编码）, url}]；地址带签名、会过期（见 video_url_expires_at）。",
+          "download_url": "作品视频的下载地址（带签名、会过期）。",
+          "has_watermark": "平台对这条作品视频文件的水印标记（true 表示带水印）。",
+          "video_url_expires_at": "播放与下载地址的失效时间（ISO 8601，UTC）；之后要重新取。",
+          "permissions": "作者给作品设的权限：can_comment（可评论）、can_download（可下载）、can_duet（可合拍）、can_stitch（可拼接）、can_share（可分享）、can_repost（可转发）、can_save（可保存）；只含平台给了的项。",
+          "author_gender": "作者性别（male / female / unknown，作者自己填的）。",
+          "author_age": "作者年龄（作者公开了才有）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "profile",
+        "action_label": "主页或对象详情",
+        "required_params": [
+          "user_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin",
+            "title": "抖音"
+          },
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "user_id": {
+            "description": "抖音用户的 secUid（通常以 MS4w 开头），用于读取账号资料；该动作不接受 since 筛选账号。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "user_id",
+          "douyin_id",
+          "nickname",
+          "bio",
+          "url",
+          "follower_count",
+          "following_count",
+          "like_count",
+          "video_count",
+          "gender",
+          "ip_location",
+          "is_verified",
+          "avatar_url",
+          "uid",
+          "background_image_url",
+          "country",
+          "language",
+          "is_live",
+          "likes_given_count",
+          "has_shop",
+          "age",
+          "has_series",
+          "platform",
+          "verify_reason"
+        ],
+        "platform_field_meanings": {
+          "douyin_id": "抖音号（用户自定义的可搜索 ID）。",
+          "nickname": "昵称。",
+          "gender": "性别。",
+          "ip_location": "IP 属地（平台强制展示，非用户填写）。",
+          "video_count": "视频数：profile、billboard_account_search 是账号的作品数，trending、billboard_rise_list、billboard_challenge_hot 是这个热点下的相关视频数。",
+          "is_live": "账号在采集时是否正在直播；属于时点状态。",
+          "uid": "数字用户 ID（profile / creator_search）；user_id 是 secUid，两者是同一账号的两种 ID。",
+          "verify_reason": "认证说明原文（profile / creator_search），企业认证或个人认证的文字；未认证的账号为空或没有这个字段。",
+          "background_image_url": "主页背景图链接。",
+          "likes_given_count": "主页公开的「喜欢」数（该账号点过赞的作品数）。",
+          "has_shop": "账号是否开通商品橱窗。",
+          "age": "账号主人年龄（profile；公开了才有）。",
+          "has_series": "账号是否开通了合集/系列（profile）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "user_posts",
+        "action_label": "用户内容",
+        "required_params": [
+          "user_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin",
+            "title": "抖音"
+          },
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "optional_params": [
+          "page_token",
+          "since"
+        ],
+        "param_meanings": {
+          "since": {
+            "description": "频道视频的最早发布日期，格式 YYYY-MM-DD；只用于 user_posts 列表，不是账号创建日期。",
+            "type": "string",
+            "format": "date"
+          },
+          "user_id": {
+            "description": "抖音用户的 secUid（通常以 MS4w 开头），不是昵称或短数字抖音号。用于定位 profile / user_posts 的账号；可从搜索结果的 author_id 或抖音用户主页链接取得。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌（user_posts / comments）。从第一页开始翻：传空字符串 page_token=\"\"；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数保持不变。令牌 24 小时内有效，只能在同一账户、同一组参数下使用，过期或参数变了返回 422，从第一页重新开始即可；翻到底时响应里没有 next_page_token（pagination.has_more 为 false）。user_posts 每页算一次调用，每页最多 100 条、最新优先，翻页时不按 since 过滤（需要时间窗请按 posted_at 自行过滤）。comments 每页最多 50 条顶层评论，按条数分档计费：每 20 条算一次，一页按 50 条算 3 次（传更小的 limit 按 limit 算），一条都没返回的档不扣费。不带 page_token 是单次调用：user_posts 取最新一批（可用 since）；comments 只读头部评论（含回复，同样每 20 条算一次），默认 20 条，limit 再大最多也只有约 50-60 条，一般没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "default_limit": 20,
+        "max_limit": 100,
+        "response_fields": [
+          "next_page_token",
+          "id",
+          "url",
+          "text",
+          "media_type",
+          "video_url",
+          "like_count",
+          "comment_count",
+          "share_count",
+          "collect_count",
+          "view_count",
+          "author_name",
+          "author_id",
+          "author_douyin_id",
+          "author_uid",
+          "author_bio",
+          "author_avatar_url",
+          "author_follower_count",
+          "cover_image_url",
+          "video_width",
+          "video_height",
+          "duration_seconds",
+          "region",
+          "hashtags",
+          "posted_at",
+          "platform",
+          "image_urls",
+          "duration_sec",
+          "hashtag_ids",
+          "search_rank",
+          "author_is_verified",
+          "author_following_count",
+          "author_like_count",
+          "author_video_count",
+          "author_ip_location",
+          "title",
+          "music",
+          "download_count",
+          "forward_count",
+          "is_pinned",
+          "is_ad",
+          "video_tags",
+          "video_resolution",
+          "animated_cover_url",
+          "city",
+          "city_code",
+          "location",
+          "text_language",
+          "video_bitrates",
+          "download_url",
+          "has_watermark",
+          "video_url_expires_at",
+          "permissions",
+          "author_gender",
+          "author_age"
+        ],
+        "platform_field_meanings": {
+          "author_douyin_id": "作者抖音号。",
+          "region": "地区。",
+          "view_count": "播放量。抖音不对外公开播放量：多数结果没有这个字段，有时为 0，都不代表真实播放；判断视频热度请用 like_count(点赞)、comment_count、share_count。",
+          "media_type": "媒体类型。",
+          "search_rank": "在这次关键词搜索结果里的名次（从 1 开始）：product_search 行是商品，search 行是作品，hashtag_search 行是话题。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "author_uid": "作者（评论里是评论者）的数字用户 ID；author_id 是 secUid，两者是同一个人的两种 ID。",
+          "author_is_verified": "作者是否认证（search / user_posts / video 行上）。",
+          "author_bio": "作者主页简介（search / user_posts / video 行上）。",
+          "author_following_count": "作者关注数（search / user_posts / video 行上）。",
+          "author_like_count": "作者主页获赞总数（search / user_posts / video / transcript）。",
+          "author_video_count": "作者作品总数（search / user_posts / video 行上）。",
+          "author_ip_location": "作者 IP 属地（平台强制展示）。",
+          "music": "作品背景音乐：id、title（曲名）、author（演唱/作者）、is_original（是否原声）、duration_sec（秒）、cover_url、play_url（音频地址，可能会过期）；没有音乐信息时没有这个键。",
+          "download_count": "作品下载数。",
+          "forward_count": "作品转发数。",
+          "is_pinned": "是否置顶（作品行：作者主页置顶作品；trending：榜单置顶词）。",
+          "is_ad": "是否为广告作品。",
+          "video_tags": "平台给作品打的内容分类标签（如「美食」「探店」）。",
+          "video_width": "视频画面宽度（像素）。",
+          "video_height": "视频画面高度（像素）。",
+          "video_resolution": "视频清晰度档位原文（如 720p）。",
+          "animated_cover_url": "动态封面链接。",
+          "duration_sec": "视频时长（秒）。",
+          "hashtag_ids": "作品话题 ID 列表，与 hashtags 同序一一对应（search / user_posts / video）。",
+          "city": "城市：作品行（search / user_posts / video）是作品发布城市，平台给的是拼音写法（如 Suzhou）；xingtu_creator_rankings 是达人所在城市。",
+          "city_code": "作品发布城市的行政区划代码（如 320500）。",
+          "location": "作品定位的地点（POI）：id、name、category（地点分类）、address、district、city、province、country、city_code、latitude、longitude、cover_url、popularity_text（如 327人想去）、view_count、post_count（该地点下的作品数）、collect_count、visitor_count；作品没带定位时没有这个键。",
+          "text_language": "作品文案语言代码（如 zh；un 表示未识别）。",
+          "video_bitrates": "各清晰度播放地址：[{quality（清晰度名）, bitrate（码率，bps）, fps, is_h265（是否 H.265 编码）, url}]；地址带签名、会过期（见 video_url_expires_at）。",
+          "download_url": "作品视频的下载地址（带签名、会过期）。",
+          "has_watermark": "平台对这条作品视频文件的水印标记（true 表示带水印）。",
+          "video_url_expires_at": "播放与下载地址的失效时间（ISO 8601，UTC）；之后要重新取。",
+          "permissions": "作者给作品设的权限：can_comment（可评论）、can_download（可下载）、can_duet（可合拍）、can_stitch（可拼接）、can_share（可分享）、can_repost（可转发）、can_save（可保存）；只含平台给了的项。",
+          "author_gender": "作者性别（male / female / unknown，作者自己填的）。",
+          "author_age": "作者年龄（作者公开了才有）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "video",
+        "action_label": "视频详情",
+        "required_params": [
+          "url"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "param_meanings": {
+          "url": {
+            "description": "目标抖音视频的完整链接，格式如 https://www.douyin.com/video/<视频ID>。video 读取该视频详情，comments 读取其评论，transcript 提取该视频的语音文稿；不要传用户主页或搜索页。",
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "id",
+          "url",
+          "text",
+          "media_type",
+          "video_url",
+          "like_count",
+          "comment_count",
+          "share_count",
+          "collect_count",
+          "view_count",
+          "author_name",
+          "author_id",
+          "author_douyin_id",
+          "author_uid",
+          "author_bio",
+          "author_avatar_url",
+          "author_follower_count",
+          "cover_image_url",
+          "video_width",
+          "video_height",
+          "duration_seconds",
+          "region",
+          "hashtags",
+          "posted_at",
+          "platform",
+          "image_urls",
+          "duration_sec",
+          "hashtag_ids",
+          "search_rank",
+          "author_is_verified",
+          "author_following_count",
+          "author_like_count",
+          "author_video_count",
+          "author_ip_location",
+          "title",
+          "music",
+          "download_count",
+          "forward_count",
+          "is_pinned",
+          "is_ad",
+          "video_tags",
+          "video_resolution",
+          "animated_cover_url",
+          "city",
+          "city_code",
+          "location",
+          "text_language",
+          "video_bitrates",
+          "download_url",
+          "has_watermark",
+          "video_url_expires_at",
+          "permissions",
+          "author_gender",
+          "author_age"
+        ],
+        "platform_field_meanings": {
+          "author_douyin_id": "作者抖音号。",
+          "region": "地区。",
+          "view_count": "播放量。抖音不对外公开播放量：多数结果没有这个字段，有时为 0，都不代表真实播放；判断视频热度请用 like_count(点赞)、comment_count、share_count。",
+          "media_type": "媒体类型。",
+          "search_rank": "在这次关键词搜索结果里的名次（从 1 开始）：product_search 行是商品，search 行是作品，hashtag_search 行是话题。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "author_uid": "作者（评论里是评论者）的数字用户 ID；author_id 是 secUid，两者是同一个人的两种 ID。",
+          "author_is_verified": "作者是否认证（search / user_posts / video 行上）。",
+          "author_bio": "作者主页简介（search / user_posts / video 行上）。",
+          "author_following_count": "作者关注数（search / user_posts / video 行上）。",
+          "author_like_count": "作者主页获赞总数（search / user_posts / video / transcript）。",
+          "author_video_count": "作者作品总数（search / user_posts / video 行上）。",
+          "author_ip_location": "作者 IP 属地（平台强制展示）。",
+          "music": "作品背景音乐：id、title（曲名）、author（演唱/作者）、is_original（是否原声）、duration_sec（秒）、cover_url、play_url（音频地址，可能会过期）；没有音乐信息时没有这个键。",
+          "download_count": "作品下载数。",
+          "forward_count": "作品转发数。",
+          "is_pinned": "是否置顶（作品行：作者主页置顶作品；trending：榜单置顶词）。",
+          "is_ad": "是否为广告作品。",
+          "video_tags": "平台给作品打的内容分类标签（如「美食」「探店」）。",
+          "video_width": "视频画面宽度（像素）。",
+          "video_height": "视频画面高度（像素）。",
+          "video_resolution": "视频清晰度档位原文（如 720p）。",
+          "animated_cover_url": "动态封面链接。",
+          "duration_sec": "视频时长（秒）。",
+          "hashtag_ids": "作品话题 ID 列表，与 hashtags 同序一一对应（search / user_posts / video）。",
+          "city": "城市：作品行（search / user_posts / video）是作品发布城市，平台给的是拼音写法（如 Suzhou）；xingtu_creator_rankings 是达人所在城市。",
+          "city_code": "作品发布城市的行政区划代码（如 320500）。",
+          "location": "作品定位的地点（POI）：id、name、category（地点分类）、address、district、city、province、country、city_code、latitude、longitude、cover_url、popularity_text（如 327人想去）、view_count、post_count（该地点下的作品数）、collect_count、visitor_count；作品没带定位时没有这个键。",
+          "text_language": "作品文案语言代码（如 zh；un 表示未识别）。",
+          "video_bitrates": "各清晰度播放地址：[{quality（清晰度名）, bitrate（码率，bps）, fps, is_h265（是否 H.265 编码）, url}]；地址带签名、会过期（见 video_url_expires_at）。",
+          "download_url": "作品视频的下载地址（带签名、会过期）。",
+          "has_watermark": "平台对这条作品视频文件的水印标记（true 表示带水印）。",
+          "video_url_expires_at": "播放与下载地址的失效时间（ISO 8601，UTC）；之后要重新取。",
+          "permissions": "作者给作品设的权限：can_comment（可评论）、can_download（可下载）、can_duet（可合拍）、can_stitch（可拼接）、can_share（可分享）、can_repost（可转发）、can_save（可保存）；只含平台给了的项。",
+          "author_gender": "作者性别（male / female / unknown，作者自己填的）。",
+          "author_age": "作者年龄（作者公开了才有）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "comments",
+        "action_label": "评论",
+        "required_params": [
+          "url"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "rows_per_unit": 20,
+        "optional_params": [
+          "page_token"
+        ],
+        "param_meanings": {
+          "url": {
+            "description": "目标抖音视频的完整链接，格式如 https://www.douyin.com/video/<视频ID>。video 读取该视频详情，comments 读取其评论，transcript 提取该视频的语音文稿；不要传用户主页或搜索页。",
+            "type": "string",
+            "format": "uri"
+          },
+          "page_token": {
+            "description": "翻页令牌（user_posts / comments）。从第一页开始翻：传空字符串 page_token=\"\"；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数保持不变。令牌 24 小时内有效，只能在同一账户、同一组参数下使用，过期或参数变了返回 422，从第一页重新开始即可；翻到底时响应里没有 next_page_token（pagination.has_more 为 false）。user_posts 每页算一次调用，每页最多 100 条、最新优先，翻页时不按 since 过滤（需要时间窗请按 posted_at 自行过滤）。comments 每页最多 50 条顶层评论，按条数分档计费：每 20 条算一次，一页按 50 条算 3 次（传更小的 limit 按 limit 算），一条都没返回的档不扣费。不带 page_token 是单次调用：user_posts 取最新一批（可用 since）；comments 只读头部评论（含回复，同样每 20 条算一次），默认 20 条，limit 再大最多也只有约 50-60 条，一般没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "default_limit": 20,
+        "max_limit": 150,
+        "response_fields": [
+          "next_page_token",
+          "id",
+          "text",
+          "like_count",
+          "reply_count",
+          "author_name",
+          "author_id",
+          "ip_location",
+          "is_hot",
+          "is_reply",
+          "reply_to_id",
+          "posted_at",
+          "video_id",
+          "platform",
+          "liked_by_author",
+          "author_avatar_url",
+          "author_uid",
+          "images",
+          "mentioned_users"
+        ],
+        "platform_field_meanings": {
+          "ip_location": "IP 属地（平台强制展示，非用户填写）。",
+          "is_reply": "是否为回复。",
+          "reply_to_id": "被回复评论 ID：comments 的回复行上是它挂在哪条顶层评论下；comment_replies 每行都是请求的那条顶层评论。",
+          "liked_by_author": "评论是否被作者点赞。作者亲自点赞的评论互动价值高。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "is_hot": "该评论是否带「热评」标记（comments）。",
+          "author_uid": "作者（评论里是评论者）的数字用户 ID；author_id 是 secUid，两者是同一个人的两种 ID。",
+          "video_id": "评论所属视频 ID（comments）。",
+          "mentioned_users": "评论里 @ 到的人：user_id（secUid）、uid（数字 ID）、nickname；没有 @ 时没有这个键。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "comment_replies",
+        "action_label": "评论回复",
+        "required_params": [
+          "url",
+          "comment_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "rows_per_unit": 20,
+        "optional_params": [
+          "page_token"
+        ],
+        "param_meanings": {
+          "url": {
+            "description": "评论所在的抖音视频链接（https://www.douyin.com/video/<视频ID>）或纯数字视频 ID，和取这条评论时 comments 用的是同一个视频。",
+            "type": "string",
+            "format": "uri"
+          },
+          "comment_id": {
+            "description": "要取回复的那条顶层评论的 ID（纯数字），取自 comments 返回的 id；reply_count 大于 0 的评论才有回复。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。第一页传空字符串 page_token=\"\"，之后把上一页响应里的 next_page_token 原样传回，其余参数不变；每页最多 20 条回复，按条数分档计费（每 20 条算一次，一条都没返回不扣费）。令牌 24 小时内有效，只能在同一账户、同一组参数下使用；翻到底时响应里没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "default_limit": 20,
+        "max_limit": 100,
+        "response_fields": [
+          "next_page_token",
+          "id",
+          "text",
+          "like_count",
+          "author_name",
+          "author_id",
+          "author_uid",
+          "author_avatar_url",
+          "ip_location",
+          "liked_by_author",
+          "is_reply",
+          "reply_to_id",
+          "reply_to_reply_id",
+          "reply_to_author_name",
+          "posted_at",
+          "video_id",
+          "images",
+          "mentioned_users",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "ip_location": "IP 属地（平台强制展示，非用户填写）。",
+          "is_reply": "是否为回复。",
+          "reply_to_id": "被回复评论 ID：comments 的回复行上是它挂在哪条顶层评论下；comment_replies 每行都是请求的那条顶层评论。",
+          "reply_to_reply_id": "这条回复回复的是楼里另一条回复时，那条回复的 ID（comment_replies）；直接回复顶层评论时没有这个键。",
+          "reply_to_author_name": "被回复的那条回复的作者昵称，和 reply_to_reply_id 同时出现（comment_replies）。",
+          "liked_by_author": "评论是否被作者点赞。作者亲自点赞的评论互动价值高。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "author_uid": "作者（评论里是评论者）的数字用户 ID；author_id 是 secUid，两者是同一个人的两种 ID。",
+          "video_id": "评论所属视频 ID（comments）。",
+          "mentioned_users": "评论里 @ 到的人：user_id（secUid）、uid（数字 ID）、nickname；没有 @ 时没有这个键。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "trending",
+        "action_label": "热榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "optional_params": [
+          "boards"
+        ],
+        "param_meanings": {
+          "boards": {
+            "description": "热榜类型，可传单个字符串或字符串数组同时查询多个榜单：hotspot 热点榜、seeding 种草榜、entertainment 娱乐榜、social 社会榜、challenge 挑战榜。不传或传空数组时默认查询 hotspot。",
+            "allowed_values": [
+              "challenge",
+              "entertainment",
+              "hotspot",
+              "seeding",
+              "social"
+            ],
+            "type": "array"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 60,
+        "response_fields": [
+          "rank",
+          "keyword",
+          "hot_value",
+          "video_count",
+          "board",
+          "image_url",
+          "event_time",
+          "sentence_id",
+          "group_id",
+          "label",
+          "word_type",
+          "article_count",
+          "is_pinned",
+          "max_rank",
+          "live_room_count",
+          "topic_view_count",
+          "sentence_tag",
+          "label_icon_url",
+          "related_music_id",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "video_count": "视频数：profile、billboard_account_search 是账号的作品数，trending、billboard_rise_list、billboard_challenge_hot 是这个热点下的相关视频数。",
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "board": "所属榜单。",
+          "event_time": "热点事件时间。",
+          "keyword": "关键词：trending 是热点词，billboard_search_hot 是上榜的搜索词，search_suggest 是抖音给出的联想搜索词。",
+          "is_pinned": "是否置顶（作品行：作者主页置顶作品；trending：榜单置顶词）。",
+          "sentence_id": "热点词 ID（trending）。",
+          "group_id": "热点事件 ID（trending）；部分热点为空。",
+          "label": "热榜角标代码（trending，数字，如热、新、爆）；0 表示没有角标。",
+          "word_type": "热点词类型代码（trending，数字）。",
+          "article_count": "热点下的相关图文数（trending）。",
+          "max_rank": "该热点在榜单上的历史最高名次（trending）。",
+          "live_room_count": "热点下的相关直播间数（trending）。",
+          "topic_view_count": "热点的浏览量（trending）；与 hot_value 是两个指标。null 表示没给，不等于 0。",
+          "sentence_tag": "热点分类代码（trending，数字）；同一代码是同一类热点。",
+          "label_icon_url": "热榜角标图链接（trending，如「热」「新」）；文字代码见 label。",
+          "related_music_id": "热点关联的背景音乐 ID（trending，部分热点有）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "transcript",
+        "action_label": "视频文稿",
+        "required_params": [
+          "url"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "param_meanings": {
+          "url": {
+            "description": "目标抖音视频的完整链接，格式如 https://www.douyin.com/video/<视频ID>。video 读取该视频详情，comments 读取其评论，transcript 提取该视频的语音文稿；不要传用户主页或搜索页。",
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "id",
+          "url",
+          "title",
+          "text",
+          "posted_at",
+          "play_count",
+          "like_count",
+          "comment_count",
+          "share_count",
+          "collect_count",
+          "author_name",
+          "author_avatar",
+          "author_follower_count",
+          "segments",
+          "video_url",
+          "audio_url",
+          "duration_sec",
+          "duration_seconds",
+          "recommend_count",
+          "author_like_count",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "author_avatar": "作者头像。",
+          "play_count": "播放量。热点宝榜单（billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion）上是平台统计的播放数；其余能力上抖音不对外公开播放量，这里的值（多为 0）不代表真实播放，热度判断请用点赞/评论/分享数。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "author_like_count": "作者主页获赞总数（search / user_posts / video / transcript）。",
+          "segments": "转写的逐句时间轴（transcript）：每句带 start、end（秒）和 text。",
+          "audio_url": "音频地址：transcript 是视频音轨（mp3），music_search、music_detail 是这段音乐的播放地址；可能会过期。",
+          "duration_sec": "视频时长（秒）。",
+          "recommend_count": "作品的推荐数（transcript）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "creator_search",
+        "action_label": "达人搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "optional_params": [
+          "follower_range",
+          "user_type"
+        ],
+        "param_meanings": {
+          "follower_range": {
+            "description": "账号发现的粉丝区间：under_1k、1k_to_10k、10k_to_100k、100k_to_1m、over_1m；不传表示不限。",
+            "allowed_values": [
+              "100k_to_1m",
+              "10k_to_100k",
+              "1k_to_10k",
+              "over_1m",
+              "under_1k"
+            ],
+            "type": "string"
+          },
+          "user_type": {
+            "description": "账号类型：general、business、verified_individual；不传表示不限。",
+            "allowed_values": [
+              "business",
+              "general",
+              "verified_individual"
+            ],
+            "type": "string"
+          },
+          "keyword": {
+            "description": "达人昵称、抖音号或相关关键词；返回账号发现结果，不是视频搜索。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 20,
+        "response_fields": [
+          "user_id",
+          "douyin_id",
+          "nickname",
+          "url",
+          "avatar_url",
+          "follower_count",
+          "gender",
+          "is_verified",
+          "verify_reason",
+          "is_live",
+          "uid",
+          "source_keyword",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "douyin_id": "抖音号（用户自定义的可搜索 ID）。",
+          "nickname": "昵称。",
+          "gender": "性别。",
+          "source_keyword": "本行命中的搜索关键词。",
+          "is_live": "账号在采集时是否正在直播；属于时点状态。",
+          "uid": "数字用户 ID（profile / creator_search）；user_id 是 secUid，两者是同一账号的两种 ID。",
+          "verify_reason": "认证说明原文（profile / creator_search），企业认证或个人认证的文字；未认证的账号为空或没有这个字段。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "creator_audience",
+        "action_label": "达人粉丝画像",
+        "required_params": [
+          "user_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "optional_params": [
+          "dimension"
+        ],
+        "param_meanings": {
+          "dimension": {
+            "description": "达人粉丝画像维度：device_price_band 设备价格带（默认）、gender 性别、age 年龄、province 省份。",
+            "allowed_values": [
+              "age",
+              "device_price_band",
+              "gender",
+              "province"
+            ],
+            "type": "string"
+          },
+          "user_id": {
+            "description": "抖音用户的 secUid（通常以 MS4w 开头），不是昵称或短数字抖音号。用于定位 profile / user_posts 的账号；可从搜索结果的 author_id 或抖音用户主页链接取得。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "user_id",
+          "audience_distribution",
+          "audience_tgi",
+          "dimension_code",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "audience_distribution": "粉丝受众分布桶；value 是 0–1 的份额小数，不是百分数、人数或实际买家占比。",
+          "audience_tgi": "受众桶相对平台平均的 TGI 指数；与份额 value 是独立量纲，不是人数或成交占比。",
+          "dimension_code": "画像维度：device_price_band、gender、age 或 province；由请求 option 映射，不把领先分布桶标签当维度。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "creator_trend",
+        "action_label": "达人涨粉趋势",
+        "required_params": [
+          "user_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "user_id": {
+            "description": "抖音用户的 secUid（通常以 MS4w 开头），不是昵称或短数字抖音号。用于定位 profile / user_posts 的账号；可从搜索结果的 author_id 或抖音用户主页链接取得。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "user_id",
+          "follower_trend",
+          "average_follower_count",
+          "dimension_code",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "dimension_code": "画像维度：device_price_band、gender、age 或 province；由请求 option 映射，不把领先分布桶标签当维度。",
+          "follower_trend": "粉丝数量随日期变化的序列。",
+          "average_follower_count": "趋势窗口内的平均粉丝量。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "creator_benchmark",
+        "action_label": "同类达人对比",
+        "required_params": [
+          "user_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "user_id": {
+            "description": "抖音用户的 secUid（通常以 MS4w 开头），不是昵称或短数字抖音号。用于定位 profile / user_posts 的账号；可从搜索结果的 author_id 或抖音用户主页链接取得。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "user_id",
+          "average_post_count",
+          "average_comment_count",
+          "average_share_count",
+          "average_follower_growth",
+          "average_like_count",
+          "post_count_percentile",
+          "comment_count_percentile",
+          "share_count_percentile",
+          "follower_growth_percentile",
+          "like_count_percentile",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "average_post_count": "对比窗口内的平均发布量。",
+          "average_comment_count": "对比窗口内的平均评论量。",
+          "average_share_count": "对比窗口内的平均分享量。",
+          "average_follower_growth": "对比窗口内的平均新增粉丝量。",
+          "average_like_count": "对比窗口内的平均点赞量。",
+          "post_count_percentile": "发布量在同类账号中的百分位。",
+          "comment_count_percentile": "评论量在同类账号中的百分位。",
+          "share_count_percentile": "分享量在同类账号中的百分位。",
+          "follower_growth_percentile": "新增粉丝量在同类账号中的百分位。",
+          "like_count_percentile": "点赞量在同类账号中的百分位。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_creator_search",
+        "action_label": "星图达人搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "星图达人广场的创作者关键词；返回商业 ID、指数、区间与三档报价，但不返回 douyin_id，不能直接作为 analytics/rate_card 入参。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 20,
+        "response_fields": [
+          "creator_id",
+          "user_id",
+          "nickname",
+          "follower_count",
+          "gender",
+          "city",
+          "province",
+          "creator_score",
+          "engagement_rate_30d",
+          "expected_play_count",
+          "expected_natural_play_count",
+          "interaction_median_30d",
+          "play_over_rate_30d",
+          "follower_growth_30d",
+          "follower_growth_rate_15d",
+          "content_themes",
+          "ecommerce_level",
+          "ecommerce_score",
+          "gmv_30d_range",
+          "gpm_30d_range",
+          "average_order_value_30d_range",
+          "commercial_index",
+          "conversion_index",
+          "spread_index",
+          "shopping_index",
+          "quote_1_20s_cny",
+          "quote_20_60s_cny",
+          "quote_60s_plus_cny",
+          "platform"
+        ],
+        "field_note": "Occasionally only creator_id, user_id, nickname, follower_count, city, expected_play_count and the e-commerce fields (ecommerce_level, ecommerce_score, gmv_30d_range) are returned; scores, rates, growth, content themes and quotes are absent then.",
+        "platform_field_meanings": {
+          "nickname": "昵称。",
+          "gender": "性别。",
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "expected_play_count": "星图预期播放量；属于平台估计，不是实际播放结果。",
+          "expected_natural_play_count": "星图预期自然播放量；属于平台估计。",
+          "creator_score": "星图达人综合指数；只在同一次取得的结果中比较。",
+          "engagement_rate_30d": "星图近 30 天互动率。",
+          "interaction_median_30d": "星图近 30 天互动量中位数。",
+          "play_over_rate_30d": "星图近 30 天完播率。",
+          "follower_growth_30d": "星图近 30 天涨粉量。",
+          "follower_growth_rate_15d": "星图近 15 天涨粉率。",
+          "content_themes": "平台给达人标记的内容主题标签。",
+          "ecommerce_score": "星图电商能力分；是平台指标，不是实际成交额。",
+          "ecommerce_level": "星图电商能力等级。",
+          "gmv_30d_range": "星图近 30 天 GMV 区间；是区间/估计，不是精确成交额。",
+          "gpm_30d_range": "星图近 30 天 GPM 区间字符串；不改写为精确值。",
+          "average_order_value_30d_range": "星图近 30 天客单价区间字符串；不是真实订单明细。",
+          "commercial_index": "星图商业价值指数。",
+          "conversion_index": "星图转化能力指数。",
+          "spread_index": "星图传播能力指数。",
+          "shopping_index": "星图种草能力指数。",
+          "quote_1_20s_cny": "1–20 秒视频报价，人民币元。",
+          "quote_20_60s_cny": "20–60 秒视频报价，人民币元。",
+          "quote_60s_plus_cny": "60 秒以上视频报价，人民币元。",
+          "city": "城市：作品行（search / user_posts / video）是作品发布城市，平台给的是拼音写法（如 Suzhou）；xingtu_creator_rankings 是达人所在城市。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_creator_analytics",
+        "action_label": "星图达人分析",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id），从普通 creator_search 结果取得；不是 secUid、昵称或星图 ID。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "creator_type",
+          "follower_count",
+          "average_play_count",
+          "city",
+          "province",
+          "gender",
+          "category_id",
+          "content_themes",
+          "tags",
+          "creator_grade",
+          "is_xingtu_creator",
+          "ecommerce_enabled",
+          "lowest_quote_cny",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "gender": "性别。",
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "lowest_quote_cny": "星图展示的最低合作报价；单位未经核实，请勿直接用于报价。是报价，不是成交价。",
+          "content_themes": "平台给达人标记的内容主题标签。",
+          "creator_type": "星图返回的达人类型。",
+          "average_play_count": "星图返回的平均播放量。",
+          "category_id": "星图达人分类 ID。",
+          "creator_grade": "星图达人等级。",
+          "is_xingtu_creator": "是否为星图达人。",
+          "ecommerce_enabled": "是否具备星图电商能力标记。",
+          "city": "城市：作品行（search / user_posts / video）是作品发布城市，平台给的是拼音写法（如 Suzhou）；xingtu_creator_rankings 是达人所在城市。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_rate_card",
+        "action_label": "星图达人报价",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id），从普通 creator_search 结果取得；不是 secUid、昵称或星图 ID。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "rate_tiers",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "rate_tiers": "星图报价档位；每档保留形式说明、实际报价（price_cny）、原报价（list_price_cny）、结算说明、视频类型与开放状态；报价单位是人民币元。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_creator_rankings",
+        "action_label": "星图达人榜单",
+        "required_params": [
+          "industry",
+          "ranking_type",
+          "time_window"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "industry": {
+            "description": "星图商业达人榜的行业：beauty、electronics、food_beverage、apparel_accessories、automotive、mother_baby_pets、household_goods。",
+            "allowed_values": [
+              "apparel_accessories",
+              "automotive",
+              "beauty",
+              "electronics",
+              "food_beverage",
+              "household_goods",
+              "mother_baby_pets"
+            ],
+            "type": "string"
+          },
+          "ranking_type": {
+            "description": "星图榜单类型：top_creators、rising_stars、sales_champions、viral_drivers、paid_ad_performers、head_tier 或 all_top。",
+            "allowed_values": [
+              "all_top",
+              "head_tier",
+              "paid_ad_performers",
+              "rising_stars",
+              "sales_champions",
+              "top_creators",
+              "viral_drivers"
+            ],
+            "type": "string"
+          },
+          "time_window": {
+            "description": "榜单时间窗：latest_weekly、latest_monthly、all_history_weekly 或 all_history_monthly。",
+            "allowed_values": [
+              "all_history_monthly",
+              "all_history_weekly",
+              "latest_monthly",
+              "latest_weekly"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 5,
+        "max_limit": 5,
+        "response_fields": [
+          "creator_id",
+          "user_id",
+          "url",
+          "nickname",
+          "avatar_url",
+          "gender",
+          "city",
+          "province",
+          "follower_count",
+          "cpm_cny",
+          "completed_order_range",
+          "repurchase_rate_range",
+          "item_order_rate",
+          "average_view_count",
+          "industry",
+          "rank",
+          "previous_rank",
+          "ranking_score",
+          "is_new",
+          "ranking_board",
+          "period_days",
+          "snapshot_date",
+          "industry_tags",
+          "primary_tag",
+          "industry_id",
+          "top_videos",
+          "source_kind",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "nickname": "昵称。",
+          "gender": "性别。",
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "cpm_cny": "星图榜单展示的千次曝光成本，人民币元。",
+          "completed_order_range": "已完成品牌合作订单的平台区间字符串；不是精确订单数。",
+          "repurchase_rate_range": "客户复购率的平台区间字符串；不是精确比率。",
+          "item_order_rate": "星图展示的内容下单率。",
+          "average_view_count": "榜单快照内的平均视频播放量；话题榜（billboard_topic_hot）是话题下作品的平均播放量。",
+          "previous_rank": "同榜单上一期排名。",
+          "ranking_score": "星图榜单综合分；只在同一榜单与时间窗内比较。",
+          "is_new": "是否为本期新进榜达人。",
+          "ranking_board": "星图榜单展示名称。",
+          "period_days": "榜单统计周期天数。",
+          "snapshot_date": "榜单快照日期，格式 YYYYMMDD。",
+          "source_kind": "数据来源类型；目前只接受并返回 ranking。",
+          "city": "城市：作品行（search / user_posts / video）是作品发布城市，平台给的是拼音写法（如 Suzhou）；xingtu_creator_rankings 是达人所在城市。",
+          "industry_tags": "达人行业标签（xingtu_creator_rankings，如 生活）。",
+          "primary_tag": "达人主内容标签（xingtu_creator_rankings，如 随拍）。",
+          "industry_id": "星图行业 ID（xingtu_creator_rankings），与 industry 对应。",
+          "top_videos": "达人代表作品（xingtu_creator_rankings）：[{id, url, play_count（播放数）}]。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "product_search",
+        "action_label": "商品搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 960,
+        "price_cny": 0.089139,
+        "price_usd": 0.013333,
+        "market_products": [
+          {
+            "id": "douyin",
+            "title": "抖音"
+          },
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "抖音商城商品关键词；返回的是商品搜索结果，不能解释成某位达人历史带货商品。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 5,
+        "max_limit": 5,
+        "response_fields": [
+          "product_id",
+          "promotion_id",
+          "title",
+          "url",
+          "image_url",
+          "white_image_url",
+          "price_cny",
+          "price_cny_minor",
+          "price_label",
+          "monthly_sales",
+          "good_review_ratio",
+          "sales_trend",
+          "category_path",
+          "category_ids",
+          "category_depth",
+          "shop_id",
+          "shop_name",
+          "shop_logo_url",
+          "shop_score",
+          "commission_rate_percent",
+          "commission_cny",
+          "cooperating_creator_count",
+          "tags",
+          "source_keyword",
+          "search_rank",
+          "recommend_reason",
+          "platform"
+        ],
+        "field_note": "When the primary source is unavailable, results come from a backup source that returns product_id, title, url, image_url, price_cny, price_cny_minor, shop_id, source_keyword and search_rank only; promotion_id, white_image_url, price_label, monthly_sales, good_review_ratio, sales_trend, category_path, category_ids, category_depth, shop_name, shop_logo_url, shop_score, commission_rate_percent, commission_cny, cooperating_creator_count, tags and recommend_reason are then absent. Listed prices of a tenth of a yuan or less are lead-in prices and are left out.",
+        "platform_field_meanings": {
+          "source_keyword": "本行命中的搜索关键词。",
+          "product_id": "抖音商城商品稳定 ID。",
+          "promotion_id": "抖音带货计划中的推广 ID。",
+          "white_image_url": "商品白底图 URL。",
+          "price_cny": "商品展示价格，人民币元。",
+          "price_cny_minor": "商品展示价格，人民币分的整数值。",
+          "price_label": "商品价格标签，例如到手价。",
+          "monthly_sales": "商品近 30 天销量。",
+          "good_review_ratio": "商品好评率百分比。",
+          "sales_trend": "商品近 30 天每日销量序列。",
+          "category_path": "商品从一级到叶子类目的名称路径。",
+          "category_depth": "商品类目路径深度。",
+          "shop_id": "抖音商城店铺 ID。",
+          "shop_name": "抖音商城店铺名称。",
+          "shop_logo_url": "店铺 Logo URL，可能带有效期。",
+          "shop_score": "店铺公开体验分（如有）。",
+          "commission_rate_percent": "公开带货佣金比例。",
+          "commission_cny": "按当前展示价计算的佣金金额，人民币。",
+          "cooperating_creator_count": "商品带货计划显示的合作达人数；不能反推某位指定达人卖过该商品。",
+          "search_rank": "在这次关键词搜索结果里的名次（从 1 开始）：product_search 行是商品，search 行是作品，hashtag_search 行是话题。",
+          "category_ids": "商品类目 ID 路径，与 category_path 同序（product_search）。",
+          "recommend_reason": "商品搜索结果上的推荐理由原文（product_search）；没有时没有这个键。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "product_detail",
+        "action_label": "商品详情",
+        "required_params": [
+          "product_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 960,
+        "price_cny": 0.089139,
+        "price_usd": 0.013333,
+        "market_products": [
+          {
+            "id": "douyin",
+            "title": "抖音"
+          },
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "product_id": {
+            "description": "抖音商城商品数字 ID；从 product_search 或 live_product_search 结果取得，不是 SKU ID、推广 ID 或商品标题。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "product_id",
+          "title",
+          "price_cny",
+          "discount_price_cny",
+          "sales_text",
+          "sold_count",
+          "shop_id",
+          "shop_name",
+          "shop_avatar_url",
+          "image_url",
+          "main_image_urls",
+          "detail_image_urls",
+          "assurances",
+          "shipping_fee_text",
+          "shipping_estimate_text",
+          "variant_groups",
+          "on_sale",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "product_id": "抖音商城商品稳定 ID。",
+          "price_cny": "商品展示价格，人民币元。",
+          "shop_id": "抖音商城店铺 ID。",
+          "shop_name": "抖音商城店铺名称。",
+          "discount_price_cny": "商品当前公开优惠价，人民币元；缺失时不从原价推算。",
+          "sold_count": "商品详情当前公开的已售数量；是采集时快照，不等于指定达人销量。",
+          "sales_text": "商品详情公开销量原文。",
+          "shop_avatar_url": "抖音商城店铺头像 URL。",
+          "main_image_urls": "商品头图/轮播图 URL 列表。",
+          "detail_image_urls": "商品详情长图 URL 列表。",
+          "assurances": "商品公开服务保障标签。",
+          "shipping_fee_text": "商品公开运费或发货地说明原文。",
+          "shipping_estimate_text": "商品公开预计发货说明原文。",
+          "variant_groups": "商品规格组与可选项；只保留规格名、选项名和公开规格 ID。",
+          "on_sale": "商品在采集时是否显示在售。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "live_product_search",
+        "action_label": "直播商品搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 40,
+        "price_cny": 0.003714,
+        "price_usd": 0.000556,
+        "market_products": [
+          {
+            "id": "douyin",
+            "title": "抖音"
+          },
+          {
+            "id": "douyin_creator",
+            "title": "抖音达人"
+          }
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "抖音商城商品关键词；只返回采集时带 live 标记和直播间 ID 的商品，不代表指定达人的历史带货记录。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 3,
+        "max_limit": 3,
+        "response_fields": [
+          "product_id",
+          "sku_id",
+          "title",
+          "image_url",
+          "price_cny",
+          "shop_id",
+          "live_room_id",
+          "is_live_product",
+          "source_keyword",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "source_keyword": "本行命中的搜索关键词。",
+          "product_id": "抖音商城商品稳定 ID。",
+          "price_cny": "商品展示价格，人民币元。",
+          "shop_id": "抖音商城店铺 ID。",
+          "sku_id": "抖音商城 SKU ID；与商品 product_id 不是同一标识。",
+          "live_room_id": "采集时挂载该商品的直播间 ID；只表示当前直播搜索命中。",
+          "is_live_product": "是否由当前直播商品搜索明确返回；不是历史直播归因。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "hashtag_search",
+        "action_label": "话题搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 1120,
+        "price_cny": 0.103995,
+        "price_usd": 0.015556,
+        "param_meanings": {
+          "keyword": {
+            "description": "话题关键词，例如 美食；返回名字里含这个词的抖音话题，带最近 7 天（到中国时间昨天为止）的热度、作品数、点赞和播放。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 200,
+        "response_fields": [
+          "hashtag_id",
+          "hashtag_name",
+          "search_rank",
+          "heat_index",
+          "period_video_count",
+          "period_like_count",
+          "period_view_count",
+          "period_start",
+          "period_end",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "search_rank": "在这次关键词搜索结果里的名次（从 1 开始）：product_search 行是商品，search 行是作品，hashtag_search 行是话题。",
+          "hashtag_id": "话题 ID（纯数字字符串）；作为 hashtag_detail 的 hashtag_id 传回可读这个话题的累计数据。",
+          "hashtag_name": "话题名，不带 #。",
+          "heat_index": "话题在统计时段里的热度指数（hashtag_search），抖音自有指标，只在同一次结果里比较。",
+          "period_video_count": "统计时段里这个话题下的作品数（hashtag_search）。",
+          "period_like_count": "统计时段里这个话题下作品获得的点赞数（hashtag_search）。",
+          "period_view_count": "统计时段里这个话题下作品的播放量（hashtag_search），是平台给的话题统计。",
+          "period_start": "统计时段第一天，YYYY-MM-DD（hashtag_search）；固定是到中国时间昨天为止的最近 7 天。",
+          "period_end": "统计时段最后一天，YYYY-MM-DD（hashtag_search），即中国时间的昨天。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "hashtag_detail",
+        "action_label": "话题详情",
+        "required_params": [
+          "hashtag_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 1120,
+        "price_cny": 0.103995,
+        "price_usd": 0.015556,
+        "param_meanings": {
+          "hashtag_id": {
+            "description": "话题 ID，纯数字（例如 1767586897793101），取自 hashtag_search 返回行的 hashtag_id；不是话题名。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "hashtag_id",
+          "hashtag_name",
+          "total_view_count",
+          "participant_count",
+          "created_at",
+          "url",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "hashtag_id": "话题 ID（纯数字字符串）；作为 hashtag_detail 的 hashtag_id 传回可读这个话题的累计数据。",
+          "hashtag_name": "话题名，不带 #。",
+          "total_view_count": "话题累计播放量（hashtag_detail、billboard_topic_hot），从话题创建起算，是平台给的话题统计。",
+          "participant_count": "参与过这个话题的用户数（hashtag_detail），累计值。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_video_hot",
+        "action_label": "热点宝视频热榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "board",
+          "keyword",
+          "page_token",
+          "time_window"
+        ],
+        "param_meanings": {
+          "board": {
+            "description": "榜单：all 总榜（默认）/ follower_growth 高涨粉率榜 / like_rate 高点赞率榜。",
+            "allowed_values": [
+              "all",
+              "follower_growth",
+              "like_rate"
+            ],
+            "type": "string"
+          },
+          "keyword": {
+            "description": "只看和这个关键词相关的作品（可选），例如 美食；不传是全站榜单。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 50 条、算一次调用：抖音会滤掉一部分作品，一页常常不到 50 条，不代表到底；令牌 24 小时内有效；翻到底时没有 next_page_token（每个榜单最多约 1000 条）。",
+            "type": "string"
+          },
+          "time_window": {
+            "description": "统计时间窗：1h 最近 1 小时 / 1d 最近 24 小时（默认）/ 3d 最近 3 天 / 7d 最近 7 天。",
+            "allowed_values": [
+              "1d",
+              "1h",
+              "3d",
+              "7d"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 50,
+        "limit_ignored": true,
+        "page_size_varies": true,
+        "response_fields": [
+          "id",
+          "url",
+          "text",
+          "media_type",
+          "image_count",
+          "cover_image_url",
+          "video_url",
+          "duration_seconds",
+          "duration_sec",
+          "author_name",
+          "author_avatar_url",
+          "author_follower_count",
+          "play_count",
+          "like_count",
+          "like_rate",
+          "new_follower_count",
+          "follower_growth_rate",
+          "hot_value",
+          "posted_at",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "play_count": "播放量。热点宝榜单（billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion）上是平台统计的播放数；其余能力上抖音不对外公开播放量，这里的值（多为 0）不代表真实播放，热度判断请用点赞/评论/分享数。",
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "media_type": "媒体类型。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "duration_sec": "视频时长（秒）。",
+          "image_count": "图文作品的图片张数（热点宝视频榜，media_type 为 image 时才有）。",
+          "like_rate": "点赞率（热点宝视频榜）：like_count ÷ play_count，小数，如 0.0118 即 1.18%。",
+          "new_follower_count": "这条作品带来的新增关注数（热点宝视频榜）。",
+          "follower_growth_rate": "涨粉率（热点宝视频榜）：平台给的小数，约等于 new_follower_count ÷ play_count。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_low_fan_explosion",
+        "action_label": "热点宝低粉爆款榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "keyword",
+          "page_token",
+          "time_window"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "只看和这个关键词相关的作品（可选），例如 美食；不传是全站榜单。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 50 条、算一次调用：抖音会滤掉一部分作品，一页常常不到 50 条，不代表到底；令牌 24 小时内有效；翻到底时没有 next_page_token（每个榜单最多约 1000 条）。",
+            "type": "string"
+          },
+          "time_window": {
+            "description": "统计时间窗：1h 最近 1 小时 / 1d 最近 24 小时（默认）/ 3d 最近 3 天 / 7d 最近 7 天。",
+            "allowed_values": [
+              "1d",
+              "1h",
+              "3d",
+              "7d"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 50,
+        "limit_ignored": true,
+        "page_size_varies": true,
+        "response_fields": [
+          "id",
+          "url",
+          "text",
+          "media_type",
+          "image_count",
+          "cover_image_url",
+          "video_url",
+          "duration_seconds",
+          "duration_sec",
+          "author_name",
+          "author_avatar_url",
+          "author_follower_count",
+          "play_count",
+          "like_count",
+          "like_rate",
+          "new_follower_count",
+          "follower_growth_rate",
+          "hot_value",
+          "posted_at",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "play_count": "播放量。热点宝榜单（billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion）上是平台统计的播放数；其余能力上抖音不对外公开播放量，这里的值（多为 0）不代表真实播放，热度判断请用点赞/评论/分享数。",
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "media_type": "媒体类型。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "duration_sec": "视频时长（秒）。",
+          "image_count": "图文作品的图片张数（热点宝视频榜，media_type 为 image 时才有）。",
+          "like_rate": "点赞率（热点宝视频榜）：like_count ÷ play_count，小数，如 0.0118 即 1.18%。",
+          "new_follower_count": "这条作品带来的新增关注数（热点宝视频榜）。",
+          "follower_growth_rate": "涨粉率（热点宝视频榜）：平台给的小数，约等于 new_follower_count ÷ play_count。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_high_completion",
+        "action_label": "热点宝高完播率榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "keyword",
+          "page_token",
+          "time_window"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "只看和这个关键词相关的作品（可选），例如 美食；不传是全站榜单。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 50 条、算一次调用：抖音会滤掉一部分作品，一页常常不到 50 条，不代表到底；令牌 24 小时内有效；翻到底时没有 next_page_token（每个榜单最多约 1000 条）。",
+            "type": "string"
+          },
+          "time_window": {
+            "description": "统计时间窗：1h 最近 1 小时 / 1d 最近 24 小时（默认）/ 3d 最近 3 天 / 7d 最近 7 天。",
+            "allowed_values": [
+              "1d",
+              "1h",
+              "3d",
+              "7d"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 50,
+        "limit_ignored": true,
+        "page_size_varies": true,
+        "response_fields": [
+          "id",
+          "url",
+          "text",
+          "media_type",
+          "image_count",
+          "cover_image_url",
+          "video_url",
+          "duration_seconds",
+          "duration_sec",
+          "author_name",
+          "author_avatar_url",
+          "author_follower_count",
+          "play_count",
+          "like_count",
+          "like_rate",
+          "new_follower_count",
+          "follower_growth_rate",
+          "hot_value",
+          "posted_at",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "play_count": "播放量。热点宝榜单（billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion）上是平台统计的播放数；其余能力上抖音不对外公开播放量，这里的值（多为 0）不代表真实播放，热度判断请用点赞/评论/分享数。",
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "media_type": "媒体类型。",
+          "author_avatar_url": "作者头像链接：search / user_posts / video 行上是博主的，comments 行上是评论者的。",
+          "video_url": "视频播放地址（带签名、会过期，要留存请及时下载）；图文笔记或来源没给时为 null。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "duration_sec": "视频时长（秒）。",
+          "image_count": "图文作品的图片张数（热点宝视频榜，media_type 为 image 时才有）。",
+          "like_rate": "点赞率（热点宝视频榜）：like_count ÷ play_count，小数，如 0.0118 即 1.18%。",
+          "new_follower_count": "这条作品带来的新增关注数（热点宝视频榜）。",
+          "follower_growth_rate": "涨粉率（热点宝视频榜）：平台给的小数，约等于 new_follower_count ÷ play_count。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_search_hot",
+        "action_label": "热点宝搜索热榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "keyword",
+          "page_token",
+          "time_window"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "只看含这个词的搜索词（可选），例如 美食；不传是全站搜索热榜。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页（前 50 个词）；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 50 个词、算一次调用；令牌 24 小时内有效；翻到底时没有 next_page_token。",
+            "type": "string"
+          },
+          "time_window": {
+            "description": "统计时间窗：1h 最近 1 小时 / 1d 最近 24 小时（默认）/ 3d 最近 3 天 / 7d 最近 7 天。",
+            "allowed_values": [
+              "1d",
+              "1h",
+              "3d",
+              "7d"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 50,
+        "limit_ignored": true,
+        "response_fields": [
+          "rank",
+          "keyword",
+          "hot_value",
+          "search_trend",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "keyword": "关键词：trending 是热点词，billboard_search_hot 是上榜的搜索词，search_suggest 是抖音给出的联想搜索词。",
+          "search_trend": "这个搜索词的逐日搜索热度（billboard_search_hot）：[{date（YYYY-MM-DD）, value}]，日期从早到晚、最后一天是最近一个完整日（中国时间），最多 14 天（新上榜的词更短）；默认时间窗 1d 下最后一天的 value 等于 hot_value。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_account_search",
+        "action_label": "热点宝账号搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "page_token"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "账号关键词，例如 美食；返回相关的抖音账号和它们的粉丝数、获赞数、作品数。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 30 个账号（有时少一两个，不代表到底）、算一次调用；令牌 24 小时内有效；翻到底时没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 30,
+        "limit_ignored": true,
+        "page_size_varies": true,
+        "response_fields": [
+          "user_id",
+          "nickname",
+          "url",
+          "avatar_url",
+          "follower_count",
+          "like_count",
+          "video_count",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "nickname": "昵称。",
+          "video_count": "视频数：profile、billboard_account_search 是账号的作品数，trending、billboard_rise_list、billboard_challenge_hot 是这个热点下的相关视频数。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "music_search",
+        "action_label": "音乐搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 576,
+        "price_cny": 0.053483,
+        "price_usd": 0.008,
+        "optional_params": [
+          "page_token"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "音乐关键词：歌名、歌手或原声名，例如 周杰伦；返回抖音音乐库里的音乐和原声。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 10 首、算一次调用；令牌 24 小时内有效；翻到底时没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 10,
+        "limit_ignored": true,
+        "response_fields": [
+          "id",
+          "url",
+          "title",
+          "author_name",
+          "duration_seconds",
+          "duration_sec",
+          "use_count",
+          "cover_image_url",
+          "audio_url",
+          "lyric_url",
+          "tags",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "audio_url": "音频地址：transcript 是视频音轨（mp3），music_search、music_detail 是这段音乐的播放地址；可能会过期。",
+          "duration_sec": "视频时长（秒）。",
+          "use_count": "用这段音乐发过的作品数（music_search、music_detail），即抖音音乐页上的「N 人使用」。",
+          "lyric_url": "歌词文件链接（music_search、music_detail，平台给了才有）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "search_suggest",
+        "action_label": "搜索联想词",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 576,
+        "price_cny": 0.053483,
+        "price_usd": 0.008,
+        "param_meanings": {
+          "keyword": {
+            "description": "搜索框里输入的词，例如 人工智能；返回抖音搜索框给出的联想词，按抖音给的顺序。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 10,
+        "max_limit": 10,
+        "response_fields": [
+          "rank",
+          "keyword",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "keyword": "关键词：trending 是热点词，billboard_search_hot 是上榜的搜索词，search_suggest 是抖音给出的联想搜索词。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_rise_list",
+        "action_label": "热点宝上升热点榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "keyword",
+          "page_token"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "只看含这个词的热点（可选），例如 游戏；不传是全站上升热点榜。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页（前 50 个热点）；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 50 个、算一次调用；令牌 24 小时内有效；翻到底时没有 next_page_token。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 50,
+        "limit_ignored": true,
+        "response_fields": [
+          "rank",
+          "rank_change",
+          "title",
+          "topic_id",
+          "hot_value",
+          "video_count",
+          "category",
+          "created_at",
+          "hot_trend",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "video_count": "视频数：profile、billboard_account_search 是账号的作品数，trending、billboard_rise_list、billboard_challenge_hot 是这个热点下的相关视频数。",
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "rank_change": "名次变化（billboard_rise_list）：比上一次榜单快照上升了几名，负数是下降。",
+          "topic_id": "热点宝里这个热点的 ID（billboard_rise_list、billboard_challenge_hot），同一热点在不同时间的榜上相同。",
+          "hot_trend": "这个热点最近的热度走势（billboard_rise_list 按小时、billboard_challenge_hot 约每 10 分钟一个点）：[{time（UTC，ISO 8601）, hot_value}]，从早到晚。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_challenge_hot",
+        "action_label": "热点宝挑战热榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "returns_list": true,
+        "available": true,
+        "default_limit": 50,
+        "max_limit": 50,
+        "limit_over_max": "capped",
+        "response_fields": [
+          "rank",
+          "title",
+          "topic_id",
+          "hot_value",
+          "video_count",
+          "created_at",
+          "hot_trend",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "video_count": "视频数：profile、billboard_account_search 是账号的作品数，trending、billboard_rise_list、billboard_challenge_hot 是这个热点下的相关视频数。",
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "topic_id": "热点宝里这个热点的 ID（billboard_rise_list、billboard_challenge_hot），同一热点在不同时间的榜上相同。",
+          "hot_trend": "这个热点最近的热度走势（billboard_rise_list 按小时、billboard_challenge_hot 约每 10 分钟一个点）：[{time（UTC，ISO 8601）, hot_value}]，从早到晚。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "billboard_topic_hot",
+        "action_label": "热点宝话题热榜",
+        "required_params": [],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "optional_params": [
+          "keyword",
+          "page_token",
+          "time_window"
+        ],
+        "param_meanings": {
+          "keyword": {
+            "description": "只看名字里含这个词的话题（可选），例如 美食；不传是全站话题热榜。",
+            "type": "string"
+          },
+          "page_token": {
+            "description": "翻页令牌。不传是第 1 页（前 50 个话题）；之后把上一页响应里的 next_page_token 原样传回取下一页，其余参数不变。每页最多 50 个、算一次调用；令牌 24 小时内有效；翻到底时没有 next_page_token（每个榜最多约 1000 个）。",
+            "type": "string"
+          },
+          "time_window": {
+            "description": "统计时间窗：1h 最近 1 小时 / 1d 最近 24 小时（默认）/ 3d 最近 3 天 / 7d 最近 7 天。",
+            "allowed_values": [
+              "1d",
+              "1h",
+              "3d",
+              "7d"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "pagination": {
+          "page_token": true,
+          "token_ttl_hours": 24
+        },
+        "page_size": 50,
+        "limit_ignored": true,
+        "response_fields": [
+          "rank",
+          "hashtag_id",
+          "hashtag_name",
+          "hot_value",
+          "total_view_count",
+          "total_video_count",
+          "average_view_count",
+          "cover_image_url",
+          "created_at",
+          "daily_trend",
+          "next_page_token",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "hot_value": "热度值，抖音自有指标，只在同一榜单、同一时间窗内可比：trending 是热榜热度（热点榜 hotspot 的行上常常为空）；热点宝视频榜（billboard_video_hot 等）是榜单热度分，行按它从高到低排；billboard_search_hot 是这个词在时间窗里的搜索热度；billboard_rise_list、billboard_challenge_hot 是热点热度，billboard_topic_hot 是话题在时间窗里的热度分。",
+          "rank": "名次（从 1 开始）：trending 是热榜排名，xingtu_creator_rankings 是星图榜单里的名次，billboard_search_hot 是搜索热榜名次，search_suggest 是联想词在抖音搜索框里的顺序；billboard_rise_list、billboard_challenge_hot、billboard_topic_hot 是热点宝榜单名次（翻页接着往下数）。",
+          "average_view_count": "榜单快照内的平均视频播放量；话题榜（billboard_topic_hot）是话题下作品的平均播放量。",
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "next_page_token": "翻页令牌（search / user_posts / comments / comment_replies / billboard_video_hot / billboard_low_fan_explosion / billboard_high_completion / billboard_account_search / music_search / billboard_rise_list / billboard_topic_hot）：作为下一次请求的 page_token 原样传回取下一页（其余参数不变，24 小时内有效）；同一页每行的值相同，响应顶层也有同一个 next_page_token。没有该字段即到底。评论翻页逐页覆盖全部顶层评论。",
+          "hashtag_id": "话题 ID（纯数字字符串）；作为 hashtag_detail 的 hashtag_id 传回可读这个话题的累计数据。",
+          "hashtag_name": "话题名，不带 #。",
+          "total_view_count": "话题累计播放量（hashtag_detail、billboard_topic_hot），从话题创建起算，是平台给的话题统计。",
+          "daily_trend": "这个话题的逐日热度（billboard_topic_hot）：[{date（YYYY-MM-DD，中国日期）, value}]，从早到晚，最多 14 天。",
+          "total_video_count": "话题下累计作品数（billboard_topic_hot）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "music_detail",
+        "action_label": "音乐详情",
+        "required_params": [
+          "music_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 58,
+        "price_cny": 0.005385,
+        "price_usd": 0.000806,
+        "param_meanings": {
+          "music_id": {
+            "description": "抖音音乐 ID，纯数字（如 7699717253151558410），取自 music_search 返回行的 id；也收 douyin.com/music/<ID> 链接。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "id",
+          "url",
+          "title",
+          "author_name",
+          "duration_seconds",
+          "duration_sec",
+          "use_count",
+          "cover_image_url",
+          "audio_url",
+          "lyric_url",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "cover_image_url": "封面图链接：search / user_posts 是作品封面，music_search / music_detail 是音乐封面，billboard_topic_hot 是话题配图。",
+          "audio_url": "音频地址：transcript 是视频音轨（mp3），music_search、music_detail 是这段音乐的播放地址；可能会过期。",
+          "duration_sec": "视频时长（秒）。",
+          "use_count": "用这段音乐发过的作品数（music_search、music_detail），即抖音音乐页上的「N 人使用」。",
+          "lyric_url": "歌词文件链接（music_search、music_detail，平台给了才有）。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_conversion_ability",
+        "action_label": "星图达人转化能力",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 115,
+        "price_cny": 0.010678,
+        "price_usd": 0.001597,
+        "optional_params": [
+          "time_window"
+        ],
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id）；也可以直接填星图达人 ID（19 位数字，即 xingtu_creator_search 返回的 creator_id）。不是星图达人时返回空结果、不扣费。",
+            "type": "string"
+          },
+          "time_window": {
+            "description": "统计时间窗：7d 近 7 天 / 30d 近 30 天（默认）/ 90d 近 90 天。",
+            "allowed_values": [
+              "30d",
+              "7d",
+              "90d"
+            ],
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "time_window",
+          "related_video_count",
+          "video_play_median",
+          "component_click_count_range",
+          "component_click_rate_range",
+          "cpc_range_cny",
+          "gpm_range_cny",
+          "average_sales_range_cny",
+          "product_count",
+          "product_price_range_cny",
+          "categories",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "time_window": "统计时间窗（xingtu_conversion_ability）：7d / 30d / 90d，与请求一致。",
+          "related_video_count": "时间窗内星图统计转化数据用到的视频数（xingtu_conversion_ability）。",
+          "video_play_median": "这些视频的播放量中位数（xingtu_conversion_ability）。",
+          "component_click_count_range": "组件点击量区间（xingtu_conversion_ability），星图给的区间写法原样给，如 500-1000、500以下。",
+          "component_click_rate_range": "组件点击率区间（xingtu_conversion_ability），如 10%以上、2%以下。",
+          "cpc_range_cny": "单次点击成本区间（CPC，xingtu_conversion_ability），人民币元，如 6-8。",
+          "gpm_range_cny": "GPM 区间（每千次播放带来的成交额，xingtu_conversion_ability），人民币元，如 10-30。",
+          "average_sales_range_cny": "平均销售额区间（xingtu_conversion_ability），人民币元，如 2000-5000；达人在星图关掉销售额展示后没有这一项。",
+          "product_count": "时间窗内带货的商品数（xingtu_conversion_ability）。",
+          "product_price_range_cny": "带货商品价格区间（xingtu_conversion_ability），人民币元。",
+          "categories": "xingtu_conversion_ability：带货品类分布 [{name 品类, share 占比（0–1）, sales_range_cny 销售额区间}]，有带货时才有；xingtu_touch_distribution：连接用户来源的内容类目，最多三层 [{name 类目, touch_count 数量, subcategories 下一层（同结构）}]。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_link_structure",
+        "action_label": "星图达人连接用户结构",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 1152,
+        "price_cny": 0.106967,
+        "price_usd": 0.016,
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id）；也可以直接填星图达人 ID（19 位数字，即 xingtu_creator_search 返回的 creator_id）。不是星图达人时返回空结果、不扣费。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "link_type",
+          "total_user_count",
+          "total_rank_top_percent",
+          "levels",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "link_type": "星图给达人的连接类型（xingtu_link_structure），中文原样给，如 传播、种草。",
+          "total_user_count": "星图连接用户总数（xingtu_link_structure），等于 levels 四档人数之和。",
+          "total_rank_top_percent": "连接用户总数在星图达人中的排名位置（xingtu_link_structure），0–1，越小越靠前：0.0456 即前 4.56%。",
+          "levels": "星图连接用户的四档（xingtu_link_structure），按星图的档位编号 1–4：[{level, user_count 人数, share 占总数比例（0–1）, industry_median_user_count 同行业达人这一档人数的中位数}]。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_recommended_videos",
+        "action_label": "星图达人推荐视频",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 115,
+        "price_cny": 0.010678,
+        "price_usd": 0.001597,
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id）；也可以直接填星图达人 ID（19 位数字，即 xingtu_creator_search 返回的 creator_id）。不是星图达人时返回空结果、不扣费。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "signature_videos",
+          "latest_videos",
+          "top_xingtu_order_videos",
+          "top_personal_videos",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "signature_videos": "星图主页的代表作（xingtu_recommended_videos）：[{id, url, play_count 播放量, posted_at 发布时间}]；星图这几组只给这四项。",
+          "latest_videos": "xingtu_recommended_videos：星图主页上的最新作品，字段同 signature_videos；xingtu_video_performance：最近的作品（约 15 条），另有 title、like_count、comment_count、share_count、duration_seconds、is_hot（是否热门）。",
+          "top_xingtu_order_videos": "星图商单作品里播放最高的（xingtu_recommended_videos），字段同 signature_videos；没接过商单时没有这一项。",
+          "top_personal_videos": "个人作品里播放最高的（xingtu_recommended_videos），字段同 signature_videos。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_touch_distribution",
+        "action_label": "星图达人连接用户来源",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 1152,
+        "price_cny": 0.106967,
+        "price_usd": 0.016,
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id）；也可以直接填星图达人 ID（19 位数字，即 xingtu_creator_search 返回的 creator_id）。不是星图达人时返回空结果、不扣费。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "categories",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "categories": "xingtu_conversion_ability：带货品类分布 [{name 品类, share 占比（0–1）, sales_range_cny 销售额区间}]，有带货时才有；xingtu_touch_distribution：连接用户来源的内容类目，最多三层 [{name 类目, touch_count 数量, subcategories 下一层（同结构）}]。"
+        }
+      },
+      {
+        "platform": "douyin",
+        "action": "xingtu_video_performance",
+        "action_label": "星图达人视频表现",
+        "required_params": [
+          "douyin_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 1152,
+        "price_cny": 0.106967,
+        "price_usd": 0.016,
+        "param_meanings": {
+          "douyin_id": {
+            "description": "达人个人主页展示的抖音号（unique_id）；也可以直接填星图达人 ID（19 位数字，即 xingtu_creator_search 返回的 creator_id）。不是星图达人时返回空结果、不扣费。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "creator_id",
+          "personal_videos",
+          "xingtu_videos",
+          "latest_videos",
+          "latest_xingtu_videos",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "creator_id": "星图商业达人稳定 ID；不是公开主页 user_id 或抖音号。",
+          "latest_videos": "xingtu_recommended_videos：星图主页上的最新作品，字段同 signature_videos；xingtu_video_performance：最近的作品（约 15 条），另有 title、like_count、comment_count、share_count、duration_seconds、is_hot（是否热门）。",
+          "personal_videos": "个人视频的三项指标（xingtu_video_performance）：engagement_rate 互动率、play_count_median 播放量中位数、completion_rate 完播率；每项 {value 本值, platform_average 星图给的全平台平均值（各达人相同）, percentile 超过了多少比例的达人（0–1）}；统计期内没有个人作品时没有这一项。",
+          "xingtu_videos": "星图商单视频的三项指标（xingtu_video_performance），结构同 personal_videos；统计期内没有星图商单作品时没有这一项。",
+          "latest_xingtu_videos": "最近的星图商单作品（xingtu_video_performance），字段同 latest_videos。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "search",
+        "action_label": "关键词搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 178,
+        "price_cny": 0.016528,
+        "price_usd": 0.002472,
+        "param_meanings": {
+          "keyword": {
+            "description": "京东商品搜索词；中文关键词通常更贴近站内商品标题。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 5,
+        "max_limit": 5,
+        "response_fields": [
+          "item_id",
+          "url",
+          "title",
+          "short_title",
+          "price",
+          "currency",
+          "sold_count",
+          "review_count",
+          "good_rate",
+          "shop_id",
+          "shop_name",
+          "shop_url",
+          "is_jd_self",
+          "promotion",
+          "sell_point",
+          "category_ids",
+          "image_url",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "short_title": "京东返回的商品短标题。",
+          "shop_id": "京东店铺数字 ID。",
+          "shop_name": "公开店铺名称。",
+          "shop_url": "京东店铺公开页面。",
+          "good_rate": "京东公开的好评率百分比。",
+          "is_jd_self": "是否为京东自营商品。",
+          "promotion": "商品列表中的促销标签。",
+          "sell_point": "商品列表中的公开卖点。",
+          "category_ids": "京东类目 ID 路径。",
+          "sold_count": "搜索列表上显示的销量原文（search），是「10万+」这类文本、不是精确件数；可能缺省。",
+          "review_count": "搜索列表上显示的评价数原文（search），是文本、可能是约数，不是精确条数。",
+          "image_url": "图片链接：search、product_detail、shop、skus 里是商品主图（封面）；description_images 里是这一行的那张详情图（京东图床的 https 原图）。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "product_detail",
+        "action_label": "商品详情",
+        "required_params": [
+          "item_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "param_meanings": {
+          "item_id": {
+            "description": "京东商品数字 ID，或不带 query/fragment 的 https://item.jd.com/<数字>.html；不接受 /product/<opaque>.html 等新式不透明链接。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "item_id",
+          "url",
+          "title",
+          "price",
+          "price_display",
+          "price_masked",
+          "currency",
+          "available",
+          "unavailable_reason",
+          "shop_id",
+          "shop_name",
+          "shop_url",
+          "category_id",
+          "category",
+          "stock",
+          "stock_state",
+          "color",
+          "size",
+          "weight",
+          "image_url",
+          "image_urls",
+          "is_jd_self",
+          "brand",
+          "model",
+          "original_price",
+          "upc",
+          "warranty",
+          "product_area",
+          "is_jd_express",
+          "variant_count",
+          "variants",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "shop_id": "京东店铺数字 ID。",
+          "shop_name": "公开店铺名称。",
+          "shop_url": "京东店铺公开页面。",
+          "price_display": "京东页面显示的价格原文；可能因登录或会员条件被遮罩。",
+          "price_masked": "详情页价格是否被京东遮罩；为 true 时不要把 price_display 当精确成交价。",
+          "available": "采集时是否可售（product_detail、product_price、shop 的商品行）；缺货时为 false，null 表示页面没给。",
+          "unavailable_reason": "不可售时京东页面给出的公开原因。",
+          "is_jd_self": "是否为京东自营商品。",
+          "category_id": "商品所在的京东末级类目 ID（product_detail）。",
+          "weight": "京东页面上的商品重量原文（product_detail）；null 表示页面没写。",
+          "stock_state": "京东公开的库存状态码。",
+          "brand": "商品品牌。",
+          "model": "商品型号。",
+          "original_price": "京东展示的原价；null 表示页面未提供，可能与促销后的 price 不同。",
+          "upc": "商品条码（UPC/EAN）；null 表示页面未提供。",
+          "warranty": "保修说明原文。",
+          "product_area": "产地。",
+          "is_jd_express": "是否由京东物流配送。",
+          "variant_count": "变体（SKU）数量；null 表示无变体或未提供。skus 的每一行都带同一个值：它大于本次返回的行数时，说明被 limit 截断或有 SKU 这次没取到。",
+          "variants": "变体列表，每项含名称、SKU、价格、库存状态等；null 表示无变体或未提供。",
+          "color": "京东页面上这个 SKU 的颜色（或外观）属性值。",
+          "size": "京东页面上这个 SKU 的尺码、容量或规格属性值。",
+          "stock": "京东页面公开的库存数量；null 表示页面没给，不是 0。",
+          "image_urls": "商品图集链接列表（含主图，按京东页面上的顺序）；单数 image_url 是其中第一张。京东「商品介绍」区的详情长图不在这里，用 description_images 另取。",
+          "image_url": "图片链接：search、product_detail、shop、skus 里是商品主图（封面）；description_images 里是这一行的那张详情图（京东图床的 https 原图）。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "reviews",
+        "action_label": "评价",
+        "required_params": [
+          "item_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "param_meanings": {
+          "item_id": {
+            "description": "京东商品数字 ID，或不带 query/fragment 的 https://item.jd.com/<数字>.html；返回最多 10 条公开评价。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 10,
+        "max_limit": 10,
+        "response_fields": [
+          "id",
+          "item_id",
+          "text",
+          "review_append",
+          "rating",
+          "rating_scale",
+          "posted_at",
+          "color",
+          "size",
+          "useful_count",
+          "images",
+          "author_name",
+          "author_avatar_url",
+          "author_is_plus",
+          "buy_count",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "review_append": "买家追加评价。",
+          "author_name": "评价人昵称，按京东页面原样返回（京东可能已部分打码）。",
+          "author_avatar_url": "评价人头像链接。",
+          "author_is_plus": "评价人是否为京东 PLUS 会员。",
+          "buy_count": "评价人购买该商品的次数（页面显示的「购买 N 次」。",
+          "color": "京东页面上这个 SKU 的颜色（或外观）属性值。",
+          "size": "京东页面上这个 SKU 的尺码、容量或规格属性值。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "shop",
+        "action_label": "店铺资料",
+        "required_params": [
+          "shop_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 2074,
+        "price_cny": 0.192577,
+        "price_usd": 0.028806,
+        "param_meanings": {
+          "shop_id": {
+            "description": "京东店铺数字 ID，或不带 query/fragment 的 https://mall.jd.com/index-<数字>.html；不是商品 ID。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 24,
+        "max_limit": 24,
+        "response_fields": [
+          "item_id",
+          "url",
+          "title",
+          "price",
+          "currency",
+          "shop_id",
+          "shop_name",
+          "shop_url",
+          "image_url",
+          "available",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "shop_id": "京东店铺数字 ID。",
+          "shop_name": "公开店铺名称。",
+          "shop_url": "京东店铺公开页面。",
+          "available": "采集时是否可售（product_detail、product_price、shop 的商品行）；缺货时为 false，null 表示页面没给。",
+          "image_url": "图片链接：search、product_detail、shop、skus 里是商品主图（封面）；description_images 里是这一行的那张详情图（京东图床的 https 原图）。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "product_price",
+        "action_label": "商品价格",
+        "required_params": [
+          "item_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "param_meanings": {
+          "item_id": {
+            "description": "京东商品数字 ID，或不带 query/fragment 的 https://item.jd.com/<数字>.html；只返回该商品的价格与可售状态。",
+            "type": "string"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "item_id",
+          "url",
+          "price",
+          "currency",
+          "available",
+          "unavailable_reason",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "available": "采集时是否可售（product_detail、product_price、shop 的商品行）；缺货时为 false，null 表示页面没给。",
+          "unavailable_reason": "不可售时京东页面给出的公开原因。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "skus",
+        "action_label": "全部 SKU 与价格",
+        "required_params": [
+          "item_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "rows_per_unit": 1,
+        "param_meanings": {
+          "item_id": {
+            "description": "京东商品（任一 SKU）的数字 ID，或京东商品页链接（https://item.jd.com/<数字>.html、https://item.m.jd.com/product/<数字>.html、微信里打开的 wqitem.jd.com 商品页），也可以是只含一个这类链接的分享文本；链接里的跟踪参数不影响。3.cn、u.jd.com 等短链不收，请先在浏览器打开再复制商品页链接。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 100,
+        "max_limit": 100,
+        "response_fields": [
+          "item_id",
+          "url",
+          "product_id",
+          "is_requested",
+          "title",
+          "properties",
+          "color",
+          "size",
+          "price",
+          "currency",
+          "on_sale",
+          "in_stock",
+          "stock_state",
+          "stock",
+          "purchase_limit",
+          "delivery_promise",
+          "is_presale",
+          "is_government_subsidy",
+          "is_billion_subsidy",
+          "is_flash_sale",
+          "promo_tags",
+          "upc",
+          "brand",
+          "image_url",
+          "shop_id",
+          "shop_name",
+          "is_jd_self",
+          "variant_count",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "shop_id": "京东店铺数字 ID。",
+          "shop_name": "公开店铺名称。",
+          "is_jd_self": "是否为京东自营商品。",
+          "stock_state": "京东公开的库存状态码。",
+          "brand": "商品品牌。",
+          "upc": "商品条码（UPC/EAN）；null 表示页面未提供。",
+          "variant_count": "变体（SKU）数量；null 表示无变体或未提供。skus 的每一行都带同一个值：它大于本次返回的行数时，说明被 limit 截断或有 SKU 这次没取到。",
+          "product_id": "京东商品组 ID：同一商品的所有 SKU 共用（skus）。它不是 SKU，不能当 item_id 去调详情、评价或价格。",
+          "is_requested": "这一行是不是请求里传的那个 SKU（skus）；同一商品的其他 SKU 为 false。",
+          "properties": "这个 SKU 的销售属性，属性名 → 属性值，按京东页面原文（如 外观: 亚麻灰、存储容量: 12GB+512GB）（skus）。",
+          "color": "京东页面上这个 SKU 的颜色（或外观）属性值。",
+          "size": "京东页面上这个 SKU 的尺码、容量或规格属性值。",
+          "on_sale": "这个 SKU 是否在售（上架）（skus）。在售不等于有货，有货看 in_stock 与 stock_state。",
+          "in_stock": "这个 SKU 现在能否直接下单（有现货）（skus）。预售、预约中的 SKU 为 false，详见 stock_state。",
+          "stock": "京东页面公开的库存数量；null 表示页面没给，不是 0。",
+          "purchase_limit": "每位买家限购件数；null 表示页面没写限购（skus）。",
+          "delivery_promise": "京东页面上的配送或发货承诺原文，如「预计11月9日前发货」（skus）；按京东未登录时的默认收货地区给出，换地区可能不同。",
+          "is_presale": "是否为预售商品（skus）。",
+          "is_government_subsidy": "京东是否给这个 SKU 标了国家补贴（国补）（skus）；这个标记本身不说明 price 是否已扣除补贴。null 表示这次没拿到这个标记。",
+          "is_billion_subsidy": "京东是否给这个 SKU 标了百亿补贴（skus）；null 表示这次没拿到这个标记。",
+          "is_flash_sale": "这个 SKU 是否在秒杀中（skus）；null 表示这次没拿到这个标记。",
+          "promo_tags": "京东给这个 SKU 标的促销标签原文列表（skus）；null 表示没有或这次没拿到。",
+          "image_url": "图片链接：search、product_detail、shop、skus 里是商品主图（封面）；description_images 里是这一行的那张详情图（京东图床的 https 原图）。"
+        }
+      },
+      {
+        "platform": "jd",
+        "action": "description_images",
+        "action_label": "商品介绍详情图",
+        "required_params": [
+          "item_id"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "param_meanings": {
+          "item_id": {
+            "description": "要取详情图的京东商品：任一 SKU 的数字 ID，或京东商品页链接（https://item.jd.com/<数字>.html、https://item.m.jd.com/product/<数字>.html、微信里打开的 wqitem.jd.com 商品页），也可以是只含一个这类链接的分享文本；链接里的跟踪参数不影响。3.cn、u.jd.com 等短链不收，请先在浏览器打开再复制商品页链接。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "response_fields": [
+          "item_id",
+          "position",
+          "image_url",
+          "image_count",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "item_id": "京东商品数字 ID；search 可把它直接交给详情、评价或价格能力。",
+          "image_url": "图片链接：search、product_detail、shop、skus 里是商品主图（封面）；description_images 里是这一行的那张详情图（京东图床的 https 原图）。",
+          "position": "这张图在「商品介绍」里的序号，从 1 开始、按页面从上到下（description_images）。",
+          "image_count": "这个商品「商品介绍」区这次一共返回几张图，每行相同（description_images）；大于本次拿到的行数说明被 limit 截断了。"
+        }
+      },
+      {
+        "platform": "taobao",
+        "action": "search",
+        "action_label": "关键词搜索",
+        "required_params": [
+          "keyword"
+        ],
+        "mode": "sync",
+        "cost_credits": 972,
+        "price_cny": 0.090253,
+        "price_usd": 0.0135,
+        "optional_params": [
+          "max_price",
+          "min_price",
+          "page",
+          "sort",
+          "tmall_only"
+        ],
+        "param_meanings": {
+          "min_price": {
+            "description": "search 的商品最低价格条件，不是评论评分或 API 费用；不适用于店铺、详情、评论或问答。带小数时可能按整数筛选（向下取整）。带价格条件时不能翻页。",
+            "type": "number"
+          },
+          "max_price": {
+            "description": "search 的商品最高价格条件，与 min_price 配合；不适用于店铺、详情、评论或问答。带小数时可能按整数筛选（向上取整）。带价格条件时不能翻页。",
+            "type": "number"
+          },
+          "keyword": {
+            "description": "search 的淘宝/天猫商品关键词，不是店铺名精确查询。",
+            "type": "string"
+          },
+          "page": {
+            "description": "search 的页码，1–50，每页 20 条；不传就是第 1 页，每翻一页按一次调用计费。只有普通关键词搜索能翻页（不带 min_price、max_price、tmall_only，sort 不传或为 relevance），这种用法更稳，但多数行没有销量和店铺名；带这些条件又传大于 1 的 page 会在扣费前拒绝，去掉价格区间、排序和 tmall_only 就能翻页。limit 只决定这一页取几条，翻页时保持 20。排序实时变化，相邻两页偶尔有几条重复，合并时按 id 去重。",
+            "type": "integer"
+          },
+          "sort": {
+            "description": "search 使用 popular、price_desc、relevance（不提供低价优先）；默认/relevance 最多 20 条，popular/price_desc 最多 10 条，也不能翻页。reviews、questions 不接受 sort。shop 目前不按 sort 排序：传了不报错，也不生效。",
+            "allowed_values": [
+              "popular",
+              "price_desc",
+              "relevance"
+            ],
+            "type": "string"
+          },
+          "tmall_only": {
+            "description": "search 是否仅查询天猫商品，只接受布尔值 true / false，默认 false；开启时最多 10 条，也不能翻页。字符串 \"false\" 会在扣费前拒绝。",
+            "type": "boolean"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 20,
+        "response_fields": [
+          "id",
+          "url",
+          "title",
+          "price",
+          "currency",
+          "sold_count",
+          "rating",
+          "rating_scale",
+          "location",
+          "shop_name",
+          "image_url",
+          "stock",
+          "shop_id",
+          "sold_text",
+          "original_price",
+          "coupon_price",
+          "discount_type",
+          "is_tmall",
+          "brand",
+          "category_id",
+          "seller_credit_level",
+          "seller_positive_rate",
+          "shop_score_description",
+          "shop_score_service",
+          "shop_score_delivery",
+          "subtitle",
+          "search_rank",
+          "free_shipping",
+          "selling_points",
+          "review_tags",
+          "images",
+          "discount_rate",
+          "spu_id",
+          "category_path",
+          "review_count",
+          "latest_review",
+          "seller_type",
+          "shop_opened_at",
+          "shop_age_years",
+          "shop_item_count",
+          "shop_score_vs_industry",
+          "platform"
+        ],
+        "field_note": "Plain keyword searches (no min_price, max_price or tmall_only; sort omitted or relevance) are the more reliable option and can page with `page` (1 to 50, 20 results per page, each page billed as one call), but their rows usually have no sales figures or shop name. Searches with min_price / max_price, sort=popular or price_desc, or tmall_only can return sold_text but cannot page: they return at most 20 results (10 with popular, price_desc or tmall_only), and a page above 1 is rejected before charging. Pages 1 and 2 of a plain keyword search may be answered by a source that returns only id, url, title, price, original_price, currency, location, image_url and platform (no shop_name, sold_count or is_tmall). When the main sources cannot find the keyword, and from page 3 on, results come from a backup source that returns only id, url, title, price, original_price, currency, location, shop_name, image_url, images, is_tmall, free_shipping, search_rank and platform (no sold_count or sold_text). It ranks in real time, so neighbouring pages can occasionally repeat a few items; dedupe by id when merging pages. This backup source does not filter by min_price / max_price, so some returned prices may be outside the requested range. If that backup source fails too, a last fallback answers: its sales figure is a range text in sold_text (for example 1000+) with no sold_count, and its prices may also fall outside a requested min_price / max_price range.",
+        "platform_field_meanings": {
+          "is_tmall": "是否为天猫店（区别于淘宝 C 店，开店门槛和保障不同）。",
+          "shop_id": "店铺 ID（search 行与详情、店铺商品行里是同一个 ID）。",
+          "shop_name": "店铺名。",
+          "brand": "品牌（product_detail 常缺省）。",
+          "category_id": "类目 ID。",
+          "price": "价格数值，不含货币符号；币种见 currency。product_detail 的价格（含 skus 每条的 price）多数由美元价折算成人民币，可能比淘宝页面上的价格高或低约 1–4%，以页面为准。",
+          "original_price": "原价（划线价）；search 无折扣时与 price 相同。shop 只有这一个价：列表展示的划线价，不是实际卖价，可能明显偏高；要卖价用 product_detail。",
+          "sold_count": "销量（search 有；product_detail 常缺省）。",
+          "stock": "库存。",
+          "coupon_price": "券后价（有优惠券时低于 price，无券时缺省）。",
+          "category_path": "类目路径（面包屑，用「 > 」连接；product_detail 与 search 都可能有）。",
+          "images": "图片链接列表：product_detail、search 是商品图（search 不含主图 image_url），reviews 是买家晒图（没晒图时没有这个字段）。",
+          "free_shipping": "是否包邮。",
+          "sold_text": "销量原文（search，如「10万+」）；带「+」或「万」的是平台展示的约数，不是精确销量。",
+          "discount_type": "折扣/活动类型原文（如「特价秒杀」）。",
+          "seller_credit_level": "卖家信用等级（数字，越大越高）。",
+          "seller_positive_rate": "卖家好评率（search，百分数，100 即 100%）。",
+          "shop_score_description": "店铺动态评分·描述相符（5 分制）。",
+          "shop_score_service": "店铺动态评分·服务态度（5 分制）。",
+          "shop_score_delivery": "店铺动态评分·物流服务（5 分制）。",
+          "subtitle": "商品副标题（search，卖点短句）。",
+          "search_rank": "在本次搜索结果中的位置（search，从 1 起；翻页时接着往下数，第 3 页从 41 起）。",
+          "selling_points": "商品卖点标签列表。",
+          "review_tags": "评价标签列表，每项 tag（标签文字）与 count（提到次数，可能缺省）。",
+          "seller_type": "卖家类型代码（product_detail、search；B 为天猫或企业店，C 为个人店）。",
+          "shop_item_count": "店铺在售商品数（product_detail、search、shop）。",
+          "shop_opened_at": "开店时间原文（product_detail、search）。",
+          "discount_rate": "现价占原价的百分比（search；46.2 即打 4.62 折，100 为不打折）。",
+          "spu_id": "标准商品 SPU ID（search；同款不同店的商品共用一个，可用来归并同款）。",
+          "latest_review": "最新一条评价（search）：rating、text、posted_at、sku。",
+          "shop_age_years": "开店年数（search）。",
+          "shop_score_vs_industry": "店铺三项评分与同行比（search）：description、service、delivery 各为 higher / same / lower。"
+        }
+      },
+      {
+        "platform": "taobao",
+        "action": "product_detail",
+        "action_label": "商品详情",
+        "required_params": [
+          "url"
+        ],
+        "mode": "sync",
+        "cost_credits": 324,
+        "price_cny": 0.030084,
+        "price_usd": 0.0045,
+        "param_meanings": {
+          "url": {
+            "description": "product_detail / reviews / questions 接收商品数字 ID、淘宝/天猫商品 URL，或含唯一商品 URL 的分享文本；e.tb.cn / m.tb.cn 短链仅在可安全解析为商品页时接受。纯淘口令、过期链接和非商品页会拒绝。",
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "returns_list": false,
+        "available": true,
+        "response_fields": [
+          "id",
+          "url",
+          "title",
+          "brand",
+          "price",
+          "original_price",
+          "currency",
+          "stock",
+          "sold_count",
+          "category_id",
+          "location",
+          "is_tmall",
+          "shop_name",
+          "shop_id",
+          "shipping_fee",
+          "ems_fee",
+          "express_fee",
+          "skus",
+          "sku_count",
+          "spec_values",
+          "props_images",
+          "attributes",
+          "main_image_url",
+          "description_images",
+          "description_html",
+          "video_url",
+          "coupon_price",
+          "price_usd",
+          "total_price",
+          "suggestive_price",
+          "has_discount",
+          "is_promotion",
+          "promo_type",
+          "is_virtual",
+          "brand_id",
+          "root_category_id",
+          "category_path",
+          "weight",
+          "size",
+          "favorite_count",
+          "fans_count",
+          "min_order_quantity",
+          "shipping_to",
+          "listed_at",
+          "modified_at",
+          "delist_at",
+          "images",
+          "category_name",
+          "description",
+          "keywords",
+          "titleOriginal",
+          "has_cn_title",
+          "shop_score_description",
+          "shop_score_service",
+          "shop_score_delivery",
+          "free_shipping",
+          "promotion_price",
+          "discount_price",
+          "discount_type",
+          "price_note",
+          "has_price_range",
+          "payment_methods",
+          "seller_id",
+          "seller_credit_level",
+          "seller_type",
+          "seller_type_label",
+          "selling_points",
+          "shop_logo_url",
+          "shop_url",
+          "shop_item_count",
+          "shop_new_item_count",
+          "shop_opened_at",
+          "review_tags",
+          "review_count",
+          "positive_rate",
+          "seven_day_return",
+          "reviews",
+          "platform"
+        ],
+        "field_note": "video_url is usually empty because the main-image video is rarely available; an empty value does not mean the product has no video. When our main sources return nothing for a product, a backup source answers instead: category_id and the shipping fees are then empty, description_html, sold_count and coupon_price can be empty, and the title can be a regional or translated version of the listing title.",
+        "platform_field_meanings": {
+          "is_tmall": "是否为天猫店（区别于淘宝 C 店，开店门槛和保障不同）。",
+          "shop_id": "店铺 ID（search 行与详情、店铺商品行里是同一个 ID）。",
+          "shop_name": "店铺名。",
+          "brand": "品牌（product_detail 常缺省）。",
+          "category_id": "类目 ID。",
+          "price": "价格数值，不含货币符号；币种见 currency。product_detail 的价格（含 skus 每条的 price）多数由美元价折算成人民币，可能比淘宝页面上的价格高或低约 1–4%，以页面为准。",
+          "original_price": "原价（划线价）；search 无折扣时与 price 相同。shop 只有这一个价：列表展示的划线价，不是实际卖价，可能明显偏高；要卖价用 product_detail。",
+          "shipping_fee": "运费。",
+          "sold_count": "销量（search 有；product_detail 常缺省）。",
+          "stock": "库存。",
+          "skus": "规格列表（全量，有多少给多少）。每条可含 id/name/price/original_price/coupon_price/stock/props_ids/image_url；price 多数由美元价折算，见 price。",
+          "sku_count": "SKU 数量。",
+          "coupon_price": "券后价（有优惠券时低于 price，无券时缺省）。",
+          "spec_values": "商品规格值全表（含未在售组合），id 为规格值标识、text 为规格文本。",
+          "props_images": "规格值配图，id 与 spec_values/props_ids 同一标识，image_url 为该规格的展示图。",
+          "attributes": "商品属性列表（品牌、型号、产地等 {name, value} 行）。",
+          "main_image_url": "主图（首图）。",
+          "description_images": "详情页描述区长图列表（按页面出现顺序）。",
+          "description_html": "详情页描述区原始 HTML（以图片标签为主）。",
+          "video_url": "主图视频直链。目前基本取不到主图视频，这个字段多半为空；为空不代表商品没有视频。",
+          "price_usd": "美元参考价（按返回数据中的折算值）。",
+          "total_price": "总价（以返回数据为准，常缺省）。",
+          "suggestive_price": "建议零售价（常缺省）。",
+          "has_discount": "是否有折扣。",
+          "is_promotion": "是否促销中。",
+          "promo_type": "促销类型。",
+          "is_virtual": "是否虚拟商品。",
+          "brand_id": "品牌 ID。",
+          "root_category_id": "根类目 ID。",
+          "category_path": "类目路径（面包屑，用「 > 」连接；product_detail 与 search 都可能有）。",
+          "weight": "商品重量（以返回数据为准，常为 0 或缺省）。",
+          "size": "商品尺寸（常缺省）。",
+          "favorite_count": "收藏数。",
+          "fans_count": "店铺粉丝数（product_detail 常缺省）。",
+          "min_order_quantity": "最小起订量。",
+          "ems_fee": "EMS 运费。",
+          "express_fee": "快递运费。",
+          "shipping_to": "配送范围说明（常缺省）。",
+          "listed_at": "上架时间（ISO 8601，数据缺省时字段不出现）。",
+          "modified_at": "最近修改时间（ISO 8601，数据缺省时字段不出现）。",
+          "delist_at": "下架时间（ISO 8601，数据缺省时字段不出现）。",
+          "images": "图片链接列表：product_detail、search 是商品图（search 不含主图 image_url），reviews 是买家晒图（没晒图时没有这个字段）。",
+          "free_shipping": "是否包邮。",
+          "seller_id": "卖家 ID（shop 偶尔缺）。",
+          "discount_type": "折扣/活动类型原文（如「特价秒杀」）。",
+          "seller_credit_level": "卖家信用等级（数字，越大越高）。",
+          "shop_score_description": "店铺动态评分·描述相符（5 分制）。",
+          "shop_score_service": "店铺动态评分·服务态度（5 分制）。",
+          "shop_score_delivery": "店铺动态评分·物流服务（5 分制）。",
+          "selling_points": "商品卖点标签列表。",
+          "review_tags": "评价标签列表，每项 tag（标签文字）与 count（提到次数，可能缺省）。",
+          "category_name": "叶子类目名（product_detail）。",
+          "keywords": "商品页关键词（product_detail）。",
+          "promotion_price": "促销价（product_detail，常缺省）。",
+          "discount_price": "折后价（product_detail，常缺省）。",
+          "price_note": "价格说明原文（product_detail）。",
+          "has_price_range": "是否区间价（多规格价格不同，product_detail）。",
+          "payment_methods": "支持的支付方式（product_detail）。",
+          "seller_type": "卖家类型代码（product_detail、search；B 为天猫或企业店，C 为个人店）。",
+          "seller_type_label": "卖家类型名称（product_detail，如天猫、企业店）。",
+          "shop_logo_url": "店铺 Logo 链接（product_detail、shop；shop 偶尔缺）。",
+          "shop_url": "店铺链接（product_detail、shop）。",
+          "shop_item_count": "店铺在售商品数（product_detail、search、shop）。",
+          "shop_new_item_count": "店铺新品数（product_detail）。",
+          "shop_opened_at": "开店时间原文（product_detail、search）。",
+          "positive_rate": "好评率（百分数，98.93 即 98.93%）：product_detail 是商品好评率（常缺省）。",
+          "seven_day_return": "是否支持七天无理由退货（product_detail）。",
+          "reviews": "商品页附带的买家评价（product_detail），每条与 reviews 接口的行同形：text、rating、posted_at、sku、author_name、author_avatar_url 等，文本为简体；只是页面上展示的几条，要按条数取全请调 reviews。"
+        }
+      },
+      {
+        "platform": "taobao",
+        "action": "shop",
+        "action_label": "店铺资料",
+        "required_params": [
+          "shop"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "optional_params": [
+          "seller",
+          "sort",
+          "user_id"
+        ],
+        "param_meanings": {
+          "shop": {
+            "description": "shop 的卖家数字 userId（sellerId），或店铺链接（shop<shopId>.taobao.com）；返回该店的在售商品，目前每次最多 20 条（limit 更大也只给 20 条，按次计费不变）。不是店铺名称。",
+            "type": "string"
+          },
+          "seller": {
+            "description": "卖家 userId 的兼容输入，不是卖家昵称；优先级低于 shop 和 user_id。",
+            "type": "string"
+          },
+          "sort": {
+            "description": "search 使用 popular、price_desc、relevance（不提供低价优先）；默认/relevance 最多 20 条，popular/price_desc 最多 10 条，也不能翻页。reviews、questions 不接受 sort。shop 目前不按 sort 排序：传了不报错，也不生效。",
+            "allowed_values": [
+              "best_selling",
+              "highest_price",
+              "lowest_price",
+              "new",
+              "newly_listed",
+              "popular",
+              "price_asc",
+              "price_desc",
+              "sales"
+            ],
+            "type": "string"
+          },
+          "user_id": {
+            "description": "卖家数字 userId 的兼容输入，低于 shop 优先级，不是商品 ID。",
+            "type": "string"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 20,
+        "limit_over_max": "capped",
+        "response_fields": [
+          "id",
+          "url",
+          "title",
+          "original_price",
+          "currency",
+          "category_id",
+          "free_shipping",
+          "shop_name",
+          "shop_id",
+          "seller_id",
+          "image_url",
+          "shop_url",
+          "shop_logo_url",
+          "shop_score_description",
+          "shop_score_service",
+          "shop_score_delivery",
+          "shop_item_count",
+          "platform"
+        ],
+        "field_note": "seller_id and shop_logo_url can be missing on some responses.",
+        "platform_field_meanings": {
+          "shop_id": "店铺 ID（search 行与详情、店铺商品行里是同一个 ID）。",
+          "shop_name": "店铺名。",
+          "category_id": "类目 ID。",
+          "original_price": "原价（划线价）；search 无折扣时与 price 相同。shop 只有这一个价：列表展示的划线价，不是实际卖价，可能明显偏高；要卖价用 product_detail。",
+          "free_shipping": "是否包邮。",
+          "seller_id": "卖家 ID（shop 偶尔缺）。",
+          "shop_score_description": "店铺动态评分·描述相符（5 分制）。",
+          "shop_score_service": "店铺动态评分·服务态度（5 分制）。",
+          "shop_score_delivery": "店铺动态评分·物流服务（5 分制）。",
+          "shop_logo_url": "店铺 Logo 链接（product_detail、shop；shop 偶尔缺）。",
+          "shop_url": "店铺链接（product_detail、shop）。",
+          "shop_item_count": "店铺在售商品数（product_detail、search、shop）。"
+        }
+      },
+      {
+        "platform": "taobao",
+        "action": "reviews",
+        "action_label": "评价",
+        "required_params": [
+          "url"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "param_meanings": {
+          "url": {
+            "description": "product_detail / reviews / questions 接收商品数字 ID、淘宝/天猫商品 URL，或含唯一商品 URL 的分享文本；e.tb.cn / m.tb.cn 短链仅在可安全解析为商品页时接受。纯淘口令、过期链接和非商品页会拒绝。",
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 20,
+        "max_limit": 100,
+        "response_fields": [
+          "id",
+          "text",
+          "rating",
+          "rating_scale",
+          "posted_at",
+          "sku",
+          "buy_count",
+          "useful_count",
+          "author_name",
+          "author_avatar_url",
+          "images",
+          "review_append",
+          "platform",
+          "seller_reply"
+        ],
+        "platform_field_meanings": {
+          "buy_count": "购买人数。",
+          "sku": "规格。",
+          "images": "图片链接列表：product_detail、search 是商品图（search 不含主图 image_url），reviews 是买家晒图（没晒图时没有这个字段）。",
+          "useful_count": "评价被标有用次数。",
+          "seller_reply": "卖家对该评价的回复。",
+          "review_append": "买家追评正文（有多条时按时间顺序换行拼接；没有追评时字段不出现）。",
+          "author_avatar_url": "评价人头像链接（reviews）。"
+        }
+      },
+      {
+        "platform": "taobao",
+        "action": "questions",
+        "action_label": "问题列表",
+        "required_params": [
+          "url"
+        ],
+        "mode": "sync",
+        "cost_credits": 100,
+        "price_cny": 0.009285,
+        "price_usd": 0.001389,
+        "param_meanings": {
+          "url": {
+            "description": "product_detail / reviews / questions 接收商品数字 ID、淘宝/天猫商品 URL，或含唯一商品 URL 的分享文本；e.tb.cn / m.tb.cn 短链仅在可安全解析为商品页时接受。纯淘口令、过期链接和非商品页会拒绝。",
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "returns_list": true,
+        "available": true,
+        "default_limit": 10,
+        "max_limit": 100,
+        "response_fields": [
+          "id",
+          "url",
+          "text",
+          "answer_count",
+          "posted_at",
+          "answers",
+          "platform"
+        ],
+        "platform_field_meanings": {
+          "answer_count": "「问大家」回答数。",
+          "answers": "问大家的回答内容。"
+        }
+      }
+    ]
+  }
+}

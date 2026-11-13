@@ -1,0 +1,27 @@
+[
+  {
+    "repo": "justoneapi-official/justoneapi-python",
+    "error": "HTTP Error 403: rate limit exceeded",
+    "source_url": "https://api.github.com/repos/justoneapi-official/justoneapi-python"
+  },
+  {
+    "repo": "justoneapi-official/justoneapi-mcp",
+    "error": "HTTP Error 403: rate limit exceeded",
+    "source_url": "https://api.github.com/repos/justoneapi-official/justoneapi-mcp"
+  },
+  {
+    "repo": "everyinfra/everyinfra-agent-plugins",
+    "error": "HTTP Error 403: rate limit exceeded",
+    "source_url": "https://api.github.com/repos/everyinfra/everyinfra-agent-plugins"
+  },
+  {
+    "repo": "everyinfra/seo-skills",
+    "error": "HTTP Error 403: rate limit exceeded",
+    "source_url": "https://api.github.com/repos/everyinfra/seo-skills"
+  },
+  {
+    "repo": "everyinfra/everysearch-plugin",
+    "error": "HTTP Error 403: rate limit exceeded",
+    "source_url": "https://api.github.com/repos/everyinfra/everysearch-plugin"
+  }
+]

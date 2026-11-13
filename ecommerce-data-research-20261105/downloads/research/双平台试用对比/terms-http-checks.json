@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-11-05T17:36:29.343522+00:00",
+  "requests": [
+    {
+      "url": "https://everyinfra.com/terms",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://everyinfra.com/privacy",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://qovia.ai/terms/",
+      "status": 200,
+      "bytes": 28800,
+      "sha256": "36e8330329404d32751809d211ec8feabd216073e97a641aaa25f126aea0ab1f",
+      "final_url": "https://qovia.ai/terms/"
+    },
+    {
+      "url": "https://qovia.ai/privacy/",
+      "status": 200,
+      "bytes": 28042,
+      "sha256": "bc897ee545afd3fa3e8bea07e0dd529cd2ea0d4a23b44a02706d683adf0c6bf6",
+      "final_url": "https://qovia.ai/privacy/"
+    }
+  ]
+}

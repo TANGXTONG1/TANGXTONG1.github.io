@@ -1,0 +1,414 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>国内电商数据平台浏览器试用核验</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%95%E7%94%A8%E6%A0%B8%E9%AA%8C.md" download>下载原始 Markdown</a></header><article><h1 id="_1">国内电商数据平台浏览器试用核验</h1>
+<p>核验日期：2026-11-05。本轮已对 <strong>34 组尝试浏览器访问/试用，其中 31 组得到清楚的访问结果，3 组因页面或自动化读取异常未完成</strong>；另外 15 组未完成浏览器测试，以文档核验为主，其中好单库另取得一次公开 HTTP 数据响应。清楚的访问结果包括登录、注册、商务留资、移动端或凭证要求，<strong>不代表数据接入成功</strong>。</p>
+<p>实际取得 <strong>2 组公开网页数据预览、0 次鉴权业务 API 成功、0 个供应商 Excel/CSV 导出文件、0 次注册</strong>；另已保存 <strong>1 份好单库公开活动 JSON 响应</strong>。没有提交申请/留资表单或完成付费。达多多公开预览含遮蔽/区间字段，导出点击后要求登录；商指针公开预览日期为 2025 年 1 月，不能当作当前数据。</p>
+<p>后续浏览器工具状态异常：可访问性树（AX）和截图均无法正常取得，剩余测试中断，<strong>没有完成 49 组浏览器测试</strong>。艺恩仅尝试导航并读到标题，未形成可核实页面结果，仍列为未完成。灰豚、电霸、DataEye 的异常也不能直接等同于供应商不可用。</p>
+<p>好单库补充检查：官网公开活动地址无需 Key、登录或 Cookie，实际返回 HTTP 200、3 条商品及 41 个商品字段；这不是浏览器试用，也不是鉴权开放 API 或真实订单验证。<a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json">原始 JSON</a>、<a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json">验证记录</a>、<a href="document-24.html">质量说明</a>已保存。样本存在优惠券总量与已领/剩余量矛盾，以及结构化价格与条件优惠文案价格不同，不能当作精确比价或销量核算基准。</p>
+<p>下表覆盖 49 组产品，合并了<a href="../downloads/research/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%95%E7%94%A8%E8%AE%B0%E5%BD%95.json">浏览器原始记录</a>与<a href="document-59.html">完整字段字典</a>（<a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E5%B9%B3%E5%8F%B0%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.json">JSON</a>）。覆盖渠道和接口字段来自公开文档，不代表本次已从这些渠道成功取数；页面登录结果来自实际 UI 操作。API schema、文档导出列与产品指标分别标注，未实调字段不作可用性承诺。</p>
+<table>
+<thead>
+<tr>
+<th>平台/产品组</th>
+<th>覆盖渠道（文档）</th>
+<th>API/导出方式（文档）</th>
+<th>实际 UI 测试状态/结果</th>
+<th>已核字段摘要</th>
+<th>来源链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Just One API</td>
+<td>淘系、京东、抖音电商、小红书；得物/闲鱼/1688等分接口</td>
+<td>Token API；按调用付费</td>
+<td>需注册：免费试用进入邮箱/密码/验证码注册。</td>
+<td>Schema：code/message/data/requestId；已核得物搜索、闲鱼/1688详情端点，业务 data 字段未完整核实</td>
+<td><a href="https://justoneapi.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://docs.justoneapi.com/openapi/dewu-poizon/product-search-v1-zh.json" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://docs.justoneapi.com/openapi/xianyu-goofish/product-details-v1-zh.json" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>2. TMAPI</td>
+<td>淘系、1688、拼多多、京东等分接口</td>
+<td>apikey API；控制台开通</td>
+<td>需登录：PDD文档点登录后为邮箱密码/Google/GitHub。</td>
+<td>Schema：item_id/title、price_info、skus[].skuid/sale_price/stock；PDD另有 sale_count/comment_count，非评论正文</td>
+<td><a href="https://tmapi.top/zh-cn/docs/pinduoduo/item-detail/get-item-detail-by-id" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>3. Qovia</td>
+<td>淘宝/天猫、京东、抖音评价；社媒/达人</td>
+<td>API Key；REST/MCP；余额计费</td>
+<td>需登录：调试台试用进入邮箱注册/登录；样例非实时。</td>
+<td>Schema：text/rating/created_at/sku、images/shop_reply；淘系 followup；分页 has_more/total_exact</td>
+<td><a href="https://www.qovia.ai/zh/docs/api-reference/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://qovia.ai/docs/api-reference/raw.taobao.comments/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>4. 万邦 Onebound</td>
+<td>国内旧目录多平台；当前逐接口可用性待核</td>
+<td>历史 key+secret API；旧页有重定向</td>
+<td>需登录：接口测试弹微信/手机/账号登录。</td>
+<td>当前国内业务 schema 未可靠核实；不把旧文档/缓存字段视作现行承诺</td>
+<td><a href="https://open.onebound.cn/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://open.onebound.cn/help/api/taobao.item_get.html" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://open.onebound.cn/help/api/tglobal.readme.html" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>5. 竹简数据</td>
+<td>淘系、淘宝闪购、抖音电商/团购；京东详情等</td>
+<td>商务提供 Token + 专属地址；POST JSON</td>
+<td>需商务：使用指南要求客服提供专属地址和Token。</td>
+<td>Schema：comment_id/content/has_image/append；销量 sales_30d/sales_total；不同接口分别核验</td>
+<td><a href="https://marketplace.bamboodatalab.com/zh/usage" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-sales-v1" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>6. EveryInfra/万有引擎</td>
+<td>淘系、京东、1688；得物价格、闲鱼；社媒</td>
+<td>Bearer API/MCP；免费 catalog 列能力</td>
+<td>需登录：控制台要求GitHub/Google/邮箱验证码。</td>
+<td>Schema：price/stock/skus、reviews.text/rating/posted_at；京东 review_append/sku属性；sold_count 依接口；<strong>淘系价格多为美元折算，约 1–4% 差异</strong></td>
+<td><a href="https://everyinfra.com/taobao-api" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://everyinfra.com/jd-api/reviews" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://everyinfra.com/taobao-api/product_detail" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>7. 九数云</td>
+<td>淘系、PDD、抖店、美团餐饮/团购/到店广告、饿了么/千川</td>
+<td>源端商家授权；企业版 API 导分析表；CSV/Excel</td>
+<td>需登录：免费试用进入帆软手机号验证码/密码登录。</td>
+<td>通用 Schema：success/code/message/data；业务列依授权分析表，订单/评价/广告指标详见自营字典</td>
+<td><a href="https://www.jiushuyun.com/connection" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-149.html" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>8. 预策</td>
+<td>具体渠道未从可靠技术文档核实</td>
+<td>官网产品存在；API/文件交付待商务确认</td>
+<td>需商务：立即体验要求扫码添加顾问。</td>
+<td>精确 schema 未公开；产品指标不是 API 字段：经营/商品/促销/流量分析</td>
+<td><a href="https://www.yucekj.com/" rel="noopener noreferrer" target="_blank">UI入口</a></td>
+</tr>
+<tr>
+<td>9. 轻易云</td>
+<td>聚水潭/旺店通/管易/吉客/网店管家等连接器</td>
+<td>授权适配器 + 字段映射；非统一竞品数据库</td>
+<td>需注册：Get Started进入公司/手机号/短信验证。</td>
+<td>适配器字段示例：so_id/shop_id/pay_amount、sku_id/price/qty；方法多为底层服务 API</td>
+<td><a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.qeasy.cloud/api/6f87ccfa-906f-35f0-8370-1181f8994208" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>10. 集简云</td>
+<td>抖店、有赞、微盟、百度营销；视频号/来客等动作</td>
+<td>授权应用 + 流程动作；Webhook/自定义 API</td>
+<td>需登录：进入产品要求手机号/微信。</td>
+<td>仅核局部 p_id/download_id；订单等业务输出需按动作取样，不能用应用目录替代 schema</td>
+<td><a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.jijyun.cn/apps/processes/1874" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>11. 聚水潭</td>
+<td>淘系、京东、PDD、抖快等自营；淘/PDD独立路径</td>
+<td>商家授权 + app_key/access_token/签名</td>
+<td>需登录：立即入驻要求手机号/密码/短信；另有资质授权。</td>
+<td>Schema：orders[].so_id/pay_amount/paid_amount；items[].sku_id/price/qty/refund_status；普通接口排除淘/PDD</td>
+<td><a href="https://open.jushuitan.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://openweb.jushuitan.com/dev-doc?docId=22&amp;docType=4" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://openweb.jushuitan.com/doc?docId=340" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>12. 旺店通</td>
+<td>淘系、京东、PDD、抖快；美团细分平台代码</td>
+<td>店铺授权 + sid/appkey/签名；版本分别开通</td>
+<td>需登录：企业版手机号/密码；注册后申请测试环境。</td>
+<td>Schema：trade_list[].tid/paid/refund_amount；goods_list[].num/price/paid；普通订单接口排除淘/PDD</td>
+<td><a href="https://open.wangdian.cn/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://open.wangdian.cn/open/guide?path=qjbguide_ptdmbb" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>13. 管易云</td>
+<td>淘系、京东、PDD、抖音（合作级）</td>
+<td>OpenAPI/奇门/集成实施；当前手册待获取</td>
+<td>需商务：试用进入腾讯问卷，需姓名/电话/店铺留资。</td>
+<td>精确 schema 未核；产品指标不是 API 字段：订单、库存、账单、业财</td>
+<td><a href="https://www.guanyiyun.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.guanyiyun.com/zhihuicangpeijiejuefangan/" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>14. 吉客云</td>
+<td>淘系、京东、PDD、抖音；美团零售/医药/餐饮等</td>
+<td>企业认证、应用订阅、商家授权；OpenAPI/MCP</td>
+<td>需登录：控制台要求吉客号/用户名/密码/验证码。</td>
+<td>文档字段：sellCount/sellPrice/payment、skuBarcode、deductRefundSellCount；按具体工具/报表区分</td>
+<td><a href="https://open.jackyun.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://open.jackyun.com/developer/mcpservice/toolList.html" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.jackyun.com/official/platformList?platName=%E7%BE%8E%E5%9B%A2" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>15. 网店管家</td>
+<td>淘系、京东、PDD、1688、抖快、有赞等</td>
+<td>Appkey/Accesstoken/签名；XML/JSON；淘系奇门</td>
+<td>需登录：开发者账号/密码/验证码。</td>
+<td>Schema：totalcount；goodslist.goodsinfo.price/goodscount 等；普通查询排除淘系/PDD</td>
+<td><a href="https://open.wdgj.com/OpenApiDoc/OpenFlow.html" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://open.wdgj.com/OpenApiDoc/ApiInfo.html?OpenAPIID=70056&amp;dictID=84" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>16. 快麦</td>
+<td>京东/抖音等；淘系奇门、PDD方舟另开</td>
+<td>appKey/session/签名；按场景申请</td>
+<td>需商家配置：关联公司/权限场景，联系实施申请APPKEY。</td>
+<td>Schema：list[].payment/payAmount；orders[].price/num/skuId/refundStatus；普通接口排除淘/PDD</td>
+<td><a href="https://open.kuaimai.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://open.kuaimai.com/docs/api/API%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93/%E8%AE%A2%E5%8D%95%E6%9F%A5%E8%AF%A2%E9%9D%9E%E6%B7%98%E7%B3%BB%E6%8B%BC%E5%A4%9A%E5%A4%9A/" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://open.kuaimai.com/docs/question/%E7%B3%BB%E7%BB%9F%E5%85%AC%E5%91%8A/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E8%87%AA%E7%A0%94%E6%8E%A5%E5%8F%A3%E6%8E%A5%E5%85%A5%E5%BC%80%E6%94%BE%E5%85%AC%E5%91%8A/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>17. 魔镜洞察 / MMI / 分析+ / 价控</td>
+<td>淘系/JD；PDD/美团仅部分旧市场接口枚举</td>
+<td>MOOJING-APIKEY；分析+ Excel 导出</td>
+<td>需商务：体验DEMO为姓名/电话/邮箱/公司留资表单。</td>
+<td>Schema：item_id/title/sold/price；sale趋势；好中差评率；SKU价控仅淘/JD，评论原文未证实</td>
+<td><a href="https://mktindex.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.mktindex.com/static/fenxi/?f=fenxi" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>18. Nint 任拓 / 情报通 / 倾听</td>
+<td>阿里、京东、抖音、小红书等；PDD/美团未核</td>
+<td>企业 SaaS/定制库；公开 API/原文导出待核</td>
+<td>需商务：公司/品牌/部门/电话/邮箱表单；不向个人演示。</td>
+<td>产品指标不是 API 字段：销量/销额/均价、调价动作、评价情感/场景/竞品比较</td>
+<td><a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.nint.com/shopper-listening" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>19. 数说故事 / 数说聚合 / 应用市场</td>
+<td>社媒/短视频/新闻等；电商评论具体商城待核</td>
+<td>官网确认商用 API/定制；电商 schema 待取得</td>
+<td>需商务：公司/职务/电话/企业邮箱/需求表单。</td>
+<td>产品指标不是 API 字段：声量趋势/情感分布/词云/原文；不能推定全平台评价端点</td>
+<td><a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.datastory.com.cn/details/830" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://appstore.datastory.com.cn/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>20. 蝉妈妈 / 蝉妈妈开放平台</td>
+<td>抖音达人、商品、直播、小店、品牌、素材</td>
+<td>官网明确 API/数据定制/报表；商务开通</td>
+<td>需商务：开放平台API/Skills为电话/公司合作咨询。</td>
+<td>产品指标不是 API 字段：销量/销额热度、观众/商品热度；正式 endpoint/schema 未核</td>
+<td><a href="https://www.chanmama.com/open-platform/" rel="noopener noreferrer" target="_blank">UI入口</a></td>
+</tr>
+<tr>
+<td>21. 新榜有数 / 新抖 / 新快 / 新红 / 新视</td>
+<td>抖音、快手、小红书、视频号及其他新媒体</td>
+<td>定制 API；特定自定义榜单 Excel</td>
+<td>需登录：定制API入口要求微信登录。</td>
+<td>产品/榜单指标不是 API 字段：阅读/点赞/粉丝/新榜指数/排名；社媒评论非购后评价</td>
+<td><a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.newrank.cn/article/detail/30526" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>22. 飞瓜数据</td>
+<td>抖音、快手、B站、小红书各版本</td>
+<td>集团定制导出；快手商品/直播导出；API未核</td>
+<td>需登录：抖音免费试用要求微信/手机号。</td>
+<td>产品及导出列（不是 API 字段）：商品来源/价格/销量/销售额、直播时间/直播价/预估销量</td>
+<td><a href="https://www.feigua.cn/home" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://dy3.feigua.cn/help/detail/22/25.html" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://ks.feigua.cn/Help/HelpCenter?id=46" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>23. 千瓜数据</td>
+<td>小红书</td>
+<td>会员按模块导出；公开 API 未核</td>
+<td>需登录：立即使用要求微信/手机，需勾选条款。</td>
+<td>产品指标不是 API 字段：预估曝光/阅读/投放/销量/销额/CPM/CPE；导出逐列 schema 未核</td>
+<td><a href="https://www.qian-gua.com/Home/AllPrice" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://wap.qian-gua.com/Home/IndexAnalysisTool" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>24. 灰豚数据</td>
+<td>抖音、快手、小红书各版</td>
+<td>旧官方 FAQ：无 API；有按钮页面导 Excel</td>
+<td>核验未完成：官网一次网络错误；子站菜单加载，但自动化读树异常，未核登录/导出。</td>
+<td>产品指标不是 API 字段：达人带货/互动/粉丝画像、销量榜/爆品榜；导出列未核</td>
+<td><a href="https://dy.huitun.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://huitun.com/help" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>25. 久谦中台</td>
+<td>电商/消费研究；具体渠道未核</td>
+<td>企业咨询/定制；公开 API/CSV未核</td>
+<td>需登录：直接跳微信/企微/账号密码登录。</td>
+<td>当前精确 schema 与产品字段未公开核实</td>
+<td><a href="https://databank.meritco-group.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.meritco-group.com/" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>26. 电霸 / 店霸（拼多多版）</td>
+<td>拼多多</td>
+<td>SaaS；文章提报告导出；API/表格格式未核</td>
+<td>核验未完成：仅标题加载，正文未读到；未继续登录。</td>
+<td>产品指标不是 API 字段：销量区间、近1日销售额、价格、有销商品数、店铺数</td>
+<td><a href="https://pdd.dianba6.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://pdd.dianba6.com/helpCenter/detail/hotArticle_7668.html" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>27. 考古加 / 考古加创意</td>
+<td>抖音</td>
+<td>创意会员榜单导出；主站 API未核</td>
+<td>需登录：工作台跳手机号验证码/密码。</td>
+<td>产品指标不是 API 字段：黄金3秒话术、卖点趋势、高频片段；不等于完整销售库导出</td>
+<td><a href="https://www.kaogujia.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://ad.kaogujia.com/member/rights" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>28. 达多多</td>
+<td>抖音；另有快手选品产品</td>
+<td>商品/店铺表有导出；实际点击要求登录；API未核</td>
+<td>公开预览，导出受阻：销量等为区间、价格遮蔽；点击导出跳needLogin=1，无文件。</td>
+<td>产品表列不是 API 字段：订单/销量/结算金额、直播/视频/商品卡、佣金/转化率；经营值为预估</td>
+<td><a href="https://www.daduoduo.com/product/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.daduoduo.com/shop/shopDetail" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>29. QuestMobile / GROWTH / TRUTH</td>
+<td>App/小程序用户、流量、媒介；合同指定范围</td>
+<td>GROWTH 标准 API/多格式批量文件</td>
+<td>需商务：申请服务需公司/类型/职位/姓名/电话/邮箱。</td>
+<td>产品指标不是 API 字段：用户规模/画像/流量/转化/营销效果；未核 SKU价格/销量/评价</td>
+<td><a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">UI入口</a></td>
+</tr>
+<tr>
+<td>30. 窄门餐眼</td>
+<td>餐饮品牌/门店；美团合作选址报告</td>
+<td>小程序/付费报告；公开 API/整库导出未核</td>
+<td>需移动端：小程序入口弹微信二维码。</td>
+<td>产品指标不是 API 字段：门店数/分布、产品/客单价、商圈/消费画像</td>
+<td><a href="https://www.canyandata.com/" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.canyandata.com/location/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>31. 欧特欧 / 商指针</td>
+<td>淘系、京东、抖音子产品；其他平台待逐项核实</td>
+<td>政府版指标导出有文档；企业 API待核</td>
+<td>公开预览：20行业份额/环比/同比，日期2025-01已过时；政府版需留资，未实测导出。</td>
+<td>产品指标不是 API 字段：网零额/量、增速、行业份额；UI预览环比/同比，日期2025-01</td>
+<td><a href="https://open.shangzhizhen.com/#/industry/index" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://gov.shangzhizhen.com/" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>32. 百观科技 / BigOne Lab</td>
+<td>中国电商/消费样本/社媒；具体来源待核</td>
+<td>企业研究/数据服务；公开 API/文件范围未核</td>
+<td>需商务：企业产品页只有联系邮箱，无自助查询。</td>
+<td>产品指标不是 API 字段：品牌线上销售追踪、零售/餐饮样本、社媒情绪</td>
+<td><a href="https://www.bigonelab.com/zh-cn/client" rel="noopener noreferrer" target="_blank">UI入口</a></td>
+</tr>
+<tr>
+<td>33. 马上赢 / 品牌 CT</td>
+<td>线下快消 POS/条码；非电商聚合</td>
+<td>appid/密钥/MD5 API；订阅类目下载</td>
+<td>需凭证：文档可读，要求appid/密钥/MD5；无匿名请求。</td>
+<td>Schema：product_id/name、sort/sort_change、average_price/median_price；月榜不返回实际销量数值</td>
+<td><a href="https://open.banmahui.cn/top.products.month.get/" rel="noopener noreferrer" target="_blank">UI入口</a></td>
+</tr>
+<tr>
+<td>34. DataEye / ADX</td>
+<td>国内/海外广告媒体；依产品</td>
+<td>广告情报 SaaS/研究；公开 API/导出字典未核</td>
+<td>核验未完成：立即体验→ADX游戏→工作台菜单；自动化读树异常，未核登录/导出。</td>
+<td>产品指标不是 API 字段：素材、落地页、创意文案、产品/媒体投放动向</td>
+<td><a href="https://www.dataeye.com/demo.html" rel="noopener noreferrer" target="_blank">UI入口</a> <a href="https://www.dataeye.com/" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>35. 艾瑞 / 易观千帆（两家公司）</td>
+<td>移动 App/用户/广告行业；两家公司</td>
+<td>网页/SaaS/报告；本需求 API/导出未核</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>产品指标不是 API 字段：重合/独占用户、新装/留存/沉默、渗透率/TGI、广告指数</td>
+<td><a href="https://data.iresearch.com.cn/" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://pre2qianfan.analysys.cn/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>36. 艺恩数据（当前 AI 数据集产品）</td>
+<td>AI电商数据集；具体国内商城未核</td>
+<td>Bearer REST API；数据集导出/对象存储</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>元数据 Schema：dataset_id/domain/record_count/quality_score；不是商品销量/价格字段</td>
+<td><a href="https://www.endata.com.cn/docs.html" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>37. 餐道</td>
+<td>美团外卖、饿了么、抖音本地生活、快手等</td>
+<td>商家授权集成；开放平台入口；schema待商务</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>产品指标不是 API 字段：订单、菜单、库存、价格、核销、经营 BI</td>
+<td><a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://open-api.can-dao.com/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>38. 鼎点科技</td>
+<td>淘京拼抖快、美团/饿了么等方案宣称</td>
+<td>商务试样/定制 API</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>产品指标不是 API 字段：SKU到手价/券后价、优惠、销量、型号、库存；美团子业务未区分</td>
+<td><a href="https://www.dingdiankj.cn/contents/44/522.html" rel="noopener noreferrer" target="_blank">依据1</a></td>
+</tr>
+<tr>
+<td>39. 极致了/大家来数据</td>
+<td>美团/饿了么方案宣称；抖快红/B站/微博</td>
+<td>API JSON、飞书、定制数据集；需商务样例</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>产品指标不是 API 字段：商品/店铺、价格、前台销量、评价；美团具体 schema未核</td>
+<td><a href="https://www.jzl.com/news/meituan-data-api-2" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.dajiala.com/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>40. 富泰科</td>
+<td>美团外卖/闪购商超/药房、淘宝闪购；JD外卖基础资料</td>
+<td>软件/Excel/代采；API另定制；版本授权不同</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>文档导出列：店ID/月售/评分/满减；商品名/价格/月售/好评度/评价标签；商超另有条码/库存</td>
+<td><a href="https://www.futaike.net/meituan-ele-waimai-data-get" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.futaike.net/product_service/11272.html" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>41. 云飞API</td>
+<td>美团到店、抖音团购；快手枚举待逐字段核</td>
+<td>access_token + 自有门店平台授权</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：dealId/dealGroupId/skuId/title/price/marketPrice、售卖/核销有效期、saleStatus</td>
+<td><a href="https://doc.yunfeiapi.com/9034922m0" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://doc.yunfeiapi.com/8949771m0" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>42. 无限聚核</td>
+<td>美团到店团购、抖音本地生活</td>
+<td>Bearer API Key + 门店授权；核销按量</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：dealId/title/price/marketPrice/saleStatus、售卖/凭证日期；不是竞品行情库</td>
+<td><a href="https://doc.elys.cn/#v2-deals" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://doc.elys.cn/#v2-receipt-records" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>43. 值得买消费信息开放平台</td>
+<td>淘系、JD、PDD等商品/好价；旧比价源需复核</td>
+<td>商用申请；Agent/旧OAuth接口分权限</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：title/price/mall_name/sales_cnt/comment_cnt；口碑result；旧历史价PriceSeries，产品间不同</td>
+<td><a href="https://openapi.zhidemai.com/pages/aiagent/1.商品检索接口.html" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://openapi.zhidemai.com/pages/aiagent/2.商品口碑接口.html" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>44. 大淘客</td>
+<td>淘系字段已核；其他渠道有独立目录</td>
+<td>appKey/appSecret签名；分接口版本</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：goodsId/originalPrice/actualPrice、monthSales、commissionRate、couponPrice；联盟商品口径</td>
+<td><a href="https://www.dataoke.com/kfpt/api-d.html?id=5" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.dataoke.com/kfpt/api-d.html?id=36" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>45. 好单库</td>
+<td>淘系/JD/PDD等联盟；美团/闪购活动CPS</td>
+<td>apikey；增值接口签名/单独申请权限</td>
+<td>未完成浏览器测试；另有公开 HTTP 样本成功（非 UI、非鉴权 API）</td>
+<td>实际活动样本41字段：itemid/itemprice/itemsale/itemendprice、券量等；3条商品。优惠券量矛盾、价格口径不同；非真实订单</td>
+<td><a href="https://www.haodanku.com/Activity/get_three_datas" rel="noopener noreferrer" target="_blank">实际公开响应</a> <a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json">样本</a> <a href="https://www.haodanku.com/openapi/api_detail?id=60" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.haodanku.com/openapi/ai_docs" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>46. 折淘客/折京客</td>
+<td>淘系；本次精确字段为京东折京客</td>
+<td>appkey；JD联盟unionId授权</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：skuId/skuName、quanhou_jiage/volume/haopinglv/commentCount、佣金/券；不是评价正文</td>
+<td><a href="https://j.zhetaoke.com/user/extend/extend_lingquan_keywords.aspx" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://j.zhetaoke.com/user/open/open_item_info3.aspx" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>47. 慢慢买</td>
+<td>淘系/JD/苏宁等比价，商用清单待核</td>
+<td>网页/App；官网提对外API，商用商务确认</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>产品指标不是 API 字段：历史价曲线、当前价格/同款比价、降价通知；schema未公开</td>
+<td><a href="https://help.manmanbuy.com/" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://help.manmanbuy.com/default.aspx?id=144075" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>48. 八爪鱼</td>
+<td>通用网页采集；商城能力逐模板实测</td>
+<td>任务运行后 Excel/CSV/数据库/OpenAPI</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：data.total/restTotal/offset/data[]；业务列由采集任务定义，不是预置电商字段</td>
+<td><a href="https://openapi.bazhuayu.com/zh-CN/" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.bazhuayu.com/helpcenter/docs/2xF5Mz/eYW3hC" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+<tr>
+<td>49. 云听CEM</td>
+<td>已授权项目的电商评论/客服/邮件/新闻/社媒</td>
+<td>企业CEM + MCP Key；异步查询与Excel链接</td>
+<td>未完成浏览器测试；仅文档核验</td>
+<td>Schema：project/data_type、task_id/status/total/cosExcelUrl；具体评论列及商城依项目权限</td>
+<td><a href="https://www.yuntingai.com/mcp/" rel="noopener noreferrer" target="_blank">依据1</a> <a href="https://www.yuntingai.com/mcp-doc/" rel="noopener noreferrer" target="_blank">依据2</a></td>
+</tr>
+</tbody>
+</table>
+<p>接入判断：本轮验证的是公开入口能否进入、下一步需要哪些条件，以及是否有匿名数据预览；好单库另验证了一次公开活动 HTTP 响应。对需登录或商务开通的平台，数据实时性、字段完整性、分页上限、价格、权限和导出结果仍未验证；不能据此标为“已可生产接入”。拼多多/美团的旧接口枚举、联盟活动或平台代码，也不能替代逐接口业务样例。</p>
+<p>自营订单接口的详细字段、淘系/拼多多外发限制及授权路径，见<a href="document-63.html">自营集成详细字段字典</a>。完整调研背景见<a href="document-22.html">原调研报告</a>。</p></article></body></html>

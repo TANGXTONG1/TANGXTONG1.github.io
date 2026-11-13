@@ -1,0 +1,37 @@
+[
+  {
+    "repo": "justoneapi-official/justoneapi-python",
+    "url": "https://github.com/justoneapi-official/justoneapi-python",
+    "http_status": 200,
+    "star_links": [],
+    "observed_at": "2026-11-05T14:51:37.673260+00:00",
+    "scope": "SDK/MCP/skill wrapper, not the hosted data engine",
+    "stars_from_page": 11,
+    "method": "HTTPS repository page visible text; REST API was rate-limited"
+  },
+  {
+    "repo": "justoneapi-official/justoneapi-mcp",
+    "url": "https://github.com/justoneapi-official/justoneapi-mcp",
+    "http_status": 200,
+    "star_links": [],
+    "observed_at": "2026-11-05T14:51:37.988734+00:00",
+    "scope": "SDK/MCP/skill wrapper, not the hosted data engine",
+    "stars_from_page": 6,
+    "method": "HTTPS repository page visible text; REST API was rate-limited"
+  },
+  {
+    "repo": "everyinfra/everyinfra-agent-plugins",
+    "url": "https://github.com/everyinfra/everyinfra-agent-plugins",
+    "error": "HTTP Error 504: Gateway Time-out"
+  },
+  {
+    "repo": "everyinfra/seo-skills",
+    "url": "https://github.com/everyinfra/seo-skills",
+    "http_status": 200,
+    "star_links": [],
+    "observed_at": "2026-11-05T14:51:37.580676+00:00",
+    "scope": "SDK/MCP/skill wrapper, not the hosted data engine",
+    "stars_from_page": 76,
+    "method": "HTTPS repository page visible text; REST API was rate-limited"
+  }
+]

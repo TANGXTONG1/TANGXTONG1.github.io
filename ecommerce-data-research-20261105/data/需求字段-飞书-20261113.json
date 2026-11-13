@@ -1,0 +1,44 @@
+{
+  "source": "https://icnuvcafo3b9.feishu.cn/wiki/QQYpwhtnFifypikXtNrcklzGnjb",
+  "sourceTitle": "电商平台数据比较中",
+  "readMethod": "用户已登录的飞书页面，经可见UI读取统一数据字段规范",
+  "checkedOn": "2026-11-13",
+  "productFields": [
+    {"name":"platform","meaning":"平台名称"},
+    {"name":"product_id","meaning":"平台商品唯一 ID"},
+    {"name":"title","meaning":"商品名称"},
+    {"name":"product_url","meaning":"商品链接"},
+    {"name":"image_url","meaning":"商品主图"},
+    {"name":"brand","meaning":"品牌"},
+    {"name":"category","meaning":"商品类目"},
+    {"name":"currency","meaning":"币种"},
+    {"name":"list_price","meaning":"标价／划线价"},
+    {"name":"sale_price","meaning":"当前售价"},
+    {"name":"sold_count","meaning":"标准化销量数字"},
+    {"name":"sold_text","meaning":"平台展示的原始销量文本，如1万+已售"},
+    {"name":"rating","meaning":"商品评分或好评率"},
+    {"name":"review_count","meaning":"评价数量"},
+    {"name":"shop_name","meaning":"店铺名称"},
+    {"name":"keyword","meaning":"搜索该商品时使用的关键词"},
+    {"name":"search_rank","meaning":"商品在该关键词搜索结果中的排名"},
+    {"name":"scraped_at","meaning":"采集时间"}
+  ],
+  "reviewFields": [
+    {"name":"review_id","meaning":"评价唯一 ID"},
+    {"name":"product_id","meaning":"所属商品 ID"},
+    {"name":"review_text","meaning":"评价正文"},
+    {"name":"rating","meaning":"评价星级"},
+    {"name":"created_at","meaning":"评价时间"},
+    {"name":"purchased_sku","meaning":"购买的商品规格"},
+    {"name":"image_urls","meaning":"评价图片"},
+    {"name":"seller_reply","meaning":"商家回复"}
+  ],
+  "mappingRules": [
+    "商品rating与单条评论rating是不同实体字段，不能混填。",
+    "评论附图不能替代商品主图。",
+    "评价数量、销量数字、原始销量文本必须分别验证，不能互相推算。",
+    "URL输入和采集任务时间等系统补充字段单列，不冒充供应商实测返回。",
+    "keyword与search_rank需要关键词搜索流程；链接输入评论任务不产生真实搜索排名。",
+    "字段存在但样本全空，与实际非空返回分别标记。"
+  ]
+}

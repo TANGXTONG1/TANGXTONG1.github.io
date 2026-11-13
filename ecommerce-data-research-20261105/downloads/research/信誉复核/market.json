@@ -1,0 +1,716 @@
+[
+  {
+    "id": "moojing",
+    "name": "魔镜洞察 / MMI / 分析+ / 价控",
+    "verdict": "精选",
+    "reason": "有具名品牌应用案例、合作发布方及上市公司引用证据，且已有市场/价格 API 文档；适合跨货架电商询样。精选指进入候选短名单，不代表数据准确率或接口已验收。",
+    "credibility_evidence": [
+      {
+        "claim": "供应商案例具体描述香飘飘产品研发团队使用魔镜分析+捕捉新兴趋势和产品概念。",
+        "url": "https://www.mktindex.com/research/notebook/article_20250227",
+        "source_type": "vendor_named_case",
+        "date": null,
+        "scope": "具名应用内容，比客户 logo 强；仍为供应商发布，未取得客户方合同或确认。"
+      },
+      {
+        "claim": "新华网发布与魔镜联合的2025年度美妆护肤线上市场趋势报告，说明实际合作发布关系。",
+        "url": "https://www3.xinhuanet.com/fashion/20260303/b19724966ab1454a848a5eb59800e202/c.html",
+        "source_type": "partner_publication",
+        "date": "2026-03-03",
+        "scope": "支持行业影响力及合作发布；不是付费客户证明、数据审计或监管背书。"
+      },
+      {
+        "claim": "朗姿2025年年报引用魔镜的母婴线上市场数据。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-25/1225186030.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-04-25",
+        "scope": "上市公司披露对数据的引用；不证明购买/API部署或准确率。"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "香飘飘",
+        "description": "供应商说明其研发团队借助魔镜分析+识别市场趋势，服务具体使用场景有描述。",
+        "url": "https://www.mktindex.com/research/notebook/article_20250227",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "公开 MMI/价控接口文档与 APIKEY 鉴权；文档较旧，未实调。",
+        "url": "https://doc.mktindex.com/"
+      },
+      {
+        "claim": "分析+官网明确 Excel 导出；未取得导出文件。",
+        "url": "https://www.mktindex.com/static/fenxi/?f=fenxi"
+      }
+    ],
+    "limitations": [
+      "旧 MMI 文档的 pdd/meituan 枚举不能外推所有接口；价控仅核淘系/JD。",
+      "评论趋势不是逐条评价原文；需目标平台当月响应、权限和出库样本。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "nint",
+    "name": "Nint 任拓 / 情报通 / 倾听",
+    "verdict": "精选",
+    "reason": "情报通具上市公司自身披露的实际引用，跨淘系/京东市场及评价研究与本任务匹配；但标准 API/逐条评价出库尚未确认，优先进入企业询样。",
+    "credibility_evidence": [
+      {
+        "claim": "珀莱雅2026年半年报把情报通列为天猫及京东品牌/品类排名的数据来源。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225496527.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-08-25",
+        "scope": "可确认上市公司使用/引用相应数据；不等于证明付费合同、接口交付或覆盖全部评论。"
+      },
+      {
+        "claim": "深交所披露文件说明情报通由任拓数据科技（上海）有限公司开发，并讨论其电商监测数据用途。",
+        "url": "https://reportdocs.static.szse.cn/UpFiles/rasinfodisc1/202212/RAS_202212_000184C8E8DDB63FE4F8A5C3199A2F3F.pdf",
+        "source_type": "issuer_filing_citation",
+        "date": "2022-12",
+        "scope": "历史披露可佐证产品主体及行业使用，不能当2026年服务可用性或交易所认证。"
+      },
+      {
+        "claim": "官网有评价分析实战案例与多品牌客户展示；具体实战部分匿名。",
+        "url": "https://www.nint.com/shopper-listening",
+        "source_type": "vendor_anonymous_case",
+        "date": null,
+        "scope": "匿名婴童案例不能与页面贝亲等 logo 自动配对；宣传客户数量未经独立审计。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "官网确认定制标准库/研究服务，未明确公开标准 API。",
+        "url": "https://www.nint.com/research"
+      },
+      {
+        "claim": "官网确认商品评价分析产品；逐条文本及批量出库方式尚未核实。",
+        "url": "https://www.nint.com/shopper-listening"
+      }
+    ],
+    "limitations": [
+      "本轮没有确认公开对外 API；是否交 CSV/库表、逐条评价文本及现行覆盖仍须商务。",
+      "官网客户 logo 不是对应项目案例；未将匿名婴童案例归属给贝亲等品牌。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "datastory",
+    "name": "数说故事 / 数说聚合 / 应用市场",
+    "verdict": "精选",
+    "reason": "具名伊利服务案例写明品牌监测、产品创新、渠道数字化等任务，且伙伴技术文档与商用 API 声明可交叉参考；适合企业口碑与营销整合询样。",
+    "credibility_evidence": [
+      {
+        "claim": "供应商具名披露与伊利合作，具体涉及品牌监测、代言人研究、口味/概念创新及渠道数字化，并称获得合作伙伴奖。",
+        "url": "https://www.datastory.com.cn/details/151",
+        "source_type": "vendor_named_case",
+        "date": "页面标注2026-01-04；叙事为2023年大会",
+        "scope": "供应商自述，未找到伊利自身公告；不采用增长率作为验收效果。"
+      },
+      {
+        "claim": "华为云官方技术资料提供数说故事舆情雷达解决方案实践。",
+        "url": "https://support.huaweicloud.com/dpom-retail/数说故事舆情雷达解决方案实践.pdf",
+        "source_type": "partner_technical_documentation",
+        "date": null,
+        "scope": "可证明合作生态中的产品技术材料；华为不是由此可认定的付费数据客户。"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "伊利",
+        "description": "品牌监测、明星代言研究、产品口味/概念创新、渠道数字化等服务；来源为数说故事自身公告。",
+        "url": "https://www.datastory.com.cn/details/151",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "官方说明接口接入/Open API 能力；不能外推每个电商数据模块。",
+        "url": "https://www.datastory.com.cn/details/782?from=hotspot"
+      },
+      {
+        "claim": "聚合产品说明商用 API/企业接入；具体电商 schema 与权限待商务。",
+        "url": "https://www.datastory.com.cn/product/hermes"
+      }
+    ],
+    "limitations": [
+      "公司商用 API 能力不意味着淘京拼美每个评论/销量端点已标准化。",
+      "需正式字段字典、原文可交付范围、企业报价及当月样例；留资表单不等于开通。",
+      "页面发布时间与事件年份不一致，不把2023年奖项说成2026年新奖。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "chanmama",
+    "name": "蝉妈妈 / 蝉妈妈开放平台",
+    "verdict": "精选",
+    "reason": "上市公司招股材料明确引用其抖音类目数据，官网提供商务 API/定制交付，适合抖音竞品及内容营销候选。",
+    "credibility_evidence": [
+      {
+        "claim": "悍高集团2025年招股意向书注明抖音品类排名数据来自蝉妈妈。",
+        "url": "https://static.cninfo.com.cn/finalpage/2025-07-11/1224130419.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2025-07-11",
+        "scope": "证明披露材料采用该数据源；不证明悍高付费客户关系，也不代表数据经监管独立审计。"
+      },
+      {
+        "claim": "现行官网明确电商分析、创意、达人选品及数据开放平台，主体可识别。",
+        "url": "https://www.chanmama.com/",
+        "source_type": "vendor_product_documentation",
+        "date": "2026-11-05核验",
+        "scope": "仅作为主体/产品持续运营证据，官网规模数字不作第三方认证。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "官网明确 API/数据定制/报表；商务开通；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.chanmama.com/open-platform/"
+      }
+    ],
+    "limitations": [
+      "商务 API 服务存在，但正式 endpoint/字段、区间销量精度、评论原文仍未实调。",
+      "第三方技能镜像不当成已核官方 schema；SaaS 会员不自动含 API 权限。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "newrank",
+    "name": "新榜有数 / 新抖 / 新快 / 新红 / 新视",
+    "verdict": "备选",
+    "reason": "具名比亚迪/贝壳项目、定制 API 证据较清楚；更偏社媒营销和矩阵管理。为控制短名单规模，作为营销专用备选，不替代电商商品经营数据库。",
+    "credibility_evidence": [
+      {
+        "claim": "官网案例描述比亚迪唐/汉抖音KOL策略，以及贝壳银河计划的账号监管、人员和营销效果管理。",
+        "url": "https://newrank.cn/servicecase",
+        "source_type": "vendor_named_case",
+        "date": null,
+        "scope": "具名项目内容明确，但为供应商案例，未取得比亚迪/贝壳客户方公告。"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "比亚迪",
+        "description": "唐/汉车型目标人群分析、KOL筛选及抖音传播策略；供应商侧案例。",
+        "url": "https://newrank.cn/servicecase",
+        "customer_side": false
+      },
+      {
+        "customer": "贝壳",
+        "description": "矩阵通支持银河计划的账号监管、门店运营及人员管理；供应商侧案例。",
+        "url": "https://newrank.cn/servicecase",
+        "customer_side": false
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "官方提供定制 API 入口；未取得正式响应或密钥。",
+        "url": "https://newrank.cn/account/api"
+      },
+      {
+        "claim": "官方自定义榜单产品说明 Excel 导出；不能套用全部子产品。",
+        "url": "https://www.newrank.cn/article/detail/30526"
+      }
+    ],
+    "limitations": [
+      "营销项目效果不能证明商品销量/购后评论 API。",
+      "定制 API 范围按产品和合同确认；未实调新抖/新快等付费数据。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "feigua",
+    "name": "飞瓜数据",
+    "verdict": "精选",
+    "reason": "珀莱雅自身年报披露采用飞瓜/飞瓜品策，且官方有明确导出权限与商品/直播导出说明；符合接受Excel文件的内容电商研究需求。",
+    "credibility_evidence": [
+      {
+        "claim": "珀莱雅2026年半年报注明部分抖音排名来自飞瓜及飞瓜品策。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-08-25/1225496527.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-08-25",
+        "scope": "说明实际数据引用；不把它写成已确认商业合同或客户推荐。"
+      },
+      {
+        "claim": "北交所披露文件提到通过飞瓜查询客户品牌线上销售情况。",
+        "url": "https://www.bse.cn/disclosure/2026/2026-06-30/1782825214_483493.pdf",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-06-30",
+        "scope": "说明被用于公开披露中的核查工作；不等于飞瓜数据本身获得审计认证。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "官方付费 FAQ 说明集团版定制数据导出；公开外部 API 未核实。",
+        "url": "https://dy3.feigua.cn/help/detail/22/25.html"
+      },
+      {
+        "claim": "快手官方帮助说明商品销售、关联直播和达人等导出；尚未下载验证。",
+        "url": "https://ks.feigua.cn/Help/HelpCenter?id=46"
+      }
+    ],
+    "limitations": [
+      "精选为网页/文件研究路线，未核公开外部 API。",
+      "抖音与快手导出模块、配额、估算销量口径分别验收；没有拿到导出文件。",
+      "果集/飞瓜/千瓜关联不能互相继承客户案例或所有渠道能力。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "qiangua",
+    "name": "千瓜数据",
+    "verdict": "备选",
+    "reason": "官网主体、持续报告和会员导出能力明确，适合小红书营销；本轮未获足够独立具名客户/项目证据，不与飞瓜引用混为同一背书。",
+    "credibility_evidence": [
+      {
+        "claim": "官网说明主体及营销数据服务定位，并宣传服务客户规模。",
+        "url": "https://www.qian-gua.com/Home/About",
+        "source_type": "vendor_self_description",
+        "date": null,
+        "scope": "仅供应商自述；不将客户数量或logo作为独立验证。"
+      },
+      {
+        "claim": "果集官网持续发布千瓜小红书研究报告。",
+        "url": "https://www.guoji.pro/Report/ReportDetail?marketingId=496",
+        "source_type": "vendor_publication",
+        "date": "2026-05-09",
+        "scope": "同集团报告说明持续研究产出，不是外部采用或付费客户证据。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "会员按模块导出；公开 API 未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.qian-gua.com/Home/AllPrice"
+      }
+    ],
+    "limitations": [
+      "预估曝光/销量/投放等不等于真实后台数据；未核 API。",
+      "导出权限、允许用途及具体表列需会员样例验收。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "huitun",
+    "name": "灰豚数据",
+    "verdict": "补证",
+    "reason": "可核产品及开发者存在，但未取得足够具名客户项目、独立使用或数据质量证据；严格精选中暂不入选。",
+    "credibility_evidence": [
+      {
+        "claim": "小米应用商店列出灰豚数据及开发者杭州灰豚科技有限公司。",
+        "url": "https://app.mi.com/details?id=com.ht.htdata",
+        "source_type": "app_store_listing",
+        "date": "页面更新2026-09-03",
+        "scope": "只证明应用分发/主体线索；介绍内推荐语不是独立验证，评分不能作企业采购依据。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "旧官方 FAQ：无 API；有按钮页面导 Excel；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://huitun.com/help"
+      }
+    ],
+    "limitations": [
+      "旧FAQ称不提供 API；Excel依导出按钮；商业新方案须重新确认。",
+      "本轮UI读树异常，未完成登录/导出验证，不能据此认定供应商服务宕机。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "meritco",
+    "name": "久谦中台",
+    "verdict": "备选",
+    "reason": "深交所发行人披露文件引用久谦线上智能开关市场数据，体现研究影响力；当前接口、出库和覆盖不透明，适合企业咨询询样而非直接接入。",
+    "credibility_evidence": [
+      {
+        "claim": "美智光电相关深交所披露文件把久谦数据列为2019—2022年线上智能开关销额数据来源。",
+        "url": "https://reportdocs.static.szse.cn/UpFiles/rasinfodisc1/202307/RAS_202307_2E64666C7AA1483D9EF55E37CC01ED6A.pdf",
+        "source_type": "issuer_filing_citation",
+        "date": "2023-07",
+        "scope": "证明历史使用/引用；不证明客户付费关系、现行API或当前数据库范围。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "企业咨询/定制；公开 API/CSV未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://databank.meritco-group.com/"
+      }
+    ],
+    "limitations": [
+      "中台需登录；未取得公开 API/CSV 承诺和当期 schema。",
+      "咨询客户名单不能自动当数据渠道名单。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "dianba",
+    "name": "电霸 / 店霸（拼多多版）",
+    "verdict": "补证",
+    "reason": "拼多多产品入口可核，但严格信誉复核未找到足够独立客户项目/披露引用及可接入验收证据。",
+    "credibility_evidence": [
+      {
+        "claim": "官方拼多多站有商品/店铺/行业指标页面。",
+        "url": "https://pdd.dianba6.com/",
+        "source_type": "vendor_product_documentation",
+        "date": "2026-11-05核验",
+        "scope": "仅产品存在证据；不证明用户规模、准确率或客户成功。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "SaaS；文章提报告导出；API/表格格式未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://pdd.dianba6.com/helpCenter/detail/hotArticle_7668.html"
+      }
+    ],
+    "limitations": [
+      "页面销量区间非精确订单；API/标准文件导出尚未核实。",
+      "UI正文未读到，尚未完成浏览器验证。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "kaogujia",
+    "name": "考古加 / 考古加创意",
+    "verdict": "补证",
+    "reason": "官方在售产品与应用商店入口明确；本轮未核到可追溯具名客户或独立使用证据，暂不进入严格短名单。",
+    "credibility_evidence": [
+      {
+        "claim": "官方2026年双11公告分别说明数据和创意会员，持续提供抖音分析/素材产品。",
+        "url": "https://ad.kaogujia.com/content/articleDetail/21",
+        "source_type": "vendor_product_documentation",
+        "date": "2026-10-20",
+        "scope": "只证明产品当前宣传和在售，不证明准确率或商业客户效果。"
+      },
+      {
+        "claim": "小米应用商店有考古加产品。",
+        "url": "https://app.mi.com/details?id=com.fz.kaogujia",
+        "source_type": "app_store_listing",
+        "date": null,
+        "scope": "仅应用分发证据，不以评分/下载数替代企业案例。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "创意会员榜单导出；主站 API未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://ad.kaogujia.com/member/rights"
+      }
+    ],
+    "limitations": [
+      "仅确认创意榜单导出，不能扩写主站完整销量数据库可导/API可接。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "daduoduo",
+    "name": "达多多",
+    "verdict": "补证",
+    "reason": "已有真实匿名UI预览，但预览证明页面存在，不能证明客户采用、监测精度或稳定交付；本轮具名客户案例不足。",
+    "credibility_evidence": [
+      {
+        "claim": "官方介绍说明其公开数据查询与统计分析定位。",
+        "url": "https://www.daduoduo.com/about",
+        "source_type": "vendor_self_description",
+        "date": null,
+        "scope": "属于供应商介绍，不作独立信誉证明。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "商品/店铺表有导出；实际点击要求登录；API未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.daduoduo.com/product/"
+      }
+    ],
+    "limitations": [
+      "实际商品价格遮蔽、销量区间，点击导出要求登录；经营数据自述预估。",
+      "无已核标准 API；未取得文件。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "questmobile",
+    "name": "QuestMobile / GROWTH / TRUTH",
+    "verdict": "外围用途",
+    "reason": "上市公司披露等独立采用证据强，标准 API/批量文件明确；但本任务需逐商品价格/销量/评价，QM主要补流量/用户/营销层。",
+    "credibility_evidence": [
+      {
+        "claim": "美图2025年度业绩披露采用QuestMobile的移动应用用户排名。",
+        "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0327/2026032700842.pdf",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-03-27",
+        "scope": "独立发行人引用，支持行业采用；不证明付费合同或逐SKU能力。"
+      },
+      {
+        "claim": "港交所发布的2025年报引用QuestMobile互联网广告市场数据。",
+        "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0427/2026042702687_c.pdf",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-04-27",
+        "scope": "仅广告研究引用，不是交易所认证。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "GROWTH 标准 API/多格式批量文件；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.questmobile.com.cn/products/growth-info/"
+      }
+    ],
+    "limitations": [
+      "GROWTH交付按合同，未取得授权响应；未核逐SKU价格/销量/原文评价。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "canyan",
+    "name": "窄门餐眼",
+    "verdict": "外围用途",
+    "reason": "餐饮门店/选址产品有明确定位，可补本地生活竞争；尚无已核通用API和具体企业使用项目，不作为美团原始数据核心来源。",
+    "credibility_evidence": [
+      {
+        "claim": "官方介绍具名主体北京窄门信息技术有限公司及餐饮数据库。",
+        "url": "https://www.canyandata.com/about/",
+        "source_type": "vendor_self_description",
+        "date": null,
+        "scope": "公司与集团投资品牌信息不是这些品牌购买餐眼的证明。"
+      },
+      {
+        "claim": "官方选址页说明与美团合作的特定报告产品。",
+        "url": "https://www.canyandata.com/location/",
+        "source_type": "vendor_partnership_claim",
+        "date": null,
+        "scope": "供应商一方合作说明，不能推成美团全量交易/点评授权。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "小程序/付费报告；公开 API/整库导出未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.canyandata.com/location/"
+      }
+    ],
+    "limitations": [
+      "需要小程序/报告；批量API/CSV未核。",
+      "番茄资本投资组合不自动计入餐眼客户案例。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "shangzhizhen",
+    "name": "欧特欧 / 商指针",
+    "verdict": "精选",
+    "reason": "有采购方明确的现行消费大数据采集中标证据，且官方支持特定指标导出；适合网零行业/区域大盘企业询样，主体证明明显强于只列Logo。",
+    "credibility_evidence": [
+      {
+        "claim": "北京市公共资源交易平台公布欧特欧中标消费大数据采集第03包，采购人为北京市流通经济研究中心，金额30万元。",
+        "url": "https://ggzyfw.beijing.gov.cn/jyxxzbjggg/20260519/5537127.html",
+        "source_type": "government_procurement",
+        "date": "2026-05-19",
+        "scope": "可核客户、项目、供应商及采购金额；中标不等于履约验收，更不证明其所有商用API。"
+      },
+      {
+        "claim": "商务部网站托管的2022全国县域电商报告列欧特欧为数据来源。",
+        "url": "https://cif.mofcom.gov.cn/cif/html/upload/20230129131711943_2022全国县域数字农业农村电子商务发展报告.pdf",
+        "source_type": "government_hosted_report_citation",
+        "date": "2023-01",
+        "scope": "独立使用/报告传播证据；不是商务部对所有数据准确率背书。"
+      }
+    ],
+    "customer_cases": [
+      {
+        "customer": "北京市流通经济研究中心",
+        "description": "2026年商贸流通业监测与数据采集—消费大数据采集项目第03包，中标供应商为北京欧特欧国际咨询有限公司。",
+        "url": "https://ggzyfw.beijing.gov.cn/jyxxzbjggg/20260519/5537127.html",
+        "customer_side": true
+      }
+    ],
+    "integration_evidence": [
+      {
+        "claim": "政府版指标导出有文档；企业 API待核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://gov.shangzhizhen.com/"
+      }
+    ],
+    "limitations": [
+      "商指针政府版导出明确，企业版API/文件规格待合同确认；不可外推逐条商品评价。",
+      "匿名行业页为2025年1月，旧预览不能代表当前付费库。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "bigone",
+    "name": "百观科技 / BigOne Lab",
+    "verdict": "备选",
+    "reason": "麦肯锡官方报告采用百观数据，可佐证专业研究影响力；但具体电商字段/交付范围未核，适合研究与定制数据询样。",
+    "credibility_evidence": [
+      {
+        "claim": "麦肯锡2024年中国经济观察报告将BigOne（百观科技）列为消费品牌市场分析的数据来源。",
+        "url": "https://www.mckinsey.com.cn/wp-content/uploads/2024/10/cn_2024-china-brief_1017-1.pdf",
+        "source_type": "independent_report_citation",
+        "date": "2024-10",
+        "scope": "证明研究引用/数据采用，不证明付费客户关系或 API 部署。"
+      },
+      {
+        "claim": "Zoho官方案例确认与百观科技的CRM合作。",
+        "url": "https://www.zoho.com.cn/crm/customers/baiguankeji.html",
+        "source_type": "supplier_side_company_reference",
+        "date": null,
+        "scope": "方向为百观购买/使用Zoho，不能倒写为Zoho购买百观数据；仅辅助确认企业运营。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "企业研究/数据服务；公开 API/文件范围未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.bigonelab.com/zh-cn/client"
+      }
+    ],
+    "limitations": [
+      "公开API/下载字典、渠道清单和逐条评论未核；网页只有联系邮箱。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "mashangying",
+    "name": "马上赢 / 品牌 CT",
+    "verdict": "外围用途",
+    "reason": "有外部数据合作/上市公司引用线索及明确签名API，适合线下快消对照；并非淘京拼美聚合数据源。",
+    "credibility_evidence": [
+      {
+        "claim": "FoodTalks季度商品榜明确列马上赢为榜单数据合作机构。",
+        "url": "https://www.foodtalks.cn/news/52147",
+        "source_type": "partner_publication",
+        "date": "2024年第一季度榜单",
+        "scope": "合作发布方证据，不能当品牌客户购买或POS精度审计。"
+      },
+      {
+        "claim": "东鹏饮料2023年年度报告在释义中列示马上赢及公司名称，可作为历史研究机构引用线索。",
+        "url": "https://static.cninfo.com.cn/finalpage/2024-04-15/1219612087.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2024-04-15",
+        "scope": "发行人披露引用线索；不据此断言商业合同或开放API使用。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "appid/密钥/MD5 API；订阅类目下载；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://open.banmahui.cn/top.products.month.get/"
+      }
+    ],
+    "limitations": [
+      "需appid/密钥；未调用。月榜有价格和排名，不含实际销量数值。",
+      "官网POS样本规模属于自述；与电商交易覆盖是两件事。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "dataeye",
+    "name": "DataEye / ADX",
+    "verdict": "外围用途",
+    "reason": "上市公司年报采用DataEye/ADX数据，广告情报有独立影响力证据；与商品交易及购后评价核心需求不完全匹配。",
+    "credibility_evidence": [
+      {
+        "claim": "文投控股2025年年报摘要引用DataEye-ADX行业版的在投漫剧和素材统计。",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-18/1225120641.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2026-04-18",
+        "scope": "证明广告/短剧研究采用，不证明其有淘京拼美商品数据库或付费合同。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "广告情报 SaaS/研究；公开 API/导出字典未核；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.dataeye.com/"
+      }
+    ],
+    "limitations": [
+      "公开外部API、标准导出字段未核；浏览器工具异常未完成验证。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "iresearch-analysys",
+    "name": "艾瑞 / 易观千帆（两家公司）",
+    "verdict": "外围用途",
+    "reason": "两家长期从事互联网市场研究，适合流量/受众补充；本轮没有取得支持本需求经营字段的当前接口和具名交付案例。",
+    "credibility_evidence": [
+      {
+        "claim": "上市公司历史披露对艾瑞咨询、易观智库等行业研究机构有定义与引用。",
+        "url": "https://static.cninfo.com.cn/finalpage/2015-11-04/1201750989.PDF",
+        "source_type": "issuer_filing_citation",
+        "date": "2015-11-04",
+        "scope": "证据较旧，只说明历史研究影响力，不用于证明当前产品或准确率。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "艾瑞公开数据产品入口；本需求经营字段 API/导出未核。",
+        "url": "https://data.iresearch.com.cn/"
+      },
+      {
+        "claim": "易观千帆公开产品入口；千帆市场数据 API 不等于方舟埋点 API。",
+        "url": "https://pre2qianfan.analysys.cn/"
+      }
+    ],
+    "limitations": [
+      "两家公司须分别采购；易观方舟埋点API不等于千帆市场数据API。",
+      "不以行业知名度推定逐SKU交易/原文评价接口。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  },
+  {
+    "id": "endata",
+    "name": "艺恩数据（当前 AI 数据集产品）",
+    "verdict": "外围用途",
+    "reason": "全国股转系统披露可确认艺恩数据871430的主体，但当前公开API偏AI数据集；公司可信不能替代电商经营字段适配。",
+    "credibility_evidence": [
+      {
+        "claim": "全国股转系统发布艺恩数据2025年半年度报告，列示证券代码871430及公司主体。",
+        "url": "https://www.neeq.com.cn/disclosure/2025/2025-08-20/187cd2d765ec4f9c86a7edd221d391be.pdf",
+        "source_type": "exchange_company_disclosure",
+        "date": "2025-08-20",
+        "scope": "证明挂牌公司主体与披露，不是对AI数据集、电商字段或API质量的认证。"
+      }
+    ],
+    "customer_cases": [],
+    "integration_evidence": [
+      {
+        "claim": "Bearer REST API；数据集导出/对象存储；本轮未鉴权实调/未取得供应商导出文件。",
+        "url": "https://www.endata.com.cn/docs.html"
+      }
+    ],
+    "limitations": [
+      "通用数据集API的元数据schema不是商品销量/价格/评论记录；国内具体电商数据集来源与字段待样例。",
+      "未因有股票代码把它列为当前电商经营API精选。",
+      "信誉证据与API/字段验收分开；未以GitHub stars评价商业SaaS，没有虚构star或客户数量。"
+    ],
+    "checked_on": "2026-11-05"
+  }
+]

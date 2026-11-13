@@ -1,0 +1,998 @@
+{
+  "updated_at": "2026-11-13T07:13:46.566564+00:00",
+  "version": "public-entry-tests-complete",
+  "methodology": {
+    "scope": "公开免认证/官方 demo 小样本；未注册、未付费、未读取用户账户或第三方密钥；仅 GET/公开文档指定的无认证 POST。",
+    "live_success_definition": "HTTP200 且成功返回目标业务数据；demo=true 单独标注，不能推定实时或生产成功。",
+    "privacy": "不公开评论正文、作者身份、头像、完整业务响应；原始证据仅保留本地 research/qa/overseas-raw。",
+    "errors": "Magpie 初次误用 data.magpieiq.com 主机得到404，已用 OpenAPI 正确 api.magpieiq.com 纠正；错误主机结果不计服务失败。"
+  },
+  "records": [
+    {
+      "id": "magpie",
+      "vendor": "Magpie",
+      "official_url": "https://data.magpieiq.com/scraping-api",
+      "trial_url": "https://data.magpieiq.com/docs/scraping/how-jobs-work",
+      "status": "实际评论请求：401；健康检查通过",
+      "summary": "官方 OpenAPI 与 health 可读；以官方示例参数提交 Shopee ratings 无 Bearer 返回401。Shopee product-ratings 文档约定维护时返回503；这不是当前停用证据。",
+      "endpoint": "POST https://api.magpieiq.com/scraping/v1/shopee/product-ratings；POST /v1/lazada/product-reviews",
+      "auth": "Bearer token；health 无需认证",
+      "params": {
+        "marketplaces": [
+          "Shopee",
+          "Lazada"
+        ],
+        "request_schema": "以当前 OpenAPI 为准"
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "评论/ratings 业务 schema；Shopee/Lazada 分别提供端点"
+        ],
+        "not_observed": [
+          "实际评论正文、图片、商家回复"
+        ]
+      },
+      "pagination": "Shopee 每个 item 显式指定单页，不自动翻页；未业务实测",
+      "pricing_trial": "公开文档引导联系团队试用；免费额度未核",
+      "next_gate": "联系团队取得试用 token；Shopee 当前运行状态待认证验证；无认证请求只确认访问门槛，未注册/联系",
+      "sources": [
+        "https://api.magpieiq.com/scraping/openapi.json",
+        "https://data.magpieiq.com/docs/scraping/how-jobs-work",
+        "https://data.magpieiq.com/scraping-api/shopee",
+        "https://data.magpieiq.com/scraping-api/lazada"
+      ],
+      "attempts": [
+        {
+          "id": "magpie-trial",
+          "time_utc": "2026-11-13T06:54:40.463569+00:00",
+          "method": "GET",
+          "url": "https://data.magpieiq.com/docs/scraping/how-jobs-work",
+          "parameters": {},
+          "kind": "trial_documentation",
+          "http_status": 200,
+          "elapsed_seconds": 2.498,
+          "response_bytes": 124562,
+          "sha256": "00ba1a4ae074a514c3a4c453f5c8db04cd5c263eaf323d9343b52740d02d1ef1",
+          "test_kind": "trial_documentation",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "magpie-health-corrected",
+          "time_utc": "2026-11-13T06:58:58.210129+00:00",
+          "method": "GET",
+          "url": "https://api.magpieiq.com/scraping/health",
+          "parameters": {},
+          "kind": "public_health_only",
+          "http_status": 200,
+          "elapsed_seconds": 0.908,
+          "response_bytes": 15,
+          "sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288",
+          "test_kind": "public_health_only",
+          "status": "HTTP 200",
+          "result_summary": "健康检查返回 status=ok；不证明评论服务可用。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "magpie-openapi",
+          "time_utc": "2026-11-13T06:58:58.234805+00:00",
+          "method": "GET",
+          "url": "https://api.magpieiq.com/scraping/openapi.json",
+          "parameters": {},
+          "kind": "public_documentation",
+          "http_status": 200,
+          "elapsed_seconds": 2.153,
+          "response_bytes": 196697,
+          "sha256": "86d54326ce4e76b4304b8301e7ee483b563550867be392eb9af775d8039f4e2c",
+          "test_kind": "public_documentation",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "magpie-ratings-auth",
+          "time_utc": "2026-11-13T07:12:29.685515+00:00",
+          "method": "POST",
+          "url": "https://api.magpieiq.com/scraping/v1/shopee/product-ratings",
+          "parameters": {
+            "requests": [
+              {
+                "country": "sg",
+                "shop_id": "414243778",
+                "item_id": "23600133176",
+                "limit": 1,
+                "offset": 0
+              }
+            ]
+          },
+          "kind": "unauthenticated_access_check",
+          "http_status": 401,
+          "elapsed_seconds": 1.086,
+          "response_bytes": 53,
+          "sha256": "3d1ad06ce977de8cfcbf72f59e489cad37af8cf930de5b1e5354c53a67466752",
+          "test_kind": "unauthenticated_access_check",
+          "status": "HTTP 401",
+          "result_summary": "未提供账户密钥时返回认证错误；未获得业务数据。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "sellerapp",
+      "vendor": "SellerApp",
+      "official_url": "https://www.sellerapp.com/new/ecommerce-data-api.html",
+      "trial_url": "https://dashboard.sellerapp.com/register",
+      "status": "实际请求：401 认证门槛",
+      "summary": "Amazon reviews 官方示例无凭据请求返回401；产品 API 的跨平台覆盖不能作为评论覆盖。",
+      "endpoint": "GET https://api.sellerapp.com/sellmetricsv2/reviews",
+      "auth": "clientID/client-id 与 token（官方文档命名）",
+      "params": {
+        "productId": "B07RYP2PGN",
+        "geo": "us",
+        "pagenumber": 1
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "Amazon 评论过滤：rating/media_type/keyword/reviewer_type/variant"
+        ],
+        "not_observed": [
+          "实际正文、日期、图片、商家回复"
+        ]
+      },
+      "pagination": "pagenumber 参数有文档；无成功分页响应",
+      "pricing_trial": "官方页写100个免费 tokens；注册后按平台方案开通 API",
+      "next_gate": "注册并取得 clientID/token；100 tokens 是否适用 reviews、计费粒度需账户内确认",
+      "sources": [
+        "https://www.sellerapp.com/new/data-api.html",
+        "https://documenter.gw.postman.com/api/collections/51253368/2sBXqKpLRb?segregateAuth=true&versionTag=latest"
+      ],
+      "attempts": [
+        {
+          "id": "sellerapp-reviews",
+          "time_utc": "2026-11-13T06:54:39.341171+00:00",
+          "method": "GET",
+          "url": "https://api.sellerapp.com/sellmetricsv2/reviews?productId=B07RYP2PGN&geo=us&pagenumber=1&reviewer_type=recent&rating=4&media_type=multimedia&keyword=wonderful&sort=recent&filter_by_current_variant=1",
+          "parameters": {
+            "productId": "B07RYP2PGN",
+            "geo": "us",
+            "pagenumber": "1",
+            "reviewer_type": "recent",
+            "rating": "4",
+            "media_type": "multimedia",
+            "keyword": "wonderful",
+            "sort": "recent",
+            "filter_by_current_variant": "1"
+          },
+          "kind": "unauthenticated_access_check",
+          "http_status": 401,
+          "elapsed_seconds": 1.53,
+          "response_bytes": 51,
+          "sha256": "157f50f84a20d6106f4d51ef532d0cfd26a68fa5edd6c93f8a2deaed1c6b4b16",
+          "test_kind": "unauthenticated_access_check",
+          "status": "HTTP 401",
+          "result_summary": "未提供账户密钥时返回认证错误；未获得业务数据。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "sellerapp-trial",
+          "time_utc": "2026-11-13T06:54:39.696215+00:00",
+          "method": "GET",
+          "url": "https://www.sellerapp.com/new/data-api.html",
+          "parameters": {},
+          "kind": "trial_page",
+          "http_status": 200,
+          "elapsed_seconds": 4.376,
+          "response_bytes": 448772,
+          "sha256": "2a2fb9d24e996fdba2de1338161481a36d4636be87be815962f0c3cdcdf70c15",
+          "test_kind": "trial_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "rainforest",
+      "vendor": "Rainforest API",
+      "official_url": "https://trajectdata.com/ecommerce/rainforest-api/",
+      "trial_url": "https://app.rainforestapi.com/signup",
+      "status": "实际请求：503 评论不可用",
+      "summary": "官方 demo key 的 reviews 请求返回503并明确暂时不可用；product 示例返回401。",
+      "endpoint": "GET https://api.rainforestapi.com/request",
+      "auth": "正式使用需 api_key；仅使用文档公开字面值 demo",
+      "params": {
+        "type": "reviews",
+        "asin": "B073JYC4XM",
+        "amazon_domain": "amazon.com"
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "历史 reviews schema；product top_reviews 是有限摘要"
+        ],
+        "not_observed": [
+          "当前评论正文/完整分页"
+        ]
+      },
+      "pagination": "未成功；不能把旧 reviews_v2 文档当可用证据",
+      "pricing_trial": "官方推广页称100次免费试用、无需信用卡；评论恢复状态另行确认",
+      "next_gate": "即使注册取得 key，也须先确认 reviews 已恢复；当前不宜作为 Amazon 完整评论主接口",
+      "sources": [
+        "https://docs.trajectdata.com/rainforestapi/product-data-api/parameters/common",
+        "https://docs.trajectdata.com/rainforestapi/product-data-api/results/product",
+        "https://trajectdata.com/discover-rainforest-api/"
+      ],
+      "attempts": [
+        {
+          "id": "rainforest-reviews",
+          "time_utc": "2026-11-13T06:54:37.057732+00:00",
+          "method": "GET",
+          "url": "https://api.rainforestapi.com/request?api_key=demo&type=reviews&amazon_domain=amazon.com&asin=B073JYC4XM&review_stars=all_critical",
+          "parameters": {
+            "api_key": "demo",
+            "type": "reviews",
+            "amazon_domain": "amazon.com",
+            "asin": "B073JYC4XM",
+            "review_stars": "all_critical"
+          },
+          "kind": "public_demo_api",
+          "http_status": 503,
+          "elapsed_seconds": 5.561,
+          "response_bytes": 138,
+          "sha256": "c23c5b202254bfcd20cb0e4fce4c77f3e0058ade2d19ba55fdaa8bea14907e34",
+          "test_kind": "public_demo_api",
+          "status": "HTTP 503",
+          "result_summary": "评论请求类型暂时不可用；未获得评论。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "rainforest-product",
+          "time_utc": "2026-11-13T06:54:37.454802+00:00",
+          "method": "GET",
+          "url": "https://api.rainforestapi.com/request?api_key=demo&type=product&amazon_domain=amazon.com&asin=B07J4TNYV8",
+          "parameters": {
+            "api_key": "demo",
+            "type": "product",
+            "amazon_domain": "amazon.com",
+            "asin": "B07J4TNYV8"
+          },
+          "kind": "public_demo_api",
+          "http_status": 401,
+          "elapsed_seconds": 4.545,
+          "response_bytes": 178,
+          "sha256": "a32e51e6b8a2d8aa1d75284a40d9984b8825c318dd3ef11449e0cecbfe6bbead",
+          "test_kind": "public_demo_api",
+          "status": "HTTP 401",
+          "result_summary": "未提供账户密钥时返回认证错误；未获得业务数据。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "bluecart",
+      "vendor": "BlueCart API",
+      "official_url": "https://trajectdata.com/ecommerce/blue-cart-api/",
+      "trial_url": "https://app.bluecartapi.com/signup",
+      "status": "公开 demo API 成功；分页已验证",
+      "summary": "Walmart 美国评论 demo 页1/2各20条且不同；响应 demo=true，实时性及正式账户成功率未核。",
+      "endpoint": "GET https://api.bluecartapi.com/request",
+      "auth": "正式 api_key；官方 demo 字面值可匿名使用",
+      "params": {
+        "type": "reviews",
+        "item_id": "782866746",
+        "sort_by": "most_helpful",
+        "page": "1 / 2"
+      },
+      "fields": {
+        "observed": [
+          "body",
+          "title",
+          "id",
+          "date",
+          "rating",
+          "positive_feedback",
+          "negative_feedback",
+          "source.verified_purchase",
+          "输入 item_id 绑定商品"
+        ],
+        "documented_only": [],
+        "not_observed": [
+          "评论图片",
+          "商家回复"
+        ]
+      },
+      "pagination": "已调用 page=1/2；各20条、内容不同；返回 current、next、total_pages=39。仅演示数据，未全量抓取。",
+      "pricing_trial": "官方价格页：100 requests 免费试用，无需信用卡",
+      "next_gate": "注册自有 key，再用目标 SKU 验证新鲜度/完整性；reviews 不支持 walmart.ca",
+      "sources": [
+        "https://docs.trajectdata.com/bluecartapi/walmart-product-data-api/parameters/reviews",
+        "https://trajectdata.com/ecommerce/blue-cart-api/pricing/"
+      ],
+      "attempts": [
+        {
+          "id": "bluecart-reviews",
+          "time_utc": "2026-11-13T06:54:37.701006+00:00",
+          "method": "GET",
+          "url": "https://api.bluecartapi.com/request?api_key=demo&type=reviews&item_id=782866746&sort_by=most_helpful",
+          "parameters": {
+            "api_key": "demo",
+            "type": "reviews",
+            "item_id": "782866746",
+            "sort_by": "most_helpful"
+          },
+          "kind": "public_demo_api",
+          "http_status": 200,
+          "elapsed_seconds": 7.023,
+          "response_bytes": 19885,
+          "sha256": "2f9ac27b1ba81c5ef0adf6bf66ff567b71194e580b5b5e89b4d6a1ecd5d34e08",
+          "test_kind": "public_demo_api",
+          "status": "HTTP 200",
+          "count": 20,
+          "demo": true,
+          "result_summary": "公开 demo API 返回 20 条评论；demo=true；数据新鲜度未核。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "bluecart-page2",
+          "time_utc": "2026-11-13T06:58:57.945247+00:00",
+          "method": "GET",
+          "url": "https://api.bluecartapi.com/request?api_key=demo&type=reviews&item_id=782866746&sort_by=most_helpful&page=2",
+          "parameters": {
+            "api_key": "demo",
+            "type": "reviews",
+            "item_id": "782866746",
+            "sort_by": "most_helpful",
+            "page": "2"
+          },
+          "kind": "public_demo_pagination",
+          "http_status": 200,
+          "elapsed_seconds": 5.14,
+          "response_bytes": 16932,
+          "sha256": "a5f099e2dfcb3798270e6ba80e7ac7ef1b7a517be6bc577e751cfd0e98c6e07f",
+          "test_kind": "public_demo_pagination",
+          "status": "HTTP 200",
+          "count": 20,
+          "demo": true,
+          "result_summary": "公开 demo API 返回 20 条评论；demo=true；数据新鲜度未核。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ],
+      "pagination_evidence": {
+        "page_1_count": 20,
+        "page_2_count": 20,
+        "overlap_count": 0,
+        "responses_differ": true,
+        "demo_flag": true,
+        "freshness_verified": false
+      }
+    },
+    {
+      "id": "countdown",
+      "vendor": "Countdown API",
+      "official_url": "https://trajectdata.com/ecommerce/countdown-api/",
+      "trial_url": "https://app.countdownapi.com/signup",
+      "status": "公开 demo API 成功；分页已验证",
+      "summary": "eBay 产品评论 demo 页1/2各10条且不同；是产品评论而非卖家评价，demo=true，实时性未核。",
+      "endpoint": "GET https://api.countdownapi.com/request",
+      "auth": "正式 api_key；官方 demo 字面值可匿名使用",
+      "params": {
+        "type": "reviews",
+        "epid": "1522036563",
+        "ebay_domain": "ebay.com",
+        "sort_by": "most_recent",
+        "page": "1 / 2"
+      },
+      "fields": {
+        "observed": [
+          "id",
+          "title",
+          "body",
+          "rating",
+          "date.raw",
+          "date.utc",
+          "verified_purchase",
+          "attributes",
+          "helpful_votes",
+          "unhelpful_votes",
+          "输入 EPID 绑定商品"
+        ],
+        "documented_only": [],
+        "not_observed": [
+          "评论图片",
+          "商家回复"
+        ]
+      },
+      "pagination": "已调用 page=1/2；各10条、内容不同；current_page、next_page_link 正常；total_reviews=602。未全量抓取。",
+      "pricing_trial": "官方价格页：100 requests 免费试用，无需信用卡",
+      "next_gate": "注册自有 key，再验证目标商品 EPID、地区、新鲜度；部分 listing 无产品评论页",
+      "sources": [
+        "https://docs.trajectdata.com/countdownapi/ebay-product-data-api/parameters/reviews",
+        "https://trajectdata.com/ecommerce/countdown-api/pricing/"
+      ],
+      "attempts": [
+        {
+          "id": "countdown-reviews",
+          "time_utc": "2026-11-13T06:54:39.024867+00:00",
+          "method": "GET",
+          "url": "https://api.countdownapi.com/request?api_key=demo&type=reviews&ebay_domain=ebay.com&epid=1522036563&sort_by=most_recent",
+          "parameters": {
+            "api_key": "demo",
+            "type": "reviews",
+            "ebay_domain": "ebay.com",
+            "epid": "1522036563",
+            "sort_by": "most_recent"
+          },
+          "kind": "public_demo_api",
+          "http_status": 200,
+          "elapsed_seconds": 4.56,
+          "response_bytes": 5884,
+          "sha256": "d7c4bf56b615f6064ab5804d1607bd86ba58dfbd3da2f6550a8b1956ad62389b",
+          "test_kind": "public_demo_api",
+          "status": "HTTP 200",
+          "count": 10,
+          "demo": true,
+          "result_summary": "公开 demo API 返回 10 条评论；demo=true；数据新鲜度未核。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "countdown-page2",
+          "time_utc": "2026-11-13T06:58:58.020523+00:00",
+          "method": "GET",
+          "url": "https://api.countdownapi.com/request?api_key=demo&type=reviews&ebay_domain=ebay.com&epid=1522036563&sort_by=most_recent&page=2",
+          "parameters": {
+            "api_key": "demo",
+            "type": "reviews",
+            "ebay_domain": "ebay.com",
+            "epid": "1522036563",
+            "sort_by": "most_recent",
+            "page": "2"
+          },
+          "kind": "public_demo_pagination",
+          "http_status": 200,
+          "elapsed_seconds": 4.342,
+          "response_bytes": 5642,
+          "sha256": "24fd9960e0883849ce1794112b0f4eade33c6b64a01ebd315dd49a7862fb1bf2",
+          "test_kind": "public_demo_pagination",
+          "status": "HTTP 200",
+          "count": 10,
+          "demo": true,
+          "result_summary": "公开 demo API 返回 10 条评论；demo=true；数据新鲜度未核。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ],
+      "pagination_evidence": {
+        "page_1_count": 10,
+        "page_2_count": 10,
+        "overlap_count": 0,
+        "responses_differ": true,
+        "demo_flag": true,
+        "freshness_verified": false
+      }
+    },
+    {
+      "id": "dataweave",
+      "vendor": "DataWeave",
+      "official_url": "https://dataweave.com/us/data-collection-api",
+      "trial_url": "https://dataweave.com/request-a-demo",
+      "status": "仅官方销售 demo 入口；未实调",
+      "summary": "官网公开数据采集产品和 Request a Demo；未找到可匿名提交并返回原始评论的官方接口。",
+      "endpoint": "未公开确认具体评论 API endpoint",
+      "auth": "企业合作后获取访问方式",
+      "params": {},
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "官网宣称可定制 reviews/text/images 数据采集"
+        ],
+        "not_observed": [
+          "逐平台原始评论字段",
+          "图片/回复完整性"
+        ]
+      },
+      "pagination": "未公开/未验证",
+      "pricing_trial": "需申请演示/商务报价；未核公开免费额度",
+      "next_gate": "提交姓名/工作邮箱等申请演示并拿目标平台样本；本轮未提交表单",
+      "sources": [
+        "https://dataweave.com/us/data-collection-api",
+        "https://dataweave.com/request-a-demo"
+      ],
+      "attempts": [
+        {
+          "id": "dataweave-trial",
+          "time_utc": "2026-11-13T06:54:42.063009+00:00",
+          "method": "GET",
+          "url": "https://dataweave.com/us/data-collection-api",
+          "parameters": {},
+          "kind": "trial_page",
+          "http_status": 200,
+          "elapsed_seconds": 4.142,
+          "response_bytes": 64961,
+          "sha256": "ba477790081e44a6ca4eae62496bb8937ad985529709c25fa2c09b64c27f9c41",
+          "test_kind": "trial_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "dataforseo",
+      "vendor": "DataForSEO",
+      "official_url": "https://dataforseo.com/apis/merchant-api",
+      "trial_url": "https://app.dataforseo.com/register",
+      "status": "官方评论端点标注暂不可用；未业务实调",
+      "summary": "Amazon reviews 官方 task_post 文档仍提示暂不可用；Sandbox 样例不能证明生产抓取可用。",
+      "endpoint": "POST https://api.dataforseo.com/v3/merchant/amazon/reviews/task_post",
+      "auth": "HTTP Basic API login/password",
+      "params": {
+        "asin": "需账户与服务恢复后测试"
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "历史文档 title/review_text/rating/timestamp 等"
+        ],
+        "not_observed": [
+          "当前生产评论返回"
+        ]
+      },
+      "pagination": "历史 depth 最多50；当前未测",
+      "pricing_trial": "官方 pricing：试用$1；充值最低$50。Sandbox 为样例测试",
+      "next_gate": "先确认 Amazon reviews 恢复，再注册取得凭据；不能用免费 Sandbox 证明实时评论能力",
+      "sources": [
+        "https://docs.dataforseo.com/v3/merchant-amazon-reviews-task_post/",
+        "https://dataforseo.com/pricing"
+      ],
+      "attempts": [
+        {
+          "id": "dataforseo-status",
+          "time_utc": "2026-11-13T06:54:42.364625+00:00",
+          "method": "GET",
+          "url": "https://docs.dataforseo.com/v3/merchant-amazon-reviews-task_post/",
+          "parameters": {},
+          "kind": "endpoint_status_documentation",
+          "http_status": 200,
+          "elapsed_seconds": 4.057,
+          "response_bytes": 307234,
+          "sha256": "6bd9304b2202d180290f45e3f1e8b5ee58ec5038862b78f1d3e1ce3f14fa05a3",
+          "test_kind": "endpoint_status_documentation",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "dataforseo-trial",
+          "time_utc": "2026-11-13T06:54:42.685846+00:00",
+          "method": "GET",
+          "url": "https://dataforseo.com/pricing",
+          "parameters": {},
+          "kind": "trial_page",
+          "http_status": 200,
+          "elapsed_seconds": 2.3,
+          "response_bytes": 538365,
+          "sha256": "08e034ccd0d81bce5a124fbcecfedfd10b5255993d901e38aad4730c222610bc",
+          "test_kind": "trial_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "diffbot",
+      "vendor": "Diffbot",
+      "official_url": "https://www.diffbot.com/products/extract/",
+      "trial_url": "https://www.diffbot.com/testdrive",
+      "status": "公开 demo 实际提交：业务错误/被拦截，无评论",
+      "summary": "官网无 token Test Drive 两次实际提交：Amazon 商品提取返回业务 errorCode=500；Walmart discussion 落到 blocked 页面、numPosts=0。HTTP200不等于业务成功。",
+      "endpoint": "正式 https://api.diffbot.com/v3/product 或 /v3/discussion；实际测试官网 TestDrive 自身调用的 https://www.diffbot.com/td/product 与 /td/discussion",
+      "auth": "正式 token；公开 Test Drive 无 token",
+      "params": {
+        "product_url": "https://www.amazon.com/dp/B07J4TNYV8",
+        "discussion_url": "https://www.walmart.com/reviews/product/782866746"
+      },
+      "fields": {
+        "observed": [
+          "错误/拦截页元数据：errorCode、numPosts=0"
+        ],
+        "documented_only": [
+          "Product/Discussion 通用提取 schema"
+        ],
+        "not_observed": [
+          "目标电商逐条原始评论",
+          "商家回复",
+          "全量分页"
+        ]
+      },
+      "pagination": "未验证",
+      "pricing_trial": "官方 Free 计划：每月10,000 credits、5 requests/min；实际用量依 API 类型",
+      "next_gate": "公开 demo 未拿到评论；需账户 token、目标平台适配和反拦截验证；通用提取不能视为逐站评论能力",
+      "sources": [
+        "https://www.diffbot.com/testdrive",
+        "https://www.diffbot.com/docs/extract/product",
+        "https://www.diffbot.com/docs/extract/discussion",
+        "https://www.diffbot.com/pricing/"
+      ],
+      "attempts": [
+        {
+          "id": "diffbot-demo",
+          "time_utc": "2026-11-13T06:54:40.533537+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/products/extract/testdrive",
+          "parameters": {},
+          "kind": "public_demo_page",
+          "http_status": 200,
+          "elapsed_seconds": 3.37,
+          "response_bytes": 145452,
+          "sha256": "96109b2f36b3c92eb51ba82eee627b02d3e079cf97654da8d7ff1fd959442210",
+          "test_kind": "public_demo_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "diffbot-demo-new",
+          "time_utc": "2026-11-13T06:54:40.913986+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/testdrive",
+          "parameters": {},
+          "kind": "public_demo_page",
+          "http_status": 200,
+          "elapsed_seconds": 3.765,
+          "response_bytes": 140591,
+          "sha256": "e50756e7215eda50d261836d202790ff7f4fb683e2cc44e80c6c95712408f5df",
+          "test_kind": "public_demo_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "diffbot-demo-script",
+          "time_utc": "2026-11-13T06:58:58.251749+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/assets/products_extract_testdrive.md.CKHPWh1S.lean.js",
+          "parameters": {},
+          "kind": "public_demo_source",
+          "http_status": 200,
+          "elapsed_seconds": 1.139,
+          "response_bytes": 905,
+          "sha256": "af4c1489a2c3e0013ca90309f04e495e466605f3386b0d9f6760ba75ecda6787",
+          "test_kind": "public_demo_source",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "diffbot-new-script",
+          "time_utc": "2026-11-13T06:58:58.279399+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/assets/testdrive.md.CyKFZn-Q.lean.js",
+          "parameters": {},
+          "kind": "public_demo_source",
+          "http_status": 200,
+          "elapsed_seconds": 1.712,
+          "response_bytes": 491,
+          "sha256": "c7a11801d47d80c0baf558dbda047a2bf3a06d169833adc85b7c59cecc7f37e4",
+          "test_kind": "public_demo_source",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "diffbot-app-script",
+          "time_utc": "2026-11-13T07:00:05.507108+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/assets/app.CggcA-58.js",
+          "parameters": {},
+          "kind": "public_demo_source",
+          "http_status": 200,
+          "elapsed_seconds": 2.902,
+          "response_bytes": 1352,
+          "sha256": "75dc6e3fc0030ac72925e15b6c1102e8a6b887b1591ac2425aceac131b133016",
+          "test_kind": "public_demo_source",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "diffbot-live-product",
+          "time_utc": "2026-11-13T07:11:15.996711+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/td/product?url=https%3A%2F%2Fwww.amazon.com%2Fdp%2FB07J4TNYV8",
+          "parameters": {
+            "url": "https://www.amazon.com/dp/B07J4TNYV8"
+          },
+          "kind": "official_public_demo_submission",
+          "http_status": 200,
+          "elapsed_seconds": 10.601,
+          "response_bytes": 88,
+          "sha256": "b3164780b75ef23695250b11ac08372012c83cacec466c4373e3705c22167301",
+          "test_kind": "official_public_demo_submission",
+          "status": "HTTP 200",
+          "result_summary": "HTTP200 但业务 errorCode=500，目标站点请求过多；未返回商品/评论。",
+          "count": 0,
+          "business_success": false,
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "diffbot-live-discussion",
+          "time_utc": "2026-11-13T07:11:17.561913+00:00",
+          "method": "GET",
+          "url": "https://www.diffbot.com/td/discussion?url=https%3A%2F%2Fwww.walmart.com%2Freviews%2Fproduct%2F782866746",
+          "parameters": {
+            "url": "https://www.walmart.com/reviews/product/782866746"
+          },
+          "kind": "official_public_demo_submission",
+          "http_status": 200,
+          "elapsed_seconds": 9.559,
+          "response_bytes": 691,
+          "sha256": "f00251a2d958f24e940e12753ea3e339c244dfbf5d3321961f155d997c17d909",
+          "test_kind": "official_public_demo_submission",
+          "status": "HTTP 200",
+          "result_summary": "HTTP200 但 resolvedPageUrl 落到 Walmart blocked 页面，numPosts=0；未返回评论。",
+          "count": 0,
+          "business_success": false,
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "unwrangle",
+      "vendor": "Unwrangle",
+      "official_url": "https://www.unwrangle.com/",
+      "trial_url": "https://console.unwrangle.com/signup",
+      "status": "实际请求：401；Amazon reviews 标注高风险",
+      "summary": "官方 Amazon reviews endpoint 无 key 请求401；当前文档标为 Legacy/high-risk、需要 Amazon 登录，不建议新生产项目采用。",
+      "endpoint": "GET https://data.unwrangle.com/api/getter/",
+      "auth": "Token header 或 api_key 参数；Amazon 某些模式还需买家登录 cookies",
+      "params": {
+        "platform": "amazon_reviews",
+        "asin": "B07J4TNYV8",
+        "country_code": "us",
+        "page": 1
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "各 marketplace 评论字段依具体文档；本次仅核 Amazon review 路径"
+        ],
+        "not_observed": [
+          "本次实际正文/图片/回复"
+        ]
+      },
+      "pagination": "page 参数有文档；未获成功评论响应",
+      "pricing_trial": "官网有免费开始/无需信用卡入口；具体免费额度本轮未核",
+      "next_gate": "注册取得 key；Amazon 登录依赖与高风险状态需先确认；不能当成无登录稳定主渠道",
+      "sources": [
+        "https://docs.unwrangle.com/",
+        "https://docs.unwrangle.com/amazon-product-reviews-api/",
+        "https://www.unwrangle.com/"
+      ],
+      "attempts": [
+        {
+          "id": "unwrangle-docs",
+          "time_utc": "2026-11-13T06:54:43.028641+00:00",
+          "method": "GET",
+          "url": "https://docs.unwrangle.com/",
+          "parameters": {},
+          "kind": "public_documentation",
+          "http_status": 200,
+          "elapsed_seconds": 2.301,
+          "response_bytes": 73712,
+          "sha256": "5112c4627436735867c9898e20eeac42b46b8f61b5ac1d2fecdcc1ad7bc53932",
+          "test_kind": "public_documentation",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "unwrangle-trial",
+          "time_utc": "2026-11-13T06:54:43.428263+00:00",
+          "method": "GET",
+          "url": "https://www.unwrangle.com/",
+          "parameters": {},
+          "kind": "trial_page",
+          "http_status": 200,
+          "elapsed_seconds": 2.798,
+          "response_bytes": 275602,
+          "sha256": "4d2041e98993158cbb047c50b7d4aab731ce8fa82ce9e898d4dff5c63ffa3659",
+          "test_kind": "trial_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "unwrangle-review-docs",
+          "time_utc": "2026-11-13T06:58:58.338443+00:00",
+          "method": "GET",
+          "url": "https://docs.unwrangle.com/amazon-product-reviews-api/",
+          "parameters": {},
+          "kind": "public_documentation",
+          "http_status": 200,
+          "elapsed_seconds": 0.767,
+          "response_bytes": 231942,
+          "sha256": "5ae84db7c75a3eead65dcc3b1883e8dad1bb06bd103c88edab4880f2f797758a",
+          "test_kind": "public_documentation",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "unwrangle-auth",
+          "time_utc": "2026-11-13T07:04:19.570060+00:00",
+          "method": "GET",
+          "url": "https://data.unwrangle.com/api/getter/?platform=amazon_reviews&asin=B07J4TNYV8&country_code=us&page=1",
+          "parameters": {
+            "platform": "amazon_reviews",
+            "asin": "B07J4TNYV8",
+            "country_code": "us",
+            "page": "1"
+          },
+          "kind": "unauthenticated_access_check",
+          "http_status": 401,
+          "elapsed_seconds": 1.327,
+          "response_bytes": 58,
+          "sha256": "dbff0849bc109eee7f9b7b1fe12e40fc8add21823b2f1fb600b37f620cbd7862",
+          "test_kind": "unauthenticated_access_check",
+          "status": "HTTP 401",
+          "result_summary": "未提供账户密钥时返回认证错误；未获得业务数据。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "zyte",
+      "vendor": "Zyte",
+      "official_url": "https://www.zyte.com/zyte-api/",
+      "trial_url": "https://app.zyte.com/",
+      "status": "实际请求：401 认证门槛",
+      "summary": "官方 /v1/extract 无认证请求返回401；本轮未证明逐条电商评论提取。",
+      "endpoint": "POST https://api.zyte.com/v1/extract",
+      "auth": "HTTP Basic，以 API key 作用户名",
+      "params": {
+        "url": "https://www.amazon.com/dp/B07J4TNYV8",
+        "product": true
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "product 通用商品抽取；rating/reviewCount 不是逐条评论"
+        ],
+        "not_observed": [
+          "实际评论正文/图片/商家回复"
+        ]
+      },
+      "pagination": "业务分页未验证",
+      "pricing_trial": "官方试用$5 credits、30天；信用卡要求未核",
+      "next_gate": "注册账户取得 key，再针对逐条评论 schema/自定义提取验证",
+      "sources": [
+        "https://docs.zyte.com/zyte-api/usage/reference.html",
+        "https://www.zyte.com/zyte-api/",
+        "https://www.zyte.com/terms-policies/terms-of-service/"
+      ],
+      "attempts": [
+        {
+          "id": "zyte-auth",
+          "time_utc": "2026-11-13T06:54:43.600474+00:00",
+          "method": "POST",
+          "url": "https://api.zyte.com/v1/extract",
+          "parameters": {
+            "url": "https://www.amazon.com/dp/B07J4TNYV8",
+            "product": true
+          },
+          "kind": "unauthenticated_access_check",
+          "http_status": 401,
+          "elapsed_seconds": 2.123,
+          "response_bytes": 202,
+          "sha256": "1affdbbafac6abca8f60f42f7ba8d4219874fc13279925dc5bee7f243743b508",
+          "test_kind": "unauthenticated_access_check",
+          "status": "HTTP 401",
+          "result_summary": "未提供账户密钥时返回认证错误；未获得业务数据。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "zyte-trial",
+          "time_utc": "2026-11-13T06:54:43.926808+00:00",
+          "method": "GET",
+          "url": "https://www.zyte.com/zyte-api/",
+          "parameters": {},
+          "kind": "trial_page",
+          "http_status": 200,
+          "elapsed_seconds": 1.906,
+          "response_bytes": 537222,
+          "sha256": "4803c70699e872d106223c4d734265d4b93300df1b3c208ce7d15d81244d0366",
+          "test_kind": "trial_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    },
+    {
+      "id": "decodo",
+      "vendor": "Decodo",
+      "official_url": "https://decodo.com/scraping/web",
+      "trial_url": "https://dashboard.decodo.com/register?page=web-data/pricing",
+      "status": "实际请求：401 认证门槛",
+      "summary": "当前 Web Data API /v1/scrape 无 Bearer 返回401；旧 Web Scraping API 已标 Legacy。",
+      "endpoint": "POST https://data.decodo.com/v1/scrape",
+      "auth": "Bearer token",
+      "params": {
+        "url": "https://www.amazon.com/dp/B07J4TNYV8"
+      },
+      "fields": {
+        "observed": [],
+        "documented_only": [
+          "通用 /scrape；电商模板的逐条评论字段须逐项确认"
+        ],
+        "not_observed": [
+          "实际评论正文/图片/商家回复"
+        ]
+      },
+      "pagination": "未验证",
+      "pricing_trial": "官网免费 starter 宣称$5 credits、最多10K requests、无需信用卡；是否每月刷新以账户内计划为准",
+      "next_gate": "注册免费账户取得 token，再测试目标电商评论解析与分页",
+      "sources": [
+        "https://help.decodo.com/docs/web-data-api-scrape-introduction",
+        "https://help.decodo.com/docs/web-scraping-api-introduction",
+        "https://decodo.com/scraping/web",
+        "https://decodo.com/"
+      ],
+      "attempts": [
+        {
+          "id": "decodo-trial",
+          "time_utc": "2026-11-13T06:54:44.287451+00:00",
+          "method": "GET",
+          "url": "https://decodo.com/scraping/web",
+          "parameters": {},
+          "kind": "trial_page",
+          "http_status": 200,
+          "elapsed_seconds": 2.208,
+          "response_bytes": 1549144,
+          "sha256": "a3ab5ad37cc86f41fe952831dda5e4e8d911d0017e2409c6c78ba2787033bae3",
+          "test_kind": "trial_page",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "decodo-ecommerce",
+          "time_utc": "2026-11-13T06:54:44.731397+00:00",
+          "method": "GET",
+          "url": "https://decodo.com/scraping/ecommerce",
+          "parameters": {},
+          "kind": "public_documentation",
+          "http_status": 200,
+          "elapsed_seconds": 2.922,
+          "response_bytes": 1040161,
+          "sha256": "3dfa3948dfed76e7fa4e8ed2c0020cc30b4984dff00c4ebce604590e9f427701",
+          "test_kind": "public_documentation",
+          "status": "HTTP 200",
+          "result_summary": "已读取官方公开页面/文档；不是业务 API 数据返回。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        },
+        {
+          "id": "decodo-auth",
+          "time_utc": "2026-11-13T06:58:58.337524+00:00",
+          "method": "POST",
+          "url": "https://data.decodo.com/v1/scrape",
+          "parameters": {
+            "url": "https://www.amazon.com/dp/B07J4TNYV8"
+          },
+          "kind": "unauthenticated_access_check",
+          "http_status": 401,
+          "elapsed_seconds": 1.818,
+          "response_bytes": 42,
+          "sha256": "8f41ee49b9ce968d6af54206dfe34fa99e8045b6dcb689509ccba4cb41ae57be",
+          "test_kind": "unauthenticated_access_check",
+          "status": "HTTP 401",
+          "result_summary": "未提供账户密钥时返回认证错误；未获得业务数据。",
+          "raw_evidence": "仅本地 QA：research/qa/overseas-raw；不纳入公开网页"
+        }
+      ]
+    }
+  ]
+}

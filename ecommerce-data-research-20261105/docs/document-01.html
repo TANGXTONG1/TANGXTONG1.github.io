@@ -1,0 +1,515 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>国内电商数据平台调研</title><style>body{margin:0;background:#f4f7fb;color:#172b45;font:15px/1.85 "PingFang SC","Microsoft YaHei",system-ui,sans-serif}header{padding:16px 4vw;background:white;border-bottom:1px solid #dce3ed;display:flex;justify-content:space-between;gap:20px}a{color:#244bb6;word-break:break-word}article{max-width:1240px;margin:30px auto;padding:30px;background:white;border:1px solid #dce3ed;border-radius:7px;overflow-wrap:anywhere}h1{font-size:27px;line-height:1.4}h2{font-size:21px;margin-top:38px}h3{font-size:17px;margin-top:28px}table{width:100%;border-collapse:collapse;display:block;overflow:auto;font-size:13px}th,td{border:1px solid #dce3ed;padding:10px 13px;min-width:120px;vertical-align:top}th{background:#eaf0f8;text-align:left}pre{background:#f1f5fb;padding:16px;overflow:auto;font-size:12px}code{font-size:12px}blockquote{border-left:3px solid #b4c5df;padding-left:18px;color:#5b6b80}@media(max-width:700px){article{margin:16px;padding:20px}h1{font-size:23px}header{font-size:13px}}</style></head><body><header><a href="../#library">返回资料库</a><a href="../downloads/research/%E5%9B%BD%E5%86%85%E7%94%B5%E5%95%86%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E8%B0%83%E7%A0%94-2026-11-05.md" download>下载原始 Markdown</a></header><article><h1 id="_1">国内电商数据平台调研</h1>
+<p>核验日期：2026-11-05。目标：第三方集成平台优先，同时获取自营与竞品数据；API优先，接受Excel/CSV导出。</p>
+<p><strong>浏览器补充核验：</strong> 已尝试34组平台的公开入口，其中31组确认访问方式、3组因页面或自动化异常未完成；其余15组仍为文档核验。达多多和商指针可看部分公开数据；好单库另取得1份公开活动商品JSON（3件商品、41个商品字段）。未注册账号、未完成鉴权业务API实调、未获得供应商Excel/CSV导出。详见<a href="document-07.html">逐家试用结果与字段对照</a>、<a href="document-10.html">完整字段字典</a>及<a href="../downloads/research/%E6%A0%B7%E6%9C%AC/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json">好单库公开响应</a>。</p>
+<p>本报告整理49组候选平台/产品，包括同一集团的不同产品，也包括少数流量、线下零售等补充工具，不能理解为49家互不重复、均能覆盖全部需求的数据商。基于供应商官网、公开接口文档和帮助中心核验，没有注册付费账户，也没有用密钥实调，因此“有接口”表示有公开证据，不能等同于已验证稳定性、覆盖率或商业授权。尽量覆盖相关主流和可发现服务，不宣称穷尽市场全部供应商。</p>
+<p><strong>结论：没有核实到一家标准产品能通过一套API同时完整提供淘宝、京东、拼多多、美团的自营订单、竞品真实销量、广告后台数据和全部评价。可执行的选型方式是：自营经营连接器＋竞品市场数据库＋必要的价格/评价接口。</strong></p>
+<p>数据口径必须分开：</p>
+<table>
+<thead>
+<tr>
+<th>数据需求</th>
+<th>可以争取获得的内容</th>
+<th>不能直接推定的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自营销量与收入</td>
+<td>经商家授权的订单、支付、退款、出库、结算；按统一口径计算销量/销售额</td>
+<td>ERP显示的销售额一定等于支付GMV或退款后净收入</td>
+</tr>
+<tr>
+<td>竞品销量</td>
+<td>前台展示的销量/区间、联盟引单量、第三方监测或模型估算</td>
+<td>竞品真实完整订单；“1万+”等于精确10000单</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>展示价、SKU价、促销价、券后价、历史采样价</td>
+<td>所有人、所有地区在结算页的统一实际到手价</td>
+</tr>
+<tr>
+<td>用户评价</td>
+<td>公开或授权的评论正文、评分、追评、图片、商家回复；可分页范围因接口而异</td>
+<td>评价总数等于可获取正文数量；视频/笔记评论等于商品购后评价</td>
+</tr>
+<tr>
+<td>自营营销</td>
+<td>授权广告账户曝光、点击、消耗、转化等报表；各渠道权限不同</td>
+<td>有“营销模块”就一定有媒体广告计划级报表</td>
+</tr>
+<tr>
+<td>竞品营销</td>
+<td>达人合作、内容互动、广告素材、促销、公开排名、估算投放</td>
+<td>竞品真实广告账单、完整归因转化、真实ROI</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">优先评估的组合</h2>
+<ol>
+<li><strong>希望尽量少接供应商：先评估九数云＋魔镜。</strong> 九数云有自营平台连接器，企业版可通过API导出分析表；魔镜有市场情报及价格监测API。两家均需进一步验证目标渠道、历史区间和评论交付能力。<a href="https://www.jiushuyun.com/connection" rel="noopener noreferrer" target="_blank">九数云连接</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-149.html" rel="noopener noreferrer" target="_blank">API导出</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-140.html" rel="noopener noreferrer" target="_blank">企业版授权要求</a>、<a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">魔镜API</a>。</li>
+<li><strong>自己开发系统、需要商品与评价原始数据：试测Just One API、TMAPI、Qovia。</strong> 分别偏商品与社媒多源接口、商品/SKU与历史价格、评价与达人数据；它们公开目录的覆盖不同，不能互相替代。<a href="https://justoneapi.com/" rel="noopener noreferrer" target="_blank">Just One目录</a>、<a href="https://tmapi.top/zh-cn/docs/pinduoduo/item-detail/get-item-detail-by-id" rel="noopener noreferrer" target="_blank">TMAPI拼多多详情</a>、<a href="https://www.qovia.ai/zh/docs/api-reference/" rel="noopener noreferrer" target="_blank">Qovia目录</a>。</li>
+<li><strong>美团是核心渠道：自营优先核九数云，竞品并行试样鼎点、富泰科等专门供应商。</strong> 必须把外卖、闪购、到店团购、大众点评分别列需求；授权门店点评接口不代表竞品点评接口。</li>
+<li><strong>营销与消费者洞察优先：评估数说聚合、任拓、蝉妈妈、新榜。</strong> 这些覆盖社媒、竞品或市场分析，但标准API的字段和原始数据出库权限要逐项确认。</li>
+</ol>
+<p>这些是基于需求匹配和文档证据的试用顺序，不是准确率或稳定性排名。</p>
+<h2 id="_3">按你点名的四个渠道选数据源</h2>
+<table>
+<thead>
+<tr>
+<th>渠道</th>
+<th>自营经营数据优先方向</th>
+<th>竞品销量/价格方向</th>
+<th>用户评价方向</th>
+<th>营销数据区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>淘宝/天猫</td>
+<td>九数云、已有ERP＋合适的奇门/平台授权通道</td>
+<td>魔镜、任拓；TMAPI/Just One补价格与商品详情</td>
+<td>Qovia、Just One、竹简；魔镜/任拓/云听做评价分析</td>
+<td>自营广告报表另查账户连接；竞品促销/内容表现不能视为真实广告花费</td>
+</tr>
+<tr>
+<td>京东</td>
+<td>已有ERP、授权连接器；使用现行京东开放平台通道</td>
+<td>魔镜、任拓；TMAPI补商品/SKU价格及历史价格</td>
+<td>Qovia、万邦京东评价接口；任拓倾听</td>
+<td>京准通授权报表与竞品监测分开；联盟引单量不等于全站销量</td>
+</tr>
+<tr>
+<td>拼多多</td>
+<td>九数云拼多多直连/商家自研，或平台方舟相应场景；不能走已停同步的普通ERP连接器</td>
+<td>TMAPI商品价格/SKU；魔镜部分聚合数据需询证；电霸作SaaS初筛</td>
+<td><strong>本轮没有核到可直接优先推荐的通用竞品评价全文API</strong>，需供应商样例补证</td>
+<td>自营投放账户指标需专门核验；联盟/活动/优惠数据只覆盖部分营销</td>
+</tr>
+<tr>
+<td>美团</td>
+<td>九数云餐饮外卖/团购/到店广告；餐道、适用ERP补门店经营</td>
+<td>富泰科的对应版本；鼎点/极致了先试样；魔镜市场聚合能力另核</td>
+<td>自营九数云已明确；竞品全文以专门供应商实样为准</td>
+<td>九数云核到CPC门店日报；未核到任意竞品真实广告消耗/ROI接口</td>
+</tr>
+</tbody>
+</table>
+<p>上表是下方逐项证据的选型归纳。拼多多竞品评价、美团竞品评价全文以及四渠道统一的自营广告报表，是本轮仍须供应商试样解决的主要缺口，不能用“全域数据”口号代替。</p>
+<h2 id="_4">如何阅读清单</h2>
+<ul>
+<li><strong>A：公开文档</strong>能看到接口、字段、授权或导出流程。</li>
+<li><strong>B：官网明确提供API/定制交付</strong>，但本轮未取得对应字段的完整文档。</li>
+<li><strong>C：产品查询能力可确认</strong>，API或导出未确认，或明确无API。</li>
+<li><strong>D：历史资料/当前跳转或访问异常</strong>，需重新确认。</li>
+<li>A/B/C/D表示证据类型，不代表供应商质量；同一家不同模块可有不同等级。</li>
+</ul>
+<h2 id="_5">商品、价格、评价及社媒聚合接口</h2>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>本轮确认的渠道/范围</th>
+<th>数据与适用用途</th>
+<th>接入、计费</th>
+<th>主要缺口与证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Just One API</td>
+<td>淘宝/天猫、京东、抖音电商、1688；得物商品搜索、闲鱼详情；小红书、星图、蒲公英等</td>
+<td>商品搜索、详情、SKU、评价及社媒/达人数据；每个渠道动作不同</td>
+<td><strong>A</strong>，一个Token、多接口；按调用量，提供试用</td>
+<td>得物本轮核到搜索，闲鱼核到二手商品详情，不能扩写全部评价/销量；拼多多/美团未确认。<code>code=0</code>才是业务成功，HTTP 200不够。<a href="https://justoneapi.com/zh/blog/taobao-tmall-product-data-api-tutorial" rel="noopener noreferrer" target="_blank">淘系教程</a>、<a href="https://docs.justoneapi.com/zh/api/dewu-poizon/product-search-v1" rel="noopener noreferrer" target="_blank">得物搜索</a>、<a href="https://docs.justoneapi.com/zh/api/xianyu-goofish/product-details-v1" rel="noopener noreferrer" target="_blank">闲鱼详情</a>、<a href="https://docs.justoneapi.com/zh/api/1688/product-details-v1" rel="noopener noreferrer" target="_blank">1688详情</a></td>
+</tr>
+<tr>
+<td>TMAPI</td>
+<td>淘宝/天猫、1688、拼多多、京东、义乌购；另有历史价格目录</td>
+<td>商品详情、SKU价格/库存字段；拼多多展示销量和评论数；淘系单独销量接口</td>
+<td><strong>A</strong>，请求头<code>apikey</code>；具体接口与版本独立</td>
+<td>拼多多有<code>sale_count</code>、<code>side_sales_tip</code>、<code>comment_count</code>，不代表真实订单或评论全文；京东详情样例无销量/评论字段。库存数语义待实测，部分淘系旧接口标维护中。<a href="https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">拼多多字段</a>、<a href="https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md" rel="noopener noreferrer" target="_blank">京东字段</a>、<a href="https://tmapi.top/docs/taobao-tmall/advanced-api/get-item-sales-by-id-v3" rel="noopener noreferrer" target="_blank">淘系销量V3</a></td>
+</tr>
+<tr>
+<td>Qovia</td>
+<td>淘宝/天猫、京东、抖音商品评价；小红书、星图、蒲公英、磁力聚星等</td>
+<td>购后评价正文、图片、评分、SKU、追评/回复及达人数据</td>
+<td><strong>A</strong>，REST API/MCP；按非空成功结果计费</td>
+<td>淘宝通常每页20条，京东每页10条；可取页数可能远少于展示总数，不能承诺全量。未确认拼多多/美团。淘宝评价公开价$0.0135/次，按请求计价。<a href="https://qovia.ai/docs/api-reference/raw.taobao.comments/" rel="noopener noreferrer" target="_blank">淘宝评价</a>、<a href="https://qovia.ai/docs/api-reference/raw.jd.comments/" rel="noopener noreferrer" target="_blank">京东评价</a>、<a href="https://qovia.ai/openapi.json" rel="noopener noreferrer" target="_blank">OpenAPI</a></td>
+</tr>
+<tr>
+<td>万邦 Onebound</td>
+<td>当前核到京东详情/搜索/评价及多平台API目录；淘系旧资料较多</td>
+<td>商品、店铺、价格、评价等第三方接口</td>
+<td><strong>A/D</strong>，Key/Secret，费用和现行渠道需确认</td>
+<td>本轮旧淘宝item_get/item_review文档跳转到淘宝海外tglobal说明，不能照旧教程承诺国内淘系接口仍可用；美团未确认。<a href="https://open.onebound.cn/help/api/jd.item_review.html" rel="noopener noreferrer" target="_blank">京东评价文档</a>、<a href="https://open.onebound.cn/help/api/jd.readme.html?sso_checked=1" rel="noopener noreferrer" target="_blank">京东接口说明</a>、<a href="https://open.onebound.cn/" rel="noopener noreferrer" target="_blank">官网</a></td>
+</tr>
+<tr>
+<td>竹简数据 BambooDataLab</td>
+<td>淘宝/天猫、抖音电商/团购、京东；淘宝闪购周边商家/爆品团；另有社媒/出行目录</td>
+<td>淘系商品/SKU/评论/展示销量；抖音商品评论；京东具体目录仅核到商品详情</td>
+<td><strong>A</strong>，需商务发Token和专属地址，暂未开放自助调用</td>
+<td>评论页有正文样例，但<code>has_image</code>不等于返回图片URL；京东评价全文、拼多多/美团仍待核。销量算法/口径未实测。<a href="https://marketplace.bamboodatalab.com/zh/" rel="noopener noreferrer" target="_blank">数据市场</a>、<a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1" rel="noopener noreferrer" target="_blank">淘系评价字段</a>、<a href="https://marketplace.bamboodatalab.com/zh/api/taobao/item-sales-v1" rel="noopener noreferrer" target="_blank">淘系销量字段</a>、<a href="https://marketplace.bamboodatalab.com/zh/usage" rel="noopener noreferrer" target="_blank">接入</a></td>
+</tr>
+<tr>
+<td>EveryInfra 万有引擎</td>
+<td>淘宝/天猫、京东、1688；得物价格概要、闲鱼搜索/详情及多种社媒</td>
+<td>商品、评价、问大家；统一API/MCP和能力目录</td>
+<td><strong>A</strong>，API Key/Bearer；按当前能力目录计费</td>
+<td>官方明确淘系详情及SKU价格多数由美元折算人民币，可能偏离页面约1–4%；不宜直接用于精确到手价监测。京东评价单次上限10条；拼多多/美团未确认。<a href="https://everyinfra.com/taobao-api/product_detail" rel="noopener noreferrer" target="_blank">淘系价格口径</a>、<a href="https://everyinfra.com/jd-api/reviews" rel="noopener noreferrer" target="_blank">京东评价</a>、<a href="https://everyinfra.com/docs" rel="noopener noreferrer" target="_blank">接入</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">自营数据连接与系统整合</h2>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>本轮确认的范围</th>
+<th>营销/销量/价格/评价</th>
+<th>接入方式</th>
+<th>主要限制与证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>九数云BI（帆软）</td>
+<td>淘宝、拼多多直连/商家自研、抖店、美团、饿了么、巨量千川及ERP</td>
+<td>自营订单/商品、评价、部分广告报表；业务字段按连接器选表确认</td>
+<td><strong>A</strong>，授权连接；<strong>外发API仅企业版</strong>，导出分析表CSV/Excel</td>
+<td>API不导出数据源表/仪表板/故事板。聚水潭、吉客云等ERP连接器自2025-08-20停同步拼多多，要改用拼多多直连/自研；直连需主账号和相应服务。美团首次近5天，团购单系统绑定可能解除原关联，团购/到店广告限餐饮。<a href="https://help.fanruan.com/jiushuyun/doc-view-140.html" rel="noopener noreferrer" target="_blank">企业版认证</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-149.html" rel="noopener noreferrer" target="_blank">导出API</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-342.html" rel="noopener noreferrer" target="_blank">ERP限制</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-1121.html" rel="noopener noreferrer" target="_blank">拼多多直连</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-1055.html" rel="noopener noreferrer" target="_blank">自研路径</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-604.html" rel="noopener noreferrer" target="_blank">美团</a></td>
+</tr>
+<tr>
+<td>预策科技 / 生意高手</td>
+<td>官网介绍跨平台自营数据、市场数据、系统数据整合</td>
+<td>商品、促销、广告、流量、订单、账单与市场分析</td>
+<td><strong>C（交付待核）</strong>，外发API/文件与具体连接器商务确认</td>
+<td>检索到以预策命名的Apifox目录，但未建立官网归属关系，部分内容引自九数云；不将它当成已实施连接器的证据。<a href="https://www.yucekj.com/" rel="noopener noreferrer" target="_blank">官网</a></td>
+</tr>
+<tr>
+<td>轻易云</td>
+<td>聚水潭、旺店通、管易云、吉客云、网店管家、有赞、微盟等连接器</td>
+<td>订单/库存/退款/财务等系统之间的数据同步</td>
+<td><strong>A/B</strong>，iPaaS、标准API适配、奇门连接器</td>
+<td>更适合搬运已有授权数据；不自行产生竞品销量或评价数据库。<a href="https://www.qeasy.cloud/en/platform" rel="noopener noreferrer" target="_blank">平台目录</a></td>
+</tr>
+<tr>
+<td>集简云</td>
+<td>抖店、有赞、微盟、百度营销；视频号小店、抖音来客等有独立动作</td>
+<td>自营流程自动化；抖店订单/商品/售后、商家评分、资金流水下载</td>
+<td><strong>A（动作文档）/B（完整字段待核）</strong>，无代码连接器、Webhook/自定义API</td>
+<td>完整业务schema需授权后样本；商家评分不是评价全文，京东小程序不等于京东商城。不能从应用数推定四重点渠道完整直连。<a href="https://www.jijyun.cn/apps/" rel="noopener noreferrer" target="_blank">应用目录</a>、<a href="https://www.jijyun.cn/apps/processes/1874" rel="noopener noreferrer" target="_blank">抖店动作</a>、<a href="https://www.jijyun.cn/help/detail/756" rel="noopener noreferrer" target="_blank">订单ID字段</a></td>
+</tr>
+<tr>
+<td>聚水潭</td>
+<td>淘系、京东、拼多多、抖音、快手等ERP渠道</td>
+<td>自营订单、商品、库存、售后、账单</td>
+<td><strong>A</strong>，开放API/奇门；商家授权与商务开通</td>
+<td><strong>普通订单接口排除淘系和拼多多</strong>，不能由平台枚举推断可统一外发；敏感字段按平台政策处理。<code>pay_amount</code>为应付，实付需按支付节点计算。<a href="https://openweb.jushuitan.com/dev-doc?docId=22&amp;docType=4" rel="noopener noreferrer" target="_blank">订单字段</a>、<a href="https://open.jushuitan.com/document/2125.html" rel="noopener noreferrer" target="_blank">普通接口限制</a>、<a href="https://openweb.jushuitan.com/doc?docId=340" rel="noopener noreferrer" target="_blank">交互规则</a></td>
+</tr>
+<tr>
+<td>旺店通</td>
+<td>淘系、京东、拼多多、抖店；美团外卖/闪购等细分渠道</td>
+<td>自营订单/货品/库存/退款/账单/销售汇总</td>
+<td><strong>A</strong>，多个版本API/奇门</td>
+<td>普通原始订单API明确不返回淘系、拼多多；“支持平台”不等于可统一外发。<a href="https://open.wangdian.cn/open/guide?path=qjbguide_ptdmbb" rel="noopener noreferrer" target="_blank">平台代码</a>、<a href="https://open.wangdian.cn/qyb/open/apidoc/doc?path=vip_api_trade_query.php" rel="noopener noreferrer" target="_blank">订单限制</a></td>
+</tr>
+<tr>
+<td>金蝶管易云</td>
+<td>淘宝/天猫、京东、拼多多、抖音等</td>
+<td>自营订单库存、账单及业财整合</td>
+<td><strong>B</strong>，OpenAPI、奇门、集成实施</td>
+<td>营销费用账单不等于广告曝光/点击/归因接口；评价全文未核。<a href="https://www.guanyiyun.com/" rel="noopener noreferrer" target="_blank">官网</a>、<a href="https://www.guanyiyun.com/zhihuicangpeijiejuefangan/" rel="noopener noreferrer" target="_blank">接口方案</a></td>
+</tr>
+<tr>
+<td>吉客云</td>
+<td>淘系、京东、拼多多、抖音及美团多种零售/餐饮业务</td>
+<td>销售单、网店订单、货品价目、库存、销售统计；公开MCP字段目录</td>
+<td><strong>A</strong>，OpenAPI、SDK、MCP；需认证/应用订阅</td>
+<td>ERP价目不是平台到手价；吉客云→九数云连接器已停新增同步拼多多，其他出库路径须核验。广告全指标/评价全文未核，美团子业务分别确认。<a href="https://open.jackyun.com/" rel="noopener noreferrer" target="_blank">开放平台</a>、<a href="https://open.jackyun.com/developer/mcpservice/toolList.html" rel="noopener noreferrer" target="_blank">MCP参数目录</a>、<a href="https://help.fanruan.com/jiushuyun/doc-view-673.html" rel="noopener noreferrer" target="_blank">连接器限制</a></td>
+</tr>
+<tr>
+<td>网店管家</td>
+<td>淘系、京东、拼多多、1688、抖店、快手、有赞等ERP渠道</td>
+<td>自营商品、订单、库存、会员、售后</td>
+<td><strong>A</strong>，开放API/esAPI；授权码、签名</td>
+<td>普通无敏感订单接口不含拼多多；淘系只返回管家订单号和店铺信息，其他字段需淘宝开放平台通道。旧响应样例列隐私字段不代表当前明文可得。<a href="https://open.wdgj.com/OpenApiDoc/ApiInfo.html?OpenAPIID=70056&amp;dictID=84" rel="noopener noreferrer" target="_blank">订单字段和限制</a>、<a href="https://open.wdgj.com/OpenApiDoc/OpenFlow.html" rel="noopener noreferrer" target="_blank">开放流程</a></td>
+</tr>
+<tr>
+<td>快麦ERP</td>
+<td>多电商自营业务</td>
+<td>订单单价/实付/数量/退款等</td>
+<td><strong>A</strong>，API/回调；淘系和拼多多独立路径</td>
+<td>普通订单接口排除淘系与拼多多；需相应奇门/方舟场景。<a href="https://open.kuaimai.com/" rel="noopener noreferrer" target="_blank">开放文档</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">行业、竞品与内容营销分析平台</h2>
+<table>
+<thead>
+<tr>
+<th>平台/产品组</th>
+<th>本轮确认的数据重点</th>
+<th>API/导出证据</th>
+<th>适用边界与来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>魔镜洞察 / 魔镜分析+ / MMI / 价控</td>
+<td>行业、品牌、店铺、商品销售趋势、均价、价格带；另有电商聆听</td>
+<td><strong>A</strong>，公开API文档、APIKEY；分析+有Excel导出</td>
+<td>淘系/JD证据较明确；拼多多/美团仅见部分市场聚合接口枚举。单店/单品趋势、SKU价控不能外推全部渠道；评论原文API未证实。<a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">API</a>、<a href="https://mktindex.com/" rel="noopener noreferrer" target="_blank">产品</a>、<a href="https://www.mktindex.com/static/fenxi/?f=fenxi" rel="noopener noreferrer" target="_blank">导出</a></td>
+</tr>
+<tr>
+<td>Nint 任拓 / 情报通 / 倾听</td>
+<td>品牌/店铺/商品销量销额均价、调价、购后评价与竞品评价对比</td>
+<td><strong>C（API待核）</strong>，SaaS、研究、定制库表能力可确认</td>
+<td>很值得询证“销量+价格+评价”组合，但不能写已有开放API；逐条评价出库、拼多多/美团覆盖需确认。<a href="https://www.nint.com/information" rel="noopener noreferrer" target="_blank">情报通</a>、<a href="https://www.nint.com/shopper-listening" rel="noopener noreferrer" target="_blank">倾听</a>、<a href="https://www.nint.com/research" rel="noopener noreferrer" target="_blank">定制库表</a></td>
+</tr>
+<tr>
+<td>数说故事 / 数说聚合 / 应用市场</td>
+<td>多源公私域整合、商业内容、达人营销、电商大盘、口碑/评论分析</td>
+<td><strong>B</strong>，官网明确50+商业API及定制接口</td>
+<td>公司级API能力不代表所有渠道/逐条商品评价都有现成端点；可按企业整体方案询价。<a href="https://www.datastory.com.cn/product/hermes" rel="noopener noreferrer" target="_blank">聚合产品</a>、<a href="https://appstore.datastory.com.cn/" rel="noopener noreferrer" target="_blank">应用市场</a></td>
+</tr>
+<tr>
+<td>蝉妈妈 / 开放平台</td>
+<td>抖音达人、商品、直播、小店、品牌、素材与竞品表现</td>
+<td><strong>B</strong>，官网明确数据定制、API、报表服务</td>
+<td>适合补内容电商；逐条商品评价和各销售字段精度需拿接口文档。<a href="https://www.chanmama.com/open-platform/" rel="noopener noreferrer" target="_blank">开放平台</a></td>
+</tr>
+<tr>
+<td>新榜有数 / 新抖 / 新快 / 新红 / 新视</td>
+<td>抖音、快手、小红书、视频号等账号/内容/直播/营销分析</td>
+<td><strong>B（定制API）/A（特定产品导出）</strong>，自定义榜单有Excel导出证据</td>
+<td>导出证据仅适用于对应榜单产品；各子产品API和会员权限分别确认，社媒评论不是购后评价。<a href="https://newrank.cn/account/api" rel="noopener noreferrer" target="_blank">API入口</a>、<a href="https://www.newrank.cn/article/detail/30526" rel="noopener noreferrer" target="_blank">自定义榜单导出</a>、<a href="https://chs.newrank.cn/main/pdf/newrank-introduce-2024.pdf" rel="noopener noreferrer" target="_blank">产品材料</a></td>
+</tr>
+<tr>
+<td>飞瓜数据 / 品策 / 易投</td>
+<td>抖音/快手商品监测、价格、佣金、达人直播、广告素材与动向</td>
+<td><strong>A（导出）</strong>，集团版有定制导出；快手商品/直播/达人有导出说明；公开API未核</td>
+<td>会员按平台独立购买，快手导出不能套给抖音全部模块；预估销量不是订单账本。<a href="https://dy3.feigua.cn/help/detail/22/25.html" rel="noopener noreferrer" target="_blank">版本与定制导出</a>、<a href="https://ks.feigua.cn/Help/HelpCenter?id=46" rel="noopener noreferrer" target="_blank">快手导出</a>、<a href="https://dy3.feigua.cn/help/detail/13/101.html" rel="noopener noreferrer" target="_blank">商品字段</a></td>
+</tr>
+<tr>
+<td>千瓜数据</td>
+<td>小红书笔记、达人、品牌投放、商品/店铺/直播榜</td>
+<td><strong>A（导出）</strong>，官方套餐列数据导出；API未核</td>
+<td>协议明确部分曝光、金额、销量等为估算。与飞瓜同属果集体系，按产品比较而非重复计算独立数据源。<a href="https://www.qian-gua.com/Home/AllPrice" rel="noopener noreferrer" target="_blank">导出权限</a>、<a href="https://wap.qian-gua.com/Home/IndexAnalysisTool" rel="noopener noreferrer" target="_blank">口径说明</a></td>
+</tr>
+<tr>
+<td>灰豚数据</td>
+<td>抖音/快手/小红书各版选品、达人、直播、内容互动</td>
+<td><strong>A（导出）</strong>，FAQ明确无API，有按钮的页面可导Excel</td>
+<td>若需接系统应评估人工/文件路径；旧FAQ能否被新企业方案替代需商务确认。<a href="https://huitun.com/help" rel="noopener noreferrer" target="_blank">帮助中心</a></td>
+</tr>
+<tr>
+<td>久谦中台</td>
+<td>企业研究、高阶分析和定制数据系统候选</td>
+<td><strong>C/D</strong>，现行官网为动态页面，本轮未核到API/CSV承诺</td>
+<td>业内广泛流传的淘系/JD/外卖覆盖不作为本轮已确认事实；值得询样，不列已可接入。<a href="https://www.meritco-group.com/" rel="noopener noreferrer" target="_blank">公司</a>、<a href="https://databank.meritco-group.com/" rel="noopener noreferrer" target="_blank">中台</a></td>
+</tr>
+<tr>
+<td>电霸 / 店霸</td>
+<td>拼多多商品、店铺、行业、销量区间、价格、关键词、活动</td>
+<td><strong>C（结构化交付待核）</strong>，官方有分析报告导出说明；API及Excel/CSV列未核</td>
+<td>报告导出不等于原始数据接口；展示区间不是精确订单。<a href="https://pdd.dianba6.com/" rel="noopener noreferrer" target="_blank">拼多多产品</a>、<a href="https://pdd.dianba6.com/helpCenter/detail/hotArticle_7668.html" rel="noopener noreferrer" target="_blank">报告导出说明</a></td>
+</tr>
+<tr>
+<td>考古加 / 考古加创意</td>
+<td>抖音电商、千川素材、达人直播短视频</td>
+<td><strong>A（创意榜单导出）/C（其他交付待核）</strong>，公开API未核</td>
+<td>创意会员的榜单导出不能推定主站完整商品销量数据库可导出；主站字段与权限另核。<a href="https://www.kaogujia.com/" rel="noopener noreferrer" target="_blank">官网</a>、<a href="https://ad.kaogujia.com/member/rights" rel="noopener noreferrer" target="_blank">创意会员权益</a></td>
+</tr>
+<tr>
+<td>达多多</td>
+<td>抖音商品/店铺、达人、直播选品；另有快手产品</td>
+<td><strong>A（导出）</strong>，商品/店铺页面及会员权益有导出证据；公开API未核</td>
+<td>官方标经营数据为预估；店铺商品价为所选时段最低价，销量/销额不能当真实订单。会员导出不等于自动化API授权。<a href="https://www.daduoduo.com/product/" rel="noopener noreferrer" target="_blank">商品列</a>、<a href="https://www.daduoduo.com/shop/shopDetail" rel="noopener noreferrer" target="_blank">店铺口径</a>、<a href="https://www.daduoduo.com/usercenter/vip" rel="noopener noreferrer" target="_blank">会员</a>、<a href="https://www.daduoduo.com/userAgreement" rel="noopener noreferrer" target="_blank">协议</a></td>
+</tr>
+<tr>
+<td>QuestMobile / TRUTH / GROWTH</td>
+<td>电商与本地生活App/小程序流量、画像、重合用户、营销评估</td>
+<td><strong>B</strong>，GROWTH明确标准API+批量文件</td>
+<td>用于受众和渠道营销补充，本轮未核实逐SKU销量、价格及商品评价能力。<a href="https://www.questmobile.com.cn/products/growth-info/" rel="noopener noreferrer" target="_blank">接口交付说明</a></td>
+</tr>
+<tr>
+<td>窄门餐眼</td>
+<td>餐饮品牌门店、区域、开关店、产品/客单价、商圈</td>
+<td><strong>C</strong>，APP/小程序/报告；通用API/整库导出未核</td>
+<td>补美团本地生活行业和选址研究，不等于门店真实成交。<a href="https://www.canyandata.com/" rel="noopener noreferrer" target="_blank">官网</a>、<a href="https://www.canyandata.com/location/" rel="noopener noreferrer" target="_blank">选址</a></td>
+</tr>
+<tr>
+<td>欧特欧 / 商指针</td>
+<td>网络零售监测，淘系/京东/抖音等行业、区域销售趋势</td>
+<td><strong>A（特定产品导出）</strong>，政府版列指标导出；企业版API待核</td>
+<td>适合行业/区域大盘，不能外推全部商品评价接口。<a href="https://gov.shangzhizhen.com/" rel="noopener noreferrer" target="_blank">商指针</a>、<a href="https://www.o-odata.cn/" rel="noopener noreferrer" target="_blank">公司</a></td>
+</tr>
+<tr>
+<td>百观科技 BigOne Lab</td>
+<td>中国电商、线上品牌销售、消费样本、社媒情绪研究</td>
+<td><strong>C</strong>，商务研究/数据服务；API和文件范围未核</td>
+<td>属企业消费研究候选，四重点渠道的字段需单独询证。<a href="https://www.bigonelab.com/zh-cn/client" rel="noopener noreferrer" target="_blank">服务范围</a></td>
+</tr>
+<tr>
+<td>马上赢 / 品牌CT</td>
+<td>线下快消POS/小票，条码、销量、售价、铺市</td>
+<td><strong>A</strong>，开放接口、类目数据下载</td>
+<td>补线上线下比较；不是国内电商全渠道聚合源。<a href="https://open.banmahui.cn/top.products.month.get/" rel="noopener noreferrer" target="_blank">月度畅销商品API</a></td>
+</tr>
+<tr>
+<td>DataEye / ADX</td>
+<td>广告素材、竞品投放动作、广告情报</td>
+<td><strong>C</strong>，SaaS/研究；公开API未核</td>
+<td>属营销补充，不能替代淘京拼美商品/评价数据库。<a href="https://www.dataeye.com/" rel="noopener noreferrer" target="_blank">当前产品</a></td>
+</tr>
+<tr>
+<td>艾瑞 / 易观千帆</td>
+<td>App/广告指数、受众、竞争用户与获客研究</td>
+<td><strong>C</strong>，SaaS/报告；本需求API未核</td>
+<td>是两家公司合列的外围候选；自营埋点API不等于第三方市场数据API。<a href="https://data.iresearch.com.cn/" rel="noopener noreferrer" target="_blank">艾瑞</a>、<a href="https://pre2qianfan.analysys.cn/" rel="noopener noreferrer" target="_blank">易观</a></td>
+</tr>
+<tr>
+<td>艺恩数据</td>
+<td>当前官网偏AI垂类数据集，通用查询和导出</td>
+<td><strong>A（通用API）/C（电商能力）</strong></td>
+<td>未核实本需求对应的销量/价格/评价数据集；不沿用历史“电商智库”推定现售范围。<a href="https://www.endata.com.cn/" rel="noopener noreferrer" target="_blank">官网</a>、<a href="https://www.endata.com.cn/docs.html" rel="noopener noreferrer" target="_blank">文档</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>魔镜的特别说明：</strong> MMI的SiteHotItems属于商品级监测/聚合销售数据，不是原始订单。SiteCommentTrend只有评论数量及好中差评比例；ItemPriceTrend的公开平台参数仅列淘宝/JD。部分MMI接口列pdd/meituan，不能推断相应平台所有单店、单品、价格、评论接口都可用。示例含旧日期，必须用目标平台当月样例验收。<a href="https://doc.mktindex.com/" rel="noopener noreferrer" target="_blank">同一API文档</a></p>
+<h2 id="_8">美团、饿了么与到店业务的专门服务</h2>
+<p>九数云已列于上方，窄门餐眼已列于行业分析表；此处不重复统计。</p>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>已确认/宣称的业务</th>
+<th>数据与交付</th>
+<th>证据等级、缺口与来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>餐道 Candao</td>
+<td>自营连锁餐饮/零售，多门店美团、饿了么、抖音、快手等</td>
+<td>订单、菜单、价格、库存、核销、经营BI；官网提供开放API入口</td>
+<td><strong>B</strong>，具体外发字段待核；AI投手有规划中功能，不能当已上线广告API。<a href="https://www.can-dao.com/product.html" rel="noopener noreferrer" target="_blank">产品</a>、<a href="https://open-api.can-dao.com/" rel="noopener noreferrer" target="_blank">开放平台</a></td>
+</tr>
+<tr>
+<td>鼎点数据</td>
+<td>竞品/品牌控价，淘京拼抖快及美团/饿了么</td>
+<td>SKU到手价、优惠、库存、销量监测；官网明确API/定制</td>
+<td><strong>B</strong>，仅核到方案页，没有具体美团接口响应；外卖/闪购/团购需拆开确认，评价全文未核。<a href="https://www.dingdiankj.cn/contents/44/522.html" rel="noopener noreferrer" target="_blank">方案</a></td>
+</tr>
+<tr>
+<td>极致了 / 大家啦</td>
+<td>供应商文章宣称美团/饿了么及多社媒数据</td>
+<td>商品详情、前台销量、价格、评价；API/飞书/定制</td>
+<td><strong>B</strong>，属营销文章证据；本轮未核到美团接口路径、分页、字段样本。<a href="https://www.jzl.com/news/meituan-data-api-2" rel="noopener noreferrer" target="_blank">美团文章</a>、<a href="https://www.dajiala.com/" rel="noopener noreferrer" target="_blank">产品</a></td>
+</tr>
+<tr>
+<td>富泰科</td>
+<td>美团外卖、淘宝闪购/饿了么、京东外卖；另有闪购商超/药店版</td>
+<td>门店/商品月售展示、价格优惠、评分/评价标签；Excel/代采，API定制</td>
+<td><strong>B</strong>，不能写成现成标准API；不同版本字段不同，评论标签不等于原文。餐饮助手公开示例499–999元/月，API定制2000元起，均须按版本复核。<a href="https://www.futaike.net/meituan-ele-waimai-data-get" rel="noopener noreferrer" target="_blank">版本字段</a>、<a href="https://www.futaike.net/product_service/11272.html" rel="noopener noreferrer" target="_blank">定制API</a></td>
+</tr>
+<tr>
+<td>云飞API</td>
+<td>自营授权美团/抖音等团购与核销</td>
+<td>团购商品/门店、订单核销；公开Token接口</td>
+<td><strong>A</strong>，适合交易业务整合；没有核到竞品行情、营销报表、评价API。<a href="https://doc.yunfeiapi.com/9034922m0" rel="noopener noreferrer" target="_blank">团购查询文档</a></td>
+</tr>
+<tr>
+<td>无限聚核</td>
+<td>自营到店美团、抖音、大众点评等</td>
+<td>门店授权、团购、验券核销及部分预订库存；开放API</td>
+<td><strong>A/B</strong>，非竞品数据库；非餐饮服务零售和到店餐饮按接口区分。<a href="https://www.elys.cn/" rel="noopener noreferrer" target="_blank">官网</a>、<a href="https://doc.elys.cn/" rel="noopener noreferrer" target="_blank">文档</a></td>
+</tr>
+</tbody>
+</table>
+<p>美团应分开验收：<strong>外卖菜单/月售、闪购SKU/条码/区域价格、买药商品、到店团购售券/核销、点评内容、广告账户</strong>。九数云已确认的美团餐饮连接器不能自动推广到闪购；美团联盟的商品销量也不是全站销量。</p>
+<h2 id="_9">价格、联盟推广与采集工具补充</h2>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>适合补什么</th>
+<th>接入证据</th>
+<th>不能替代什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>值得买消费信息开放平台</td>
+<td>商品检索、比价、好价/内容、AI口碑摘要；另有旧历史价格/评论文档</td>
+<td><strong>A（Agent接口）/D（旧评论需复核）</strong>，申请商用权限；旧版App Key/OAuth。<a href="https://openapi.zhidemai.com/pages/aiagent/1.商品检索接口.html" rel="noopener noreferrer" target="_blank">商品检索</a>、<a href="https://openapi.zhidemai.com/pages/aiagent/2.商品口碑接口.html" rel="noopener noreferrer" target="_blank">AI口碑</a>、<a href="https://openapi.zhidemai.com/pages/price/3.评论查询API.html" rel="noopener noreferrer" target="_blank">旧评论</a></td>
+<td>AI口碑摘要不是原始评价；2021年旧评论字段不能证明当前全平台原文可取；不等于真实订单或精确销量</td>
+</tr>
+<tr>
+<td>大淘客</td>
+<td>推广商品库、优惠券、佣金、榜单、推广素材；淘系为主要已核范围</td>
+<td><strong>A</strong>，API市场；具体渠道依API条目。<a href="https://www.dataoke.com/kfpt/api-market.html" rel="noopener noreferrer" target="_blank">API市场</a></td>
+<td>联盟可推广商品不等于全站商品库，推广订单不等于竞品订单</td>
+</tr>
+<tr>
+<td>好单库</td>
+<td>淘系/京东/拼多多等推广选品；美团及淘宝闪购/饿了么活动、转链与归因订单</td>
+<td><strong>A</strong>，已核官方当前文档包及v3接口；普通apikey，增值签名/权限另申请。<a href="https://www.haodanku.com/openapi/ai_docs" rel="noopener noreferrer" target="_blank">AI文档包入口</a>、<a href="https://www.haodanku.com/Openapi/api_detail?id=165" rel="noopener noreferrer" target="_blank">美团活动</a>、<a href="https://www.haodanku.com/Openapi/api_detail?id=174" rel="noopener noreferrer" target="_blank">美团转链</a></td>
+<td>本地生活推广活动不等于门店菜单、月销量或评价库；下载文档后配置文件MCP不等于提供远程业务MCP</td>
+</tr>
+<tr>
+<td>折淘客 / 折京客</td>
+<td>优惠/推广线报；京东商品搜索、大字段详情；其他渠道逐接口确认</td>
+<td><strong>A（具体接口）</strong>，AppKey，京东搜索还需授权unionId。<a href="https://j.zhetaoke.com/user/extend/extend_lingquan_keywords.aspx" rel="noopener noreferrer" target="_blank">京东搜索</a>、<a href="https://j.zhetaoke.com/user/open/open_item_info3.aspx" rel="noopener noreferrer" target="_blank">京东详情</a>、<a href="https://www.zhetaoke.com/user/extend/extend_lingquan_xianbao.aspx" rel="noopener noreferrer" target="_blank">线报</a></td>
+<td>京东<code>sellCount</code>已标废弃，不能当可用销量；评论数/好评率不是正文，美团线报也不是门店评价数据库</td>
+</tr>
+<tr>
+<td>慢慢买</td>
+<td>消费者比价、历史价格、降价提醒；官网记录过API合作</td>
+<td><strong>C/D</strong>，现行商用标准接口、开通与导出规格未核。<a href="https://help.manmanbuy.com/" rel="noopener noreferrer" target="_blank">帮助中心</a>、<a href="https://help.manmanbuy.com/default.aspx?id=144075" rel="noopener noreferrer" target="_blank">历史API合作说明</a></td>
+<td>历史开放记录不等于当前免费/自助可调用；不采用第三方逆向接口作为生产接入证据</td>
+</tr>
+<tr>
+<td>八爪鱼</td>
+<td>已采集任务的数据交付，支持Excel/CSV/数据库与分页API</td>
+<td><strong>A</strong>，推荐第二套<code>openapi.bazhuayu.com</code>，权限依套餐；旧dataapi/advancedapi不再更新。<a href="https://openapi.bazhuayu.com/zh-CN/" rel="noopener noreferrer" target="_blank">新版API</a>、<a href="https://www.bazhuayu.com/helpcenter/docs/TijX9v" rel="noopener noreferrer" target="_blank">使用说明</a>、<a href="https://www.bazhuayu.com/helpcenter/docs/2xF5Mz/eYW3hC" rel="noopener noreferrer" target="_blank">导出限制</a></td>
+<td>仅导出实际采到的数据，不保证全部电商页面；云数据默认保留3个月，Excel单元格超32000字符可能截断，CSV无该字符限制</td>
+</tr>
+<tr>
+<td>数阔云听CEM</td>
+<td>已配置项目中的电商评论、客服/邮件/社媒反馈原文及体验分析</td>
+<td><strong>A</strong>，远程MCP <code>https://ytcem.cn/mcp</code>；原文异步查询完成后以<code>cosExcelUrl</code>返回Excel；需企业开通和API Key。<a href="https://www.yuntingai.com/mcp-doc/" rel="noopener noreferrer" target="_blank">MCP文档</a>、<a href="https://www.yuntingai.com/introduce/MarketSurvey" rel="noopener noreferrer" target="_blank">产品页</a></td>
+<td>只限账号授权项目与来源；Excel内部完整列schema未公开，不能推定任意平台竞品评论随取；未核销量/价格/广告花费工具</td>
+</tr>
+</tbody>
+</table>
+<p><strong>价格使用提醒：</strong> EveryInfra的淘系<code>price</code>及SKU价格多数由美元折算人民币，官方提示可能与页面相差约1–4%；商品详情里的<code>sold_count</code>也可能缺省。做精确控价时应另外验证价格来源、SKU、优惠和结算条件。<a href="https://everyinfra.com/taobao-api/product_detail" rel="noopener noreferrer" target="_blank">字段说明</a></p>
+<h2 id="_10">费用怎么比</h2>
+<p>公开数据接口通常按次、页或任务收费；企业级市场数据库通常按渠道、类目、品牌、历史深度、频率与交付方式报价。不要拿网页会员价直接当API预算。</p>
+<ul>
+<li>九数云：外发API需企业版；美团等数据源有基础费，部分表另收同步点数；当前文档为100元=1万点、1万点起购，同步成功/失败均会扣点。<strong>这不是整个产品100元的价格。</strong><a href="https://help.fanruan.com/jiushuyun/doc-view-699.html" rel="noopener noreferrer" target="_blank">收费规则</a></li>
+<li>Qovia：淘宝/天猫商品评价公开价$0.0135/请求，即$13.5/千次请求；一次请求是一页，不能理解为一件商品的全部评价。其他接口分别定价。<a href="https://www.qovia.ai/zh/docs/api-reference/raw.taobao.comments/" rel="noopener noreferrer" target="_blank">接口价格</a></li>
+<li>其他报价未得到公开、可对应当前需求的准确数字时，本报告保留“商务确认”，不填写臆测区间。</li>
+</ul>
+<p>建议报价统一按：4个重点渠道、每渠道100个指定商品/门店、每天1次、连续30天，分别报价详情/价格、销量、增量评价、自营订单、广告报表及历史补数。这个样本规模是建议的采购比较方案，不代表任何供应商套餐。</p>
+<h2 id="_11">供应商试测与验收</h2>
+<p>要求供应商用同一组商品/门店链接返回以下材料，避免仅提供截图演示：</p>
+<ol>
+<li><strong>字段样本与真实API响应/CSV样本</strong>：商品及SKU ID、店铺ID、渠道、时间、原价/促销价/券后价、销量值与统计口径、评价ID/正文/评分/日期、广告指标。</li>
+<li><strong>授权与数据来源</strong>：自营授权、前台公开采样、联盟、监测估算分别标注；是否存在第三方再分发限制。</li>
+<li><strong>覆盖与历史</strong>：淘宝/天猫、京东、拼多多、美团的各自覆盖率；美团外卖/闪购/团购/点评分开；历史起点、回溯窗口、缺失处理。</li>
+<li><strong>稳定性</strong>：连续7天样本成功率、重复率、更新延迟、字段缺失、评价翻页上限；接口失效后的处理方式。</li>
+<li><strong>交付与费用</strong>：客户系统拉API、定时推送、数据库落地、Excel/CSV哪种实际可用；并发/限流、缓存、新鲜度、失败收费及额外导出费。</li>
+</ol>
+<p>建议统一保留 <code>platform</code>、<code>business_type</code>、<code>shop_id</code>、<code>item_id</code>、<code>sku_id</code>、<code>observed_at</code>、<code>metric_period</code>、<code>sales_basis</code>、<code>price_type</code>、<code>source_type</code>。这能避免把商品展示销量与自营支付订单、月均价与当日券后价拼在同一口径里。</p>
+<h2 id="_12">详细证据附录</h2>
+<ul>
+<li><a href="document-10.html">49组平台字段字典</a>：渠道、接入方式、具体端点/动作、请求与响应字段、限制和来源；全部标注未实调。</li>
+<li><a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E5%B9%B3%E5%8F%B0%E5%AD%97%E6%AE%B5%E5%AD%97%E5%85%B8.json">平台字段字典JSON</a>：保留四份调查的原始字段与证据。</li>
+<li><a href="document-14.html">自营集成详细字段字典</a>及<a href="../downloads/research/%E8%AF%81%E6%8D%AE%E9%99%84%E5%BD%95/%E8%87%AA%E8%90%A5%E9%9B%86%E6%88%90%E6%8E%A5%E5%8F%A3%E5%AD%97%E6%AE%B5%E7%BB%93%E6%9E%84.json">接口结构JSON</a>：17个接口/动作的字段路径、类型与口径。</li>
+<li><a href="document-12.html">自营ERP与官方权限</a>：平台授权、订单外发限制、京东开放平台迁移及官方接口边界。</li>
+<li><a href="document-15.html">行业与竞品平台</a>：各厂商细节、导出证据、魔镜接口逐项区别。</li>
+<li><a href="document-11.html">本地生活平台与接口</a>：外卖/闪购/买药/团购拆分、版本报价、接口与帮助文档。</li>
+</ul>
+<p>附录保留各调查表的局部证据标记，跨表比较以主报告A/B/C/D定义为准。</p></article></body></html>

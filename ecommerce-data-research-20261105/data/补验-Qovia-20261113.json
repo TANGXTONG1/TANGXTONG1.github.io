@@ -1,0 +1,115 @@
+{
+  "checked_on": "2026-11-13",
+  "checked_at": "2026-11-13T14:23:40.339633+00:00",
+  "scope": "先查免费额度；只有剩余免费成功次数≥2才补两次淘天评论调用，不充值。",
+  "account": {
+    "http_status": 200,
+    "elapsed_seconds": 1.313,
+    "billing": {
+      "plan": "free",
+      "balance_usd": "0.000000",
+      "rpm_limit": null,
+      "trial_calls_remaining": 41
+    },
+    "can_run_two_free_calls": true,
+    "error_code": null,
+    "free_counter_is_historical": false
+  },
+  "runs": [
+    {
+      "label": "taobao-v1",
+      "checked_at": "2026-11-13T14:24:32.130397+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments",
+      "params": {
+        "item_id": "971645268720",
+        "page": 1,
+        "skip_default_reviews": "false"
+      },
+      "input_provenance": "2026-11-06商品搜索返回过的相同item_id；本轮没有另发搜索请求。",
+      "http_status": 503,
+      "elapsed_seconds": 2.4,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": "0.000000",
+      "retry_after": "10",
+      "error": {
+        "code": "upstream_busy",
+        "message": "the data source is busy; retry later; not charged"
+      },
+      "evidence_type": "2026-11-13真实鉴权业务请求",
+      "private_raw_saved": true
+    },
+    {
+      "label": "taobao-v2",
+      "checked_at": "2026-11-13T14:24:34.533423+00:00",
+      "method": "GET",
+      "endpoint": "/v1/raw/taobao/comments_v2",
+      "params": {
+        "item_id": "971645268720",
+        "page": 1
+      },
+      "input_provenance": "2026-11-06商品搜索返回过的相同item_id；本轮没有另发搜索请求。",
+      "http_status": 502,
+      "elapsed_seconds": 1.726,
+      "response_data_fields": [],
+      "row_path": null,
+      "row_count": 0,
+      "unique_rows_by_id_or_exact_fingerprint": 0,
+      "rows_missing_id": 0,
+      "nonempty_text_count": 0,
+      "default_review_count": 0,
+      "effective_unique_nonempty_nondefault_text_count": 0,
+      "fields": [],
+      "pagination": {},
+      "billing_meta": {},
+      "charged_header_usd": null,
+      "retry_after": "60",
+      "error": {
+        "title": "Error 502: Bad gateway",
+        "status": 502,
+        "detail": "The origin web server returned an invalid or incomplete response to Cloudflare. This typically indicates the origin is overloaded or misconfigured.",
+        "error_name": "origin_bad_gateway",
+        "retry_after": 60
+      },
+      "evidence_type": "2026-11-13真实鉴权业务请求",
+      "private_raw_saved": true
+    }
+  ],
+  "account_after": {
+    "checked_at": "2026-11-13T14:24:36.260167+00:00",
+    "http_status": 200,
+    "billing": {
+      "plan": "free",
+      "balance_usd": "0.000000",
+      "rpm_limit": null,
+      "trial_calls_remaining": 41
+    }
+  },
+  "summary": {
+    "business_requests": 2,
+    "http_200_nonempty_requests": 0,
+    "effective_unique_nonempty_nondefault_text_count": 0,
+    "free_calls_consumed": 0,
+    "balance_before_usd": "0.000000",
+    "balance_after_usd": "0.000000",
+    "paid_topup_performed": false,
+    "old_report_modified": false,
+    "limitation": "同一旧商品、两个端点各一次，无跨商品/长时段稳定性证明；旧商品当前是否仍有公开评价未单独网页核验。"
+  },
+  "sources": [
+    "https://qovia.ai/docs/api-reference/raw.taobao.comments/",
+    "https://qovia.ai/docs/api-reference/raw.taobao.comments_v2/",
+    "https://qovia.ai/zh/docs/"
+  ],
+  "interpretation": "若失败或无有效评论则维持淘天需补验；成功也只解除单次可调用性缺口，不代表全量或生产成功率。"
+}

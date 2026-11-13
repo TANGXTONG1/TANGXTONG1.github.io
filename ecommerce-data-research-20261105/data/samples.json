@@ -1,0 +1,529 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-11-05T13:31:52.145191+00:00",
+  "checked_on": "2026-11-05",
+  "url_base": "site_root_relative",
+  "title": "公开样本与访问证据",
+  "evidence_types": [
+    {
+      "id": "real_http",
+      "label": "真实 HTTP 响应",
+      "definition": "在本次研究中实际发出只读HTTP请求并原样保存返回内容；不等于数据正确、真实订单或鉴权API实调。"
+    },
+    {
+      "id": "ui_observation",
+      "label": "浏览器 UI 观察",
+      "definition": "实际查看公开网页并记录字段或访问限制；仅记录日志已保存事实，没有导出数据文件或未留存行值时不补造。"
+    },
+    {
+      "id": "documentation_example",
+      "label": "文档示例",
+      "definition": "供应商文档中的响应格式、示例数字或字段说明；不是本次真实返回。此样本包没有把任何文档示例混入实际商品行。"
+    }
+  ],
+  "summary": {
+    "real_http_responses": 1,
+    "real_http_product_records": 3,
+    "ui_observations": 2,
+    "documentation_example_records": 0,
+    "authenticated_business_api_successes": 0,
+    "supplier_excel_csv_exports": 0,
+    "registrations": 0,
+    "notice": "已保存1份好单库公开HTTP活动JSON（3商品）及2组UI观察转录（达多多1商品、商指针2行业）。无鉴权业务API成功、无供应商Excel/CSV导出；好单库UI仍未测。",
+    "ui_transcribed_records": 3
+  },
+  "samples": [
+    {
+      "id": "haodanku-public-activity-20261105",
+      "name": "好单库公开活动商品",
+      "kind": "real_http",
+      "label": "真实 HTTP · 3 件活动商品",
+      "source": {
+        "url": "https://www.haodanku.com/Activity/get_three_datas",
+        "retrieved_at": "2026-11-05T13:07:57.360160+00:00",
+        "method": "GET",
+        "http_status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "authentication": "无账号、无API key、无cookie",
+        "original_sha256": "b44d346b1d14c615c574dff2ce8374a3266af20b493193953c723990d197ba82"
+      },
+      "access_status": {
+        "ui_tested": false,
+        "http_public_response_obtained": true,
+        "authenticated_business_api_tested": false,
+        "supplier_export_obtained": false
+      },
+      "record_count": 3,
+      "field_count": 41,
+      "fields": [
+        "id",
+        "itemid",
+        "seller_id",
+        "itemtitle",
+        "itemshorttitle",
+        "itemsale",
+        "itemsale2",
+        "itemprice",
+        "itemdesc",
+        "itempic_copy",
+        "shoptype",
+        "is_foreshow",
+        "is_brand",
+        "videoid",
+        "activityid",
+        "activity_type",
+        "fqcat",
+        "shopid",
+        "userid",
+        "shopname",
+        "tkrates",
+        "tkmoney",
+        "couponurl",
+        "couponmoney",
+        "couponsurplus",
+        "couponreceive",
+        "couponnum",
+        "couponstarttime",
+        "itemendprice",
+        "couponendtime",
+        "general_index",
+        "grade_avg",
+        "rate_total",
+        "todaysale",
+        "stock",
+        "itempic",
+        "discount",
+        "seller_name",
+        "report_status",
+        "down_type",
+        "activity_plan"
+      ],
+      "records": [
+        {
+          "id": "56010685",
+          "itemid": "600558109013",
+          "seller_id": "59221",
+          "itemtitle": "【双11现货达】完美日记卸妆水油洁面温和不刺激深层清洁洗卸合一",
+          "itemshorttitle": "拍两件！完美日记卸妆水油温和不刺激500ml",
+          "itemsale": "10000",
+          "itemsale2": "10",
+          "itemprice": "60.00",
+          "itemdesc": "完美日记卸妆水500ml（非洁颜蜜），洗卸合一，含泛醇+金盏花提取物，无酒精、无矿物油，敏感肌安心用！叠加淘礼金红包4.65+淘金币11.52+消费卷200-25+美妆卷200-20到手35.17元，赠运费险！",
+          "itempic_copy": "hdk-image-17933392596273.jpg",
+          "shoptype": "B",
+          "is_foreshow": "0",
+          "is_brand": "0",
+          "videoid": "0",
+          "activityid": null,
+          "activity_type": "普通活动",
+          "fqcat": "5",
+          "shopid": null,
+          "userid": "4647716061259700363",
+          "shopname": "perfectdiary旗舰店",
+          "tkrates": "24.00",
+          "tkmoney": "14.40",
+          "couponurl": "",
+          "couponmoney": "0",
+          "couponsurplus": "49800",
+          "couponreceive": "200",
+          "couponnum": "50000",
+          "couponstarttime": "1793339260",
+          "itemendprice": "60.00",
+          "couponendtime": "1794203260",
+          "general_index": "199",
+          "grade_avg": "0.00",
+          "rate_total": "0",
+          "todaysale": "105",
+          "stock": "0",
+          "itempic": "https://img.alicdn.com/bao/uploaded/O1CN01EztXU01Tz4Ei1qvoL_!!6000000002452-0-yinhe.jpg",
+          "discount": "0.00",
+          "seller_name": "桔子社群",
+          "report_status": "0",
+          "down_type": "0",
+          "activity_plan": "120"
+        },
+        {
+          "id": "56010783",
+          "itemid": "521027319777",
+          "seller_id": "72511",
+          "itemtitle": "【双11速抢】安热沙小金瓶高倍防晒霜乳耐晒清爽隔离轻薄肤感户外",
+          "itemshorttitle": "【双11速抢】安热沙小金瓶高倍防晒霜乳耐晒清爽隔离轻薄肤感户外",
+          "itemsale": "89",
+          "itemsale2": "10",
+          "itemprice": "78.00",
+          "itemdesc": "【双11速抢】安热沙小金瓶高倍防晒霜乳耐晒清爽隔离轻薄肤感户外",
+          "itempic_copy": "hdk-image-17933404143956.jpg",
+          "shoptype": "B",
+          "is_foreshow": "0",
+          "is_brand": "0",
+          "videoid": "0",
+          "activityid": "ba230d9fa9ac4135870c0a2ddb54c4f2",
+          "activity_type": "普通活动",
+          "fqcat": "5",
+          "shopid": null,
+          "userid": "4757138928161734715",
+          "shopname": "ANESSA安热沙官方旗舰店",
+          "tkrates": "24.02",
+          "tkmoney": "16.33",
+          "couponurl": "http://uland.taobao.com/quan/detail?sellerId=4757138928161734715&activityId=ba230d9fa9ac4135870c0a2ddb54c4f2",
+          "couponmoney": "10",
+          "couponsurplus": "948650",
+          "couponreceive": "51350",
+          "couponnum": "10000",
+          "couponstarttime": "1793340415",
+          "itemendprice": "68.00",
+          "couponendtime": "1794204415",
+          "general_index": "149",
+          "grade_avg": "0.00",
+          "rate_total": "0",
+          "todaysale": "79",
+          "stock": "0",
+          "itempic": "https://img.alicdn.com/bao/uploaded/O1CN01ofEmjU1dMj8dAh6Qd_!!6000000003722-2-yinhe.png",
+          "discount": "0.00",
+          "seller_name": "澳门集团",
+          "report_status": "0",
+          "down_type": "0",
+          "activity_plan": "120"
+        },
+        {
+          "id": "56013149",
+          "itemid": "599082817631",
+          "seller_id": "59221",
+          "itemtitle": "IMINT无糖薄荷糖口气清新接吻亲嘴糖果零食约会必备果味小口香糖",
+          "itemshorttitle": "【任选】imint无糖薄荷糖清新口香糖",
+          "itemsale": "57",
+          "itemsale2": "10",
+          "itemprice": "35.90",
+          "itemdesc": "【任选】0蔗糖配方，无负担不怕胖，多种清爽果味，入口清香不刺激，含一颗快速清新口气，约会、见人、聚餐都安心，妥妥的亲嘴小糖果",
+          "itempic_copy": "hdk-image-179341886502.jpg",
+          "shoptype": "B",
+          "is_foreshow": "0",
+          "is_brand": "0",
+          "videoid": "0",
+          "activityid": "4cfb3b8f75ee4383be921da3d63215b1",
+          "activity_type": "普通活动",
+          "fqcat": "5",
+          "shopid": null,
+          "userid": "4756928231830139553",
+          "shopname": "imint官方旗舰店",
+          "tkrates": "55.01",
+          "tkmoney": "10.95",
+          "couponurl": "http://uland.taobao.com/quan/detail?sellerId=4756928231830139553&activityId=4cfb3b8f75ee4383be921da3d63215b1",
+          "couponmoney": "16",
+          "couponsurplus": "99842",
+          "couponreceive": "158",
+          "couponnum": "100000",
+          "couponstarttime": "1793289600",
+          "itemendprice": "19.90",
+          "couponendtime": "1793894399",
+          "general_index": "223",
+          "grade_avg": "0.00",
+          "rate_total": "0",
+          "todaysale": "52",
+          "stock": "0",
+          "itempic": "https://img.alicdn.com/bao/uploaded/i4/2856125177/O1CN01YLgQF41o77OdXM4NH_!!0-item_pic.jpg",
+          "discount": "0.00",
+          "seller_name": "桔子社群",
+          "report_status": "0",
+          "down_type": "0",
+          "activity_plan": "120"
+        }
+      ],
+      "records_are": "原始JSON中各data[].items[]的商品对象，字段和值原样复制；完整原始响应另附下载。",
+      "quality_issues": [
+        {
+          "item_id": "521027319777",
+          "field_names": [
+            "couponnum",
+            "couponsurplus",
+            "couponreceive"
+          ],
+          "observed_values": {
+            "couponnum": "10000",
+            "couponsurplus": "948650",
+            "couponreceive": "51350"
+          },
+          "message": "剩余948650 + 已领51350 = 1000000，与总量10000不一致；原因未确认，不能自行修正。",
+          "severity": "inconsistency"
+        },
+        {
+          "item_id": "600558109013",
+          "field_names": [
+            "itemprice",
+            "itemendprice",
+            "couponmoney",
+            "itemdesc"
+          ],
+          "observed_values": {
+            "itemprice": "60.00",
+            "itemendprice": "60.00",
+            "couponmoney": "0",
+            "marketing_final_price_text": "35.17元"
+          },
+          "message": "结构化券后价60元；营销文案称叠加淘礼金、淘金币及满减券后到手35.17元。适用优惠条件不同，不可混作统一到手价。",
+          "severity": "different_price_conditions"
+        }
+      ],
+      "limitations": [
+        "只含官网活动精选3件商品，不证明全库或全平台覆盖。",
+        "单次真实HTTP返回不等于真实成交、真实销量或数据准确。",
+        "itemsale/itemsale2/todaysale未用交易流水交叉验证。",
+        "content-type为text/html，正文实际可解析为JSON。",
+        "不是开放平台API鉴权测试；好单库浏览器UI仍未测。"
+      ],
+      "download_urls": {
+        "sample_explanation": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%93%8D%E5%BA%94%E6%A0%B7%E6%9C%AC%E8%AF%B4%E6%98%8E.md",
+        "raw_http_response": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json",
+        "verification_record": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json"
+      }
+    },
+    {
+      "id": "daduoduo-public-ui-20261105",
+      "name": "达多多匿名商品表",
+      "kind": "ui_observation",
+      "label": "UI 观察 · 区间值与价格遮蔽",
+      "source": {
+        "url": "https://www.daduoduo.com/product/",
+        "observed_on": "2026-11-05",
+        "observation_source": "root 实际浏览器 UI 观测",
+        "local_log": "research/浏览器试用记录.json",
+        "log_record_name": "达多多",
+        "transcription_origin": "root本次会话getAXState实际返回文本"
+      },
+      "access_status": {
+        "ui_tested": true,
+        "http_public_response_obtained": false,
+        "authenticated_business_api_tested": false,
+        "supplier_export_obtained": false,
+        "export_outcome": "点击导出跳转dashboard?needLogin=1"
+      },
+      "record_count": 1,
+      "records": [
+        {
+          "商品": "公仔牌顽渍净洗衣粉轻松搓洗去污渍除菌除螨3倍洁净去渍家用去黄",
+          "30日销量": "10w+",
+          "直播销量": "10w+",
+          "视频销量": "2w~10w",
+          "商品卡销量": "10w+",
+          "转化率": "20%~25 %",
+          "关联达人": "1,535",
+          "关联直播": "2,451",
+          "价格": null,
+          "价格显示状态": "被遮蔽，未还原数字"
+        }
+      ],
+      "field_observations": [
+        {
+          "field": "商品",
+          "display_state": "observed_value",
+          "value": "公仔牌顽渍净洗衣粉轻松搓洗去污渍除菌除螨3倍洁净去渍家用去黄"
+        },
+        {
+          "field": "30日销量",
+          "display_state": "range_or_threshold",
+          "value": "10w+"
+        },
+        {
+          "field": "直播销量",
+          "display_state": "range_or_threshold",
+          "value": "10w+"
+        },
+        {
+          "field": "视频销量",
+          "display_state": "range_or_threshold",
+          "value": "2w~10w"
+        },
+        {
+          "field": "商品卡销量",
+          "display_state": "range_or_threshold",
+          "value": "10w+"
+        },
+        {
+          "field": "转化率",
+          "display_state": "range_or_threshold",
+          "value": "20%~25 %"
+        },
+        {
+          "field": "关联达人",
+          "display_state": "observed_value",
+          "value": "1,535"
+        },
+        {
+          "field": "关联直播",
+          "display_state": "observed_value",
+          "value": "2,451"
+        },
+        {
+          "field": "价格",
+          "display_state": "masked",
+          "value": null
+        }
+      ],
+      "observation": "匿名商品表可见 30 日销量区间、直播/视频/商品卡区间、佣金、转化率及关联达人/直播等，价格遮蔽；点击导出跳转 dashboard?needLogin=1，未得到文件。",
+      "limitations": [
+        "本项从实际UI文本人工转录，不是供应商导出文件或API数据。",
+        "10w+和2w~10w等为展示阈值/区间，不能还原精确订单或销量；经营值有预估口径。",
+        "价格被遮蔽，未还原数字；佣金没有转录、未填值。",
+        "仅1个商品观察，不能代表全库；点击导出仍要求登录。"
+      ],
+      "download_urls": {
+        "ui_observation_transcript": "downloads/samples/ui-observed-excerpts.json",
+        "sample_download_guide": "downloads/samples/%E6%A0%B7%E6%9C%AC%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E.md"
+      },
+      "records_are": "从本次会话UI可访问文本人工整理，非供应商导出/非API返回。销量区间及展示符号原样保留，不折算为精确成交量。",
+      "fields": [
+        "商品",
+        "30日销量",
+        "直播销量",
+        "视频销量",
+        "商品卡销量",
+        "转化率",
+        "关联达人",
+        "关联直播",
+        "价格",
+        "价格显示状态"
+      ],
+      "field_count": 10,
+      "data_period": "页面30日口径；具体起止日期未记录"
+    },
+    {
+      "id": "shangzhizhen-public-ui-20261105",
+      "name": "商指针公开行业页",
+      "kind": "ui_observation",
+      "label": "UI 观察 · 2025-01 行业预览",
+      "source": {
+        "url": "https://open.shangzhizhen.com/#/industry/index",
+        "observed_on": "2026-11-05",
+        "observation_source": "root 实际浏览器 UI 观测",
+        "local_log": "research/浏览器试用记录.json",
+        "log_record_name": "欧特欧 / 商指针",
+        "transcription_origin": "root本次会话getAXState实际返回文本"
+      },
+      "data_period": "2025-01",
+      "industry_count_observed": 20,
+      "access_status": {
+        "ui_tested": true,
+        "http_public_response_obtained": false,
+        "authenticated_business_api_tested": false,
+        "supplier_export_obtained": false,
+        "application_requirement_observed": "政府版申请需单位、手机及短信验证"
+      },
+      "record_count": 2,
+      "records": [
+        {
+          "行业": "手机及配件",
+          "子行业数": "12个",
+          "市场份额": "9.56%",
+          "环比增速": "52.33%",
+          "同比增速": "26.11%"
+        },
+        {
+          "行业": "服饰",
+          "子行业数": "3个",
+          "市场份额": "7.25%",
+          "环比增速": "20.83%",
+          "同比增速": "-30.79%"
+        }
+      ],
+      "field_observations": [
+        {
+          "field": "行业",
+          "display_state": "observed_value",
+          "note": "具体值见records，保持页面原始展示文本。"
+        },
+        {
+          "field": "子行业数",
+          "display_state": "observed_value",
+          "note": "具体值见records，保持页面原始展示文本。"
+        },
+        {
+          "field": "市场份额",
+          "display_state": "observed_value",
+          "note": "具体值见records，保持页面原始展示文本。"
+        },
+        {
+          "field": "环比增速",
+          "display_state": "observed_value",
+          "note": "具体值见records，保持页面原始展示文本。"
+        },
+        {
+          "field": "同比增速",
+          "display_state": "observed_value",
+          "note": "具体值见records，保持页面原始展示文本。"
+        }
+      ],
+      "observation": "可查看 20 个行业的份额、环比、同比；页面日期为 2025 年 1 月，数据过时。政府版申请需单位、手机及短信验证；未实测 API 或导出。",
+      "limitations": [
+        "2025年1月是页面数据期，2026-11-05是观察日期，两者不能混淆。",
+        "20个行业中仅人工转录2行；页面份额/增速未追溯分母或订单底表。",
+        "页面数据已过时，不能作为当前行业结论。",
+        "本项是UI人工转录，不是供应商导出或API返回；未提交申请、未调用API。"
+      ],
+      "download_urls": {
+        "ui_observation_transcript": "downloads/samples/ui-observed-excerpts.json",
+        "sample_download_guide": "downloads/samples/%E6%A0%B7%E6%9C%AC%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E.md"
+      },
+      "records_are": "从本次会话UI可访问文本人工整理，非供应商导出/非API返回。仅保留实际UI文本中留存的2个行业，不是完整20行业导出。",
+      "fields": [
+        "行业",
+        "子行业数",
+        "市场份额",
+        "环比增速",
+        "同比增速"
+      ],
+      "field_count": 5
+    }
+  ],
+  "files": [
+    {
+      "name": "ui-observed-excerpts.json",
+      "url": "downloads/samples/ui-observed-excerpts.json",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/ui-observed-excerpts.json",
+      "bytes": 2626,
+      "sha256": "71e4fd77eb7890d9ecf0acbc708084003577eadc1d5046e8db2859a1da8bde93",
+      "format": "json",
+      "role": "ui_observation_transcript"
+    },
+    {
+      "name": "好单库-公开活动响应样本说明.md",
+      "url": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%93%8D%E5%BA%94%E6%A0%B7%E6%9C%AC%E8%AF%B4%E6%98%8E.md",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/好单库-公开活动响应样本说明.md",
+      "bytes": 3321,
+      "sha256": "b1cf70c5c1c5c21db62245db0e7eb36c4b55c357a164618b29b20fdb9c20c703",
+      "format": "md",
+      "role": "sample_explanation"
+    },
+    {
+      "name": "好单库-公开活动商品响应-2026-11-05.json",
+      "url": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-2026-11-05.json",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/好单库-公开活动商品响应-2026-11-05.json",
+      "bytes": 5415,
+      "sha256": "b44d346b1d14c615c574dff2ce8374a3266af20b493193953c723990d197ba82",
+      "format": "json",
+      "role": "raw_http_response"
+    },
+    {
+      "name": "好单库-公开活动商品响应-验证记录.json",
+      "url": "downloads/samples/%E5%A5%BD%E5%8D%95%E5%BA%93-%E5%85%AC%E5%BC%80%E6%B4%BB%E5%8A%A8%E5%95%86%E5%93%81%E5%93%8D%E5%BA%94-%E9%AA%8C%E8%AF%81%E8%AE%B0%E5%BD%95.json",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/好单库-公开活动商品响应-验证记录.json",
+      "bytes": 1911,
+      "sha256": "7c2f435581072fc35e649d493e57d273ad0487b3f4af1481927263d391ed656c",
+      "format": "json",
+      "role": "verification_record"
+    },
+    {
+      "name": "样本下载说明.md",
+      "url": "downloads/samples/%E6%A0%B7%E6%9C%AC%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E.md",
+      "url_base": "site_root_relative",
+      "source_file": "research/样本/样本下载说明.md",
+      "bytes": 2342,
+      "sha256": "5b2c10542c217226b51ae1061c16f18f6decab97362527b3ab8ce47d44e355f8",
+      "format": "md",
+      "role": "sample_download_guide"
+    }
+  ]
+}
