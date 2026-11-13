@@ -208,6 +208,14 @@
     "read_url": null
   },
   {
+    "title": "JustOne实测-20261114",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 101102,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/JustOne%E5%AE%9E%E6%B5%8B-20261114.json",
+    "read_url": null
+  },
+  {
     "title": "历史测试口径核对-20261114",
     "group": "接入决策",
     "format": "json",
@@ -227,7 +235,7 @@
     "title": "国内Apify实测-20261114",
     "group": "接入决策",
     "format": "json",
-    "bytes": 47478,
+    "bytes": 47701,
     "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E5%9B%BD%E5%86%85Apify%E5%AE%9E%E6%B5%8B-20261114.json",
     "read_url": null
   },
@@ -235,7 +243,7 @@
     "title": "国内按量补充-20261114",
     "group": "接入决策",
     "format": "json",
-    "bytes": 29293,
+    "bytes": 26965,
     "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E5%9B%BD%E5%86%85%E6%8C%89%E9%87%8F%E8%A1%A5%E5%85%85-20261114.json",
     "read_url": null
   },

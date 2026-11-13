@@ -1,0 +1,2798 @@
+{
+  "checkedOn": "2026-11-14",
+  "summary": "建议先小范围接入JustOne的淘天评论和京东；抖店第一页可读但第二页两次失败，暂不切换批量链路。16次请求含13次业务成功、2次采集失败、1次客户端超时；超时目标随后复核成功。完整26字段仍未全部满足。",
+  "tests": [
+    {
+      "id": "douyin_shop-product_details-1",
+      "platform": "抖音商城",
+      "kind": "商品详情",
+      "endpoint": "/api/douyin-ec/get-item-detail/v2",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 1.211,
+      "decision": "商品 ID 匹配；字段按下表验收",
+      "params": {
+        "itemId": "3799345653746892970"
+      },
+      "notes": [
+        "有标题、主图、销量8099和好评率；本次缺价格、品牌、类目。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "由所调用平台接口归属补充；内部数字 platform/platform_source 不直接当标准平台名。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.product_id",
+          "evidence": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "data.model.product.product_base.title",
+          "evidence": ""
+        },
+        {
+          "field": "product_url",
+          "status": "missing",
+          "source": null,
+          "evidence": "本次未取得规范商品链接。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "data.model.product.product_base.cover",
+          "evidence": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "missing",
+          "source": null,
+          "evidence": "未从店名推断品牌。"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": null,
+          "evidence": "本次无商品类目字段。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "evidence": "本次无标价；嵌套 promotion_data.code=-1，不应把总 code=0 当价格成功。"
+        },
+        {
+          "field": "sale_price",
+          "status": "missing",
+          "source": null,
+          "evidence": "本次详情没有现价字段。"
+        },
+        {
+          "field": "sold_count",
+          "status": "returned",
+          "source": "data.model.product.product_sales.sell_num / total_sales",
+          "evidence": "返回 8099；只是供应商回包数值，不构成平台成交审计。"
+        },
+        {
+          "field": "sold_text",
+          "status": "partial",
+          "source": "data.model.product.product_sales.product_label.sales_text",
+          "evidence": "仅返回“已售”标签，数字另在 sales_num；拼接后的字符串属于派生值。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.model.product.product_comment.good_ratio / comment_label.good_ratio",
+          "evidence": "返回约 93.23% 好评率，不能当 5 星评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "returned",
+          "source": "comments response: data.Count",
+          "evidence": "另一次评论接口返回 1102；不表示已取得全部 1102 条。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "data.model.shop.shop_base.shop_name",
+          "evidence": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "adapter_required",
+          "source": "client request.startedAt / finishedAt",
+          "evidence": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "douyin_shop-product_reviews-2",
+      "platform": "抖音商城",
+      "kind": "评论·第1页",
+      "endpoint": "/api/douyin-ec/get-item-comments/v1",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 8,
+      "effectiveReviews": 8,
+      "elapsedSeconds": 1.538,
+      "decision": "20 行 / 8 条非平台模板正文",
+      "params": {
+        "itemId": "3799345653746892970",
+        "page": "1"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "系统默认 0，未填写占位 0，快捷模板 0，空正文 12。",
+        "唯一评价 20 条，商品匹配 20 条，附图 2 条，商家回复 1 条。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.Comments[].Id",
+          "evidence": "20/20；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.Comments[].ProductId",
+          "evidence": "20/20；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.Comments[].Content",
+          "evidence": "8/20；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "partial",
+          "source": "data.Comments[].RankProduct",
+          "evidence": "19/20；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.Comments[].CommentTime",
+          "evidence": "20/20；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "returned",
+          "source": "data.Comments[].Sku",
+          "evidence": "20/20；不把默认或空规格计为满足。"
+        },
+        {
+          "field": "image_urls",
+          "status": "returned",
+          "source": "data.Comments[].Photos",
+          "evidence": "2/20；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "returned",
+          "source": "data.Comments[].ShopReply",
+          "evidence": "1/20；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "jd-product_details-3",
+      "platform": "京东",
+      "kind": "商品详情",
+      "endpoint": "/api/jd/get-item-detail/v4",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 3.89,
+      "decision": "商品 ID 匹配；字段按下表验收",
+      "params": {
+        "itemId": "100033031708"
+      },
+      "notes": [],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "由所调用平台接口归属补充；内部数字 platform/platform_source 不直接当标准平台名。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.itemInfo.product.skuId",
+          "evidence": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "data.itemInfo.product.skuName",
+          "evidence": ""
+        },
+        {
+          "field": "product_url",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "请求链接/商品 ID 组装，不冒充 API 实际返回。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "data.img_list[0]",
+          "evidence": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "returned",
+          "source": "data.itemInfo.product.brandName",
+          "evidence": "品牌名称实际返回。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.itemOnly.category[] / data.itemInfo.product.category",
+          "evidence": "三级类目 ID 有值，类目名称需另查映射。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "returned",
+          "source": "data.priceInfo.productPrice.marketPrice",
+          "evidence": "供应商 marketPrice 字段，不宣称已比对网站划线价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "data.priceInfo.jdPrice",
+          "evidence": "应取独立 priceInfo；itemInfo.priceFloor.price 是遮罩值，kaPrice 为另一价格类型。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "saleQuantityFloor 只有展示配置；不能把评论数当销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有实际销量文本；rankInfo 也不等于关键词搜索排名。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "comments response: data.pageInfo.good_rate",
+          "evidence": "评论接口回包好评率 96，含义为百分比，不是 5 星评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "comments response: data.pageInfo.comment_count / count",
+          "evidence": "2万+ 与 count=20000 共存，应保留模糊展示，不断言精确总量。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "data.shop_infos.shopName",
+          "evidence": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "adapter_required",
+          "source": "client request.startedAt / finishedAt",
+          "evidence": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "jd-product_reviews-4",
+      "platform": "京东",
+      "kind": "评论·第1页",
+      "endpoint": "/api/jd/get-item-comments/v1",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 10,
+      "nonemptyReviews": 10,
+      "effectiveReviews": 10,
+      "elapsedSeconds": 7.233,
+      "decision": "10 行 / 10 条非平台模板正文",
+      "params": {
+        "itemId": "100033031708",
+        "page": "1"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "系统默认 0，未填写占位 0，快捷模板 0，空正文 0。",
+        "唯一评价 10 条，商品匹配 10 条，附图 3 条，商家回复 0 条。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.data[].commentId",
+          "evidence": "10/10；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.data[].productId",
+          "evidence": "10/10；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "returned",
+          "source": "data.data[].commentData",
+          "evidence": "10/10；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.data[].commentScore",
+          "evidence": "10/10；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.data[].commentDate",
+          "evidence": "10/10；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "returned",
+          "source": "data.data[].productColor",
+          "evidence": "10/10；已排除空值与默认规格；京东 productSize 本样本为空，productColor 有实际规格。"
+        },
+        {
+          "field": "image_urls",
+          "status": "returned",
+          "source": "data.data[].pictureInfoList",
+          "evidence": "3/10；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": null,
+          "evidence": "0/10；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "taobao-product_details-5",
+      "platform": "淘宝目标",
+      "kind": "商品详情",
+      "endpoint": "/api/taobao/get-item-detail/v6",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 3.806,
+      "decision": "商品 ID 匹配；字段按下表验收",
+      "params": {
+        "itemId": "620210933491"
+      },
+      "notes": [],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "unverified",
+          "source": null,
+          "evidence": "淘天 V6 不返回店型标志；输入域名和旗舰店名称不构成独立店型证据。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.item.itemId",
+          "evidence": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "data.item.title",
+          "evidence": ""
+        },
+        {
+          "field": "product_url",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "请求链接/商品 ID 组装，不冒充 API 实际返回。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "data.item.images[0]",
+          "evidence": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "partial",
+          "source": "data.item.attribute[品牌].value",
+          "evidence": "其他家为泛化品牌占位，不等于识别出具体品牌。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.item.categoryId",
+          "evidence": "仅类目 ID，无类目名称/层级映射。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "returned",
+          "source": "data.item.originalPrice",
+          "evidence": "供应商标价/划线价字段；单位未在业务回包显式给出。"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "data.item.price",
+          "evidence": "实际有数值；couponPrice 为空，不能当券后价已取得。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "V6 说明提到预估销量，但本次回包没有销量；skuCore.quantity 是库存，不能充作销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有原始销量文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "逐条评论星级不能代替商品整体评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "comments response: data.total / data.totalFuzzy",
+          "evidence": "由另一次评论响应补齐；带 + 的汇总，不承诺精确总数或全历史可读。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "data.seller.shopName",
+          "evidence": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "adapter_required",
+          "source": "client request.startedAt / finishedAt",
+          "evidence": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "taobao-product_reviews-6",
+      "platform": "淘宝目标",
+      "kind": "评论·第1页",
+      "endpoint": "/api/taobao/get-item-comment/v3",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 20,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 1.163,
+      "decision": "20 行 / 0 条非平台模板正文",
+      "params": {
+        "itemId": "620210933491",
+        "page": 1,
+        "orderType": "feedbackdate"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "系统默认 20，未填写占位 0，快捷模板 0，空正文 0。",
+        "唯一评价 20 条，商品匹配 20 条，附图 0 条，商家回复 0 条。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.comments[].rateId",
+          "evidence": "20/20；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.comments[].auction.aucNumId",
+          "evidence": "20/20；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.comments[].content",
+          "evidence": "0/20；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.comments[].propertiesAvg",
+          "evidence": "20/20；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.comments[].date",
+          "evidence": "20/20；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "missing",
+          "source": "data.comments[].auction.sku",
+          "evidence": "0/20；不把默认或空规格计为满足。"
+        },
+        {
+          "field": "image_urls",
+          "status": "missing",
+          "source": "data.comments[].photos",
+          "evidence": "0/20；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": "data.comments[].reply",
+          "evidence": "0/20；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "tmall-product_details-7",
+      "platform": "天猫候选（店型未独立确认）",
+      "kind": "商品详情",
+      "endpoint": "/api/taobao/get-item-detail/v6",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 7.795,
+      "decision": "商品 ID 匹配；字段按下表验收",
+      "params": {
+        "itemId": "744983869996"
+      },
+      "notes": [],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "unverified",
+          "source": null,
+          "evidence": "淘天 V6 不返回店型标志；输入域名和旗舰店名称不构成独立店型证据。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.item.itemId",
+          "evidence": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "data.item.title",
+          "evidence": ""
+        },
+        {
+          "field": "product_url",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "请求链接/商品 ID 组装，不冒充 API 实际返回。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "data.item.images[0]",
+          "evidence": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "returned",
+          "source": "data.item.attribute[品牌].value",
+          "evidence": "从品牌属性读取，不从标题猜测。"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": "data.item.categoryId",
+          "evidence": "字段存在但为空。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": null,
+          "evidence": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "returned",
+          "source": "data.item.originalPrice",
+          "evidence": "供应商标价/划线价字段；单位未在业务回包显式给出。"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "data.item.price",
+          "evidence": "实际有数值；couponPrice 为空，不能当券后价已取得。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "V6 说明提到预估销量，但本次回包没有销量；skuCore.quantity 是库存，不能充作销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有原始销量文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "逐条评论星级不能代替商品整体评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "comments response: data.total / data.totalFuzzy",
+          "evidence": "由另一次评论响应补齐；带 + 的汇总，不承诺精确总数或全历史可读。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "data.seller.shopName",
+          "evidence": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "adapter_required",
+          "source": "client request.startedAt / finishedAt",
+          "evidence": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "tmall-product_reviews-8",
+      "platform": "天猫候选（店型未独立确认）",
+      "kind": "评论·第1页",
+      "endpoint": "/api/taobao/get-item-comment/v3",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 20,
+      "effectiveReviews": 5,
+      "elapsedSeconds": 4.958,
+      "decision": "20 行 / 5 条非平台模板正文",
+      "params": {
+        "itemId": "744983869996",
+        "page": 1,
+        "orderType": "feedbackdate"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "系统默认 0，未填写占位 1，快捷模板 14，空正文 0。",
+        "唯一评价 20 条，商品匹配 20 条，附图 1 条，商家回复 0 条。",
+        "关联同目标 V9 的 sellerType=B；较强天猫信号，原平台身份未独立核验。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.comments[].rateId",
+          "evidence": "20/20；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.comments[].auction.aucNumId",
+          "evidence": "20/20；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.comments[].content",
+          "evidence": "5/20；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.comments[].propertiesAvg",
+          "evidence": "20/20；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.comments[].date",
+          "evidence": "20/20；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "returned",
+          "source": "data.comments[].auction.sku",
+          "evidence": "20/20；不把默认或空规格计为满足。"
+        },
+        {
+          "field": "image_urls",
+          "status": "returned",
+          "source": "data.comments[].photos",
+          "evidence": "1/20；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": "data.comments[].reply",
+          "evidence": "0/20；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "douyin-page2-product_reviews-9",
+      "platform": "抖音商城",
+      "kind": "评论·第2页",
+      "endpoint": "/api/douyin-ec/get-item-comments/v1",
+      "httpStatus": 200,
+      "businessCode": 301,
+      "productRows": 0,
+      "reviewRows": 0,
+      "nonemptyReviews": null,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 0.656,
+      "decision": "采集失败；第2页未通过",
+      "params": {
+        "itemId": "3799345653746892970",
+        "page": "2"
+      },
+      "notes": [
+        "业务采集失败；HTTP 200 不算正文成功。当前不是权限/余额/额度错误码，原因仍未知。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "jd-page2-product_reviews-10",
+      "platform": "京东",
+      "kind": "评论·第2页",
+      "endpoint": "/api/jd/get-item-comments/v1",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 9,
+      "nonemptyReviews": 9,
+      "effectiveReviews": 8,
+      "elapsedSeconds": 3.167,
+      "decision": "9 行 / 8 条非平台模板正文",
+      "params": {
+        "itemId": "100033031708",
+        "page": "2"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "本页有 1 条高度通用、模板化的长评，已单独标记；不是有证据认定的平台默认评价。",
+        "系统默认 0，未填写占位 1，快捷模板 0，空正文 0。",
+        "唯一评价 9 条，商品匹配 9 条，附图 8 条，商家回复 0 条。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.data[].commentId",
+          "evidence": "9/9；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.data[].productId",
+          "evidence": "9/9；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.data[].commentData",
+          "evidence": "8/9；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.data[].commentScore",
+          "evidence": "9/9；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.data[].commentDate",
+          "evidence": "9/9；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "returned",
+          "source": "data.data[].productColor",
+          "evidence": "9/9；已排除空值与默认规格；京东 productSize 本样本为空，productColor 有实际规格。"
+        },
+        {
+          "field": "image_urls",
+          "status": "returned",
+          "source": "data.data[].pictureInfoList",
+          "evidence": "8/9；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": null,
+          "evidence": "0/9；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "taobao-control-product_reviews-11",
+      "platform": "淘宝目标",
+      "kind": "评论·第1页",
+      "endpoint": "/api/taobao/get-item-comment/v3",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 20,
+      "effectiveReviews": 4,
+      "elapsedSeconds": 1.264,
+      "decision": "20 行 / 4 条非平台模板正文",
+      "params": {
+        "itemId": "765833709683",
+        "page": 1,
+        "orderType": "feedbackdate"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "系统默认 15，未填写占位 0，快捷模板 1，空正文 0。",
+        "唯一评价 20 条，商品匹配 20 条，附图 2 条，商家回复 0 条。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.comments[].rateId",
+          "evidence": "20/20；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.comments[].auction.aucNumId",
+          "evidence": "20/20；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.comments[].content",
+          "evidence": "4/20；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.comments[].propertiesAvg",
+          "evidence": "20/20；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.comments[].date",
+          "evidence": "20/20；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "returned",
+          "source": "data.comments[].auction.sku",
+          "evidence": "5/20；不把默认或空规格计为满足。"
+        },
+        {
+          "field": "image_urls",
+          "status": "returned",
+          "source": "data.comments[].photos",
+          "evidence": "2/20；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": "data.comments[].reply",
+          "evidence": "0/20；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "tmall-page2-product_reviews-12",
+      "platform": "天猫候选（店型未独立确认）",
+      "kind": "评论·第2页",
+      "endpoint": "/api/taobao/get-item-comment/v3",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 20,
+      "effectiveReviews": 7,
+      "elapsedSeconds": 6.181,
+      "decision": "20 行 / 7 条非平台模板正文",
+      "params": {
+        "itemId": "744983869996",
+        "page": 2,
+        "orderType": "feedbackdate"
+      },
+      "notes": [
+        "分页汇总只是元数据，不代表完整历史均可获取。",
+        "有效正文只排除明确平台默认/快捷模板与未填写占位，不代表逐条真实性认证。",
+        "系统默认 0，未填写占位 0，快捷模板 13，空正文 0。",
+        "唯一评价 20 条，商品匹配 20 条，附图 3 条，商家回复 0 条。",
+        "关联同目标 V9 的 sellerType=B；较强天猫信号，原平台身份未独立核验。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": [
+        {
+          "field": "review_id",
+          "status": "returned",
+          "source": "data.comments[].rateId",
+          "evidence": "20/20；只公开唯一条数，不公开逐条 ID。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.comments[].auction.aucNumId",
+          "evidence": "20/20；直接比对请求商品 ID，不把请求侧关联冒充回包字段。"
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.comments[].content",
+          "evidence": "7/20；有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。"
+        },
+        {
+          "field": "rating",
+          "status": "returned",
+          "source": "data.comments[].propertiesAvg",
+          "evidence": "20/20；使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。"
+        },
+        {
+          "field": "created_at",
+          "status": "returned",
+          "source": "data.comments[].date",
+          "evidence": "20/20；回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。"
+        },
+        {
+          "field": "purchased_sku",
+          "status": "returned",
+          "source": "data.comments[].auction.sku",
+          "evidence": "20/20；不把默认或空规格计为满足。"
+        },
+        {
+          "field": "image_urls",
+          "status": "returned",
+          "source": "data.comments[].photos",
+          "evidence": "3/20；只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。"
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": "data.comments[].reply",
+          "evidence": "0/20；买家正文和商家回复分别计数。"
+        }
+      ]
+    },
+    {
+      "id": "taobao-v9-product_details-13",
+      "platform": "淘宝目标",
+      "kind": "商品详情",
+      "endpoint": "/api/taobao/get-item-detail/v9",
+      "httpStatus": null,
+      "businessCode": null,
+      "productRows": null,
+      "reviewRows": null,
+      "nonemptyReviews": null,
+      "effectiveReviews": null,
+      "elapsedSeconds": 45.278,
+      "decision": "客户端读取超时；服务端是否完成未知",
+      "params": {
+        "itemId": "620210933491"
+      },
+      "notes": [
+        "客户端读取超时，没有 HTTP 响应；不能断言服务端业务失败，服务端完成与免费额度扣减另核。",
+        "此次未收到HTTP响应，不能当作返回0条商品；后续按官方建议延长客户端等待后已成功。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "product_id",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "title",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "product_url",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "image_url",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "brand",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "category",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "currency",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "list_price",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "sale_price",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "sold_count",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "sold_text",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "rating",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "review_count",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "shop_name",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本次客户端超时，未取得响应。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "douyin-page2-product_reviews-14",
+      "platform": "抖音商城",
+      "kind": "评论·第2页",
+      "endpoint": "/api/douyin-ec/get-item-comments/v1",
+      "httpStatus": 200,
+      "businessCode": 301,
+      "productRows": 0,
+      "reviewRows": 0,
+      "nonemptyReviews": null,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 1.222,
+      "decision": "采集失败；第2页未通过",
+      "params": {
+        "itemId": "3799345653746892970",
+        "page": "2"
+      },
+      "notes": [
+        "业务采集失败；HTTP 200 不算正文成功。当前不是权限/余额/额度错误码，原因仍未知。"
+      ],
+      "productFieldCoverage": [],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "tmall-v9-product_details-15",
+      "platform": "天猫候选（店型未独立确认）",
+      "kind": "商品详情",
+      "endpoint": "/api/taobao/get-item-detail/v9",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 5.111,
+      "decision": "V9 返回 sellerType=B；商品匹配",
+      "params": {
+        "itemId": "744983869996"
+      },
+      "notes": [
+        "目标匹配；促销域名不能独立证明店型，价格版本与类型需保留。",
+        "V9基础价29.90与折后价25.40并存；V6现价/划线价均31.02。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "partial",
+          "source": "data.sellerType / data.mainItemInfo.url",
+          "evidence": "V9 sellerType=B，促销 URL 域名为 detail.tmall.com，属较强天猫信号；官方 B/C 枚举未明示、原平台身份未独立核验。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.itemId / data.mainItemInfo.itemId",
+          "evidence": "两处 ID 均匹配 744983869996。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "data.title / data.mainItemInfo.itemName",
+          "evidence": "两种标题有值，内容表达不同；不要静默互相覆盖。"
+        },
+        {
+          "field": "product_url",
+          "status": "partial",
+          "source": "data.mainItemInfo.url",
+          "evidence": "回包是含追踪参数的天猫促销链接，公开报告仅保留域名；规范商品 URL 需适配生成。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "data.item_imgs[] / data.mainItemInfo.pic",
+          "evidence": "商品图有值，未下载图像。"
+        },
+        {
+          "field": "brand",
+          "status": "returned",
+          "source": "data.attribute[品牌].value",
+          "evidence": "品牌为绿联。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.categoryId",
+          "evidence": "V9 返回 50003472；V6 为空。仍只有 ID，没有类目名称。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": "data.mainItemInfo.promotionModel.promotionPriceModel.promotionPriceDisplay",
+          "evidence": "价格显示含人民币符号，仍没有 ISO currency 字段；CNY 按站点语境补充。"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "evidence": "V9 无独立 originalPrice；不能把 zkPrice 无说明地当划线价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "partial",
+          "source": "data.price / data.mainItemInfo.promotionModel.promotionPriceModel.promotionPrice",
+          "evidence": "基础价29.90、标注折后价25.40、afterCouponAmountPrice29.9并存；保留各价格类型，未验证结算条件。"
+        },
+        {
+          "field": "sold_count",
+          "status": "unverified",
+          "source": "data.num",
+          "evidence": "num=3000+，语义与统计周期未在当前官方文档明示，不直接当成交销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "unverified",
+          "source": "data.num",
+          "evidence": "模糊数字不是已核实的原始销量展示；不擅自拼成销量。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "V9 没有整体商品评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "data.totalCount / comments response data.totalFuzzy",
+          "evidence": "totalCount=8000+ 与评论端点一致，保留模糊汇总；不误用 allItemCount/newItemCount。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "data.shopName",
+          "evidence": "店名有值；店型仍结合独立标志核查。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "adapter_required",
+          "source": "client request.startedAt / finishedAt",
+          "evidence": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    },
+    {
+      "id": "taobao-v9-product_details-16",
+      "platform": "淘宝目标",
+      "kind": "商品详情",
+      "endpoint": "/api/taobao/get-item-detail/v9",
+      "httpStatus": 200,
+      "businessCode": 0,
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "elapsedSeconds": 15.33,
+      "decision": "V9 返回 sellerType=C；商品匹配",
+      "params": {
+        "itemId": "620210933491"
+      },
+      "notes": [
+        "目标匹配；促销域名不能独立证明店型，价格版本与类型需保留。",
+        "首轮45秒客户端超时低于官方至少60秒/建议120秒；本轮改120秒配置后15.33秒返回成功，不判V9整体失败。",
+        "V9基础/折后价59.90；V6现价61.65与originalPrice72.82，不能静默合并。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "partial",
+          "source": "data.sellerType / data.mainItemInfo.url",
+          "evidence": "V9 sellerType=C，但促销 URL 同样为 detail.tmall.com；不能根据促销域名判天猫，枚举仍保留原值。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "data.itemId / data.mainItemInfo.itemId",
+          "evidence": "两处 ID 均匹配 620210933491。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "data.title / data.mainItemInfo.itemName",
+          "evidence": "两种标题有值，内容表达不同；不要静默互相覆盖。"
+        },
+        {
+          "field": "product_url",
+          "status": "partial",
+          "source": "data.mainItemInfo.url",
+          "evidence": "回包是含追踪参数的天猫促销链接，公开报告仅保留域名；规范商品 URL 需适配生成。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "data.item_imgs[] / data.mainItemInfo.pic",
+          "evidence": "商品图有值，未下载图像。"
+        },
+        {
+          "field": "brand",
+          "status": "partial",
+          "source": "data.attribute[品牌].value",
+          "evidence": "品牌为其他家，仍未识别具体品牌。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.categoryId",
+          "evidence": "50012582 与 V6 一致；仅类目 ID，无名称映射。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": "data.mainItemInfo.promotionModel.promotionPriceModel.promotionPriceDisplay",
+          "evidence": "价格显示含人民币符号，仍没有 ISO currency 字段；CNY 按站点语境补充。"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "evidence": "V9 无独立 originalPrice；不能把 zkPrice 无说明地当划线价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "data.price / data.mainItemInfo.promotionModel.promotionPriceModel.promotionPrice",
+          "evidence": "V9 基础价与折后价均59.90；V6现价61.65、originalPrice72.82。保留版本与价格类型，不把差额当优惠结论。"
+        },
+        {
+          "field": "sold_count",
+          "status": "unverified",
+          "source": "data.num",
+          "evidence": "num=78，但官方未说明业务含义/统计周期，不直接当成交销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "unverified",
+          "source": "data.num",
+          "evidence": "只有78，无已核实的原始销量标签。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "V9 没有整体商品评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "data.totalCount / comments response data.totalFuzzy",
+          "evidence": "totalCount=600+ 与评论端点汇总一致，不承诺精确总数。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "data.shopName",
+          "evidence": "店名有值；店型仍结合独立标志核查。"
+        },
+        {
+          "field": "keyword",
+          "status": "unverified",
+          "source": null,
+          "evidence": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "unverified",
+          "source": null,
+          "evidence": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "adapter_required",
+          "source": "client request.startedAt / finishedAt",
+          "evidence": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldCoverage": []
+    }
+  ],
+  "requestStats": {
+    "requestsObserved": 16,
+    "http200AndCode0": 13,
+    "baselineRequests": 8,
+    "business301Responses": 2,
+    "clientReadTimeouts": 1,
+    "noFull26FieldCoverage": true,
+    "productionSuccessRateKnown": false,
+    "paymentMade": false
+  },
+  "pricing": [
+    {
+      "label": "淘天评论",
+      "endpoint": "/api/taobao/get-item-comment/v3",
+      "cnyPerRequest": 0.2,
+      "freeBefore": 5,
+      "permission": "允许",
+      "freeAfter": 1
+    },
+    {
+      "label": "淘天详情V6",
+      "endpoint": "/api/taobao/get-item-detail/v6",
+      "cnyPerRequest": 0.25,
+      "freeBefore": 2,
+      "permission": "允许",
+      "freeAfter": 0
+    },
+    {
+      "label": "淘天详情V9",
+      "endpoint": "/api/taobao/get-item-detail/v9",
+      "cnyPerRequest": 0.25,
+      "freeBefore": 5,
+      "permission": "允许",
+      "freeAfter": 3
+    },
+    {
+      "label": "淘天搜索V1",
+      "endpoint": "/api/taobao/search-item-list/v1",
+      "cnyPerRequest": 0.2,
+      "freeBefore": 5,
+      "permission": "允许",
+      "freeAfter": 5
+    },
+    {
+      "label": "京东评论",
+      "endpoint": "/api/jd/get-item-comments/v1",
+      "cnyPerRequest": 0.2,
+      "freeBefore": 5,
+      "permission": "允许",
+      "freeAfter": 3
+    },
+    {
+      "label": "京东详情V4",
+      "endpoint": "/api/jd/get-item-detail/v4",
+      "cnyPerRequest": 0.25,
+      "freeBefore": 5,
+      "permission": "允许",
+      "freeAfter": 4
+    },
+    {
+      "label": "抖店评论",
+      "endpoint": "/api/douyin-ec/get-item-comments/v1",
+      "cnyPerRequest": 0.18,
+      "freeBefore": 10,
+      "permission": "允许",
+      "freeAfter": 9
+    },
+    {
+      "label": "抖店详情V2",
+      "endpoint": "/api/douyin-ec/get-item-detail/v2",
+      "cnyPerRequest": 0.18,
+      "freeBefore": 10,
+      "permission": "允许",
+      "freeAfter": 9
+    }
+  ],
+  "billing": {
+    "mandatorySubscriptionObserved": false,
+    "mode": "单次充值可选；自动充值为另一个未启用选项",
+    "stripeCnyMinimum": 5,
+    "stripeCnyFee": "3.9% + ¥2.01",
+    "stripeUsdMinimum": 5,
+    "stripeUsdFee": "3.9% + $0.30",
+    "stripeChannels": "人民币结算支持支付宝、微信；Visa/Mastercard/AMEX等",
+    "cryptoMinimumUsd": 5,
+    "cryptoNetwork": "USDT TRC20",
+    "cryptoPlatformFee": "页面称无手续费；链上费用未核",
+    "checkoutFinalAmountVerified": false,
+    "orderCreated": false,
+    "paymentMade": false,
+    "note": "本轮现金消费¥0，成功消耗13次免费调用。可单次充值，无须订阅：人民币最低选项¥5，页面手续费3.9%＋¥2.01；美元最低$5，手续费3.9%＋$0.30；USDT TRC20最低$5，页面平台手续费为0。未进入结算，最终实付/到账金额未核；未创建订单或付款。",
+    "cashCostCny": 0,
+    "freeCallsConsumed": 13
+  },
+  "costScenarios": [
+    {
+      "platform": "淘宝对照商品",
+      "basis": "1次请求 / 4条有效正文",
+      "cny10000": 500.0,
+      "cny100000": 5000.0,
+      "qualification": "只按765833709683样本；另一商品20行全默认，不能普遍外推"
+    },
+    {
+      "platform": "天猫候选",
+      "basis": "2次请求 / 12条有效正文",
+      "cny10000": 333.4,
+      "cny100000": 3333.4,
+      "qualification": "两页无重复；B/C店型信号保留，原平台店型未独立核"
+    },
+    {
+      "platform": "京东",
+      "basis": "2次请求 / 18条有效正文",
+      "cny10000": 222.4,
+      "cny100000": 2222.4,
+      "qualification": "两页19记录18有效；其中1条通用长评仍可能低信息"
+    },
+    {
+      "platform": "抖音商城",
+      "basis": "1次请求 / 8条有效正文",
+      "cny10000": 225.0,
+      "cny100000": 2250.0,
+      "qualification": "第二页两次失败；仅作费用比较，暂不作为交付预算"
+    }
+  ],
+  "platformMappings": [
+    {
+      "platform": "taobao",
+      "label": "淘宝目标",
+      "productFieldMapping": [
+        {
+          "field": "platform",
+          "status": "unverified",
+          "source": null,
+          "note": "淘天 V6 不返回店型标志；输入域名和旗舰店名称不构成独立店型证据。"
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.item.itemId",
+          "note": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "observed",
+          "source": "data.item.title",
+          "note": ""
+        },
+        {
+          "field": "product_url",
+          "status": "system_derived",
+          "source": null,
+          "note": "请求链接/商品 ID 组装，不冒充 API 实际返回。"
+        },
+        {
+          "field": "image_url",
+          "status": "observed",
+          "source": "data.item.images[0]",
+          "note": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "placeholder",
+          "source": "data.item.attribute[品牌].value",
+          "note": "其他家为泛化品牌占位，不等于识别出具体品牌。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.item.categoryId",
+          "note": "仅类目 ID，无类目名称/层级映射。"
+        },
+        {
+          "field": "currency",
+          "status": "system_derived",
+          "source": null,
+          "note": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "observed",
+          "source": "data.item.originalPrice",
+          "note": "供应商标价/划线价字段；单位未在业务回包显式给出。"
+        },
+        {
+          "field": "sale_price",
+          "status": "observed",
+          "source": "data.item.price",
+          "note": "实际有数值；couponPrice 为空，不能当券后价已取得。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "note": "V6 说明提到预估销量，但本次回包没有销量；skuCore.quantity 是库存，不能充作销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "note": "没有原始销量文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "note": "逐条评论星级不能代替商品整体评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "comments response: data.total / data.totalFuzzy",
+          "note": "由另一次评论响应补齐；带 + 的汇总，不承诺精确总数或全历史可读。"
+        },
+        {
+          "field": "shop_name",
+          "status": "observed",
+          "source": "data.seller.shopName",
+          "note": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_tested",
+          "source": null,
+          "note": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_tested",
+          "source": null,
+          "note": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "system_derived",
+          "source": "client request.startedAt / finishedAt",
+          "note": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldMapping": [
+        {
+          "field": "review_id",
+          "status": "observed",
+          "source": "data.comments[].rateId",
+          "note": "只公开唯一条数，不公开逐条 ID。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.comments[].auction.aucNumId",
+          "note": "直接比对请求商品 ID，不把请求侧关联冒充回包字段。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "review_text",
+          "status": "placeholder",
+          "source": "data.comments[].content",
+          "note": "有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。",
+          "nonemptyRows": 0,
+          "totalRows": 20
+        },
+        {
+          "field": "rating",
+          "status": "observed",
+          "source": "data.comments[].propertiesAvg",
+          "note": "使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "created_at",
+          "status": "observed",
+          "source": "data.comments[].date",
+          "note": "回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "purchased_sku",
+          "status": "empty",
+          "source": "data.comments[].auction.sku",
+          "note": "不把默认或空规格计为满足。",
+          "nonemptyRows": 0,
+          "totalRows": 20
+        },
+        {
+          "field": "image_urls",
+          "status": "empty",
+          "source": "data.comments[].photos",
+          "note": "只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。",
+          "nonemptyRows": 0,
+          "totalRows": 20
+        },
+        {
+          "field": "seller_reply",
+          "status": "empty",
+          "source": "data.comments[].reply",
+          "note": "买家正文和商家回复分别计数。",
+          "nonemptyRows": 0,
+          "totalRows": 20
+        }
+      ],
+      "productFieldsTotal": 18,
+      "reviewFieldsTotal": 8,
+      "all26FieldsSatisfied": false,
+      "fieldCoverage": {
+        "product": {
+          "unverified": 1,
+          "observed": 6,
+          "system_derived": 3,
+          "placeholder": 1,
+          "partial": 2,
+          "missing": 3,
+          "not_tested": 2
+        },
+        "review": {
+          "observed": 4,
+          "placeholder": 1,
+          "empty": 3
+        }
+      },
+      "observedProductValues": {
+        "salePrice": 61.65,
+        "listPrice": 72.82,
+        "categoryId": "50012582",
+        "brandAttribute": "其他家",
+        "v6IdentityMarkerCount": 0
+      },
+      "productFieldMappingV9": [
+        {
+          "field": "platform",
+          "status": "partial",
+          "source": "data.sellerType / data.mainItemInfo.url",
+          "note": "V9 sellerType=C，但促销 URL 同样为 detail.tmall.com；不能根据促销域名判天猫，枚举仍保留原值。"
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.itemId / data.mainItemInfo.itemId",
+          "note": "两处 ID 均匹配 620210933491。"
+        },
+        {
+          "field": "title",
+          "status": "observed",
+          "source": "data.title / data.mainItemInfo.itemName",
+          "note": "两种标题有值，内容表达不同；不要静默互相覆盖。"
+        },
+        {
+          "field": "product_url",
+          "status": "partial",
+          "source": "data.mainItemInfo.url",
+          "note": "回包是含追踪参数的天猫促销链接，公开报告仅保留域名；规范商品 URL 需适配生成。"
+        },
+        {
+          "field": "image_url",
+          "status": "observed",
+          "source": "data.item_imgs[] / data.mainItemInfo.pic",
+          "note": "商品图有值，未下载图像。"
+        },
+        {
+          "field": "brand",
+          "status": "placeholder",
+          "source": "data.attribute[品牌].value",
+          "note": "品牌为其他家，仍未识别具体品牌。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.categoryId",
+          "note": "50012582 与 V6 一致；仅类目 ID，无名称映射。"
+        },
+        {
+          "field": "currency",
+          "status": "system_derived",
+          "source": "data.mainItemInfo.promotionModel.promotionPriceModel.promotionPriceDisplay",
+          "note": "价格显示含人民币符号，仍没有 ISO currency 字段；CNY 按站点语境补充。"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "note": "V9 无独立 originalPrice；不能把 zkPrice 无说明地当划线价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "observed",
+          "source": "data.price / data.mainItemInfo.promotionModel.promotionPriceModel.promotionPrice",
+          "note": "V9 基础价与折后价均59.90；V6现价61.65、originalPrice72.82。保留版本与价格类型，不把差额当优惠结论。"
+        },
+        {
+          "field": "sold_count",
+          "status": "unverified",
+          "source": "data.num",
+          "note": "num=78，但官方未说明业务含义/统计周期，不直接当成交销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "unverified",
+          "source": "data.num",
+          "note": "只有78，无已核实的原始销量标签。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "note": "V9 没有整体商品评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "data.totalCount / comments response data.totalFuzzy",
+          "note": "totalCount=600+ 与评论端点汇总一致，不承诺精确总数。"
+        },
+        {
+          "field": "shop_name",
+          "status": "observed",
+          "source": "data.shopName",
+          "note": "店名有值；店型仍结合独立标志核查。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_tested",
+          "source": null,
+          "note": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_tested",
+          "source": null,
+          "note": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "system_derived",
+          "source": "client request.startedAt / finishedAt",
+          "note": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "v9IdentityAssessment": {
+        "sellerType": "C",
+        "productUrlHost": "detail.tmall.com",
+        "targetProductMatches": true,
+        "independentPlatformVerification": false,
+        "conclusion": "C 原值与天猫候选 B 不同，但两者促销域名相同；域名不能独立证明店型。"
+      },
+      "observedProductValuesV9": {
+        "basePrice": "59.90",
+        "promotionPrice": "59.90",
+        "afterCouponAmountPrice": "59.9",
+        "categoryId": "50012582",
+        "numUnverifiedMeaning": "78",
+        "totalCountFuzzy": "600+"
+      }
+    },
+    {
+      "platform": "tmall",
+      "label": "天猫候选（店型未独立确认）",
+      "productFieldMapping": [
+        {
+          "field": "platform",
+          "status": "unverified",
+          "source": null,
+          "note": "淘天 V6 不返回店型标志；输入域名和旗舰店名称不构成独立店型证据。"
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.item.itemId",
+          "note": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "observed",
+          "source": "data.item.title",
+          "note": ""
+        },
+        {
+          "field": "product_url",
+          "status": "system_derived",
+          "source": null,
+          "note": "请求链接/商品 ID 组装，不冒充 API 实际返回。"
+        },
+        {
+          "field": "image_url",
+          "status": "observed",
+          "source": "data.item.images[0]",
+          "note": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "observed",
+          "source": "data.item.attribute[品牌].value",
+          "note": "从品牌属性读取，不从标题猜测。"
+        },
+        {
+          "field": "category",
+          "status": "empty",
+          "source": "data.item.categoryId",
+          "note": "字段存在但为空。"
+        },
+        {
+          "field": "currency",
+          "status": "system_derived",
+          "source": null,
+          "note": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "observed",
+          "source": "data.item.originalPrice",
+          "note": "供应商标价/划线价字段；单位未在业务回包显式给出。"
+        },
+        {
+          "field": "sale_price",
+          "status": "observed",
+          "source": "data.item.price",
+          "note": "实际有数值；couponPrice 为空，不能当券后价已取得。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "note": "V6 说明提到预估销量，但本次回包没有销量；skuCore.quantity 是库存，不能充作销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "note": "没有原始销量文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "note": "逐条评论星级不能代替商品整体评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "comments response: data.total / data.totalFuzzy",
+          "note": "由另一次评论响应补齐；带 + 的汇总，不承诺精确总数或全历史可读。"
+        },
+        {
+          "field": "shop_name",
+          "status": "observed",
+          "source": "data.seller.shopName",
+          "note": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_tested",
+          "source": null,
+          "note": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_tested",
+          "source": null,
+          "note": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "system_derived",
+          "source": "client request.startedAt / finishedAt",
+          "note": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldMapping": [
+        {
+          "field": "review_id",
+          "status": "observed",
+          "source": "data.comments[].rateId",
+          "note": "只公开唯一条数，不公开逐条 ID。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.comments[].auction.aucNumId",
+          "note": "直接比对请求商品 ID，不把请求侧关联冒充回包字段。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.comments[].content",
+          "note": "有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。",
+          "nonemptyRows": 5,
+          "totalRows": 20
+        },
+        {
+          "field": "rating",
+          "status": "observed",
+          "source": "data.comments[].propertiesAvg",
+          "note": "使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "created_at",
+          "status": "observed",
+          "source": "data.comments[].date",
+          "note": "回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "purchased_sku",
+          "status": "observed",
+          "source": "data.comments[].auction.sku",
+          "note": "不把默认或空规格计为满足。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "image_urls",
+          "status": "observed",
+          "source": "data.comments[].photos",
+          "note": "只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。",
+          "nonemptyRows": 1,
+          "totalRows": 20
+        },
+        {
+          "field": "seller_reply",
+          "status": "empty",
+          "source": "data.comments[].reply",
+          "note": "买家正文和商家回复分别计数。",
+          "nonemptyRows": 0,
+          "totalRows": 20
+        }
+      ],
+      "productFieldsTotal": 18,
+      "reviewFieldsTotal": 8,
+      "all26FieldsSatisfied": false,
+      "fieldCoverage": {
+        "product": {
+          "unverified": 1,
+          "observed": 7,
+          "system_derived": 3,
+          "empty": 1,
+          "missing": 3,
+          "partial": 1,
+          "not_tested": 2
+        },
+        "review": {
+          "observed": 6,
+          "partial": 1,
+          "empty": 1
+        }
+      },
+      "observedProductValues": {
+        "salePrice": 31.02,
+        "listPrice": 31.02,
+        "categoryId": "",
+        "brandAttribute": "绿联",
+        "v6IdentityMarkerCount": 0
+      },
+      "productFieldMappingV9": [
+        {
+          "field": "platform",
+          "status": "partial",
+          "source": "data.sellerType / data.mainItemInfo.url",
+          "note": "V9 sellerType=B，促销 URL 域名为 detail.tmall.com，属较强天猫信号；官方 B/C 枚举未明示、原平台身份未独立核验。"
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.itemId / data.mainItemInfo.itemId",
+          "note": "两处 ID 均匹配 744983869996。"
+        },
+        {
+          "field": "title",
+          "status": "observed",
+          "source": "data.title / data.mainItemInfo.itemName",
+          "note": "两种标题有值，内容表达不同；不要静默互相覆盖。"
+        },
+        {
+          "field": "product_url",
+          "status": "partial",
+          "source": "data.mainItemInfo.url",
+          "note": "回包是含追踪参数的天猫促销链接，公开报告仅保留域名；规范商品 URL 需适配生成。"
+        },
+        {
+          "field": "image_url",
+          "status": "observed",
+          "source": "data.item_imgs[] / data.mainItemInfo.pic",
+          "note": "商品图有值，未下载图像。"
+        },
+        {
+          "field": "brand",
+          "status": "observed",
+          "source": "data.attribute[品牌].value",
+          "note": "品牌为绿联。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.categoryId",
+          "note": "V9 返回 50003472；V6 为空。仍只有 ID，没有类目名称。"
+        },
+        {
+          "field": "currency",
+          "status": "system_derived",
+          "source": "data.mainItemInfo.promotionModel.promotionPriceModel.promotionPriceDisplay",
+          "note": "价格显示含人民币符号，仍没有 ISO currency 字段；CNY 按站点语境补充。"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "note": "V9 无独立 originalPrice；不能把 zkPrice 无说明地当划线价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "partial",
+          "source": "data.price / data.mainItemInfo.promotionModel.promotionPriceModel.promotionPrice",
+          "note": "基础价29.90、标注折后价25.40、afterCouponAmountPrice29.9并存；保留各价格类型，未验证结算条件。"
+        },
+        {
+          "field": "sold_count",
+          "status": "unverified",
+          "source": "data.num",
+          "note": "num=3000+，语义与统计周期未在当前官方文档明示，不直接当成交销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "unverified",
+          "source": "data.num",
+          "note": "模糊数字不是已核实的原始销量展示；不擅自拼成销量。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "note": "V9 没有整体商品评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "data.totalCount / comments response data.totalFuzzy",
+          "note": "totalCount=8000+ 与评论端点一致，保留模糊汇总；不误用 allItemCount/newItemCount。"
+        },
+        {
+          "field": "shop_name",
+          "status": "observed",
+          "source": "data.shopName",
+          "note": "店名有值；店型仍结合独立标志核查。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_tested",
+          "source": null,
+          "note": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_tested",
+          "source": null,
+          "note": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "system_derived",
+          "source": "client request.startedAt / finishedAt",
+          "note": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "v9IdentityAssessment": {
+        "sellerType": "B",
+        "productUrlHost": "detail.tmall.com",
+        "targetProductMatches": true,
+        "independentPlatformVerification": false,
+        "conclusion": "V9 新增较强天猫店型信号，但不把文档未说明的枚举或促销域名当独立认证。"
+      },
+      "observedProductValuesV9": {
+        "basePrice": "29.90",
+        "promotionPrice": "25.40",
+        "afterCouponAmountPrice": "29.9",
+        "categoryId": "50003472",
+        "numUnverifiedMeaning": "3000+",
+        "totalCountFuzzy": "8000+"
+      }
+    },
+    {
+      "platform": "jd",
+      "label": "京东",
+      "productFieldMapping": [
+        {
+          "field": "platform",
+          "status": "system_derived",
+          "source": null,
+          "note": "由所调用平台接口归属补充；内部数字 platform/platform_source 不直接当标准平台名。"
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.itemInfo.product.skuId",
+          "note": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "observed",
+          "source": "data.itemInfo.product.skuName",
+          "note": ""
+        },
+        {
+          "field": "product_url",
+          "status": "system_derived",
+          "source": null,
+          "note": "请求链接/商品 ID 组装，不冒充 API 实际返回。"
+        },
+        {
+          "field": "image_url",
+          "status": "observed",
+          "source": "data.img_list[0]",
+          "note": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "observed",
+          "source": "data.itemInfo.product.brandName",
+          "note": "品牌名称实际返回。"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "data.itemOnly.category[] / data.itemInfo.product.category",
+          "note": "三级类目 ID 有值，类目名称需另查映射。"
+        },
+        {
+          "field": "currency",
+          "status": "system_derived",
+          "source": null,
+          "note": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "observed",
+          "source": "data.priceInfo.productPrice.marketPrice",
+          "note": "供应商 marketPrice 字段，不宣称已比对网站划线价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "observed",
+          "source": "data.priceInfo.jdPrice",
+          "note": "应取独立 priceInfo；itemInfo.priceFloor.price 是遮罩值，kaPrice 为另一价格类型。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "note": "saleQuantityFloor 只有展示配置；不能把评论数当销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "note": "没有实际销量文本；rankInfo 也不等于关键词搜索排名。"
+        },
+        {
+          "field": "rating",
+          "status": "observed",
+          "source": "comments response: data.pageInfo.good_rate",
+          "note": "评论接口回包好评率 96，含义为百分比，不是 5 星评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "partial",
+          "source": "comments response: data.pageInfo.comment_count / count",
+          "note": "2万+ 与 count=20000 共存，应保留模糊展示，不断言精确总量。"
+        },
+        {
+          "field": "shop_name",
+          "status": "observed",
+          "source": "data.shop_infos.shopName",
+          "note": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_tested",
+          "source": null,
+          "note": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_tested",
+          "source": null,
+          "note": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "system_derived",
+          "source": "client request.startedAt / finishedAt",
+          "note": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldMapping": [
+        {
+          "field": "review_id",
+          "status": "observed",
+          "source": "data.data[].commentId",
+          "note": "只公开唯一条数，不公开逐条 ID。",
+          "nonemptyRows": 10,
+          "totalRows": 10
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.data[].productId",
+          "note": "直接比对请求商品 ID，不把请求侧关联冒充回包字段。",
+          "nonemptyRows": 10,
+          "totalRows": 10
+        },
+        {
+          "field": "review_text",
+          "status": "observed",
+          "source": "data.data[].commentData",
+          "note": "有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。",
+          "nonemptyRows": 10,
+          "totalRows": 10
+        },
+        {
+          "field": "rating",
+          "status": "observed",
+          "source": "data.data[].commentScore",
+          "note": "使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。",
+          "nonemptyRows": 10,
+          "totalRows": 10
+        },
+        {
+          "field": "created_at",
+          "status": "observed",
+          "source": "data.data[].commentDate",
+          "note": "回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。",
+          "nonemptyRows": 10,
+          "totalRows": 10
+        },
+        {
+          "field": "purchased_sku",
+          "status": "observed",
+          "source": "data.data[].productColor",
+          "note": "已排除空值与默认规格；京东 productSize 本样本为空，productColor 有实际规格。",
+          "nonemptyRows": 10,
+          "totalRows": 10
+        },
+        {
+          "field": "image_urls",
+          "status": "observed",
+          "source": "data.data[].pictureInfoList",
+          "note": "只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。",
+          "nonemptyRows": 3,
+          "totalRows": 10
+        },
+        {
+          "field": "seller_reply",
+          "status": "missing",
+          "source": null,
+          "note": "买家正文和商家回复分别计数。",
+          "nonemptyRows": 0,
+          "totalRows": 10
+        }
+      ],
+      "productFieldsTotal": 18,
+      "reviewFieldsTotal": 8,
+      "all26FieldsSatisfied": false,
+      "fieldCoverage": {
+        "product": {
+          "system_derived": 4,
+          "observed": 8,
+          "partial": 2,
+          "missing": 2,
+          "not_tested": 2
+        },
+        "review": {
+          "observed": 7,
+          "missing": 1
+        }
+      },
+      "observedProductValues": {
+        "jdPrice": 3969.99,
+        "memberPriceSeparate": 3731.8,
+        "marketPrice": 3980,
+        "maskedPriceMustNotUse": "3??9",
+        "productRatingType": "positive_percentage",
+        "productGoodRate": 96
+      }
+    },
+    {
+      "platform": "douyin_shop",
+      "label": "抖音商城",
+      "productFieldMapping": [
+        {
+          "field": "platform",
+          "status": "system_derived",
+          "source": null,
+          "note": "由所调用平台接口归属补充；内部数字 platform/platform_source 不直接当标准平台名。"
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.product_id",
+          "note": "详情商品 ID 与请求匹配；京东优先 skuId，不混淆商品族 ID。"
+        },
+        {
+          "field": "title",
+          "status": "observed",
+          "source": "data.model.product.product_base.title",
+          "note": ""
+        },
+        {
+          "field": "product_url",
+          "status": "missing",
+          "source": null,
+          "note": "本次未取得规范商品链接。"
+        },
+        {
+          "field": "image_url",
+          "status": "observed",
+          "source": "data.model.product.product_base.cover",
+          "note": "商品主图实际返回；未下载验证图像。"
+        },
+        {
+          "field": "brand",
+          "status": "missing",
+          "source": null,
+          "note": "未从店名推断品牌。"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": null,
+          "note": "本次无商品类目字段。"
+        },
+        {
+          "field": "currency",
+          "status": "system_derived",
+          "source": null,
+          "note": "人民币仅按国内站点与业务语境补充；本次响应未显式返回币种。"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "note": "本次无标价；嵌套 promotion_data.code=-1，不应把总 code=0 当价格成功。"
+        },
+        {
+          "field": "sale_price",
+          "status": "missing",
+          "source": null,
+          "note": "本次详情没有现价字段。"
+        },
+        {
+          "field": "sold_count",
+          "status": "observed",
+          "source": "data.model.product.product_sales.sell_num / total_sales",
+          "note": "返回 8099；只是供应商回包数值，不构成平台成交审计。"
+        },
+        {
+          "field": "sold_text",
+          "status": "partial",
+          "source": "data.model.product.product_sales.product_label.sales_text",
+          "note": "仅返回“已售”标签，数字另在 sales_num；拼接后的字符串属于派生值。"
+        },
+        {
+          "field": "rating",
+          "status": "observed",
+          "source": "data.model.product.product_comment.good_ratio / comment_label.good_ratio",
+          "note": "返回约 93.23% 好评率，不能当 5 星评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "observed",
+          "source": "comments response: data.Count",
+          "note": "另一次评论接口返回 1102；不表示已取得全部 1102 条。"
+        },
+        {
+          "field": "shop_name",
+          "status": "observed",
+          "source": "data.model.shop.shop_base.shop_name",
+          "note": "店铺名称实际返回；名称不能单独证明天猫身份。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_tested",
+          "source": null,
+          "note": "本轮为已知商品 ID 请求，没有关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_tested",
+          "source": null,
+          "note": "没有关键词搜索流程，不能由商品榜单/列表序号代填。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "system_derived",
+          "source": "client request.startedAt / finishedAt",
+          "note": "使用本地请求 UTC 时间；vendor recordTime 无时区且不等于原数据最新更新时间。"
+        }
+      ],
+      "reviewFieldMapping": [
+        {
+          "field": "review_id",
+          "status": "observed",
+          "source": "data.Comments[].Id",
+          "note": "只公开唯一条数，不公开逐条 ID。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "product_id",
+          "status": "observed",
+          "source": "data.Comments[].ProductId",
+          "note": "直接比对请求商品 ID，不把请求侧关联冒充回包字段。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "review_text",
+          "status": "partial",
+          "source": "data.Comments[].Content",
+          "note": "有效数已人工复核，剔除明确平台模板与未填写占位；短句仍可能保留。",
+          "nonemptyRows": 8,
+          "totalRows": 20
+        },
+        {
+          "field": "rating",
+          "status": "partial",
+          "source": "data.Comments[].RankProduct",
+          "note": "使用 1–5 星值；淘天 raw rate 为好中差类编码，不可当星级；抖店 0 不当真实 0 星。",
+          "nonemptyRows": 19,
+          "totalRows": 20
+        },
+        {
+          "field": "created_at",
+          "status": "observed",
+          "source": "data.Comments[].CommentTime",
+          "note": "回包时间未带时区；本地时间需明确 Asia/Shanghai 后再标准化。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "purchased_sku",
+          "status": "observed",
+          "source": "data.Comments[].Sku",
+          "note": "不把默认或空规格计为满足。",
+          "nonemptyRows": 20,
+          "totalRows": 20
+        },
+        {
+          "field": "image_urls",
+          "status": "observed",
+          "source": "data.Comments[].Photos",
+          "note": "只验证图片条目返回，未下载图像；协议相对 URL 需补 https:。",
+          "nonemptyRows": 2,
+          "totalRows": 20
+        },
+        {
+          "field": "seller_reply",
+          "status": "observed",
+          "source": "data.Comments[].ShopReply",
+          "note": "买家正文和商家回复分别计数。",
+          "nonemptyRows": 1,
+          "totalRows": 20
+        }
+      ],
+      "productFieldsTotal": 18,
+      "reviewFieldsTotal": 8,
+      "all26FieldsSatisfied": false,
+      "fieldCoverage": {
+        "product": {
+          "system_derived": 3,
+          "observed": 7,
+          "missing": 5,
+          "partial": 1,
+          "not_tested": 2
+        },
+        "review": {
+          "observed": 6,
+          "partial": 2
+        }
+      },
+      "observedProductValues": {
+        "soldCount": 8099,
+        "soldLabelOnly": "已售",
+        "productGoodRate": 93.2301740812379,
+        "pricePresent": false
+      }
+    }
+  ],
+  "paginationChecks": [
+    {
+      "platform": "tmall",
+      "page1UniqueRows": 20,
+      "page2UniqueRows": 20,
+      "overlapRows": 0,
+      "newPage2Rows": 20,
+      "combinedUniqueRows": 40,
+      "completeHistoryVerified": false
+    },
+    {
+      "platform": "jd",
+      "page1UniqueRows": 10,
+      "page2UniqueRows": 9,
+      "overlapRows": 0,
+      "newPage2Rows": 9,
+      "combinedUniqueRows": 19,
+      "completeHistoryVerified": false
+    }
+  ],
+  "sameProductCrossProviderCheck": {
+    "productId": "765833709683",
+    "providers": [
+      "JustOneAPI",
+      "SIAN Apify"
+    ],
+    "firstSampleRows": 20,
+    "secondSampleRows": 20,
+    "overlappingReviewIds": 17,
+    "note": "仅交叉一致性；不同采集时间有变化，不据此推断共用上游。"
+  },
+  "taobaoV9TimeoutRecheck": {
+    "initialClientReadTimeoutSeconds": 45,
+    "initialElapsedSeconds": 45.278,
+    "initialHttpResponseReceived": false,
+    "officialMinimumRecommendedSeconds": 60,
+    "officialRecommendedSeconds": 120,
+    "recheckReadTimeoutSeconds": 120,
+    "recheckHttpStatus": 200,
+    "recheckBusinessCode": 0,
+    "recheckElapsedSeconds": 15.33,
+    "conclusion": "官方建议超时配置复核已成功；早轮客户端超时不能当端点整体不可用。",
+    "source": "https://docs.justoneapi.com/zh/usage"
+  },
+  "limits": [
+    "8＋18 字段逐项映射；系统推导、字段空值、未测试与实测非空分开。",
+    "淘宝默认商品第一页全默认评价，不等于该接口整体不可用；对照商品有 4 条非模板正文。",
+    "天猫候选的目标商品匹配不等于店型已独立确认；需保留每个版本返回的身份原值及冲突。",
+    "评论总量、页数和 hasMore 只是元数据；只确认实际返回的页。",
+    "价格只记录接口数值及价格类型，未与网站结算价比对；币种、时区等派生内容另列。",
+    "抖店第一页评价时间集中在 6–7 月，不能声称已按最新时间返回 11 月评论。",
+    "淘宝V9首轮45秒客户端超时低于官方建议；改120秒后复核15.33秒成功，不能把早轮超时归为服务端失败。",
+    "无 run/dataset/token/account/作者昵称/逐条评价 ID/完整正文/买家图片 URL 进入公开报告。",
+    "本轮16次请求不能作为生产成功率。抖店第2页连续两次code301，暂不通过批量翻页验收；没有权限不足或余额不足证据。",
+    "免费次数按接口单独扣减，13次成功消耗13次免费额度；失败及初次客户端超时未观察到扣减。本轮现金消费¥0，未创建充值订单。",
+    "没有通用RPM限额的官方承诺不等于不限量：管理员可配置用户×接口每日成功上限；超限为303/HTTP429。该账户生产配额、持续并发与全历史能力未实测。",
+    "默认Token显示消费额度不限额，这是预算上限，不能等同没有每日调用限制。余额有效期按官网FAQ称不失效，后台未另给到期日。",
+    "官方建议客户端超时120秒、至少60秒。初次V9配置45秒过短；同目标120秒配置复核15.33秒成功，不据首个超时否定V9。",
+    "淘天V9店型码为淘宝对照C、候选B，但官方枚举语义未明确；两者URL都能含天猫域名，域名不能单独证明店型。候选原平台身份尚未独立核验。",
+    "拼多多未在本账户321项定价目录、319项初始免费目录中找到对应端点，本轮未验证隐藏或定制接口。",
+    "数据授权与免责：条款要求使用者自行具备数据处理依据，不转移第三方数据所有权；按可用状态提供且不保证每次成功。未核到明确的版权下架处理时限或单独SLA承诺。",
+    "接入复杂度：统一API域名和token，但不同平台/版本仍需独立字段适配、去默认评价、去重和业务码判断；token在查询参数中，日志必须屏蔽。"
+  ],
+  "sources": [
+    {
+      "label": "字段需求",
+      "url": "https://icnuvcafo3b9.feishu.cn/wiki/QQYpwhtnFifypikXtNrcklzGnjb"
+    },
+    {
+      "label": "JustOne 官方 API 文档",
+      "url": "https://docs.justoneapi.com/zh"
+    },
+    {
+      "label": "官方请求超时建议",
+      "url": "https://docs.justoneapi.com/zh/usage"
+    },
+    {
+      "label": "控制台价格与免费额度核查",
+      "localEvidence": "research/qa/justone-20261114/console-evidence.json"
+    },
+    {
+      "label": "JustOne登录定价页",
+      "url": "https://dashboard.justoneapi.com/zh/dashboard/pricing"
+    },
+    {
+      "label": "JustOne免费次数",
+      "url": "https://dashboard.justoneapi.com/zh/dashboard/free-trial"
+    },
+    {
+      "label": "JustOne充值页",
+      "url": "https://dashboard.justoneapi.com/zh/dashboard/top-up"
+    },
+    {
+      "label": "服务条款（2026-07-13版）",
+      "url": "https://justoneapi.com/zh/terms"
+    },
+    {
+      "label": "限流、计费与官方超时建议",
+      "url": "https://docs.justoneapi.com/zh/usage"
+    },
+    {
+      "label": "FAQ余额有效期",
+      "url": "https://justoneapi.com/zh/faq"
+    }
+  ]
+}
