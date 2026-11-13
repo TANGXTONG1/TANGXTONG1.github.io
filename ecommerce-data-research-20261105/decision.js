@@ -22,8 +22,11 @@
     const best=[...planResults].sort((a,b)=>a.cash-b.cash)[0];
     const selected=opts.plan&&opts.plan!=='auto'?planResults.find(p=>p.name===opts.plan):best;
     const qUsage=qovia.reduce((s,r)=>s+r.cost,0);
-    const qCash=qUsage>0&&opts.topupFees?qUsage*1.044+.30:qUsage;
-    return {qovia,qUsage,qCash,planResults,best,selected,total:qCash+selected.cash,conditional:apify.some(r=>r.conditional)};
+    const qTopup=qUsage>0?Math.max(10,Math.ceil(qUsage*100-1e-8)/100):0;
+    // Estimate from the logged-in checkout quotes: $10 -> $10.78, $50 -> $52.62.
+    // Stripe fees are grossed up; final checkout remains authoritative.
+    const qCash=qUsage>0&&opts.topupFees?Math.ceil((qTopup+.30)/.956*100-1e-8)/100:qUsage;
+    return {qovia,qUsage,qTopup,qCash,planResults,best,selected,total:qCash+selected.cash,conditional:apify.some(r=>r.conditional)};
   }
   root.DecisionBudget={calculate,plans};
   if(typeof module!=='undefined')module.exports={calculate,plans};
@@ -41,7 +44,7 @@
       $('calc-error').hidden=true;
       $('q-total').textContent=money(r.qCash);$('a-total').textContent=money(r.selected.cash);$('total').textContent=money(r.total);
       $('cny-total').textContent='预算换算约 ¥'+(r.total*fx).toLocaleString('zh-CN',{maximumFractionDigits:2})+'；非实时汇率';
-      $('q-caption').textContent='Qovia 用量 '+money(r.qUsage)+(o.topupFees?'；含每月一次等额充值的 4.4% + $0.30':'；未含充值手续费');
+      $('q-caption').textContent='Qovia 用量 '+money(r.qUsage)+(o.topupFees?'；一次充值到账 '+money(r.qTopup)+'，含手续费估算，最终以付款页为准':'；未含充值手续费');
       $('a-caption').textContent=r.selected.name+' 月计划；Actor 用量 '+money(r.selected.usage)+'，账户共用内含额度';
       const count=rows.filter(x=>x.included).length;
       const conditionalNames=rows.filter(x=>x.included&&x.conditional).map(x=>x.name).join('、');

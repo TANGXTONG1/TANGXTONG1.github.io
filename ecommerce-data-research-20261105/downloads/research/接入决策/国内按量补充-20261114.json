@@ -1,0 +1,698 @@
+{
+  "checkedOn": "2026-11-14",
+  "title": "国内补充：按量付费、免费权限与商品／评论替代方案",
+  "conclusion": "Qovia、EveryInfra均不要求订阅，但当前自助最低到账10美元，不支持已核实的1–5美元充值；无官方证据表明充值解锁淘天评论。优先向支持索取同商品真实样本，并补测JustOne免费接口。",
+  "scope": "本轮只读官方文档和已登录充值UI；没有充值、创建付款订单、注册新账户或联系供应商。",
+  "qoviaUI": {
+    "checkedOn": "2026-11-14",
+    "source": "https://qovia.ai/zh/order/",
+    "method": "已登录Edge可见UI，只改金额，没有点击去付款或生成订单",
+    "minimumUsd": 10,
+    "maximumUsd": 5000,
+    "fiveDollarInput": "付款按钮禁用，到账/实付显示—",
+    "observations": [
+      {
+        "walletUsd": 10,
+        "feeUsd": 0.78,
+        "payUsd": 10.78
+      },
+      {
+        "walletUsd": 50,
+        "feeUsd": 2.62,
+        "payUsd": 52.62
+      }
+    ],
+    "methods": [
+      "银行卡",
+      "支付宝",
+      "Apple Pay / Google Pay",
+      "USDT TRC-20"
+    ],
+    "displayedFees": {
+      "stripe": "4.4% + $0.30",
+      "usdt": "2% + $0.30"
+    },
+    "feeNote": "官网显示百分比与简单相加结果不同；应以付款页实付报价为准。两组报价与费用倒算后向上取分一致，未提交订单核算。",
+    "paymentMade": false,
+    "orderCreated": false
+  },
+  "everyinfraUI": {
+    "checkedOn": "2026-11-14",
+    "source": "https://everyinfra.com/app#redeem",
+    "method": "已登录Edge可见UI，只切换付款渠道，没有点击支付或生成订单",
+    "minimumSelfServiceTierUsd": 10,
+    "tiersUsd": [
+      10,
+      50,
+      100,
+      500,
+      1000
+    ],
+    "customAmountInputObserved": false,
+    "observations": [
+      {
+        "method": "银行卡 / Apple Pay / Google Pay",
+        "walletUsd": 10,
+        "feeUsd": 0.83,
+        "payUsd": 10.83
+      },
+      {
+        "method": "支付宝",
+        "walletUsd": 10,
+        "feeUsd": 0.26,
+        "payUsd": 10.26
+      },
+      {
+        "method": "微信支付",
+        "walletUsd": 10,
+        "feeUsd": 0.26,
+        "payUsd": 10.26
+      }
+    ],
+    "otherMethods": [
+      "USDT",
+      "PayNow",
+      "地区钱包"
+    ],
+    "notice": "页面注明因支付平台限制充值无法退费，按需充值",
+    "paymentMade": false,
+    "orderCreated": false
+  },
+  "trialBoundary": {
+    "checkedOn": "2026-11-14",
+    "verification": "Official public pages only; no registration, payment, support message, or new authenticated business request.",
+    "conclusion": "两家都可按量充值，无证据表明充值会解锁淘天评论或切换更好的数据源。Qovia明确称50次试用覆盖所有接口；当前502/503更符合上游错误，不能归因于免费key。",
+    "vendors": [
+      {
+        "id": "qovia",
+        "model": "预付余额按量扣费，无月费",
+        "subscriptionRequired": false,
+        "trial": {
+          "calls": 50,
+          "allEndpointsVendorClaim": true,
+          "consumesOnlySuccessNonempty": true,
+          "source": "https://qovia.ai/zh/docs/"
+        },
+        "freeVsPaid": {
+          "paidOnlyTaobaoEvidenceFound": false,
+          "differentDataSourceEvidenceFound": false,
+          "explicitDifference": "试用次数用完后从充值余额扣费；Key scope单独设置",
+          "source": "https://qovia.ai/zh/docs/"
+        },
+        "minimumTopup": {
+          "verified": false,
+          "amountUsd": null,
+          "note": "公开定价页未列最低额，充值页公共抓取只显示壳；$50是示意金额，不是最低额证据。",
+          "checkoutUrl": "https://qovia.ai/zh/order/"
+        },
+        "payment": {
+          "methods": [
+            "银行卡",
+            "支付宝",
+            "Apple Pay",
+            "Google Pay",
+            "USDT TRC20"
+          ],
+          "stripeFee": "4.4% + $0.30/笔",
+          "usdtFee": "2% + $0.30/笔",
+          "source": "https://qovia.ai/zh/pricing/"
+        },
+        "balanceExpiry": {
+          "verified": false,
+          "note": "当前公开页未核到余额或试用次数有效期，不推定永久有效。"
+        },
+        "failedRequestCharge": "失败、超时、空结果不收费；成功且非空才扣试用次数/余额",
+        "refund": "一般不退；其确认接口无法使用时可在付款7天内申请退未用余额，临时故障、限流、平台改版不算，赠送额度不退。",
+        "refundSource": "https://qovia.ai/zh/terms/",
+        "errorInterpretation": {
+          "scopeDenied": "403 scope_denied",
+          "insufficientBalance": "402 insufficient_balance",
+          "observedFailure": "本任务已存实测为503 upstream_busy与502 origin_bad_gateway，不是402/403",
+          "inference": "更符合上游/服务故障；不能排除未披露后台差异，但当前证据不支持免费权限受限。",
+          "source": "https://qovia.ai/zh/docs/"
+        },
+        "rateLimit": "当前文档称账户及接口不限RPM；错误码表仍保留429项，不能理解成SLA。旧60/600RPM资料已过时。",
+        "support": {
+          "email": "scott@qovia.ai",
+          "telegram": "https://t.me/scott10081",
+          "contactPage": "https://qovia.ai/zh/contact/",
+          "note": "提供request_id可定位；未发联系消息。"
+        },
+        "refundSources": [
+          "https://qovia.ai/zh/terms/",
+          "https://qovia.ai/zh/pricing/"
+        ]
+      },
+      {
+        "id": "everyinfra",
+        "model": "钱包预充值按实际用量扣费；数据API无需订阅",
+        "subscriptionRequired": false,
+        "trial": {
+          "amountUsd": 1,
+          "expiryHours": 24,
+          "vendorScope": "106平台574项能力可试",
+          "explicitExclusions": [
+            "验证码识别",
+            "试用额不满足AI接口充值资格"
+          ],
+          "source": "https://everyinfra.com/pricing"
+        },
+        "freeVsPaid": {
+          "paidOnlyTaobaoEvidenceFound": false,
+          "differentDataSourceEvidenceFound": false,
+          "explicitDifference": "充值可获得AI接口、月度折扣/速率权益；没有淘天评论另行付费激活说明。",
+          "source": "https://everyinfra.com/docs"
+        },
+        "minimumTopup": {
+          "verified": false,
+          "lowestDisplayedTierUsd": 10,
+          "customOneToFiveUsdVerified": false,
+          "note": "公开表列$10/$50/$100/$500/$1000；最小展示档不等于已核后台最低额，自定义金额需登录表单确认。",
+          "checkoutUrl": "https://everyinfra.com/app",
+          "source": "https://everyinfra.com/pricing"
+        },
+        "payment": {
+          "methods": [
+            "银行卡",
+            "Apple Pay",
+            "Google Pay",
+            "支付宝",
+            "微信支付",
+            "USDT",
+            "PayNow"
+          ],
+          "fees": "以控制台应付金额与手续费为准，当前未核具体费率",
+          "source": "https://everyinfra.com/pricing"
+        },
+        "balanceExpiry": {
+          "verifiedPublicClaim": true,
+          "value": "充值余额长期有效，不清零；试用赠送额24小时到期。",
+          "source": "https://everyinfra.com/pricing"
+        },
+        "failedRequestCharge": "鉴权/参数错误、执行失败和空响应不收最终费用；已预扣自动恢复。",
+        "refund": "自动恢复失败请求预扣不等于充值余额可退款；当前公开条款未核到通用余额退款保证。",
+        "refundSource": "https://everyinfra.com/terms",
+        "rateLimit": "标准60次/分钟按账户合计；可按30天买提速包，手动续费不自动续费，也可累计充值达档获得；小额数据调用无需购买提速包。",
+        "errorInterpretation": {
+          "insufficientBalance": "402 quota_exhausted",
+          "upstream": "503 upstream_error / timeout",
+          "source": "https://everyinfra.com/docs"
+        },
+        "support": {
+          "console": "https://everyinfra.com/app",
+          "path": "控制台→支持→工单",
+          "email": "sales@everyinfra.com",
+          "telegram": "https://t.me/EveryinfraHQ",
+          "source": "https://everyinfra.com/terms",
+          "note": "官网称支持API提交工单，但本轮未发送。"
+        }
+      }
+    ],
+    "supportQuestions": [
+      "免费试用与充值账户的淘天接口是否使用同一数据源和同一字段权限？如不同请给明确条件。",
+      "请用提供的淘宝与天猫商品、相同端点返回至少一页非空评论正文，并说明价格/销量等商品字段需另用哪些端点。",
+      "是否允许一次性充值$1–5，无月费/自动续费？加手续费后实际最低支付多少？",
+      "若当前502/503是服务故障，何时恢复；请给可工作的商品与请求参数，并核对request_id。"
+    ],
+    "suggestion": "先拿厂商对免费/付费差异及一个可复现商品的明确答复。若确认需要付费激活且提供无订阅$1–5通道，再做小额同参数A/B验证；不能以“付费可能会好”替代可用性证据。",
+    "sources": [
+      "https://qovia.ai/zh/docs/",
+      "https://qovia.ai/zh/pricing/",
+      "https://qovia.ai/zh/order/",
+      "https://qovia.ai/zh/terms/",
+      "https://qovia.ai/zh/contact/",
+      "https://everyinfra.com/pricing",
+      "https://everyinfra.com/docs",
+      "https://everyinfra.com/terms",
+      "https://everyinfra.com/app"
+    ]
+  },
+  "justOne": {
+    "checkedOn": "2026-11-14",
+    "vendor": "JustOneAPI",
+    "researchMode": "仅公开官网/文档只读；未注册、未付费、未发消息、未鉴权业务调用",
+    "decision": "值得优先补一次免费实测；符合按调用付费方向，但最低充值、后台单价和实际评论返回未验证，不推荐盲目充值。",
+    "payment": {
+      "model": "按实际调用量付费，使用共享账户余额",
+      "subscriptionRequired": "公开资料没有要求订阅；不能据此排除其存在商务套餐",
+      "minimumTopUp": null,
+      "paymentMethods": null,
+      "balanceExpires": false,
+      "prices": "官网要求登录Dashboard查看每个接口价格",
+      "freeTrial": "官网宣称免费试用全部平台API；使用指南写先给免费调用次数，用完后再充值；教程注明各接口实际试用次数以账号显示为准",
+      "paidFreeDifference": "未核到免费token缺少淘天评论字段、或充值即可开启相同失败端点的规则；服务条款保留不同账户/接口配置差异",
+      "refundAndEmptyResults": "业务code=0计费；非0业务码不计费。code0但空结果是否退费未确认",
+      "sources": [
+        "https://justoneapi.com/zh",
+        "https://justoneapi.com/zh/faq",
+        "https://docs.justoneapi.com/zh/usage",
+        "https://justoneapi.com/zh/terms"
+      ]
+    },
+    "limits": {
+      "generalRateLimit": "官方使用指南称无通用调用速率限制，个别高并发接口可能设每分钟/小时限制",
+      "dailyQuota": "管理员可按用户×接口配置每日成功请求上限；未配置时不限；Asia/Shanghai自然日，所有token合并计数",
+      "codes": {
+        "600": "权限不足",
+        "601": "共享账户余额不足",
+        "602": "单个TOKEN累计消费上限",
+        "303": "每日配额超限，HTTP429且不计费"
+      },
+      "conclusion": "错误码可以帮助区分权限、余额、配额与采集失败；不能将所有失败归因免费key",
+      "source": "https://docs.justoneapi.com/zh/usage"
+    },
+    "platforms": [
+      {
+        "platform": "淘宝/天猫",
+        "detailsEndpoint": "GET /api/taobao/get-item-detail/v6",
+        "reviewsEndpoint": "GET /api/taobao/get-item-comment/v3",
+        "searchEndpoint": "GET /api/taobao/search-item-list/v1",
+        "params": {
+          "common": [
+            "token",
+            "itemId（详情/评论）"
+          ],
+          "reviews": [
+            "orderType=feedbackdate/general",
+            "page=1起"
+          ],
+          "search": [
+            "keyword",
+            "tmall=true可筛天猫",
+            "sort",
+            "startPrice",
+            "endPrice",
+            "page"
+          ]
+        },
+        "documentedFields": {
+          "search": "data.model.itemList[].itemId",
+          "details": [
+            "data.item（标题/图片/价格相关）",
+            "data.seller",
+            "data.delivery",
+            "skuBase",
+            "skuCore"
+          ],
+          "reviews": [
+            "data.comments[].content",
+            "data.comments[].rateId",
+            "data.hasNextPage"
+          ]
+        },
+        "fieldEvidence": "官方教程中的公开样例说明，非我们实测；当前OpenAPI响应data仍为{}，缺完整字段契约",
+        "cautions": [
+          "V6模糊销量不能当精确成交量",
+          "券后价只有部分商品",
+          "淘天共用接口不等于两个平台均已实测成功",
+          "page存在不证明可读全历史"
+        ],
+        "sources": [
+          "https://justoneapi.com/zh/blog/taobao-tmall-product-data-api-tutorial",
+          "https://docs.justoneapi.com/zh/api/taobao-and-tmall/product-reviews-v3",
+          "https://docs.justoneapi.com/openapi/taobao-and-tmall/product-reviews-v3-zh.json"
+        ]
+      },
+      {
+        "platform": "京东",
+        "detailsEndpoint": "GET /api/jd/get-item-detail/v4",
+        "priceEndpoint": "官网目录列商品价格V2；本轮未读取其路径",
+        "reviewsEndpoint": "GET /api/jd/get-item-comments/v1",
+        "params": {
+          "details": [
+            "token",
+            "itemId"
+          ],
+          "reviews": [
+            "token",
+            "itemId",
+            "page"
+          ]
+        },
+        "documentedFields": "当前下载的详情V4与评论V1 OpenAPI均仅有公共code/message/data等封装，data={}；未取得实际业务响应。FluxA目录对评论描述text/images/createTime/ratings，但不代替官方主渠道字段验收。",
+        "sources": [
+          "https://docs.justoneapi.com/zh/api/jdcom/",
+          "https://docs.justoneapi.com/openapi/jdcom/product-comments-v1-zh.json",
+          "https://docs.justoneapi.com/openapi/jdcom/product-details-v4-zh.json"
+        ]
+      },
+      {
+        "platform": "抖音商城",
+        "detailsEndpoint": "GET /api/douyin-ec/get-item-detail/v2",
+        "skuEndpoint": "GET /api/douyin-ec/get-item-sku-info/v2",
+        "reviewsEndpoint": "GET /api/douyin-ec/get-item-comments/v1",
+        "params": {
+          "common": [
+            "token",
+            "itemId"
+          ],
+          "reviews": [
+            "page"
+          ]
+        },
+        "documentedFields": {
+          "details": [
+            "data.model.product.product_base",
+            "data.model.product.product_sales",
+            "data.model.shop"
+          ],
+          "sku": [
+            "data.skus[].id",
+            "productId",
+            "price",
+            "dealPrice",
+            "salePropertyValues"
+          ],
+          "reviews": [
+            "data.Comments[].Content",
+            "data.Comments[].Id",
+            "data.HasMore"
+          ]
+        },
+        "fieldEvidence": "官方教程公开样例，字段区分大小写；未鉴权实测，完整评分/追评/回复等字段契约仍需实际响应",
+        "sources": [
+          "https://justoneapi.com/zh/blog/douyin-ecommerce-product-sku-api-tutorial",
+          "https://docs.justoneapi.com/zh/api/douyin-e-commerce/item-comments-v1"
+        ]
+      },
+      {
+        "platform": "拼多多",
+        "status": "当前官网和文档平台目录未找到标准接口；不能推断隐藏/定制能力已提供",
+        "sources": [
+          "https://justoneapi.com/zh",
+          "https://docs.justoneapi.com/zh/usage"
+        ]
+      }
+    ],
+    "secondaryChannel": {
+      "name": "FluxA AgentMarket",
+      "officialReferral": "https://docs.justoneapi.com/zh/usage#fluxa-access",
+      "url": "https://agentmarket.fluxapay.xyz/marketplace/apis/justoneapi",
+      "pricingSource": "https://agentmarket.fluxapay.xyz/marketplace/apis/justoneapi/skills.md",
+      "readOnly": true,
+      "observedPerCallUsd": {
+        "/taobao-tmall/product_reviews": 0.01,
+        "/taobao-tmall/product_detail": 0.01,
+        "/jd-com/product_comments": 0.01,
+        "/jd-com/product_detail": 0.01,
+        "/douyin-e-commerce/item_comments": 0.01,
+        "/douyin-e-commerce/item_detail": 0.01
+      },
+      "requirements": "需FluxA钱包或账户余额/API key；无需JustOne独立账号/key；这是第三方转接价，不是JustOne直连报价",
+      "limitations": "未登录、未付费、未执行钱包指令；最低充值、退款以及实际返回未验证，不把该渠道当已可用替代",
+      "oneTimeFreeBalanceClaim": "公开文档称可一次领取$1；本次未登录或领取"
+    },
+    "supportQuestions": [
+      "免费与付费是否使用同一淘天评论上游、返回同一字段？若不同，差异具体是什么？",
+      "能否提供我们指定的淘宝、天猫商品各一个近期成功响应（含正文、分页、请求ID）？",
+      "是否支持1–5美元一次性充值？最低金额、渠道手续费、余额有效期是什么？",
+      "淘天/JD/抖店各端点单价、每页数量、历史深度、每日成功请求上限是多少？",
+      "code=0但评论列表为空是否收费或退费？"
+    ],
+    "sourcesVerifiedHttp200": [
+      "https://docs.justoneapi.com/openapi/taobao-and-tmall/product-reviews-v3-zh.json",
+      "https://docs.justoneapi.com/openapi/taobao-and-tmall/product-details-v6-zh.json",
+      "https://docs.justoneapi.com/openapi/jdcom/product-comments-v1-zh.json",
+      "https://docs.justoneapi.com/openapi/jdcom/product-details-v4-zh.json"
+    ]
+  },
+  "alternatives": {
+    "checkedOn": "2026-11-14",
+    "scope": "Qovia、EveryInfra、JustOneAPI之外；只读官方文档，不注册、不充值、不发消息",
+    "overall": "没有新找到一家具备国内五平台完整商品＋评论、公开低门槛按量充值且已经实测的直接替代者。可保留3个局部候选，但均不能先按$1–5可开全权限假定。",
+    "candidates": [
+      {
+        "name": "万邦 OneBound",
+        "priority": "京东评论局部备选；淘天不建议盲充值",
+        "homepage": "https://open.onebound.cn/",
+        "operator": "官网标注新余市万邦科技有限公司，赣ICP备13008243号-1；不能由备案或经营年限推断接口成功率",
+        "businessTested": false,
+        "coverage": {
+          "淘宝/天猫": "旧taobao.item_review和item_get路径跳转到tglobal淘宝海外说明，国内评论当前未核成",
+          "京东": "item_get详情和item_review评论正式文档可读",
+          "拼多多": "有item_get/item_search等目录；未列评论专用接口",
+          "抖音商城": "有商品详情、搜索；item_review明确是视频评论，不能当商品评价"
+        },
+        "endpoints": [
+          {
+            "url": "https://api-gw.onebound.cn/jd/item_review",
+            "method": "GET",
+            "params": [
+              "key",
+              "secret",
+              "num_iid",
+              "page",
+              "sort",
+              "is_sku",
+              "raw_data"
+            ],
+            "fields": [
+              "items.item[].rate_content",
+              "rate_date",
+              "pics",
+              "display_user_nick",
+              "auction_sku",
+              "rate_id",
+              "score",
+              "add_feedback（文档解释为商家回复）"
+            ],
+            "docs": "https://open.onebound.cn/help/api/jd.item_review.html",
+            "limit": "page文档上限100；示例10条，实时深度未测"
+          },
+          {
+            "url": "https://api-gw.onebound.cn/jd/item_get",
+            "method": "GET",
+            "params": [
+              "key",
+              "secret",
+              "num_iid",
+              "domain_type"
+            ],
+            "fields": [
+              "num_iid",
+              "title",
+              "price",
+              "orginal_price",
+              "detail_url",
+              "pic_url",
+              "nick",
+              "skus"
+            ],
+            "docs": "https://open.onebound.cn/help/api/jd.item_get.html",
+            "cautions": [
+              "详情字段表明示部分商品获取不到",
+              "brand暂时没有",
+              "price标注价格会对不上",
+              "nick非自营店铺不返回"
+            ]
+          }
+        ],
+        "payment": {
+          "payPerUseDocumented": true,
+          "mandatorySubscription": null,
+          "minimumTopup": null,
+          "smallTopup1to5UsdVerified": false,
+          "price": "2026年10月官方PDF：A类一般0.022元/次、B类0.05元/次；京东item_review是特殊接口，0.15元/次，优先采用特殊报价",
+          "source": "https://www.onebound.cn/daigou/api-list.pdf",
+          "warning": "PDF中的预交1000元押金开通测试位于官方OAuth接口板块，不能误写为普通评论API统一最低充值。拼多多另充值计费，普通评论最小充值需商务确认。",
+          "contractBoundary": "已公开按次选项；实际开户是否另有最低合同额未核实。"
+        },
+        "sources": [
+          "https://open.onebound.cn/help/api/taobao.item_review.html",
+          "https://open.onebound.cn/help/api/pinduoduo.readme.html",
+          "https://open.onebound.cn/help/api/douyin.readme.html",
+          "https://open.onebound.cn/help/api/jd.item_get.html",
+          "https://open.onebound.cn/help/api/jd.item_review.html",
+          "https://www.onebound.cn/daigou/api-list.pdf"
+        ]
+      },
+      {
+        "name": "TMAPI",
+        "priority": "商品字段补齐候选；不能替代评论服务",
+        "homepage": "https://tmapi.top/zh-cn/",
+        "operator": "官网标注CyberData LLC，copyright 2019–2026；未独立核实客户案例",
+        "businessTested": false,
+        "coverage": {
+          "淘宝/天猫": "详情、搜索、销量目录；当前start文档使用/taobao/item_detail",
+          "京东": "/jd/item_detail；标题、类目、商品属性、SKU价格、店铺",
+          "拼多多": "/pdd/item_detail；详情样例含价格、类目、品牌属性、销量文本、评论数及SKU",
+          "抖音商城": "本轮公开sitemap未核到",
+          "评论正文": "目标国内五平台未核到评论专用端点；review/rating目录主要1688、Lazada、Shopee，不混算"
+        },
+        "endpoints": [
+          {
+            "url": "http://api.tmapi.top/taobao/item_detail",
+            "method": "GET",
+            "headers": [
+              "apikey"
+            ],
+            "params": [
+              "item_id"
+            ],
+            "docs": "https://tmapi.top/zh-cn/docs/start"
+          },
+          {
+            "url": "http://api.tmapi.top/pdd/item_detail",
+            "method": "GET",
+            "headers": [
+              "apikey"
+            ],
+            "params": [
+              "item_id"
+            ],
+            "fields": [
+              "item_id",
+              "title",
+              "currency",
+              "price",
+              "price_info",
+              "category_id",
+              "category_ids",
+              "product_props",
+              "main_imgs",
+              "shop_info",
+              "comment_count",
+              "sale_count",
+              "side_sales_tip",
+              "skus"
+            ],
+            "docs": "https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md"
+          },
+          {
+            "url": "http://api.tmapi.top/jd/item_detail",
+            "method": "GET",
+            "headers": [
+              "apikey"
+            ],
+            "params": [
+              "item_id"
+            ],
+            "fields": [
+              "item_id",
+              "product_url",
+              "title",
+              "main_imgs",
+              "currency",
+              "price_info",
+              "category_id",
+              "product_props",
+              "shop_info",
+              "sku_props",
+              "skus"
+            ],
+            "docs": "https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md"
+          }
+        ],
+        "payment": {
+          "payPerUseDocumented": null,
+          "mandatorySubscription": null,
+          "minimumTopup": null,
+          "smallTopup1to5UsdVerified": false,
+          "freeTrial": "2026-09-08更新的官方快速开始明确新注册用户有几次免费测试；更多额度或正式使用联系客服",
+          "source": "https://tmapi.top/zh-cn/docs/start"
+        },
+        "cautions": [
+          "商品样例是文档示例，不是本轮鉴权数据",
+          "公开例子含2023年旧商品图片；不能据此承诺现行字段完整",
+          "comment_count不是评论正文",
+          "没有公开核到价格/充值下限，先问免费额度和按次方案"
+        ],
+        "sources": [
+          "https://tmapi.top/zh-cn/docs/start",
+          "https://tmapi.top/docs/pinduoduo/item-detail/get-item-detail-by-id.md",
+          "https://tmapi.top/docs/jd/item-apis/get-item-detail-by-id.md",
+          "https://tmapi.top/sitemap.xml"
+        ]
+      },
+      {
+        "name": "竹简数据 BambooDataLab",
+        "priority": "淘天＋抖店商品/评论能力线索，可询样；尚未够格直接付款",
+        "homepage": "https://marketplace.bamboodatalab.com/zh/",
+        "businessTested": false,
+        "coverage": {
+          "淘宝/天猫": "8个目录接口，含详情、SKU、搜索、评论、销量",
+          "抖音商城": "7个目录接口，含详情、SKU、搜索、商品评论",
+          "京东": "只列商品详情",
+          "拼多多": "未见目录"
+        },
+        "endpoints": [
+          {
+            "path": "POST /api/taobao/item-detail-v1",
+            "params": [
+              "item_id"
+            ],
+            "exampleFields": [
+              "item_id",
+              "title",
+              "price",
+              "sales",
+              "shop"
+            ],
+            "docs": "https://marketplace.bamboodatalab.com/zh/api/taobao/item-detail-v1"
+          },
+          {
+            "path": "POST /api/taobao/item-comments-v1",
+            "params": [
+              "item_id",
+              "page"
+            ],
+            "exampleFields": [
+              "item_id",
+              "total",
+              "list[].comment_id",
+              "list[].content",
+              "has_image",
+              "append"
+            ],
+            "docs": "https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1"
+          },
+          {
+            "path": "POST /api/douyin-ec/product-comments-v1",
+            "params": [
+              "product_id",
+              "page"
+            ],
+            "exampleFields": [
+              "product_id",
+              "total",
+              "list[].comment_id",
+              "list[].content",
+              "like"
+            ],
+            "docs": "https://marketplace.bamboodatalab.com/zh/api/douyin-ec/product-comments-v1"
+          }
+        ],
+        "access": "暂不开放自助调用；销售单独开权限、发token与专属base URL；文档基址只是https://<your_endpoint>占位符",
+        "payment": {
+          "payPerUseDocumented": true,
+          "mandatorySubscription": null,
+          "minimumTopup": null,
+          "smallTopup1to5UsdVerified": false,
+          "price": null,
+          "rule": "固定每接口单价；仅code=0成功扣费，失败退预扣",
+          "source": "https://marketplace.bamboodatalab.com/zh/usage",
+          "pricePage": "https://bamboodatalab.com/pricing",
+          "pricePageRead": "官网文档所链接价格页，本轮HTTPS证书错误，未绕过验证；未获得价目"
+        },
+        "rateLimit": "默认账户5 QPS，升级需联系；未见每日硬上限承诺",
+        "cautions": [
+          "示例明显占位item_id=1234567890，不是可验证真实返回",
+          "评论文档未列评分、时间、SKU、商家回复等完整规范，须要真实样本再判断",
+          "未核到强客户案例或独立稳定性证据；按次宣传不等于允许$1–5充值"
+        ],
+        "sources": [
+          "https://marketplace.bamboodatalab.com/zh/api/taobao/",
+          "https://marketplace.bamboodatalab.com/zh/api/taobao/item-comments-v1",
+          "https://marketplace.bamboodatalab.com/zh/api/douyin-ec/product-comments-v1",
+          "https://marketplace.bamboodatalab.com/zh/usage"
+        ]
+      }
+    ],
+    "excludedMarketingExamples": [
+      {
+        "domain": "datacart.cn",
+        "reason": "文章将第三方短链推广混写为平台官方API，端点规范互相不一致、无清晰自助定价与可核实时样本，不纳入优先候选"
+      }
+    ]
+  }
+}

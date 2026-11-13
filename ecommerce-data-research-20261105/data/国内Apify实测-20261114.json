@@ -1,0 +1,1082 @@
+{
+  "checkedOn": "2026-11-14",
+  "summary": "国内Apify已有淘宝、京东、抖店评论正文返回的实证，可作为继续验收的备选；天猫与拼多多评论尚未验成，单次小样本不证明稳定性或全部字段。",
+  "tests": [
+    {
+      "id": "memo23-taobao-comments",
+      "platform": "淘宝目标商品",
+      "actor": "memo23/taobao-scraper",
+      "operation": "商品＋评论 · 每商品3条",
+      "status": "返回评论记录；有效正文0条",
+      "productRows": 1,
+      "reviewRows": 3,
+      "nonemptyReviews": 3,
+      "effectiveReviews": 0,
+      "usageUsd": 0.037,
+      "runtimeSeconds": 54.778,
+      "decision": "本次3条全为默认/快捷模板",
+      "notes": [
+        "两目标来自同一次运行：总费用$0.037、耗时54.778秒；只在第一行记费用，第二行未分摊，不能重复加总。",
+        "本次商品来自SKU数据回退，公开商品页未成功补齐；评论由独立评论查询返回。",
+        "Free共享每日增强额度本次未耗尽；本次成功不证明每次或每日都可获得同样额度。",
+        "本次每商品只请求3条评论，不能把低有效条数当成全商品无有效评论。",
+        "3条分别为2条系统默认好评、1条快捷好评模板；是评论记录，但不计有效正文。"
+      ],
+      "input": {
+        "startUrls": [
+          "https://item.taobao.com/item.htm?id=765833709683",
+          "https://detail.tmall.com/item.htm?id=1081364414020"
+        ],
+        "scrapeDetails": true,
+        "includeVariants": true,
+        "includeReviews": true,
+        "maxReviewsPerProduct": 3,
+        "maxItems": 2,
+        "maxConcurrency": 1,
+        "translateKeywords": false
+      },
+      "fieldNotes": [
+        "评论ID、正文、日期均3/3；购买规格1/3；星级以5分制返回。",
+        "本轮未返回买家图片、商家回复或追评字段。",
+        "同目标的这3条与后续SIAN前3条ID/正文/规格/归一化日期/评分一致；仅为交叉一致性，不推断共同来源。",
+        "附带商品行有标题、CNY价格、店名和SKU；店铺评分、类目/位置及评论汇总缺失，不能认为全部商品字段已满足。"
+      ]
+    },
+    {
+      "id": "memo23-tmall-target-comments",
+      "platform": "天猫候选（身份未核）",
+      "actor": "memo23/taobao-scraper",
+      "operation": "商品＋评论 · 每商品3条",
+      "status": "正文已返回；天猫身份未核实",
+      "productRows": 1,
+      "reviewRows": 3,
+      "nonemptyReviews": 3,
+      "effectiveReviews": 3,
+      "usageUsd": null,
+      "runtimeSeconds": null,
+      "decision": "评论可读；同ID详情tmall=false与预期冲突，不计天猫通过。",
+      "notes": [
+        "两目标来自同一次运行：总费用$0.037、耗时54.778秒；只在第一行记费用，第二行未分摊，不能重复加总。",
+        "本次商品来自SKU数据回退，公开商品页未成功补齐；评论由独立评论查询返回。",
+        "Free共享每日增强额度本次未耗尽；本次成功不证明每次或每日都可获得同样额度。",
+        "本次每商品只请求3条评论，不能把低有效条数当成全商品无有效评论。",
+        "输入为天猫链接，但回包platform和sellerType为空；目标商品身份匹配，天猫店型未独立核验。",
+        "新增同ID详情核验返回tmall=false，淘宝URL与淘宝店铺域名；不能按输入的天猫域名推断平台。"
+      ],
+      "input": {
+        "startUrls": [
+          "https://item.taobao.com/item.htm?id=765833709683",
+          "https://detail.tmall.com/item.htm?id=1081364414020"
+        ],
+        "scrapeDetails": true,
+        "includeVariants": true,
+        "includeReviews": true,
+        "maxReviewsPerProduct": 3,
+        "maxItems": 2,
+        "maxConcurrency": 1,
+        "translateKeywords": false
+      },
+      "fieldNotes": [
+        "评论ID、正文、日期均3/3；购买规格3/3；星级以5分制返回。",
+        "本轮未返回买家图片、商家回复或追评字段。",
+        "同目标的这3条与后续SIAN前3条ID/正文/规格/归一化日期/评分一致；仅为交叉一致性，不推断共同来源。",
+        "附带商品行有标题、CNY价格、店名和SKU；店铺评分、类目/位置及评论汇总缺失，不能认为全部商品字段已满足。"
+      ]
+    },
+    {
+      "id": "sian-taobao-comments",
+      "platform": "淘宝",
+      "actor": "sian.agency/taobao-tmall-product-scraper",
+      "operation": "productReviews · 按时间第1页",
+      "status": "正文已返回，去模板有效4条",
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 20,
+      "effectiveReviews": 4,
+      "usageUsd": 0.48,
+      "runtimeSeconds": 8.62,
+      "decision": "单页评论可用；4条去模板正文，分页与长期稳定性未验",
+      "notes": [
+        "按日期降序请求；实际第一页面时间递减。商品详情与评论分别验收，本次只验评论。",
+        "20条非空不等于20条有信息量：15条系统默认好评、1条快捷模板；剩4条，其中1条仅“可以的”。",
+        "Free运行日志明确每run最多25行，所有操作同字段/同新鲜度；本次20行未触顶，没有检验第二页。",
+        "同商品memo23的3条与本次前3条ID、正文、规格和归一化时间一致；仅为交叉一致性，不能据此推断相同上游。",
+        "API发起尚未测试；本次只读核验既有控制台运行结果。"
+      ],
+      "input": {
+        "operation": "productReviews",
+        "itemId": "765833709683",
+        "orderType": "feedbackdate",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "reviewId、reviewContent、reviewDate、_sourceItemId均20/20；源aucNumId亦20/20匹配目标商品。",
+        "raw rate=\"1\"在本样本是好评类编码，SIAN reviewRatingStars=\"5\"、memo23 rating=5；不得把raw rate直接当1星。完整评分编码映射尚未验。",
+        "reviewSkuLabel有5/20条；reviewPhotos有3/20条，共5张主评图片；reviewAppend有2/20条，原始appendList保留追评图片各1张。",
+        "卖家回复未获取：2条追评reply均null；本次不能承诺商家回复覆盖。视频字段未出现，不能据此认定Actor全局不支持。",
+        "reviewPhotos是//开头协议相对URL，接入需补https:；本报告不公开图片URL、昵称或逐条评论ID。",
+        "reviewDate是中文本地时间；recordTime不含时区。经与运行UTC和memo23 ISO日期交叉核验，样本吻合Asia/Shanghai，不可直接把原串按UTC解析。",
+        "_totalReviews=70000、_maxPage=50是返回的元数据，不是已采集70000条或已验证50页。",
+        "reviewBuyAmount与reviewUsefulCount均为0；只记录回包值，不将其视为准确购买量或互动数验证。"
+      ]
+    },
+    {
+      "id": "sian-tmall-comments",
+      "platform": "天猫候选（身份未核）",
+      "actor": "sian.agency/taobao-tmall-product-scraper",
+      "operation": "productReviews · 按时间第1页",
+      "status": "正文已返回；天猫身份未核实",
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 20,
+      "effectiveReviews": 9,
+      "usageUsd": 0.48,
+      "runtimeSeconds": 7.463,
+      "decision": "评论可读；同ID详情tmall=false与预期冲突，不计天猫通过。",
+      "notes": [
+        "请求天猫目标商品1081364414020，评论回包的_sourceItemId和aucNumId均20/20匹配；但本轮回包未提供可独立证实天猫店型的字段。",
+        "20条非空正文，11条快捷5星好评模板；去模板9条，其中2条较短。",
+        "Free运行日志明确25行/run，本次第1页20行未触顶；第二页、完整历史与长期稳定性尚未验。",
+        "与memo23同目标3条的reviewId、正文、规格、星级和归一化时间全部相符；不据此推断供应商共用上游。",
+        "API发起尚未测试；本次只读核验既有控制台运行结果。",
+        "新增同ID详情核验返回tmall=false，淘宝URL与淘宝店铺域名；不能按输入的天猫域名推断平台。"
+      ],
+      "input": {
+        "operation": "productReviews",
+        "itemId": "1081364414020",
+        "orderType": "feedbackdate",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "reviewId、reviewContent、reviewDate、reviewSkuLabel各20/20；20个唯一评论ID。",
+        "reviewRatingStars与原始propertiesAvg全部一致：5星17条、4星1条、1星2条。raw rate=1同时包含4星/5星，raw rate=-1对应本次1星；不要把rate当1–5星。",
+        "reviewPhotos有1/20条，含3张图片。无追评、视频或商家回复样本，本次不能确认这些字段覆盖。",
+        "reviewDate为中文本地时间，recordTime不含时区；与memo23时间转换核对吻合Asia/Shanghai。",
+        "_totalReviews=700、_maxPage=35只代表返回的汇总与页数元数据；本次仅取得第1页20条。",
+        "商品详情中的platform和sellerType为空，店名为优思顿数码旗舰店；仅凭旗舰店名称或输入detail.tmall.com链接不足以独立核实天猫身份。"
+      ]
+    },
+    {
+      "id": "sian-jd-comments",
+      "platform": "京东",
+      "actor": "sian.agency/jd-com-product-scraper",
+      "operation": "productComments · 第1页",
+      "status": "10条非空正文，商品匹配",
+      "productRows": 0,
+      "reviewRows": 10,
+      "nonemptyReviews": 10,
+      "effectiveReviews": 10,
+      "usageUsd": 0.26,
+      "runtimeSeconds": 58.339,
+      "decision": "单页评论可用；商家回复/深页另验",
+      "notes": [
+        "10个唯一评论ID，商品ID和_sourceItemId全部匹配；未发现默认好评正文。",
+        "实际费用$0.26=$0.14启动＋10×$0.012评论；首读只见启动费，后续已确认评论事件入账。",
+        "只验1个商品的第1页。返回maxPage=2、totalCount=1000并不证明能取完整历史。",
+        "Free日志上限25行，本次10行未触顶；日志提到增加credits或支付方式解除上限，未实际验证。",
+        "控制台发起已测；API发起未测。"
+      ],
+      "input": {
+        "operation": "productComments",
+        "itemId": "100428822668",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "commentId/reviewId、commentData/reviewContent、commentDate/reviewDate、commentScore/reviewRating、productId/_sourceItemId均有对应数据。",
+        "10条均5星，尚未检验负面评价与排序覆盖。",
+        "购买规格productColor/reviewProductColor 10/10；买家图片10/10，共19个图片URL，未下载验证图像。",
+        "商家回复和追评字段本次未返回。商品详情没有在此运行采集。"
+      ]
+    },
+    {
+      "id": "sian-douyin-comments",
+      "platform": "抖音商城",
+      "actor": "sian.agency/douyin-shop-scraper",
+      "operation": "itemComments · 第1页",
+      "status": "20条记录，8条非空正文",
+      "productRows": 0,
+      "reviewRows": 20,
+      "nonemptyReviews": 8,
+      "effectiveReviews": 8,
+      "usageUsd": 0.38,
+      "runtimeSeconds": 18.577,
+      "decision": "正文与商家回复可用；图片映射需修正",
+      "notes": [
+        "20个唯一评论ID，原始/标准化商品ID均匹配；8条不同非空正文，12条无正文，不能擅自叫默认好评或抓取失败。",
+        "所有20条都按评论事件计费：$0.38=$0.14启动＋20×$0.012，其中包括12条无正文记录。",
+        "商家回复18条需与买家正文分开存储，不能用回复补足买家正文数量。",
+        "只验第1页，返回总数32是元数据，不表示已取全部评论。控制台发起已测；API发起未测。"
+      ],
+      "input": {
+        "operation": "itemComments",
+        "itemId": "3827812353530004447",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "商品评分、日期20/20；星级为5星13条、4星4条、3星1条、1星2条。店铺/物流评分全0，不作为真实0分展示。",
+        "SKU原始和标准化字段均为“默认”，不能当作已获取具体颜色/尺码/型号。",
+        "原始Photos有2条买家图片，但reviewPhotos被标准化遗漏；接入应读取Photos[].url并重算图片数量。",
+        "商家回复18/20；无追评文本样本。买家图片URL未下载验证。"
+      ]
+    },
+    {
+      "id": "sian-jd-detail",
+      "platform": "京东",
+      "actor": "sian.agency/jd-com-product-scraper",
+      "operation": "productDetail · 单商品",
+      "status": "商品详情返回；价格被遮罩",
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "usageUsd": 0.23,
+      "runtimeSeconds": 6.621,
+      "decision": "基础商品信息部分可用；实际售价、销量和评价汇总未满足",
+      "notes": [
+        "商品ID100428822668匹配，返回米家钛保温杯、品牌、主图、三级类目ID及小米京东自营旗舰店。",
+        "18项商品需求：8项有非空供应商字段（含原始嵌套字段），平台需适配、类目仅ID；售价遮罩，5项缺失，2项不适用。",
+        "费用已完整入账：启动$0.14 + 1条详情$0.09 = $0.23。",
+        "本次只读核验既有控制台运行结果；没有启动或修改运行。"
+      ],
+      "input": {
+        "operation": "productDetail",
+        "itemId": "100428822668",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "priceDisplay=\"2??\"、priceMasked=true，不能转成200或计为数值价格；专门查价操作需另测。",
+        "coverUrl只有jfs/路径；可用完整imageurl或mainImages，已返回3个商品图URL，未下载图片验真。",
+        "店名在rawStock.D.shopName，品牌在brandName；只取顶层规范字段会漏数。",
+        "categoryIds为6196/6219/39446，没有类目名称。",
+        "stockQuantity=0和stockState=36的业务含义未核实，不可直接断言缺货；allnum不是已验证销量。",
+        "只见当前SKU颜色/型号/尺寸重量信息，未证明取得全规格矩阵；无销量、评价数或商品评分。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "adapter_required",
+          "source": "Actor范围/商品链接；raw platform=\"1\"",
+          "evidence": "原始platform是编码，不能原样当平台名称；适配器可标京东。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "itemId / skuId / productId",
+          "evidence": "100428822668"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "productTitle / skuName",
+          "evidence": "米家钛保温杯 茶水分离版 深空灰500ml 纯钛泡茶杯学生男女大容量水杯"
+        },
+        {
+          "field": "product_url",
+          "status": "returned",
+          "source": "itemUrl",
+          "evidence": "https://item.jd.com/100428822668.html"
+        },
+        {
+          "field": "image_url",
+          "status": "returned_raw",
+          "source": "imageurl / mainImages[0]",
+          "evidence": "有完整HTTPS图片URL；coverUrl仅为jfs/相对路径，不宜直接使用。"
+        },
+        {
+          "field": "brand",
+          "status": "returned_raw",
+          "source": "brandName / cBrand",
+          "evidence": "米家"
+        },
+        {
+          "field": "category",
+          "status": "partial",
+          "source": "categoryIds / category",
+          "evidence": "三级类目ID已返回；未返回类目名称。"
+        },
+        {
+          "field": "currency",
+          "status": "returned",
+          "source": "currency",
+          "evidence": "CNY"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有可用数值划线价；rawPriceFloor.ext.realPriceExt.ORIGINAL为空对象。"
+        },
+        {
+          "field": "sale_price",
+          "status": "masked",
+          "source": "priceDisplay / priceMasked / rawPriceFloor.price",
+          "evidence": "priceDisplay=\"2??\"，priceMasked=true，priceLoginRequired=\"登录查看价格\"；不计数值售价。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有已验证销量字段；不得将allnum=\"0\"或stockQuantity=0当成销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有原始销量展示文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有商品评分/好评率；不得用评论评分替代。"
+        },
+        {
+          "field": "review_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有评价总量。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned_raw",
+          "source": "rawStock.D.shopName / rawStock.self_D.shopName",
+          "evidence": "小米京东自营旗舰店"
+        },
+        {
+          "field": "keyword",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "本次为ID详情查询，输入中预填华为手机不代表实际搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "未执行关键词搜索，无真实搜索排名。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "returned",
+          "source": "_fetchedAt / processedAt",
+          "evidence": "2026-11-13T17:04:50.822Z"
+        }
+      ]
+    },
+    {
+      "id": "sian-douyin-detail",
+      "platform": "抖音商城",
+      "actor": "sian.agency/douyin-shop-scraper",
+      "operation": "itemDetail · 单商品",
+      "status": "商品/销量返回；价格与规格未拿到",
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "usageUsd": 0.26,
+      "runtimeSeconds": 7.483,
+      "decision": "商品基础信息、销量可用；价格、品牌、类目和SKU仍缺",
+      "notes": [
+        "商品ID3827812353530004447完全匹配，是一页护臀膏，非输入页默认口红；店名一页newpage官方旗舰店。",
+        "18项商品需求：9项可用供应商值，1项好评率原值单位待核，1项平台需适配、5项缺失、2项不适用。",
+        "费用已完整入账：启动$0.14 + 1条详情$0.12 = $0.26。",
+        "本次只读核验既有控制台运行结果；没有启动或修改运行。"
+      ],
+      "input": {
+        "operation": "itemDetail",
+        "itemId": "3827812353530004447",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "price为空对象；priceMasked=false也不能算获取了数值售价，当前无标价/售价。",
+        "销量数值sales_info.sales=426，原文salesText=\"已售 426\"分别满足两个字段，不从评论数推算销量。",
+        "raw goodRatio=90.625保留为好评率原值，不映射到五星评分；单位和统计口径需确认。",
+        "comment_info={}，详情未返回评价数；同商品评论接口的_totalCount=32是另一来源的元数据。",
+        "5个商品图URL有返回；skuCount=0、skuVariants=[]代表本次未拿到规格矩阵，不能认定商品没有SKU。",
+        "独立品牌、类目字段缺失，不从店名或标题猜填。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "adapter_required",
+          "source": "Actor范围/返回商品域名",
+          "evidence": "供应商未返回平台名称字段，适配器可标抖音商城。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "itemId / product_id",
+          "evidence": "3827812353530004447"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "productTitle / product_title",
+          "evidence": "【会员试用】一页护臀膏5g*2滋润舒缓红屁屁温和干爽新生婴幼儿"
+        },
+        {
+          "field": "product_url",
+          "status": "returned",
+          "source": "itemUrl",
+          "evidence": "https://haohuo.jinritemai.com/views/product/item2?id=3827812353530004447"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "coverUrl / thumb_image.url_list[0]",
+          "evidence": "返回完整HTTPS主图URL，商品图5个；未下载验真。"
+        },
+        {
+          "field": "brand",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有独立品牌字段，不能将店名或标题中的一页直接冒充品牌字段。"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有商品类目ID或名称。"
+        },
+        {
+          "field": "currency",
+          "status": "returned",
+          "source": "currency",
+          "evidence": "CNY"
+        },
+        {
+          "field": "list_price",
+          "status": "missing",
+          "source": null,
+          "evidence": "price为空对象，无数值标价。"
+        },
+        {
+          "field": "sale_price",
+          "status": "missing",
+          "source": "price / priceMasked",
+          "evidence": "price={}且无priceDisplay；priceMasked=false不等于拿到价格。"
+        },
+        {
+          "field": "sold_count",
+          "status": "returned_raw",
+          "source": "sales_info.sales / salesRaw",
+          "evidence": "原始sales_info.sales为数值426；salesRaw=\"426\"可规范化。"
+        },
+        {
+          "field": "sold_text",
+          "status": "returned",
+          "source": "salesText / sales_info.sales_display",
+          "evidence": "已售 426"
+        },
+        {
+          "field": "rating",
+          "status": "partial_unit_pending",
+          "source": "goodRatio",
+          "evidence": "原始好评率字段90.625；不能当5星评分，单位/分母未独立核实。"
+        },
+        {
+          "field": "review_count",
+          "status": "missing",
+          "source": "comment_info",
+          "evidence": "comment_info={}，无详情评价总量。另一评论任务_totalCount=32可作为单独来源补充。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "shopName / shop_info.shop_name",
+          "evidence": "一页newpage官方旗舰店"
+        },
+        {
+          "field": "keyword",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "itemDetail按商品ID查询；输入中默认口红不是实际搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "本次未执行搜索，无排名。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "returned",
+          "source": "_fetchedAt",
+          "evidence": "2026-11-13T17:06:12.381Z"
+        }
+      ]
+    },
+    {
+      "id": "quanmatrix-pdd-feed",
+      "platform": "拼多多",
+      "actor": "quanmatrix/pinduoduo-commerce-intelligence",
+      "operation": "公共推荐商品流 · 3条",
+      "status": "商品流返回；不支持目标商品/评论",
+      "productRows": 3,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "usageUsd": 0.0135,
+      "runtimeSeconds": 4.254,
+      "decision": "仅可作推荐商品样本，不能满足竞品定向评论接入",
+      "notes": [
+        "3个商品有ID、标题、链接、主图与价格；费用3×$0.0045=$0.0135，已完整入账。",
+        "18项商品需求：7项有可用供应商值，标价口径待核，平台需适配；7项缺失或实体不符，2项不适用。",
+        "没有发现复制官方README样例的迹象，但源代码隐藏、源请求未记录；商品页独立读取失败，不能宣称已排除固定数据或完成来源验真。",
+        "输入只设maxItems=3，未配置MCP connectors；本次仅核验既有控制台运行结果。"
+      ],
+      "input": {
+        "maxItems": 3,
+        "previousSnapshot": []
+      },
+      "fieldNotes": [
+        "storeDemandSignal原文以“本店已拼”开头，是店铺量，不是商品已售；recommendationCount也不是销量或评价数。",
+        "price为4.8/23.9/8.88 CNY；marketPrice及normalPrice是不同字段，前台价格含义和实时性仍需商品页核验。",
+        "decisionConfidenceScore=75、GO、HIGH_DISCOUNT等为Actor计算字段，不代表平台商品评分或数据真伪验证。",
+        "无商品ID/链接定位输入、无任意关键词搜索、无评论接口；成功返回推荐流不能算PDD评论需求通过。",
+        "本次没有上一快照，baselineAvailable=false、priceDelta=null；没有验证价格变化追踪。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "adapter_required",
+          "source": "Actor范围/商品URL域名",
+          "evidence": "无平台名称字段，可由适配器标拼多多。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "goodsId",
+          "evidence": "3/3非空且互异，并与商品URL goods_id一致。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "title",
+          "evidence": "3/3非空；手机壳、抽纸、绿松石三个不同商品。"
+        },
+        {
+          "field": "product_url",
+          "status": "returned",
+          "source": "url",
+          "evidence": "3/3为mobile.yangkeduo.com商品链接；本次独立网页读取均无法打开。"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "imageUrl",
+          "evidence": "3/3为img.pddpic.com图片URL，未下载验真。"
+        },
+        {
+          "field": "brand",
+          "status": "missing",
+          "source": null,
+          "evidence": "无独立品牌字段，不从标题猜填。"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": null,
+          "evidence": "无类目ID或名称。"
+        },
+        {
+          "field": "currency",
+          "status": "returned",
+          "source": "currency",
+          "evidence": "3/3 CNY。"
+        },
+        {
+          "field": "list_price",
+          "status": "partial_semantics_pending",
+          "source": "marketPrice / normalPrice",
+          "evidence": "marketPrice有数值23.76/98/10.88；实际前台划线价及normalPrice口径未独立复核，不混用。"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "price",
+          "evidence": "数值4.8/23.9/8.88；记录为供应商返回商品价格，优惠、地区、规格口径与实时性未独立复核。"
+        },
+        {
+          "field": "sold_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "无商品销量数字；recommendationCount不是销量。"
+        },
+        {
+          "field": "sold_text",
+          "status": "wrong_entity",
+          "source": "storeDemandSignal",
+          "evidence": "本店已拼88.8万+件/6258件/4.9万件是店铺层级，不能填商品销量文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有商品评分或好评率；decisionConfidenceScore=75为分析评分，不是买家评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "无评价总数；recommendationCount不得映射为评价数。"
+        },
+        {
+          "field": "shop_name",
+          "status": "missing",
+          "source": null,
+          "evidence": "没有店名或店铺ID。"
+        },
+        {
+          "field": "keyword",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "公开推荐流无关键词搜索参数。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "没有关键词搜索，推荐流顺序不得充当关键词排名。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "returned",
+          "source": "scrapedAt",
+          "evidence": "3/3带UTC偏移的采集时间；不等于商品信息已独立实时核验。"
+        }
+      ]
+    },
+    {
+      "id": "sian-tmall-detail",
+      "platform": "天猫候选（身份未核）",
+      "actor": "sian.agency/taobao-tmall-product-scraper",
+      "operation": "productDetail · v3 · 单商品",
+      "status": "详情返回；tmall=false与预期冲突",
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "usageUsd": 0.36,
+      "runtimeSeconds": 5.078,
+      "decision": "商品详情有数据；不能作为天猫身份核验通过",
+      "notes": [
+        "商品ID1081364414020匹配；但原始tmall=false，商品/店铺链接均为taobao.com；旗舰店名称不是天猫身份证明。",
+        "18项商品需求：10项供应商返回，币种需按文档适配，平台与预期冲突；4项缺失，2项不适用。",
+        "同ID与memo23存在价格/规格差异：37.57及94个SKU，对比此前36.8及140个SKU；92个共同SKU价格全不同，原因未核实。",
+        "费用完整入账：启动$0.12 + 详情$0.24 = $0.36；未启动或修改其他任务。"
+      ],
+      "input": {
+        "operation": "productDetail",
+        "detailVersion": "v3",
+        "itemId": "1081364414020",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "price/discountPrice与originalPrice均37.57；官网称价格单位元，但本回包没有currency，不冒充供应商直接返回CNY。",
+        "soldCount=611，totalStock=13780；94个SKU库存之和亦13780，不能把库存当销量。",
+        "94个唯一SKU有规格名称、价格和库存；5张商品图、10张详情图、31项属性。",
+        "没有类目、商品评分、评价数或销量展示文本；同商品评论接口汇总700属于另一来源。",
+        "tmall=false是本回包标记，不足独立证明真实店型；但足以否定“本次已证实天猫身份”的表述。",
+        "recordTime未带时区，_fetchedAt带Z；推荐使用_fetchedAt，勿把本地时间直接当UTC。",
+        "两家相同SKU价格全部不同，需核对前台价格、采集时间和渠道口径；不将差值直接解释为实时涨价。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "conflict_with_requested_tmall",
+          "source": "tmall / detail_url / seller_info.zhuy",
+          "evidence": "回包tmall=false，商品和店铺URL为taobao.com；没有sellerType/isTmall。仅能说原天猫目标，上游标非天猫，不能确认天猫覆盖。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "itemId / num_iid",
+          "evidence": "1081364414020，与_sourceItemId一致。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "title",
+          "evidence": "优思顿适用苹果18promax手机壳新款iphone18pro全包18简约波点17韩系ins风高级感16双层超火女款17pro防摔套"
+        },
+        {
+          "field": "product_url",
+          "status": "returned",
+          "source": "detail_url",
+          "evidence": "https://item.taobao.com/item.htm?id=1081364414020"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "pic_url / pictUrls[0]",
+          "evidence": "主图与5张商品图有完整URL，未下载验真。"
+        },
+        {
+          "field": "brand",
+          "status": "returned",
+          "source": "brand / props[name=品牌]",
+          "evidence": "优思顿"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": "crumbs",
+          "evidence": "crumbs=[]，没有类目名称或ID。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": "官网README及originalPrice schema",
+          "evidence": "回包未含currency；官网定义为yuan/CNY，需适配器按接口约定补充并标明来源。"
+        },
+        {
+          "field": "list_price",
+          "status": "returned",
+          "source": "originalPrice / orginal_price",
+          "evidence": "37.57；官网schema将originalPrice定义为CNY标价，和本次售价相等。"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "price / discountPrice",
+          "evidence": "37.57可解析为数值；不保证优惠券后结算价，不同Actor价格不一致。"
+        },
+        {
+          "field": "sold_count",
+          "status": "returned",
+          "source": "soldCount / sales / total_sold",
+          "evidence": "数值611；库存totalStock=13780是另一实体。"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "evidence": "total_sold=\"611\"是计数字符串，未返回“已售…”等平台原始展示文案。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "无商品评分/好评率，店铺名称不能补足。"
+        },
+        {
+          "field": "review_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "本详情无评价数；同商品评论任务_totalReviews=700是另一来源元数据。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "nick / seller_info.shop_name",
+          "evidence": "优思顿数码旗舰店"
+        },
+        {
+          "field": "keyword",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "按ID详情查询，预填iphone 15不是实际搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "未执行搜索，无排名。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "returned",
+          "source": "_fetchedAt / processedAt",
+          "evidence": "2026-11-13T17:09:19.003Z"
+        }
+      ]
+    },
+    {
+      "id": "sian-tmall-search",
+      "platform": "天猫筛选搜索",
+      "actor": "sian.agency/taobao-tmall-product-scraper",
+      "operation": "keywordSearch · 保温杯 · tmallOnly=true",
+      "status": "执行完成，业务失败",
+      "productRows": 0,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "usageUsd": 0.12,
+      "runtimeSeconds": 30.842,
+      "decision": "未返回商品，无法取得已验证天猫目标",
+      "notes": [
+        "数据集唯一一行status=error，不是商品行；SUCCEEDED不能视为业务成功。",
+        "精确业务错误：Temporarily unavailable — please retry in a few minutes.",
+        "日志记录上游临时信号code=301，已重试4次仍失败；此301来自日志业务信号，未确认为HTTP重定向码。",
+        "启动费$0.12已入账；商品搜索事件0个。失败未收结果费，仍有启动费。"
+      ],
+      "input": {
+        "operation": "keywordSearch",
+        "keyword": "保温杯",
+        "tmallOnly": true,
+        "sort": "_sale",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "keywordSearch Schema支持tmallOnly布尔筛选，实际保存为true；没有结果，无法验证筛选效果或具体商品店型。",
+        "结果仅有错误/操作/页码/关键词/时间元信息，没有商品ID、商品字段或评论。"
+      ]
+    },
+    {
+      "id": "sian-tmall-new-detail",
+      "platform": "天猫身份未核实（源字段冲突）",
+      "actor": "sian.agency/taobao-tmall-product-scraper",
+      "operation": "productDetail · v3 · 绿联商品",
+      "status": "商品返回；tmall=false与文档候选冲突",
+      "productRows": 1,
+      "reviewRows": 0,
+      "nonemptyReviews": 0,
+      "effectiveReviews": 0,
+      "usageUsd": 0.36,
+      "runtimeSeconds": 8.708,
+      "decision": "详情有数据；仍不能确认天猫身份",
+      "notes": [
+        "新商品ID744983869996三处匹配；但本次tmall=false，不能作为天猫覆盖核验通过。",
+        "EveryInfra官方文档2026-10-25同ID样例is_tmall=true、seller_type=B；与本次字段冲突，文档样例不是本轮源站认证。",
+        "18项商品需求：10项返回、币种需适配、平台身份冲突、4项缺失、2项不适用。",
+        "$0.36已完整入账=$0.12启动＋$0.24详情；本分析未发起评论或其他运行。",
+        "本次原生天猫链接未能打开，店铺官网未独立验证；tmall=false仅是源字段事实，不能反过来认定真实店型是淘宝。"
+      ],
+      "input": {
+        "operation": "productDetail",
+        "itemId": "744983869996",
+        "detailVersion": "v3",
+        "maxPages": 1
+      },
+      "fieldNotes": [
+        "标题、品牌绿联、店名、价格31.02、销量905有值；库存1402与销量分开。",
+        "8个唯一SKU，有价格/库存/规格；5张商品图、33张详情图、15项属性。",
+        "缺类目、商品评分、评论数及销量展示文案；无currency字段，按文档CNY适配时需标来源。",
+        "本轮商品tmall=false与候选文档true冲突；两个渠道的店名一致不消除该冲突。",
+        "recordTime不带时区；_fetchedAt为UTC，可作为本次采集时间记录。"
+      ],
+      "productFieldCoverage": [
+        {
+          "field": "platform",
+          "status": "conflict_with_candidate_tmall",
+          "source": "tmall / detail_url",
+          "evidence": "本次tmall=false，商品和店铺URL为淘宝域；与EveryInfra文档同ID is_tmall=true冲突，真实店型未独立核实。"
+        },
+        {
+          "field": "product_id",
+          "status": "returned",
+          "source": "itemId / num_iid / _sourceItemId",
+          "evidence": "三字段均744983869996，匹配目标。"
+        },
+        {
+          "field": "title",
+          "status": "returned",
+          "source": "title",
+          "evidence": "绿联转换插头英标韩国马来西亚澳洲新加坡新西兰Switch转换器充电"
+        },
+        {
+          "field": "product_url",
+          "status": "returned",
+          "source": "detail_url",
+          "evidence": "https://item.taobao.com/item.htm?id=744983869996"
+        },
+        {
+          "field": "image_url",
+          "status": "returned",
+          "source": "pic_url / pictUrls / item_imgs",
+          "evidence": "主图及5张商品图有URL，未下载核验。"
+        },
+        {
+          "field": "brand",
+          "status": "returned",
+          "source": "brand",
+          "evidence": "绿联"
+        },
+        {
+          "field": "category",
+          "status": "missing",
+          "source": "crumbs",
+          "evidence": "crumbs=[]，没有可用类目名称或ID。"
+        },
+        {
+          "field": "currency",
+          "status": "adapter_required",
+          "source": "官方文档按CNY/元定义",
+          "evidence": "回包未含currency；只能按文档适配补充，不能称直接返回。"
+        },
+        {
+          "field": "list_price",
+          "status": "returned",
+          "source": "originalPrice / orginal_price",
+          "evidence": "31.02"
+        },
+        {
+          "field": "sale_price",
+          "status": "returned",
+          "source": "price / discountPrice",
+          "evidence": "31.02；不是已核实的券后前台成交价。"
+        },
+        {
+          "field": "sold_count",
+          "status": "returned",
+          "source": "soldCount / sales / total_sold",
+          "evidence": "905"
+        },
+        {
+          "field": "sold_text",
+          "status": "missing",
+          "source": null,
+          "evidence": "未提供已售等原始展示文案；total_sold的数字字符串不冒充展示文本。"
+        },
+        {
+          "field": "rating",
+          "status": "missing",
+          "source": null,
+          "evidence": "未返回商品评分。"
+        },
+        {
+          "field": "review_count",
+          "status": "missing",
+          "source": null,
+          "evidence": "本详情未返回评论总数。"
+        },
+        {
+          "field": "shop_name",
+          "status": "returned",
+          "source": "seller_info.shop_name",
+          "evidence": "绿联数码旗舰店"
+        },
+        {
+          "field": "keyword",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "按ID详情；残留保温杯输入不构成实际关键词搜索。"
+        },
+        {
+          "field": "search_rank",
+          "status": "not_applicable",
+          "source": null,
+          "evidence": "详情查询无搜索排名。"
+        },
+        {
+          "field": "scraped_at",
+          "status": "returned",
+          "source": "_fetchedAt",
+          "evidence": "2026-11-13T17:15:21.998Z"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "memo23两个目标共用一次运行费用$0.037，第二目标显示“已计入同次运行”，不重复加总。总运行数与费用见本页汇总。",
+    "商品与评论分开验收。京东售价遮罩、抖店价格空；拼多多只取得公共推荐商品，不支持指定商品或评论。具体18商品字段见各次字段说明。",
+    "本轮评论仅测少量商品首屏，商品详情与推荐流另列；不能计算生产成功率或承诺全历史、深页、长期稳定性。Console启动和API读取已验，鉴权API启动尚未测试。",
+    "有效评论只表示本次去除明确默认/快捷模板后的非空正文，仍包含短句；不等于真实性逐条认证。空正文、系统默认评价和供应商静态样例分别判断；静态样例不计成功。",
+    "两个天猫候选详情均返回tmall=false；其中绿联候选在其他供应商文档标is_tmall=true，存在字段/版本冲突。原平台商品页无法读取，不能确认实际店型，也不能反向断言属于淘宝，暂不计天猫通过。",
+    "Free限制：memo23增强查询为所有免费用户共享每日额度；SIAN淘天、京东日志明确每次最多25行；抖店具体上限未核。付费解除限制未实测。",
+    "Actor月租方案已排除；本页候选按事件计费。不要把Actor无月租理解成Apify付费计划没有月费。没有购买订阅或验证付费计划行为。",
+    "费用为核验后的运行计费，包含启动事件；默认评价、无正文记录也可能收费。京东首次账单曾延迟，已按后续入账金额记录；不能直接用返回条数推有效语料月度成本。",
+    "脱敏报告只展示聚合计数、商品参数和字段路径，不公开运行/数据集标识、账号、token、作者昵称、逐条评论ID或买家图片URL。",
+    "三款SIAN Actor由同一团队维护，公开资料未点明共同上游；多个Actor不等于多个独立数据源。",
+    "天猫限定搜索运行虽为SUCCEEDED，结果实为错误行；上游重试后仍暂不可用，0商品，启动费$0.12照计。此调用按业务失败记录。"
+  ],
+  "justoneStatus": {
+    "status": "pending",
+    "note": "待用户注册未实测；不能称鉴权失败或API不可用。"
+  },
+  "sources": [
+    {
+      "label": "memo23 淘宝／天猫 Actor",
+      "url": "https://apify.com/memo23/taobao-scraper"
+    },
+    {
+      "label": "SIAN 淘宝／天猫 Actor",
+      "url": "https://apify.com/sian.agency/taobao-tmall-product-scraper"
+    },
+    {
+      "label": "SIAN 京东 Actor",
+      "url": "https://apify.com/sian.agency/jd-com-product-scraper"
+    },
+    {
+      "label": "SIAN 抖音商城 Actor",
+      "url": "https://apify.com/sian.agency/douyin-shop-scraper"
+    },
+    {
+      "label": "JustOneAPI 官网",
+      "url": "https://justoneapi.com/zh"
+    },
+    {
+      "label": "拼多多推荐流Actor",
+      "url": "https://apify.com/quanmatrix/pinduoduo-commerce-intelligence"
+    },
+    {
+      "label": "绿联天猫候选来源（供应商示例，非本轮实测）",
+      "url": "https://everyinfra.com/taobao-api/product_detail"
+    }
+  ],
+  "costSummary": {
+    "completedExecutions": 11,
+    "displayRows": 12,
+    "totalUsageUsd": 2.9805,
+    "memo23CombinedUsageUsd": 0.037,
+    "memo23ChargeCountedOnce": true,
+    "note": "按独立运行实际费用加总；memo23两个目标共用一次运行，只收计一次。"
+  },
+  "evidenceFiles": [
+    "research/qa/domestic-apify-20261114/memo23-trial-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-taobao-comments-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-tmall-comments-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-jd-comments-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-douyin-comments-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-jd-detail-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-douyin-detail-analysis.json",
+    "research/qa/domestic-apify-20261114/quanmatrix-pdd-feed-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-tmall-detail-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-tmall-search-analysis.json",
+    "research/qa/domestic-apify-20261114/sian-tmall-new-detail-analysis.json"
+  ],
+  "pricing": [
+    {
+      "label": "淘宝／天猫",
+      "actor": "sian.agency/taobao-tmall-product-scraper",
+      "per1000RowsUsd": {
+        "Free": 18,
+        "Starter": 6,
+        "Scale": 5
+      },
+      "startPerGbUsd": {
+        "Free": 0.12,
+        "Starter": 0.012,
+        "Scale": 0.012
+      }
+    },
+    {
+      "label": "京东",
+      "actor": "sian.agency/jd-com-product-scraper",
+      "per1000RowsUsd": {
+        "Free": 12,
+        "Starter": 4,
+        "Scale": 3
+      },
+      "startPerGbUsd": {
+        "Free": 0.14,
+        "Starter": 0.014,
+        "Scale": 0.014
+      }
+    },
+    {
+      "label": "抖音商城",
+      "actor": "sian.agency/douyin-shop-scraper",
+      "per1000RowsUsd": {
+        "Free": 12,
+        "Starter": 4,
+        "Scale": 3
+      },
+      "startPerGbUsd": {
+        "Free": 0.14,
+        "Starter": 0.014,
+        "Scale": 0.014
+      }
+    }
+  ]
+}
