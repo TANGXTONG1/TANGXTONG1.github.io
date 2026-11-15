@@ -710,5 +710,13 @@
     "bytes": 22557,
     "download_url": "downloads/research/%E8%AF%84%E8%AE%BAAPI%E5%A4%8D%E6%A0%B8/%E8%AF%84%E8%AE%BA%E5%8E%9F%E6%96%87API%E5%A4%8D%E6%A0%B8-2026-11-06.md",
     "read_url": "docs/document-74.html"
+  },
+  {
+    "title": "JustOne复核-20261115",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 289860,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/JustOne%E5%A4%8D%E6%A0%B8-20261115.json",
+    "read_url": null
   }
 ]
