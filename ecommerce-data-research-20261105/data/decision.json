@@ -39,6 +39,32 @@
           "memo23/taobao-scraper",
           "tortuga/taobao-scraper"
         ]
+      },
+      "currentDirectSelection": {
+        "id": "taobao",
+        "label": "淘宝",
+        "justoneCoverage": "详情有效1/3请求；评论0次（剩余免费额度不足，未请求）。",
+        "apifyCoverage": "蓝色14/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "商品A两轮202不支持；B详情有数据且返回真实品牌。",
+          "有效B详情未见销量原文、商品评分；评论与其余未测格不能判缺。"
+        ],
+        "apifyMissing": [
+          "品牌（仅首轮 2/2）",
+          "销量原文（未获得有效证据）"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案分摊¥0.28。",
+          "JustOne详情¥0.25/次、评论¥0.20/页；两商品一轮理论¥0.90，尚未同范围交付。"
+        ],
+        "recommendation": "当前评论先用Apify；JustOne本轮评论未测，详情已有采集失败。",
+        "evidenceStatus": "JustOne：1/3请求有目标数据；有效格1/4",
+        "justoneStatus": "partial",
+        "apifyStatus": "complete",
+        "actors": [
+          "memo23/taobao-scraper",
+          "tortuga/taobao-scraper"
+        ]
       }
     },
     {
@@ -72,6 +98,33 @@
         "justoneBlueObservedNotStable": 14,
         "justone": "蓝色曾见14/16（非稳定验收）。1个候选商品返回品牌/类目ID/评论附图；店型及跨商品稳定待验。",
         "recommendation": "评论核心6项可先接Apify；蓝色品牌、销量原文、商品评分仍缺。",
+        "actors": [
+          "memo23/taobao-scraper",
+          "tortuga/taobao-scraper"
+        ]
+      },
+      "currentDirectSelection": {
+        "id": "tmall",
+        "label": "天猫",
+        "justoneCoverage": "详情有效1/3请求；评论0次（剩余免费额度不足，未请求）。",
+        "apifyCoverage": "蓝色13/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "A首次301、复跑有数据；B返回code0下架提示，无目标数据。",
+          "有效A详情未见品牌、销量原文、商品评分；评论未测。"
+        ],
+        "apifyMissing": [
+          "品牌（未获得有效证据）",
+          "销量原文（未获得有效证据）",
+          "商品评分/好评率（未获得有效证据）"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案分摊¥0.5005。",
+          "JustOne详情¥0.25/次、评论¥0.20/页；两商品一轮理论¥0.90，尚未同范围交付。"
+        ],
+        "recommendation": "当前评论先用Apify；JustOne本轮评论未测，详情已有采集失败。",
+        "evidenceStatus": "JustOne：1/3请求有目标数据；有效格1/4",
+        "justoneStatus": "partial",
+        "apifyStatus": "complete",
         "actors": [
           "memo23/taobao-scraper",
           "tortuga/taobao-scraper"
@@ -113,6 +166,38 @@
         "justoneBlueObservedNotStable": 13,
         "justone": "蓝色曾见13/16（非稳定验收）。7项评论字段都曾有值，含附图；仅1商品。详情缺价格/品牌/类目。",
         "recommendation": "评论核心6项先用Apify；附图未标蓝，不再以此要求接第二家。商品详情暂缓。",
+        "actors": [
+          "qovia/douyin-scraper"
+        ]
+      },
+      "currentDirectSelection": {
+        "id": "douyin_shop",
+        "label": "抖音商城",
+        "justoneCoverage": "蓝色13/16；评论6/6（4/4格）；其中原义12＋销量展示派生1项",
+        "apifyCoverage": "蓝色9/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "商品规范链接",
+          "品牌",
+          "售价"
+        ],
+        "apifyMissing": [
+          "商品名称（仅历史通过）",
+          "商品规范链接（未获得有效证据）",
+          "品牌（未获得有效证据）",
+          "售价（仅历史通过）",
+          "销量原文（仅历史通过）",
+          "商品评分/好评率（未获得有效证据）",
+          "评价数（仅历史通过）"
+        ],
+        "priceComparison": [
+          "JustOne两页评论¥0.36，40返回行/19有效正文；加两商品详情共¥0.72。",
+          "Apify两商品¥0.2114，10返回行，有效正文数未知。",
+          "按报告10行最多10条有效正文：JustOne约¥0.01895/有效正文，Apify至少¥0.02114；本小样本JustOne名义纯评论成本至少低约10.4%。"
+        ],
+        "recommendation": "评论优先选JustOne；覆盖比Apify更完整，统一接口更好接。",
+        "evidenceStatus": "JustOne：8/8请求有目标数据；有效格4/4",
+        "justoneStatus": "complete",
+        "apifyStatus": "complete",
         "actors": [
           "qovia/douyin-scraper"
         ]
@@ -163,6 +248,26 @@
         "justone": "公开目录未见对应商品评论接口。",
         "recommendation": "暂缓，不用字段改名掩盖第二轮失败。",
         "actors": []
+      },
+      "currentDirectSelection": {
+        "id": "pinduoduo",
+        "label": "拼多多",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色0/16；评论0/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "第二轮采集失败；不将此写成16项业务字段均不存在。"
+        ],
+        "priceComparison": [
+          "没有可用于同范围报价的已通过方案。"
+        ],
+        "recommendation": "两家都暂不选；没有通过的新稳定方案。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "partial",
+        "actors": []
       }
     },
     {
@@ -200,6 +305,37 @@
         "justoneBlueObservedNotStable": 15,
         "justone": "蓝色曾见15/16（非稳定验收）。已取到7项评论字段及详情；仅1个商品，不能写稳定通过。",
         "recommendation": "商品字段用Apify；评论暂无按新标准已通过方案，JustOne优先补验。",
+        "actors": [
+          "automation-lab/jd-products-search-scraper",
+          "silentflow/jd-products-scraper"
+        ]
+      },
+      "currentDirectSelection": {
+        "id": "jd",
+        "label": "京东",
+        "justoneCoverage": "两商品已见15/16；评论6/6；完成3/4格，非四格通过。",
+        "apifyCoverage": "蓝色9/16；评论0/6（2商品×2轮）",
+        "justoneMissing": [
+          "销量原文在现有有效回包未见。",
+          "商品B第2轮详情与评论未请求，不算字段缺失。"
+        ],
+        "apifyMissing": [
+          "销量原文（未获得有效证据）",
+          "评论ID（仅历史通过）",
+          "评论商品ID（仅历史通过）",
+          "评论正文（仅历史通过）",
+          "评论星级（仅历史通过）",
+          "评论时间（仅历史通过）",
+          "购买规格（仅历史通过）"
+        ],
+        "priceComparison": [
+          "JustOne两商品一轮详情＋评论名义¥0.90；纯两页评论¥0.40。",
+          "Apify两商品¥0.12334只有本轮商品数据，不能视为更便宜的评论套餐。"
+        ],
+        "recommendation": "评论优先JustOne；Apify当前组合没有通过评论。补完B第2轮后再定四格稳定。",
+        "evidenceStatus": "JustOne：6/6请求有目标数据；有效格3/4",
+        "justoneStatus": "partial",
+        "apifyStatus": "complete",
         "actors": [
           "automation-lab/jd-products-search-scraper",
           "silentflow/jd-products-scraper"
@@ -329,6 +465,30 @@
         "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
         "recommendation": "蓝色16项已覆盖，优先接入Apify组合；限US已测范围。",
+        "actors": [
+          "alfalfa/amazon-product-scraper",
+          "junglee/amazon-reviews-scraper"
+        ]
+      },
+      "currentDirectSelection": {
+        "id": "amazon",
+        "label": "Amazon",
+        "justoneCoverage": "已确认详情＋热门评论接口，0次实测。",
+        "apifyCoverage": "蓝色16/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "尚未取得回包，字段未判定；价格/免费额度也未确认。"
+        ],
+        "apifyMissing": [
+          "本报告重点16项未见缺项；不代表每条记录全齐或可全量采集。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案用量¥0.36568；非每千条价。",
+          "JustOne价格/免费额度未核，不能判谁更便宜。"
+        ],
+        "recommendation": "先接Apify已测组合。JustOne须完成同商品实测后再比较。",
+        "evidenceStatus": "JustOne：仅官网目录；Apify：已测报告",
+        "justoneStatus": "untested",
+        "apifyStatus": "complete",
         "actors": [
           "alfalfa/amazon-product-scraper",
           "junglee/amazon-reviews-scraper"
@@ -649,6 +809,30 @@
           "cliqtomedia/temu-scraper",
           "selleraim.com/temu-product-scraper"
         ]
+      },
+      "currentDirectSelection": {
+        "id": "temu",
+        "label": "Temu",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色14/16；评论5/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "品牌（未双样本稳定）",
+          "购买规格（未获得有效证据）"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案¥0.29736；JustOne无已核可比方案。"
+        ],
+        "recommendation": "有条件选Apify：接受品牌不稳和购买规格缺失，先做评论预览。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "complete",
+        "actors": [
+          "cliqtomedia/temu-scraper",
+          "selleraim.com/temu-product-scraper"
+        ]
       }
     },
     {
@@ -755,6 +939,30 @@
         "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
         "recommendation": "蓝色16项已覆盖，优先接入Apify组合；批量翻页另验。",
+        "actors": [
+          "scrapeunblocker/tiktok-shop-product-scraper",
+          "trakk/tiktok-shop-search-scraper"
+        ]
+      },
+      "currentDirectSelection": {
+        "id": "tiktok_shop",
+        "label": "TikTok Shop",
+        "justoneCoverage": "已确认商品详情接口，0次实测；未见独立Shop评论接口。",
+        "apifyCoverage": "蓝色16/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "尚未取得回包，字段未判定；价格/免费额度也未确认。"
+        ],
+        "apifyMissing": [
+          "本报告重点16项未见缺项；不代表每条记录全齐或可全量采集。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案用量¥0.5817；非每千条价。",
+          "JustOne价格/免费额度未核，不能判谁更便宜。"
+        ],
+        "recommendation": "先接Apify已测组合。JustOne须完成同商品实测后再比较。",
+        "evidenceStatus": "JustOne：仅官网目录；Apify：已测报告",
+        "justoneStatus": "untested",
+        "apifyStatus": "complete",
         "actors": [
           "scrapeunblocker/tiktok-shop-product-scraper",
           "trakk/tiktok-shop-search-scraper"
@@ -880,6 +1088,31 @@
           "scrape.badger/ebay-product-scraper",
           "scrape.badger/ebay-search-scraper"
         ]
+      },
+      "currentDirectSelection": {
+        "id": "ebay",
+        "label": "eBay",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色14/16；评论5/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "购买规格",
+          "销量原文；可由销量数字生成展示文本，展示口径可达15/16。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案¥0.14；JustOne无已核可比方案。"
+        ],
+        "recommendation": "有条件选Apify：购买规格缺；销量可派生展示，仅目录商品评价。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "complete",
+        "actors": [
+          "apt_marble/ebay-product-reviews-scraper",
+          "scrape.badger/ebay-product-scraper",
+          "scrape.badger/ebay-search-scraper"
+        ]
       }
     },
     {
@@ -988,6 +1221,29 @@
         "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
         "recommendation": "蓝色16项已覆盖，优先接入topapi；缺非重点划线价不再作为阻碍。",
+        "actors": [
+          "topapi/walmart-scraper"
+        ]
+      },
+      "currentDirectSelection": {
+        "id": "walmart",
+        "label": "Walmart",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色16/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "本报告重点16项未见缺项；不代表每条记录全齐或可全量采集。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案用量¥0.03906；非每千条价。",
+          "JustOne未见对应标准接口价格。"
+        ],
+        "recommendation": "先接Apify已测组合。JustOne未找到标准接口。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "complete",
         "actors": [
           "topapi/walmart-scraper"
         ]
@@ -1117,7 +1373,8 @@
     "国内Apify实测-20261114.json",
     "JustOne实测-20261114.json",
     "JustOne复核-20261115.json",
-    "统一比较-20261116.json"
+    "统一比较-20261116.json",
+    "同商品直接比较-20261116.json"
   ],
   "newAuthenticatedTestsThisRound": 14,
   "latestActorTrials": {
@@ -7793,7 +8050,7 @@
       }
     ]
   },
-  "currentDomesticRecommendation": "按蓝色16项选型：海外优先Amazon、TikTok Shop、Walmart；国内淘天和抖店先接评论，完整商品字段仍不足。JustOne保留为京东等国内评论补充候选。",
+  "currentDomesticRecommendation": "评论接入不再统一选Apify：抖店先选JustOne；京东评论优先JustOne但还差最后一格复跑。淘天暂用Apify评论，海外先用已测Apify组合。",
   "latestJustOneRecheck": {
     "checkedOn": "2026-11-15",
     "summary": "JustOne保留为低成本评论方案；当前全字段主方案不采用。",
@@ -34567,5 +34824,2237 @@
       ]
     }
   },
-  "legacySelectionsNote": "rows中的旧chosenActor和预算保留历史；当前选择以currentSelection和latestUnifiedComparison为准。"
+  "legacySelectionsNote": "当前选择以currentDirectSelection和latestDirectComparison为准；旧Actor与预算只作历史参考。",
+  "latestDirectComparison": {
+    "checkedOn": "2026-11-16",
+    "summary": "评论接入不再统一选Apify：抖店先选JustOne；京东评论优先JustOne但还差最后一格复跑。淘天暂用Apify评论，海外先用已测Apify组合。",
+    "scopeNote": "同一批商品，目标为2商品×2轮。蓝色16项、其中6项评论；同义字段和确定上下文可映射。已测结果、未请求、采集失败分别列明。",
+    "rows": [
+      {
+        "id": "taobao",
+        "label": "淘宝",
+        "justoneCoverage": "详情有效1/3请求；评论0次（剩余免费额度不足，未请求）。",
+        "apifyCoverage": "蓝色14/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "商品A两轮202不支持；B详情有数据且返回真实品牌。",
+          "有效B详情未见销量原文、商品评分；评论与其余未测格不能判缺。"
+        ],
+        "apifyMissing": [
+          "品牌（仅首轮 2/2）",
+          "销量原文（未获得有效证据）"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案分摊¥0.28。",
+          "JustOne详情¥0.25/次、评论¥0.20/页；两商品一轮理论¥0.90，尚未同范围交付。"
+        ],
+        "recommendation": "当前评论先用Apify；JustOne本轮评论未测，详情已有采集失败。",
+        "evidenceStatus": "JustOne：1/3请求有目标数据；有效格1/4",
+        "justoneStatus": "partial",
+        "apifyStatus": "complete",
+        "actors": [
+          "memo23/taobao-scraper",
+          "tortuga/taobao-scraper"
+        ]
+      },
+      {
+        "id": "tmall",
+        "label": "天猫",
+        "justoneCoverage": "详情有效1/3请求；评论0次（剩余免费额度不足，未请求）。",
+        "apifyCoverage": "蓝色13/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "A首次301、复跑有数据；B返回code0下架提示，无目标数据。",
+          "有效A详情未见品牌、销量原文、商品评分；评论未测。"
+        ],
+        "apifyMissing": [
+          "品牌（未获得有效证据）",
+          "销量原文（未获得有效证据）",
+          "商品评分/好评率（未获得有效证据）"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案分摊¥0.5005。",
+          "JustOne详情¥0.25/次、评论¥0.20/页；两商品一轮理论¥0.90，尚未同范围交付。"
+        ],
+        "recommendation": "当前评论先用Apify；JustOne本轮评论未测，详情已有采集失败。",
+        "evidenceStatus": "JustOne：1/3请求有目标数据；有效格1/4",
+        "justoneStatus": "partial",
+        "apifyStatus": "complete",
+        "actors": [
+          "memo23/taobao-scraper",
+          "tortuga/taobao-scraper"
+        ]
+      },
+      {
+        "id": "douyin_shop",
+        "label": "抖音商城",
+        "justoneCoverage": "蓝色13/16；评论6/6（4/4格）；其中原义12＋销量展示派生1项",
+        "apifyCoverage": "蓝色9/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "商品规范链接",
+          "品牌",
+          "售价"
+        ],
+        "apifyMissing": [
+          "商品名称（仅历史通过）",
+          "商品规范链接（未获得有效证据）",
+          "品牌（未获得有效证据）",
+          "售价（仅历史通过）",
+          "销量原文（仅历史通过）",
+          "商品评分/好评率（未获得有效证据）",
+          "评价数（仅历史通过）"
+        ],
+        "priceComparison": [
+          "JustOne两页评论¥0.36，40返回行/19有效正文；加两商品详情共¥0.72。",
+          "Apify两商品¥0.2114，10返回行，有效正文数未知。",
+          "按报告10行最多10条有效正文：JustOne约¥0.01895/有效正文，Apify至少¥0.02114；本小样本JustOne名义纯评论成本至少低约10.4%。"
+        ],
+        "recommendation": "评论优先选JustOne；覆盖比Apify更完整，统一接口更好接。",
+        "evidenceStatus": "JustOne：8/8请求有目标数据；有效格4/4",
+        "justoneStatus": "complete",
+        "apifyStatus": "complete",
+        "actors": [
+          "qovia/douyin-scraper"
+        ]
+      },
+      {
+        "id": "pinduoduo",
+        "label": "拼多多",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色0/16；评论0/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "第二轮采集失败；不将此写成16项业务字段均不存在。"
+        ],
+        "priceComparison": [
+          "没有可用于同范围报价的已通过方案。"
+        ],
+        "recommendation": "两家都暂不选；没有通过的新稳定方案。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "partial",
+        "actors": []
+      },
+      {
+        "id": "jd",
+        "label": "京东",
+        "justoneCoverage": "两商品已见15/16；评论6/6；完成3/4格，非四格通过。",
+        "apifyCoverage": "蓝色9/16；评论0/6（2商品×2轮）",
+        "justoneMissing": [
+          "销量原文在现有有效回包未见。",
+          "商品B第2轮详情与评论未请求，不算字段缺失。"
+        ],
+        "apifyMissing": [
+          "销量原文（未获得有效证据）",
+          "评论ID（仅历史通过）",
+          "评论商品ID（仅历史通过）",
+          "评论正文（仅历史通过）",
+          "评论星级（仅历史通过）",
+          "评论时间（仅历史通过）",
+          "购买规格（仅历史通过）"
+        ],
+        "priceComparison": [
+          "JustOne两商品一轮详情＋评论名义¥0.90；纯两页评论¥0.40。",
+          "Apify两商品¥0.12334只有本轮商品数据，不能视为更便宜的评论套餐。"
+        ],
+        "recommendation": "评论优先JustOne；Apify当前组合没有通过评论。补完B第2轮后再定四格稳定。",
+        "evidenceStatus": "JustOne：6/6请求有目标数据；有效格3/4",
+        "justoneStatus": "partial",
+        "apifyStatus": "complete",
+        "actors": [
+          "automation-lab/jd-products-search-scraper",
+          "silentflow/jd-products-scraper"
+        ]
+      },
+      {
+        "id": "amazon",
+        "label": "Amazon",
+        "justoneCoverage": "已确认详情＋热门评论接口，0次实测。",
+        "apifyCoverage": "蓝色16/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "尚未取得回包，字段未判定；价格/免费额度也未确认。"
+        ],
+        "apifyMissing": [
+          "本报告重点16项未见缺项；不代表每条记录全齐或可全量采集。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案用量¥0.36568；非每千条价。",
+          "JustOne价格/免费额度未核，不能判谁更便宜。"
+        ],
+        "recommendation": "先接Apify已测组合。JustOne须完成同商品实测后再比较。",
+        "evidenceStatus": "JustOne：仅官网目录；Apify：已测报告",
+        "justoneStatus": "untested",
+        "apifyStatus": "complete",
+        "actors": [
+          "alfalfa/amazon-product-scraper",
+          "junglee/amazon-reviews-scraper"
+        ]
+      },
+      {
+        "id": "temu",
+        "label": "Temu",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色14/16；评论5/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "品牌（未双样本稳定）",
+          "购买规格（未获得有效证据）"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案¥0.29736；JustOne无已核可比方案。"
+        ],
+        "recommendation": "有条件选Apify：接受品牌不稳和购买规格缺失，先做评论预览。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "complete",
+        "actors": [
+          "cliqtomedia/temu-scraper",
+          "selleraim.com/temu-product-scraper"
+        ]
+      },
+      {
+        "id": "tiktok_shop",
+        "label": "TikTok Shop",
+        "justoneCoverage": "已确认商品详情接口，0次实测；未见独立Shop评论接口。",
+        "apifyCoverage": "蓝色16/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "尚未取得回包，字段未判定；价格/免费额度也未确认。"
+        ],
+        "apifyMissing": [
+          "本报告重点16项未见缺项；不代表每条记录全齐或可全量采集。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案用量¥0.5817；非每千条价。",
+          "JustOne价格/免费额度未核，不能判谁更便宜。"
+        ],
+        "recommendation": "先接Apify已测组合。JustOne须完成同商品实测后再比较。",
+        "evidenceStatus": "JustOne：仅官网目录；Apify：已测报告",
+        "justoneStatus": "untested",
+        "apifyStatus": "complete",
+        "actors": [
+          "scrapeunblocker/tiktok-shop-product-scraper",
+          "trakk/tiktok-shop-search-scraper"
+        ]
+      },
+      {
+        "id": "ebay",
+        "label": "eBay",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色14/16；评论5/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "购买规格",
+          "销量原文；可由销量数字生成展示文本，展示口径可达15/16。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案¥0.14；JustOne无已核可比方案。"
+        ],
+        "recommendation": "有条件选Apify：购买规格缺；销量可派生展示，仅目录商品评价。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "complete",
+        "actors": [
+          "apt_marble/ebay-product-reviews-scraper",
+          "scrape.badger/ebay-product-scraper",
+          "scrape.badger/ebay-search-scraper"
+        ]
+      },
+      {
+        "id": "walmart",
+        "label": "Walmart",
+        "justoneCoverage": "公开目录未见对应标准商品评论接口；本轮0请求。",
+        "apifyCoverage": "蓝色16/16；评论6/6（2商品×2轮）",
+        "justoneMissing": [
+          "接口未找到，不能按16项逐一判缺；定制能力未核。"
+        ],
+        "apifyMissing": [
+          "本报告重点16项未见缺项；不代表每条记录全齐或可全量采集。"
+        ],
+        "priceComparison": [
+          "Apify两商品原方案用量¥0.03906；非每千条价。",
+          "JustOne未见对应标准接口价格。"
+        ],
+        "recommendation": "先接Apify已测组合。JustOne未找到标准接口。",
+        "evidenceStatus": "JustOne：接口目录核查；Apify：已测报告",
+        "justoneStatus": "unsupported",
+        "apifyStatus": "complete",
+        "actors": [
+          "topapi/walmart-scraper"
+        ]
+      }
+    ],
+    "detailRows": [
+      {
+        "id": "taobao",
+        "label": "淘宝",
+        "note": "本轮3请求，code0为1次，有目标数据1次。平均耗时19.496秒。已知code0名义金额¥0.25；实付未读取。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：request.platform",
+            "apify": "原生稳定；报告4/4格；路径：$[0].platform、$[1].platform",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.itemId、data.mainItemInfo.itemId、request.params product identity",
+            "apify": "原生稳定；报告4/4格；路径：$[0].itemId、$[1].itemId",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.title",
+            "apify": "原生稳定；报告4/4格；路径：$[0].title、$[1].title",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：matched original product URL",
+            "apify": "原生稳定；报告4/4格；路径：$[0].url、$[1].url",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.item_imgs",
+            "apify": "原生稳定；报告4/4格；路径：$[0].image、$[1].image",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.attribute[].value",
+            "apify": "仅首轮 2/2；路径：$[0].attributes.0.value、$[0].brandName",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.category",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.categoryId",
+            "apify": "原生稳定；报告4/4格；路径：$[0].categoryPath、$[1].categoryPath",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：request country/platform",
+            "apify": "原生稳定；报告4/4格；路径：$[0].currency、$[1].currency",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].originalPrice、$[1].originalPrice",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.price",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price、$[1].price",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "未双样本稳定；路径：$[0].totalSold",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].positiveRate、$[1].positiveRate",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.totalCount",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewCount、$[1].reviewCount",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：data.shopName",
+            "apify": "原生稳定；报告4/4格；路径：$[0].shopName、$[1].shopName",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].searchTerm、$[1].searchTerm",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].position、$[1].position",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：该格未取得有效目标数据；B轮1：有值；B轮2：未测。路径：request.finishedAt",
+            "apify": "原生稳定；报告4/4格；路径：$[0].scrapedAt、$[3].scrapedAt",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[1].reviewId、$[4].reviewId",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[1].itemId、$[4].itemId",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].latestReview.text、$[1].latestReview.text",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].latestReview.rating、$[1].latestReview.rating",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].latestReview.date、$[1].latestReview.date",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].latestReview.variant、$[1].latestReview.variant",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          }
+        ],
+        "tests": [
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 1,
+            "result": "code 202；无有效目标数据",
+            "elapsed": "47.243秒",
+            "output": "0个有效商品",
+            "cost": "非0不计费"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品B",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "10.828秒",
+            "output": "1个有效商品",
+            "cost": "¥0.25名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 2,
+            "result": "code 202；无有效目标数据",
+            "elapsed": "0.417秒",
+            "output": "0个有效商品",
+            "cost": "非0不计费"
+          }
+        ]
+      },
+      {
+        "id": "tmall",
+        "label": "天猫",
+        "note": "本轮3请求，code0为2次，有目标数据1次。平均耗时1.206秒。已知code0名义金额¥0.5；实付未读取。下架文字虽返回code0，但不算有效商品数据；计费口径与数据成功分开。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：request.platform",
+            "apify": "原生稳定；报告4/4格；路径：$[2].platform、$[3].platform",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.itemId、data.mainItemInfo.itemId、request.params product identity",
+            "apify": "原生稳定；报告4/4格；路径：$[2].itemId、$[3].itemId",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.title",
+            "apify": "原生稳定；报告4/4格；路径：$[2].title、$[3].title",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.mainItemInfo.url、matched original product URL",
+            "apify": "原生稳定；报告4/4格；路径：$[2].url、$[3].url",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.item_imgs",
+            "apify": "原生稳定；报告4/4格；路径：$[2].image、$[3].image",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.category",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.categoryId",
+            "apify": "未双样本稳定；路径：$[2].categoryPath、$[3].categoryPath",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：request country/platform",
+            "apify": "原生稳定；报告4/4格；路径：$[2].currency、$[3].currency",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[2].originalPrice、$[3].originalPrice",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.price",
+            "apify": "原生稳定；报告4/4格；路径：$[2].price、$[3].price",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "未双样本稳定；路径：$[0].totalSold",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.totalCount",
+            "apify": "原生稳定；报告4/4格；路径：$[1].reviewCount、$[2].reviewCount",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：data.shopName",
+            "apify": "原生稳定；报告4/4格；路径：$[2].shopName、$[3].shopName",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[1].searchTerm、$[2].searchTerm",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "1个有效格未见该字段。A轮1：该格未取得有效目标数据；A轮2：有效回包中未见；B轮1：该格未取得有效目标数据；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[1].position、$[2].position",
+            "conclusion": "JustOne有效回包未见；Apify已有四格证据。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "1/4格有值；未完成稳定通过。A轮1：该格未取得有效目标数据；A轮2：有值；B轮1：该格未取得有效目标数据；B轮2：未测。路径：request.finishedAt",
+            "apify": "原生稳定；报告4/4格；路径：$[6].scrapedAt、$[9].scrapedAt",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[10].reviewId、$[7].reviewId",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[10].itemId、$[7].itemId",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[2].latestReview.content、$[3].latestReview.content",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[2].latestReview.rating、$[3].latestReview.rating",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[2].latestReview.date、$[3].latestReview.date",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[2].latestReview.variant、$[3].latestReview.variant",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "评论额度未补，未请求；不能判JustOne缺字段。"
+          }
+        ],
+        "tests": [
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 1,
+            "result": "code 301；无有效目标数据",
+            "elapsed": "1.982秒",
+            "output": "0个有效商品",
+            "cost": "非0不计费"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "1.213秒",
+            "output": "1个有效商品",
+            "cost": "¥0.25名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品B",
+            "round": 1,
+            "result": "code 0；下架提示，无目标数据",
+            "elapsed": "0.423秒",
+            "output": "0个有效商品",
+            "cost": "¥0.25名义计费；实付未核"
+          }
+        ]
+      },
+      {
+        "id": "douyin_shop",
+        "label": "抖音商城",
+        "note": "本轮8请求，code0为8次，有目标数据8次。平均耗时2.057秒。已知code0名义金额¥1.44；实付未读取。两轮各40原始行、19有效正文；跨轮去重仍为40个评论ID、19条有效正文，复跑不算新增。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "4/4格有值（含确定上下文）。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：request.platform",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[5]",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "4/4格有值（含确定上下文）。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.product_id、request.params product identity",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0].input.productId、$[5].input.productId",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.model.product.product_base.title",
+            "apify": "仅历史通过",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.model.product.product_base.cover、data.model.product.product_base.images",
+            "apify": "仅历史通过",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.category",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "4/4格有值（含确定上下文）。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：request country/platform",
+            "apify": "仅历史通过",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "仅历史通过",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.model.product.product_sales.total_sales",
+            "apify": "仅历史通过",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "4/4格有值（含派生，原文另记）。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.model.product.product_sales.product_label.sales_text + sales_num",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne展示值可用；若坚持源站原文，不计该原文字段。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.model.product.product_comment.good_ratio",
+            "apify": "未获得有效证据",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Count",
+            "apify": "仅历史通过",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.model.shop.shop_base.shop_name",
+            "apify": "仅历史通过",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "仅历史通过",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "4个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：有效回包中未见",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "4/4格有值（含确定上下文）。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：request.finishedAt",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[5]",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].Id",
+            "apify": "原生稳定；报告4/4格；路径：$[0].cid、$[1].cid",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].ProductId",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[1]",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].Content",
+            "apify": "原生稳定；报告4/4格；路径：$[0].text、$[1].text",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].RankProduct",
+            "apify": "原生稳定；报告4/4格；路径：$[0].rating、$[1].rating",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].CommentTime",
+            "apify": "原生稳定；报告4/4格；路径：$[0].created_at、$[1].created_at",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].Sku",
+            "apify": "原生稳定；报告4/4格；路径：$[0].sku、$[1].sku",
+            "conclusion": "两家均有四格字段证据。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "4/4格有值。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：有值。路径：data.Comments[].Photos",
+            "apify": "未获得有效证据",
+            "conclusion": "本轮JustOne字段证据更完整。"
+          }
+        ],
+        "tests": [
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "1.889秒",
+            "output": "1个有效商品",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品A",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "1.838秒",
+            "output": "20返回行 / 14有效正文 / 14条同时具备6核心字段；相对此前新增ID 20",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "0.222秒",
+            "output": "1个有效商品",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品A",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "1.602秒",
+            "output": "20返回行 / 14有效正文 / 14条同时具备6核心字段；相对此前新增ID 0",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品B",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "1.256秒",
+            "output": "1个有效商品",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品B",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "6.748秒",
+            "output": "20返回行 / 5有效正文 / 5条同时具备6核心字段；相对此前新增ID 20",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品B",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "0.214秒",
+            "output": "1个有效商品",
+            "cost": "¥0.18名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品B",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "2.688秒",
+            "output": "20返回行 / 5有效正文 / 5条同时具备6核心字段；相对此前新增ID 0",
+            "cost": "¥0.18名义计费；实付未核"
+          }
+        ]
+      },
+      {
+        "id": "pinduoduo",
+        "label": "拼多多",
+        "note": "当前公开目录未发现对应标准接口；本轮未请求，不按0/16发布字段能力。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0]、$[1]",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].productId、$[1].productId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].title、$[1].title",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].url、$[1].url",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].imageUrl、$[1].imageUrl",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.category",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].categoryHint、$[1].categoryHint",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0]、$[1]",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].listedPriceCny、$[1].listedPriceCny",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].groupPriceCny、$[1].groupPriceCny",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].soldCount、$[1].soldCount",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "仅首轮 2/2；路径：$[0].scrapedAt、$[1].scrapedAt",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          }
+        ],
+        "tests": []
+      },
+      {
+        "id": "jd",
+        "label": "京东",
+        "note": "本轮6请求，code0为6次，有目标数据6次。平均耗时9.284秒。已知code0名义金额¥1.35；实付未读取。已覆盖两个不同商品，但商品B第2轮尚未请求，不能算4/4。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：request.platform",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[1]",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.itemInfo.product.skuId、data.itemOnly.skuId、data.priceInfo.skuId",
+            "apify": "原生稳定；报告4/4格；路径：$[0].skuId、$[1].skuId",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.itemInfo.product.skuName",
+            "apify": "原生稳定；报告4/4格；路径：$[0].title、$[1].title",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：matched original product URL",
+            "apify": "原生稳定；报告4/4格；路径：$[0].url、$[1].url",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.img_list",
+            "apify": "原生稳定；报告4/4格；路径：$[0].imageUrl、$[1].imageUrl",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.itemInfo.product.brandName",
+            "apify": "原生稳定；报告4/4格；路径：$[0].brand、$[1].brand",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.category",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.itemOnly.category",
+            "apify": "原生稳定；报告4/4格；路径：$[0].categoryName、$[1].categoryName",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：request country/platform",
+            "apify": "原生稳定；报告4/4格；路径：$[0].currency、$[1].currency",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "2/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有效回包中未见；B轮2：未测。路径：data.priceInfo.productPrice.marketPrice",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.priceInfo.jdPrice",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price、$[1].price",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "3个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "3个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "未获得有效证据",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.pageInfo.good_rate",
+            "apify": "原生稳定；报告4/4格；路径：$[0].goodRate、$[1].goodRate",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.pageInfo.comment_count",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewsCount、$[1].reviewsCount",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.shop_infos.shopName",
+            "apify": "原生稳定；报告4/4格；路径：$[0].shopName、$[1].shopName",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "3个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "未双样本稳定；路径：$[0].keyword",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "3个有效格未见该字段。A轮1：有效回包中未见；A轮2：有效回包中未见；B轮1：有效回包中未见；B轮2：未测",
+            "apify": "未双样本稳定；路径：$[0].position",
+            "conclusion": "两家现有证据均未稳定解决；不代表源站不存在。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：request.finishedAt",
+            "apify": "原生稳定；报告4/4格；路径：$[0].scrapedAt、$[1].scrapedAt",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].commentId",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].productId",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].commentData",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].commentScore",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].commentDate",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].productColor",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "3/4格有值；未完成稳定通过。A轮1：有值；A轮2：有值；B轮1：有值；B轮2：未测。路径：data.data[].pictureInfoList",
+            "apify": "仅历史通过",
+            "conclusion": "JustOne已见字段；未测格/失败格使四格验收未完成。"
+          }
+        ],
+        "tests": [
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "7.63秒",
+            "output": "1个有效商品",
+            "cost": "¥0.25名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品A",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "15.253秒",
+            "output": "8返回行 / 8有效正文 / 8条同时具备6核心字段；相对此前新增ID 8",
+            "cost": "¥0.2名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品A",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "0.257秒",
+            "output": "1个有效商品",
+            "cost": "¥0.25名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品A",
+            "round": 2,
+            "result": "code 0；有目标数据",
+            "elapsed": "8.001秒",
+            "output": "8返回行 / 8有效正文 / 8条同时具备6核心字段；相对此前新增ID 0",
+            "cost": "¥0.2名义计费；实付未核"
+          },
+          {
+            "test": "商品详情",
+            "product": "商品B",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "3.562秒",
+            "output": "1个有效商品",
+            "cost": "¥0.25名义计费；实付未核"
+          },
+          {
+            "test": "商品评论",
+            "product": "商品B",
+            "round": 1,
+            "result": "code 0；有目标数据",
+            "elapsed": "21.002秒",
+            "output": "10返回行 / 10有效正文 / 10条同时具备6核心字段；相对此前新增ID 10",
+            "cost": "¥0.2名义计费；实付未核"
+          }
+        ]
+      },
+      {
+        "id": "amazon",
+        "label": "Amazon",
+        "note": "本轮0请求，code0为0次，有目标数据0次。已知code0名义金额¥0；实付未读取。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[1]",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].asin、$[1].asin",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].title、$[1].title",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].url、$[1].url",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].thumbnailImage、$[1].thumbnailImage",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].brand、$[1].brand",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.category",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].categories、$[1].categories",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price.currency、$[1].price.currency",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].listPrice.value、$[1].listPrice.value",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price.value、$[1].price.value",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "标准化稳定；报告4/4格；路径：$[0].monthlyPurchaseVolume、$[1].monthlyPurchaseVolume",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].monthlyPurchaseVolume、$[1].monthlyPurchaseVolume",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].stars、$[1].stars",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewsCount、$[1].reviewsCount",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].seller.name、$[1].seller.name",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].input、$[1].input",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].position、$[1].position",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].scrapedAt、$[1].scrapedAt",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewId",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].productAsin",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewDescription",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].ratingScore",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].date",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].variant",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[2].reviewImages、$[4].reviewImages",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          }
+        ],
+        "tests": []
+      },
+      {
+        "id": "temu",
+        "label": "Temu",
+        "note": "当前公开目录未发现对应标准接口；本轮未请求，不按0/16发布字段能力。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[1]",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].goodsId、$[1].goodsId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].title、$[1].title",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].url、$[1].url",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].images.0、$[1].images.0",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未双样本稳定；路径：$[0].specifications.3.value",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.category",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].categoryPath、$[1].categoryPath",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].currency、$[1].currency",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].originalPrice、$[1].originalPrice",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price、$[1].price",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].sales、$[1].sales",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].salesText、$[1].salesText",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].rating、$[1].rating",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewCount、$[1].reviewCount",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].sellerName、$[1].sellerName",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].query、$[1].query",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].position、$[1].position",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].fetchedAt、$[1].fetchedAt",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].reviewId、$[1].reviews[0].reviewId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0].reviews[0]、$[1].reviews[0]",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].text、$[1].reviews[0].text",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].rating、$[1].reviews[0].rating",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].reviewedAt、$[1].reviews[0].reviewedAt",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未双样本稳定；路径：$[0].reviews[2].images",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          }
+        ],
+        "tests": []
+      },
+      {
+        "id": "tiktok_shop",
+        "label": "TikTok Shop",
+        "note": "本轮0请求，code0为0次，有目标数据0次。已知code0名义金额¥0；实付未读取。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]、$[1]",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].productId、$[1].productId",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].title、$[1].title",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].url、$[1].url",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].images.0、$[1].images.0",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].brand、$[1].brand",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.category",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].categories、$[1].categories",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price.currency、$[1].price.currency",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price.original、$[1].price.original",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price.current、$[1].price.current",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].soldCount、$[1].soldCount",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[10].soldText、$[19].soldText",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].rating、$[1].rating",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviewCount、$[1].reviewCount",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].seller.name、$[1].seller.name",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[10].query、$[19].query",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[10].searchRank、$[19].searchRank",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[10].scrapedAt、$[19].scrapedAt",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].id、$[1].reviews[0].id",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0].reviews[0]、$[1].reviews[0]",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].text、$[1].reviews[0].text",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].rating、$[1].reviews[0].rating",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].date、$[1].reviews[0].date",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].variant、$[1].reviews[0].variant",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未测；不判字段缺失。A轮1：未测；A轮2：未测；B轮1：未测；B轮2：未测",
+            "apify": "原生稳定；报告4/4格；路径：$[0].reviews[0].images、$[1].reviews[0].images",
+            "conclusion": "JustOne未测，不作字段胜负。"
+          }
+        ],
+        "tests": []
+      },
+      {
+        "id": "ebay",
+        "label": "eBay",
+        "note": "当前公开目录未发现对应标准接口；本轮未请求，不按0/16发布字段能力。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0].item",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.item_id",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.title",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.url",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.main_image",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.brand",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.category",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.categories、$[4].categoryPath",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.price.currency",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未双样本稳定；路径：$[0].item.original_price.value",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.price.value",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.quantity_sold",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].aggregateRating、$[4].aggregateRating",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].ratingsCount、$[4].ratingsCount",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.seller.store_name",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].query",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].position",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].item.scraped_at、$[0].scrapedAt",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].reviewId、$[5].reviewId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].resolvedFromItemId、$[5].resolvedFromItemId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].body、$[5].body",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].rating、$[5].rating",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].dateIso、$[5].dateIso",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          }
+        ],
+        "tests": []
+      },
+      {
+        "id": "walmart",
+        "label": "Walmart",
+        "note": "当前公开目录未发现对应标准接口；本轮未请求，不按0/16发布字段能力。",
+        "fields": [
+          {
+            "field": "product.platform · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "含上下文补齐；报告4/4格；路径：$[0]",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].usItemId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.title · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].name",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.product_url · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].url",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.image_url",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].imageUrl",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.brand · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].brand",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.category",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].categoryPath",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.currency",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].currency",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.list_price",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "未获得有效证据",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sale_price · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].price",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_count",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].boughtSinceYesterday、$[11].boughtSinceYesterday",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.sold_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].boughtSinceYesterdayText、$[11].boughtSinceYesterdayText",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].averageRating",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.review_count · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].numberOfReviews",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.shop_name",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].sellerName",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.keyword",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].searchQuery、$[1].searchQuery",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.search_rank",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].position、$[1].position",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "product.scraped_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[0].scrapedAt",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].reviewId、$[20].reviewId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.product_id · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].usItemId、$[20].itemId",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.review_text · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].text、$[20].reviewText",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.rating · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].rating、$[20].rating",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.created_at · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].reviewDate、$[20].reviewSubmissionTime",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.purchased_sku · 蓝色重点",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[1].variant、$[2].variant",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          },
+          {
+            "field": "review.image_urls",
+            "justone": "未见标准接口，本轮未请求。",
+            "apify": "原生稳定；报告4/4格；路径：$[20].media、$[2].media",
+            "conclusion": "JustOne公开目录未见标准接口；Apify按报告证据列出。"
+          }
+        ],
+        "tests": []
+      }
+    ],
+    "downloadUrl": "data/同商品直接比较-20261116.json",
+    "notes": [
+      "JustOne本轮新增20次请求，以下结论只用本批同商品回包；不把历史不同商品结果填入新通过数。",
+      "当前未完成：京东商品B第2轮详情/评论；淘天评论及部分详情；Amazon全部、TikTok Shop详情。剩余免费额度不足、海外价格未核，付费补测尚未进行，不当成字段缺失。",
+      "API的code0、取得目标数据、每个字段四格通过是三种统计；不将JustOne请求成功率与Apify运行成功率直接比。",
+      "抖店销量标签＋数字可生成展示文本：JustOne展示口径13/16，严格原义12/16；若必须源站完整原文，不能把派生项当原文。",
+      "JustOne费用为官网/已登录后台核过的名义成功调用价；实际免费扣减和实付余额本轮未读取。Apify费用为上传报告用量，统一预算汇率¥7/$，沿用原25项Actor组合，未按蓝色16项重新优化。",
+      "抖店Apify原始Dataset未能重新读取。按报告10条逐条评论行计算有效正文成本下限：即使10条全有效，Apify仍至少¥0.02114/条；JustOne已确认19条、¥0.36，即约¥0.01895/条。仅此两商品小样本、纯评论名义成本，不外推生产或月量。",
+      "热门评论/预览不等于全历史；四格字段通过也不保证每条评论都完整，生产成功率还需更广样本。"
+    ],
+    "sources": [
+      {
+        "label": "JustOne官方使用说明",
+        "url": "https://docs.justoneapi.com/zh/usage"
+      },
+      {
+        "label": "JustOne Amazon详情",
+        "url": "https://docs.justoneapi.com/zh/api/amazon/product-details-v1"
+      },
+      {
+        "label": "JustOne Amazon热门评论",
+        "url": "https://docs.justoneapi.com/zh/api/amazon/product-top-reviews-v1"
+      },
+      {
+        "label": "JustOne TikTok Shop详情",
+        "url": "https://docs.justoneapi.com/zh/api/tiktok-shop/product-details-v1"
+      },
+      {
+        "label": "automation-lab/jd-products-search-scraper公开价格",
+        "url": "https://apify.com/automation-lab/jd-products-search-scraper/pricing"
+      },
+      {
+        "label": "memo23/taobao-scraper公开价格",
+        "url": "https://apify.com/memo23/taobao-scraper/pricing"
+      },
+      {
+        "label": "qovia/douyin-scraper公开价格",
+        "url": "https://apify.com/qovia/douyin-scraper/pricing"
+      },
+      {
+        "label": "silentflow/jd-products-scraper公开价格",
+        "url": "https://apify.com/silentflow/jd-products-scraper/pricing"
+      },
+      {
+        "label": "tortuga/taobao-scraper公开价格",
+        "url": "https://apify.com/tortuga/taobao-scraper/pricing"
+      }
+    ],
+    "audit": {
+      "newJustOneRequests": 20,
+      "newApifyRuns": 0,
+      "apifySource": "用户上传report.updated.html；四格字段已核对，原始响应未全部重新获取",
+      "blueFields": 16,
+      "productFields": 18,
+      "reviewFields": 7,
+      "cashChargesVerified": false,
+      "perPlatform": [
+        {
+          "id": "taobao",
+          "requestsAttempted": 3,
+          "successfulBusinessCode0": 1,
+          "validDataRequests": 1,
+          "validDataProductRoundCells": 1,
+          "meanElapsedSeconds": 19.496,
+          "blueStable": null,
+          "blueReviewStable": null,
+          "observedAcrossBothProductsBlue": 0,
+          "nominalKnownSuccessfulChargesCny": 0.25,
+          "actualCashChargeCny": null
+        },
+        {
+          "id": "tmall",
+          "requestsAttempted": 3,
+          "successfulBusinessCode0": 2,
+          "validDataRequests": 1,
+          "validDataProductRoundCells": 1,
+          "meanElapsedSeconds": 1.206,
+          "blueStable": null,
+          "blueReviewStable": null,
+          "observedAcrossBothProductsBlue": 0,
+          "nominalKnownSuccessfulChargesCny": 0.5,
+          "actualCashChargeCny": null
+        },
+        {
+          "id": "douyin_shop",
+          "requestsAttempted": 8,
+          "successfulBusinessCode0": 8,
+          "validDataRequests": 8,
+          "validDataProductRoundCells": 4,
+          "meanElapsedSeconds": 2.057,
+          "blueStable": 13,
+          "blueReviewStable": 6,
+          "observedAcrossBothProductsBlue": 13,
+          "nominalKnownSuccessfulChargesCny": 1.44,
+          "actualCashChargeCny": null
+        },
+        {
+          "id": "jd",
+          "requestsAttempted": 6,
+          "successfulBusinessCode0": 6,
+          "validDataRequests": 6,
+          "validDataProductRoundCells": 3,
+          "meanElapsedSeconds": 9.284,
+          "blueStable": null,
+          "blueReviewStable": null,
+          "observedAcrossBothProductsBlue": 15,
+          "nominalKnownSuccessfulChargesCny": 1.35,
+          "actualCashChargeCny": null
+        },
+        {
+          "id": "amazon",
+          "requestsAttempted": 0,
+          "successfulBusinessCode0": 0,
+          "validDataRequests": 0,
+          "validDataProductRoundCells": 0,
+          "meanElapsedSeconds": null,
+          "blueStable": null,
+          "blueReviewStable": null,
+          "observedAcrossBothProductsBlue": 0,
+          "nominalKnownSuccessfulChargesCny": 0,
+          "actualCashChargeCny": null
+        },
+        {
+          "id": "tiktok_shop",
+          "requestsAttempted": 0,
+          "successfulBusinessCode0": 0,
+          "validDataRequests": 0,
+          "validDataProductRoundCells": 0,
+          "meanElapsedSeconds": null,
+          "blueStable": null,
+          "blueReviewStable": null,
+          "observedAcrossBothProductsBlue": 0,
+          "nominalKnownSuccessfulChargesCny": 0,
+          "actualCashChargeCny": null
+        }
+      ],
+      "privacy": "Only field paths, aggregate counts, sample labels, public API/Actor references; no buyer data, private credentials or execution IDs."
+    },
+    "pricingEvidence": {
+      "budgetFxCnyPerUsd": 7,
+      "justoneDomesticNominalPrices": [
+        {
+          "endpoint": "/api/taobao/get-item-comment/v3",
+          "cnyPerSuccess": 0.2
+        },
+        {
+          "endpoint": "/api/taobao/get-item-detail/v6",
+          "cnyPerSuccess": 0.25
+        },
+        {
+          "endpoint": "/api/taobao/get-item-detail/v9",
+          "cnyPerSuccess": 0.25
+        },
+        {
+          "endpoint": "/api/taobao/search-item-list/v1",
+          "cnyPerSuccess": 0.2
+        },
+        {
+          "endpoint": "/api/jd/get-item-comments/v1",
+          "cnyPerSuccess": 0.2
+        },
+        {
+          "endpoint": "/api/jd/get-item-detail/v4",
+          "cnyPerSuccess": 0.25
+        },
+        {
+          "endpoint": "/api/douyin-ec/get-item-comments/v1",
+          "cnyPerSuccess": 0.18
+        },
+        {
+          "endpoint": "/api/douyin-ec/get-item-detail/v2",
+          "cnyPerSuccess": 0.18
+        }
+      ],
+      "douyinComparableRawRowCost": {
+        "reportedTenRawRowsOneRoundUsd": 0.0302,
+        "budgetFxCnyPerUsd": 7,
+        "cny": 0.2114,
+        "justoneComparisonProvidedByParentCny": 0.36,
+        "comparableEffectiveBodyUnitPrice": false,
+        "justoneRawRowsProvidedByParent": 40,
+        "justoneEffectiveBodiesProvidedByParent": 19,
+        "justoneCommentsOnlyCny": 0.36,
+        "justoneDetailChargesIncluded": false,
+        "apifyRawRowUnitCny": 0.02114,
+        "justoneRawRowUnitCny": 0.009,
+        "justoneEffectiveBodyUnitCny": 0.01894736842105263,
+        "apifyEffectiveBodyUnitCny": null,
+        "comparisonNote": "JustOne两商品平均一轮40原始行/19已确认有效正文，名义纯评论费¥0.36；Apify报告10条评论行，费用¥0.2114，有效正文数未知但按报告单条评论行结构最多10。可比较有效正文成本的保守界限，不能给Apify精确有效正文单价。",
+        "effectiveBodyCostLowerBoundComparison": {
+          "supportedConditionally": true,
+          "justoneCnyPerEffectiveBody": 0.01894736842105263,
+          "apifyMaximumPossibleEffectiveBodiesPerReportedRound": 10,
+          "apifyCnyPerEffectiveBodyLowerBound": 0.02114,
+          "justoneSavingVsApifyBestCasePercentAtLeast": 10.371956381018776,
+          "basis": "按上传报告10条评论行、预算汇率¥7/$与本次JustOne样本，假设Apify每行最多对应一条评论；即便10条均为有效正文，JustOne名义单价仍约低10.4%。",
+          "noMonthlyExtrapolation": true,
+          "productDetailsExcluded": true,
+          "notClaimedProductionRate": true,
+          "apifyExactEffectiveBodyUnitPriceUnknown": true
+        }
+      }
+    }
+  }
 }
