@@ -718,5 +718,13 @@
     "bytes": 289860,
     "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/JustOne%E5%A4%8D%E6%A0%B8-20261115.json",
     "read_url": null
+  },
+  {
+    "title": "统一比较-20261116",
+    "group": "接入决策",
+    "format": "json",
+    "bytes": 608094,
+    "download_url": "downloads/research/%E6%8E%A5%E5%85%A5%E5%86%B3%E7%AD%96/%E7%BB%9F%E4%B8%80%E6%AF%94%E8%BE%83-20261116.json",
+    "read_url": null
   }
 ]
