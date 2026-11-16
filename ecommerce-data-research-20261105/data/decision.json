@@ -25,9 +25,16 @@
       "currentSelection": {
         "id": "taobao",
         "label": "淘宝",
-        "apify": "21/25；评论6/7，2件×2轮。",
-        "justone": "基础字段可返回；有效正文只有1商品，跨商品稳定待补；先核可用额度。",
-        "recommendation": "商品搜索/详情＋少量评论先用Apify；批量评论暂不承诺。",
+        "apify": "蓝色14/16；评论重点6/6。全清单21/25，2件×2轮。",
+        "blueStable": 14,
+        "blueReviewStable": 6,
+        "blueMissing": [
+          "product.brand",
+          "product.sold_text"
+        ],
+        "justoneBlueObservedNotStable": 13,
+        "justone": "蓝色曾见13/16（非稳定验收）。基础字段可返回；有效正文只有1商品，跨商品稳定待补；先核可用额度。",
+        "recommendation": "评论核心6项可先接Apify；完整蓝色字段仍缺稳定品牌、销量原文。",
         "actors": [
           "memo23/taobao-scraper",
           "tortuga/taobao-scraper"
@@ -54,9 +61,17 @@
       "currentSelection": {
         "id": "tmall",
         "label": "天猫",
-        "apify": "19/25；评论6/7，2件×2轮。",
-        "justone": "1个候选商品返回品牌/类目ID/评论附图；店型及跨商品稳定待验。",
-        "recommendation": "少量采样先用Apify；品牌、销量、商品评分与类目缺口单列。",
+        "apify": "蓝色13/16；评论重点6/6。全清单19/25，2件×2轮。",
+        "blueStable": 13,
+        "blueReviewStable": 6,
+        "blueMissing": [
+          "product.brand",
+          "product.sold_text",
+          "product.rating"
+        ],
+        "justoneBlueObservedNotStable": 14,
+        "justone": "蓝色曾见14/16（非稳定验收）。1个候选商品返回品牌/类目ID/评论附图；店型及跨商品稳定待验。",
+        "recommendation": "评论核心6项可先接Apify；蓝色品牌、销量原文、商品评分仍缺。",
         "actors": [
           "memo23/taobao-scraper",
           "tortuga/taobao-scraper"
@@ -83,9 +98,21 @@
       "currentSelection": {
         "id": "douyin_shop",
         "label": "抖音商城",
-        "apify": "9/25；评论6/7，2件×2轮。",
-        "justone": "7项评论字段都曾有值，含附图；仅1商品。详情缺价格/品牌/类目。",
-        "recommendation": "正文评论先用Apify；若附图必需，JustOne作补充候选；完整商品详情暂缓。",
+        "apify": "蓝色9/16；评论重点6/6。全清单9/25，2件×2轮。",
+        "blueStable": 9,
+        "blueReviewStable": 6,
+        "blueMissing": [
+          "product.title",
+          "product.product_url",
+          "product.brand",
+          "product.sale_price",
+          "product.sold_text",
+          "product.rating",
+          "product.review_count"
+        ],
+        "justoneBlueObservedNotStable": 13,
+        "justone": "蓝色曾见13/16（非稳定验收）。7项评论字段都曾有值，含附图；仅1商品。详情缺价格/品牌/类目。",
+        "recommendation": "评论核心6项先用Apify；附图未标蓝，不再以此要求接第二家。商品详情暂缓。",
         "actors": [
           "qovia/douyin-scraper"
         ]
@@ -111,7 +138,28 @@
       "currentSelection": {
         "id": "pinduoduo",
         "label": "拼多多",
-        "apify": "0/25；评论0/7，2件×2轮。",
+        "apify": "蓝色0/16；评论重点0/6。全清单0/25，2件×2轮。",
+        "blueStable": 0,
+        "blueReviewStable": 0,
+        "blueMissing": [
+          "product.platform",
+          "product.product_id",
+          "product.title",
+          "product.product_url",
+          "product.brand",
+          "product.sale_price",
+          "product.sold_text",
+          "product.rating",
+          "product.review_count",
+          "product.scraped_at",
+          "review.review_id",
+          "review.product_id",
+          "review.review_text",
+          "review.rating",
+          "review.created_at",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": null,
         "justone": "公开目录未见对应商品评论接口。",
         "recommendation": "暂缓，不用字段改名掩盖第二轮失败。",
         "actors": []
@@ -137,8 +185,20 @@
       "currentSelection": {
         "id": "jd",
         "label": "京东",
-        "apify": "13/25；评论0/7，2件×2轮。",
-        "justone": "已取到7项评论字段及详情；仅1个商品，不能写稳定通过。",
+        "apify": "蓝色9/16；评论重点0/6。全清单13/25，2件×2轮。",
+        "blueStable": 9,
+        "blueReviewStable": 0,
+        "blueMissing": [
+          "product.sold_text",
+          "review.review_id",
+          "review.product_id",
+          "review.review_text",
+          "review.rating",
+          "review.created_at",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": 15,
+        "justone": "蓝色曾见15/16（非稳定验收）。已取到7项评论字段及详情；仅1个商品，不能写稳定通过。",
         "recommendation": "商品字段用Apify；评论暂无按新标准已通过方案，JustOne优先补验。",
         "actors": [
           "automation-lab/jd-products-search-scraper",
@@ -262,9 +322,13 @@
       "currentSelection": {
         "id": "amazon",
         "label": "Amazon",
-        "apify": "25/25；评论7/7，2件×2轮。",
+        "apify": "蓝色16/16；评论重点6/6。全清单25/25，2件×2轮。",
+        "blueStable": 16,
+        "blueReviewStable": 6,
+        "blueMissing": [],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "采用上传报告Apify组合；维持US站与已测输入范围。",
+        "recommendation": "蓝色16项已覆盖，优先接入Apify组合；限US已测范围。",
         "actors": [
           "alfalfa/amazon-product-scraper",
           "junglee/amazon-reviews-scraper"
@@ -571,9 +635,16 @@
       "currentSelection": {
         "id": "temu",
         "label": "Temu",
-        "apify": "22/25；评论5/7，2件×2轮。",
+        "apify": "蓝色14/16；评论重点5/6。全清单22/25，2件×2轮。",
+        "blueStable": 14,
+        "blueReviewStable": 5,
+        "blueMissing": [
+          "product.brand",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "商品与少量评论预览可用；完整评论量与SKU/图片需求另验。",
+        "recommendation": "有条件接入：需接受品牌不稳、购买规格为空；仍以评论预览为主。",
         "actors": [
           "cliqtomedia/temu-scraper",
           "selleraim.com/temu-product-scraper"
@@ -677,9 +748,13 @@
       "currentSelection": {
         "id": "tiktok_shop",
         "label": "TikTok Shop",
-        "apify": "25/25；评论7/7，2件×2轮。",
+        "apify": "蓝色16/16；评论重点6/6。全清单25/25，2件×2轮。",
+        "blueStable": 16,
+        "blueReviewStable": 6,
+        "blueMissing": [],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "采用上传报告Apify组合；批量评论翻页仍单独验。",
+        "recommendation": "蓝色16项已覆盖，优先接入Apify组合；批量翻页另验。",
         "actors": [
           "scrapeunblocker/tiktok-shop-product-scraper",
           "trakk/tiktok-shop-search-scraper"
@@ -790,9 +865,16 @@
       "currentSelection": {
         "id": "ebay",
         "label": "eBay",
-        "apify": "21/25；评论5/7，2件×2轮。",
+        "apify": "蓝色14/16；评论重点5/6。全清单21/25，2件×2轮。；销量数派生展示可再补1项，但不算原始销量原文",
+        "blueStable": 14,
+        "blueReviewStable": 5,
+        "blueMissing": [
+          "product.sold_text",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "适合目录商品评价；不能当指定卖家交易反馈，SKU/附图保留空。",
+        "recommendation": "有条件接入：销量可派生展示，但购买规格仍缺；仅目录商品评价。",
         "actors": [
           "apt_marble/ebay-product-reviews-scraper",
           "scrape.badger/ebay-product-scraper",
@@ -899,9 +981,13 @@
       "currentSelection": {
         "id": "walmart",
         "label": "Walmart",
-        "apify": "24/25；评论7/7，2件×2轮。",
+        "apify": "蓝色16/16；评论重点6/6。全清单24/25，2件×2轮。",
+        "blueStable": 16,
+        "blueReviewStable": 6,
+        "blueMissing": [],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "采用topapi新组合；划线价允许为空时可满足现阶段采样。",
+        "recommendation": "蓝色16项已覆盖，优先接入topapi；缺非重点划线价不再作为阻碍。",
         "actors": [
           "topapi/walmart-scraper"
         ]
@@ -7707,7 +7793,7 @@
       }
     ]
   },
-  "currentDomesticRecommendation": "小量商品与评论采样优先新Apify组合；JustOne保留为国内评论补充候选，不能再概括谁全面更便宜。",
+  "currentDomesticRecommendation": "按蓝色16项选型：海外优先Amazon、TikTok Shop、Walmart；国内淘天和抖店先接评论，完整商品字段仍不足。JustOne保留为京东等国内评论补充候选。",
   "latestJustOneRecheck": {
     "checkedOn": "2026-11-15",
     "summary": "JustOne保留为低成本评论方案；当前全字段主方案不采用。",
@@ -16304,22 +16390,55 @@
   },
   "latestUnifiedComparison": {
     "checkedOn": "2026-11-16",
-    "summary": "小量商品与评论采样优先新Apify组合；JustOne保留为国内评论补充候选，不能再概括谁全面更便宜。",
+    "summary": "按蓝色16项选型：海外优先Amazon、TikTok Shop、Walmart；国内淘天和抖店先接评论，完整商品字段仍不足。JustOne保留为京东等国内评论补充候选。",
     "headlineBullets": [
-      "同义字段可以接：按业务含义映射，不按变量名卡死。当前25项是覆盖清单，不把25/25默认当所有业务的硬门槛。",
-      "验收统一看同平台不同商品。上传报告采用2固定商品×2轮；旧JustOne未完成同样设计，标待复核，不记0/25，也不沿用7/8、8/8作同等级胜负。",
-      "Apify新组合的小量采样费用有优势；JustOne批量评论可能更省，但缺同商品、同条数、去重有效正文分母，暂不宣布赢家。",
-      "完整商品字段双方仍有缺口。应按实际必需字段选择平台，并允许无划线价、无图片等可选内容为空。"
+      "蓝色重点为10商品＋6评论字段；允许同义映射、确定转换与任务上下文补充。未标蓝项作为补充，不因缺评论图、类目或划线价一票否决。",
+      "评论重点6项：淘天、抖店及Amazon/TikTok/Walmart均在上传报告通过；Temu/eBay缺购买规格，京东与拼多多未通过本轮评论验证。",
+      "验收统一看同平台不同商品。上传报告采用2固定商品×2轮；旧JustOne未完成同样设计，标待复核，不记0/16，也不沿用旧评分作同等级胜负。",
+      "Apify小量采样便宜且覆盖更广，但要适配多个Actor；JustOne统一接口更省接入工作，批量评论可能省钱，需同商品、同有效条数再比。"
     ],
     "contractNote": "18商品字段＋7评论字段，seller_reply按新报告移出本次范围。字段可用、来源是原始/转换/上下文、以及重复验证强度分开；字段各自通过不等于每条评论都是7字段完整记录。",
-    "blueNote": "飞书蓝色字段暂未读到，已请求确认其名单与含义。本版不臆测蓝色优先级；以已明确的“评论为主”给出条件选型，25项逐一对照仍可用。",
+    "blueNote": "已按用户截图确认蓝色重点16项，逐字段表用蓝底标出。评论附图、商品主图、类目、币种、划线价、销量数字、店名、关键词、搜索排名未标蓝；商家回复也未标蓝，继续保留在25项实测范围之外。缺未标蓝字段不直接判失败；缺蓝色字段会明确写出需妥协的条件。",
+    "blueRequirements": {
+      "product": [
+        "platform",
+        "product_id",
+        "title",
+        "product_url",
+        "brand",
+        "sale_price",
+        "sold_text",
+        "rating",
+        "review_count",
+        "scraped_at"
+      ],
+      "review": [
+        "review_id",
+        "product_id",
+        "review_text",
+        "rating",
+        "created_at",
+        "purchased_sku"
+      ],
+      "total": 16,
+      "confirmedFrom": "用户2026-11-16提供的两张字段截图",
+      "semanticEquivalentsAccepted": true,
+      "missingBlueRequiresExplicitCompromise": true
+    },
     "decisions": [
       {
         "id": "taobao",
         "label": "淘宝",
-        "apify": "21/25；评论6/7，2件×2轮。",
-        "justone": "基础字段可返回；有效正文只有1商品，跨商品稳定待补；先核可用额度。",
-        "recommendation": "商品搜索/详情＋少量评论先用Apify；批量评论暂不承诺。",
+        "apify": "蓝色14/16；评论重点6/6。全清单21/25，2件×2轮。",
+        "blueStable": 14,
+        "blueReviewStable": 6,
+        "blueMissing": [
+          "product.brand",
+          "product.sold_text"
+        ],
+        "justoneBlueObservedNotStable": 13,
+        "justone": "蓝色曾见13/16（非稳定验收）。基础字段可返回；有效正文只有1商品，跨商品稳定待补；先核可用额度。",
+        "recommendation": "评论核心6项可先接Apify；完整蓝色字段仍缺稳定品牌、销量原文。",
         "actors": [
           "memo23/taobao-scraper",
           "tortuga/taobao-scraper"
@@ -16328,9 +16447,17 @@
       {
         "id": "tmall",
         "label": "天猫",
-        "apify": "19/25；评论6/7，2件×2轮。",
-        "justone": "1个候选商品返回品牌/类目ID/评论附图；店型及跨商品稳定待验。",
-        "recommendation": "少量采样先用Apify；品牌、销量、商品评分与类目缺口单列。",
+        "apify": "蓝色13/16；评论重点6/6。全清单19/25，2件×2轮。",
+        "blueStable": 13,
+        "blueReviewStable": 6,
+        "blueMissing": [
+          "product.brand",
+          "product.sold_text",
+          "product.rating"
+        ],
+        "justoneBlueObservedNotStable": 14,
+        "justone": "蓝色曾见14/16（非稳定验收）。1个候选商品返回品牌/类目ID/评论附图；店型及跨商品稳定待验。",
+        "recommendation": "评论核心6项可先接Apify；蓝色品牌、销量原文、商品评分仍缺。",
         "actors": [
           "memo23/taobao-scraper",
           "tortuga/taobao-scraper"
@@ -16339,9 +16466,21 @@
       {
         "id": "douyin_shop",
         "label": "抖音商城",
-        "apify": "9/25；评论6/7，2件×2轮。",
-        "justone": "7项评论字段都曾有值，含附图；仅1商品。详情缺价格/品牌/类目。",
-        "recommendation": "正文评论先用Apify；若附图必需，JustOne作补充候选；完整商品详情暂缓。",
+        "apify": "蓝色9/16；评论重点6/6。全清单9/25，2件×2轮。",
+        "blueStable": 9,
+        "blueReviewStable": 6,
+        "blueMissing": [
+          "product.title",
+          "product.product_url",
+          "product.brand",
+          "product.sale_price",
+          "product.sold_text",
+          "product.rating",
+          "product.review_count"
+        ],
+        "justoneBlueObservedNotStable": 13,
+        "justone": "蓝色曾见13/16（非稳定验收）。7项评论字段都曾有值，含附图；仅1商品。详情缺价格/品牌/类目。",
+        "recommendation": "评论核心6项先用Apify；附图未标蓝，不再以此要求接第二家。商品详情暂缓。",
         "actors": [
           "qovia/douyin-scraper"
         ]
@@ -16349,7 +16488,28 @@
       {
         "id": "pinduoduo",
         "label": "拼多多",
-        "apify": "0/25；评论0/7，2件×2轮。",
+        "apify": "蓝色0/16；评论重点0/6。全清单0/25，2件×2轮。",
+        "blueStable": 0,
+        "blueReviewStable": 0,
+        "blueMissing": [
+          "product.platform",
+          "product.product_id",
+          "product.title",
+          "product.product_url",
+          "product.brand",
+          "product.sale_price",
+          "product.sold_text",
+          "product.rating",
+          "product.review_count",
+          "product.scraped_at",
+          "review.review_id",
+          "review.product_id",
+          "review.review_text",
+          "review.rating",
+          "review.created_at",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": null,
         "justone": "公开目录未见对应商品评论接口。",
         "recommendation": "暂缓，不用字段改名掩盖第二轮失败。",
         "actors": []
@@ -16357,8 +16517,20 @@
       {
         "id": "jd",
         "label": "京东",
-        "apify": "13/25；评论0/7，2件×2轮。",
-        "justone": "已取到7项评论字段及详情；仅1个商品，不能写稳定通过。",
+        "apify": "蓝色9/16；评论重点0/6。全清单13/25，2件×2轮。",
+        "blueStable": 9,
+        "blueReviewStable": 0,
+        "blueMissing": [
+          "product.sold_text",
+          "review.review_id",
+          "review.product_id",
+          "review.review_text",
+          "review.rating",
+          "review.created_at",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": 15,
+        "justone": "蓝色曾见15/16（非稳定验收）。已取到7项评论字段及详情；仅1个商品，不能写稳定通过。",
         "recommendation": "商品字段用Apify；评论暂无按新标准已通过方案，JustOne优先补验。",
         "actors": [
           "automation-lab/jd-products-search-scraper",
@@ -16368,9 +16540,13 @@
       {
         "id": "amazon",
         "label": "Amazon",
-        "apify": "25/25；评论7/7，2件×2轮。",
+        "apify": "蓝色16/16；评论重点6/6。全清单25/25，2件×2轮。",
+        "blueStable": 16,
+        "blueReviewStable": 6,
+        "blueMissing": [],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "采用上传报告Apify组合；维持US站与已测输入范围。",
+        "recommendation": "蓝色16项已覆盖，优先接入Apify组合；限US已测范围。",
         "actors": [
           "alfalfa/amazon-product-scraper",
           "junglee/amazon-reviews-scraper"
@@ -16379,9 +16555,16 @@
       {
         "id": "temu",
         "label": "Temu",
-        "apify": "22/25；评论5/7，2件×2轮。",
+        "apify": "蓝色14/16；评论重点5/6。全清单22/25，2件×2轮。",
+        "blueStable": 14,
+        "blueReviewStable": 5,
+        "blueMissing": [
+          "product.brand",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "商品与少量评论预览可用；完整评论量与SKU/图片需求另验。",
+        "recommendation": "有条件接入：需接受品牌不稳、购买规格为空；仍以评论预览为主。",
         "actors": [
           "cliqtomedia/temu-scraper",
           "selleraim.com/temu-product-scraper"
@@ -16390,9 +16573,13 @@
       {
         "id": "tiktok_shop",
         "label": "TikTok Shop",
-        "apify": "25/25；评论7/7，2件×2轮。",
+        "apify": "蓝色16/16；评论重点6/6。全清单25/25，2件×2轮。",
+        "blueStable": 16,
+        "blueReviewStable": 6,
+        "blueMissing": [],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "采用上传报告Apify组合；批量评论翻页仍单独验。",
+        "recommendation": "蓝色16项已覆盖，优先接入Apify组合；批量翻页另验。",
         "actors": [
           "scrapeunblocker/tiktok-shop-product-scraper",
           "trakk/tiktok-shop-search-scraper"
@@ -16401,9 +16588,16 @@
       {
         "id": "ebay",
         "label": "eBay",
-        "apify": "21/25；评论5/7，2件×2轮。",
+        "apify": "蓝色14/16；评论重点5/6。全清单21/25，2件×2轮。；销量数派生展示可再补1项，但不算原始销量原文",
+        "blueStable": 14,
+        "blueReviewStable": 5,
+        "blueMissing": [
+          "product.sold_text",
+          "review.purchased_sku"
+        ],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "适合目录商品评价；不能当指定卖家交易反馈，SKU/附图保留空。",
+        "recommendation": "有条件接入：销量可派生展示，但购买规格仍缺；仅目录商品评价。",
         "actors": [
           "apt_marble/ebay-product-reviews-scraper",
           "scrape.badger/ebay-product-scraper",
@@ -16413,9 +16607,13 @@
       {
         "id": "walmart",
         "label": "Walmart",
-        "apify": "24/25；评论7/7，2件×2轮。",
+        "apify": "蓝色16/16；评论重点6/6。全清单24/25，2件×2轮。",
+        "blueStable": 16,
+        "blueReviewStable": 6,
+        "blueMissing": [],
+        "justoneBlueObservedNotStable": null,
         "justone": "本轮未做海外对等验证。",
-        "recommendation": "采用topapi新组合；划线价允许为空时可满足现阶段采样。",
+        "recommendation": "蓝色16项已覆盖，优先接入topapi；缺非重点划线价不再作为阻碍。",
         "actors": [
           "topapi/walmart-scraper"
         ]
@@ -16527,9 +16725,9 @@
         "scope": "Apify只有本轮商品字段，没有新双商品评论；JustOne示例包含评论，非同等套餐。"
       }
     ],
-    "costNote": "以下按预算汇率¥7/$。Apify为新报告第2轮“两商品采样组合”的实际用量分摊；JustOne为已核单价×最低调用数的示例，并非本轮同商品实测，也不是同等覆盖套餐。",
+    "costNote": "以下按预算汇率¥7/$。费用沿用报告原25项方案，未按蓝色16项重新删减Actor。Apify为新报告第2轮“两商品采样组合”的实际用量分摊；JustOne为已核单价×最低调用数的示例，并非本轮同商品实测，也不是同等覆盖套餐。",
     "costCaveats": [
-      "淘/天共享memo运行费只在总账计一次；单独运行任一平台不能沿用均分价。10平台最低组合去重合计$0.36272，只是本次已测输入中的最低组合。",
+      "淘/天共享memo运行费只在总账计一次；单独运行任一平台不能沿用均分价。原25项清单的10平台最低组合去重合计$0.36272，不代表蓝色16项的最低成本。",
       "JustOne两商品仅详情：淘天/JD ¥0.50、抖店¥0.36；仅首屏评论：淘天/JD ¥0.40、抖店¥0.36。淘天再加1—2次搜索为¥1.10—1.30，跨版本、多页另计。",
       "抖店等20返回行，Apify目录估算约¥0.4214，JustOne旧页标价¥0.18；这只是批量优势线索，没有验证同商品有效率。",
       "新HTML没有完整去重有效评论分母，混合商品/评论Dataset行不能当评论数；不据此外推1万/10万评论。旧预算只保留历史，不代表新组合。",
@@ -16545,6 +16743,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].platform, $[1].platform",
             "justone": "可由任务上下文补；路径 data.sellerType, request.platform",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -16553,6 +16752,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].itemId, $[1].itemId",
             "justone": "两不同商品有值；未完成2件×2轮；路径 data.comments[].auction.aucNumId, data.item.itemId",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -16561,6 +16761,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].title, $[1].title",
             "justone": "单商品有值；待跨商品复核；路径 data.item.title, data.title",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -16569,6 +16770,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].url, $[1].url",
             "justone": "两不同商品有值；未完成2件×2轮；路径 data.comments[].auction.link, data.mainItemInfo.url",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -16577,6 +16779,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].image, $[1].image",
             "justone": "单商品有值；待跨商品复核；路径 data.item.images, data.item_imgs",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -16585,6 +16788,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0].attributes.0.value, $[0].brandName",
             "justone": "本组未观察到有效值；路径 data.attribute, data.item.attribute",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -16593,6 +16797,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].categoryPath, $[1].categoryPath",
             "justone": "单商品有值；待跨商品复核；路径 data.categoryId, data.item.categoryId",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -16601,6 +16806,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].currency, $[1].currency",
             "justone": "可由任务上下文补；路径 request.marketCurrency",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -16609,6 +16815,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].originalPrice, $[1].originalPrice",
             "justone": "单商品有值；待跨商品复核；路径 data.item.originalPrice",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -16617,6 +16824,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].price, $[1].price",
             "justone": "单商品有值；待跨商品复核；路径 data.item.price, data.price",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -16625,6 +16833,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[0].totalSold",
             "justone": "有代理字段，业务含义待核；路径 data.num",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -16633,6 +16842,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "有代理字段，业务含义待核；路径 data.num",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -16641,6 +16851,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].positiveRate, $[1].positiveRate",
             "justone": "本组未观察到有效值",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -16649,6 +16860,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewCount, $[1].reviewCount",
             "justone": "两不同商品有值；未完成2件×2轮；路径 data.totalCount, data.totalFuzzy",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -16657,6 +16869,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].shopName, $[1].shopName",
             "justone": "单商品有值；待跨商品复核；路径 data.seller.shopName, data.shopName",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -16665,6 +16878,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].searchTerm, $[1].searchTerm",
             "justone": "目标商品相关流程未测",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -16673,6 +16887,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].position, $[1].position",
             "justone": "目标商品相关流程未测",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -16681,6 +16896,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].scrapedAt, $[3].scrapedAt",
             "justone": "可由任务上下文补；路径 request.startedAt/finishedAt",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -16689,6 +16905,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].reviewId, $[4].reviewId",
             "justone": "两不同商品有值；未完成2件×2轮；路径 rateId",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -16697,6 +16914,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].itemId, $[4].itemId",
             "justone": "两不同商品有值；未完成2件×2轮；路径 auction.aucNumId",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -16705,6 +16923,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].latestReview.text, $[1].latestReview.text",
             "justone": "两商品原始正文均返回；有效正文仅1商品；原始非空2商品，有效正文1商品；路径 content",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -16713,6 +16932,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].latestReview.rating, $[1].latestReview.rating",
             "justone": "两不同商品有值；未完成2件×2轮；路径 propertiesAvg",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -16721,6 +16941,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].latestReview.date, $[1].latestReview.date",
             "justone": "两不同商品有值；未完成2件×2轮；路径 date",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -16729,6 +16950,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].latestReview.variant, $[1].latestReview.variant",
             "justone": "单商品有值；待跨商品复核；路径 auction.sku",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -16737,6 +16959,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "单商品有值；待跨商品复核；路径 photos",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -16753,6 +16976,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].platform, $[3].platform",
             "justone": "可由任务上下文补；路径 data.sellerType, request.platform",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -16761,6 +16985,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].itemId, $[3].itemId",
             "justone": "单商品有值；待跨商品复核；路径 data.comments[].auction.aucNumId, data.item.itemId",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -16769,6 +16994,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].title, $[3].title",
             "justone": "单商品有值；待跨商品复核；路径 data.item.title, data.title",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -16777,6 +17003,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].url, $[3].url",
             "justone": "单商品有值；待跨商品复核；路径 data.comments[].auction.link, data.mainItemInfo.url",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -16785,6 +17012,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[2].image, $[3].image",
             "justone": "单商品有值；待跨商品复核；路径 data.item.images, data.item_imgs",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -16793,6 +17021,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "单商品有值；待跨商品复核；路径 data.attribute, data.item.attribute",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -16801,6 +17030,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[2].categoryPath, $[3].categoryPath",
             "justone": "单商品有值；待跨商品复核；路径 data.categoryId, data.item.categoryId",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -16809,6 +17039,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[2].currency, $[3].currency",
             "justone": "可由任务上下文补；路径 request.marketCurrency",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -16817,6 +17048,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[2].originalPrice, $[3].originalPrice",
             "justone": "单商品有值；待跨商品复核；路径 data.item.originalPrice",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -16825,6 +17057,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].price, $[3].price",
             "justone": "单商品有值；待跨商品复核；路径 data.item.price, data.price",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -16833,6 +17066,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[0].totalSold",
             "justone": "有代理字段，业务含义待核；路径 data.num",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -16841,6 +17075,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "有代理字段，业务含义待核；路径 data.num",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -16849,6 +17084,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "本组未观察到有效值",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -16857,6 +17093,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].reviewCount, $[2].reviewCount",
             "justone": "单商品有值；待跨商品复核；路径 data.totalCount, data.totalFuzzy",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -16865,6 +17102,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[2].shopName, $[3].shopName",
             "justone": "单商品有值；待跨商品复核；路径 data.seller.shopName, data.shopName",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -16873,6 +17111,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[1].searchTerm, $[2].searchTerm",
             "justone": "目标商品相关流程未测",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -16881,6 +17120,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[1].position, $[2].position",
             "justone": "目标商品相关流程未测",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -16889,6 +17129,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[6].scrapedAt, $[9].scrapedAt",
             "justone": "可由任务上下文补；路径 request.startedAt/finishedAt",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -16897,6 +17138,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[10].reviewId, $[7].reviewId",
             "justone": "单商品有值；待跨商品复核；路径 rateId",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -16905,6 +17147,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[10].itemId, $[7].itemId",
             "justone": "单商品有值；待跨商品复核；路径 auction.aucNumId",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -16913,6 +17156,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].latestReview.content, $[3].latestReview.content",
             "justone": "单商品有值；待跨商品复核；原始非空1商品，有效正文1商品；路径 content",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -16921,6 +17165,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].latestReview.rating, $[3].latestReview.rating",
             "justone": "单商品有值；待跨商品复核；路径 propertiesAvg",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -16929,6 +17174,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].latestReview.date, $[3].latestReview.date",
             "justone": "单商品有值；待跨商品复核；路径 date",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -16937,6 +17183,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[2].latestReview.variant, $[3].latestReview.variant",
             "justone": "单商品有值；待跨商品复核；路径 auction.sku",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -16945,6 +17192,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "单商品有值；待跨商品复核；路径 photos",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -16961,6 +17209,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[5]",
             "justone": "可由任务上下文补；路径 request.platform",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -16969,6 +17218,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0].input.productId, $[5].input.productId",
             "justone": "单商品有值；待跨商品复核；路径 data.product_id",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -16977,6 +17227,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 data.model.product.product_base.title",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -16985,6 +17236,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "输入提供原商品URL时可补",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -16993,6 +17245,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 data.model.product.product_base.cover",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -17001,6 +17254,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "本组未观察到有效值",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -17009,6 +17263,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "本组未观察到有效值",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -17017,6 +17272,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "仅历史通过",
             "justone": "可由任务上下文补；路径 request.marketCurrency",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -17025,6 +17281,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "本组未观察到有效值",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -17033,6 +17290,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "本组未观察到有效值",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -17041,6 +17299,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 data.model.product.product_sales.total_sales",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -17049,6 +17308,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 data.model.product.product_sales.product_label.sales_num, data.model.product.product_sales.product_label.sales_text",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -17057,6 +17317,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "单商品有值；待跨商品复核；路径 data.model.product.product_comment.good_ratio",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -17065,6 +17326,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 data.Count",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -17073,6 +17335,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 data.model.shop.shop_base.shop_name",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -17081,6 +17344,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "仅历史通过",
             "justone": "目标商品相关流程未测",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -17089,6 +17353,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "目标商品相关流程未测",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -17097,6 +17362,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[5]",
             "justone": "可由任务上下文补；路径 request.startedAt/finishedAt",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -17105,6 +17371,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].cid, $[1].cid",
             "justone": "单商品有值；待跨商品复核；路径 Id",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -17113,6 +17380,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[1]",
             "justone": "单商品有值；待跨商品复核；路径 ProductId",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -17121,6 +17389,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].text, $[1].text",
             "justone": "单商品有值；待跨商品复核；原始非空1商品，有效正文1商品；路径 Content",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -17129,6 +17398,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].rating, $[1].rating",
             "justone": "单商品有值；待跨商品复核；路径 RankProduct",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -17137,6 +17407,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].created_at, $[1].created_at",
             "justone": "单商品有值；待跨商品复核；路径 CommentTime",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -17145,6 +17416,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].sku, $[1].sku",
             "justone": "单商品有值；待跨商品复核；路径 Sku",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -17153,6 +17425,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "单商品有值；待跨商品复核；路径 Photos",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -17169,6 +17442,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0], $[1]",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -17177,6 +17451,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0].productId, $[1].productId",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -17185,6 +17460,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0].title, $[1].title",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -17193,6 +17469,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0].url, $[1].url",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -17201,6 +17478,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "仅首轮 2/2；路径 $[0].imageUrl, $[1].imageUrl",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -17209,6 +17487,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -17217,6 +17496,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "仅首轮 2/2；路径 $[0].categoryHint, $[1].categoryHint",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -17225,6 +17505,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "仅首轮 2/2；路径 $[0], $[1]",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -17233,6 +17514,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "仅首轮 2/2；路径 $[0].listedPriceCny, $[1].listedPriceCny",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -17241,6 +17523,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0].groupPriceCny, $[1].groupPriceCny",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -17249,6 +17532,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "仅首轮 2/2；路径 $[0].soldCount, $[1].soldCount",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -17257,6 +17541,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -17265,6 +17550,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -17273,6 +17559,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -17281,6 +17568,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -17289,6 +17577,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -17297,6 +17586,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -17305,6 +17595,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "仅首轮 2/2；路径 $[0].scrapedAt, $[1].scrapedAt",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -17313,6 +17604,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -17321,6 +17613,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -17329,6 +17622,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试；原始非空0商品，有效正文0商品",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -17337,6 +17631,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -17345,6 +17640,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -17353,6 +17649,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -17361,6 +17658,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "公开目录未找到接口，未测试",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -17377,6 +17675,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[1]",
             "justone": "可由任务上下文补；路径 request.platform",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -17385,6 +17684,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].skuId, $[1].skuId",
             "justone": "单商品有值；待跨商品复核；路径 data.itemInfo.product.skuId",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -17393,6 +17693,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].title, $[1].title",
             "justone": "单商品有值；待跨商品复核；路径 data.itemInfo.product.skuName",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -17401,6 +17702,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].url, $[1].url",
             "justone": "可由任务上下文补",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -17409,6 +17711,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].imageUrl, $[1].imageUrl",
             "justone": "单商品有值；待跨商品复核；路径 data.img_list",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -17417,6 +17720,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].brand, $[1].brand",
             "justone": "单商品有值；待跨商品复核；路径 data.itemInfo.product.brandName",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -17425,6 +17729,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].categoryName, $[1].categoryName",
             "justone": "单商品有值；待跨商品复核；路径 data.itemOnly.category",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -17433,6 +17738,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].currency, $[1].currency",
             "justone": "可由任务上下文补；路径 request.marketCurrency",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -17441,6 +17747,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "单商品有值；待跨商品复核；路径 data.priceInfo.productPrice.marketPrice",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -17449,6 +17756,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].price, $[1].price",
             "justone": "单商品有值；待跨商品复核；路径 data.priceInfo.jdPrice",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -17457,6 +17765,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "本组未观察到有效值",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -17465,6 +17774,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "本组未观察到有效值",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -17473,6 +17783,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].goodRate, $[1].goodRate",
             "justone": "单商品有值；待跨商品复核；路径 data.pageInfo.good_rate",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -17481,6 +17792,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewsCount, $[1].reviewsCount",
             "justone": "单商品有值；待跨商品复核；路径 data.pageInfo.comment_count",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -17489,6 +17801,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].shopName, $[1].shopName",
             "justone": "单商品有值；待跨商品复核；路径 data.shop_infos.shopName",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -17497,6 +17810,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[0].keyword",
             "justone": "目标商品相关流程未测",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -17505,6 +17819,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[0].position",
             "justone": "目标商品相关流程未测",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -17513,6 +17828,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].scrapedAt, $[1].scrapedAt",
             "justone": "可由任务上下文补；路径 request.startedAt/finishedAt",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -17521,6 +17837,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 commentId",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -17529,6 +17846,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 productId",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -17537,6 +17855,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；原始非空1商品，有效正文1商品；路径 commentData",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -17545,6 +17864,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 commentScore",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -17553,6 +17873,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 commentDate",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -17561,6 +17882,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 productColor",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -17569,6 +17891,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "仅历史通过",
             "justone": "单商品有值；待跨商品复核；路径 pictureInfoList",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -17585,6 +17908,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[1]",
             "justone": "本次未核JustOne海外能力",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -17593,6 +17917,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].asin, $[1].asin",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -17601,6 +17926,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].title, $[1].title",
             "justone": "本次未核JustOne海外能力",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -17609,6 +17935,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].url, $[1].url",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -17617,6 +17944,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].thumbnailImage, $[1].thumbnailImage",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -17625,6 +17953,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].brand, $[1].brand",
             "justone": "本次未核JustOne海外能力",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -17633,6 +17962,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].categories, $[1].categories",
             "justone": "本次未核JustOne海外能力",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -17641,6 +17971,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].price.currency, $[1].price.currency",
             "justone": "本次未核JustOne海外能力",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -17649,6 +17980,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].listPrice.value, $[1].listPrice.value",
             "justone": "本次未核JustOne海外能力",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -17657,6 +17989,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].price.value, $[1].price.value",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -17665,6 +17998,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "标准化稳定；路径 $[0].monthlyPurchaseVolume, $[1].monthlyPurchaseVolume",
             "justone": "本次未核JustOne海外能力",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -17673,6 +18007,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].monthlyPurchaseVolume, $[1].monthlyPurchaseVolume",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -17681,6 +18016,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].stars, $[1].stars",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -17689,6 +18025,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewsCount, $[1].reviewsCount",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -17697,6 +18034,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].seller.name, $[1].seller.name",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -17705,6 +18043,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].input, $[1].input",
             "justone": "本次未核JustOne海外能力",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -17713,6 +18052,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].position, $[1].position",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -17721,6 +18061,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].scrapedAt, $[1].scrapedAt",
             "justone": "本次未核JustOne海外能力",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -17729,6 +18070,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -17737,6 +18079,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].productAsin",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -17745,6 +18088,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewDescription",
             "justone": "本次未核JustOne海外能力",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -17753,6 +18097,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].ratingScore",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -17761,6 +18106,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].date",
             "justone": "本次未核JustOne海外能力",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -17769,6 +18115,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].variant",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -17777,6 +18124,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[2].reviewImages, $[4].reviewImages",
             "justone": "本次未核JustOne海外能力",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -17793,6 +18141,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[1]",
             "justone": "本次未核JustOne海外能力",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -17801,6 +18150,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].goodsId, $[1].goodsId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -17809,6 +18159,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].title, $[1].title",
             "justone": "本次未核JustOne海外能力",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -17817,6 +18168,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].url, $[1].url",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -17825,6 +18177,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].images.0, $[1].images.0",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -17833,6 +18186,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "未双样本稳定；路径 $[0].specifications.3.value",
             "justone": "本次未核JustOne海外能力",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -17841,6 +18195,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].categoryPath, $[1].categoryPath",
             "justone": "本次未核JustOne海外能力",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -17849,6 +18204,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].currency, $[1].currency",
             "justone": "本次未核JustOne海外能力",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -17857,6 +18213,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].originalPrice, $[1].originalPrice",
             "justone": "本次未核JustOne海外能力",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -17865,6 +18222,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].price, $[1].price",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -17873,6 +18231,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].sales, $[1].sales",
             "justone": "本次未核JustOne海外能力",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -17881,6 +18240,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].salesText, $[1].salesText",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -17889,6 +18249,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].rating, $[1].rating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -17897,6 +18258,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewCount, $[1].reviewCount",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -17905,6 +18267,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].sellerName, $[1].sellerName",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -17913,6 +18276,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].query, $[1].query",
             "justone": "本次未核JustOne海外能力",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -17921,6 +18285,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].position, $[1].position",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -17929,6 +18294,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].fetchedAt, $[1].fetchedAt",
             "justone": "本次未核JustOne海外能力",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -17937,6 +18303,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].reviewId, $[1].reviews[0].reviewId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -17945,6 +18312,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0].reviews[0], $[1].reviews[0]",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -17953,6 +18321,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].text, $[1].reviews[0].text",
             "justone": "本次未核JustOne海外能力",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -17961,6 +18330,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].rating, $[1].reviews[0].rating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -17969,6 +18339,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].reviewedAt, $[1].reviews[0].reviewedAt",
             "justone": "本次未核JustOne海外能力",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -17977,6 +18348,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -17985,6 +18357,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[0].reviews[2].images",
             "justone": "本次未核JustOne海外能力",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -18001,6 +18374,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0], $[1]",
             "justone": "本次未核JustOne海外能力",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -18009,6 +18383,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].productId, $[1].productId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -18017,6 +18392,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].title, $[1].title",
             "justone": "本次未核JustOne海外能力",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -18025,6 +18401,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].url, $[1].url",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -18033,6 +18410,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].images.0, $[1].images.0",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -18041,6 +18419,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].brand, $[1].brand",
             "justone": "本次未核JustOne海外能力",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -18049,6 +18428,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].categories, $[1].categories",
             "justone": "本次未核JustOne海外能力",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -18057,6 +18437,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].price.currency, $[1].price.currency",
             "justone": "本次未核JustOne海外能力",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -18065,6 +18446,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].price.original, $[1].price.original",
             "justone": "本次未核JustOne海外能力",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -18073,6 +18455,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].price.current, $[1].price.current",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -18081,6 +18464,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].soldCount, $[1].soldCount",
             "justone": "本次未核JustOne海外能力",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -18089,6 +18473,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[10].soldText, $[19].soldText",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -18097,6 +18482,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].rating, $[1].rating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -18105,6 +18491,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviewCount, $[1].reviewCount",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -18113,6 +18500,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].seller.name, $[1].seller.name",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -18121,6 +18509,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[10].query, $[19].query",
             "justone": "本次未核JustOne海外能力",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -18129,6 +18518,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[10].searchRank, $[19].searchRank",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -18137,6 +18527,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[10].scrapedAt, $[19].scrapedAt",
             "justone": "本次未核JustOne海外能力",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -18145,6 +18536,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].id, $[1].reviews[0].id",
             "justone": "本次未核JustOne海外能力",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -18153,6 +18545,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0].reviews[0], $[1].reviews[0]",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -18161,6 +18554,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].text, $[1].reviews[0].text",
             "justone": "本次未核JustOne海外能力",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -18169,6 +18563,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].rating, $[1].reviews[0].rating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -18177,6 +18572,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].date, $[1].reviews[0].date",
             "justone": "本次未核JustOne海外能力",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -18185,6 +18581,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].reviews[0].variant, $[1].reviews[0].variant",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -18193,6 +18590,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].reviews[0].images, $[1].reviews[0].images",
             "justone": "本次未核JustOne海外能力",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -18209,6 +18607,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0].item",
             "justone": "本次未核JustOne海外能力",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -18217,6 +18616,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].item.item_id",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -18225,6 +18625,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].item.title",
             "justone": "本次未核JustOne海外能力",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -18233,6 +18634,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].item.url",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -18241,6 +18643,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].item.main_image",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -18249,6 +18652,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].item.brand",
             "justone": "本次未核JustOne海外能力",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -18257,6 +18661,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].item.categories, $[4].categoryPath",
             "justone": "本次未核JustOne海外能力",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -18265,6 +18670,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].item.price.currency",
             "justone": "本次未核JustOne海外能力",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -18273,6 +18679,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "未双样本稳定；路径 $[0].item.original_price.value",
             "justone": "本次未核JustOne海外能力",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -18281,6 +18688,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].item.price.value",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -18289,6 +18697,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].item.quantity_sold",
             "justone": "本次未核JustOne海外能力",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -18297,6 +18706,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -18305,6 +18715,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].aggregateRating, $[4].aggregateRating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -18313,6 +18724,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].ratingsCount, $[4].ratingsCount",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -18321,6 +18733,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].item.seller.store_name",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -18329,6 +18742,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].query",
             "justone": "本次未核JustOne海外能力",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -18337,6 +18751,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].position",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -18345,6 +18760,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].item.scraped_at, $[0].scrapedAt",
             "justone": "本次未核JustOne海外能力",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -18353,6 +18769,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].reviewId, $[5].reviewId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -18361,6 +18778,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].resolvedFromItemId, $[5].resolvedFromItemId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -18369,6 +18787,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].body, $[5].body",
             "justone": "本次未核JustOne海外能力",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -18377,6 +18796,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].rating, $[5].rating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -18385,6 +18805,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].dateIso, $[5].dateIso",
             "justone": "本次未核JustOne海外能力",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -18393,6 +18814,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "未获得有效证据",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -18401,6 +18823,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "本次未核JustOne海外能力",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -18417,6 +18840,7 @@
           {
             "field": "product.platform",
             "label": "平台",
+            "bluePriority": true,
             "apify": "含上下文补齐；路径 $[0]",
             "justone": "本次未核JustOne海外能力",
             "substitution": "任务指定平台；淘天店型另保留标记，不能只凭URL域名。",
@@ -18425,6 +18849,7 @@
           {
             "field": "product.product_id",
             "label": "商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].usItemId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品详情ID、评论容器商品ID或已知请求ID；校验一致。",
@@ -18433,6 +18858,7 @@
           {
             "field": "product.title",
             "label": "商品名称",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].name",
             "justone": "本次未核JustOne海外能力",
             "substitution": "title / itemName / productName，必须是同商品名称。",
@@ -18441,6 +18867,7 @@
           {
             "field": "product.product_url",
             "label": "商品链接",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].url",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留输入原商品URL，或按已确认平台规则用商品ID生成。",
@@ -18449,6 +18876,7 @@
           {
             "field": "product.image_url",
             "label": "主图",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].imageUrl",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品主图URL；不借评论图片。",
@@ -18457,6 +18885,7 @@
           {
             "field": "product.brand",
             "label": "品牌",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].brand",
             "justone": "本次未核JustOne海外能力",
             "substitution": "brandName或属性里的品牌；标题猜品牌只作待核标签。",
@@ -18465,6 +18894,7 @@
           {
             "field": "product.category",
             "label": "类目",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].categoryPath",
             "justone": "本次未核JustOne海外能力",
             "substitution": "categoryPath或类目ID＋字典映射；未知ID保留原值。",
@@ -18473,6 +18903,7 @@
           {
             "field": "product.currency",
             "label": "币种",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].currency",
             "justone": "本次未核JustOne海外能力",
             "substitution": "站点与价格单位已知时任务侧补ISO币种。",
@@ -18481,6 +18912,7 @@
           {
             "field": "product.list_price",
             "label": "标价/划线价",
+            "bluePriority": false,
             "apify": "未获得有效证据",
             "justone": "本次未核JustOne海外能力",
             "substitution": "originalPrice / compareAtPrice等明确标价；无标价的商品可为空。",
@@ -18489,6 +18921,7 @@
           {
             "field": "product.sale_price",
             "label": "售价",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].price",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品/规格当前价；基本价、促销价、券后价分开。",
@@ -18497,6 +18930,7 @@
           {
             "field": "product.sold_count",
             "label": "标准化销量",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].boughtSinceYesterday, $[11].boughtSinceYesterday",
             "justone": "本次未核JustOne海外能力",
             "substitution": "明确销量展示可转下限/时间窗；付款人数可另设代理指标。",
@@ -18505,6 +18939,7 @@
           {
             "field": "product.sold_text",
             "label": "销量原文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].boughtSinceYesterdayText, $[11].boughtSinceYesterdayText",
             "justone": "本次未核JustOne海外能力",
             "substitution": "保留源站原文；只需展示时可由销量数＋标签生成并注明派生。",
@@ -18513,6 +18948,7 @@
           {
             "field": "product.rating",
             "label": "评分/好评率",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].averageRating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品星级或商品好评率均可，保留rating_type与量纲。",
@@ -18521,6 +18957,7 @@
           {
             "field": "product.review_count",
             "label": "评价数",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].numberOfReviews",
             "justone": "本次未核JustOne海外能力",
             "substitution": "商品详情或评论端点汇总数；模糊数保留“+”与下限。",
@@ -18529,6 +18966,7 @@
           {
             "field": "product.shop_name",
             "label": "店铺",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].sellerName",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同商品seller/shop名称；不等于品牌。",
@@ -18537,6 +18975,7 @@
           {
             "field": "product.keyword",
             "label": "搜索词",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].searchQuery, $[1].searchQuery",
             "justone": "本次未核JustOne海外能力",
             "substitution": "记录实际搜索请求query，不要求供应商回显。",
@@ -18545,6 +18984,7 @@
           {
             "field": "product.search_rank",
             "label": "搜索排名",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[0].position, $[1].position",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同关键词、排序、页码的返回位置；不是全站排名。",
@@ -18553,6 +18993,7 @@
           {
             "field": "product.scraped_at",
             "label": "采集时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[0].scrapedAt",
             "justone": "本次未核JustOne海外能力",
             "substitution": "请求完成/Run采集时间，明确时区。",
@@ -18561,6 +19002,7 @@
           {
             "field": "review.review_id",
             "label": "评论ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].reviewId, $[20].reviewId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "reviewId/commentId/rateId等同一评价标识；哈希去重另设派生键。",
@@ -18569,6 +19011,7 @@
           {
             "field": "review.product_id",
             "label": "评论商品ID",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].usItemId, $[20].itemId",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同评论直接商品ID或明确父商品容器/单商品请求关联。",
@@ -18577,6 +19020,7 @@
           {
             "field": "review.review_text",
             "label": "评论正文",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].text, $[20].reviewText",
             "justone": "本次未核JustOne海外能力",
             "substitution": "content/text/body/reviewDescription/commentData等确认的买家评价正文。",
@@ -18585,6 +19029,7 @@
           {
             "field": "review.rating",
             "label": "评论星级",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].rating, $[20].rating",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价星级/score；好中差编码另存，不猜成星级。",
@@ -18593,6 +19038,7 @@
           {
             "field": "review.created_at",
             "label": "评论时间",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].reviewDate, $[20].reviewSubmissionTime",
             "justone": "本次未核JustOne海外能力",
             "substitution": "date/time/timestamp确定转换；保留原值与时区。",
@@ -18601,6 +19047,7 @@
           {
             "field": "review.purchased_sku",
             "label": "购买规格",
+            "bluePriority": true,
             "apify": "原生稳定；路径 $[1].variant, $[2].variant",
             "justone": "本次未核JustOne海外能力",
             "substitution": "同条评价的购买规格；不拿商品可选SKU列表填。",
@@ -18609,6 +19056,7 @@
           {
             "field": "review.image_urls",
             "label": "评论图片",
+            "bluePriority": false,
             "apify": "原生稳定；路径 $[20].media, $[2].media",
             "justone": "本次未核JustOne海外能力",
             "substitution": "photos/images/media中同条评论附图；不用主图或头像。",
@@ -18639,7 +19087,7 @@
         "url": "https://apify.com/tortuga/taobao-scraper/pricing"
       },
       {
-        "label": "飞书字段规范（颜色优先级尚未读取）",
+        "label": "飞书字段规范（蓝色重点已据用户两张截图核对）",
         "url": "https://icnuvcafo3b9.feishu.cn/wiki/QQYpwhtnFifypikXtNrcklzGnjb"
       },
       {
@@ -18653,7 +19101,7 @@
       "uploadedBytes": 450862,
       "sha256": "0b6e85c960dcfcb65c98b2f9738fcf440fbc37a25abfa70c3e68d2fd63575796",
       "apifyReportedRevision": 81,
-      "bluePriorityVerified": false,
+      "bluePriorityVerified": true,
       "newBusinessApiRuns": 0
     },
     "apifyEvidence": {
@@ -34084,7 +34532,7 @@
       "notComparable": [
         "Apify新报告以2商品×2轮、每字段至少一条支持值验收；JustOne旧证据常为同页重复或单商品多页，不能直接比较稳定覆盖数字。",
         "字段可用数和每条完整记录率不同；允许同义字段映射，不等于可把不同评论的字段拼成一条完整评论。",
-        "不是全部25字段都必须；先以用户确认的必需字段（蓝色标记含义待确认）定义可用套餐，才能重算同覆盖最低组合。",
+        "不是全部25字段都必须；先以用户截图确认的16项蓝色重点字段定义可用套餐，才能重算同覆盖最低组合。",
         "本HTML未带相邻inputs/items/coverage/optimization JSON，无法独立重跑集合覆盖枚举或核对全部评论分母；也不将附带访问链接公开复制。"
       ],
       "sources": [
